@@ -756,7 +756,6 @@
                   "guides/representations/thumbnail",
                   "guides/representations/text",
                   "guides/representations/pdf",
-                  "guides/representations/thumbnail",
                   "guides/representations/supported-file-types"
                 ]
               },
