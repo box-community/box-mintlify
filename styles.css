@@ -1,3 +1,14 @@
 a code {
   padding: 2px 0;
+  border-bottom-color: transparent !important;
 }
+
+/* a {
+  border-bottom: none !important;
+  text-decoration: underline !important;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: rgb(var(--primary));
+} */
