@@ -2252,7 +2252,7 @@
       "get": {
         "operationId": "get_archives_v2025.0",
         "summary": "List archives",
-        "description": "Retrieves archives for an enterprise.\n\nTo learn more about the archive APIs, see the [Archive API Guide](g://archives).",
+        "description": "Retrieves archives for an enterprise.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -2350,7 +2350,7 @@
       "post": {
         "operationId": "post_archives_v2025.0",
         "summary": "Create archive",
-        "description": "Creates an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](g://archives).",
+        "description": "Creates an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -2468,7 +2468,7 @@
       "delete": {
         "operationId": "delete_archives_id_v2025.0",
         "summary": "Delete archive",
-        "description": "Permanently deletes an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](g://archives).",
+        "description": "Permanently deletes an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -2557,7 +2557,7 @@
       "put": {
         "operationId": "put_archives_id_v2025.0",
         "summary": "Update archive",
-        "description": "Updates an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](g://archives).",
+        "description": "Updates an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "name": "archive_id",

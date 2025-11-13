@@ -1,141 +1,53 @@
 ---
+mode: "custom"
 title: "Box AI Developer Zone"
-description: "Interactive demos, sample code, and tools for building AI agents and intelligent workflows"
 ---
 
-Box AI Developer Zone features interactive demos, sample code, and tools for building AI agents and intelligent workflows. Explore use cases, get hands-on experience with Box AI API, and build agents with Box AI Studio!
+import {TryDemos} from "/snippets/ai-dev-zone/try-demos.jsx";
+import {Documentation} from "/snippets/ai-dev-zone/documentation.jsx";
+import {MCPServers} from "/snippets/ai-dev-zone/mcp-servers.jsx";
+import {AIAgents} from "/snippets/ai-dev-zone/ai-agents.jsx";
+import {AIIntegrations} from "/snippets/ai-dev-zone/ai-integrations.jsx";
+import {Videos} from "/snippets/ai-dev-zone/videos.jsx";
 
-## Try out interactive demos
+<div className="flex flex-col gap-16 py-20 transition-colors">
+  {/* Hero Section */}
+  <section className="grid grid-cols-2 gap-12 items-center max-w-[1400px] mx-auto px-4">
+    <div className="space-y-6">
+      <h1 className="text-6xl font-bold text-gray-900 dark:text-white">
+        Box AI Developer Zone
+      </h1>
+      <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+        Box AI Developer Zone features interactive demos, sample code, and tools for building AI agents and intelligent workflows. Explore use cases, get hands-on experience with Box AI API, and build agents with Box AI Studio!
+      </p>
+    </div>
+    <div className="relative">
+      <img
+        noZoom
+        src="/static/ai-dev-zone/AiDevZone.png"
+        alt="Box AI Developer Zone showing Box AI API integration with various platforms and tools"
+        className="w-full rounded-lg"
+      />
+    </div>
+  </section>
 
-Box AI API is available to all customers Business and above.
+  <TryDemos />
 
-<CardGroup cols={2}>
-  <Card title="Document Summarization" href="/guides/box-ai/ai-tutorials/generate-text">
-    Summarize a document in a selected tone of voice.
-  </Card>
-  <Card title="Metadata Extraction" href="/guides/box-ai/ai-tutorials/extract-metadata">
-    Use natural language to extract metadata with Box AI API.
-  </Card>
-  <Card title="Structured Metadata Extraction" href="/guides/box-ai/ai-tutorials/extract-metadata-structured">
-    Extract document metadata suggestions. Pass a Box metadata template ID or a predefined data structure.
-  </Card>
-  <Card title="Enhanced Extract Agent" href="/guides/box-ai/ai-agents/index" icon="sparkles">
-    Get the best answers thanks to chain-of-thought processing.
-  </Card>
-</CardGroup>
+  <Documentation />
 
-## Documentation
+  <MCPServers />
 
-These resources will get you up and running with Box AI API.
+  <AIAgents />
 
-<CardGroup cols={2}>
-  <Card title="API Reference" href="/reference/resources/ai-response">
-    Check the API reference for specification details.
-  </Card>
-  <Card title="Implementation Guides" href="/guides/box-ai">
-    Browse the guides to learn how to use Box AI API.
-  </Card>
-  <Card title="Supported AI Models" href="/guides/box-ai/ai-models">
-    Box supports a variety of AI models, categorized along two dimensions: access level and capability tier.
-  </Card>
-  <Card title="Model Configuration" href="/guides/box-ai/ai-agents/ai-agent-overrides">
-    Override the default AI model configuration and fine tune LLMs with Box AI API.
-  </Card>
-</CardGroup>
+  <AIIntegrations />
 
-## MCP Servers
+  <Videos/>
 
-These resources will get you up and running with Box MCP server.
+  {/* CTA Button */}
+  <section className="max-w-[1400px] mx-auto px-4 text-center">
+    <a href="https://www.youtube.com/playlist?list=PLCSEWOlbcUyIjaK2hCZMk6rSR1jg4r_4H" target="_blank" className="inline-block bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+      View more videos
+    </a>
+  </section>
 
-<CardGroup cols={2}>
-  <Card title="Box MCP Server" href="/guides/box-mcp" icon="sparkles">
-    The remote Box MCP server allows third party AI systems to securely connect and interact with your content in Box.
-  </Card>
-  <Card title="Python Integration" href="https://github.com/box-community/box-mcp-python">
-    Community-driven project for file search and AI-based querying.
-  </Card>
-  <Card title="Deeplearning.ai Course" href="https://www.deeplearning.ai/short-courses/agentic-ai-with-box/">
-    Short online course taught by Box CTO Ben Kus.
-  </Card>
-  <Card title="Doc Gen Tutorial" href="https://github.com/box/box-mcp-server/blob/main/DOCGEN_TUTORIAL.md">
-    Use Box Doc Gen through the Box MCP server for AI-Powered Document Generation.
-  </Card>
-  <Card title="LangChain Integration" href="https://github.com/rectalogic/langchain-mcp">
-    Turn Box MCP server into a LangChain-compatible agent.
-  </Card>
-</CardGroup>
-
-## AI Agents
-
-Learn how to create advanced AI agents with Box.
-
-<CardGroup cols={2}>
-  <Card title="Box AI Studio" href="/guides/box-ai/ai-agents" icon="sparkles">
-    Create and manage custom AI agents with Box AI Studio API.
-  </Card>
-  <Card title="Salesforce Integration" href="https://github.com/box/box-agentforce-actions" icon="sparkles">
-    Reusable Agentforce actions help automate workflows.
-  </Card>
-  <Card title="OpenAI Integration" href="https://platform.openai.com/docs/guides/agents">
-    Add unstructured data from Box into agentic workflows.
-  </Card>
-  <Card title="Python Library" href="https://github.com/box/box-ai-agent-python" icon="flask">
-    Library for building AI agents for Box.
-  </Card>
-</CardGroup>
-
-## Box for AI Integrations
-
-Use Box for AI Integrations to extend LLM models' existing knowledge bases.
-
-<CardGroup cols={3}>
-  <Card title="LangChain.js Integration" href="https://js.langchain.com/docs/integrations/document_loaders/file_loaders/box/" icon="sparkles">
-    Include Box content in your LLM workflows.
-  </Card>
-  <Card title="Snowflake Connection" href="https://docs.snowflake.com/en/user-guide/ui-snowsight-ug-gen-ai-box">
-    Seamlessly connect unstructured content in Box with Snowflake.
-  </Card>
-  <Card title="Airbyte Connector" href="https://docs.airbyte.com/integrations/sources/box-ai-extract">
-    Transform unstructured documents into structured, queryable data.
-  </Card>
-  <Card title="Weaviate RAG" href="https://weaviate.io/blog/box-weaviate-integration">
-    Build RAG workflows by embedding Box content into vector database.
-  </Card>
-  <Card title="Pinecone Integration" href="https://medium.com/@shurrey/integrating-box-with-pinecone-for-smarter-ai-apps-4d7b09ebdbc9">
-    Customize vector embeddings and get relevant LLM answers.
-  </Card>
-  <Card title="LlamaIndex Suite" href="https://docs.llamaindex.ai/en/stable/examples/data_connectors/BoxReaderDemo/">
-    Enable access to Box content within LLM workflows.
-  </Card>
-  <Card title="LangChain Integration" href="https://python.langchain.com/docs/integrations/document_loaders/box/">
-    Include Box content in your LLM workflows with Box loader for LangChain.
-  </Card>
-  <Card title="Pydantic AI" href="https://ai.pydantic.dev/examples/box-mcp/">
-    Augment Pydantic AI agents with secure Box content.
-  </Card>
-</CardGroup>
-
-## Videos
-
-Watch the latest Box AI API tutorials and demos.
-
-<CardGroup cols={3}>
-  <Card title="MCP: The API Standard" href="https://www.youtube.com/watch?v=u_y5_y9JGg4">
-    MCP: The API standard that makes AI actionable for enterprises.
-  </Card>
-  <Card title="Box Remote MCP Setup" href="https://www.youtube.com/watch?v=Rcn8p-nLJtI">
-    Learn how to set up the Box remote MCP server.
-  </Card>
-  <Card title="Self-Hosted MCP Server" href="https://www.youtube.com/watch?v=h109CMywlVQ">
-    Deploy and configure your own Box MCP server.
-  </Card>
-  <Card title="Box AI Ask Demo" href="https://www.youtube.com/watch?v=66wlIyS07Aw">
-    See how to use Box AI to ask questions about your content.
-  </Card>
-  <Card title="Box AI Multiple Files" href="https://www.youtube.com/watch?v=WXkBctPosLE">
-    Work with multiple files using Box AI API.
-  </Card>
-  <Card title="View More Videos" href="https://www.youtube.com/@box/videos">
-    Explore the Box YouTube channel for more tutorials and demos.
-  </Card>
-</CardGroup>
+</div>

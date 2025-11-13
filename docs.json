@@ -24,7 +24,8 @@
           },
           {
             "tab": "Guides",
-            "groups": [
+            "pages": [
+              "guides/index",
               {
                 "group": "Start Here",
                 "pages": [
@@ -2664,7 +2665,8 @@
         "tabs": [
           {
             "tab": "ガイド",
-            "groups": [
+            "pages": [
+              "ja/guides/index",
               {
                 "group": "はじめに",
                 "pages": [
@@ -2998,18 +3000,11 @@
               {
                 "group": "ツール",
                 "pages": [
-                  "ja/guides/tooling/postman/index",
-                  "ja/guides/tooling/salesforce-toolkit/index",
-                  "ja/guides/tooling/sdks/index"
-                ]
-              },
-              {
-                "group": "ツール",
-                "pages": [
-                  "ja/guides/tooling/postman/index",
+                  "ja/guides/tooling/index",
                   {
                     "group": "Postmanコレクション",
                     "pages": [
+                      "ja/guides/tooling/postman/index",
                       {
                         "group": "Postmanを使用したAPIコール",
                         "pages": [
