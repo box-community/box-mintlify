@@ -4900,7 +4900,7 @@
       "get": {
         "operationId": "get_folders_id",
         "summary": "Get folder information",
-        "description": "Retrieves details for a folder, including the first 100 entries\nin the folder.\n\nPassing `sort`, `direction`, `offset`, and `limit`\nparameters in query allows you to manage the\nlist of returned\n[folder items](r://folder--full#param-item-collection).\n\nTo fetch more items within the folder, use the\n[Get items in a folder](e://get-folders-id-items) endpoint.",
+        "description": "Retrieves details for a folder, including the first 100 entries\nin the folder.\n\nPassing `sort`, `direction`, `offset`, and `limit`\nparameters in query allows you to manage the\nlist of returned\n[folder items](/reference/resources/folder--full#param-item-collection).\n\nTo fetch more items within the folder, use the\n[Get items in a folder](e://get-folders-id-items) endpoint.",
         "parameters": [
           {
             "name": "folder_id",
@@ -10587,7 +10587,7 @@
           {
             "name": "include_recent_shared_links",
             "in": "query",
-            "description": "Defines whether the search results should include any items\nthat the user recently accessed through a shared link.\n\nWhen this parameter has been set to true,\nthe format of the response of this API changes to return\na list of [Search Results with\nShared Links](r://search_results_with_shared_links).",
+            "description": "Defines whether the search results should include any items\nthat the user recently accessed through a shared link.\n\nWhen this parameter has been set to true,\nthe format of the response of this API changes to return\na list of [Search Results with\nShared Links](/reference/resources/search_results_with_shared_links).",
             "required": false,
             "schema": {
               "type": "boolean",
@@ -36186,7 +36186,7 @@
                 "nullable": true
               },
               "signers": {
-                "description": "Array of signers for the signature request. 35 is the\nmax number of signers permitted.\n\n**Note**: It may happen that some signers belong to conflicting [segments](r://shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send the sign request will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
+                "description": "Array of signers for the signature request. 35 is the\nmax number of signers permitted.\n\n**Note**: It may happen that some signers belong to conflicting [segments](/reference/resources/shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send the sign request will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SignRequestCreateSigner"
@@ -36585,7 +36585,7 @@
                 "example": true
               },
               "signers": {
-                "description": "Array of signers for the template.\n\n**Note**: It may happen that some signers specified in the template belong to conflicting [segments](r://shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send a sign request based on a template that lists signers in conflicting segments will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
+                "description": "Array of signers for the template.\n\n**Note**: It may happen that some signers specified in the template belong to conflicting [segments](/reference/resources/shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send a sign request based on a template that lists signers in conflicting segments will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/TemplateSigner"
