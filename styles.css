@@ -36,12 +36,12 @@ a code {
   text-decoration-thickness: 1px;
 }
 
-#sidebar {
+/* #sidebar {
   z-index: 0 !important;
-}
+} */
 
 #truste-consent-track {
-  z-index: 30 !important;
+  z-index: 9999999 !important;
   position: fixed !important;
 }
 
