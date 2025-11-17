@@ -1,3 +1,4 @@
 node_modules
 *.py
 failed_maps_ja.json
+__pycache__
