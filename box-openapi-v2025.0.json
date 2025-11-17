@@ -109,7 +109,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  \n\nThis requires `usemarker` to be set to `true`.",
             "required": false,
             "schema": {
               "type": "string"
@@ -154,7 +154,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -225,7 +225,7 @@
             }
           },
           "404": {
-            "description": "Returned if the template is not found or the user does not\nhave access to the associated template.",
+            "description": "Returned if the template is not found or the user does not have access to the associated template.",
             "content": {
               "application/json": {
                 "schema": {
@@ -291,7 +291,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -301,7 +301,7 @@
             }
           },
           "404": {
-            "description": "Returned if the template is not found or the user does not\nhave access to the associated template.",
+            "description": "Returned if the template is not found or the user does not have access to the associated template.",
             "content": {
               "application/json": {
                 "schema": {
@@ -356,7 +356,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  \n\nThis requires `usemarker` to be set to `true`.",
             "required": false,
             "schema": {
               "type": "string"
@@ -499,7 +499,7 @@
             }
           },
           "404": {
-            "description": "Returned if the job is not found or the user does not\nhave access to the associated job.",
+            "description": "Returned if the job is not found or the user does not have access to the associated job.",
             "content": {
               "application/json": {
                 "schema": {
@@ -544,7 +544,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  \n\nThis requires `usemarker` to be set to `true`.",
             "required": false,
             "schema": {
               "type": "string"
@@ -644,7 +644,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  \n\nThis requires `usemarker` to be set to `true`.",
             "required": false,
             "schema": {
               "type": "string"
@@ -699,7 +699,7 @@
             }
           },
           "404": {
-            "description": "Returned if the template is not found or the user does not\nhave access to the associated template.",
+            "description": "Returned if the template is not found or the user does not have access to the associated template.",
             "content": {
               "application/json": {
                 "schema": {
@@ -754,7 +754,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  \n\nThis requires `usemarker` to be set to `true`.",
             "required": false,
             "schema": {
               "type": "string"
@@ -809,7 +809,7 @@
             }
           },
           "404": {
-            "description": "Returned if the batch is not found or the user does not\nhave access to the associated batch.",
+            "description": "Returned if the batch is not found or the user does not have access to the associated batch.",
             "content": {
               "application/json": {
                 "schema": {
@@ -932,7 +932,7 @@
           {
             "name": "categories",
             "in": "query",
-            "description": "A comma-separated list of the enterprise configuration categories.\nAllowed values: `security`, `content_and_sharing`, `user_settings`, `shield`.",
+            "description": "A comma-separated list of the enterprise configuration categories. Allowed values: `security`, `content_and_sharing`, `user_settings`, `shield`.",
             "required": true,
             "schema": {
               "type": "array",
@@ -996,7 +996,7 @@
           {
             "name": "scope",
             "in": "query",
-            "description": "The scope of the Box Hubs to retrieve. Possible values include `editable`,\n`view_only`, and `all`. Default is `all`.",
+            "description": "The scope of the Box Hubs to retrieve. Possible values include `editable`, `view_only`, and `all`. Default is `all`.",
             "required": false,
             "schema": {
               "type": "string",
@@ -1007,7 +1007,7 @@
           {
             "name": "sort",
             "in": "query",
-            "description": "The field to sort results by. \nPossible values include `name`, `updated_at`,\n`last_accessed_at`, `view_count`, and `relevance`.\nDefault is `relevance`.",
+            "description": "The field to sort results by.  Possible values include `name`, `updated_at`, `last_accessed_at`, `view_count`, and `relevance`. Default is `relevance`.",
             "required": false,
             "schema": {
               "type": "string",
@@ -1018,7 +1018,7 @@
           {
             "name": "direction",
             "in": "query",
-            "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order.",
+            "description": "The direction to sort results in. This can be either in alphabetical ascending (`ASC`) or descending (`DESC`) order.",
             "required": false,
             "schema": {
               "type": "string",
@@ -1032,7 +1032,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1123,7 +1123,7 @@
             }
           },
           "403": {
-            "description": "Returns an error when the user does not have the\nright permissions to create a Hub.",
+            "description": "Returns an error when the user does not have the right permissions to create a Hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1153,7 +1153,7 @@
       "get": {
         "operationId": "get_enterprise_hubs_v2025.0",
         "summary": "List all Box Hubs for requesting enterprise",
-        "description": "Retrieves all Box Hubs for a given enterprise.\n\nAdmins or Hub Co-admins of an enterprise\nwith GCM scope can make this call.",
+        "description": "Retrieves all Box Hubs for a given enterprise.  \n\nAdmins or Hub Co-admins of an enterprise with GCM scope can make this call.",
         "parameters": [
           {
             "name": "query",
@@ -1168,7 +1168,7 @@
           {
             "name": "sort",
             "in": "query",
-            "description": "The field to sort results by.\nPossible values include `name`, `updated_at`,\n`last_accessed_at`, `view_count`, and `relevance`.\nDefault is `relevance`.",
+            "description": "The field to sort results by. Possible values include `name`, `updated_at`, `last_accessed_at`, `view_count`, and `relevance`. Default is `relevance`.",
             "required": false,
             "schema": {
               "type": "string",
@@ -1179,7 +1179,7 @@
           {
             "name": "direction",
             "in": "query",
-            "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order.",
+            "description": "The direction to sort results in. This can be either in alphabetical ascending (`ASC`) or descending (`DESC`) order.",
             "required": false,
             "schema": {
               "type": "string",
@@ -1193,7 +1193,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1253,7 +1253,7 @@
           {
             "name": "hub_id",
             "in": "path",
-            "description": "The unique identifier that represent a hub.\n\nThe ID for any hub can be determined\nby visiting this hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a hub.  \n\nThe ID for any hub can be determined by visiting this hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1276,7 +1276,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1286,7 +1286,7 @@
             }
           },
           "404": {
-            "description": "Returned if the hub is not found, or the user does not\nhave access to the hub.",
+            "description": "Returned if the hub is not found, or the user does not have access to the hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1319,7 +1319,7 @@
           {
             "name": "hub_id",
             "in": "path",
-            "description": "The unique identifier that represent a hub.\n\nThe ID for any hub can be determined\nby visiting this hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a hub.  \n\nThe ID for any hub can be determined by visiting this hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1352,7 +1352,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1362,7 +1362,7 @@
             }
           },
           "404": {
-            "description": "Returned if the Hub is not found, or the user does not\nhave access to the Hub.",
+            "description": "Returned if the Hub is not found, or the user does not have access to the Hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1395,7 +1395,7 @@
           {
             "name": "hub_id",
             "in": "path",
-            "description": "The unique identifier that represent a hub.\n\nThe ID for any hub can be determined\nby visiting this hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a hub.  \n\nThe ID for any hub can be determined by visiting this hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1408,10 +1408,10 @@
         ],
         "responses": {
           "204": {
-            "description": "A blank response is returned if the hub was\nsuccessfully deleted."
+            "description": "A blank response is returned if the hub was successfully deleted."
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1421,7 +1421,7 @@
             }
           },
           "404": {
-            "description": "Returned if the hub is not found or has already been deleted, or the user\ndoes not have access to the hub.",
+            "description": "Returned if the hub is not found or has already been deleted, or the user does not have access to the hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1451,12 +1451,12 @@
       "post": {
         "operationId": "post_hubs_id_copy_v2025.0",
         "summary": "Copy Box Hub",
-        "description": "Creates a copy of a Box Hub.\n\nThe original Box Hub will not be modified.",
+        "description": "Creates a copy of a Box Hub.  \n\nThe original Box Hub will not be modified.",
         "parameters": [
           {
             "name": "hub_id",
             "in": "path",
-            "description": "The unique identifier that represent a hub.\n\nThe ID for any hub can be determined\nby visiting this hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a hub.  \n\nThe ID for any hub can be determined by visiting this hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1489,7 +1489,7 @@
             }
           },
           "403": {
-            "description": "Returns an error when the user does not have the\nright permissions to create a Hub.",
+            "description": "Returns an error when the user does not have the right permissions to create a Hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1524,7 +1524,7 @@
           {
             "name": "hub_id",
             "in": "query",
-            "description": "The unique identifier that represent a hub.\n\nThe ID for any hub can be determined\nby visiting this hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a hub.  \n\nThe ID for any hub can be determined by visiting this hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1534,7 +1534,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  \n\nThis requires `usemarker` to be set to `true`.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1569,7 +1569,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1579,7 +1579,7 @@
             }
           },
           "404": {
-            "description": "Returned if the Box Hub is not found, or the user does not\nhave access to the Box Hub.",
+            "description": "Returned if the Box Hub is not found, or the user does not have access to the Box Hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1607,7 +1607,7 @@
       "post": {
         "operationId": "post_hub_collaborations_v2025.0",
         "summary": "Create Box Hub collaboration",
-        "description": "Adds a collaboration for a single user or a single group to a Box Hub.\n\nCollaborations can be created using email address, user IDs, or group IDs.",
+        "description": "Adds a collaboration for a single user or a single group to a Box Hub.  \n\nCollaborations can be created using email address, user IDs, or group IDs.",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -1635,7 +1635,7 @@
             }
           },
           "403": {
-            "description": "Returns an error when the user does not have the\nright permissions to create the collaboration.",
+            "description": "Returns an error when the user does not have the right permissions to create the collaboration.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1693,7 +1693,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1703,7 +1703,7 @@
             }
           },
           "404": {
-            "description": "Returned if the Box Hub is not found, or the user does not\nhave access to the Box Hub.",
+            "description": "Returned if the Box Hub is not found, or the user does not have access to the Box Hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1731,7 +1731,7 @@
       "put": {
         "operationId": "put_hub_collaborations_id_v2025.0",
         "summary": "Update Box Hub collaboration",
-        "description": "Updates a Box Hub collaboration.\nCan be used to change the Box Hub role.",
+        "description": "Updates a Box Hub collaboration. Can be used to change the Box Hub role.",
         "parameters": [
           {
             "name": "hub_collaboration_id",
@@ -1769,7 +1769,7 @@
             }
           },
           "403": {
-            "description": "Returns an error if the authenticated user does not have the right\npermissions to update the collaboration.",
+            "description": "Returns an error if the authenticated user does not have the right permissions to update the collaboration.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1815,10 +1815,10 @@
         ],
         "responses": {
           "204": {
-            "description": "A blank response is returned if the Box Hub collaboration was\nsuccessfully deleted."
+            "description": "A blank response is returned if the Box Hub collaboration was successfully deleted."
           },
           "404": {
-            "description": "Returns an error if the Box Hub collaboration could not be found,\nor the authenticated user does not have access to the Box Hub collaboration.",
+            "description": "Returns an error if the Box Hub collaboration could not be found, or the authenticated user does not have access to the Box Hub collaboration.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1853,7 +1853,7 @@
           {
             "name": "hub_id",
             "in": "query",
-            "description": "The unique identifier that represent a hub.\n\nThe ID for any hub can be determined\nby visiting this hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a hub.  \n\nThe ID for any hub can be determined by visiting this hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1863,7 +1863,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.  \n\nThis requires `usemarker` to be set to `true`.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1898,7 +1898,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1908,7 +1908,7 @@
             }
           },
           "404": {
-            "description": "Returned if the Box Hub is not found, or the user does not\nhave access to the Box Hub.",
+            "description": "Returned if the Box Hub is not found, or the user does not have access to the Box Hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1943,7 +1943,7 @@
           {
             "name": "hub_id",
             "in": "path",
-            "description": "The unique identifier that represent a hub.\n\nThe ID for any hub can be determined\nby visiting this hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a hub.  \n\nThe ID for any hub can be determined by visiting this hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1976,7 +1976,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1986,7 +1986,7 @@
             }
           },
           "404": {
-            "description": "Returned if the Box Hub is not found, or the user does not\nhave access to the Box Hub.",
+            "description": "Returned if the Box Hub is not found, or the user does not have access to the Box Hub.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2098,7 +2098,7 @@
           {
             "name": "shield_list_id",
             "in": "path",
-            "description": "The unique identifier that represents a shield list.\nThe ID for any Shield List can be determined by the response from the endpoint\nfetching all shield lists for the enterprise.",
+            "description": "The unique identifier that represents a shield list. The ID for any Shield List can be determined by the response from the endpoint fetching all shield lists for the enterprise.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2144,7 +2144,7 @@
           {
             "name": "shield_list_id",
             "in": "path",
-            "description": "The unique identifier that represents a shield list.\nThe ID for any Shield List can be determined by the response from the endpoint\nfetching all shield lists for the enterprise.",
+            "description": "The unique identifier that represents a shield list. The ID for any Shield List can be determined by the response from the endpoint fetching all shield lists for the enterprise.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2193,7 +2193,7 @@
           {
             "name": "shield_list_id",
             "in": "path",
-            "description": "The unique identifier that represents a shield list.\nThe ID for any Shield List can be determined by the response from the endpoint\nfetching all shield lists for the enterprise.",
+            "description": "The unique identifier that represents a shield list. The ID for any Shield List can be determined by the response from the endpoint fetching all shield lists for the enterprise.",
             "required": true,
             "schema": {
               "type": "string"
@@ -2252,7 +2252,7 @@
       "get": {
         "operationId": "get_archives_v2025.0",
         "summary": "List archives",
-        "description": "Retrieves archives for an enterprise.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
+        "description": "Retrieves archives for an enterprise.  \n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -2272,7 +2272,7 @@
           {
             "name": "marker",
             "in": "query",
-            "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.",
+            "description": "Defines the position marker at which to begin returning results. This is used when paginating using marker-based pagination.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2302,7 +2302,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2312,7 +2312,7 @@
             }
           },
           "403": {
-            "description": "Returned when the authenticated user does not have the right\npermissions to list archives.",
+            "description": "Returned when the authenticated user does not have the right permissions to list archives.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2350,7 +2350,7 @@
       "post": {
         "operationId": "post_archives_v2025.0",
         "summary": "Create archive",
-        "description": "Creates an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
+        "description": "Creates an archive.  \n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -2408,7 +2408,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2418,7 +2418,7 @@
             }
           },
           "403": {
-            "description": "Returned when the authenticated user does not have the right\npermissions to create an archive.",
+            "description": "Returned when the authenticated user does not have the right permissions to create an archive.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2468,7 +2468,7 @@
       "delete": {
         "operationId": "delete_archives_id_v2025.0",
         "summary": "Delete archive",
-        "description": "Permanently deletes an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
+        "description": "Permanently deletes an archive.  \n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -2499,7 +2499,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2509,7 +2509,7 @@
             }
           },
           "403": {
-            "description": "Returns an error if the user does not have the right\npermissions to delete the archive.",
+            "description": "Returns an error if the user does not have the right permissions to delete the archive.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2557,7 +2557,7 @@
       "put": {
         "operationId": "put_archives_id_v2025.0",
         "summary": "Update archive",
-        "description": "Updates an archive.\n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
+        "description": "Updates an archive.  \n\nTo learn more about the archive APIs, see the [Archive API Guide](/guides/archives).",
         "parameters": [
           {
             "name": "archive_id",
@@ -2617,7 +2617,7 @@
             }
           },
           "401": {
-            "description": "Returned when the access token provided in the `Authorization` header\nis not recognized or not provided.",
+            "description": "Returned when the access token provided in the `Authorization` header is not recognized or not provided.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2627,7 +2627,7 @@
             }
           },
           "403": {
-            "description": "Returned when the authenticated user does not have the right\npermissions to update the archive.",
+            "description": "Returned when the authenticated user does not have the right permissions to update the archive.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2687,7 +2687,7 @@
       "post": {
         "operationId": "post_external_users_submit_delete_job_v2025.0",
         "summary": "Submit job to delete external users",
-        "description": "Delete external users from current user enterprise. This will remove each\nexternal user from all invited collaborations within the current enterprise.",
+        "description": "Delete external users from current user enterprise. This will remove each external user from all invited collaborations within the current enterprise.",
         "parameters": [
           {
             "$ref": "#/components/parameters/BoxVersionHeader"
@@ -2715,7 +2715,7 @@
             }
           },
           "404": {
-            "description": "Returns an error if the listed external users are not found, or the authenticated\nuser does not have the right permissions to delete external users.",
+            "description": "Returns an error if the listed external users are not found, or the authenticated user does not have the right permissions to delete external users.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2761,7 +2761,7 @@
     },
     "schemas": {
       "Archive": {
-        "description": "An archive is a folder dedicated to storing content that is\nredundant, outdated, or trivial. Content in an archive is not accessible to its\nowner and collaborators.\nTo use this feature, you must request GCM scope for your Box application.",
+        "description": "An archive is a folder dedicated to storing content that is redundant, outdated, or trivial. Content in an archive is not accessible to its owner and collaborators. To use this feature, you must request GCM scope for your Box application.",
         "type": "object",
         "properties": {
           "id": {
@@ -2780,7 +2780,7 @@
             "nullable": false
           },
           "name": {
-            "description": "The name of the archive.\n\nThe following restrictions to the archive name apply: names containing\nnon-printable ASCII characters, forward and backward slashes\n(`/`, `\\`), names with trailing spaces, and names `.` and `..` are\nnot allowed.",
+            "description": "The name of the archive.  \n\nThe following restrictions to the archive name apply: names containing non-printable ASCII characters, forward and backward slashes (`/`, `\\`), names with trailing spaces, and names `.` and `..` are not allowed.",
             "type": "string",
             "example": "Archive",
             "maxLength": 100,
@@ -2856,10 +2856,10 @@
           },
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -2928,7 +2928,7 @@
             "nullable": false
           },
           "context_info": {
-            "description": "A free-form object that contains additional context\nabout the error. The possible fields are defined on\na per-endpoint basis. `message` is only one example.",
+            "description": "A free-form object that contains additional context about the error. The possible fields are defined on a per-endpoint basis. `message` is only one example.",
             "type": "object",
             "example": {
               "message": "Something went wrong"
@@ -2943,7 +2943,7 @@
             "nullable": false
           },
           "request_id": {
-            "description": "A unique identifier for this response, which can be used\nwhen contacting Box support.",
+            "description": "A unique identifier for this response, which can be used when contacting Box support.",
             "type": "string",
             "example": "abcdef123456",
             "nullable": false
@@ -3372,10 +3372,10 @@
         "allOf": [
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -3421,10 +3421,10 @@
         "allOf": [
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -3519,10 +3519,10 @@
         "allOf": [
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -3603,7 +3603,7 @@
         ]
       },
       "DocGenTemplate--Base": {
-        "description": "A base representation of a Box Doc Gen template, used when\nnested within another resource.",
+        "description": "A base representation of a Box Doc Gen template, used when nested within another resource.",
         "type": "object",
         "properties": {
           "file": {
@@ -3651,10 +3651,10 @@
         "allOf": [
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -3977,7 +3977,7 @@
                 "$ref": "#/components/schemas/EnterpriseConfigurationItem"
               },
               {
-                "description": "The external collaboration status.\nPossible values: `enable_external_collaboration`, `limit_collaboration_to_allowlisted_domains`, `limit_collaboration_to_users_within_enterprise`."
+                "description": "The external collaboration status. Possible values: `enable_external_collaboration`, `limit_collaboration_to_allowlisted_domains`, `limit_collaboration_to_users_within_enterprise`."
               },
               {
                 "properties": {
@@ -5132,7 +5132,7 @@
         "title": "Enterprise feature settings item"
       },
       "EnterpriseReference": {
-        "description": "A reference to an enterprise, used when\nnested within another resource.",
+        "description": "A reference to an enterprise, used when nested within another resource.",
         "type": "object",
         "properties": {
           "id": {
@@ -5316,7 +5316,7 @@
         "title": "File reference"
       },
       "FileVersion--Base": {
-        "description": "The bare basic representation of a file version, the minimal\namount of fields returned when using the `fields` query\nparameter.",
+        "description": "The bare basic representation of a file version, the minimal amount of fields returned when using the `fields` query parameter.",
         "type": "object",
         "properties": {
           "id": {
@@ -5391,7 +5391,7 @@
         "title": "Group (Base)"
       },
       "Group--Mini": {
-        "description": "Mini representation of a group, including id and name of\ngroup.",
+        "description": "Mini representation of a group, including id and name of group.",
         "type": "object",
         "allOf": [
           {
@@ -5419,7 +5419,7 @@
         "title": "Group (Mini)"
       },
       "Hub": {
-        "description": "A standard representation of a Box Hub, as returned from any\nBox Hubs API endpoints by default.",
+        "description": "A standard representation of a Box Hub, as returned from any Box Hubs API endpoints by default.",
         "type": "object",
         "allOf": [
           {
@@ -5438,7 +5438,7 @@
                 "example": "All the contracts for the company."
               },
               "created_at": {
-                "description": "The date and time when the folder was created. This value may\nbe `null` for some folders such as the root folder or the trash\nfolder.",
+                "description": "The date and time when the folder was created. This value may be `null` for some folders such as the root folder or the trash folder.",
                 "type": "string",
                 "format": "date-time",
                 "example": "2012-12-12T10:53:43Z"
@@ -5507,7 +5507,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "The unique identifier that represent a Box Hub.\n\nThe ID for any Box Hub can be determined\nby visiting a Box Hub in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/hubs/123`\nthe `hub_id` is `123`.",
+            "description": "The unique identifier that represent a Box Hub.  \n\nThe ID for any Box Hub can be determined by visiting a Box Hub in the web application and copying the ID from the URL. For example, for the URL `https://*.app.box.com/hubs/123` the `hub_id` is `123`.",
             "type": "string",
             "example": "12345"
           },
@@ -5547,7 +5547,7 @@
         "title": "Box Hub Accessible By"
       },
       "HubCollaboration": {
-        "description": "A Box Hub collaboration object grants a user or group access \nto a Box Hub with permissions defined by a specific role.",
+        "description": "A Box Hub collaboration object grants a user or group access  to a Box Hub with permissions defined by a specific role.",
         "type": "object",
         "properties": {
           "id": {
@@ -5570,12 +5570,12 @@
             "$ref": "#/components/schemas/HubAccessGrantee"
           },
           "role": {
-            "description": "The level of access granted to a Box Hub.\nPossible values are `editor`, `viewer`, and `co-owner`.",
+            "description": "The level of access granted to a Box Hub. Possible values are `editor`, `viewer`, and `co-owner`.",
             "type": "string",
             "example": "editor"
           },
           "status": {
-            "description": "The status of the collaboration invitation. If the status\nis `pending`, `login` and `name` return an empty string.",
+            "description": "The status of the collaboration invitation. If the status is `pending`, `login` and `name` return an empty string.",
             "type": "string",
             "example": "accepted",
             "enum": [
@@ -5591,7 +5591,7 @@
                 "type": "object",
                 "properties": {
                   "is_accepted": {
-                    "description": "Whether or not the terms of service have been accepted.  The\nfield is `null` when there is no terms of service required.",
+                    "description": "Whether or not the terms of service have been accepted.  The field is `null` when there is no terms of service required.",
                     "type": "boolean",
                     "example": true,
                     "nullable": true
@@ -5602,7 +5602,7 @@
                         "$ref": "#/components/schemas/TermsOfService--Base"
                       },
                       {
-                        "description": "The terms of service that must be accepted before the\ncollaboration can be accepted. The field is `null` when\nthere is no terms of service required."
+                        "description": "The terms of service that must be accepted before the collaboration can be accepted. The field is `null` when there is no terms of service required."
                       }
                     ]
                   }
@@ -5612,12 +5612,12 @@
                 "type": "object",
                 "properties": {
                   "enterprise_has_strong_password_required_for_external_users": {
-                    "description": "Whether or not the enterprise that owns the content requires\na strong password to collaborate on the content, or enforces\nan exposed password detection for the external collaborators.",
+                    "description": "Whether or not the enterprise that owns the content requires a strong password to collaborate on the content, or enforces an exposed password detection for the external collaborators.",
                     "type": "boolean",
                     "example": true
                   },
                   "user_has_strong_password": {
-                    "description": "Whether or not the user has a strong and not exposed password set\nfor their account. The field is `null` when a strong password is\nnot required.",
+                    "description": "Whether or not the user has a strong and not exposed password set for their account. The field is `null` when a strong password is not required.",
                     "type": "boolean",
                     "example": true,
                     "nullable": true
@@ -5628,12 +5628,12 @@
                 "type": "object",
                 "properties": {
                   "enterprise_has_two_factor_auth_enabled": {
-                    "description": "Whether or not the enterprise that owns the content requires\ntwo-factor authentication to be enabled in order to\ncollaborate on the content.",
+                    "description": "Whether or not the enterprise that owns the content requires two-factor authentication to be enabled in order to collaborate on the content.",
                     "type": "boolean",
                     "example": true
                   },
                   "user_has_two_factor_authentication_enabled": {
-                    "description": "Whether or not the user has two-factor authentication\nenabled. The field is `null` when two-factor\nauthentication is not required.",
+                    "description": "Whether or not the user has two-factor authentication enabled. The field is `null` when two-factor authentication is not required.",
                     "type": "boolean",
                     "example": true,
                     "nullable": true
@@ -5684,17 +5684,17 @@
             "type": "object",
             "properties": {
               "type": {
-                "description": "The type of collaborator to invite.\nPossible values are `user` or `group`.",
+                "description": "The type of collaborator to invite. Possible values are `user` or `group`.",
                 "type": "string",
                 "example": "user"
               },
               "id": {
-                "description": "The ID of the user or group.\n\nAlternatively, use `login` to specify a user by email\naddress.",
+                "description": "The ID of the user or group.  \n\nAlternatively, use `login` to specify a user by email address.",
                 "type": "string",
                 "example": "23522323"
               },
               "login": {
-                "description": "The email address of the user who gets access to the item.\n\nAlternatively, use `id` to specify a user by user ID.",
+                "description": "The email address of the user who gets access to the item.  \n\nAlternatively, use `id` to specify a user by user ID.",
                 "type": "string",
                 "example": "john@example.com"
               }
@@ -5704,7 +5704,7 @@
             ]
           },
           "role": {
-            "description": "The level of access granted to a Box Hub.\nPossible values are `editor`, `viewer`, and `co-owner`.",
+            "description": "The level of access granted to a Box Hub. Possible values are `editor`, `viewer`, and `co-owner`.",
             "type": "string",
             "example": "editor"
           }
@@ -5721,7 +5721,7 @@
         "type": "object",
         "properties": {
           "role": {
-            "description": "The level of access granted to a Box Hub.\nPossible values are `editor`, `viewer`, and `co-owner`.",
+            "description": "The level of access granted to a Box Hub. Possible values are `editor`, `viewer`, and `co-owner`.",
             "type": "string",
             "example": "editor"
           }
@@ -5729,7 +5729,7 @@
         "title": "Box Hub Collaboration Update Request"
       },
       "HubCollaborationUser": {
-        "description": "A mini representation of a user, can be returned only when\nthe status is `pending`.",
+        "description": "A mini representation of a user, can be returned only when the status is `pending`.",
         "type": "object",
         "allOf": [
           {
@@ -5773,10 +5773,10 @@
           },
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -5949,10 +5949,10 @@
           },
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -6058,10 +6058,10 @@
           },
           {
             "type": "object",
-            "description": "The part of an API response that describes marker\nbased pagination.",
+            "description": "The part of an API response that describes marker based pagination.",
             "properties": {
               "limit": {
-                "description": "The limit that was used for these entries. This will be the same as the\n`limit` query parameter unless that value exceeded the maximum value\nallowed. The maximum value varies by API.",
+                "description": "The limit that was used for these entries. This will be the same as the `limit` query parameter unless that value exceeded the maximum value allowed. The maximum value varies by API.",
                 "type": "integer",
                 "format": "int64",
                 "example": 1000
@@ -6554,7 +6554,7 @@
                 "$ref": "#/components/schemas/ShieldListContentRequest"
               },
               {
-                "description": "Specifies the type of elements in this Shield List and includes the elements themselves.\nIt is not possible to update Integration Shield Lists by Public API."
+                "description": "Specifies the type of elements in this Shield List and includes the elements themselves. It is not possible to update Integration Shield Lists by Public API."
               }
             ]
           }
@@ -6586,7 +6586,7 @@
                 "$ref": "#/components/schemas/ShieldListContentRequest"
               },
               {
-                "description": "Specifies the type of elements in this Shield List and includes the elements themselves.\nIt is not possible to update Integration Shield Lists by Public API."
+                "description": "Specifies the type of elements in this Shield List and includes the elements themselves. It is not possible to update Integration Shield Lists by Public API."
               }
             ]
           }
@@ -6658,7 +6658,7 @@
         "title": "Shield rule item"
       },
       "TermsOfService--Base": {
-        "description": "The root-level record that is supposed to represent a\nsingle Terms of Service.",
+        "description": "The root-level record that is supposed to represent a single Terms of Service.",
         "type": "object",
         "properties": {
           "id": {
@@ -6682,7 +6682,7 @@
         "title": "Terms of service (Base)"
       },
       "User--Base": {
-        "description": "A mini representation of a user, used when\nnested within another resource.",
+        "description": "A mini representation of a user, used when nested within another resource.",
         "type": "object",
         "properties": {
           "id": {
@@ -6707,7 +6707,7 @@
         "title": "User (Base)"
       },
       "User--Mini": {
-        "description": "A mini representation of a user, as can be returned when nested within other\nresources.",
+        "description": "A mini representation of a user, as can be returned when nested within other resources.",
         "type": "object",
         "allOf": [
           {
@@ -6895,7 +6895,7 @@
     },
     {
       "name": "Shield lists",
-      "description": "Shield List allow an administrator to create a list\nwhich will be shared between different\nShield Smart Access and Threat Detection rules.",
+      "description": "Shield List allow an administrator to create a list which will be shared between different Shield Smart Access and Threat Detection rules.",
       "x-box-tag": "shield_lists"
     }
   ],
