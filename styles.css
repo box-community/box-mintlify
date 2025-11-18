@@ -66,3 +66,7 @@ a code {
 #truste-consent-content {
   max-width: 1400px;
 }
+
+.homepage_container .card img {
+  max-height: 200px;
+}

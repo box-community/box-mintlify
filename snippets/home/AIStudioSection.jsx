@@ -21,7 +21,7 @@ export const AIStudioSection = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start py-12">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start pb-12">
       {/* Left side - Items list */}
       <div className="flex flex-col gap-6">
         {items.map((item, index) => (
@@ -61,7 +61,7 @@ export const AIStudioSection = () => {
       </div>
 
       {/* Right side - Image */}
-      <div className="rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl dark:shadow-gray-900/50">
+      <div className="rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl dark:shadow-gray-900/50 max-h-[400px]">
         <img
           noZoom
           src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=500&fit=crop"
