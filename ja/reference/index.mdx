@@ -1,0 +1,651 @@
+---
+title: "APIリファレンス"
+rank: 1
+related_endpoints: []
+related_guides: []
+required_guides: []
+alias_paths: []
+---
+
+<CardGroup cols={3}>
+  <Card
+    title="AI"
+    href="/ja/reference/resources/ai-agent-ask"
+    icon="sparkles"
+  >
+    AI機能を使用して質問したりデータを抽出したりする
+  </Card>
+
+  <Card
+    title="AI Studio"
+    href="/ja/reference/resources/ai-multiple-agent-response"
+    icon="sparkles"
+  >
+    カスタムAIエージェントを構築および管理する
+  </Card>
+
+  <Card
+    title="Archives"
+    href="/ja/reference/v2025.0/resources/archive"
+    icon="archive"
+  >
+    Box Archiveリソースを作成および管理する
+  </Card>
+
+  <Card
+    title="Box Doc Gen"
+    href="/ja/reference/v2025.0/resources/docgen-batch--base"
+    icon="file-lines"
+  >
+    テンプレートからドキュメントをプログラムで生成する
+  </Card>
+
+  <Card
+    title="Box Doc Genテンプレート"
+    href="/ja/reference/v2025.0/resources/docgen-tag"
+    icon="file-lines"
+  >
+    ドキュメント生成テンプレートを管理する
+  </Card>
+
+  <Card
+    title="Box Hubs"
+    href="/ja/reference/v2025.0/resources/hub"
+    icon="share-nodes"
+  >
+    Box Hubsを作成および管理する
+  </Card>
+
+  <Card
+    title="Box Hubコラボレーション"
+    href="/ja/reference/v2025.0/resources/hub-collaboration"
+    icon="share-nodes"
+  >
+    Box Hubsのコラボレーションを管理する
+  </Card>
+
+  <Card
+    title="Box Hubの項目"
+    href="/ja/reference/v2025.0/resources/hub-item"
+    icon="share-nodes"
+  >
+    Box Hubs内の項目を管理する
+  </Card>
+
+  <Card
+    title="Box Signテンプレート"
+    href="/ja/reference/resources/sign-template"
+    icon="pen-fancy"
+  >
+    再利用可能な電子署名テンプレートを管理する
+  </Card>
+
+  <Card
+    title="Box Signリクエスト"
+    href="/ja/reference/resources/sign-request"
+    icon="pen-fancy"
+  >
+    電子署名リクエストを作成および管理する
+  </Card>
+
+  <Card
+    title="Classifications"
+    href="/ja/reference/resources/classification"
+    icon="tag"
+  >
+    セキュリティ分類を定義および管理する
+  </Card>
+
+  <Card
+    title="Collaborations"
+    href="/ja/reference/resources/collaboration"
+    icon="handshake"
+  >
+    ファイル/フォルダのコラボレーションを作成および管理する
+  </Card>
+
+  <Card
+    title="Collections"
+    href="/ja/reference/resources/collection"
+    icon="folder-open"
+  >
+    コンテンツをコレクションに整理する
+  </Card>
+
+  <Card
+    title="Comments"
+    href="/ja/reference/resources/comment"
+    icon="message"
+  >
+    ファイルにコメントを追加および管理する
+  </Card>
+
+  <Card
+    title="Device Pinners"
+    href="/ja/reference/resources/device-pinner"
+    icon="mobile"
+  >
+    オフラインアクセス用のデバイス固定を管理する
+  </Card>
+
+  <Card
+    title="Events"
+    href="/ja/reference/resources/event"
+    icon="bell"
+  >
+    Boxイベントとアクティビティを監視する
+  </Card>
+
+  <Card
+    title="Files"
+    href="/ja/reference/resources/file"
+    icon="file"
+  >
+    コアファイル操作と管理
+  </Card>
+
+  <Card
+    title="Folders"
+    href="/ja/reference/resources/folder"
+    icon="folder"
+  >
+    コアフォルダ操作と管理
+  </Card>
+
+  <Card
+    title="Groups"
+    href="/ja/reference/resources/group"
+    icon="users"
+  >
+    ユーザーグループを作成および管理する
+  </Card>
+
+  <Card
+    title="Invites"
+    href="/ja/reference/resources/invite"
+    icon="user-plus"
+  >
+    ユーザーをBoxに招待する
+  </Card>
+
+  <Card
+    title="Shieldリスト"
+    href="/ja/reference/v2025.0/resources/shield-list-content--country"
+    icon="shield"
+  >
+    アクセス制御リストを管理する
+  </Card>
+
+  <Card
+    title="Shield情報バリア"
+    href="/ja/reference/resources/shield-information-barrier"
+    icon="shield"
+  >
+    コンプライアンスのための情報バリアを実装する
+  </Card>
+
+  <Card
+    title="Shield情報バリアのセグメント"
+    href="/ja/reference/resources/shield-information-barrier-segment"
+    icon="shield"
+  >
+    バリアセグメントを作成および管理する
+  </Card>
+
+  <Card
+    title="Shield情報バリアのセグメントメンバー"
+    href="/ja/reference/resources/shield-information-barrier-segment-member"
+    icon="shield"
+  >
+    バリアセグメント内のユーザーを管理する
+  </Card>
+
+  <Card
+    title="Shield情報バリアのセグメント制限"
+    href="/ja/reference/resources/shield-information-barrier-segment-restriction"
+    icon="shield"
+  >
+    セグメント間の制限を定義する
+  </Card>
+
+  <Card
+    title="Shield情報バリアレポート"
+    href="/ja/reference/resources/shield-information-barrier-reference"
+    icon="shield"
+  >
+    情報バリアに関するレポートを生成する
+  </Card>
+
+  <Card
+    title="Skills"
+    href="/ja/reference/resources/keyword-skill-card"
+    icon="brain"
+  >
+    ファイルにAI搭載のスキルを適用する
+  </Card>
+
+  <Card
+    title="Tasks"
+    href="/ja/reference/resources/task"
+    icon="list-check"
+  >
+    ファイルベースのタスクを作成および管理する
+  </Card>
+
+  <Card
+    title="Users"
+    href="/ja/reference/resources/user"
+    icon="person"
+  >
+    ユーザーを作成および管理する
+  </Card>
+
+  <Card
+    title="Webhooks"
+    href="/ja/reference/resources/webhook"
+    icon="webhook"
+  >
+    リアルタイムイベント通知を設定する
+  </Card>
+
+  <Card
+    title="zipダウンロード"
+    href="/ja/reference/resources/zip-download"
+    icon="file-zipper"
+  >
+    複数の項目をzipアーカイブとしてダウンロードする
+  </Card>
+
+  <Card
+    title="アップロード"
+    href="/ja/reference/resources/conflict-error"
+    icon="book"
+  >
+    ファイルをBoxにアップロードする
+  </Card>
+
+  <Card
+    title="アップロード (分割)"
+    href="/ja/reference/resources/upload-part"
+    icon="book"
+  >
+    大きなファイルを分割してアップロードする
+  </Card>
+
+  <Card
+    title="アプリ項目の関連付け"
+    href="/ja/reference/resources/app-item"
+    icon="book"
+  >
+    アプリ項目をファイルとフォルダに関連付ける
+  </Card>
+
+  <Card
+    title="ウェブリンク"
+    href="/ja/reference/resources/web-link"
+    icon="book"
+  >
+    ブックマークを作成および管理する
+  </Card>
+
+  <Card
+    title="グループメンバーシップ"
+    href="/ja/reference/resources/group-membership"
+    icon="book"
+  >
+    グループ内のユーザーメンバーシップを管理する
+  </Card>
+
+  <Card
+    title="ごみ箱内のウェブリンク"
+    href="/ja/reference/resources/trash-web-link"
+    icon="book"
+  >
+    ごみ箱内のウェブリンクを管理する
+  </Card>
+
+  <Card
+    title="ごみ箱内のファイル"
+    href="/ja/reference/resources/trash-file"
+    icon="book"
+  >
+    ごみ箱内のファイルを管理する
+  </Card>
+
+  <Card
+    title="ごみ箱内のフォルダ"
+    href="/ja/reference/resources/trash-folder"
+    icon="book"
+  >
+    ごみ箱内のフォルダを管理する
+  </Card>
+
+  <Card
+    title="ごみ箱内の項目"
+    href="/ja/reference/get-folders-trash-items"
+    icon="book"
+  >
+    ごみ箱内のすべての項目をリストする
+  </Card>
+
+  <Card
+    title="コラボレーション (リスト)"
+    href="/ja/reference/get-collaborations"
+    icon="book"
+  >
+    ユーザー、ファイル、フォルダ、グループのコラボレーションをリストする
+  </Card>
+
+  <Card
+    title="コラボレーションに対するドメインを制限"
+    href="/ja/reference/resources/collaboration-allowlist-entries"
+    icon="book"
+  >
+    コラボレーションを特定のドメインに制限する
+  </Card>
+
+  <Card
+    title="サービス利用規約"
+    href="/ja/reference/resources/terms-of-service"
+    icon="book"
+  >
+    エンタープライズのサービス利用規約を定義する
+  </Card>
+
+  <Card
+    title="サービス利用規約のユーザーステータス"
+    href="/ja/reference/resources/terms-of-service-user-status"
+    icon="book"
+  >
+    規約へのユーザーの同意を追跡する
+  </Card>
+
+  <Card
+    title="セッション終了"
+    href="/ja/reference/resources/session-termination"
+    icon="book"
+  >
+    ユーザーまたはグループのセッションを終了する
+  </Card>
+
+  <Card
+    title="ダウンロード"
+    href="/ja/reference/get-files-id-content"
+    icon="book"
+  >
+    ファイルコンテンツをダウンロードする
+  </Card>
+
+  <Card
+    title="タスク割り当て"
+    href="/ja/reference/resources/task-assignment"
+    icon="book"
+  >
+    ユーザーにタスクを割り当てる
+  </Card>
+
+  <Card
+    title="ドメインの制限 (ユーザーの除外)"
+    href="/ja/reference/resources/collaboration-allowlist-exempt-target"
+    icon="book"
+  >
+    ドメイン制限からユーザーを除外する
+  </Card>
+
+  <Card
+    title="ファイルの分類"
+    href="/ja/reference/get-files-id-metadata-enterprise-securityClassification-6VMVochwUWo"
+    icon="book"
+  >
+    ファイルに分類を適用する
+  </Card>
+
+  <Card
+    title="ファイルバージョン"
+    href="/ja/reference/resources/file-versions"
+    icon="book"
+  >
+    ファイルバージョン履歴にアクセスおよび管理する
+  </Card>
+
+  <Card
+    title="ファイルバージョンリーガルホールド"
+    href="/ja/reference/resources/file-version-legal-hold"
+    icon="book"
+  >
+    特定のファイルバージョンにリーガルホールドを適用する
+  </Card>
+
+  <Card
+    title="ファイルバージョンリテンション"
+    href="/ja/reference/resources/file-version-retention"
+    icon="book"
+  >
+    ファイルバージョンのリテンションポリシーを管理する
+  </Card>
+
+  <Card
+    title="ファイルリクエスト"
+    href="/ja/reference/resources/file-request"
+    icon="book"
+  >
+    ファイルアップロードリクエストを作成および管理する
+  </Card>
+
+  <Card
+    title="フォルダの移動"
+    href="/ja/reference/put-users-id-folders-0"
+    icon="book"
+  >
+    ユーザー間でフォルダの所有権を移動する
+  </Card>
+
+  <Card
+    title="フォルダの分類"
+    href="/ja/reference/get-folders-id-metadata-enterprise-securityClassification-6VMVochwUWo"
+    icon="book"
+  >
+    フォルダに分類を適用する
+  </Card>
+
+  <Card
+    title="フォルダロック"
+    href="/ja/reference/resources/folder-lock"
+    icon="book"
+  >
+    フォルダをロックして変更を防ぐ
+  </Card>
+
+  <Card
+    title="メールエイリアス"
+    href="/ja/reference/resources/email-alias"
+    icon="book"
+  >
+    ユーザーのメールエイリアスを管理する
+  </Card>
+
+  <Card
+    title="メタデータインスタンス (ファイル)"
+    href="/ja/reference/resources/metadata"
+    icon="book"
+  >
+    ファイルのメタデータを管理する
+  </Card>
+
+  <Card
+    title="メタデータインスタンス (フォルダ)"
+    href="/ja/reference/get-folders-id-metadata"
+    icon="book"
+  >
+    フォルダのメタデータを管理する
+  </Card>
+
+  <Card
+    title="メタデータカスケードポリシー"
+    href="/ja/reference/resources/metadata-cascade-policies"
+    icon="book"
+  >
+    フォルダコンテンツにメタデータを自動適用する
+  </Card>
+
+  <Card
+    title="メタデータテンプレート"
+    href="/ja/reference/resources/metadata-template"
+    icon="book"
+  >
+    カスタムメタデータスキーマを定義する
+  </Card>
+
+  <Card
+    title="ユーザーのアバター"
+    href="/ja/reference/resources/user-avatar"
+    icon="book"
+  >
+    ユーザープロフィール画像を管理する
+  </Card>
+
+  <Card
+    title="リーガルホールドポリシー"
+    href="/ja/reference/resources/legal-hold-policies"
+    icon="book"
+  >
+    リーガルホールドポリシーを定義および管理する
+  </Card>
+
+  <Card
+    title="リーガルホールドポリシー割り当て"
+    href="/ja/reference/resources/file-versions-on-hold"
+    icon="book"
+  >
+    コンテンツにリーガルホールドポリシーを適用する
+  </Card>
+
+  <Card
+    title="リテンションポリシー"
+    href="/ja/reference/resources/retention-policies"
+    icon="book"
+  >
+    コンテンツリテンションポリシーを定義する
+  </Card>
+
+  <Card
+    title="リテンションポリシー割り当て"
+    href="/ja/reference/resources/files-under-retention"
+    icon="book"
+  >
+    コンテンツにリテンションポリシーを適用する
+  </Card>
+
+  <Card
+    title="ワークフロー (リスト)"
+    href="/ja/reference/resources/workflow"
+    icon="book"
+  >
+    Box Relayワークフローをトリガーおよび管理する
+  </Card>
+
+  <Card
+    title="外部ユーザー"
+    href="/ja/reference/v2025.0/resources/external-users-submit-delete-job-response"
+    icon="book"
+  >
+    外部ユーザーアクセスを管理する
+  </Card>
+
+  <Card
+    title="共有リンク (アプリ項目)"
+    href="/ja/reference/get-shared-items--app-items"
+    icon="book"
+  >
+    共有リンク経由でアプリ項目にアクセスする
+  </Card>
+
+  <Card
+    title="共有リンク (ウェブリンク)"
+    href="/ja/reference/get-shared-items--web-links"
+    icon="book"
+  >
+    共有リンク経由でウェブリンクにアクセスする
+  </Card>
+
+  <Card
+    title="共有リンク (ファイル)"
+    href="/ja/reference/get-files-id--get-shared-link"
+    icon="book"
+  >
+    ファイルの共有リンクを作成および管理する
+  </Card>
+
+  <Card
+    title="共有リンク (フォルダ)"
+    href="/ja/reference/get-folders-id--get-shared-link"
+    icon="book"
+  >
+    フォルダの共有リンクを作成および管理する
+  </Card>
+
+  <Card
+    title="検索"
+    href="/ja/reference/resources/metadata-filter"
+    icon="book"
+  >
+    ファイルとフォルダを検索する
+  </Card>
+
+  <Card
+    title="最近使用した項目"
+    href="/ja/reference/resources/recent-item"
+    icon="book"
+  >
+    最近アクセスした項目にアクセスする
+  </Card>
+
+  <Card
+    title="承認"
+    href="/ja/reference/resources/access-token"
+    icon="book"
+  >
+    OAuth 2.0承認とトークン管理
+  </Card>
+
+  <Card
+    title="電子すかし (ファイル)"
+    href="/ja/reference/resources/watermark"
+    icon="book"
+  >
+    ファイルに電子透かしを適用する
+  </Card>
+
+  <Card
+    title="電子すかし (フォルダ)"
+    href="/ja/reference/get-folders-id-watermark"
+    icon="book"
+  >
+    フォルダに電子透かしを適用する
+  </Card>
+
+  <Card
+    title="統合マッピング"
+    href="/ja/reference/resources/integration-mapping-slack"
+    icon="book"
+  >
+    Boxユーザーを外部統合にマッピングする
+  </Card>
+
+  <Card
+    title="標準およびZonesのストレージポリシー"
+    href="/ja/reference/resources/storage-policies"
+    icon="book"
+  >
+    ストレージロケーションポリシーを管理する
+  </Card>
+
+  <Card
+    title="標準およびZonesのストレージポリシー割り当て"
+    href="/ja/reference/resources/storage-policy-assignment"
+    icon="book"
+  >
+    ユーザーにストレージポリシーを割り当てる
+  </Card>
+
+</CardGroup>

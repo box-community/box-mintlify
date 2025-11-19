@@ -1,0 +1,659 @@
+---
+title: "API Reference"
+rank: 1
+related_endpoints: []
+related_guides: []
+required_guides: []
+alias_paths: []
+---
+
+<CardGroup cols={3}>
+  <Card
+    title="AI"
+    href="/reference/resources/ai-agent-ask"
+    icon="sparkles"
+  >
+    AI-powered features for asking questions and extracting data
+  </Card>
+
+  <Card
+    title="AI Studio"
+    href="/reference/resources/ai-multiple-agent-response"
+    icon="sparkles"
+  >
+    Build and manage custom AI agents
+  </Card>
+
+  <Card
+    title="App item associations"
+    href="/reference/resources/app-item"
+    icon="book"
+  >
+    Associate app items with files and folders
+  </Card>
+
+  <Card
+    title="Archives"
+    href="/reference/v2025.0/resources/archive"
+    icon="archive"
+  >
+    Create and manage Box Archive resources
+  </Card>
+
+  <Card
+    title="Authorization"
+    href="/reference/resources/access-token"
+    icon="lock"
+  >
+    OAuth 2.0 authorization and token management
+  </Card>
+
+  <Card
+    title="Box Doc Gen"
+    href="/reference/v2025.0/resources/docgen-batch--base"
+    icon="file-lines"
+  >
+    Generate documents programmatically from templates
+  </Card>
+
+  <Card
+    title="Box Doc Gen templates"
+    href="/reference/v2025.0/resources/docgen-tag"
+    icon="file-lines"
+  >
+    Manage document generation templates
+  </Card>
+
+  <Card
+    title="Box Hub Collaborations"
+    href="/reference/v2025.0/resources/hub-collaboration"
+    icon="share-nodes"
+  >
+    Manage collaborations for Box Hubs
+  </Card>
+
+  <Card
+    title="Box Hub Items"
+    href="/reference/v2025.0/resources/hub-item"
+    icon="share-nodes"
+  >
+    Manage items within Box Hubs
+  </Card>
+
+  <Card
+    title="Box Hubs"
+    href="/reference/v2025.0/resources/hub"
+    icon="share-nodes"
+  >
+    Create and manage Box Hubs
+  </Card>
+
+  <Card
+    title="Box Sign requests"
+    href="/reference/resources/sign-request"
+    icon="pen-fancy"
+  >
+    Create and manage e-signature requests
+  </Card>
+
+  <Card
+    title="Box Sign templates"
+    href="/reference/resources/sign-template"
+    icon="pen-fancy"
+  >
+    Manage reusable e-signature templates
+  </Card>
+
+  <Card
+    title="Classifications"
+    href="/reference/resources/classification"
+    icon="tag"
+  >
+    Define and manage security classifications
+  </Card>
+
+  <Card
+    title="Classifications on files"
+    href="/reference/get-files-id-metadata-enterprise-securityClassification-6VMVochwUWo"
+    icon="tag"
+  >
+    Apply classifications to files
+  </Card>
+
+  <Card
+    title="Classifications on folders"
+    href="/reference/get-folders-id-metadata-enterprise-securityClassification-6VMVochwUWo"
+    icon="tag"
+  >
+    Apply classifications to folders
+  </Card>
+
+  <Card
+    title="Collaborations"
+    href="/reference/resources/collaboration"
+    icon="handshake"
+  >
+    Create and manage file/folder collaborations
+  </Card>
+
+  <Card
+    title="Collaborations (List)"
+    href="/reference/get-collaborations"
+    icon="handshake"
+  >
+    List collaborations for users, files, folders, and groups
+  </Card>
+
+  <Card
+    title="Collections"
+    href="/reference/resources/collection"
+    icon="folder-open"
+  >
+    Organize content into collections
+  </Card>
+
+  <Card
+    title="Comments"
+    href="/reference/resources/comment"
+    icon="message"
+  >
+    Add and manage comments on files
+  </Card>
+
+  <Card
+    title="Device pinners"
+    href="/reference/resources/device-pinner"
+    icon="mobile"
+  >
+    Manage device pinning for offline access
+  </Card>
+
+  <Card
+    title="Domain restrictions (User exemptions)"
+    href="/reference/resources/collaboration-allowlist-exempt-target"
+    icon="sparkles"
+  >
+    Exempt users from domain restrictions
+  </Card>
+
+  <Card
+    title="Domain restrictions for collaborations"
+    href="/reference/resources/collaboration-allowlist-entries"
+    icon="sparkles"
+  >
+    Restrict collaborations to specific domains
+  </Card>
+
+  <Card
+    title="Downloads"
+    href="/reference/get-files-id-content"
+    icon="download"
+  >
+    Download file content
+  </Card>
+
+  <Card
+    title="Email aliases"
+    href="/reference/resources/email-alias"
+    icon="sparkles"
+  >
+    Manage user email aliases
+  </Card>
+
+  <Card
+    title="Enterprise Configurations"
+    href="/reference/v2025.0/resources/enterprise-configuration-content-and-sharing"
+    icon="building"
+  >
+    Configure enterprise-wide settings
+  </Card>
+
+  <Card
+    title="Events"
+    href="/reference/resources/event"
+    icon="bell"
+  >
+    Monitor Box events and activity
+  </Card>
+
+  <Card
+    title="External Users"
+    href="/reference/v2025.0/resources/external-users-submit-delete-job-response"
+    icon="person"
+  >
+    Manage external user access
+  </Card>
+
+  <Card
+    title="File requests"
+    href="/reference/resources/file-request"
+    icon="file"
+  >
+    Create and manage file upload requests
+  </Card>
+
+  <Card
+    title="File version legal holds"
+    href="/reference/resources/file-version-legal-hold"
+    icon="file"
+  >
+    Apply legal holds to specific file versions
+  </Card>
+
+  <Card
+    title="File version retentions"
+    href="/reference/resources/file-version-retention"
+    icon="file"
+  >
+    Manage retention policies for file versions
+  </Card>
+
+  <Card
+    title="File versions"
+    href="/reference/resources/file-versions"
+    icon="file"
+  >
+    Access and manage file version history
+  </Card>
+
+  <Card
+    title="Files"
+    href="/reference/resources/file"
+    icon="file"
+  >
+    Core file operations and management
+  </Card>
+
+  <Card
+    title="Folder Locks"
+    href="/reference/resources/folder-lock"
+    icon="folder"
+  >
+    Lock folders to prevent modifications
+  </Card>
+
+  <Card
+    title="Folders"
+    href="/reference/resources/folder"
+    icon="folder"
+  >
+    Core folder operations and management
+  </Card>
+
+  <Card
+    title="Group memberships"
+    href="/reference/resources/group-membership"
+    icon="users"
+  >
+    Manage user membership in groups
+  </Card>
+
+  <Card
+    title="Groups"
+    href="/reference/resources/group"
+    icon="users"
+  >
+    Create and manage user groups
+  </Card>
+
+  <Card
+    title="Integration mappings"
+    href="/reference/resources/integration-mapping-slack"
+    icon="link"
+  >
+    Map Box users to external integrations
+  </Card>
+
+  <Card
+    title="Invites"
+    href="/reference/resources/invite"
+    icon="user-plus"
+  >
+    Invite users to join Box
+  </Card>
+
+  <Card
+    title="Legal hold policies"
+    href="/reference/resources/legal-hold-policies"
+    icon="scale-balanced"
+  >
+    Define and manage legal hold policies
+  </Card>
+
+  <Card
+    title="Legal hold policy assignments"
+    href="/reference/resources/file-versions-on-hold"
+    icon="scale-balanced"
+  >
+    Apply legal hold policies to content
+  </Card>
+
+  <Card
+    title="Metadata cascade policies"
+    href="/reference/resources/metadata-cascade-policies"
+    icon="tag"
+  >
+    Auto-apply metadata to folder contents
+  </Card>
+
+  <Card
+    title="Metadata instances (Files)"
+    href="/reference/resources/metadata"
+    icon="file"
+  >
+    Manage metadata on files
+  </Card>
+
+  <Card
+    title="Metadata instances (Folders)"
+    href="/reference/get-folders-id-metadata"
+    icon="folder"
+  >
+    Manage metadata on folders
+  </Card>
+
+  <Card
+    title="Metadata templates"
+    href="/reference/resources/metadata-template"
+    icon="tag"
+  >
+    Define custom metadata schemas
+  </Card>
+
+  <Card
+    title="Recent items"
+    href="/reference/resources/recent-item"
+    icon="book"
+  >
+    Access recently accessed items
+  </Card>
+
+  <Card
+    title="Retention policies"
+    href="/reference/resources/retention-policies"
+    icon="hourglass-end"
+  >
+    Define content retention policies
+  </Card>
+
+  <Card
+    title="Retention policy assignments"
+    href="/reference/resources/files-under-retention"
+    icon="hourglass-end"
+  >
+    Apply retention policies to content
+  </Card>
+
+  <Card
+    title="Search"
+    href="/reference/resources/metadata-filter"
+    icon="magnifying-glass"
+  >
+    Search for files and folders
+  </Card>
+
+  <Card
+    title="Session termination"
+    href="/reference/resources/session-termination"
+    icon="clock"
+  >
+    Terminate user or group sessions
+  </Card>
+
+  <Card
+    title="Shared links (App Items)"
+    href="/reference/get-shared-items--app-items"
+    icon="share-nodes"
+  >
+    Access app items via shared links
+  </Card>
+
+  <Card
+    title="Shared links (Files)"
+    href="/reference/get-files-id--get-shared-link"
+    icon="file"
+  >
+    Create and manage shared links for files
+  </Card>
+
+  <Card
+    title="Shared links (Folders)"
+    href="/reference/get-folders-id--get-shared-link"
+    icon="folder"
+  >
+    Create and manage shared links for folders
+  </Card>
+
+  <Card
+    title="Shared links (Web Links)"
+    href="/reference/get-shared-items--web-links"
+    icon="share-nodes"
+  >
+    Access web links via shared links
+  </Card>
+
+  <Card
+    title="Shield information barrier reports"
+    href="/reference/resources/shield-information-barrier-reference"
+    icon="shield"
+  >
+    Generate reports on information barriers
+  </Card>
+
+  <Card
+    title="Shield information barrier segment members"
+    href="/reference/resources/shield-information-barrier-segment-member"
+    icon="shield"
+  >
+    Manage users in barrier segments
+  </Card>
+
+  <Card
+    title="Shield information barrier segment restrictions"
+    href="/reference/resources/shield-information-barrier-segment-restriction"
+    icon="shield"
+  >
+    Define restrictions between segments
+  </Card>
+
+  <Card
+    title="Shield information barrier segments"
+    href="/reference/resources/shield-information-barrier-segment"
+    icon="shield"
+  >
+    Create and manage barrier segments
+  </Card>
+
+  <Card
+    title="Shield information barriers"
+    href="/reference/resources/shield-information-barrier"
+    icon="shield"
+  >
+    Implement information barriers for compliance
+  </Card>
+
+  <Card
+    title="Shield lists"
+    href="/reference/v2025.0/resources/shield-list-content--country"
+    icon="shield"
+  >
+    Manage access control lists
+  </Card>
+
+  <Card
+    title="Skills"
+    href="/reference/resources/keyword-skill-card"
+    icon="brain"
+  >
+    Apply AI-powered skills to files
+  </Card>
+
+  <Card
+    title="Standard and Zones Storage Policies"
+    href="/reference/resources/storage-policies"
+    icon="hard-drive"
+  >
+    Manage storage location policies
+  </Card>
+
+  <Card
+    title="Standard and Zones Storage Policy Assignments"
+    href="/reference/resources/storage-policy-assignment"
+    icon="hard-drive"
+  >
+    Assign storage policies to users
+  </Card>
+
+  <Card
+    title="Task assignments"
+    href="/reference/resources/task-assignment"
+    icon="list-check"
+  >
+    Assign tasks to users
+  </Card>
+
+  <Card
+    title="Tasks"
+    href="/reference/resources/task"
+    icon="list-check"
+  >
+    Create and manage file-based tasks
+  </Card>
+
+  <Card
+    title="Terms of service"
+    href="/reference/resources/terms-of-service"
+    icon="file-contract"
+  >
+    Define enterprise terms of service
+  </Card>
+
+  <Card
+    title="Terms of service user statuses"
+    href="/reference/resources/terms-of-service-user-status"
+    icon="file-contract"
+  >
+    Track user acceptance of terms
+  </Card>
+
+  <Card
+    title="Transfer folders"
+    href="/reference/put-users-id-folders-0"
+    icon="folder"
+  >
+    Transfer folder ownership between users
+  </Card>
+
+  <Card
+    title="Trashed files"
+    href="/reference/resources/trash-file"
+    icon="file"
+  >
+    Manage files in trash
+  </Card>
+
+  <Card
+    title="Trashed folders"
+    href="/reference/resources/trash-folder"
+    icon="folder"
+  >
+    Manage folders in trash
+  </Card>
+
+  <Card
+    title="Trashed items"
+    href="/reference/get-folders-trash-items"
+    icon="trash"
+  >
+    List all items in trash
+  </Card>
+
+  <Card
+    title="Trashed web links"
+    href="/reference/resources/trash-web-link"
+    icon="trash"
+  >
+    Manage web links in trash
+  </Card>
+
+  <Card
+    title="Uploads"
+    href="/reference/resources/conflict-error"
+    icon="cloud-arrow-up"
+  >
+    Upload files to Box
+  </Card>
+
+  <Card
+    title="Uploads (Chunked)"
+    href="/reference/resources/upload-part"
+    icon="cloud-arrow-up"
+  >
+    Upload large files in chunks
+  </Card>
+
+  <Card
+    title="User avatars"
+    href="/reference/resources/user-avatar"
+    icon="person"
+  >
+    Manage user profile images
+  </Card>
+
+  <Card
+    title="Users"
+    href="/reference/resources/user"
+    icon="person"
+  >
+    Create and manage users
+  </Card>
+
+  <Card
+    title="Watermarks (Files)"
+    href="/reference/resources/watermark"
+    icon="file"
+  >
+    Apply watermarks to files
+  </Card>
+
+  <Card
+    title="Watermarks (Folders)"
+    href="/reference/get-folders-id-watermark"
+    icon="folder"
+  >
+    Apply watermarks to folders
+  </Card>
+
+  <Card
+    title="Web links"
+    href="/reference/resources/web-link"
+    icon="globe"
+  >
+    Create and manage bookmarks
+  </Card>
+
+  <Card
+    title="Webhooks"
+    href="/reference/resources/webhook"
+    icon="webhook"
+  >
+    Configure real-time event notifications
+  </Card>
+
+  <Card
+    title="Workflows"
+    href="/reference/resources/workflow"
+    icon="zap"
+  >
+    Trigger and manage Box Relay workflows
+  </Card>
+
+  <Card
+    title="Zip Downloads"
+    href="/reference/resources/zip-download"
+    icon="download"
+  >
+    Download multiple items as zip archives
+  </Card>
+
+</CardGroup>
