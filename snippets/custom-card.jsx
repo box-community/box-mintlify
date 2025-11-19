@@ -1,6 +1,3 @@
-// Use React from global scope (provided by Mintlify)
-const { useState } = React;
-
 export const CustomCard = ({ icon, title, href, tags, children, ...props }) => {
   const handleClick = (e) => {
     if (href) {
@@ -55,7 +52,7 @@ export const CustomCard = ({ icon, title, href, tags, children, ...props }) => {
           <Icon icon={icon} size={iconSize} />
         </div>
       </div>
-      <h3 className="text-base font-semibold text-gray-900 dark:text-gray-50 mb-3 text-left break-words">{title}</h3>
+      <h3 className="text-base font-semibold text-gray-900 dark:text-gray-50 mb-3 text-left break-words mt-0">{title}</h3>
       {description && (
         <div className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 flex-1">{description}</div>
       )}
