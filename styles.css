@@ -70,3 +70,8 @@ a code {
 .homepage_container .card img {
   max-height: 200px;
 }
+
+/* disable breadcrumbs */
+header#header .eyebrow {
+  display: none !important;
+}
