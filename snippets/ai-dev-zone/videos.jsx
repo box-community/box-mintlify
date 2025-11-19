@@ -6,7 +6,7 @@ export const Videos = () => {
       title: "Box AI Platform API",
       subtitle: "AI API overview",
       description: "Check out the high-level features of the Box AI API in one minute.",
-      image: "/static/ai-dev-zone/image-AI-API.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/ai-dev-zone/image-AI-API.png",
       href: "https://www.youtube.com/watch?v=amhOj0YRVRQ&list=PLCSEWOlbcUyI2ta24oRr75_4igvMzKJ9q",
     },
     {
@@ -15,7 +15,7 @@ export const Videos = () => {
       title: "Box AI API - Text Generation",
       subtitle: "Endpoint overview",
       description: "See a demo of the Box AI API text generation endpoint.",
-      image: "/static/ai-dev-zone/image-API-text-gen.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/ai-dev-zone/image-API-text-gen.png",
       href: "https://www.youtube.com/watch?v=xxR8aF4r3g8&list=PLCSEWOlbcUyI2ta24oRr75_4igvMzKJ9q",
     },
     {
@@ -24,7 +24,7 @@ export const Videos = () => {
       title: "Box AI API - Document Q&A",
       subtitle: "Endpoint overview",
       description: "See a demo of the Box AI API document Q&A endpoint.",
-      image: "/static/ai-dev-zone/image-API-qa.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/ai-dev-zone/image-API-qa.png",
       href: "https://www.youtube.com/watch?v=UyKfacz6G9g&list=PLCSEWOlbcUyI2ta24oRr75_4igvMzKJ9q",
     },
     {
@@ -33,7 +33,7 @@ export const Videos = () => {
       title: "Box AI API - Extract",
       subtitle: "Endpoint overview",
       description: "Extract metadata with various prompt formats with Box AI API.",
-      image: "/static/ai-dev-zone/image-API-extract.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/ai-dev-zone/image-API-extract.png",
       href: "https://www.youtube.com/watch?v=fijj0CX67c4&list=PLCSEWOlbcUyI2ta24oRr75_4igvMzKJ9q",
     },
     {
@@ -42,7 +42,7 @@ export const Videos = () => {
       title: "Box AI API - Extract Structured",
       subtitle: "Endpoint overview",
       description: "Extract metadata with predefined structure with Box AI API.",
-      image: "/static/ai-dev-zone/image-API-extract-structured.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/ai-dev-zone/image-API-extract-structured.png",
       href: "https://www.youtube.com/watch?v=dU3oo4sHZt0&list=PLCSEWOlbcUyI2ta24oRr75_4igvMzKJ9q",
     },
     {
@@ -51,7 +51,7 @@ export const Videos = () => {
       title: "Why it matters?",
       subtitle: "Hear from Box CPO Diego Dugalski",
       description: "Learn why Box chose to expose box AI through our public API.",
-      image: "/static/ai-dev-zone/image-API-interview.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/ai-dev-zone/image-API-interview.png",
       href: "https://www.youtube.com/watch?v=NA4NiqBdSg4&t=2s",
     },
   ];

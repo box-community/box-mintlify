@@ -6,7 +6,7 @@ export const BuildPortals = () => {
       title: "Build a content portal using Box UI Elements",
       cardTitle: "Read more about creating custom portals",
       description: "Build a content portal with a customized experience using Box UI Elements.",
-      image: "/static/box-ui-elements/image-BUIE-portal.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/box-ui-elements/image-BUIE-portal.png",
       href: "https://medium.com/box-developer-blog/build-a-content-portal-using-box-ui-elements-react-tailwind-css-vercel-part-1-f1c509621ceb",
     },
     {
@@ -15,7 +15,7 @@ export const BuildPortals = () => {
       title: "Box Custom Portal Demo",
       cardTitle: "Clone and deploy a demo project",
       description: "Featuring Box APIs, Box UI Elements, React, Tailwind CSS, and Vercel.",
-      image: "/static/box-ui-elements/image-BUIE-sample.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/box-ui-elements/image-BUIE-sample.png",
       href: "https://github.com/box-community/box-custom-portal-demo?tab=readme-ov-file#box-custom-portal-demo",
     },
     {
@@ -24,7 +24,7 @@ export const BuildPortals = () => {
       title: "Box AI in Content Preview UI Element",
       cardTitle: "Box AI for Box UI Elements",
       description: "See how to embed Box AI in the Content Preview UI Element.",
-      image: "/static/box-ui-elements/image-BUIE-AI.png",
+      image: "https://raw.githubusercontent.com/WriteChoiceMigration/host-box-images/360e8c62c90967e72398b457df4c5b7de92d627c/static/box-ui-elements/image-BUIE-AI.png",
       hasVideoBadge: true,
       href: "https://www.youtube.com/watch?v=8DmMgkm-6Tw",
     },
