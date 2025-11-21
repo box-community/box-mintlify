@@ -2673,6 +2673,24 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "SDKs and tools",
+            "pages": [
+              "/sdks-and-tools"
+            ]
+          },
+          {
+            "tab": "MCP",
+            "pages": [
+              "/guides/box-mcp/index"
+            ]
+          },
+          {
+            "tab": "AI",
+            "pages": [
+              "/ai-dev-zone"
+            ]
           }
         ]
       },
