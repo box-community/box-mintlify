@@ -5311,6 +5311,24 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "SDKとツール",
+            "pages": [
+              "/ja/sdks-and-tools"
+            ]
+          },
+          {
+            "tab": "MCP",
+            "pages": [
+              "/ja/guides/box-mcp/index"
+            ]
+          },
+          {
+            "tab": "AI",
+            "pages": [
+              "/ja/ai-dev-zone"
+            ]
           }
         ]
       }
