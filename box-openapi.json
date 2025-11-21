@@ -24615,7 +24615,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A successful response including the default agent configuration. This response can be one of the following four objects: * AI agent for questions * AI agent for text generation * AI agent for freeform metadata extraction * AI agent for structured metadata extraction. The response depends on the agent configuration requested in this endpoint.",
+            "description": "A successful response including the default agent configuration. This response can be one of the following four objects:\n- AI agent for questions\n- AI agent for text generation\n- AI agent for freeform metadata extraction\n- AI agent for structured metadata extraction.\n The response depends on the agent configuration requested in this endpoint.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25184,7 +25184,7 @@
         "x-box-tag": "authorization"
       },
       "AiAgent": {
-        "description": "Can be one of the following objects:   * AI agent for questions   * AI agent for text generation   * AI agent for freeform metadata extraction   * AI agent for structured metadata extraction.",
+        "description": "Can be one of the following objects:\n - AI agent for questions\n - AI agent for text generation\n - AI agent for freeform metadata extraction\n - AI agent for structured metadata extraction.",
         "type": "object",
         "oneOf": [
           {

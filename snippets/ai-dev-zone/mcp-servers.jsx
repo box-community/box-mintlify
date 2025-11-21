@@ -48,7 +48,9 @@ export const MCPServers = () => {
   return (
     <section className="max-w-[1400px] mx-auto px-4">
       <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">MCP Servers</h2>
-      <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">These resources will get you up and running with Box MCP server.</p>
+      <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">
+        These resources will get you up and running with Box MCP server.
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         {servers.map((server) => (
@@ -74,7 +76,102 @@ export const MCPServers = () => {
                 <span
                   key={idx}
                   className={`text-xs font-semibold px-2 py-1 rounded ${
-                    badge === "NEW" ? "bg-green-50 dark:bg-green-900 text-green-700 dark:text-green-200" : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                    badge === "NEW"
+                      ? "bg-green-50 dark:bg-green-900 text-green-700 dark:text-green-200"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                  }`}
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export const MCPServersJA = () => {
+  const servers = [
+    {
+      id: "remote-mcp",
+      title: "リモートBox MCPサーバー",
+      description:
+        "リモートBox MCPサーバーを使用すると、サードパーティ製のAIシステムを安全にBoxに接続してコンテンツを操作することができます。",
+      icon: "/static/ai-dev-zone/mcp.svg",
+      badges: ["新着", "MCP"],
+      href: "/guides/box-mcp/remote/",
+    },
+    {
+      id: "self-hosted-mcp",
+      title: "セルフホストBox MCPサーバー",
+      description:
+        "PythonのDeveloper Communityオープンソースプロジェクト。これは、さまざまな操作 (ファイル検索、テキスト抽出、AIベースのクエリ実行、データ抽出など) を行うためにBox APIと統合されています。",
+      icon: "/static/ai-dev-zone/mcp.svg",
+      badges: ["MCP"],
+      href: "/guides/box-mcp/self-hosted/",
+    },
+    {
+      id: "mcp-course",
+      title: "MCPサーバーを使用したAIアプリの構築",
+      description: "Deeplearning.aiと共同で作成された、Box CTOのBen Kusによる簡単なオンラインコースにご参加ください。",
+      icon: "/static/ai-dev-zone/mcp.svg",
+      badges: ["簡単なコース"],
+      href: "https://www.deeplearning.ai/short-courses/build-ai-apps-with-mcp-server-working-with-box-files/",
+    },
+    {
+      id: "mcp-pydantic",
+      title: "Box MCPサーバーとPydantic AI",
+      description: "Box MCPサーバーからBox Doc Genを使用して、AIを活用したドキュメント生成を行います。",
+      icon: "/static/ai-dev-zone/mcp.svg",
+      badges: ["チュートリアル"],
+      href: "https://medium.com/box-developer-blog/building-ai-powered-document-generation-with-box-mcp-and-pydantic-ai-48775b18ae32",
+    },
+    {
+      id: "mcp-langchain",
+      title: "Box MCPサーバーとLangChain MCPアダプタ",
+      description: "LangChain MCPアダプタを使用して、Box MCPサーバーをLangChain互換のエージェントに変換します。",
+      icon: "/static/ai-dev-zone/mcp.svg",
+      badges: ["チュートリアル"],
+      href: "https://medium.com/box-developer-blog/using-an-existing-mcp-server-with-langchain-mcp-adapters-94cdd4af6d1b",
+    },
+  ];
+
+  return (
+    <section className="max-w-[1400px] mx-auto px-4">
+      <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">MCPサーバー</h2>
+      <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">
+        Box MCPサーバーを使用する際は、以下のリソースが参考になります。
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+        {servers.map((server) => (
+          <a
+            key={server.id}
+            href={server.href}
+            className="flex flex-col p-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-600 transition-all group"
+          >
+            {/* Icon */}
+            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
+              <img src={server.icon} alt={server.title} className="w-12 h-12" />
+            </div>
+
+            {/* Title */}
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{server.title}</h3>
+
+            {/* Description */}
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 flex-1">{server.description}</p>
+
+            {/* Badges */}
+            <div className="flex gap-2 flex-wrap">
+              {server.badges.map((badge, idx) => (
+                <span
+                  key={idx}
+                  className={`text-xs font-semibold px-2 py-1 rounded ${
+                    badge === "NEW"
+                      ? "bg-green-50 dark:bg-green-900 text-green-700 dark:text-green-200"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
                   }`}
                 >
                   {badge}

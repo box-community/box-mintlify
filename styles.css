@@ -83,3 +83,10 @@ header#header .eyebrow {
   display: none !important;
 }
 
+/* disable mobile breadcrumbs */
+#navbar
+  .max-w-8xl.mx-auto.relative
+  button
+  .ml-4.flex.text-sm.leading-6.whitespace-nowrap.min-w-0.space-x-3.overflow-hidden {
+  display: none !important;
+}
