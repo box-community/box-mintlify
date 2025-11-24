@@ -2724,6 +2724,12 @@
         "language": "ja",
         "tabs": [
           {
+            "tab": "Home",
+            "pages": [
+              "ja/index"
+            ]
+          },
+          {
             "tab": "ガイド",
             "pages": [
               {
