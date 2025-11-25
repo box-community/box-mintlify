@@ -2718,17 +2718,12 @@
         "language": "ja",
         "tabs": [
           {
-            "tab": "Home",
-            "pages": [
-              "ja/guides/index"
-            ]
-          },
-          {
             "tab": "ガイド",
             "pages": [
               {
                 "group": " ",
                 "pages": [
+                  "ja/guides/index",
                   {
                     "group": "はじめに",
                     "pages": [
