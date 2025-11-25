@@ -90,3 +90,10 @@ header#header .eyebrow {
   .ml-4.flex.text-sm.leading-6.whitespace-nowrap.min-w-0.space-x-3.overflow-hidden {
   display: none !important;
 }
+
+footer div.flex.gap-4.flex-col.md\:flex-row.md\:items-center.md\:gap-8.md\:justify-center a {
+  white-space: wrap;
+  text-overflow: clip;
+  overflow: visible;
+  align-self: start;
+}
