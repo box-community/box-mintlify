@@ -5462,7 +5462,7 @@
     },
     "links": [
       {
-        "label": "Resources",
+        "header": "Resources",
         "items": [
           {
             "label": "Newsletter unsubscribe",
