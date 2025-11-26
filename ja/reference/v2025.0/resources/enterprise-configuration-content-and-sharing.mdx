@@ -1,0 +1,1380 @@
+---
+title: "Enterprise構成 (コンテンツと共有)"
+---
+
+APIバージョン 2025.0
+
+
+<Note>
+Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning/).
+</Note>
+
+コンテンツと共有カテゴリのEnterprise構成。
+
+<ParamField body="auto_delete_days" type="object">
+自動削除までの日数。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="integer">
+  例: `1234`
+  
+  Enterprise構成の値 (整数)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="auto_delete_target" type="object">
+自動削除を適用するタイプの選択されたオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="collaboration_expiration_days" type="object">
+コラボレーションの有効期限までの日数。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="integer">
+  例: `1234`
+  
+  Enterprise構成の値 (整数)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="collaboration_expiration_target" type="object">
+コラボレーションの有効期限を適用するタイプの選択されたオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="collaboration_permissions" type="object">
+各Enterprise構成の応答オブジェクトに含まれる基本データ。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="object">
+  コラボレーションの権限。
+  
+  <Expandable>
+    <ParamField body="is_co_owner_role_enabled" type="boolean">
+    例: `true`
+    
+    共同所有者のロールでコラボレーションが有効になっています。
+    </ParamField>
+  
+    <ParamField body="is_editor_role_enabled" type="boolean">
+    例: `true`
+    
+    編集者のロールでコラボレーションが有効になっています。
+    </ParamField>
+  
+    <ParamField body="is_previewer_role_enabled" type="boolean">
+    例: `true`
+    
+    プレビューアーのロールでコラボレーションが有効になっています。
+    </ParamField>
+  
+    <ParamField body="is_previewer_uploader_role_enabled" type="boolean">
+    例: `true`
+    
+    プレビューアー/アップローダーのロールでコラボレーションが有効になっています。
+    </ParamField>
+  
+    <ParamField body="is_uploader_role_enabled" type="boolean">
+    例: `true`
+    
+    アップローダーのロールでコラボレーションが有効になっています。
+    </ParamField>
+  
+    <ParamField body="is_viewer_role_enabled" type="boolean">
+    例: `true`
+    
+    ビューアーのロールでコラボレーションが有効になっています。
+    </ParamField>
+  
+    <ParamField body="is_viewer_uploader_role_enabled" type="boolean">
+    例: `true`
+    
+    ビューアー/アップローダーのロールでコラボレーションが有効になっています。
+    </ParamField>
+  
+  </Expandable>
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="collaboration_restrictions" type="object">
+Enterpriseのコラボレーションの制限。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="stringarray">
+  例: `["internal"]`
+  
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="default_collaboration_role" type="object">
+現在のデフォルトのコラボレーションロール。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="enterprise_feature_settings" type="object[]">
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="object">
+  Enterprise機能の設定。
+  
+  <Expandable>
+    <ParamField body="id" type="string">
+    例: `eyJlbnRlcnByaXNlSWQiOiIxMTExNDQyNzY3IiwiZmVhdHVyZUlkIjoiY2FudmFzIn0=`
+    
+    Enterprise機能設定の識別子。
+    </ParamField>
+  
+    <ParamField body="allowlist" type="object[]">
+    Enterprise機能の設定は、このユーザーとグループのセットに対してのみ有効になっています。
+    
+    <Expandable>
+      <ParamField body="id" type="string">
+      例: `12345`
+      
+      ユーザーまたはグループの識別子。
+      </ParamField>
+    
+      <ParamField body="type" type="string">
+      例: `user`
+      
+      種類は`user`または`group`。
+      
+      次の値のいずれか1つ: `user`,`group`
+      </ParamField>
+    
+    </Expandable>
+    </ParamField>
+  
+    <ParamField body="can_configure" type="boolean">
+    例: `true`
+    
+    機能を構成できるかどうか。
+    </ParamField>
+  
+    <ParamField body="denylist" type="object[]">
+    Enterprise機能の設定は、このユーザーとグループのセットを除くすべてのユーザーに対して有効になっています。
+    
+    <Expandable>
+      <ParamField body="id" type="string">
+      例: `12345`
+      
+      ユーザーまたはグループの識別子。
+      </ParamField>
+    
+      <ParamField body="type" type="string">
+      例: `user`
+      
+      種類は`user`または`group`。
+      
+      次の値のいずれか1つ: `user`,`group`
+      </ParamField>
+    
+    </Expandable>
+    </ParamField>
+  
+    <ParamField body="feature" type="object">
+    機能。
+    
+    <Expandable>
+      <ParamField body="id" type="string">
+      例: `canvas`
+      
+      機能の識別子。
+      </ParamField>
+    
+    </Expandable>
+    </ParamField>
+  
+    <ParamField body="is_configured" type="boolean">
+    例: `true`
+    
+    機能が構成されているかどうか。
+    </ParamField>
+  
+    <ParamField body="state" type="string">
+    例: `enabled`
+    
+    機能の状態。
+    </ParamField>
+  
+  </Expandable>
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="external_collaboration_allowlist_users" type="object">
+外部コラボレーションの許可リストのユーザー。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="object[]">
+  
+  <Expandable>
+    <ParamField body="id" type="integer">
+    例: `1234`
+    
+    ユーザーのID。
+    </ParamField>
+  
+    <ParamField body="email" type="string">
+    例: `johndoe@box.com`
+    
+    ユーザーのメールアドレス。
+    </ParamField>
+  
+    <ParamField body="name" type="string">
+    例: `John Doe`
+    
+    ユーザーの名前。
+    </ParamField>
+  
+  </Expandable>
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="external_collaboration_status" type="object">
+外部コラボレーションのステータス。
+外部コラボレーションのステータス。: `enable_external_collaboration`, `limit_collaboration_to_allowlisted_domains`, `limit_collaboration_to_users_within_enterprise`.
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `enable_external_collaboration`
+  
+  外部コラボレーションのステータス。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_auto_delete_enabled" type="object">
+自動削除を有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_auto_delete_expiration_modification_prevented" type="object">
+ユーザーが自動削除の有効期限を変更できないようにします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_cc_free_trial_active" type="object">
+Enterpriseが無料トライアル期間中かどうかを示します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_collaboration_expiration_enabled" type="object">
+コラボレーションの有効期限を有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_collaboration_expiration_modification_prevented" type="object">
+ユーザーがコラボレーションの有効期限を変更できないようにします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_collaboration_expiration_notification_enabled" type="object">
+コラボレーションの有効期限の通知を有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_collaborator_invite_links_disabled" type="object">
+ユーザーによる招待リンクを使用したコラボレータの招待を無効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_custom_domain_hidden_in_shared_link" type="object">
+共有リンクのカスタムドメインを非表示にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_custom_settings_enabled" type="object">
+カスタム設定を有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_email_uploads_enabled" type="object">
+メールによるアップロードを有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_file_request_branding_default_enabled" type="object">
+会社のブランドカラーとロゴのデフォルトをファイルリクエストの [ブランドカラーで使用するロゴ] に設定します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_file_request_editors_allowed" type="object">
+編集者にファイルリクエスト機能が許可されているかどうかを示します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_file_request_login_required" type="object">
+ファイルリクエストでアップローダーにBoxアカウントを使用したログインを要求します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_forms_branding_default_enabled" type="object">
+会社のブランドカラーとロゴのデフォルトをFormsの [ブランドカラーで使用するロゴ] に設定します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_forms_login_required" type="object">
+FormsでアップローダーにBoxアカウントを使用したログインを要求します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_invite_group_collaborator_disabled" type="object">
+ユーザーによるグループコラボレータの招待を無効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_invite_privilege_restricted" type="object">
+招待を管理者、フォルダ所有者、共同所有者のみに制限します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_open_custom_urls_disabled" type="object">
+パブリックアクセスのリンクにカスタム共有リンクURLを許可しません。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_ownership_transfer_restricted" type="object">
+外部ユーザーへの所有権の移管を禁止します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_public_shared_links_expiration_enabled" type="object">
+公開共有リンクの有効期限を有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_root_content_creation_restricted" type="object">
+管理者にのみ第1レベルのフォルダ、ファイル、ブックマークの作成および削除を許可します。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_shared_links_expiration_enabled" type="object">
+共有リンクの有効期限を有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_shared_links_expiration_notification_enabled" type="object">
+共有リンクの有効期限の通知を有効にします。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_shared_links_expiration_notification_prevented" type="object">
+Prevents users from disabling shared links expiration notification.
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_tag_creation_restricted" type="object">
+選択したユーザーのみがタグを作成できます。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="is_watermarking_enterprise_feature_enabled" type="object">
+Enables watermarking enterprise feature.
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="boolean">
+  例: `true`
+  
+  Enterprise構成の値 (ブール値)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="permanent_deletion_access" type="object">
+ごみ箱から項目を削除できるユーザーに対して選択されたオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="permanent_deletion_allowlist_users" type="object">
+ごみ箱から項目を完全に削除できるユーザーの許可リスト。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="object[]">
+  
+  <Expandable>
+    <ParamField body="id" type="integer">
+    例: `1234`
+    
+    ユーザーのID。
+    </ParamField>
+  
+    <ParamField body="email" type="string">
+    例: `johndoe@box.com`
+    
+    ユーザーのメールアドレス。
+    </ParamField>
+  
+    <ParamField body="name" type="string">
+    例: `John Doe`
+    
+    ユーザーの名前。
+    </ParamField>
+  
+  </Expandable>
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="public_shared_links_expiration_days" type="object">
+公開共有リンクの有効期限。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="integer">
+  例: `1234`
+  
+  Enterprise構成の値 (整数)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="shared_expiration_target" type="object">
+共有リンクの有効期限の適用対象で選択された種類のオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="shared_link_access" type="object">
+共有リンクにアクセスできるユーザーに対して選択されたオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="shared_link_company_definition" type="object">
+共有リンクにおける会社の定義 (`enterprise_id`、`users_with_email_domain`など)。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="shared_link_default_access" type="object">
+共有リンクのアクセスレベルに対して選択されたオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="shared_link_default_permissions_selected" type="object">
+各タイプの共有リンクに選択された権限。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="object">
+  Enterpriseの共有リンクの権限。
+  
+  <Expandable>
+    <ParamField body="default_notes_shared_link_type" type="string">
+    例: `settings_default_notes_shared_link_to_edit`
+    
+    メモの共有リンクのデフォルトの種類。
+    </ParamField>
+  
+    <ParamField body="default_shared_link_type" type="string">
+    例: `settings_default_shared_link_preview`
+    
+    共有リンクのデフォルトの種類。
+    </ParamField>
+  
+    <ParamField body="notes_shared_link_option" type="string">
+    例: `settings_notes_option_to_edit`
+    
+    メモの共有リンクの権限に対して選択されたオプション。
+    </ParamField>
+  
+    <ParamField body="shared_links_option" type="string">
+    例: `settings_shared_link_preview`
+    
+    共有リンクの権限に対して選択されたオプション。
+    </ParamField>
+  
+  </Expandable>
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="shared_links_expiration_days" type="object">
+共有リンクの有効期限。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="integer">
+  例: `1234`
+  
+  Enterprise構成の値 (整数)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="shared_links_expiration_notification_days" type="object">
+有効期限の何日前にユーザーに通知するかを示す日数。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="integer">
+  例: `1234`
+  
+  Enterprise構成の値 (整数)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="sharing_item_type" type="object">
+共有が有効になっている項目のタイプに対して選択されたオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="tag_creation_restriction" type="object">
+タグの作成制限に対して選択されたオプション。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="string">
+  例: `value of configuration`
+  
+  Enterprise構成の値 (文字列)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="trash_auto_clear_time" type="object">
+ごみ箱から項目が完全に削除されるまでの時間 (秒)。
+
+<Expandable>
+  <ParamField body="is_used" type="boolean">
+  例: `true`
+  
+  指定したEnterpriseに構成が使用されているかどうかを示します。
+  </ParamField>
+
+  <ParamField body="value" type="integer">
+  例: `1234`
+  
+  Enterprise構成の値 (整数)。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "auto_delete_days": {
+    "is_used": true,
+    "value": 1234
+  },
+  "auto_delete_target": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "collaboration_expiration_days": {
+    "is_used": true,
+    "value": 1234
+  },
+  "collaboration_expiration_target": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "collaboration_permissions": {
+    "is_used": true,
+    "value": {
+      "is_co_owner_role_enabled": true,
+      "is_editor_role_enabled": true,
+      "is_previewer_role_enabled": true,
+      "is_previewer_uploader_role_enabled": true,
+      "is_uploader_role_enabled": true,
+      "is_viewer_role_enabled": true,
+      "is_viewer_uploader_role_enabled": true
+    }
+  },
+  "collaboration_restrictions": {
+    "is_used": true,
+    "value": [
+      "internal"
+    ]
+  },
+  "default_collaboration_role": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "enterprise_feature_settings": [
+    {
+      "is_used": true,
+      "value": {
+        "allowlist": [
+          {
+            "id": "12345",
+            "type": "user"
+          }
+        ],
+        "can_configure": true,
+        "denylist": [
+          {
+            "id": "12345",
+            "type": "user"
+          }
+        ],
+        "feature": {
+          "id": "canvas"
+        },
+        "id": "eyJlbnRlcnByaXNlSWQiOiIxMTExNDQyNzY3IiwiZmVhdHVyZUlkIjoiY2FudmFzIn0=",
+        "is_configured": true,
+        "state": "enabled"
+      }
+    }
+  ],
+  "external_collaboration_allowlist_users": {
+    "is_used": true,
+    "value": [
+      {
+        "email": "johndoe@box.com",
+        "id": 1234,
+        "name": "John Doe"
+      }
+    ]
+  },
+  "external_collaboration_status": {
+    "is_used": true,
+    "value": "enable_external_collaboration"
+  },
+  "is_auto_delete_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_auto_delete_expiration_modification_prevented": {
+    "is_used": true,
+    "value": true
+  },
+  "is_cc_free_trial_active": {
+    "is_used": true,
+    "value": true
+  },
+  "is_collaboration_expiration_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_collaboration_expiration_modification_prevented": {
+    "is_used": true,
+    "value": true
+  },
+  "is_collaboration_expiration_notification_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_collaborator_invite_links_disabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_custom_domain_hidden_in_shared_link": {
+    "is_used": true,
+    "value": true
+  },
+  "is_custom_settings_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_email_uploads_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_file_request_branding_default_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_file_request_editors_allowed": {
+    "is_used": true,
+    "value": true
+  },
+  "is_file_request_login_required": {
+    "is_used": true,
+    "value": true
+  },
+  "is_forms_branding_default_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_forms_login_required": {
+    "is_used": true,
+    "value": true
+  },
+  "is_invite_group_collaborator_disabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_invite_privilege_restricted": {
+    "is_used": true,
+    "value": true
+  },
+  "is_open_custom_urls_disabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_ownership_transfer_restricted": {
+    "is_used": true,
+    "value": true
+  },
+  "is_public_shared_links_expiration_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_root_content_creation_restricted": {
+    "is_used": true,
+    "value": true
+  },
+  "is_shared_links_expiration_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_shared_links_expiration_notification_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "is_shared_links_expiration_notification_prevented": {
+    "is_used": true,
+    "value": true
+  },
+  "is_tag_creation_restricted": {
+    "is_used": true,
+    "value": true
+  },
+  "is_watermarking_enterprise_feature_enabled": {
+    "is_used": true,
+    "value": true
+  },
+  "permanent_deletion_access": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "permanent_deletion_allowlist_users": {
+    "is_used": true,
+    "value": [
+      {
+        "email": "johndoe@box.com",
+        "id": 1234,
+        "name": "John Doe"
+      }
+    ]
+  },
+  "public_shared_links_expiration_days": {
+    "is_used": true,
+    "value": 1234
+  },
+  "shared_expiration_target": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "shared_link_access": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "shared_link_company_definition": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "shared_link_default_access": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "shared_link_default_permissions_selected": {
+    "is_used": true,
+    "value": {
+      "default_notes_shared_link_type": "settings_default_notes_shared_link_to_edit",
+      "default_shared_link_type": "settings_default_shared_link_preview",
+      "notes_shared_link_option": "settings_notes_option_to_edit",
+      "shared_links_option": "settings_shared_link_preview"
+    }
+  },
+  "shared_links_expiration_days": {
+    "is_used": true,
+    "value": 1234
+  },
+  "shared_links_expiration_notification_days": {
+    "is_used": true,
+    "value": 1234
+  },
+  "sharing_item_type": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "tag_creation_restriction": {
+    "is_used": true,
+    "value": "value of configuration"
+  },
+  "trash_auto_clear_time": {
+    "is_used": true,
+    "value": 1234
+  }
+}
+```
+
+</ResponseExample>

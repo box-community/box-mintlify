@@ -5,10 +5,7 @@ title: "Retention policy assignment"
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 A retention assignment represents a rule specifying
@@ -67,7 +64,7 @@ retention. The `type` can either be `folder`
 </Expandable>
 </ParamField>
 
-<ParamField body="filter_fields" type="objectarray">
+<ParamField body="filter_fields" type="object[]">
 An array of field objects. Values are only returned if the `assigned_to`
 type is `metadata_template`. Otherwise, the array is blank.
 

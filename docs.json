@@ -2718,12 +2718,6 @@
         "language": "ja",
         "tabs": [
           {
-            "tab": "Home",
-            "pages": [
-              "ja/index"
-            ]
-          },
-          {
             "tab": "ガイド",
             "pages": [
               {
@@ -5342,6 +5336,27 @@
                         ]
                       },
                       {
+                        "group": "Enterprise構成",
+                        "pages": [
+                          {
+                            "group": "リソースの一覧",
+                            "pages": [
+                              "ja/reference/v2025.0/resources/enterprise-configuration",
+                              "ja/reference/v2025.0/resources/enterprise-configuration-content-and-sharing",
+                              "ja/reference/v2025.0/resources/enterprise-configuration-security",
+                              "ja/reference/v2025.0/resources/enterprise-configuration-shield",
+                              "ja/reference/v2025.0/resources/enterprise-configuration-user-settings"
+                            ]
+                          },
+                          {
+                            "group": "エンドポイント",
+                            "pages": [
+                              "ja/reference/v2025.0/get-enterprise-configurations-id"
+                            ]
+                          }
+                        ]
+                      },
+                      {
                         "group": "外部ユーザー",
                         "pages": [
                           {
@@ -5441,7 +5456,7 @@
     },
     "links": [
       {
-        "title": "Resources",
+        "header": "Resources",
         "items": [
           {
             "label": "Newsletter unsubscribe",

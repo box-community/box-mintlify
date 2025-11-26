@@ -5,10 +5,7 @@ title: "Box Sign template"
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 A Box Sign template object.
@@ -232,7 +229,7 @@ available to Box Verified Enterprises.
 </Expandable>
 </ParamField>
 
-<ParamField body="signers" type="objectarray">
+<ParamField body="signers" type="object[]">
 Array of signers for the template.
 
 **Note**: It may happen that some signers specified in the template belong to conflicting [segments](/reference/resources/shield-information-barrier-segment-member/) (user groups).
@@ -248,7 +245,7 @@ Read more about [segments and ethical walls](https://support.box.com/hc/en-us/ar
   Email address of the signer.
   </ParamField>
 
-  <ParamField body="inputs" type="objectarray">
+  <ParamField body="inputs" type="object[]">
   
   <Expandable>
     <ParamField body="type" type="string">

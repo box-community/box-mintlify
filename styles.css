@@ -90,3 +90,22 @@ header#header .eyebrow {
   .ml-4.flex.text-sm.leading-6.whitespace-nowrap.min-w-0.space-x-3.overflow-hidden {
   display: none !important;
 }
+
+/* footer link fixes */
+footer div.flex.gap-4.flex-col.md\:flex-row.md\:items-center.md\:gap-8.md\:justify-center {
+  flex-wrap: wrap;
+}
+
+footer div.flex.gap-4.flex-col.md\:flex-row.md\:items-center.md\:gap-8.md\:justify-center a {
+  white-space: nowrap;
+  text-overflow: clip;
+  overflow: visible;
+  align-self: start;
+  flex-shrink: 0;
+  cursor: pointer !important;
+}
+
+/* fix navbar logo being squeezed */
+.nav-logo {
+  min-width: 109px;
+}

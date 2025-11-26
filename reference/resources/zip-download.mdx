@@ -5,10 +5,7 @@ title: "Zip download"
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 Represents a successful request to create a `zip` archive of a list of files
@@ -52,7 +49,7 @@ For every conflict, both files will be renamed and therefore this list
 will always be a multiple of 2.
 
 <Expandable>
-  <ParamField body="[]" type="objectarray">
+  <ParamField body="[]" type="object[]">
   An individual conflict that occurred when trying to create the archive.
   This includes an array of 2 objects, each containing the original name
   and the renamed filename of a file or folder for which the names

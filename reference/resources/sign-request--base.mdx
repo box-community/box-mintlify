@@ -5,10 +5,7 @@ title: "Create a Box Sign request"
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 Creates a Box Sign request object.
@@ -97,7 +94,7 @@ the first source file in the payload if we have the permission to
 upload to that folder or a folder called "My Sign Requests".
 </ParamField>
 
-<ParamField body="prefill_tags" type="objectarray">
+<ParamField body="prefill_tags" type="object[]">
 When a document contains sign-related tags in the content, you can prefill them using this `prefill_tags` by referencing the 'id' of the tag as the `external_id` field of the prefill tag.
 
 <Expandable>
@@ -142,7 +139,7 @@ Force a specific color for the signature (blue, black, or red).
 Value is one of `blue`,`black`,`red`
 </ParamField>
 
-<ParamField body="signers" type="objectarray">
+<ParamField body="signers" type="object[]">
 Array of signers for the signature request. 35 is the
 max number of signers permitted.
 

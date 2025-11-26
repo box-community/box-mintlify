@@ -5,10 +5,7 @@ title: "Classification Template"
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 A metadata template that holds the security classifications
@@ -45,7 +42,7 @@ The name of this template as shown in web and mobile interfaces.
 Value is always `Classification`
 </ParamField>
 
-<ParamField body="fields" type="objectarray">
+<ParamField body="fields" type="object[]">
 A list of fields for this classification template. This includes
 only one field, the `Box__Security__Classification__Key`, which defines
 the different classifications available in this enterprise.
@@ -88,7 +85,7 @@ the different classifications available in this enterprise.
   Value is always `Box__Security__Classification__Key`
   </ParamField>
 
-  <ParamField body="options" type="objectarray">
+  <ParamField body="options" type="object[]">
   A list of classifications available in this enterprise.
   
   <Expandable>

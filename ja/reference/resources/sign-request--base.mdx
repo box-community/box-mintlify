@@ -87,7 +87,7 @@ UIを使用してドキュメントの準備を完了するために送信者が
 署名リクエストの作成時にこの値が渡されない場合は、デフォルトのフォルダを使用することになります。デフォルトのフォルダは、ペイロードの最初のソースファイルの親フォルダ (そのフォルダへのアップロード権限がある場合) または「My Sign Requests」という名前のフォルダになります。
 </ParamField>
 
-<ParamField body="prefill_tags" type="objectarray">
+<ParamField body="prefill_tags" type="object[]">
 署名に関連するタグがドキュメントのコンテンツに含まれている場合、この`prefill_tags`を使用してタグを事前入力できます。その際、タグの「id」を事前入力タグの`external_id`フィールドとして参照します。
 
 <Expandable>
@@ -132,7 +132,7 @@ UIを使用してドキュメントの準備を完了するために送信者が
 次の値のいずれか1つ: `blue`,`black`,`red`
 </ParamField>
 
-<ParamField body="signers" type="objectarray">
+<ParamField body="signers" type="object[]">
 署名リクエストの署名者の配列。許可されている署名者の最大数は35です。
 
 **注**: 一部の署名者が競合する[セグメント](/ja/reference/resources/shield-information-barrier-segment-member/) (ユーザーグループ) に属している可能性もあります。これは、セキュリティポリシーにより、倫理的な競合につながる可能性のあるやり取りやコミュニケーションを防ぐためにユーザーがセグメントに割り当てられていることを意味します。このような場合、署名リクエストを送信しようとすると、エラーが発生します。

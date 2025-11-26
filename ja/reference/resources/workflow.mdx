@@ -44,7 +44,7 @@ Box Relayワークフローは、名前が付けられたフローのコレク�
 ワークフローの説明
 </ParamField>
 
-<ParamField body="flows" type="objectarray">
+<ParamField body="flows" type="object[]">
 ワークフローに割り当てられているフローのリスト。
 
 <Expandable>
@@ -72,7 +72,7 @@ Box Relayワークフローは、名前が付けられたフローのコレク�
   このフローを作成したユーザー。
   </ParamField>
 
-  <ParamField body="outcomes" type="objectarray">
+  <ParamField body="outcomes" type="object[]">
   フローがトリガーされたら完了する操作。
   
   <Expandable>
@@ -98,7 +98,7 @@ Box Relayワークフローは、名前が付けられたフローのコレク�
     次の値のいずれか1つ: `add_metadata`,`assign_task`,`copy_file`,`copy_folder`,`create_folder`,`delete_file`,`delete_folder`,`lock_file`,`move_file`,`move_folder`,`remove_watermark_file`,`rename_folder`,`restore_folder`,`share_file`,`share_folder`,`unlock_file`,`upload_file`,`wait_for_task`,`watermark_file`,`go_back_to_step`,`apply_file_classification`,`apply_folder_classification`,`send_notification`
     </ParamField>
   
-    <ParamField body="if_rejected" type="objectarray">
+    <ParamField body="if_rejected" type="object[]">
     `action_type`が`assign_task`の場合にタスクが拒否されると、完了すべき結果のリストが返されます。
     
     <Expandable>
@@ -154,7 +154,7 @@ Box Relayワークフローは、名前が付けられたフローのコレク�
     次の値に固定: `trigger`
     </ParamField>
   
-    <ParamField body="scope" type="objectarray">
+    <ParamField body="scope" type="object[]">
     トリガースコープのリスト。
     
     <Expandable>

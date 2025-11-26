@@ -1,0 +1,93 @@
+---
+title: "Enterprise構成 (Shield)"
+---
+
+APIバージョン 2025.0
+
+
+<Note>
+Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning/).
+</Note>
+
+
+ShieldカテゴリのEnterprise構成。
+
+<ParamField body="shield_rules" type="object[]">
+EnterpriseのShieldルールの構成。
+
+<Expandable>
+  <ParamField body="id" type="string">
+  例: `1234567890`
+  
+  Shieldルールの識別子。
+  </ParamField>
+
+  <ParamField body="type" type="string">
+  例: `shield_rule`
+  
+  値は常に`shield_rule`になります。
+
+  次の値に固定: `shield_rule`
+  </ParamField>
+
+  <ParamField body="created_at" type="string(date-time)">
+  例: `2012-12-12T10:53:43-08:00`
+  
+  Shieldルールが作成された日時。
+  </ParamField>
+
+  <ParamField body="description" type="string">
+  例: `Blocks files identified as malicious content`
+  
+  Shieldルールの説明。
+  </ParamField>
+
+  <ParamField body="modified_at" type="string(date-time)">
+  例: `2012-12-12T10:53:43-08:00`
+  
+  Shieldルールが最後に変更された日時。
+  </ParamField>
+
+  <ParamField body="name" type="string">
+  例: `Block malicious files`
+  
+  Shieldルールの名前。
+  </ParamField>
+
+  <ParamField body="priority" type="string">
+  例: `high`
+  
+  Shieldルールの優先度レベル。
+  
+  次の値のいずれか1つ `informational`,`low`,`medium`,`high`,`critical`
+  </ParamField>
+
+  <ParamField body="rule_category" type="string">
+  例: `Malicious Content`
+  
+  Shieldルールのカテゴリ。
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "shield_rules": [
+    {
+      "created_at": "2012-12-12T10:53:43-08:00",
+      "description": "Blocks files identified as malicious content",
+      "id": "1234567890",
+      "modified_at": "2012-12-12T10:53:43-08:00",
+      "name": "Block malicious files",
+      "priority": "high",
+      "rule_category": "Malicious Content",
+      "type": "shield_rule"
+    }
+  ]
+}
+```
+
+</ResponseExample>

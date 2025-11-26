@@ -5,10 +5,7 @@ title: "Metadata template"
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 A template for metadata that can be applied to files and folders.
@@ -40,7 +37,7 @@ The display name of the template. This can be seen in the Box web app
 and mobile apps.
 </ParamField>
 
-<ParamField body="fields" type="objectarray">
+<ParamField body="fields" type="object[]">
 An ordered list of template fields which are part of the template. Each
 field can be a regular text field, date field, number field, as well as a
 single or multi-select list.
@@ -97,7 +94,7 @@ single or multi-select list.
   be unique within the template to which it belongs.
   </ParamField>
 
-  <ParamField body="options" type="objectarray">
+  <ParamField body="options" type="object[]">
   A list of options for this field. This is used in combination
   with the `enum` and `multiSelect` field types.
   

@@ -114,7 +114,7 @@ UIを使用してドキュメントの準備を完了するために送信者が
 署名リクエストの作成時にこの値が渡されなかった場合は、デフォルトのフォルダを使用することになります。デフォルトのフォルダは、ペイロードの最初のソースファイルの親フォルダ (そのフォルダへのアップロード権限がある場合) または「My Sign Requests」という名前のフォルダになります。
 </ParamField>
 
-<ParamField body="prefill_tags" type="objectarray">
+<ParamField body="prefill_tags" type="object[]">
 署名に関連するタグがドキュメントのコンテンツに含まれている場合、この`prefill_tags`を使用してタグを事前入力できます。その際、タグの「id」を事前入力タグの`external_id`フィールドとして参照します。
 
 <Expandable>
@@ -191,7 +191,7 @@ UIを使用してドキュメントの準備を完了するために送信者が
 署名に特定の色 (青、黒、または赤) を強制します。
 </ParamField>
 
-<ParamField body="signers" type="objectarray">
+<ParamField body="signers" type="object[]">
 署名リクエストの署名者の配列。
 
 <Expandable>
@@ -231,7 +231,7 @@ UIを使用してドキュメントの準備を完了するために送信者が
   このURLは、HTMLの`iframe`タグ内のドキュメントに署名するために設計されています。これがレスポンスで返されるのは、`embed_url_external_user_id`パラメータが`create Box Sign request`コールで渡された場合のみです。
   </ParamField>
 
-  <ParamField body="inputs" type="objectarray">
+  <ParamField body="inputs" type="object[]">
   
   <Expandable>
     <ParamField body="type" type="string">

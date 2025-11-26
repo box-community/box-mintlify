@@ -5,10 +5,7 @@ title: "Transcript Skill Card."
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 A Box Skill metadata card that adds a transcript to a file.
@@ -36,12 +33,12 @@ Used with a `skill_card_type` of `transcript` or
 `timeline`.
 </ParamField>
 
-<ParamField body="entries" type="objectarray">
+<ParamField body="entries" type="object[]">
 An list of entries for the card. This represents the individual entries of
 the transcription.
 
 <Expandable>
-  <ParamField body="appears" type="objectarray">
+  <ParamField body="appears" type="object[]">
   Defines when a transcribed bit of text appears. This only includes a
   start time and no end time.
   

@@ -64,7 +64,7 @@ export const AIAgents = () => {
               {agent.badges.map((badge, idx) => (
                 <span
                   key={idx}
-                  className={`text-xs font-semibold px-2 py-1 rounded ${
+                  className={`text-xs font-semibold px-2 py-1 rounded-full ${
                     badge === "NEW"
                       ? "bg-green-50 dark:bg-green-900 text-green-700 dark:text-green-200"
                       : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
@@ -149,7 +149,7 @@ export const AIAgentsJA = () => {
               {agent.badges.map((badge, idx) => (
                 <span
                   key={idx}
-                  className={`text-xs font-semibold px-2 py-1 rounded ${
+                  className={`text-xs font-semibold px-2 py-1 rounded-full ${
                     badge === "新着"
                       ? "bg-green-50 dark:bg-green-900 text-green-700 dark:text-green-200"
                       : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"

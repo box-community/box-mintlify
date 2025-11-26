@@ -5,10 +5,7 @@ title: "Workflow"
 API version 2024.0
 
 <Note>
-This resource is used by endpoints in the version **2024.0**.
-For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy/)**. 
-
-Learn more about [Box SDK versioning strategy](/guides/tooling/sdks/sdk-versioning).
+This endpoint is in the version **2024.0**. No changes are required to continue using it. For more details, see **[Box API versioning](/guides/api-calls/api-versioning-strategy)**. 
 </Note>
 
 Box Relay Workflows are objects that represent a named collection of flows.
@@ -49,7 +46,7 @@ example: `This workflow sets off a new hire approval flow`
 The description for a workflow.
 </ParamField>
 
-<ParamField body="flows" type="objectarray">
+<ParamField body="flows" type="object[]">
 A list of flows assigned to a workflow.
 
 <Expandable>
@@ -77,7 +74,7 @@ A list of flows assigned to a workflow.
   The user who created this flow.
   </ParamField>
 
-  <ParamField body="outcomes" type="objectarray">
+  <ParamField body="outcomes" type="object[]">
   Actions that are completed once the flow is triggered.
   
   <Expandable>
@@ -103,7 +100,7 @@ A list of flows assigned to a workflow.
     Value is one of `add_metadata`,`assign_task`,`copy_file`,`copy_folder`,`create_folder`,`delete_file`,`delete_folder`,`lock_file`,`move_file`,`move_folder`,`remove_watermark_file`,`rename_folder`,`restore_folder`,`share_file`,`share_folder`,`unlock_file`,`upload_file`,`wait_for_task`,`watermark_file`,`go_back_to_step`,`apply_file_classification`,`apply_folder_classification`,`send_notification`
     </ParamField>
   
-    <ParamField body="if_rejected" type="objectarray">
+    <ParamField body="if_rejected" type="object[]">
     If `action_type` is `assign_task` and the task is rejected, returns a
     list of outcomes to complete.
     
@@ -160,7 +157,7 @@ A list of flows assigned to a workflow.
     Value is always `trigger`
     </ParamField>
   
-    <ParamField body="scope" type="objectarray">
+    <ParamField body="scope" type="object[]">
     List of trigger scopes.
     
     <Expandable>

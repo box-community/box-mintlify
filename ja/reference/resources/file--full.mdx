@@ -142,7 +142,7 @@ Box上でこのファイルが作成された日時。
   このトークンが期限切れになるまでの秒数。
   </ParamField>
 
-  <ParamField body="restricted_to" type="objectarray">
+  <ParamField body="restricted_to" type="object[]">
   このアクセストークンで許可される権限を返します。これにより、リソース (ファイルやフォルダなど) のリストと、各リソースで許可されるスコープが提供されます。
   
   <Expandable>
@@ -431,7 +431,7 @@ Boxでこのファイルが最後に更新された日時。
 アプリケーション内でファイルのプレースホルダを表示するために使用できるレプリゼンテーションのリスト。デフォルトでは、すべてのレプリゼンテーションが返されるため、`x-rep-hints`ヘッダーを使用して目的のレプリゼンテーションをさらにカスタマイズすることをお勧めします。
 
 <Expandable>
-  <ParamField body="entries" type="objectarray">
+  <ParamField body="entries" type="object[]">
   ファイルのリスト。
   
   <Expandable>

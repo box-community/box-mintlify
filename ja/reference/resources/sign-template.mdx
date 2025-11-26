@@ -195,7 +195,7 @@ Boxの署名リンク機能により、テンプレートから作成した署�
 </Expandable>
 </ParamField>
 
-<ParamField body="signers" type="objectarray">
+<ParamField body="signers" type="object[]">
 テンプレートの署名者の配列。
 
 **注**: テンプレートで指定された一部の署名者が競合する[セグメント](/ja/reference/resources/shield-information-barrier-segment-member/) (ユーザーグループ) に属している可能性もあります。これは、セキュリティポリシーにより、倫理的な競合につながる可能性のあるやり取りやコミュニケーションを防ぐためにユーザーがセグメントに割り当てられていることを意味します。このような場合、競合するセグメントに存在する署名者を含むテンプレートに基づいて署名リクエストを送信しようとすると、エラーが発生します。
@@ -209,7 +209,7 @@ Boxの署名リンク機能により、テンプレートから作成した署�
   署名者のメールアドレス。
   </ParamField>
 
-  <ParamField body="inputs" type="objectarray">
+  <ParamField body="inputs" type="object[]">
   
   <Expandable>
     <ParamField body="type" type="string">
