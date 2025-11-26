@@ -2747,7 +2747,7 @@
       "BoxVersionHeader": {
         "name": "box-version",
         "in": "header",
-        "description": "Version header.",
+        "description": "バージョンヘッダー。",
         "allowEmptyValue": false,
         "required": true,
         "schema": {
@@ -6827,6 +6827,7 @@
     "securitySchemes": {
       "OAuth2Security": {
         "type": "oauth2",
+        "description": "OAuth 2.0 フローで認可サーバーから受信したアクセス トークン。",
         "flows": {
           "authorizationCode": {
             "authorizationUrl": "https://account.box.com/api/oauth2/authorize",
