@@ -22,7 +22,7 @@
 
     // Set the script source to the TrustArc notice URL with parameters
     trustarcScript.src =
-      "https://consent.trustarc.com/notice?domain=box.com&c=teconsent&country=gb&language=en&js=nj&noticeType=bb&text=true";
+      "https://consent.trustarc.com/notice?domain=box.com&c=teconsent&gtm=true&js=nj&noticeType=bb&text=true";
 
     // Append to document head
     document.head.appendChild(trustarcScript);
