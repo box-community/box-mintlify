@@ -2738,6 +2738,7 @@
               {
                 "group": "Working with Box Sign",
                 "pages": [
+                  "sign/index",
                   {
                     "group": "Quick start",
                     "pages": [
@@ -5484,6 +5485,7 @@
               {
                 "group": "Box Signの使用",
                 "pages": [
+                  "ja/sign/index",
                   {
                     "group": "クイックスタート",
                     "pages": [
