@@ -34,7 +34,7 @@ This blueprint covers how to use Token Exchange with UI Elements in your
 application and example use cases.
 
 <Frame border>
-  ![Downscope overview](./images/downscope-1.png)
+  ![Downscope overview](/images/guides/embed/ui-elements/downscope-1.png)
 </Frame>
 
 * **Making API calls from client more secure:** As a general security practice, we recommend generating and sending downscoped tokens per every action performed by the user to limit exposure on the client. For example, even if a user should have preview and share access to a file, instead of sending the user token to the client which would give them complete user-level access, we suggest downscoping the token using Token Exchange and sending them a "preview only" token when they wish to preview a file and a "share" token when they want to share a file.
@@ -63,7 +63,7 @@ the input arguments.
 </Info>
 
 <Frame border>
-  ![Downscope overview](./images/downscope-2.png)
+  ![Downscope overview](/images/guides/embed/ui-elements/downscope-2.png)
 </Frame>
 
 ## Developer Flow
@@ -164,7 +164,7 @@ Sample](https://codepen.io/box-platform/pen/wdWWdN) and replace the access token
 and folder id values in the JS Tab.
 
 <Frame border>
-  ![Downscope overview](./images/downscope-3.png)
+  ![Downscope overview](/images/guides/embed/ui-elements/downscope-3.png)
 </Frame>
 
 Click "Run". You should see the Content Explorer initialized at the folder you
@@ -172,11 +172,11 @@ specified. Also, notice that your Content Explorer no longer shows the "Share"
 button as it would have with the parent (user) token.
 
 <Frame border>
-  ![Downscope overview](./images/downscope-4.png)
+  ![Downscope overview](/images/guides/embed/ui-elements/downscope-4.png)
 </Frame>
 
 <Frame border>
-  ![Downscope overview](./images/downscope-5.png)
+  ![Downscope overview](/images/guides/embed/ui-elements/downscope-5.png)
 </Frame>
 
 ## When NOT to use Token Exchange
