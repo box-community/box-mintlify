@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/viewers-and-events.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 {/* markdownlint-disable no-duplicate-header */}
 
 このページでは、ファイルタイプごとのプレビュー機能について説明します。また、ビューアーの種類別にリッスンできるイベントのリストも示します。
@@ -769,3 +779,10 @@ CSVビューアーでは、以下のイベントがトリガーされます。
 [reactv]: https://github.com/bvaughn/react-virtualized
 
 [shaka]: https://github.com/google/shaka-player
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

@@ -24,6 +24,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box API を使用すると、ファイルコンテンツ検索クエリを使用して Box 内のコンテンツを見つけることができます。Box 検索 API は、サポート対象のすべての SDK と CLI で使用できます。
 
 <CodeGroup>
@@ -215,3 +217,16 @@ Box は、Box に格納されているファイルまたはフォルダの検索
 [search]: /ja/reference/get-search
 [support]: https://ja.developer.box.com/support
 [keysafe]: https://www.box.com/security/keysafe
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータクエリ", href: "/ja/guides/metadata/queries/index", badge: "GUIDE" }
+  ]}
+/>

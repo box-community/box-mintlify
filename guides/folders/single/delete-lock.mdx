@@ -10,6 +10,9 @@ alias_paths: []
 related_resources:
   - folder_locks
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To remove a lock applied to a folder in Box, call the
 `DELETE /folder_locks/:id` API with the id of the folder lock.
 
@@ -57,3 +60,17 @@ client.getFolderLocks().deleteFolderLockById(folderLock.getId())
   [creating a folder lock](/guides/folders/single/create-lock), or
   when [listing locks](/guides/folders/single/get-locks) on a given folder.
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete folder lock", href: "/reference/delete-folder-locks-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Folder Lock", href: "/guides/folders/single/create-lock", badge: "GUIDE" },
+    { label: "Get Folder Lock", href: "/guides/folders/single/get-locks", badge: "GUIDE" }
+  ]}
+/>

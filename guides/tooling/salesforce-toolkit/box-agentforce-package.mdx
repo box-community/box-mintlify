@@ -8,6 +8,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The [Box for Agentforce Extension package][agentforce] is an extension of the Box for Salesforce managed
 package. This extension provides reusable Agentforce [actions][actions] that
 help automate workflows and enhance intelligent agent—based processes within
@@ -78,3 +81,10 @@ Agentforce.
 [agentforce]: https://support.box.com/hc/en-us/articles/40370228349331-Installing-Box-for-Agentforce
 [methods]: /guides/tooling/salesforce-toolkit/methods
 [actions]: /guides/tooling/salesforce-toolkit/flow-actions
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Install Salesforce SDK", href: "/guides/tooling/sdks/salesforce", badge: "GUIDE" }
+  ]}
+/>

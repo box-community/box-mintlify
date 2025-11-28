@@ -17,6 +17,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/1-connect-identities.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 SSOサービスでは、社内でこのサービスを利用する各ユーザーに一意のユーザーレコードが作成されます。このSSOサービスを介してBoxアプリケーションにアクセスする際、SSOユーザーごとにBoxユーザーを作成している場合は、SSOユーザーとBoxユーザーレコードの間に関連付けを作成する必要があります。
 
 ユーザーがSSOサービスを介してBoxにログインすると、Boxはまず関連付けを使用してユーザーを検索します。Boxユーザーレコードが見つかれば、そのユーザーとしてBox APIに対する呼び出しを開始することができます。Boxユーザーが見つからない場合は、一意のSSOユーザーアカウントに関連付けられた新しいBoxユーザーが作成されます。
@@ -88,3 +91,10 @@ SSOサービス内の一意のユーザーとBoxユーザーの関連付けを�
 `login`フィールドで、Boxのユーザーに使用されるメールアドレスは一意である必要があります。すでに別のアカウント用に存在するメールアドレスを使用してユーザーを作成するようリクエストすると、`user_login_already_used`という`409 Conflict`エラーが発生します。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create user", href: "/reference/post-users", badge: "POST" }
+  ]}
+/>

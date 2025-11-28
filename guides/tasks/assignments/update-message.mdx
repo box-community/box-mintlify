@@ -7,8 +7,26 @@ related_guides:
   - tasks/assignments/unassign
   - tasks/assignments/change-state
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To update a task assignment's message call the
 [`PUT /tasks/:task_id/assignments`](/reference/put-task-assignments-id) API, and
 include the new `message` for the task assignment.
 
 {/* <Samples id='put_task_assignments_id' variant='message' /> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update task assignment", href: "/reference/put-task-assignments-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Assign a task to a user", href: "/guides/tasks/assignments/assign", badge: "GUIDE" },
+    { label: "Unassign a task", href: "/guides/tasks/assignments/unassign", badge: "GUIDE" },
+    { label: "Change task assignment state", href: "/guides/tasks/assignments/change-state", badge: "GUIDE" }
+  ]}
+/>

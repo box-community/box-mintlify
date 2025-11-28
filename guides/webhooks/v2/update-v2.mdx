@@ -14,6 +14,16 @@ related_resources:
 alias_paths:
   - /webhooks/manage/update
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "List Webhooks for a User", href: "/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+  ]}
+/>
 You can update a webhook using the [Developer Console][console] or API.
 
 ## Developer Console
@@ -124,3 +134,18 @@ client.webhooks.update('678901', {address: "https://example.com/webhooks/fileAct
 [1]: /guides/webhooks/v2/list-v2
 [2]: /reference/put-webhooks-id
 [console]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update webhook", href: "/reference/put-webhooks-id", badge: "PUT" },
+    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "List Webhooks for a User", href: "/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+  ]}
+/>

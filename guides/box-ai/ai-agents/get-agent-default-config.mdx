@@ -12,6 +12,9 @@ related_guides:
   - box-ai/ai-tutorials/extract-metadata
   - box-ai/ai-tutorials/extract-metadata-structured
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The `GET /2.0/ai_agent_default` endpoint allows you to fetch the default configuration for AI services. 
 Once you get the configuration details you can override them using the [`ai_agent`][ai-agent-config] parameter.
 
@@ -327,3 +330,22 @@ When you set the `mode` parameter to `extract_structured` the response will be a
 [models]: /guides/box-ai/ai-models
 [ai-agent-config]: /guides/box-ai/ai-agents/ai-agent-overrides
 [override-tutorials]: /guides/box-ai/ai-agents/ai-agent-overrides
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+    { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" }
+  ]}
+/>

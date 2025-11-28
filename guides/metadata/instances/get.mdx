@@ -12,6 +12,9 @@ related_guides:
   - metadata/scopes
   - metadata/templates/list
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Information about an instance of a metadata template assigned to a file or
 folder can be retrieved using the item's `id`, and the template's `templateKey`
 and `scope`.
@@ -224,3 +227,26 @@ client.folders.getMetadata('11111', client.metadata.scopes.ENTERPRISE, 'marketin
 [scopes]: /guides/metadata/scopes
 [g_list_templates]: /guides/metadata/templates/list
 [g_list_instances_item]: /guides/metadata/instances/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get metadata instance on file", href: "/reference/get-files-id-metadata-id-id", badge: "GET" },
+    { label: "Get metadata instance on folder", href: "/reference/get-folders-id-metadata-id-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+    { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

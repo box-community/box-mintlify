@@ -10,6 +10,9 @@ required_guides: []
 related_resources:
   - folders
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To restore a folder that has been moved to the trash, but has not yet been
 purged, make a `POST` request to the `/folders/:folder_id` endpoint. This will
 place the folder in the original parent folder if it is still available, or you
@@ -141,3 +144,23 @@ client.folders.restoreFromTrash(
   During the restoration of the folder, no other move, copy, delete, or
   restore operation can be performed on the locked folders.
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Restore folder", href: "/reference/post-folders-id", badge: "POST" },
+    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Permanently Delete Folder", href: "/guides/trash/permanently-delete-folder", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Folders", href: "/guides/folders/index", badge: "GUIDE" }
+  ]}
+/>

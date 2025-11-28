@@ -22,6 +22,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/2-copy.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "テンプレートのファイルリクエストの作成", href: "/ja/guides/file-requests/template", badge: "GUIDE" }
+  ]}
+/>
 既存の[テンプレート](/ja/guides/file-requests/template)ファイルリクエストのコピーを作成するために必要なのは、その一意のIDと、新しいファイルリクエストの適用先となるフォルダのIDだけです。
 
 <CodeGroup>
@@ -151,3 +161,10 @@ curl -i -X POST "https://api.box.com/2.0/file_requests/2342235/copy" \
 テンプレート作成時に更新できるさまざまなフィールドの詳細については、[`POST /file-requests/:id/copy`](/ja/reference/post-file-requests-id-copy) APIのリファレンスドキュメントを参照してください。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
+  ]}
+/>

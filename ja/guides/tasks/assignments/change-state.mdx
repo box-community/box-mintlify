@@ -20,6 +20,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/6-change-state.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 タスク割り当ての状態を更新するには、[`PUT /tasks/:task_id/assignments`](/ja/reference/put-task-assignments-id) APIを呼び出し、`completed`、`incomplete`、`approved`、`rejected`などの`resolution_state`を含めます。
 
 <CodeGroup>
@@ -140,3 +143,17 @@ Boxは現在、`action`値によって定義される、`review`と`complete`と
 `review`タスクは`incomplete`状態で開始され、`incomplete`、`approved`、または`rejected`としてマークすることができます。ユーザーインターフェースには、テキストボックスのほか、タスクを承認または拒否する1組のボタンが表示されます。
 
 `complete`タスクは`incomplete`状態で開始され、`incomplete`または`completed`としてマークすることができます。このタスクが完了としてマークされると、タスクの状態をそれ以上変更することはできなくなります。ユーザーインターフェースには、テキストボックスのほか、タスクを完了としてマークするためのボタンが表示されます。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update task assignment", href: "/reference/put-task-assignments-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "GUIDE" },
+    { label: "タスク割り当ての解除", href: "/ja/guides/tasks/assignments/unassign", badge: "GUIDE" }
+  ]}
+/>

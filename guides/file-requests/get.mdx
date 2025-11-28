@@ -8,6 +8,9 @@ required_guides: []
 related_resources:
   - file_request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To get details about an existing [file request](/guides/file-requests/template),
 all you need is its unique ID.
 
@@ -64,3 +67,16 @@ app and inspecting the URL. Please
 request template to learn how to determine a file request ID.
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file request", href: "/reference/get-file-requests-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Copy a File Request", href: "/guides/file-requests/copy", badge: "GUIDE" }
+  ]}
+/>

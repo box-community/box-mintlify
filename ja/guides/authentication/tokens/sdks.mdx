@@ -25,6 +25,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/sdks.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Box SDK", href: "/ja/guides/tooling/sdks/index", badge: "GUIDE" }
+  ]}
+/>
 SDKではJWTおよびOAuth 2.0認証を直接サポートしていますが、場合によっては、アプリケーションがSDKに直接アクセストークンを提供しなければならないこともあります。
 
 {/* <Samples id="x_auth" variant="init_with_access_and_refresh_token">
@@ -46,3 +56,11 @@ SDKではJWTおよびOAuth 2.0認証を直接サポートしていますが、�
 {/* <Samples id="x_auth" variant="init_with_app_token">
 
 </Samples> */}
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "開発者トークン", href: "/ja/guides/authentication/tokens/developer-tokens", badge: "GUIDE" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

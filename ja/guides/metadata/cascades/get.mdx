@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/2-get.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 メタデータカスケードポリシーに関する情報を取得するには、ポリシーの`id`を指定して[`GET /metadata_cascade_policies/:id`][e_get] APIエンドポイントを呼び出します。
 
 <CodeGroup>
@@ -100,3 +103,17 @@ client.metadata.getCascadePolicy(policyID)
 [e_get]: /ja/reference/get_metadata_cascade_policies_id
 
 [g_list_policies]: /ja/guides/metadata/cascades/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get metadata cascade policy", href: "/reference/get-metadata-cascade-policies-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータカスケードポリシーのリストの取得", href: "/ja/guides/metadata/cascades/list", badge: "GUIDE" },
+    { label: "メタデータカスケードポリシーの作成", href: "/ja/guides/metadata/cascades/create", badge: "GUIDE" }
+  ]}
+/>

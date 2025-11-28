@@ -21,6 +21,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/1-create.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 タスクを作成するには、タスクの`action`と、タスクの追加先となるファイルを表す`item`を指定して[`POST /tasks`][post_tasks] APIを呼び出す必要があります。
 
 <CodeGroup>
@@ -151,3 +154,18 @@ Boxは現在、`action`値によって定義される、`review`と`complete`と
 ファイルに関連するタスクは、そのファイルの複数のコラボレータに割り当てることができます。また、タスクの`completion_rule`を使用すると、タスクを完了する必要があるのはタスクが割り当てられているすべてのユーザー (`all_assignees`) か1人の担当者のみ (`any_assignee`) かを定義できます。
 
 [post_tasks]: /ja/reference/post_tasks
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create task", href: "/reference/post-tasks", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルのすべてのタスクのリストの取得", href: "/ja/guides/tasks/for-file", badge: "GUIDE" },
+    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "GUIDE" },
+    { label: "既存のタスクの変更", href: "/ja/guides/tasks/update", badge: "GUIDE" }
+  ]}
+/>

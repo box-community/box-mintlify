@@ -601,6 +601,16 @@ String accessToken = token.access_token;
 import json
 import requests
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 params = {
     'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
     'assertion': assertion,
@@ -678,3 +688,18 @@ The code in this guide is available on [GitHub][samples].
 [configfile]: /guides/authentication/jwt/jwt-setup/#jwt-keypair
 [ccg]: /guides/authentication/jwt/without-sdk/#client-credentials-grant
 [auth]: /guides/authorization
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>

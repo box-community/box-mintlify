@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tooling/postman/refresh.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box APIから認証を受けるために、Postmanコレクションは**アクセストークン**を使用してAPIに対して**ユーザー**の本人確認を行います。アクセストークンは1時間で有効期限が切れるため、1時間ごとに更新する必要があります。
 
 ## 更新トークンの使用
@@ -97,3 +100,18 @@ Postmanコレクションは自動的に期限切れの`access_token`値を検�
 **Box Postmanコレクション**の2回目のインポート時には、Postmanアプリで、新しいコレクションをコピーとしてインポートするか、古いコレクションを置き換えるかを確認される場合があります。APIに対してこれまでに行ったカスタム設定を保持するため、コピーとしてインポートすることをお勧めします。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" },
+    { label: "Refresh access token", href: "/reference/post-oauth2-token--refresh", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "GUIDE" },
+    { label: "トークンの更新", href: "/ja/guides/authentication/tokens/refresh", badge: "GUIDE" }
+  ]}
+/>

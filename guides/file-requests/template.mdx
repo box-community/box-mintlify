@@ -8,6 +8,9 @@ required_guides: []
 related_resources:
   - file_request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Currently, the API only allows the creation of new file requests by copying an
 existing file request associated to another folder. Please check our below
 guide on creating a template folder with a template file request.
@@ -25,7 +28,7 @@ A folder can be created through the Box web or mobile interface, or through the
 
 When using server-side JWT authentication, we recommend creating folder that
 is owned by the application's
-[Service Account](https://developer.box.com/platform/user-types/#service-account). This way,
+[Service Account](/platform/user-types/#service-account). This way,
 the folder can't be accidentally deleted by a regular Box user.
 
 </Note>
@@ -38,7 +41,7 @@ the menu.
 
 <Frame center shadow>
 
-![Create a file request](./images/create.png)
+![Create a file request](/images/guides/file-requests/create.png)
 
 </Frame>
 
@@ -47,7 +50,7 @@ request configuration page.
 
 <Frame center shadow>
 
-![Edit a file request](./images/edit.png)
+![Edit a file request](/images/guides/file-requests/edit.png)
 
 </Frame>
 
@@ -78,3 +81,16 @@ A template file request can be used to create new copies using the
 API. With the ID of a new folder in hand, you can copy the existing
 request, including its title, description and form-configuration
 to a new folder [with one API call](/guides/file-requests/copy).
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Copy a File Request", href: "/guides/file-requests/copy", badge: "GUIDE" }
+  ]}
+/>

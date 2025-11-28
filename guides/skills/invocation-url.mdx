@@ -10,6 +10,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 When creating a new
 [Box Skills application](/guides/applications/app-types/custom-skills) you will be asked
 to supply an `invocation_url`. This URL is the public web address where Box will
@@ -52,3 +55,11 @@ following tasks.
 [firebase]: https://firebase.google.com/
 [aws]: https://aws.amazon.com/
 [gcp]: https://cloud.google.com/functions/
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Skills", href: "/guides/skills/index", badge: "GUIDE" },
+    { label: "Box Skills Payload", href: "/guides/skills/handle/payload", badge: "GUIDE" }
+  ]}
+/>

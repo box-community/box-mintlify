@@ -9,6 +9,9 @@ related_guides:
 related_resources:
   - metadata_cascade_policy
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 When a metadata cascade policy already exists on a folder, the metadata instance
 can be force-applied to all items in a folder by calling the
 [`POST /metadata_cascade_policies/:id/apply`][e_post] API endpoint with the
@@ -109,3 +112,18 @@ over any existing value.
 
 [e_post]: /reference/post_metadata_cascade_policies_id_apply
 [g_list_policies]: /guides/metadata/cascades/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Force-apply metadata cascade policy to folder", href: "/reference/post-metadata-cascade-policies-id-apply", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "List metadata cascade policies", href: "/guides/metadata/cascades/list", badge: "GUIDE" },
+    { label: "Force-apply metadata to all items in a folder", href: "/guides/metadata/cascades/force-apply", badge: "GUIDE" },
+    { label: "Delete a metadata cascade policy", href: "/guides/metadata/cascades/delete", badge: "GUIDE" }
+  ]}
+/>

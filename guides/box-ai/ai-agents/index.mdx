@@ -12,6 +12,9 @@ related_guides:
 - box-ai/ai-agents/ai-agent-overrides
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box updates the default models across the endpoints on a regular basis to stay up to date with the most advanced options. 
 
 If your implementation is based on Box AI, a new default model might alter the results in a way that could break or change a downstream process. Switching to a specific version may prevent encountering any issues.
@@ -27,3 +30,21 @@ To see specific use cases, check the [overrides tutorial][overrides].
 [agent-default]: /guides/box-ai/ai-agents/get-agent-default-config
 [overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
 [models]: /guides/box-ai/ai-models
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" },
+    { label: "Extract metadata (freeform)", href: "/reference/post-ai-extract", badge: "POST" },
+    { label: "Extract metadata (structured)", href: "/reference/post-ai-extract-structured", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get default AI agent configuration", href: "/guides/box-ai/ai-agents/get-agent-default-config", badge: "GUIDE" },
+    { label: "Override AI model configuration", href: "/guides/box-ai/ai-agents/ai-agent-overrides", badge: "GUIDE" }
+  ]}
+/>

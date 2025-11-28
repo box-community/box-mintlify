@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/skills/handle/setup.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 カスタムスキルの設定は、複数の手順からなるプロセスです。
 
 ## 前提条件
@@ -40,7 +43,7 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 
 <Frame border>
 
-![アプリケーションの選択画面](./images/select-app-type.png)
+![アプリケーションの選択画面](/images/guides/skills/handle/select-app-type.png)
 
 </Frame>
 
@@ -50,7 +53,7 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 
 <Frame border width="600" center>
 
-![アプリ名のフォーム](./images/skill-name.png)
+![アプリ名のフォーム](/images/guides/skills/handle/skill-name.png)
 
 </Frame>
 
@@ -74,7 +77,7 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 
 <Frame border width="600" center>
 
-![アプリ名のフォーム](./images/app-invocation-url.png)
+![アプリ名のフォーム](/images/guides/skills/handle/app-invocation-url.png)
 
 </Frame>
 
@@ -86,10 +89,17 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 
 <Frame border width="600" center>
 
-![アプリ名のフォーム](./images/app-file-extensions.png)
+![アプリ名のフォーム](/images/guides/skills/handle/app-file-extensions.png)
 
 </Frame>
 
 [devconsole]: https://app.box.com/developers/console
 
 [devaccount]: https://account.box.com/signup/n/developer
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Skill cards on file", href: "/reference/post-files-id-metadata-global-boxSkillsCards", badge: "POST" }
+  ]}
+/>

@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/docgen/docgen-jobs.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box Doc Genジョブは、ドキュメントを生成するリクエストを行うと実行されます。`POST`リクエスト内の`document_generation_data`パラメータは、ドキュメントを生成するためのBox Doc Genジョブの実行を表すエントリの配列です。
 
 <CodeGroup>
@@ -255,3 +258,11 @@ client.getDocgen().getDocgenJobByIdV2025R0(docgenJobItemFromList.getId())
 </CodeGroup>
 
 [docgen-prerequisites]: /ja/guides/docgen/docgen-getting-started
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "ドキュメントの生成", href: "/ja/guides/docgen/generate-document", badge: "GUIDE" }
+  ]}
+/>

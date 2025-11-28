@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/downloads/get-url.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box公式SDKでは、ファイルのダウンロード時にバイナリデータが返されます。代わりにデータのダウンロードURLを取得する場合は、SDKの以下のメソッドを使用します。
 
 {/* <Samples id="get_files_id_content" variant="get_url">
@@ -41,3 +44,17 @@ Box SDKのいずれも使用していない場合は、HTTPクライアントが
 このダウンロードURLは、ファイルのダウンロードを許可するためにユーザーのブラウザに渡すことができますが、このURLが期限切れになった後でダウンロードするには再度リクエストする必要があります。ほとんどの場合、ダウンロードURLは15分間有効です。その後、新しいURLをリクエストする必要があります。この有効期限は、事前の通知なしに変更される場合があります。
 
 [api]: /ja/reference/get-files-id-content
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルのダウンロード", href: "/ja/guides/downloads/file", badge: "GUIDE" },
+    { label: "新しいファイルのアップロード", href: "/ja/guides/uploads/direct/file", badge: "GUIDE" }
+  ]}
+/>

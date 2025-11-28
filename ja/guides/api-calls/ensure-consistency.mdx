@@ -30,6 +30,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/ensure-consistency.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 一部のBox APIでは、アプリケーションとBox間の一貫性を確保するために使用されるヘッダーがサポートされています。
 
 ## `etag`、`if-match`、および`if-none-match`
@@ -120,3 +123,20 @@ curl https://api.box.com/2.0/files/12345 \
 | はい      | いいえ         | 200       |
 | いいえ     | はい          | 404       |
 | いいえ     | いいえ         | 404       |
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" },
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" },
+    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" },
+    { label: "Remove web link", href: "/reference/delete-web-links-id", badge: "DELETE" },
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" },
+    { label: "Get folder information", href: "/reference/get-folders-id", badge: "GET" },
+    { label: "Get web link", href: "/reference/get-web-links-id", badge: "GET" },
+    { label: "Find file for shared link", href: "/reference/get-shared-items", badge: "GET" }
+  ]}
+/>

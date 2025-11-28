@@ -13,6 +13,16 @@ alias_paths:
   - /docs/downscope-tokens
   - /guides/authentication/access-tokens/downscope
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Tokens", href: "/guides/authentication/tokens/index", badge: "GUIDE" }
+  ]}
+/>
 Downscoping is a way to exchange an existing Access Token for a new one that is
 more restricted.
 
@@ -90,3 +100,16 @@ each combination of `object` and `scope` that the new token has the permissions 
 
 [scopes]: /guides/api-calls/permissions-and-errors/scopes
 [scopes_down]: /guides/api-calls/permissions-and-errors/scopes/#scopes-for-downscoping
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Scopes", href: "/guides/api-calls/permissions-and-errors/scopes", badge: "GUIDE" }
+  ]}
+/>

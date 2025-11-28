@@ -26,6 +26,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/events/user-events/for-user.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 User Eventを取得するには、任意のユーザーとして認証し、[`GET /events`](/ja/reference/get-events) APIを呼び出します。
 
 <CodeGroup>
@@ -175,3 +178,19 @@ User Event Streamでは、[`OPTIONS /events` APIを介して][longpoll]Long poll
 | `ITEM_PREVIEW`                                                                                              | 項目がプレビューされると、コンテンツ所有者だけが通知を受信します。コラボレータには通知されません。                                                       |
 
 [longpoll]: /ja/guides/events/user-events/polling
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" },
+    { label: "Long pollingイベント", href: "/ja/guides/events/user-events/polling", badge: "GUIDE" },
+    { label: "ストリーム位置のページネーション", href: "/ja/guides/events/parameters/pagination", badge: "GUIDE" }
+  ]}
+/>

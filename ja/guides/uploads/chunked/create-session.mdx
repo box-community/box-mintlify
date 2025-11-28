@@ -26,6 +26,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/create-session.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 アップロードセッションを作成するには、目的の`file_name`とそのファイルを配置する`folder_id`、およびアップロードするファイルの`file_size`を指定して[`POST /files/upload_sessions`][createsession] APIを呼び出します。
 
 {/* <Samples sample="post_files_upload_sessions">
@@ -75,3 +78,18 @@ fullyTranslated: true
 [check]: /ja/guides/uploads/check
 
 [uploadsession]: /ja/reference/resources/upload_session
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create upload session", href: "/reference/post-files-upload-sessions", badge: "POST" },
+    { label: "Create upload session for existing file", href: "/reference/post-files-id-upload-sessions", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "パーツのアップロード", href: "/ja/guides/uploads/chunked/upload-part", badge: "GUIDE" },
+    { label: "アップロードセッションのコミット", href: "/ja/guides/uploads/chunked/commit-session", badge: "GUIDE" }
+  ]}
+/>

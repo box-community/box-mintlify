@@ -11,6 +11,9 @@ related_resources:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 There are three common types of API call rate limitations that Box may use at
 its discretion to best protect network resources and preserve the quality of our
 customer experience.
@@ -95,3 +98,16 @@ Please see the [Client Error resource](/reference/resources/client-error) for mo
 
 [search]: /reference/get_search
 [pricing]: https://www.box.com/pricing
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Errors", href: "/guides/api-calls/permissions-and-errors/common-errors", badge: "GUIDE" }
+  ]}
+/>

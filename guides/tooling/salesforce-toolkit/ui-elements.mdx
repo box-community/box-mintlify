@@ -8,6 +8,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The Box for Salesforce managed package offers the following
 [UI Elements][1] as Lightning Components: [content picker][2],
 [explorer][3], [preview][4], and [uploader][5]. You can use them on
@@ -63,3 +66,10 @@ Lightning Pages, or in Flows.
 [8]: /guides/embed/ui-elements/preview/#options
 [9]: /guides/files/get
 [10]: /guides/embed/ui-elements/uploader/#options
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Install Salesforce SDK", href: "/guides/tooling/sdks/salesforce", badge: "GUIDE" }
+  ]}
+/>

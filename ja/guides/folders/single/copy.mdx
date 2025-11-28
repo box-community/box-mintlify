@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/copy.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 フォルダのコピーを宛先フォルダ内に作成します。
 
 元のフォルダは変更されません。
@@ -192,3 +195,17 @@ client.folders.copy('11111', '22222')
 宛先フォルダのいずれかの親フォルダにメタデータカスケードポリシーが適用されている場合は、メタデータカスケード操作が非同期的に開始されます。
 
 現時点では、この操作がいつ終了したのかを確認するAPIはありません。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy folder", href: "/reference/post-folders-id-copy", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "GUIDE" },
+    { label: "フォルダの削除", href: "/ja/guides/folders/single/delete", badge: "GUIDE" }
+  ]}
+/>

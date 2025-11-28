@@ -9,6 +9,9 @@ related_guides: []
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To download all files in a folder or an entire folder structure, you have to create and download a ZIP archive.
 
 ## Create a ZIP Archive
@@ -314,3 +317,12 @@ client.getZipDownloads().getZipDownloadStatus(zipDownload.getStatusUrl())
 If you want to use SDKs to download the contents
 of the folder, follow [this](/guides/downloads/folder) guide.
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download zip archive", href: "/reference/get-zip-downloads-id-content", badge: "GET" },
+    { label: "Get zip download status", href: "/reference/get-zip-downloads-id-status", badge: "GET" },
+    { label: "Create zip download", href: "/reference/post-zip-downloads", badge: "POST" }
+  ]}
+/>

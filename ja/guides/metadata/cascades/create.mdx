@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/3-create.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 メタデータテンプレートがフォルダに適用されたら、メタデータカスケードポリシーを作成できます。それには、ポリシーの適用先となるフォルダの`folder_id`と、メタデータテンプレートの`scope`および`templateKey`を指定して、[`POST /metadata_cascade_policies`][e_post] APIエンドポイントを呼び出します。
 
 <CodeGroup>
@@ -116,3 +119,18 @@ client.metadata.createCascadePolicy('enterprise', 'testTemplate', folderID)
 [g_list_templates]: /ja/guides/metadata/templates/list
 
 [g_list_instances_item]: /ja/guides/metadata/instances/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create metadata cascade policy", href: "/reference/post-metadata-cascade-policies", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータカスケードポリシーのリストの取得", href: "/ja/guides/metadata/cascades/list", badge: "GUIDE" },
+    { label: "フォルダ内のすべての項目に対するメタデータの強制適用", href: "/ja/guides/metadata/cascades/force-apply", badge: "GUIDE" },
+    { label: "メタデータカスケードポリシーの削除", href: "/ja/guides/metadata/cascades/delete", badge: "GUIDE" }
+  ]}
+/>

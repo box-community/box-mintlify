@@ -32,6 +32,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/pagination/marker-based.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 マーカーベースのページングを使用するAPIは、`marker`および`limit`クエリパラメータを使用してコレクション内の項目のページ割りを行います。
 
 マーカーベースのページネーションがよく使用されるのは、項目の全セットの長さが頻繁に変更される場合や全体の長さが事前にわからない可能性がある場合です。
@@ -97,3 +100,27 @@ curl https://api.box.com/2.0/folders/0/items?marker=34332423&limit=100&usemarker
 * [ユーザーのすべてのWebhookのリストを取得](/ja/reference/get-webhooks)
 * [社内のすべてのユーザーのリストを取得](/ja/reference/get-users)
 * [ごみ箱にあるすべての項目のリストを取得](/ja/reference/get-folders-trash-items)
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" },
+    { label: "List file collaborations", href: "/reference/get-files-id-collaborations", badge: "GET" },
+    { label: "List folder collaborations", href: "/reference/get-folders-id-collaborations", badge: "GET" },
+    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" },
+    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" },
+    { label: "List recently accessed items", href: "/reference/get-recent-items", badge: "GET" },
+    { label: "List all legal hold policies", href: "/reference/get-legal-hold-policies", badge: "GET" },
+    { label: "List enterprise device pins", href: "/reference/get-enterprises-id-device-pinners", badge: "GET" },
+    { label: "List enterprise users", href: "/reference/get-users", badge: "GET" },
+    { label: "List trashed items", href: "/reference/get-folders-trash-items", badge: "GET" },
+    { label: "List enterprise users", href: "/reference/get-users", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "レスポンスの並べ替え", href: "/ja/guides/api-calls/sorting", badge: "GUIDE" },
+    { label: "オフセットベースのページネーション", href: "/ja/guides/api-calls/pagination/offset-based", badge: "GUIDE" }
+  ]}
+/>

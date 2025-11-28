@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/groups.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ファイルやフォルダをユーザーのグループと共有するには、グループID、ファイルまたはフォルダのIDに加え、グループがファイルまたはフォルダにアクセスする際に必要なロールまたは権限を使用してコラボレーションを作成します。
 
 {/* <Samples id="post_collaborations" variant="group">
@@ -49,3 +52,16 @@ fullyTranslated: true
 [support documentation]: https://support.box.com/hc/ja/articles/360044196413-コラボレータの権限レベルについて
 
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create collaboration", href: "/reference/post-collaborations", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーとのコンテンツの共有", href: "/ja/guides/collaborations/share-content", badge: "GUIDE" }
+  ]}
+/>

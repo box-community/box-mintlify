@@ -11,6 +11,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The Box core SDKs and the Box Next Generation SDKs were initially created as separate libraries. However, in keeping with industry best practices, **we are consolidating the Box Next Generation SDKs and the Box core SDKs into a single package for each programming language**. This makes migration efforts much easier and allows seamless addition of new capabilities to existing applications still powered by older versions of the Box core SDKs, which were maintained manually.
 
 To facilitate this migration process, there are two actively maintained major Box core SDK versions:
@@ -150,3 +153,11 @@ Follow detailed migration guides to migrate from the Box Next Generation SDKs to
 [swift-migration-gen]: https://github.com/box/box-ios-sdk/blob/combined-sdk/migration-guides/from-BoxSDK-to-BoxSdkGen.md
 [java-migration-gen]: https://github.com/box/box-java-sdk/blob/combined-sdk/migration-guides/from-com-box-sdk-to-com-box-sdkgen.md
 [node-migration-gen]: https://github.com/box/box-node-sdk/blob/combined-sdk/migration-guides/from-box-node-sdk-to-sdk-gen.md
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

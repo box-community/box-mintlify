@@ -18,6 +18,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 開発者用エンタープライズを設定したら、アプリケーションの作成を開始できます。
 
 開発者用エンタープライズにログインしたら \[[開発者コンソール][console]] ボタンをクリックします。これが最初のアプリケーションである場合は、利用開始を促すメッセージが表示されます。
@@ -80,3 +82,10 @@ API コールを行ってアプリをテストし、Box でのレスポンス形
 [postman-collection]: /ja/guides/tooling/postman
 [api-ref]: https://ja.developer.box.com/reference
 [box-cli]: https://github.com/box/boxcli
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "APIコール", href: "/ja/guides/api-calls/index", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/4-update.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 既存のファイルリクエストの基本的な詳細の一部を更新するのに必要なのは、その一意のIDだけです。
 
 <CodeGroup>
@@ -109,3 +112,17 @@ client.fileRequests.update(fileRequestId, {
 ファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。ファイルリクエストテンプレートの設定に関する[ガイド](/ja/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file request", href: "/reference/put-file-requests-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "GUIDE" },
+    { label: "ファイルリクエストに関する情報の取得", href: "/ja/guides/file-requests/get", badge: "GUIDE" }
+  ]}
+/>

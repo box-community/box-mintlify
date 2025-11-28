@@ -13,6 +13,17 @@ related_resources:
 alias_paths:
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with App Token Auth", href: "/guides/authentication/app-token/app-token-setup", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>
 Server-side authentication using App Tokens is an alternative way to
 authenticate to the Box API with fixed, long-lived Access Tokens that are
 restricted to the application's [Service Account][sa]. App Token Auth is
@@ -37,5 +48,13 @@ for apps that:
 - Don't want users to have to know that they are using Box
 - Want to store data in the application's Service Account and not a user's account
 
-[sa]: https://developer.box.com/platform/user-types/#service-account
+[sa]: /platform/user-types/#service-account
 [box-view]: /guides/embed/box-view
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

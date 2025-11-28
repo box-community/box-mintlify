@@ -11,6 +11,16 @@ alias_paths:
   - /docs/box-content-uploader
   - /docs/content-uploader
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 The Box Content Uploader UI Element allows developers to embed an upload widget
 in their desktop or mobile web application. Users can select files or use drag
 and drop to upload. Large files will be uploaded with the [Chunked
@@ -193,3 +203,10 @@ more, see [Dedicated Scopes for Box UI Elements][scopes].
 
 [downscope]: /guides/authentication/tokens/downscope
 [scopes]: /guides/api-calls/permissions-and-errors/scopes
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/representations/request-a-representation.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "ファイルのすべてのレプリゼンテーションのリストの取得", href: "/ja/guides/representations/list-all-representations", badge: "GUIDE" }
+  ]}
+/>
 特定のレプリゼンテーションを選択するには、必要なレプリゼンテーション形式を定義する[`x-rep-hints`][x-rep-hints]ヘッダーを使用して[`GET /files/:id`][get_files_id]エンドポイントを呼び出します。
 
 ```sh
@@ -93,3 +103,17 @@ curl https://api.box.com/2.0/files/123?fields=representations \
 [get_files_id]: endpoint://get-files-id
 
 [x-rep-hints]: endpoint://get-files-id#param-x-rep-hints
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルレプリゼンテーションのダウンロード", href: "/ja/guides/representations/download-a-representation", badge: "GUIDE" },
+    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

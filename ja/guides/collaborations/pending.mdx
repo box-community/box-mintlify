@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/pending.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ユーザーの保留中のコラボレーションを取得するには、`status`に`pending`を指定して`GET /collaborations` APIを呼び出します。
 
 <CodeGroup>
@@ -112,3 +115,16 @@ client.collaborations.getPending()
 これにより、ユーザーの保留中のコラボレーションを表示する現在のリストのみが返されます。このAPIでは、ユーザーのすべてのコラボレーションを返すことは許可されていません。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List pending collaborations", href: "/reference/get-collaborations", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーとのコンテンツの共有", href: "/ja/guides/collaborations/share-content", badge: "GUIDE" }
+  ]}
+/>

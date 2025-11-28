@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/trash/permanently-delete-folder.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ごみ箱に移動されたフォルダは、デフォルトで30日間ごみ箱に保持された後で削除されます。BusinessアカウントまたはEnterpriseアカウントの管理者は、削除までの期間を変更できます。削除までの期間が経過する前にごみ箱からフォルダを完全に削除する場合は、ごみ箱に移動されたフォルダの`ID`を使用して`DELETE`リクエストを`/folders/:folder_id/trash`に送信します。
 
 <CodeGroup>
@@ -76,3 +79,23 @@ client.folders.deletePermanently('22222')
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" },
+    { label: "Permanently remove folder", href: "/reference/delete-folders-id-trash", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダの復元", href: "/ja/guides/trash/restore-folder", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "フォルダ", href: "/ja/guides/folders/index", badge: "GUIDE" }
+  ]}
+/>

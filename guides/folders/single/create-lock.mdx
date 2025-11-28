@@ -11,6 +11,9 @@ related_resources:
   - folder_lock
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To create a lock on a folder in Box you will need to provide our API with the
 `id` of the folder for which the lock should be applied. Optionally you may
 supply the specific `locked_operations` to be applied with the folder lock.
@@ -94,3 +97,17 @@ owner while the lock is still applied.
 
 The `delete` lock will prevent the folder from being deleted while the lock is
 still applied.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create folder lock", href: "/reference/post-folder-locks", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Folder Lock", href: "/guides/folders/single/get-locks", badge: "GUIDE" },
+    { label: "Delete Folder Lock", href: "/guides/folders/single/delete-lock", badge: "GUIDE" }
+  ]}
+/>

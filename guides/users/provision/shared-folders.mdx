@@ -653,6 +653,8 @@ import com.box.sdk.BoxUser;
 import com.box.sdk.BoxGroupMembership.Role;
 import com.eclipsesource.json.JsonObject;
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 public class BoxPlayground {
 
     public static void main(String[] args) throws Exception {
@@ -784,3 +786,11 @@ box groups:membership:add $user_id $group_id --role=admin
 
   </Tab>
 </Tabs>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Architecture Skeleton", href: "/guides/users/provision/architecture", badge: "GUIDE" },
+    { label: "Transfer Files & Folders", href: "/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+  ]}
+/>

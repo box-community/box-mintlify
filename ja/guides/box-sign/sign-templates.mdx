@@ -20,6 +20,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/box-sign/sign-templates.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 署名リクエストAPIを使用すると、署名リクエストの作成時に、あらかじめ定義されたBox Signテンプレートを使用できます。このテンプレートには、リクエストの作成時にデータが自動的に設定されるプレースホルダが含まれています。
 
 ## テンプレートの作成
@@ -275,3 +278,17 @@ fullyTranslated: true
 [signers]: /ja/guides/box-sign/create-sign-request#signers
 
 [template]: /ja/reference/get-sign-templates#response-example
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List Box Sign templates", href: "/reference/get-sign-templates", badge: "GET" },
+    { label: "Get Box Sign template by ID", href: "/reference/get-sign-templates-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Signのリクエストの作成", href: "/ja/guides/box-sign/create-sign-request", badge: "GUIDE" }
+  ]}
+/>

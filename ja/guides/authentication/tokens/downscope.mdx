@@ -26,6 +26,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/downscope.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "GUIDE" }
+  ]}
+/>
 ダウンスコープは、既存のアクセストークンをより制限の厳しい新しいトークンと交換するための方法です。
 
 ## ダウンスコープする理由
@@ -100,3 +110,16 @@ fullyTranslated: true
 [scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
 
 [scopes_down]: /ja/guides/api-calls/permissions-and-errors/scopes/#scopes-for-downscoping
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "スコープ", href: "/ja/guides/api-calls/permissions-and-errors/scopes", badge: "GUIDE" }
+  ]}
+/>

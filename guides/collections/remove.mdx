@@ -14,6 +14,9 @@ related_resources:
   - web_link
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To remove an item from a collection, call the `PUT` endpoint for that specific
 type of item and pass along a list of collection IDs that does not include the
 ID of the collection that needs to be removed.
@@ -44,3 +47,13 @@ To remove a web link from a collection, call the `PUT /web_links/:id` API and
 pass an empty array of collection IDs.
 
 {/* <Samples id='put_web_links_id' variant='remove_from_collection' /> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" },
+    { label: "List all collections", href: "/reference/get-collections", badge: "GET" }
+  ]}
+/>

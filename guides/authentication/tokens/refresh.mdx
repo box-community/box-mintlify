@@ -11,6 +11,16 @@ required_guides:
   - authentication/tokens
 alias_paths:
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Tokens", href: "/guides/authentication/tokens/index", badge: "GUIDE" }
+  ]}
+/>
 An Access Token can be refreshed by using the Refresh Token that came with the
 Access Token. This can be done before or after the Access Token expires.
 
@@ -39,3 +49,16 @@ To do this, the application passes the `refresh_token` to the [`POST
 
   This new Refresh Token is then again only valid for 1 use within 60 days.
 </Danger>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Authentication", href: "/guides/authentication/index", badge: "GUIDE" }
+  ]}
+/>

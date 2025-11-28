@@ -18,6 +18,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/search/3-filtering.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [`GET /search`](/ja/reference/get-search) APIでは、APIによって返された結果にフィルタをかけるためのさまざまな方法がサポートされています。
 
 ## コンテンツタイプによるフィルタ
@@ -481,3 +484,10 @@ client.search.query(
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

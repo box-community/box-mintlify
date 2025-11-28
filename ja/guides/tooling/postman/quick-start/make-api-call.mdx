@@ -22,6 +22,8 @@ fullyTranslated: true
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 import { ResetButton } from '/snippets/reset-button.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "ja/guides/tooling/postman/quick-start/install-postman",
                           "ja/guides/tooling/postman/quick-start/configure-box-app",
@@ -116,3 +118,10 @@ APIリクエストを実行するには、Box Postmanコレクションから**�
 APIコールが完了しました
 
 </Next>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" }
+  ]}
+/>

@@ -19,6 +19,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box は、Box に格納されているファイルまたはフォルダの検索インデックスを保持します。ファイルまたはフォルダが変更されるたびに、これらの単語がインデックスに追加されます。検索が実行されると、API は、検索インデックスで、クエリに一致するファイルやフォルダを探します。Box 内でコンテンツが追加、更新、または削除されると、それに応じて検索インデックスが更新されます。
 
 ## 検索可能になるまでの時間
@@ -113,3 +115,10 @@ Box の検索では、中国語、英語、フランス語、ドイツ語、イ�
 [keysafe]: https://www.box.com/ja-jp/security/keysafe
 
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

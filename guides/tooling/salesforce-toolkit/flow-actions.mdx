@@ -8,6 +8,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Salesforce toolkit includes wrappers that allow admins
 to invoke the following [methods]. It allows Box for Salesforce
 users to build automated solutions, such as folder structure,
@@ -120,3 +123,10 @@ The list below contains all methods that can be invoked in
 
 [methods]: /guides/tooling/salesforce-toolkit/methods
 [Salesforce Flows]: https://help.salesforce.com/s/articleView?id=sf.flow.htm&type=5
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Install Salesforce SDK", href: "/guides/tooling/sdks/salesforce", badge: "GUIDE" }
+  ]}
+/>

@@ -13,6 +13,16 @@ related_guides:
   - metadata/instances/update
   - metadata/scopes
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" }
+  ]}
+/>
 A metadata template can be applied to a file or folder using the item's `id`,
 the template's `templateKey` and `scope`, and a set of values for each field in
 the template.
@@ -401,3 +411,25 @@ In this case, a valid example would be the following request body.
 [g_list_templates]: /guides/metadata/templates/list
 [g_list_instances_item]: /guides/metadata/instances/list
 [g_get_metadata_template]: /guides/metadata/templates/get
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create metadata instance on file", href: "/reference/post-files-id-metadata-id-id", badge: "POST" },
+    { label: "Create metadata instance on folder", href: "/reference/post-folders-id-metadata-id-id", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+    { label: "Update metadata on an item", href: "/guides/metadata/instances/update", badge: "GUIDE" },
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

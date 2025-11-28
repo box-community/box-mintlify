@@ -11,6 +11,16 @@ related_resources:
   - folder
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" }
+  ]}
+/>
 To update a folder in Box you will need to call the following API.
 
 <CodeGroup>
@@ -149,3 +159,16 @@ also prohibited.
 
 Timeout for this operation is 600 seconds. The operation will complete
 after a `HTTP 503` has been returned.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Update Folder", href: "/guides/folders/single/update", badge: "GUIDE" }
+  ]}
+/>

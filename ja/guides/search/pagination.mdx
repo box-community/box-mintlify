@@ -19,6 +19,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 検索APIでは、`offset`クエリパラメータと`limit`クエリパラメータを使用したオフセットベースのページネーションがサポートされます。マーカーベースのページネーションはサポートされません。
 
 ## APIによるページネーション
@@ -98,3 +100,10 @@ const page2 = await client.search.query('sales'. {
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

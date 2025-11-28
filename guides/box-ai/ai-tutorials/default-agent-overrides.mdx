@@ -15,6 +15,9 @@ related_guides:
 alias_paths:
   - guides/box-ai/ai-agent-overrides
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## Before you start
 
 Make sure you followed the steps listed in [getting started with Box AI][prereq] to create a platform app and authenticate.
@@ -217,3 +220,23 @@ Using this model results in a response listing more metadata entries:
 
 [agent-overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
 [prereq]: /guides/box-ai/ai-tutorials/prerequisites
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+    { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+    { label: "Override AI model configuration", href: "/guides/box-ai/ai-agents/ai-agent-overrides", badge: "GUIDE" }
+  ]}
+/>

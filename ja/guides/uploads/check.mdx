@@ -27,6 +27,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/uploads/check.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 事前チェックAPIを使用すると、アプリケーションでアップロードを開始する前にそのファイルがBoxに受け入れられるかどうかを確認できます。このAPIは、新しいファイルにも、既存ファイルの新しいバージョンのアップロードにも使用できます。
 
 ## チェックリスト
@@ -143,3 +146,19 @@ APIコールで問題が検出されると、HTTP `409 Conflict`ステータス�
 [chunked]: /ja/guides/uploads/chunked
 
 [chunkedsession]: /ja/guides/uploads/chunked/create-session
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
+    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
+    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "新しいファイルのアップロード", href: "/ja/guides/uploads/direct/file", badge: "GUIDE" },
+    { label: "ファイルバージョンのアップロード", href: "/ja/guides/uploads/direct/file-version", badge: "GUIDE" }
+  ]}
+/>

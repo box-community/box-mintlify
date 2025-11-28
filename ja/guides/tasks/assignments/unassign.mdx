@@ -20,6 +20,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/2-unassign.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 タスクの割り当てを解除するには、タスク割り当ての`id`を指定して[`DELETE /task_assignments`](/ja/reference/delete-task-assignments-id) APIを呼び出します。
 
 <CodeGroup>
@@ -76,3 +79,17 @@ client.tasks.deleteAssignment('12345')
 割り当てを削除するユーザーは、ファイルのコラボレータである必要があります。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Unassign task", href: "/reference/delete-task-assignments-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "GUIDE" },
+    { label: "タスク割り当て状態の変更", href: "/ja/guides/tasks/assignments/change-state", badge: "GUIDE" }
+  ]}
+/>

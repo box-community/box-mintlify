@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/ai-agents/get-agent-default-config.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 `GET /2.0/ai_agent_default`エンドポイントを使用すると、AIサービスのデフォルト構成を取得できます。構成の詳細を取得したら、[`ai_agent`][ai-agent-config]パラメータを使用して構成を上書きできます。
 
 ## リクエストの送信
@@ -341,3 +344,22 @@ client.ai.getAiAgentDefaultConfig({
 [ai-agent-config]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
 
 [override-tutorials]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" }
+  ]}
+/>

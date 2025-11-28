@@ -27,6 +27,15 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>
 サーバー認証を利用し、クライアント ID とクライアントシークレットを使用してアプリケーションの ID を確認する場合は、以下の手順に従います。
 
 ## 前提条件
@@ -101,7 +110,7 @@ Grant credentials are invalid [400 Bad Request] invalid_grant - Grant credential
 
 - `box_subject_type`を`user`に設定して使用するには、\[**構成**] タブの \[**高度な機能**] セクションでユーザーアクセストークンを生成するようアプリケーションを構成する必要があります。
 
-  <Frame>![アクセストークンの生成のチェックボックス](../images/generate-access-tokens.png)</Frame>
+  <Frame>![アクセストークンの生成のチェックボックス](/images/guides/authentication/generate-access-tokens.png)</Frame>
 
 <Warning>
 
@@ -119,7 +128,21 @@ Grant credentials are invalid [400 Bad Request] invalid_grant - Grant credential
 
 [devconsole]: https://app.box.com/developers/console
 [accesstoken]: /ja/reference/post-oauth2-token
-[sa]: https://ja.developer.box.com/platform/user-types/#service-account
+[sa]: /ja/platform/user-types/#service-account
 [auth]: /ja/guides/authorization
 [aa]: /ja/guides/authentication/client-credentials/client-credentials-setup/#application-access
 [reauth]: /ja/guides/authorization/platform-app-approval#re-authorization-on-changes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "ベストプラクティス", href: "/ja/guides/authentication/best-practices", badge: "GUIDE" }
+  ]}
+/>

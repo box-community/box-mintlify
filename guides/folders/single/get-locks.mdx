@@ -11,6 +11,9 @@ related_resources:
   - folder_locks
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To get a list of the current locks on a folder in Box, call the
 `GET /folder_locks/` API with the id of the folder supplied as a `folder_id`
 query string parameter.
@@ -58,3 +61,17 @@ client.getFolderLocks().getFolderLocks(new GetFolderLocksQueryParams(folder.getI
 The `id` of any folder can be determined by visiting a folder in the web
 application and copying the `id` from the URL. For example, for the URL
 `https://*.app.box.com/folder/123` the `folder_id` is `123`.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List folder locks", href: "/reference/get-folder-locks", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Folder Lock", href: "/guides/folders/single/create-lock", badge: "GUIDE" },
+    { label: "Delete Folder Lock", href: "/guides/folders/single/delete-lock", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/retention-policies/get.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 会社内に作成された特定のリテンションポリシーの情報を取得するには、ポリシーの`id`を指定して[`GET /retention_policies/:id`][retention] APIエンドポイントを呼び出します。
 
 <CodeGroup>
@@ -103,3 +106,16 @@ client.retentionPolicies.get('123456789').then((policy) => {
 [retention]: /ja/reference/get_retention_policies_id
 
 [scopes]: /ja/guides/retention-policies#required-scopes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get retention policy", href: "/reference/get-retention-policies-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "すべてのリテンションポリシーのリストの取得", href: "/ja/guides/retention-policies/list", badge: "GUIDE" }
+  ]}
+/>

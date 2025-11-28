@@ -11,6 +11,16 @@ required_guides:
 alias_paths:
   - /webhooks/manage/manually
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Webhook Event Triggers", href: "/guides/webhooks/triggers", badge: "GUIDE" }
+  ]}
+/>
 V1 webhooks are created in the [Developer Console][devconsole] by following
 the steps below.
 
@@ -59,3 +69,10 @@ account.
 [devconsole]: https://app.box.com/developers/console
 [support]: https://support.box.com
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Webhook Event Triggers", href: "/guides/webhooks/triggers", badge: "GUIDE" }
+  ]}
+/>

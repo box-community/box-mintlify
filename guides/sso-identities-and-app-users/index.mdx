@@ -9,6 +9,9 @@ related_guides:
   - users/create-app-user
   - users/create-managed-user
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Single Sign-On (SSO) services are often used as part of a company's **Identity
 and Access Management (IAM)** solution. When deployed, these services grant
 users the ability to securely authenticate multiple applications by logging in
@@ -49,3 +52,19 @@ referring to the following flow.
 {/* i18n-enable localize-links */}
 [sso-support]: https://support.box.com/hc/en-us/articles/360043696514-Setting-Up-Single-Sign-On-SSO-for-your-Enterprise
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create user", href: "/reference/post-users", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "Provision Users", href: "/guides/users/provision/index", badge: "GUIDE" },
+    { label: "Create App User", href: "/guides/users/create-app-user", badge: "GUIDE" },
+    { label: "Create Managed User", href: "/guides/users/create-managed-user", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/rename.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box上でフォルダの名前を変更するには、そのフォルダの新しい`name`をAPIに渡す必要があります。
 
 {/* <Samples id="put_folders_id" variant="rename">
@@ -37,3 +40,16 @@ Box上でフォルダの名前を変更するには、そのフォルダの新�
 また、`.`および`..`は予約済みの名前であるため、使用できません。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダの更新", href: "/ja/guides/folders/single/update", badge: "GUIDE" }
+  ]}
+/>

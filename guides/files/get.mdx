@@ -8,6 +8,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To get a file's information, not it's content, call the
 [`GET /files/:id`](/reference/get-files-id) API with the `id` of the file.
 
@@ -136,3 +139,16 @@ To get more of the fields for a file, make sure to pass along the `fields`
 query parameter.
 
 <Card href="/guides/api-calls/request-extra-fields" arrow title="Learn about requesting extra fields"/>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Download File", href: "/guides/downloads/file", badge: "GUIDE" }
+  ]}
+/>

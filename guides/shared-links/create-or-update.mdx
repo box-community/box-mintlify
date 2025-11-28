@@ -14,6 +14,9 @@ alias_paths:
   - /shared-links/create
   - /shared-links/update
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Shared links may be created or directly for file, folder, or web link
 resources to generate a read-only URL to permit users with the appropriate
 access level to view the content.
@@ -62,3 +65,18 @@ To create a shared link on a web link, specify the ID of the web link with any
 optional shared link parameters.
 
 {/* <Samples id='put_web_links_id' variant='add_shared_link' /> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Shared Link Permissions", href: "/guides/shared-links/permissions", badge: "GUIDE" },
+    { label: "Remove Shared Link", href: "/guides/shared-links/remove", badge: "GUIDE" },
+    { label: "Find Item from Shared Link", href: "/guides/shared-links/find-for-item", badge: "GUIDE" }
+  ]}
+/>

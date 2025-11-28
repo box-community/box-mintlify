@@ -9,6 +9,16 @@ required_guides:
   - embed/ui-elements/installation
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 This table shows all the design tokens you can use for [theming and styling][ts] purposes. Provided default values and descriptions give clarity and guidance for implementation.
 
 ## Token structure
@@ -348,3 +358,11 @@ The comment in the table refers to pixels in calculation based on a root font-si
 | `space-20` | `5rem` | Spacing measurement (80 px equivalent). |
 
 [ts]: /guides/embed/ui-elements/theming-styling
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" },
+    { label: "Theming & styling for Box UI Elements", href: "/guides/embed/ui-elements/theming-styling", badge: "GUIDE" }
+  ]}
+/>

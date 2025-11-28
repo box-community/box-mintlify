@@ -9,6 +9,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Currently, Box provides the Popup integration type.
 
 ## Popup Integrations
@@ -27,3 +30,11 @@ Token, and then use that to make API calls to Box.
   response from the callback URL should include an `X-Frame-Options` header set
   to a random string value.
 </Warning>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Applications", href: "/guides/applications/index", badge: "GUIDE" },
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" }
+  ]}
+/>

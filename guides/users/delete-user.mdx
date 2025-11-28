@@ -11,6 +11,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The process for deleting both app and managed users is the same. To delete a
 user account, supply the user ID for the account that should be
 removed.
@@ -78,3 +81,17 @@ account:
   [transfer all files or folders](/guides/users/deprovision/transfer-folders)
   to another account or use the optional `force` parameter.
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete user", href: "/reference/delete-users-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" },
+    { label: "Transfer Files & Folders", href: "/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+  ]}
+/>

@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 シングルサインオン (SSO) サービスは、会社の**Identity and Access Management (IAM)** ソリューションの一環として使用されることがよくあります。SSOサービスが展開されると、ユーザーは、1つの資格情報セット (ユーザー名とパスワード) だけを使用して1回ログインすれば、複数のアプリケーションの認証を安全に行うことができます。
 
 Boxは、会社のSSOサービスに接続可能なアプリケーションの1つです。こうしたアプリケーションをPlatformアプリに統合すれば、いずれのエンドユーザーに対しても即座にBoxユーザーがプロビジョニングされます。その際、このエンドユーザーにBoxアカウントが用意されたことは知らされません。
@@ -55,3 +58,19 @@ SSOサービスをBoxアプリケーションではなくBoxウェブサイト�
 [sso-support]: https://support.box.com/hc/ja/articles/360043696514-Enterpriseでのシングルサインオン-SSO-の設定
 
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create user", href: "/reference/post-users", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "ユーザーのプロビジョニング", href: "/ja/guides/users/provision/index", badge: "GUIDE" },
+    { label: "App Userの作成", href: "/ja/guides/users/create-app-user", badge: "GUIDE" },
+    { label: "管理対象ユーザーの作成", href: "/ja/guides/users/create-managed-user", badge: "GUIDE" }
+  ]}
+/>

@@ -10,6 +10,9 @@ related_guides:
 related_resources:
   - metadata_templates
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Information for a metadata template can be retrieved using the template's name
 and scope, or the template's identifier.
 
@@ -201,3 +204,19 @@ client.metadata.getTemplateByID('17f2d715-6acb-45f2-b96a-28b15efc9faa')
 [scopes]: /guides/metadata/scopes
 [g_list_templates]: /guides/metadata/templates/list
 [g_list_instances_item]: /guides/metadata/instances/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get metadata template by name", href: "/reference/get-metadata-templates-id-id-schema", badge: "GET" },
+    { label: "Get metadata template by ID", href: "/reference/get-metadata-templates-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" },
+    { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" }
+  ]}
+/>

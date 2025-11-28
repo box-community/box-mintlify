@@ -75,6 +75,17 @@ var sdk = new BoxClient(config);
 ```java Java
 import com.box.sdk.BoxAPIConnection;
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Box SDK", href: "/ja/guides/tooling/sdks/index", badge: "GUIDE" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 String authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
 
 ```
@@ -280,3 +291,18 @@ sdk.getTokensAuthorizationCodeGrant("[CODE]", null, function (err, tokenInfo) {
 [1]: https://support.box.com/hc/ja/articles/360043693554-Box-Verified-Enterpriseとサポート対象のアプリ
 
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>

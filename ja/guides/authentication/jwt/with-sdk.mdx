@@ -26,6 +26,17 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/jwt/with-sdk.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 Box公式SDKには、JWT認証のサポートが組み込まれています。
 
 このガイドでは、Box SDKを使用したJWTによるユーザー認証について説明します。JWT認証はBox APIを直接操作するよう設計されており、ユーザーがアプリケーションを承認するためにBoxを介してリダイレクトする必要はありません。
@@ -195,3 +206,18 @@ var client = sdk.getAppAuthClient("enterprise");
 [Node]: https://github.com/box/box-node-sdk/blob/main/docs/authentication.md#server-auth-with-jwt
 
 [IOS]: https://github.com/box/box-ios-sdk/blob/main/docs/usage/authentication.md#server-auth-with-jwt
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>

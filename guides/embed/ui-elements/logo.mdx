@@ -10,11 +10,21 @@ related_resources: []
 alias_paths:
   - /docs/specifying-a-logo-for-box-ui-elements
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 Each of the Box UI Elements allow for specifying a custom logo to place in the
 top-left corner of the embedded container.
 
 <Frame border>
-  ![Custom logo](./images/elements-logo.png)
+  ![Custom logo](/images/guides/embed/ui-elements/elements-logo.png)
 </Frame>
 
 By default, each of the UI Elements uses a generic placeholder as a logo. This
@@ -50,3 +60,10 @@ preview.show(fileId, accessToken, {
 
 Images files will be fitted to a maximum height of 32 pixels and a maximum width
 of 80 pixels. Larger images will be shrunk to fit these dimensions.
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

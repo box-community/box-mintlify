@@ -9,6 +9,8 @@ related_endpoints:
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 import { ResetButton } from '/snippets/reset-button.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/tooling/postman/quick-start/install-postman",
                           "guides/tooling/postman/quick-start/configure-box-app",
@@ -101,3 +103,10 @@ in your folder in the response **Body** tab in the bottom half of the screen.
 * You made your first API call to Box, requesting the folder items for your user's root folder.
 
 <Next>I made an API call</Next>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" }
+  ]}
+/>

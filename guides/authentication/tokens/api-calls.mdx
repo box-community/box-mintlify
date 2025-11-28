@@ -11,6 +11,16 @@ alias_paths:
   - /docs/how-to-get-an-api-key
   - /authentication/access-tokens/api-calls
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" }
+  ]}
+/>
 Every authenticated API call requires an Access Token to be passed in the
 `Authorization` header as a `Bearer Token` or it will return a `401 Unauthorized`
 HTTP status.
@@ -24,3 +34,10 @@ curl https://api.box.com/2.0/users/me \
   Use the [`GET /users/me`](endpoint://get-users-id) endpoint to inspect what
   user an Access Token is authenticated for.
 </Info>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Authentication", href: "/guides/authentication/index", badge: "GUIDE" }
+  ]}
+/>

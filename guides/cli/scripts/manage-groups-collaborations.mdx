@@ -14,6 +14,16 @@ required_guides:
   - authentication/oauth2/oauth2-setup
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 ## Script structure
 
 This script uses Box CLI to create or update groups, add users to them, and finally to create collaborations between groups and folders.
@@ -171,3 +181,14 @@ You have access to these log files:
 [quickstart]: /guides/cli/quick-start/create-oauth-app
 [console]: https://app.box.com/developers/console
 [auth]: /guides/authentication/oauth2/oauth2-setup
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Provision users and folders", href: "/guides/cli/scripts/provision-users-folders", badge: "GUIDE" },
+    { label: "Deprovision users and archive folders", href: "/guides/cli/scripts/deprovision-users", badge: "GUIDE" },
+    { label: "Update user zones", href: "/guides/cli/scripts/user-zones-mass-update", badge: "GUIDE" },
+    { label: "Report inactive users", href: "/guides/cli/scripts/report-inactive-users", badge: "GUIDE" }
+  ]}
+/>

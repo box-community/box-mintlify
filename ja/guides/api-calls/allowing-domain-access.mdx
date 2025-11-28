@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/allowing-domain-access.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box APIを使用する際に重要なのは、必要に応じてアプリケーションとユーザーが以下のドメインにアクセスできることです。
 
 ## ファイルプレビュー
@@ -55,3 +58,12 @@ Box APIを使用する際に重要なのは、必要に応じてアプリケー�
 
 * `api.box.com` - ファイルのアップロードを開始する
 * `upload.app.box.com`と`upload.box.com` - Boxにファイルをアップロードする
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" },
+    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
+    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
+  ]}
+/>

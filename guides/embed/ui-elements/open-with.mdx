@@ -10,6 +10,16 @@ related_resources: []
 alias_paths:
   - /docs/box-content-open-with
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 <Warning>
   We no longer support the `OpenWith` UI element for any new customers
   as of December 21, 2021.
@@ -27,7 +37,7 @@ The integrations included in the Open With Element are Google Suite,
 and Box Edit. Additional information on the Google Suite integration can be
 found on the [Box Community site][community].
 
-Currently, the element only supports [App Users](https://developer.box.com/platform/user-types)
+Currently, the element only supports [App Users](/platform/user-types)
 for authentication.
 
 ## Installation
@@ -68,7 +78,7 @@ to your application in the developer console.
 
 <Frame border>
 
-![Enable Integrations](./images/enable-integrations.png)
+![Enable Integrations](/images/guides/embed/ui-elements/enable-integrations.png)
 
 </Frame>
 
@@ -144,7 +154,7 @@ curl -X GET \
 To add an app integration to a valid app user, three pieces of information are
 required:
 
-- A valid [Service Account](https://developer.box.com/platform/user-types/#service-account) Access Token.
+- A valid [Service Account](/platform/user-types/#service-account) Access Token.
 - The ID of the app user to be assigned the integration
 - The ID of the app integration to assign to the user
 
@@ -397,4 +407,11 @@ using `openWith.addListener('execute', callback)` and
 {/* i18n-enable localize-links */}
 [safari]: https://support.box.com/hc/en-us/articles/360043697334-Installing-Box-Tools
 {/* i18n-disable localize-links */}
-[service-account]: https://developer.box.com/platform/user-types/#service-account
+[service-account]: /platform/user-types/#service-account
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

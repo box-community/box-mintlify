@@ -12,6 +12,16 @@ required_guides:
   - authentication/jwt/jwt-setup
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with JWT", href: "/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+  ]}
+/>
 This [script][script] provisions users to a specific
 data residency zone within a Multizone Box tenant.
 It performs the following steps:
@@ -169,3 +179,12 @@ You have access to these log files:
 [scripts]: https://github.com/box/boxcli/tree/main/examples
 [pwsh]: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2
 [console]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "Provision users and folders", href: "/guides/cli/scripts/provision-users-folders", badge: "GUIDE" },
+    { label: "Deprovision users and archive folders", href: "/guides/cli/scripts/deprovision-users", badge: "GUIDE" }
+  ]}
+/>

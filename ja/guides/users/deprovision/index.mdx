@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/users/deprovision/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 通常のBox Enterpriseの保守の一部として、会社内でアクティブではなくなったユーザーのアカウントを削除します。会社からユーザーを削除する際は、ユーザーアカウントを削除する前に、そのユーザーが所有するすべてのコンテンツを別のアカウントに移動する必要があります。
 
 <Note>
@@ -107,3 +110,16 @@ box users:delete $transfer_from_user_id --yes
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete user", href: "/reference/delete-users-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルとフォルダの転送", href: "/ja/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+  ]}
+/>

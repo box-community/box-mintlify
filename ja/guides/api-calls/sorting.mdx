@@ -20,6 +20,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/sorting.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 APIから項目のコレクションが返される場合は、APIレスポンスの並べ替えがサポートされることがよくあります。
 
 `sort`および`direction`クエリパラメータを使用すると、昇順または降順のいずれかでコレクションを並べ替えることができます。
@@ -51,3 +54,10 @@ curl https://api.box.com/2.0/folders/0/items?sort=size&direction=DESC \
 並べ替えの方向では、`ASC` (昇順の場合) と`DESC` (降順の場合) という2つの値がサポートされます。
 
 [get_folders_id_items]: endpoint://get_folders_id_items
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" }
+  ]}
+/>

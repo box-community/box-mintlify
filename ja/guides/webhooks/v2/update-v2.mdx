@@ -27,6 +27,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/update-v2.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "ユーザーのWebhookのリストを取得", href: "/ja/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+  ]}
+/>
 Webhookは、[開発者コンソール][console]またはAPIを使用して更新できます。
 
 ## 開発者コンソール
@@ -139,3 +149,18 @@ client.webhooks.update('678901', {address: "https://example.com/webhooks/fileAct
 [2]: /ja/reference/put-webhooks-id
 
 [console]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update webhook", href: "/reference/put-webhooks-id", badge: "PUT" },
+    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "ユーザーのWebhookのリストを取得", href: "/ja/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+  ]}
+/>

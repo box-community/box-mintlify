@@ -10,6 +10,9 @@ related_guides:
   - docgen/docgen-getting-started
   - docgen/generate-document
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box Doc Gen API allows you to retrieve information related to Box Doc Gen templates.
 
 ## Prerequisites
@@ -137,3 +140,11 @@ The response will contain a list of Box Doc Gen jobs that were run to generate
 documents.
 
 [docgen-prerequisites]: /guides/docgen/docgen-getting-started
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "Generate documents", href: "/guides/docgen/generate-document", badge: "GUIDE" }
+  ]}
+/>

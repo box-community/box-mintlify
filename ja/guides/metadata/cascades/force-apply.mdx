@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/4-force-apply.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 メタデータカスケードポリシーがすでにフォルダに存在する場合は、メタデータカスケードポリシーの`id`を指定して[`POST /metadata_cascade_policies/:id/apply`][e_post] APIエンドポイントを呼び出すことで、フォルダ内のすべての項目にメタデータインスタンスを強制的に適用できます。
 
 <CodeGroup>
@@ -114,3 +117,18 @@ client.metadata.forceApplyCascadePolicy(policyID, client.metadata.cascadeResolut
 [e_post]: /ja/reference/post_metadata_cascade_policies_id_apply
 
 [g_list_policies]: /ja/guides/metadata/cascades/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Force-apply metadata cascade policy to folder", href: "/reference/post-metadata-cascade-policies-id-apply", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータカスケードポリシーのリストの取得", href: "/ja/guides/metadata/cascades/list", badge: "GUIDE" },
+    { label: "フォルダ内のすべての項目に対するメタデータの強制適用", href: "/ja/guides/metadata/cascades/force-apply", badge: "GUIDE" },
+    { label: "メタデータカスケードポリシーの削除", href: "/ja/guides/metadata/cascades/delete", badge: "GUIDE" }
+  ]}
+/>

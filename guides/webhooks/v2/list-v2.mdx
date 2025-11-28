@@ -11,6 +11,9 @@ required_guides: []
 alias_paths:
   - /webhooks/manage/list-all
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To fetch all webhooks for the authenticated user, use the [list all webhooks][1]
 endpoint.
 
@@ -86,3 +89,16 @@ This API call will only list the webhooks for the authenticated user, not
 for any other users in the enterprise.
 
 [1]: endpoint://get_webhooks
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" }
+  ]}
+/>

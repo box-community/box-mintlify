@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/4-update.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Boxでタスクを更新するには、タスクのIDを指定して[`PUT /tasks/:task_id`](/ja/reference/put-tasks-id) APIを呼び出す必要があります。このAPIを使用すると、タスクの`action`タイプの変更、`message`の追加、期日の変更を行うことができます。
 
 <CodeGroup>
@@ -129,3 +132,18 @@ Boxは現在、`action`値によって定義される、`review`と`complete`と
 ## 完了のルール
 
 ファイルに関連するタスクは、そのファイルの複数のコラボレータに割り当てることができます。また、タスクの`completion_rule`を使用すると、タスクを完了する必要があるのはタスクが割り当てられているすべてのユーザー (`all_assignees`) か1人の担当者のみ (`any_assignee`) かを定義できます。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update task", href: "/reference/put-tasks-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "タスクの作成", href: "/ja/guides/tasks/create", badge: "GUIDE" },
+    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "GUIDE" },
+    { label: "タスクの削除", href: "/ja/guides/tasks/delete", badge: "GUIDE" }
+  ]}
+/>

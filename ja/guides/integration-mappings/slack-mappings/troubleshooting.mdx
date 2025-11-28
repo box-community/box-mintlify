@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/integration-mappings/slack-mappings/troubleshooting.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 統合マッピングAPIはさまざまな種類の検証を実行するため、いくつかのエラーが発生する場合があります。このような一般的なエラーの説明と解決策については、以下を参照してください。
 
 ## サービスアカウントがフォルダの共同所有者ではない
@@ -106,3 +109,13 @@ Box for Slackがインストールされているものの、[Slackのコンテ�
 [1]: https://support.box.com/hc/en-us/articles/4415585987859-Box-as-the-Content-Layer-for-Slack
 
 [2]: https://support.box.com/hc/en-us/articles/360044195313-Installing-and-Using-the-Box-for-Slack-Integration
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete Slack integration mapping", href: "/reference/delete-integration-mappings-slack-id", badge: "DELETE" },
+    { label: "List Slack integration mappings", href: "/reference/get-integration-mappings-slack", badge: "GET" },
+    { label: "Create Slack integration mapping", href: "/reference/post-integration-mappings-slack", badge: "POST" },
+    { label: "Update Slack integration mapping", href: "/reference/put-integration-mappings-slack-id", badge: "PUT" }
+  ]}
+/>

@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/users/bulk-delete-external-users.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 APIを使用して、企業から最大100件の外部ユーザーを削除できます。このAPIエンドポイントにより、リストの外部ユーザーをコラボレーションに招待したすべての種類のコンテンツへのアクセスが削除されます。
 
 外部ユーザーを削除するには、[`POST /external_users/post_external_users_submit_delete_job`][`POST /external_users/post_external_users_submit_delete_job`]を呼び出します。
@@ -51,3 +54,17 @@ curl -X -L POST "https://api.box.com/2.0/external_users/external_users_submit_de
 外部ユーザーを削除しても、保留中のコラボレーションの招待は削除されません。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Submit job to delete external users", href: "/reference/v2025.0/post-external-users-submit-delete-job", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーの削除", href: "/ja/guides/users/delete-user", badge: "GUIDE" },
+    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "GUIDE" }
+  ]}
+/>

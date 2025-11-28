@@ -7,6 +7,9 @@ related_guides:
   - tasks/get
   - tasks/update
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To create a task, you will need to provide the [`POST /tasks`][post_tasks] API
 with the `action` for the task, as well as an `item` to represent the file to
 add the task to.
@@ -149,3 +152,18 @@ been assigned the task (`all_assignees`) or only one assignee (`any_assignee`)
 need to complete the task.
 
 [post_tasks]: /reference/post_tasks
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create task", href: "/reference/post-tasks", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Lists all tasks for a file", href: "/guides/tasks/for-file", badge: "GUIDE" },
+    { label: "Get information about a task", href: "/guides/tasks/get", badge: "GUIDE" },
+    { label: "Make changes to an existing task", href: "/guides/tasks/update", badge: "GUIDE" }
+  ]}
+/>

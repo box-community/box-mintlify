@@ -11,6 +11,16 @@ related_resources: []
 alias_paths:
   - /docs/file-types-events
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 {/* markdownlint-disable no-duplicate-header */}
 
 This page describes the preview experience for each file type. It also lists the
@@ -838,3 +848,10 @@ The CSV viewer triggers the following events.
 
 [reactv]: https://github.com/bvaughn/react-virtualized
 [shaka]: https://github.com/google/shaka-player
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

@@ -32,6 +32,17 @@ previous_page_id: ''
 source_url: https://github.com/box/developer.box.com/blob/main/content/guides/cli/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+  ]}
+/>
 Box Command Line Interface (CLI) は、ターミナルウィンドウまたはコマンドプロンプトからBox APIにリクエストを行うためのツールです。
 
 ## クイックスタート
@@ -84,3 +95,13 @@ Box CLIの使用自体が役に立ちますが、PowerShellスクリプトと組
 [ccg-page]: https://github.com/box/boxcli/tree/main/docs/configure.md#box-configureenvironmentsadd-path
 
 [bulk]: https://github.com/box/boxcli/blob/main/docs/Bulk%20actions/README.md
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+  ]}
+/>

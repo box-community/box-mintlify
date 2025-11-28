@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/create.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box上でフォルダを作成するには、新しいフォルダの`name`と、新しいフォルダの作成先になる`parent`フォルダの`id`をAPIに渡す必要があります。
 
 <CodeGroup>
@@ -149,3 +152,17 @@ client.folders.create('0', 'New Folder')
 また、`.`および`..`は予約済みの名前であるため、使用できません。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create folder", href: "/reference/post-folders", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダの更新", href: "/ja/guides/folders/single/update", badge: "GUIDE" },
+    { label: "フォルダのコピー", href: "/ja/guides/folders/single/copy", badge: "GUIDE" }
+  ]}
+/>

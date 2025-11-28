@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/custom-domains.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 サードパーティ製ウェブアプリとBox Toolsを統合するには、アプリケーションのURLを明示的に追加する必要があります。Windowsでは、そのためにレジストリキーを追加します。macOSでは、ターミナルコマンドをいくつか実行してドメインの追加と削除を実行する必要があります。
 
 <Info>
@@ -41,7 +51,7 @@ fullyTranslated: true
 
 <Frame border>
 
-![Box Tools](./images/box-tools-1.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-1.png)
 
 </Frame>
 
@@ -60,7 +70,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 <Frame border>
 
-![Box Tools](./images/box-tools-3.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-3.png)
 
 </Frame>
 
@@ -75,7 +85,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 <Frame border>
 
-![Box Tools](./images/box-tools-4.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-4.png)
 
 </Frame>
 
@@ -94,7 +104,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 <Frame border>
 
-![Box Tools](./images/box-tools-6.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-6.png)
 
 </Frame>
 
@@ -109,7 +119,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 <Frame border>
 
-![Box Tools](./images/box-tools-7.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-7.png)
 
 </Frame>
 
@@ -119,7 +129,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 <Frame border>
 
-![Box Tools](./images/box-tools-8.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-8.png)
 
 </Frame>
 
@@ -127,7 +137,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 <Frame border>
 
-![Box Tools](./images/box-tools-9.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-9.png)
 
 </Frame>
 
@@ -137,7 +147,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 <Frame border>
 
-![Box Tools](./images/box-tools-10.png)
+![Box Tools](/images/guides/embed/ui-elements/box-tools-10.png)
 
 </Frame>
 
@@ -196,3 +206,10 @@ chmod u+rx OpenWith.sh
 ## アンインストール
 
 Box Toolsをアンインストールすると、すべてのドメインが削除されます。
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

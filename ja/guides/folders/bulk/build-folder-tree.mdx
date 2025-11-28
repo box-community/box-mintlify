@@ -237,6 +237,8 @@ import com.box.sdk.BoxItem;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 public class BoxFolderTreeBuilder {
     private BoxDeveloperEditionAPIConnection _boxClient;
     private String _rootFolderId;
@@ -616,3 +618,17 @@ folderTreeBuilder.buildFolderTreeWithFlatLists()
 
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get folder information", href: "/reference/get-folders-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "GUIDE" },
+    { label: "フォルダの削除", href: "/ja/guides/folders/single/delete", badge: "GUIDE" }
+  ]}
+/>

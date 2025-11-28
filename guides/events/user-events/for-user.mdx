@@ -13,6 +13,9 @@ alias_paths:
   - /guides/events/for-user
   - /guides/events/for-user/
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To get a user's events, authenticate as any user and make a call to the
 [`GET /events`](/reference/get-events) API.
 
@@ -170,3 +173,19 @@ To reduce the noise of the event stream and optimize event consumption, the even
 | `ITEM_PREVIEW` | When an item is previewed, only the content owner gets the notification. Collaborators are not notified. |
 
 [longpoll]: /guides/events/user-events/polling
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" },
+    { label: "Long-Poll Events", href: "/guides/events/user-events/polling", badge: "GUIDE" },
+    { label: "Stream Position Pagination", href: "/guides/events/parameters/pagination", badge: "GUIDE" }
+  ]}
+/>

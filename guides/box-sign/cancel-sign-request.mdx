@@ -6,6 +6,9 @@ related_endpoints:
 related_guides:
   - box-sign/create-sign-request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 A Box Sign request, that has not yet been signed or declined, can be cancelled
 using the [cancel Box Sign request endpoint][cancel]. Any outstanding signers
 will no longer be able to sign the document.
@@ -68,3 +71,16 @@ console.log(`Sign request id ${sr.id} cancelled`);
 </CodeGroup>
 
 [cancel]: /reference/post-sign-requests-id-cancel
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Cancel Box Sign request", href: "/reference/post-sign-requests-id-cancel", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Box Sign Request", href: "/guides/box-sign/create-sign-request", badge: "GUIDE" }
+  ]}
+/>

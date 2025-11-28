@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/ai-studio/ai-studio-agents/get-agent-id.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 `GET /2.0/ai_agents/{id}`エンドポイントを使用すると、`agent_id`パラメータを使用して特定のAIエージェントのリストを取得できます。
 
 ## リクエストの送信
@@ -67,3 +70,15 @@ client.getAiStudio().getAiAgentById(createdAgent.getId(), new GetAiAgentByIdQuer
 | -------------- | ---------------- | ------ |
 | **`agent_id`** | 取得するエージェントID。    | `1234` |
 | `fields`       | レスポンスで返されるフィールド。 | `ask`  |
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "開発者トークン", href: "/ja/guides/authentication/tokens/developer-tokens", badge: "GUIDE" },
+    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" }
+  ]}
+/>

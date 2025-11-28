@@ -21,8 +21,26 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/3-update-message.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 タスク割り当てのメッセージを更新するには、[`PUT /tasks/:task_id/assignments`](/ja/reference/put-task-assignments-id) APIを呼び出し、タスク割り当ての新しい`message`を含めます。
 
 {/* <Samples id="put_task_assignments_id" variant="message">
 
 </Samples> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update task assignment", href: "/reference/put-task-assignments-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "GUIDE" },
+    { label: "タスク割り当ての解除", href: "/ja/guides/tasks/assignments/unassign", badge: "GUIDE" },
+    { label: "タスク割り当て状態の変更", href: "/ja/guides/tasks/assignments/change-state", badge: "GUIDE" }
+  ]}
+/>

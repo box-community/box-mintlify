@@ -7,6 +7,9 @@ related_guides:
 - box-ai/ai-tutorials/generate-text
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <Warning>
 
 Box AI Studio is available only for Enterprise Advanced accounts.
@@ -24,7 +27,7 @@ Currently, you can configure Box AI agent to answer user questions or generate
 text you can use in your documents.
 
 <Frame>
-![ai agent capabilities](./images/ai-agent-capabilities.png)
+![ai agent capabilities](/images/guides/ai-studio/ai-agent-capabilities.png)
 </Frame>
 
 ## Supported languages
@@ -55,3 +58,12 @@ better results for this language.
 {/* alex enable */} 
 
 [ai-studio]: https://support.box.com/hc/en-us/articles/37228079461267-Enabling-Box-AI-Studio-and-Managing-Agents
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create agents", href: "/guides/ai-studio/ai-studio-agents/create-agents", badge: "GUIDE" },
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" }
+  ]}
+/>

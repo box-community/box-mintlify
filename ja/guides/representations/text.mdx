@@ -24,6 +24,18 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/representations/text.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "ファイルのすべてのレプリゼンテーションのリストの取得", href: "/ja/guides/representations/list-all-representations", badge: "GUIDE" },
+    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "GUIDE" },
+    { label: "ファイルレプリゼンテーションのダウンロード", href: "/ja/guides/representations/download-a-representation", badge: "GUIDE" }
+  ]}
+/>
 テキストレプリゼンテーションでは、ドキュメントからプレーンテキストを抽出できます。
 
 テキストは、プレーンテキストを含むさまざまな種類のドキュメントファイルやBoxでサポートされているコードファイルに対して生成されます。テキストレイヤがないため、画像ファイルは含まれません。
@@ -37,3 +49,16 @@ fullyTranslated: true
 * [すべてのレプリゼンテーションのリストを取得する](/ja/guides/representations/list-all-representations)
 * 値`[extracted_text]`を指定した`x-rep-hints`ヘッダーを渡して、[テキストレプリゼンテーションをリクエスト](/ja/guides/representations/request-a-representation)する
 * `url_template`を呼び出して[テキストをダウンロード](/ja/guides/representations/download-a-representation)する。その際、`{+asset_path}`を空の文字列に置き換えます。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

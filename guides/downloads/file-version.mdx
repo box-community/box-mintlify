@@ -10,6 +10,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To download a specific file version, pass the [`GET /files/:id/content`][api]
 the ID of the file to get the content for, as well as its version ID.
 
@@ -52,3 +55,17 @@ download request.
 
 [api]: /reference/get-files-id-content
 [downloadurl]: /guides/downloads/get-url
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Download File", href: "/guides/downloads/file", badge: "GUIDE" },
+    { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" }
+  ]}
+/>

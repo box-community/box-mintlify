@@ -8,6 +8,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## Rotate App Tokens
 
 See our guide on [rotating App Tokens][rotate]. 
@@ -26,3 +29,12 @@ the Box Preview UI Element.
 
 [rotate]: /guides/authentication/app-token/rollover
 [downscoped]: /guides/authentication/tokens/downscope
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Setup", href: "/guides/embed/box-view/setup", badge: "GUIDE" },
+    { label: "Upload Files", href: "/guides/embed/box-view/upload-file", badge: "GUIDE" },
+    { label: "Create File Preview", href: "/guides/embed/box-view/create-preview", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/representations/download-a-representation.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "GUIDE" }
+  ]}
+/>
 レプリゼンテーションをダウンロードするには、[レプリゼンテーションを選択][select_representation]した際に受け取った`url_template`を使用します。`{+asset_path}`は、レプリゼンテーションの種類に応じて置き換えます。
 
 ## ページ割りされたレプリゼンテーション
@@ -66,3 +76,17 @@ curl https://dl.boxcloud.com/api/2.0/internal_files/123/versions/345/representat
 定義しなかった場合、ファイル名は、Box内の元のファイル名から派生し、拡張子はレプリゼンテーションのファイルタイプに置き換えられます。
 
 [select_representation]: /ja/guides/representations/request-a-representation
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "サムネイルレプリゼンテーションの取得", href: "/ja/guides/representations/thumbnail-representation", badge: "GUIDE" },
+    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

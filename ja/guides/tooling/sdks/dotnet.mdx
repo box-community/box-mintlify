@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tooling/sdks/dotnet.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 .NETプロジェクトでは、Box .NET SDKを使用してBox APIを呼び出すことができます。
 
 バージョン`5.8.0`までのSDKは、.NET Framework `4.5`以上および.NET Core `1.0`以上の両方で利用できます。バージョン`10.0.0`以降のSDKは、.NET Framework `4.6.2`以上および.NET `8.0`以上の両方で利用できます。SDKのインストール方法は、使用しているフレームワークによって異なります。
@@ -49,3 +52,11 @@ PM> Install-Package Box.V2.Core
 ```
 
 [nuget]: https://www.nuget.org/
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

@@ -21,6 +21,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/5-list.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 特定のタスクのすべての割り当てのリストを取得するには、タスク`id`を指定して[`GET /tasks/:task_id/assignments`](/ja/reference/get-task-assignments-id)を呼び出します。
 
 <CodeGroup>
@@ -95,3 +98,12 @@ client.tasks.getAssignment('12345')
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "GUIDE" },
+    { label: "タスク割り当ての解除", href: "/ja/guides/tasks/assignments/unassign", badge: "GUIDE" },
+    { label: "タスク割り当てに関する情報の取得", href: "/ja/guides/tasks/assignments/get", badge: "GUIDE" }
+  ]}
+/>

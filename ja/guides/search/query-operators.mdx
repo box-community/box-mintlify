@@ -18,6 +18,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/search/2-query-operators.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [`GET /search`](/ja/reference/get-search) APIでは、APIによって返された結果を絞り込むのに役立つさまざまなクエリ演算子がサポートされています。
 
 これらの演算はすべて、検索の作成時に`query`パラメータに渡されます。
@@ -57,3 +60,10 @@ fullyTranslated: true
 <Card href="https://support.box.com/hc/en-us/articles/360043696314-Search-for-Files-Folders-and-Content" title="Boxコミュニティの記事で、Boxでの検索に関する最新情報を確認する"/>
 
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

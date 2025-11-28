@@ -20,6 +20,9 @@ previous_page_id: ''
 source_url: https://github.com/box/developer.box.com/blob/main/content/guides/files/get.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ファイルのコンテンツではなく、ファイル自体の情報を取得するには、ファイルの`id`を指定して[`GET /files/:id`](/ja/reference/get-files-id) APIを呼び出します。
 
 <CodeGroup>
@@ -144,3 +147,16 @@ client.files.get('11111')
 ファイルのフィールドをさらに取得するには、必ず`fields`クエリパラメータを渡してください。
 
 <Card href="/ja/guides/api-calls/request-extra-fields" title="追加フィールドのリクエストについて確認する"/>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルのダウンロード", href: "/ja/guides/downloads/file", badge: "GUIDE" }
+  ]}
+/>

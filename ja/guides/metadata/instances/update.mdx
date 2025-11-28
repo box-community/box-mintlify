@@ -26,6 +26,18 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/4-update.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "GUIDE" },
+    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "GUIDE" },
+    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "GUIDE" }
+  ]}
+/>
 ファイルまたはフォルダに適用されたメタデータを更新するには、項目の`id`、テンプレートの`templateKey`と`scope`に加え、テンプレートインスタンスのデータを操作するための一連のJSON操作を使用します。
 
 ## ファイルのメタデータの更新 
@@ -794,3 +806,17 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
 [jsonpatch]: https://tools.ietf.org/html/rfc6902
 
 [pointer]: https://tools.ietf.org/html/rfc6901
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
+    { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

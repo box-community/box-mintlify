@@ -11,6 +11,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 This guide describes how to restore content that you archived by mistake.
 
 ## Restore file or folder from archive
@@ -29,3 +32,23 @@ To restore a file/folder to user's root folder, use `0` as the `parent.id` value
 [Update folder]: /reference/put-folders-id
 [Update parent id of folder]: /reference/put-folders-id/#param-parent-id
 [Update parent user id of folder]: /reference/put-folders-id/#param-parent-user_id
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Add content to Box Archive", href: "/guides/archives/add-content", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Archive", href: "/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+  ]}
+/>

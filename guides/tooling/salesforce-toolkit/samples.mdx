@@ -8,6 +8,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## Generic Method
 
 The following code will create metadata on a Box folder in Salesforce using the
@@ -296,3 +299,10 @@ for(Box.Hub hub : hubsList.entries){
 Box.Hub hub = tk.getHubById('106600628');
 //processing single Hub by using hub.title, hub.id, etc.
 ```
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Install Salesforce SDK", href: "/guides/tooling/sdks/salesforce", badge: "GUIDE" }
+  ]}
+/>

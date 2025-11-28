@@ -8,6 +8,9 @@ related_guides:
 related_resources:
   - metadata_cascade_policy
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Metadata cascade policies can be listed for a folder by calling the
 [`GET /metadata_cascade_policies`][get_policies] API endpoint with a `folder_id`.
 
@@ -97,3 +100,17 @@ be available.
 
 [get_policies]: /reference/get_metadata_cascade_policies
 [pagination]: /guides/api-calls/pagination/marker-based
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List metadata cascade policies", href: "/reference/get-metadata-cascade-policies", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get a metadata cascade policy", href: "/guides/metadata/cascades/get", badge: "GUIDE" },
+    { label: "Create a metadata cascade policy", href: "/guides/metadata/cascades/create", badge: "GUIDE" }
+  ]}
+/>

@@ -12,6 +12,8 @@ related_guides:
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/metadata/quick-start/list-all",
                           "guides/metadata/quick-start/create-template",
@@ -135,3 +137,18 @@ The API will return the updated metadata instance.
 ```
 
 <Next>I've updated metadata on a file</Next>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
+    { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Metadata templates", href: "/guides/metadata/templates/index", badge: "GUIDE" },
+    { label: "Update metadata on an item", href: "/guides/metadata/instances/update", badge: "GUIDE" }
+  ]}
+/>

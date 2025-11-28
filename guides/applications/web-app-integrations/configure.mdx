@@ -12,6 +12,9 @@ alias_paths: []
 notes: |-
   Needs a massive cleanup
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 This guide explains how to set up a Web App Integration with a Platform App.
 
 <Warning>
@@ -33,7 +36,7 @@ Then, navigate to the **Integrations** tab and click
 **Create a Web App Integration**.
 
 <Frame center shadow border>
-  ![Integration Tab](./images/create_integration.png)
+  ![Integration Tab](/images/guides/applications/web-app-integrations/create_integration.png)
 </Frame>
 
 ## Configure Integration
@@ -141,10 +144,19 @@ Center. Follow the [Integrations][integrations] guide for more details.
 
 [ca]: /guides/applications/app-types/platform-apps
 [pu]: /guides/applications/web-app-integrations/types
-[uid]: https://developer.box.com/platform/appendix/locating-values/#user-ids
-[fid]: https://developer.box.com/platform/appendix/locating-values/#content-ids
+[uid]: /platform/appendix/locating-values/#user-ids
+[fid]: /platform/appendix/locating-values/#content-ids
 [code]: /guides/authentication/oauth2/without-sdk/#3-user-grants-application-access
 [custom-oauth2]: /guides/authentication/oauth2/oauth2-setup
 [devconsole]: https://app.box.com/developers/console
 [devaccount]: https://account.box.com/signup/n/developer
 [integrations]: /guides/applications/integrations
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+    { label: "Tokens", href: "/guides/authentication/tokens/index", badge: "GUIDE" },
+    { label: "Integrations", href: "/guides/applications/integrations/index", badge: "GUIDE" }
+  ]}
+/>

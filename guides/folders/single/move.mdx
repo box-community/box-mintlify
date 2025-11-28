@@ -10,6 +10,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To move a folder, update the ID of its parent folder.
 
 {/* <Samples id='put_folders_id' variant='move' /> */}
@@ -39,3 +42,18 @@ In such a case, specify the ID of the user that folder
 belongs to setting the `owned_by.id` parameter in the request:
 
 {/* <Samples id='put_folders_id' variant='move_private' /> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" },
+    { label: "Update Folder", href: "/guides/folders/single/update", badge: "GUIDE" },
+    { label: "Delete Folder", href: "/guides/folders/single/delete", badge: "GUIDE" }
+  ]}
+/>

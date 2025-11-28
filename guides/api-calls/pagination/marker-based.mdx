@@ -19,6 +19,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 APIs that use marker-based paging use the `marker` and `limit` query parameters
 to paginate through items in a collection.
 
@@ -92,3 +95,27 @@ Some endpoints that support marker-based pagination are:
 - [List all webhooks for a user](/reference/get-webhooks)
 - [List all users in an enterprise](/reference/get-users)
 - [List all items in the trash](/reference/get-folders-trash-items)
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" },
+    { label: "List file collaborations", href: "/reference/get-files-id-collaborations", badge: "GET" },
+    { label: "List folder collaborations", href: "/reference/get-folders-id-collaborations", badge: "GET" },
+    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" },
+    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" },
+    { label: "List recently accessed items", href: "/reference/get-recent-items", badge: "GET" },
+    { label: "List all legal hold policies", href: "/reference/get-legal-hold-policies", badge: "GET" },
+    { label: "List enterprise device pins", href: "/reference/get-enterprises-id-device-pinners", badge: "GET" },
+    { label: "List enterprise users", href: "/reference/get-users", badge: "GET" },
+    { label: "List trashed items", href: "/reference/get-folders-trash-items", badge: "GET" },
+    { label: "List enterprise users", href: "/reference/get-users", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Sorting responses", href: "/guides/api-calls/sorting", badge: "GUIDE" },
+    { label: "Offset-based Pagination", href: "/guides/api-calls/pagination/offset-based", badge: "GUIDE" }
+  ]}
+/>

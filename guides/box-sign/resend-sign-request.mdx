@@ -8,6 +8,9 @@ related_guides:
   - box-sign/cancel-sign-request
   - box-sign/sign-templates
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The [resend a Box sign request endpoint][resend] can be used to resend request
 emails to any remaining signers.
 
@@ -55,3 +58,18 @@ console.log(`Sign request id ${sr.id} resent`);
 
 [resend]: /reference/post-sign-requests-id-resend
 [status]: /guides/box-sign/create-sign-request/#request-status
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Resend Box Sign request", href: "/reference/post-sign-requests-id-resend", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Box Sign Request", href: "/guides/box-sign/create-sign-request", badge: "GUIDE" },
+    { label: "Cancel Box Sign Request", href: "/guides/box-sign/cancel-sign-request", badge: "GUIDE" },
+    { label: "Create Sign Request with Sign Template", href: "/guides/box-sign/sign-templates", badge: "GUIDE" }
+  ]}
+/>

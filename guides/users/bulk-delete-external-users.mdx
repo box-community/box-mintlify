@@ -11,6 +11,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 You can remove up to 100 external users from your enterprise using API. 
 This API endpoint removes access to all types of content you invited the
 listed external users to collaborate on.
@@ -37,3 +40,17 @@ This job runs in the background, and sends a completion report listing deletion 
 <Note>
 When you delete external users, their pending collaboration invites are not deleted. 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Submit job to delete external users", href: "/reference/v2025.0/post-external-users-submit-delete-job", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Delete User", href: "/guides/users/delete-user", badge: "GUIDE" },
+    { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" }
+  ]}
+/>

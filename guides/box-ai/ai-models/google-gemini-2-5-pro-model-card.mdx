@@ -8,6 +8,9 @@ related_guides:
   - box-ai/ai-tutorials/extract-metadata-structured
   - box-ai/ai-agents/get-agent-default-config
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 **Google Gemini 2.5 Pro** is a multimodal model capable of solving complex problems. It can comprehend vast datasets and challenging problems from different information sources, including text, audio, images, video, and even entire code repositories.
 
 ## Model details
@@ -32,3 +35,14 @@ For additional information, see [official Google Gemini 2.5 Pro documentation][v
 
 [vertex-ai-gemini-2-5-pro]: https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro
 [overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+    { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+    { label: "Get default AI agent configuration", href: "/guides/box-ai/ai-agents/get-agent-default-config", badge: "GUIDE" }
+  ]}
+/>

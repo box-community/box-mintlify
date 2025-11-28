@@ -15,6 +15,17 @@ related_resources: []
 alias_paths:
   - /guides/applications/app-types/custom-apps/app-token-setup
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" }
+  ]}
+/>
 A Limited Access App can be set up to use server-side [App Tokens][app-token]
 for authentication.
 
@@ -39,7 +50,7 @@ Select **Limited Access App** from the list of application types.
 A modal will appear to prompt the next step.
 
 <Frame border>
-  ![Application selection screen](../images/select-app-type.png)
+  ![Application selection screen](/images/guides/authentication/select-app-type.png)
 </Frame>
 
 ### 3. Select an app name
@@ -47,7 +58,7 @@ A modal will appear to prompt the next step.
 Finally, select a unique name for your application and click **Create App**.
 
 <Frame border width="600" center>
-  ![App name form](../images/limited-access-naming.png)
+  ![App name form](/images/guides/authentication/limited-access-naming.png)
 </Frame>
 
 ## App Authorization
@@ -60,7 +71,7 @@ Navigate to the **General Settings** tab for your application within the
 section.
 
 <Frame border width="400" center>
-  ![Add and Manage keys](../images/app-authorization.png)
+  ![Add and Manage keys](/images/guides/authentication/app-authorization.png)
 </Frame>
 
 Click **Submit and Review** to send an email to your Box enterprise Admin for
@@ -82,7 +93,7 @@ Scroll down to the **Primary Access Token** section and click the
 **Generate Key** button.
 
 <Frame border width="600" center>
-  ![Create an app token](../images/app-generate-key.png)
+  ![Create an app token](/images/guides/authentication/app-generate-key.png)
 </Frame>
 
 App tokens can be configured to automatically expire or be valid indefinitely.
@@ -108,7 +119,7 @@ section at the bottom of the **Configuration** tab in the
 [Developer Console][devconsole].
 
 <Frame border>
-  ![App name form](../images/app-cors.png)
+  ![App name form](/images/guides/authentication/app-cors.png)
 </Frame>
 
 [devconsole]: https://app.box.com/developers/console
@@ -119,3 +130,12 @@ section at the bottom of the **Configuration** tab in the
 [app-token]: /guides/authentication/app-token
 [api-calls]: /guides/api-calls
 [auth]: /guides/authorization
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Platform App Approval", href: "/guides/authorization/platform-app-approval", badge: "GUIDE" }
+  ]}
+/>

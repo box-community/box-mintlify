@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tooling/sdks/sdk-versioning.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 BoxコアSDKとBoxの次世代SDKは、別々のライブラリとして作成されましたが、Boxでは、業界のベストプラクティスに従って、**プログラミング言語ごとにBoxの次世代SDKとBoxコアSDKを1つのパッケージに統合します**。これにより、移行作業がさらに容易になり、手動で管理されていたBoxコアSDKの古いバージョンを引き続き使用している既存のアプリケーションに新機能をシームレスに追加できるようになります。
 
 この移行プロセスを容易にするために、積極的に管理されているBoxコアSDKのメジャーバージョンが2つあります。
@@ -203,3 +206,11 @@ Boxの次世代SDKからBoxコアSDK `v10`以上に移行するには、以下�
 [java-migration-gen]: https://github.com/box/box-java-sdk/blob/combined-sdk/migration-guides/from-com-box-sdk-to-com-box-sdkgen.md
 
 [node-migration-gen]: https://github.com/box/box-node-sdk/blob/combined-sdk/migration-guides/from-box-node-sdk-to-sdk-gen.md
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

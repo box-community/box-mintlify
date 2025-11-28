@@ -12,6 +12,9 @@ related_resources: []
 alias_paths:
   - /guides/collaboration-whitelists/list-whitelists
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Listing the domains that are allowed for collaboration will return all domains
 that permit collaborations to be created with the current enterprise.
 
@@ -55,3 +58,17 @@ client.collaborationAllowlist.getAllAllowlistedDomains(callback);
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List allowed collaboration domains", href: "/reference/get-collaboration-whitelist-entries", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Collaborations", href: "/guides/collaborations/index", badge: "GUIDE" },
+    { label: "Remove a previously allowed domain for collaboration", href: "/guides/collaborations/allowed-domains/delete", badge: "GUIDE" }
+  ]}
+/>

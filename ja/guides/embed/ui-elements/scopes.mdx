@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/scopes.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 Box UI Elementsを使用する際に、開発者の多くが、Boxが定義した[アクセスレベル][acl]とは異なる独自の権限モデルを実装できることに関心を示します。
 
 [ダウンスコープ][downscoping] (トークン交換とも呼ばれます) とは、開発者がアクセストークンに対する権限をより詳細に制限できるBoxのメカニズムです。このメカニズムを使用することで、開発者はBox Platform上に独自の権限モデルを構築できます。
@@ -63,3 +73,10 @@ Box UI Elementは、これらのスコープによって適用される権限を
 {/* i18n-disable localize-links */}
 
 [downscoping]: /ja/guides/authentication/tokens/downscope
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

@@ -24,6 +24,8 @@ fullyTranslated: true
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "ja/guides/metadata/quick-start/list-all",
                           "ja/guides/metadata/quick-start/create-template",
@@ -105,3 +107,17 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
 </Next>
 
 [query]: /ja/guides/metadata/queries
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Query files/folders by metadata", href: "/reference/post-metadata-queries-execute-read", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "クエリの作成", href: "/ja/guides/metadata/queries/create", badge: "GUIDE" },
+    { label: "クエリ構文", href: "/ja/guides/metadata/queries/syntax", badge: "GUIDE" }
+  ]}
+/>

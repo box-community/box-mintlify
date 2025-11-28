@@ -21,6 +21,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/docgen/generate-document.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 `POST /2.0/docgen_batches`エンドポイントを使用すると、Box Doc Genテンプレートを入力データとして使用してドキュメントを生成できます。
 
 ## 前提条件
@@ -178,3 +181,11 @@ client.getDocgen().createDocgenBatchV2025R0(new DocGenBatchCreateRequestV2025R0(
 生成されたドキュメントは、指定したフォルダに保存されます。
 
 [docgen-prerequisites]: /ja/guides/docgen/docgen-getting-started
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "ファイルをBox Doc Genテンプレートとして設定", href: "/ja/guides/docgen/mark-template", badge: "GUIDE" }
+  ]}
+/>

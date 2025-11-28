@@ -13,6 +13,9 @@ alias_paths:
   - /guides/events/for-enterprise
   - /guides/events/for-enterprise/
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To get a enterprise's events, make
 a call to the [`GET /events`](/reference/get-events) API with the `stream_type` set to
 `admin_logs` or `admin_logs_streaming`.
@@ -248,3 +251,19 @@ exhaustive, so it is possible events appear that are not listed.
 
 [shield-events]: /guides/events/event-triggers/shield-alert-events
 [reports]:https://support.box.com/hc/en-us/articles/360043696534-Running-Reports
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get User Events", href: "/guides/events/user-events/for-user", badge: "GUIDE" },
+    { label: "Long-Poll Events", href: "/guides/events/user-events/polling", badge: "GUIDE" },
+    { label: "Stream Position Pagination", href: "/guides/events/parameters/pagination", badge: "GUIDE" }
+  ]}
+/>

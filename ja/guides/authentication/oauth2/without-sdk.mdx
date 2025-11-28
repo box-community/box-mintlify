@@ -26,6 +26,17 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/oauth2/without-sdk.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 ## 概要
 
 Box公式SDKを利用すると、一般的な認証のハードルはなくなりますが、Box APIは、Box公式SDKがなくても使用できます。このガイドでは、OAuth 2.0のフローを手動で完成させるための手順を説明します。
@@ -321,3 +332,18 @@ let accessToken = await axios
 [at]: /ja/reference/post-oauth2-token
 
 [apic]: /ja/guides/api-calls
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>

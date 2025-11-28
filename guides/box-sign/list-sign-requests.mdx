@@ -6,6 +6,9 @@ related_endpoints:
 related_guides:
   - box-sign/create-sign-request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## All
 
 The [get sign requests endpoint][get_all] can be used to view a list of all Box 
@@ -128,3 +131,16 @@ console.log(
 [get_all]: /reference/get-sign-requests
 [get_by_id]: /reference/get-sign-requests-id
 [create]: /reference/post-sign-requests
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List Box Sign requests", href: "/reference/get-sign-requests", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Box Sign Request", href: "/guides/box-sign/create-sign-request", badge: "GUIDE" }
+  ]}
+/>

@@ -13,6 +13,16 @@ required_guides:
   - authentication/oauth2/oauth2-setup
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 This script generates a CSV file with a list of users who have been inactive for a number of days. It performs the following steps:
 
 1. Looks for the users who have the role `user`.
@@ -135,3 +145,13 @@ You have access to these log files:
 [console]: https://app.box.com/developers/console
 [auth]: /guides/authentication/oauth2/oauth2-setup
 [examples]: https://github.com/box/boxcli/tree/main/examples/Inactive%20Users%20Report
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Provision users and folders", href: "/guides/cli/scripts/provision-users-folders", badge: "GUIDE" },
+    { label: "Deprovision users and archive folders", href: "/guides/cli/scripts/deprovision-users", badge: "GUIDE" },
+    { label: "Update user zones", href: "/guides/cli/scripts/user-zones-mass-update", badge: "GUIDE" }
+  ]}
+/>

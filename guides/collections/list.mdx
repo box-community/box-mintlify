@@ -9,6 +9,9 @@ related_resources:
   - collection
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To list all collections for a user, call the [`GET
 /collections`](/reference/get-collections) API.
 
@@ -99,3 +102,10 @@ then find the collection with a `collection_type` of `favorites`.
   "total_count": 1
 }
 ```
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all collections", href: "/reference/get-collections", badge: "GET" }
+  ]}
+/>

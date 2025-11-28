@@ -34,6 +34,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 オフセットベースのページ割りを使用するAPIは、`offset`および`limit`クエリパラメータを使用してコレクション内の項目のページ割りを行います。
 
 オフセットベースのページネーションは、項目のリストがあらかじめ決められた固定長の場合によく使用されます。
@@ -96,3 +98,28 @@ curl https://api.box.com/2.0/folders/0/items?offset=100&limit=100 \
 * [フォルダ内の項目を取得](endpoint://get_folders_id_items)
 * [ファイルのコメントのリストを取得](endpoint://get-files-id-comments)
 * [ごみ箱にあるすべての項目のリストを取得](endpoint://get-folders-trash-items)
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" },
+    { label: "List all file versions", href: "/reference/get-files-id-versions", badge: "GET" },
+    { label: "List file comments", href: "/reference/get-files-id-comments", badge: "GET" },
+    { label: "List trashed items", href: "/reference/get-folders-trash-items", badge: "GET" },
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" },
+    { label: "List enterprise users", href: "/reference/get-users", badge: "GET" },
+    { label: "List members of group", href: "/reference/get-groups-id-memberships", badge: "GET" },
+    { label: "List user's groups", href: "/reference/get-users-id-memberships", badge: "GET" },
+    { label: "List groups for enterprise", href: "/reference/get-groups", badge: "GET" },
+    { label: "List group collaborations", href: "/reference/get-groups-id-collaborations", badge: "GET" },
+    { label: "List pending collaborations", href: "/reference/get-collaborations", badge: "GET" },
+    { label: "List collection items", href: "/reference/get-collections-id-items", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "レスポンスの並べ替え", href: "/ja/guides/api-calls/sorting", badge: "GUIDE" },
+    { label: "マーカーベースのページネーション", href: "/ja/guides/api-calls/pagination/marker-based", badge: "GUIDE" }
+  ]}
+/>

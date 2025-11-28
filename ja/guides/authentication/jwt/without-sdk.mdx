@@ -647,6 +647,16 @@ String accessToken = token.access_token;
 import json
 import requests
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 params = {
     'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
     'assertion': assertion,
@@ -736,3 +746,18 @@ $access_token = json_decode($data)->access_token;
 [ccg]: /ja/guides/authentication/jwt/without-sdk/#client-credentials-grant
 
 [auth]: /ja/guides/authorization
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>

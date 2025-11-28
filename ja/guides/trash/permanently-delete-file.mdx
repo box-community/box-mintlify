@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/trash/permanently-delete-file.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ごみ箱に移動されたファイルは、デフォルトで30日間ごみ箱に保持された後で削除されます。BusinessアカウントまたはEnterpriseアカウントの管理者は、削除までの期間を変更できます。削除までの期間が経過する前にごみ箱からファイルを完全に削除する場合は、ごみ箱に移動されたファイルの`ID`を使用して`DELETE`リクエストを`/files/:file_id/trash`に送信します。
 
 <CodeGroup>
@@ -76,3 +79,23 @@ client.files.deletePermanently('11111')
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" },
+    { label: "Permanently remove file", href: "/reference/delete-files-id-trash", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルの復元", href: "/ja/guides/trash/restore-file", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "ファイル", href: "/ja/guides/files/index", badge: "GUIDE" }
+  ]}
+/>

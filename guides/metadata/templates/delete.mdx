@@ -10,6 +10,16 @@ related_resources:
 required_guides:
   - metadata/scopes
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
 Deleting a metadata template can be achieved by calling the [`DELETE
 /metadata_templates/enterprise/:templateKey/schema`][endpoint] API. 
 
@@ -73,3 +83,17 @@ Only templates created within the `enterprise` scope can be deleted.
 </Warning>
 
 [endpoint]: /reference/delete_metadata_templates_id_id_schema
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove metadata template", href: "/reference/delete-metadata-templates-id-id-schema", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" }
+  ]}
+/>

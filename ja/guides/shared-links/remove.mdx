@@ -26,6 +26,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/shared-links/remove.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [ファイルを更新](endpoint://put_files_id)、[フォルダを更新](endpoint://put_folders_id)、または[ウェブリンクを更新](endpoint://put_web_links_id)エンドポイントを呼び出し、`shared_link`値を`null`に設定することで、リソースから共有リンクを削除できます。
 
 <Warning>
@@ -57,3 +60,19 @@ fullyTranslated: true
 {/* <Samples id="put_web_links_id" variant="remove_shared_link">
 
 </Samples> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "共有リンクの作成または更新", href: "/ja/guides/shared-links/create-or-update", badge: "GUIDE" },
+    { label: "共有リンクの項目の検索", href: "/ja/guides/shared-links/find-for-item", badge: "GUIDE" }
+  ]}
+/>

@@ -4,6 +4,16 @@ rank: 3
 required_guides:
   - webhooks/v1/create-v1
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v1/create-v1", badge: "GUIDE" }
+  ]}
+/>
 V1 webhooks cannot be fully deleted. Instead, the webhook can be set back to
 Developer Mode by [support][support]. Developers can also remove the
 application from their account by revisiting the enablement URL and

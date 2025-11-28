@@ -7,6 +7,9 @@ related_guides:
   - tasks/assignments/unassign
   - tasks/assignments/get
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To list all of the assignments for a specific tasks, call the
 [`GET /tasks/:task_id/assignments`](/reference/get-task-assignments-id) with the task
 `id`.
@@ -83,3 +86,12 @@ client.tasks.getAssignment('12345')
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Assign a task to a user", href: "/guides/tasks/assignments/assign", badge: "GUIDE" },
+    { label: "Unassign a task", href: "/guides/tasks/assignments/unassign", badge: "GUIDE" },
+    { label: "Get task assignment information", href: "/guides/tasks/assignments/get", badge: "GUIDE" }
+  ]}
+/>

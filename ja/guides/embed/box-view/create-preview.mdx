@@ -23,6 +23,19 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/box-view/create-preview.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "設定", href: "/ja/guides/embed/box-view/setup", badge: "GUIDE" },
+    { label: "ファイルのアップロード", href: "/ja/guides/embed/box-view/upload-file", badge: "GUIDE" },
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" },
+    { label: "コンテンツプレビュー", href: "/ja/guides/embed/ui-elements/preview", badge: "GUIDE" }
+  ]}
+/>
 ファイルは、アプリトークンアプリケーションにアップロードされると、以下の2つの方法でプレビューすることができます。
 
 * 直接埋め込み: カスタムの埋め込みリンクを使用した標準のHTML `<iframe>`コンポーネント。
@@ -144,3 +157,10 @@ preview.show("FILE_ID", "ACCESS_TOKEN", {
 </Warning>
 
 [uie]: /ja/guides/embed/ui-elements
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルのプレビューの作成", href: "/ja/guides/embed/box-view/create-preview", badge: "GUIDE" }
+  ]}
+/>

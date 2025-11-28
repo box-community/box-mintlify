@@ -10,6 +10,16 @@ related_resources: []
 alias_paths:
   - /docs/special-scopes-for-box-ui-elements
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 When working with Box UI Elements many developers have shown interest in being
 able to implement their own permission model, different from [Access
 Levels][acl] defined by Box.
@@ -75,3 +85,10 @@ scopes.
 [acl]: https://support.box.com/hc/en-us/articles/360044196413-Understanding-Collaborator-Permission-Levels
 {/* i18n-disable localize-links */}
 [downscoping]: /guides/authentication/tokens/downscope
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

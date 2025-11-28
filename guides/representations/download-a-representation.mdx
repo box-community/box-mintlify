@@ -10,6 +10,16 @@ required_guides:
   - representations/request-a-representation
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Request Desired Representation", href: "/guides/representations/request-a-representation", badge: "GUIDE" }
+  ]}
+/>
 Use the`url_template` that was received when
 [selecting the representation][select_representation] to download
 the representation. Replace the `{+asset_path}` depending on
@@ -63,3 +73,17 @@ If not defined, the file name is derived from the source file name in Box,
 replacing the extension with the representation's file type.
 
 [select_representation]: /guides/representations/request-a-representation
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Thumbnail Representation", href: "/guides/representations/thumbnail-representation", badge: "GUIDE" },
+    { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/ai-agents/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Boxでは、常に最先端のオプションに対応するため、定期的にデフォルトモデルをエンドポイント全体で更新しています。
 
 Box AIに基づいた実装の場合、新しいデフォルトモデルによって、ダウンストリームプロセスを中断または変更するように結果が変更される可能性があります。特定のバージョンに切り替えることで、問題の発生を防止できる場合があります。
@@ -43,3 +46,21 @@ Box AIに基づいた実装の場合、新しいデフォルトモデルによ�
 [overrides]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
 
 [models]: /ja/guides/box-ai/ai-models
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" },
+    { label: "Extract metadata (freeform)", href: "/reference/post-ai-extract", badge: "POST" },
+    { label: "Extract metadata (structured)", href: "/reference/post-ai-extract-structured", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "AIエージェントのデフォルト構成を取得する", href: "/ja/guides/box-ai/ai-agents/get-agent-default-config", badge: "GUIDE" },
+    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-agents/ai-agent-overrides", badge: "GUIDE" }
+  ]}
+/>

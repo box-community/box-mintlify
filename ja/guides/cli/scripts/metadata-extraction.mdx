@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/cli/scripts/metadata-extraction.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 このスクリプトでは、任意のBoxフォルダ内のすべてのファイルとフォルダのメタデータの詳細を抽出し、その結果を各メタデータテンプレートのCSVスプレッドシートに保存します。
 
 ## 前提条件
@@ -136,3 +146,11 @@ PS /Users/user/repos/boxcli/examples>
 [auth]: /ja/guides/authentication/oauth2/oauth2-setup
 
 [examples]: https://github.com/box/boxcli/tree/main/examples/Metadata%20Extraction
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Box CLIでのPowerShellスクリプトの使用", href: "/ja/guides/cli/quick-start/powershell-script-templates", badge: "GUIDE" }
+  ]}
+/>

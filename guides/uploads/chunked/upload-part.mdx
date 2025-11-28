@@ -12,6 +12,16 @@ related_resources:
   - upload_part
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Upload Session", href: "/guides/uploads/chunked/create-session", badge: "GUIDE" }
+  ]}
+/>
 When you want to upload a large file,
 you can split it into smaller parts and
 upload them using the Upload Part API.
@@ -239,3 +249,16 @@ before you upload further parts.
 
 [commit]: /guides/uploads/chunked/commit-session
 [createsession]: /guides/uploads/chunked/create-session
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Upload part of file", href: "/reference/put-files-upload-sessions-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Commit Upload Session", href: "/guides/uploads/chunked/commit-session", badge: "GUIDE" }
+  ]}
+/>

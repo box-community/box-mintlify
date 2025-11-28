@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/2-templates/6-delete.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
 メタデータテンプレートを削除するには、[`DELETE
 /metadata_templates/enterprise/:templateKey/schema`][endpoint] APIを呼び出します。
 
@@ -83,3 +93,17 @@ client.metadata.deleteTemplate('enterprise', 'testtemplate', callback);
 </Warning>
 
 [endpoint]: /ja/reference/delete_metadata_templates_id_id_schema
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove metadata template", href: "/reference/delete-metadata-templates-id-id-schema", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "GUIDE" }
+  ]}
+/>

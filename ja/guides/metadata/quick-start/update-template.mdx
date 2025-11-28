@@ -24,6 +24,8 @@ fullyTranslated: true
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "ja/guides/metadata/quick-start/list-all",
                           "ja/guides/metadata/quick-start/create-template",
@@ -192,3 +194,17 @@ client.metadata.updateTemplate(
 メタデータテンプレートを更新しました
 
 </Next>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "GUIDE" },
+    { label: "メタデータテンプレートの更新", href: "/ja/guides/metadata/templates/update", badge: "GUIDE" }
+  ]}
+/>

@@ -11,6 +11,9 @@ related_guides:
   - metadata/instances/create
   - metadata/instances/update
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Metadata instances can be listed for either a file or a folder.
 
 ## List metadata on a file
@@ -201,3 +204,25 @@ client.folders.getAllMetadata('11111')
 
 [get_metadata_file]: /reference/get_files_id_metadata
 [get_metadata_folder]: /reference/get_folders_id_metadata
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List metadata instances on file", href: "/reference/get-files-id-metadata", badge: "GET" },
+    { label: "List metadata instances on folder", href: "/reference/get-folders-id-metadata", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get metadata on item", href: "/guides/metadata/instances/get", badge: "GUIDE" },
+    { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+    { label: "Update metadata on an item", href: "/guides/metadata/instances/update", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

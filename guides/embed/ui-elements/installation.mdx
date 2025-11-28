@@ -9,6 +9,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 UI Elements can be used either by downloading the Javascript libraries
 directly from the Box CDN or by installing our [NPM package][npm]. All UI
 Elements require their corresponding CSS stylesheet to render properly.
@@ -242,3 +245,11 @@ repository also holds a list of [releases][releases].
 [preview-releases]: https://github.com/box/box-content-preview/releases
 [manual-installation]: #manual-installation
 [react-migration]: https://react.dev/blog/2022/03/08/react-18-upgrade-guide
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Cross-Origin Resource Sharing (CORS)", href: "/guides/security/cors", badge: "GUIDE" }
+  ]}
+/>

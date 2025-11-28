@@ -26,6 +26,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/allowed-domains/create.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 一般にコラボレーションの作成を制限している企業は、企業で作成されている可能性のあるコラボレーションのリストに`example.com`などのドメインを追加できます。
 
 <CodeGroup>
@@ -137,3 +140,18 @@ client.collaborationAllowlist.addDomain('test.com', client.collaborationAllowlis
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Add domain to list of allowed collaboration domains", href: "/reference/post-collaboration-whitelist-entries", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "コラボレーション", href: "/ja/guides/collaborations/index", badge: "GUIDE" },
+    { label: "コラボレーションが許可されているドメインのリストの取得", href: "/ja/guides/collaborations/allowed-domains/list", badge: "GUIDE" },
+    { label: "以前コラボレーションが許可されたドメインの削除", href: "/ja/guides/collaborations/allowed-domains/delete", badge: "GUIDE" }
+  ]}
+/>

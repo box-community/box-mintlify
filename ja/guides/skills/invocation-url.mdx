@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/skills/invocation-url.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 新しい[Box Skillsアプリケーション](/ja/guides/applications/app-types/custom-skills)の作成時に、`invocation_url`を指定するよう求められます。このURLは、Skillsアプリが監視するフォルダ内にファイルがアップロード、コピー、移動されたときに、Boxから[イベント通知ペイロード](/ja/guides/skills/handle/payload)が送信される公開ウェブアドレスです。
 
 この通知をリッスンしているウェブサイトまたはアプリケーションは、Box上のファイルと、ファイルからインサイトを取得するために使用されている機械学習システムなどのシステムの間のブリッジとして機能します。
@@ -63,3 +66,11 @@ Boxのサーバーが`invocation_url`として使用できるよう、アプリ�
 [aws]: https://aws.amazon.com/
 
 [gcp]: https://cloud.google.com/functions/
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Skills", href: "/ja/guides/skills/index", badge: "GUIDE" },
+    { label: "Box Skillsペイロード", href: "/ja/guides/skills/handle/payload", badge: "GUIDE" }
+  ]}
+/>

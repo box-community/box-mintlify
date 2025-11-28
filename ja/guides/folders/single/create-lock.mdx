@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/create-lock.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box内のフォルダにロックを作成するには、ロックを適用するフォルダの`id`をBoxのAPIに指定します。必要に応じて、フォルダのロックとともに適用する特定の`locked_operations`を指定できます。
 
 <Note>
@@ -99,3 +102,17 @@ client.getFolderLocks().createFolderLock(new CreateFolderLockRequestBody.Builder
 `move`ロックを使用すると、ロックが適用されている間、フォルダが新しい場所または新しい所有者に移動されなくなります。
 
 `delete`ロックを使用すると、ロックが適用されている間、フォルダが削除されなくなります。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create folder lock", href: "/reference/post-folder-locks", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダのロックの取得", href: "/ja/guides/folders/single/get-locks", badge: "GUIDE" },
+    { label: "フォルダのロックの削除", href: "/ja/guides/folders/single/delete-lock", badge: "GUIDE" }
+  ]}
+/>

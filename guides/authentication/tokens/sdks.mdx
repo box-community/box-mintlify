@@ -11,6 +11,16 @@ related_resources:
   - access_token
 alias_paths:
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Box SDKs", href: "/guides/tooling/sdks/index", badge: "GUIDE" }
+  ]}
+/>
 The SDKs have direct support for JWT and OAuth 2.0 authentication, yet in some
 cases your application might need to provide an Access Token to the SDK directly.
 
@@ -29,3 +39,11 @@ When using App Token authentication it is possible to directly pass the App
 Token to the SDKs.
 
 {/* <Samples id='x_auth' variant='init_with_app_token' /> */}
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Developer Tokens", href: "/guides/authentication/tokens/developer-tokens", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

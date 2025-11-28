@@ -11,6 +11,9 @@ related_resources:
   - folder
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To create a folder in Box you will need to provide our API with a `name` for the
 new folder, as well as the `id` of the `parent` folder that you would like to
 create the new folder within.
@@ -140,3 +143,17 @@ client.folders.create('0', 'New Folder')
   Additionally, the names `.` and `..` are reserved names and therefore
   also prohibited.
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create folder", href: "/reference/post-folders", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Update Folder", href: "/guides/folders/single/update", badge: "GUIDE" },
+    { label: "Copy Folder", href: "/guides/folders/single/copy", badge: "GUIDE" }
+  ]}
+/>

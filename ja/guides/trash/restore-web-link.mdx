@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/trash/restore-web-link.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ごみ箱に移動されたが削除されていないウェブリンクを復元するには、`/web_links/:web_link_id`エンドポイントに`POST`リクエストを送信します。これにより、ウェブリンクがまだ使用可能であれば元の親フォルダに戻されます。オプションとして`parent`フォルダを指定することもできます。
 
 <CodeGroup>
@@ -58,3 +61,16 @@ print(f'Web link ID is {restored_web_link.id} and name is {restored_web_link.nam
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Restore web link", href: "/reference/post-web-links-id", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ウェブリンクを完全に削除", href: "/ja/guides/trash/permanently-delete-web-link", badge: "GUIDE" }
+  ]}
+/>

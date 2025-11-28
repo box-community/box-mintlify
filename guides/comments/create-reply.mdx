@@ -10,6 +10,9 @@ related_resources:
   - comment
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To create a reply to a previous comment, call the [`POST
 /comments`][post_comments] API with the message of the new comment, as well as
 the ID of the previous comment to leave the reply on.
@@ -26,3 +29,16 @@ Then, pass this string as the `tagged_message` instead of the `message`.
 {/* <Samples id='post_comments' variant='as_reply_tag_user' /> */}
 
 [post_comments]: /reference/post-comments
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create comment", href: "/reference/post-comments", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Comment", href: "/guides/comments/create-comment", badge: "GUIDE" }
+  ]}
+/>

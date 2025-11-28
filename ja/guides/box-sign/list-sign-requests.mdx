@@ -19,6 +19,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/box-sign/list-sign-requests.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## すべて
 
 [署名リクエストを取得エンドポイント][get_all]を使用すると、渡されたアクセストークンに関連付けられたユーザーが作成したBox Signのすべてのリクエストのリストを表示できます。
@@ -138,3 +141,16 @@ console.log(
 [get_by_id]: /ja/reference/get-sign-requests-id
 
 [create]: /ja/reference/post-sign-requests
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List Box Sign requests", href: "/reference/get-sign-requests", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Signのリクエストの作成", href: "/ja/guides/box-sign/create-sign-request", badge: "GUIDE" }
+  ]}
+/>

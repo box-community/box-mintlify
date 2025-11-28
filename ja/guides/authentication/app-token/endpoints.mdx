@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/app-token/endpoints.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 アプリトークン認証で現在サポートされているBox APIは少数です。
 
 | エンドポイント                                 | パス                       |
@@ -31,3 +34,16 @@ fullyTranslated: true
 | [ファイルをダウンロード](/ja/reference/get-files-id-content) | `GET /files/:id/content` |
 | [ファイルを削除](/ja/reference/delete-files-id)          | `DELETE /files/:id`      |
 | [埋め込みリンクを取得](/ja/reference/get-files-id)          | `GET /files/:id`         |
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリトークン認証を使用した設定", href: "/ja/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+  ]}
+/>

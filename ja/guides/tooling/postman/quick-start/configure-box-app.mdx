@@ -25,6 +25,8 @@ import { Store } from '/snippets/store.jsx';
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 import { AppButton } from '/snippets/app-button.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "ja/guides/tooling/postman/quick-start/install-postman",
                           "ja/guides/tooling/postman/quick-start/configure-box-app",
@@ -154,3 +156,10 @@ Boxアプリの設定が完了しました
 [signup]: https://account.box.com/signup/n/developer
 
 [scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Platformアプリ", href: "/ja/guides/applications/app-types/platform-apps", badge: "GUIDE" }
+  ]}
+/>

@@ -12,6 +12,9 @@ related_resources: []
 alias_paths:
   - /docs/box-for-salesforce-developer-toolkit
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The Salesforce SDK can be deployed directly to Sandbox or Developer
 organizations by using the [Deploy to Salesforce][deploy_salesforce]
 functionality.
@@ -34,3 +37,11 @@ The SDK is also distributed as an unmanaged package:
 [deploy_salesforce]: https://githubsfdeploy.herokuapp.com/?owner=box&repo=box-salesforce-sdk
 [salesforce_pkg_prod]: https://cloud.box.com/Box-Apex-SDK
 [salesforce_pkg_sandbox]: https://cloud.box.com/Box-Apex-SDK-Sandbox
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

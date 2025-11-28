@@ -11,6 +11,16 @@ alias_paths: []
 related_resources:
   - folder
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" }
+  ]}
+/>
 To remove a folder in Box you will need to provide our API with the ID of the
 folder.
 
@@ -86,3 +96,16 @@ operation can performed on any of the locked folders.
 
 Timeout for this operation is 600 seconds. The operation will complete
 after a `HTTP 503` has been returned.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" }
+  ]}
+/>
