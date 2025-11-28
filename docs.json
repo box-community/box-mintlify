@@ -38,6 +38,7 @@
                 "group": " ",
                 "pages": [
                   "guides/index",
+                  "guides/guides-list",
                   {
                     "group": "Start Here",
                     "pages": [
@@ -2786,13 +2787,15 @@
                 "group": " ",
                 "pages": [
                   "ja/guides/index",
+                  "ja/guides/guides-list",
                   {
                     "group": "はじめに",
                     "pages": [
                       "ja/guides/getting-started/index",
                       "ja/guides/getting-started/first-application",
                       "ja/guides/getting-started/publish-app",
-                      "ja/guides/getting-started/sandbox"
+                      "ja/guides/getting-started/sandbox",
+                      "ja/guides/overview/guides-list"
                     ]
                   },
                   {
