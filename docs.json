@@ -44,7 +44,8 @@
                       "guides/getting-started/index",
                       "guides/getting-started/first-application",
                       "guides/getting-started/publish-app",
-                      "guides/getting-started/sandbox"
+                      "guides/getting-started/sandbox",
+                      "guides/getting-started/guides-overview"
                     ]
                   },
                   {
@@ -2730,7 +2731,8 @@
                       "ja/guides/getting-started/index",
                       "ja/guides/getting-started/first-application",
                       "ja/guides/getting-started/publish-app",
-                      "ja/guides/getting-started/sandbox"
+                      "ja/guides/getting-started/sandbox",
+                      "ja/guides/getting-started/guides-overview"
                     ]
                   },
                   {
