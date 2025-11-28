@@ -17,6 +17,9 @@ required_guides:
 alias_paths:
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <Note>
 Box Archive is available only for Enterprise Advanced accounts.
 </Note>
@@ -49,3 +52,28 @@ The `GCM` scope is not available in the Developer Console and needs to be enable
 [Box Archive in Admin Console]: https://support.box.com/hc/en-us/p/Product_Page_2023?section-id=40168863437843
 [Scopes]: /guides/api-calls/permissions-and-errors/scopes/
 [storage policy]: /reference/resources/storage-policy/
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create archive", href: "/reference/v2025.0/post-archives", badge: "POST" },
+    { label: "List archives", href: "/reference/v2025.0/get-archives", badge: "GET" },
+    { label: "Delete archive", href: "/reference/v2025.0/delete-archives-id", badge: "DELETE" },
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Add content to Box Archive", href: "/guides/archives/add-content", badge: "GUIDE" },
+    { label: "Restore content from Box Archive", href: "/guides/archives/restore-content", badge: "GUIDE" },
+    { label: "Supported APIs for Box Archive", href: "/guides/archives/supported-apis", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Archive", href: "/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+  ]}
+/>

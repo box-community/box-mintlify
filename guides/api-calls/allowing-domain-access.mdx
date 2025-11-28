@@ -11,6 +11,9 @@ alias_paths:
   - /docs/domain-whitelisting
   - /guides/api-calls/domain-whitelisting
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To use the Box APIs it is important that your application and users have access
 to the following domains, where needed.
 
@@ -45,3 +48,12 @@ The following API domains are used to upload files via the Box API.
 
 - `api.box.com` to start a file upload
 - `upload.app.box.com` and `upload.box.com` to upload the file to Box
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" },
+    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
+    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
+  ]}
+/>

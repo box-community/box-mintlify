@@ -10,6 +10,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The following file types are supported by the representation API.
 
 ## 3D Graphics and Modeling Files
@@ -214,3 +217,18 @@ The following file types are supported by the representation API.
 | `.ts` | No | Yes | No |
 | `.swf` | No | Yes | No |
 | `.wmv` | No | Yes | No |
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get PDF Representation", href: "/guides/representations/pdf", badge: "GUIDE" },
+    { label: "Get Thumbnail Representation", href: "/guides/representations/thumbnail-representation", badge: "GUIDE" },
+    { label: "Get Text Representation", href: "/guides/representations/text", badge: "GUIDE" }
+  ]}
+/>

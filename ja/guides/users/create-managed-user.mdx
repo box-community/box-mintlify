@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/users/create-managed-user.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 新しい管理対象ユーザーを生成するには、最低でも管理対象ユーザーの名前とメールアドレスが必要になります。
 
 <Note>
@@ -137,3 +140,18 @@ App Userの作成時に設定できるすべての使用可能なオプション
 セキュリティ上の理由から、新しい管理対象ユーザーの作成時にパスワードを指定することはできません。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create user", href: "/reference/post-users", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "App Userの作成", href: "/ja/guides/users/create-app-user", badge: "GUIDE" },
+    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "GUIDE" },
+    { label: "ファイルとフォルダの転送", href: "/ja/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+  ]}
+/>

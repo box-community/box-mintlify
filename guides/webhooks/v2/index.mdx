@@ -13,6 +13,17 @@ alias_paths:
   - /webhooks/handle/retries
   - /webhooks/handle/payload
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "Signature Verification", href: "/guides/webhooks/v2/signatures-v2", badge: "GUIDE" }
+  ]}
+/>
 ## Flow
 
 <Frame center width="400" shadow border>
@@ -194,3 +205,17 @@ payload.
 
 [setup_sigs]: /guides/webhooks/v2/signatures-v2
 [verify_sigs]: /guides/webhooks/v2/signatures-v2
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "Signature Verification", href: "/guides/webhooks/v2/signatures-v2", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/share-content.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 コンテンツをユーザーと共有するには、ユーザーIDまたはメールアドレス、コンテンツのIDのほか、ユーザーがコンテンツにアクセスする際に必要なロールまたは権限を使用してコラボレーションを作成します。コラボレーションロールは`editor`、`viewer`、`previewer`、`uploader`、`previewer uploader`、`viewer uploader`、`co-owner`、または`owner`です。各ロールについての詳しい説明は、Boxの[サポートドキュメント][support documentation]を参照してください。
 
 <CodeGroup>
@@ -165,3 +168,16 @@ client.collaborations.createWithUserID('123456', '987654', client.collaborationR
 [support documentation]: https://support.box.com/hc/ja/articles/360044196413-コラボレータの権限レベルについて
 
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create collaboration", href: "/reference/post-collaborations", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "グループとの共有", href: "/ja/guides/collaborations/groups", badge: "GUIDE" }
+  ]}
+/>

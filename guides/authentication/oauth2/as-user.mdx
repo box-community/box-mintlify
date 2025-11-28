@@ -9,6 +9,16 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "OAuth 2.0 with SDKs", href: "/guides/authentication/oauth2/with-sdk", badge: "GUIDE" }
+  ]}
+/>
 It is possible to for an OAuth 2.0 application to act on behalf of another user
 through the `as-user` header.
 
@@ -69,3 +79,10 @@ client.asUser('[USER_ID]');
 </Warning>
 
 [devconsole]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

@@ -9,6 +9,9 @@ related_guides:
 related_resources:
   - metadata_template
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 A metadata field of type `date` is displayed to a user as a date picker. 
 
 <Frame border center shadow width='400'>
@@ -86,3 +89,17 @@ This will affect existing instances of this template.
 
 [g_create_template]: /guides/metadata/templates/create
 [g_update_template]: /guides/metadata/templates/update
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" },
+    { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+  ]}
+/>

@@ -12,6 +12,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The shared link resource has three permissions that can be updated using the
 `permissions` field: `can_preview`, `can_download`, `can_edit`.
 
@@ -35,3 +38,18 @@ curl -i -X PUT 'https://api.box.com/2.0/files/123456789?fields=shared_link' \
       }
     }'
 ```
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create or Update Shared Link", href: "/guides/shared-links/create-or-update", badge: "GUIDE" },
+    { label: "Remove Shared Link", href: "/guides/shared-links/remove", badge: "GUIDE" },
+    { label: "Find Item from Shared Link", href: "/guides/shared-links/find-for-item", badge: "GUIDE" }
+  ]}
+/>

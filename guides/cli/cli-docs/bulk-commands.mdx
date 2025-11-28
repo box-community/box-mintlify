@@ -10,6 +10,16 @@ required_guides:
   - authentication/oauth2/oauth2-setup
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 The Box CLI bulk commands help you to automate repetitive tasks. By adding a `--bulk-file-path` flag to your command, you are able to perform actions for many items at once.
 
 For example, this command creates several folders using a CSV file specifying folder `Name`, `Description`, and the `ParentId` of the parent folder:
@@ -60,3 +70,10 @@ go to your [Developer Console][console], and follow the guide
 [auth]: /guides/authentication/oauth2/oauth2-setup
 [bulkactions]: https://github.com/box/boxcli/tree/main/docs/Bulk%20actions
 [folderstemplate]: https://github.com/box/boxcli/blob/main/docs/Bulk%20actions/folders/folders-create.csv
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

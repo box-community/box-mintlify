@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/downloads/zip-archive.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 フォルダ内のすべてのファイル、またはフォルダ構造全体をダウンロードするには、ZIPアーカイブを作成してダウンロードする必要があります。
 
 ## ZIPアーカイブの作成
@@ -332,3 +335,12 @@ client.getZipDownloads().getZipDownloadStatus(zipDownload.getStatusUrl())
 SDKを使用してフォルダのコンテンツをダウンロードする場合は、[こちら](/ja/guides/downloads/folder)のガイドに従ってください。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download zip archive", href: "/reference/get-zip-downloads-id-content", badge: "GET" },
+    { label: "Get zip download status", href: "/reference/get-zip-downloads-id-status", badge: "GET" },
+    { label: "Create zip download", href: "/reference/post-zip-downloads", badge: "POST" }
+  ]}
+/>

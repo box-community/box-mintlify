@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/trash/restore-file.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ごみ箱に移動されたが削除されていないファイルを復元するには、`/files/:file_id`エンドポイントに`POST`リクエストを送信します。これにより、ファイルがまだ使用可能であれば元のフォルダに戻されます。または、オプションとして`parent`フォルダを指定することもできます。
 
 <CodeGroup>
@@ -142,3 +145,23 @@ client.files.restoreFromTrash(
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Restore file", href: "/reference/post-files-id", badge: "POST" },
+    { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルを完全に削除", href: "/ja/guides/trash/permanently-delete-file", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "ファイル", href: "/ja/guides/files/index", badge: "GUIDE" }
+  ]}
+/>

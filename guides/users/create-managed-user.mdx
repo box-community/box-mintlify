@@ -12,6 +12,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To generate a new managed user, the minimal information that will be required
 will be a name and an email address for the managed user.
 
@@ -127,3 +130,18 @@ in a `pending` state until that action has taken place.
   For security reasons passwords cannot be supplied when creating a new managed
   user
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create user", href: "/reference/post-users", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create App User", href: "/guides/users/create-app-user", badge: "GUIDE" },
+    { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" },
+    { label: "Transfer Files & Folders", href: "/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+  ]}
+/>

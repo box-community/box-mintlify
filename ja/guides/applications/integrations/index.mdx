@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/applications/integrations/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [Box統合][app-center]は、BoxユーザーがBoxと組み合わせて使用できるアプリケーションについて最初に確認できる場所です。アプリケーションが他の企業で使用できる場合は、**統合**にサービスを登録すると、新しいユーザーを見つけるのに役立ちます。統合では、ユーザーが見つけやすいように、アプリが \[おすすめ]、\[人気]、\[新着] セクションに分類されています。
 
 <Frame>
@@ -81,3 +84,11 @@ Box統合でPlatformアプリを公開するには、以下の手順に従いま
 [email]: mailto:integrate@box.com
 
 [bp]: https://support.box.com/hc/en-us/sections/21356597387539-Box-Partner-Programs
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

@@ -27,6 +27,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <AccordionGroup>
 <Accordion title="Box Viewのしくみを教えてください。**">
 
@@ -86,3 +88,18 @@ fullyTranslated: true
 [annotations]: /ja/guides/embed/ui-elements/annotations
 
 [cors]: /ja/guides/security/cors
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "設定", href: "/ja/guides/embed/box-view/setup", badge: "GUIDE" },
+    { label: "ファイルのアップロード", href: "/ja/guides/embed/box-view/upload-file", badge: "GUIDE" },
+    { label: "ファイルのプレビューの作成", href: "/ja/guides/embed/box-view/create-preview", badge: "GUIDE" }
+  ]}
+/>

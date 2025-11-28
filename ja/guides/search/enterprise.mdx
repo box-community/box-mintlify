@@ -18,6 +18,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/search/6-enterprise.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 デフォルトでは、認証済みユーザーがアクセスできるコンテンツに対してのみ、検索が実行されます。場合によっては、管理者は、全ユーザーが所有する全コンテンツを検索することもできます。そのようなユースケースでは、`scope`クエリパラメータの値を`enterprise_content`に設定できます。
 
 <CodeGroup>
@@ -71,3 +74,10 @@ client.search.query(
 <Warning>
 `enterprise_content`スコープは、管理者が[サポートチャネル](/ja/support)を通じてリクエストできます。このスコープがユーザーに対して有効になっていると、そのユーザーは、アクセスできるコンテンツだけでなく、会社全体のコンテンツに対してクエリを実行できます。
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

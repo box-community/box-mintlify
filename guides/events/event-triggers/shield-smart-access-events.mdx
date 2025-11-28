@@ -11,6 +11,9 @@ alias_paths:
   - /guides/events/shield-alert-events
   - /guides/events/shield-alert-events/
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [Smart Access][smartaccess] enables Box Admins to define and enforce
 classification-based access policies to control access and prevent the
 unintentional leakage of sensitive content.
@@ -467,3 +470,17 @@ The `additional_details` payload will provide the following details:
 [monitoringmode]: https://support.box.com/hc/en-us/articles/14596333776403-Shield-Access-Policy-Settings
 {/* i18n-disable localize-links */}
 [events]: /guides/events/enterprise-events/for-enterprise
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" }
+  ]}
+/>

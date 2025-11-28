@@ -12,6 +12,8 @@ import { Store } from '/snippets/store.jsx';
 import { AppButton } from '/snippets/app-button.jsx';
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/tooling/postman/quick-start/install-postman",
                           "guides/tooling/postman/quick-start/configure-box-app",
@@ -135,3 +137,10 @@ extra steps to set up.
 [devconsole]: https://cloud.app.box.com/developers/console
 [signup]: https://account.box.com/signup/n/developer
 [scopes]: /guides/api-calls/permissions-and-errors/scopes
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" }
+  ]}
+/>

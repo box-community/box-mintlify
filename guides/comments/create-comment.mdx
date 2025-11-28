@@ -10,6 +10,9 @@ related_resources:
   - comment
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To create a comment, call the [`POST /comments`][post_comments] API with the
 message of the comment, as well as the ID of the file to leave the comment on.
 
@@ -109,3 +112,16 @@ Then, pass this string as the `tagged_message` instead of the `message`.
 
 
 [post_comments]: /reference/post-comments
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create comment", href: "/reference/post-comments", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Reply", href: "/guides/comments/create-reply", badge: "GUIDE" }
+  ]}
+/>

@@ -28,6 +28,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/integration-mappings/slack-mappings/setup.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 統合マッピングAPIの使用を開始する前に、以下の手順を実行します。
 
 ## ロール
@@ -86,3 +89,22 @@ Authorization: Bearer {developer_token}
 [7]: /ja/guides/applications/app-types/platform-apps
 
 [8]: /ja/guides/authentication/tokens/developer-tokens
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete Slack integration mapping", href: "/reference/delete-integration-mappings-slack-id", badge: "DELETE" },
+    { label: "List Slack integration mappings", href: "/reference/get-integration-mappings-slack", badge: "GET" },
+    { label: "Create Slack integration mapping", href: "/reference/post-integration-mappings-slack", badge: "POST" },
+    { label: "Update Slack integration mapping", href: "/reference/put-integration-mappings-slack-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Slack統合マッピングの作成", href: "/ja/guides/integration-mappings/slack-mappings/create-mapping", badge: "GUIDE" },
+    { label: "Slack統合マッピングのリスト取得", href: "/ja/guides/integration-mappings/slack-mappings/list-mappings", badge: "GUIDE" },
+    { label: "Slack統合マッピングの更新", href: "/ja/guides/integration-mappings/slack-mappings/update-mapping", badge: "GUIDE" },
+    { label: "Slack統合マッピングの削除", href: "/ja/guides/integration-mappings/slack-mappings/delete-mapping", badge: "GUIDE" }
+  ]}
+/>

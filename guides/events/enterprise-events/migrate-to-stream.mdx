@@ -9,6 +9,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box recommends that applications subscribing to live events through
 `admin_logs` migrate to `admin_logs_streaming`. `admin_logs_streaming` provides
 lower and more consistent latency, as well as ensures that late arriving
@@ -81,3 +84,17 @@ curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_posi
 </Frame>
 
 [events-api]: /reference/events
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" }
+  ]}
+/>

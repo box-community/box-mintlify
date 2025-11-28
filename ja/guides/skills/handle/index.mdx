@@ -19,7 +19,18 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/skills/handle/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [呼び出しURL](/ja/guides/skills/invocation-url)として設定されているアプリケーションまたはサイト内では、一般に以下の2つのタスクを行う必要があります。
 
 * [Skillペイロードを処理する](/ja/guides/skills/handle/payload) - Box Skillsは、新しいファイルがフォルダにアップロード、コピー、または移動されたことを検出するたびに、呼び出しURLにJSON通知を送信します。このURLは解析する必要があります。
 * [ファイルにスキルカードを適用する](/ja/guides/skills/handle/metadata) - 処理サービスから返されたメタデータを、イベントをトリガーしたファイルにメタデータとして保存する必要があります。
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Skillsペイロード", href: "/ja/guides/skills/handle/payload", badge: "GUIDE" },
+    { label: "Skillsカードのメタデータ", href: "/ja/guides/skills/handle/metadata", badge: "GUIDE" }
+  ]}
+/>

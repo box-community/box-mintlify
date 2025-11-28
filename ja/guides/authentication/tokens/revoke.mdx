@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/revoke.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "GUIDE" }
+  ]}
+/>
 アクセストークンまたは更新トークンを[`POST
 /oauth2/revoke`](endpoint://post-oauth2-revoke)エンドポイントに送信することにより、アクセストークンをいつでも取り消すことができます。
 
@@ -77,3 +87,10 @@ client.revokeTokens("<TOKEN>")
 すべてのBox SDKでは、クライアントに関連付けられた現在のアクセストークンを手動で取り消すことがサポートされています。特定のトークンを取り消すには、最初にそのトークンで新しいSDKを初期化してから、関連する取り消しメソッドを呼び出します。
 
 </Info>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Revoke access token", href: "/reference/post-oauth2-revoke", badge: "POST" }
+  ]}
+/>

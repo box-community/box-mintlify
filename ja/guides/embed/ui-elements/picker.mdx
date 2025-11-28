@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/picker.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 Box Content Picker UI Elementを使用すると、開発者は、デスクトップまたはモバイルウェブアプリでBoxからファイルやフォルダを選択するためのサポートを追加できます。ライブラリは、指定されたフォルダに関する情報をBox APIを介して取得し、そのコンテンツをフォルダビューにレンダリングします。ユーザーはファイルまたはフォルダを選択でき、その後、このコンテンツ情報がアプリケーションの別の部分に渡されます。
 
 ## インストール
@@ -307,3 +317,10 @@ CodePenで実装例を確認してください。
 [downscope]: /ja/guides/authentication/tokens/downscope
 
 [scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

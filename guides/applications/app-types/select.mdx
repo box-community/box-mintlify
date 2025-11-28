@@ -10,6 +10,9 @@ alias_paths:
   - /docs/use-case-recipes
   - /v2/docs/box-api-recipes
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Upon creating a new Box application in the [Developer Console][dev-console],
 you must first select one of the following types of applications. The type of
 application you select is dependent on the use case for your project and only
@@ -67,3 +70,10 @@ from files uploaded to Box.
 [dev-console]: https://app.box.com/developers/console
 [view-app]: /guides/embed/box-view
 [ccg]: /guides/authentication/client-credentials
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

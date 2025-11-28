@@ -11,6 +11,8 @@ related_guides:
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/metadata/quick-start/list-all",
                           "guides/metadata/quick-start/create-template",
@@ -90,3 +92,17 @@ using marker-based pagination.
 <Next>I've queried a file using metadata</Next>
 
 [query]: /guides/metadata/queries
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Query files/folders by metadata", href: "/reference/post-metadata-queries-execute-read", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create a query", href: "/guides/metadata/queries/create", badge: "GUIDE" },
+    { label: "Query syntax", href: "/guides/metadata/queries/syntax", badge: "GUIDE" }
+  ]}
+/>

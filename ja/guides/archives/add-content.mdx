@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/archives/add-content.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 アーカイブにコンテンツを追加するには、まず、アーカイブを作成する必要があります。まだ作成していない場合は、[アーカイブを作成][Create Archive]エンドポイントを使用します。
 
 ## アーカイブへのファイルまたはフォルダの追加
@@ -40,3 +43,24 @@ fullyTranslated: true
 [Update folder]: /ja/reference/put-folders-id
 
 [Update parent id of folder]: /ja/reference/put-folders-id/#param-parent-id
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create archive", href: "/reference/v2025.0/post-archives", badge: "POST" },
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Archiveからのコンテンツの復元", href: "/ja/guides/archives/restore-content", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Archive", href: "/ja/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+  ]}
+/>

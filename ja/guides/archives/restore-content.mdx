@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/archives/restore-content.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 このガイドでは、誤ってアーカイブしたコンテンツを復元する方法について説明します。
 
 ## アーカイブからのファイルまたはフォルダの復元
@@ -43,3 +46,23 @@ fullyTranslated: true
 [Update parent id of folder]: /ja/reference/put-folders-id/#param-parent-id
 
 [Update parent user id of folder]: /ja/reference/put-folders-id/#param-parent-user_id
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Archiveへのコンテンツの追加", href: "/ja/guides/archives/add-content", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Archive", href: "/ja/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+  ]}
+/>

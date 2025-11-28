@@ -11,6 +11,9 @@ related_resources: []
 alias_paths:
   - /docs/download-all-files-from-a-folder-1
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Sometimes an application wants to embed a file into a page as a HTML element. An
 example would be when working with an audio player.
 
@@ -48,3 +51,17 @@ https://api.box.com/2.0/files/[FILE_ID]/content?access_token=[ACCESS_TOKEN]
 [durl]: /guides/downloads/get-url
 [cors]: /guides/security/cors
 [downscoping]: /guides/authentication/tokens/downscope
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Download File", href: "/guides/downloads/file", badge: "GUIDE" },
+    { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" }
+  ]}
+/>

@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/folder.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 アプリケーションによっては、1つのフォルダのすべてのファイルをアップロードできる場合もあります。SDKとCLIを使用してこの処理を実行するには、フォルダツリー内を移動してすべてのファイルを探し、そのファイルをアップロードする必要があります。
 
 <CodeGroup>
@@ -480,3 +483,17 @@ box folders:upload ./folder_name_to_upload --parent-folder=$folder_id
 [preflight]: /ja/guides/uploads/check
 
 [chunked]: /ja/guides/uploads/chunked
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
+    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "事前チェック", href: "/ja/guides/uploads/check", badge: "GUIDE" }
+  ]}
+/>

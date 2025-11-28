@@ -22,6 +22,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/skills/handle/metadata.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Box Skillsペイロード", href: "/ja/guides/skills/handle/payload", badge: "GUIDE" }
+  ]}
+/>
 処理サービスによってファイルのメタデータが特定されたら、アプリケーションはそのデータをBoxに保存されているファイルにメタデータとして書き戻すことができます。
 
 このプロセスには、以下の手順が含まれます。

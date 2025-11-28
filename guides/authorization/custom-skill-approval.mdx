@@ -7,6 +7,9 @@ related_guides:
 required_guides:
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Custom Skills will must be enabled on a folder by the enterprise's Box Admin
 before use.
 
@@ -63,3 +66,10 @@ event to be sent to the Invocation URL configured in the Box
 
 [adminconsole]: https://app.box.com/master/skills
 [devconsole]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Skill cards on file", href: "/reference/post-files-id-metadata-global-boxSkillsCards", badge: "POST" }
+  ]}
+/>

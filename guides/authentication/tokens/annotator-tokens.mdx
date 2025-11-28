@@ -11,6 +11,16 @@ required_guides:
 related_resources: []
 alias_paths:
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "App Token Auth", href: "/guides/authentication/app-token/index", badge: "GUIDE" }
+  ]}
+/>
 Annotations is one of the key features supported by new Box View, that allows
 developers to provide collaboration capabilities right from within the embedded
 Box preview in their application.
@@ -267,3 +277,17 @@ client
     });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT without SDKs", href: "/guides/authentication/jwt/without-sdk", badge: "GUIDE" },
+    { label: "App Token Auth", href: "/guides/authentication/app-token/index", badge: "GUIDE" }
+  ]}
+/>

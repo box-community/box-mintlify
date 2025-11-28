@@ -9,6 +9,9 @@ related_guides:
   - docgen/docgen-getting-started
   - docgen/generate-document
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 A Box Doc Gen job runs when you make a request to generate a document.
 The `document_generation_data` parameter in the `POST` request is an array of entries that represent Box Doc Gen jobs run to generate a document.
 
@@ -246,3 +249,11 @@ client.getDocgen().getDocgenJobByIdV2025R0(docgenJobItemFromList.getId())
 </CodeGroup>
 
 [docgen-prerequisites]: /guides/docgen/docgen-getting-started
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "Generate documents", href: "/guides/docgen/generate-document", badge: "GUIDE" }
+  ]}
+/>

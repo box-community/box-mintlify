@@ -28,6 +28,15 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+  ]}
+/>
 これまで、[Box CLI のクイックスタートガイド][qs]では、JWT アプリケーションまたはサーバー認証アプリケーションの設定フローについて説明してきましたが、新しく OAuth 2.0 バージョンの Box CLI をリリースしたため、新機能の使用についてガイドを更新しました。当初の JWT の設定手順については、引き続きサーバー認証アプリケーションを使用したい方のために、こちらに移動しました。
 
 ## JWT アプリケーションの設定
@@ -212,3 +221,11 @@ Notification Email: []
 [ac]: https://github.com/box/boxcli/blob/master/docs/autocomplete.md
 [commands]: https://github.com/box/boxcli#command-topics
 [qs]: /ja/guides/cli/quick-start
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+  ]}
+/>

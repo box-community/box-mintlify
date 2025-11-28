@@ -26,6 +26,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/applications/app-types/platform-apps.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Platformアプリはほとんどのユースケースに対応しており、最も柔軟なアプリケーションの種類です。
 
 Platformアプリケーションは、通常、カスタムインターフェース内でBox機能をユーザーに表示します。Boxには、コンテンツの閲覧、検索、プレビューなどの機能のために、[UI Elements][uie]と呼ばれる、組み込みのカスタマイズ可能なユーザーインターフェースコンポーネントが用意されています。
@@ -73,3 +76,12 @@ Platformアプリは、使用前に承認が必要になる場合があります
 [uie]: /ja/guides/embed/ui-elements
 
 [users]: /ja/platform/user-types/#managed-users
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "クライアント資格情報許可", href: "/ja/guides/authentication/client-credentials/index", badge: "GUIDE" }
+  ]}
+/>

@@ -13,6 +13,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 A shared link may be removed from a resource by calling the
 [update file](endpoint://put_files_id) or
 [update folder](endpoint://put_folders_id) or
@@ -45,3 +48,19 @@ To remove a shared link on a web link, specify the ID of web link to set the
 `shared_link` field to `null`.
 
 {/* <Samples id='put_web_links_id' variant='remove_shared_link' /> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create or Update Shared Link", href: "/guides/shared-links/create-or-update", badge: "GUIDE" },
+    { label: "Find Item from Shared Link", href: "/guides/shared-links/find-for-item", badge: "GUIDE" }
+  ]}
+/>

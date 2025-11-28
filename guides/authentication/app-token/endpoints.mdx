@@ -9,6 +9,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 App Token authentication currently only supports a handful of the BOX API.
 
 | Endpoint                                     | Path                     |
@@ -18,3 +21,16 @@ App Token authentication currently only supports a handful of the BOX API.
 | [Download a file](/reference/get-files-id-content)  | `GET /files/:id/content` |
 | [Delete a file](/reference/delete-files-id) | `DELETE /files/:id`      |
 | [Get embed link](/reference/get-files-id)          | `GET /files/:id`         |
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Setup with App Token Auth", href: "/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+  ]}
+/>

@@ -14,6 +14,16 @@ alias_paths:
 - /guides/authentication/jwt/without-sdk/#client-credentials-grant
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>
 Follow the steps below if you would like to leverage server authentication and
 verify your application's identity using a client ID and client secret.
 
@@ -111,3 +121,17 @@ Once you make changes to the app settings, don't forget to [reauthorize][reauth]
 [auth]: /guides/authorization
 [aa]: /guides/authentication/client-credentials/client-credentials-setup/#application-access
 [reauth]: /guides/authorization/platform-app-approval#re-authorization-on-changes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "Best Practices", href: "/guides/authentication/best-practices", badge: "GUIDE" }
+  ]}
+/>

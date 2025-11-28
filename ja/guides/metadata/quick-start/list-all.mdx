@@ -24,6 +24,8 @@ fullyTranslated: true
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "ja/guides/metadata/quick-start/list-all",
                           "ja/guides/metadata/quick-start/create-template",
@@ -261,3 +263,17 @@ client.metadata.getTemplates('enterprise')
 </Next>
 
 [template]: /ja/guides/metadata/templates
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all global metadata templates", href: "/reference/get-metadata-templates-global", badge: "GET" },
+    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>

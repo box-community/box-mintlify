@@ -15,6 +15,17 @@ related_resources: []
 alias_paths:
   - /guides/applications/app-types/custom-apps/app-token-setup
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" }
+  ]}
+/>
 A Limited Access App can be set up to use server-side [App Tokens][app-token]
 for authentication.
 
@@ -119,3 +130,12 @@ section at the bottom of the **Configuration** tab in the
 [app-token]: /guides/authentication/app-token
 [api-calls]: /guides/api-calls
 [auth]: /guides/authorization
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Platform App Approval", href: "/guides/authorization/platform-app-approval", badge: "GUIDE" }
+  ]}
+/>

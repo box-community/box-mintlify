@@ -28,6 +28,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/docgen/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box Doc Genを使用すると、採用通知書、売買契約書、請求書、契約書などのビジネスドキュメントを生成できます。BoxにアップロードされたBox Doc Genテンプレートに基づいた、Box Doc Gen APIを使用して動的に入力できるデータフィールドを含むドキュメントを生成できます。
 
 <Note>
@@ -93,3 +96,14 @@ Box Doc Gen APIはBox APIバージョン`2025.0`でリリースされました�
 [generate-document]: /ja/guides/docgen/generate-document
 
 [api-versioning]: /ja/guides/api-calls/api-versioning-strategy
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "Box Doc Genテンプレート", href: "/ja/guides/docgen/docgen-templates", badge: "GUIDE" },
+    { label: "Box Doc Genジョブ", href: "/ja/guides/docgen/docgen-jobs", badge: "GUIDE" },
+    { label: "ファイルをBox Doc Genテンプレートとして設定", href: "/ja/guides/docgen/mark-template", badge: "GUIDE" },
+    { label: "ドキュメントの生成", href: "/ja/guides/docgen/generate-document", badge: "GUIDE" }
+  ]}
+/>

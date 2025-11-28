@@ -12,6 +12,9 @@ related_resources:
 - file_request
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box File Request gives you a fast and secure way to request files and
 associated metadata from anyone.  Using a drag-and-drop graphic
 interface, you can create a web form that enables you to:
@@ -44,3 +47,13 @@ For example.
 Currently, the API only allows the creation of new file requests by copying
 an existing file request associated to another folder. Please check our guide
 to create a template folder with a template file request.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" },
+    { label: "Get file request", href: "/reference/get-file-requests-id", badge: "GET" },
+    { label: "Update file request", href: "/reference/put-file-requests-id", badge: "PUT" },
+    { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
+  ]}
+/>

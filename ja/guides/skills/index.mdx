@@ -19,6 +19,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/skills/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box Skillsは、ファイルの基盤となるメタデータを強化することを目的として、Boxにアップロードされたファイルのカスタム処理を可能にします。このシステムの利点は、さまざまなファイルの豊富な情報を保存しておき、自動化されたタスクや将来のプロセスに使用できることです。
 
 Skillsアプリケーションのエンドツーエンドプロセスは以下のとおりです。
@@ -39,3 +42,10 @@ Box Skillsとの統合を簡素化するため、上記の手順の複雑さを�
 [1]: /ja/guides/webhooks/v2/signatures-v2
 
 [2]: https://github.com/box-community/Box-Custom-Skills-Starter
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Skill cards on file", href: "/reference/post-files-id-metadata-global-boxSkillsCards", badge: "POST" }
+  ]}
+/>

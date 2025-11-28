@@ -26,6 +26,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/2-get.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ファイルまたはフォルダに割り当てられたメタデータテンプレートのインスタンスに関する情報を取得するには、項目の`id`に加え、テンプレートの`templateKey`と`scope`を使用します。
 
 <Info>
@@ -229,3 +232,26 @@ client.folders.getMetadata('11111', client.metadata.scopes.ENTERPRISE, 'marketin
 [g_list_templates]: /ja/guides/metadata/templates/list
 
 [g_list_instances_item]: /ja/guides/metadata/instances/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get metadata instance on file", href: "/reference/get-files-id-metadata-id-id", badge: "GET" },
+    { label: "Get metadata instance on folder", href: "/reference/get-folders-id-metadata-id-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "GUIDE" },
+    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "GUIDE" },
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

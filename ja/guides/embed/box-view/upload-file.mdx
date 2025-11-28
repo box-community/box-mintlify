@@ -20,6 +20,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/box-view/upload-file.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "設定", href: "/ja/guides/embed/box-view/setup", badge: "GUIDE" }
+  ]}
+/>
 ファイルのプレビューの埋め込みリンクを生成するには、そのファイルをBoxにアップロードする必要があります。ほとんどのファイルタイプでは、アップロード時に自動的に変換が開始されます。ただし、動画と3Dファイルについては、最初のプレビュー時に変換が開始されます。変換を開始するために、ユーザーが明示的な操作を行う必要はありません。いずれの場合も、変換は1ファイルにつき1回だけ開始され、生成されたアセットは元のファイルがBoxに保存されている間は使用できます。
 
 ## ファイルのアップロード
@@ -31,3 +41,10 @@ fullyTranslated: true
 認証済みクライアントが作成されたら、そのクライアントを使用して、変換するファイルをアプリトークンアプリケーションに直接アップロードできます。
 
 <Card href="/ja/guides/uploads/direct/file" title="Boxへのファイルのアップロード"/>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルのプレビューの作成", href: "/ja/guides/embed/box-view/create-preview", badge: "GUIDE" }
+  ]}
+/>

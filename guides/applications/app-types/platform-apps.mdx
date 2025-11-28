@@ -13,6 +13,9 @@ related_guides:
   - authentication/jwt
   - authentication/client-credentials
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Platform Apps encompass most use cases and is the most flexible application type.
 
 A platform application typically presents Box functionality to a user within a
@@ -64,3 +67,12 @@ Platform Apps may require approval before use.
 [cc]: /guides/authentication/client-credentials
 [uie]: /guides/embed/ui-elements
 [users]: /platform/user-types/#managed-users/
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "Client Credentials Grant", href: "/guides/authentication/client-credentials/index", badge: "GUIDE" }
+  ]}
+/>

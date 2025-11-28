@@ -27,6 +27,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collections/add.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 コレクションに項目を追加するには、その特定のタイプの項目に対して`PUT`エンドポイントを呼び出し、コレクションIDのリストを渡します。
 
 <Warning>
@@ -58,3 +61,13 @@ APIを介して使用できるコレクションは「お気に入り」コレ�
 {/* <Samples id="put_web_links_id" variant="add_to_collection">
 
 </Samples> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" },
+    { label: "List all collections", href: "/reference/get-collections", badge: "GET" }
+  ]}
+/>

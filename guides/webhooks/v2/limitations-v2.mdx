@@ -9,6 +9,9 @@ required_guides: []
 alias_paths:
   - /webhooks/limitations
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## One webhook per item
 
 There's a limit of one webhook for each item (file or folder), each application
@@ -101,3 +104,11 @@ includes the following additional information.
 [v1]: /guides/webhooks/v1
 [update]: /guides/webhooks/v2/update-v2
 [app authorization]: https://support.box.com/hc/en-us/articles/360043697014-Authorizing-Apps-in-the-Box-App-Approval-Process
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "Update Webhooks", href: "/guides/webhooks/v2/update-v2", badge: "GUIDE" }
+  ]}
+/>

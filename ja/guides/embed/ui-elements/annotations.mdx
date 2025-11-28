@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/annotations.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 Boxの注釈を使用すると、開発者はアプリケーションに埋め込まれたBoxプレビュー内から直接コラボレーション機能を提供できます。Boxの注釈は幅広いユースケースに対応するため、使用するとプレビューアーの注意を引いたり、ドキュメントや画像の特定の部分に関するフィードバックを提供したりできます。
 
 <Card href="/ja/guides/embed/ui-elements/preview" title="コンテンツプレビューの詳細を確認する"/>
@@ -542,3 +552,10 @@ preview.addListener("annotationsfetched", data => {
 [filetypes]: https://support.box.com/hc/ja/articles/360043695794-Box-Content-Previewでサポートされるファイル
 
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

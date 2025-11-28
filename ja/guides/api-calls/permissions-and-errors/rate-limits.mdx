@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/permissions-and-errors/rate-limits.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 APIコールのレート制限には一般的に3種類あります。Boxは独自の判断でこの制限を使用して、ネットワークリソースの保護やカスタマーエクスペリエンスの品質維持をうまく実現することができます。
 
 ## ユーザーベース
@@ -89,3 +92,16 @@ retry-after: 100
 [search]: /ja/reference/get_search
 
 [pricing]: https://www.box.com/pricing
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "エラー", href: "/ja/guides/api-calls/permissions-and-errors/common-errors", badge: "GUIDE" }
+  ]}
+/>

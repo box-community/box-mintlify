@@ -13,6 +13,16 @@ related_guides:
   - metadata/instances/create
   - metadata/scopes
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" }
+  ]}
+/>
 To remove an instance of a metadata template assigned to a file or
 folder, use the item's `id`, and the template's `templateKey`
 and `scope`.
@@ -152,3 +162,25 @@ the instance has been successfully removed from the folder.
 [e_on_file]: /reference/delete_files_id_metadata_id_id
 [e_on_folder]: /reference/delete_folders_id_metadata_id_id
 [scopes]: /guides/metadata/scopes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove metadata instance from file", href: "/reference/delete-files-id-metadata-id-id", badge: "DELETE" },
+    { label: "Remove metadata instance from folder", href: "/reference/delete-folders-id-metadata-id-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+    { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

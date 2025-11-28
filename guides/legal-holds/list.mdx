@@ -10,6 +10,9 @@ related_resources:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To list all Legal Hold Policies that have been created in an enterprise, call
 the [`GET /legal_hold_policies`][legal_holds] API endpoint.
 
@@ -86,3 +89,16 @@ scopes enabled. See [Required Scopes][scopes] for more details.
 
 [legal_holds]: /reference/get-legal-hold-policies
 [scopes]: /guides/legal-holds#required-scopes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all legal hold policies", href: "/reference/get-legal-hold-policies", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Legal Hold Policy", href: "/guides/legal-holds/get", badge: "GUIDE" }
+  ]}
+/>

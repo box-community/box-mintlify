@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/trash/permanently-delete-web-link.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ごみ箱に移動されたウェブリンクは、デフォルトで30日間ごみ箱に保持された後で削除されます。BusinessアカウントまたはEnterpriseアカウントの管理者は、削除までの期間を変更できます。削除までの期間が経過する前にごみ箱からウェブリンクを完全に削除する場合は、ごみ箱に移動されたウェブリンクの`ID`を使用して`DELETE`リクエストを`/web_links/:web_link_id/trash`に送信します。
 
 <CodeGroup>
@@ -59,3 +62,10 @@ print('The web link was deleted from trash!')
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ウェブリンクの復元", href: "/ja/guides/trash/restore-web-link", badge: "GUIDE" }
+  ]}
+/>

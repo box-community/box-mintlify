@@ -9,6 +9,9 @@ related_guides:
 related_resources:
   - metadata_cascade_policy
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 When a metadata template has been applied to a folder, a metadata cascade policy
 can be created by calling the  [`POST /metadata_cascade_policies`][e_post] API
 endpoint with the `folder_id` of the folder to apply the policy to, and the
@@ -104,3 +107,18 @@ client.metadata.createCascadePolicy('enterprise', 'testTemplate', folderID)
 [e_post]: /reference/post_metadata_cascade_policies
 [g_list_templates]: /guides/metadata/templates/list
 [g_list_instances_item]: /guides/metadata/instances/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create metadata cascade policy", href: "/reference/post-metadata-cascade-policies", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "List metadata cascade policies", href: "/guides/metadata/cascades/list", badge: "GUIDE" },
+    { label: "Force-apply metadata to all items in a folder", href: "/guides/metadata/cascades/force-apply", badge: "GUIDE" },
+    { label: "Delete a metadata cascade policy", href: "/guides/metadata/cascades/delete", badge: "GUIDE" }
+  ]}
+/>

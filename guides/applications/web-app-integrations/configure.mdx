@@ -12,6 +12,9 @@ alias_paths: []
 notes: |-
   Needs a massive cleanup
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 This guide explains how to set up a Web App Integration with a Platform App.
 
 <Warning>
@@ -148,3 +151,12 @@ Center. Follow the [Integrations][integrations] guide for more details.
 [devconsole]: https://app.box.com/developers/console
 [devaccount]: https://account.box.com/signup/n/developer
 [integrations]: /guides/applications/integrations
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+    { label: "Tokens", href: "/guides/authentication/tokens/index", badge: "GUIDE" },
+    { label: "Integrations", href: "/guides/applications/integrations/index", badge: "GUIDE" }
+  ]}
+/>

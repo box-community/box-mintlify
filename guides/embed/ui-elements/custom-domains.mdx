@@ -10,6 +10,16 @@ related_resources: []
 alias_paths:
   - /docs/setting-up-box-tools-to-work-with-custom-domains
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 In order to integrate a third party web application with Box Tools, you will
 need to explicitly add your application's URL. On Windows, this is achieved by
 adding a registry key. On MacOS, you will need to run few terminal commands to
@@ -165,3 +175,10 @@ To **list** all domains, run the following command in a terminal:
 ## Uninstalling
 
 When Box Tools is uninstalled, all domains will be removed.
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

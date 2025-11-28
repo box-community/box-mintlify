@@ -9,6 +9,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [Box Shield][box-shield] must be purchased and enabled on a
 Box enterprise to take advantage of the advanced security
 offerings outlined below.
@@ -344,3 +347,17 @@ The `additional_details` payload will provide the following details:
 [monitoringmode]: https://support.box.com/hc/en-us/articles/360044196353
 {/* i18n-disable localize-links */}
 [events]: /guides/events/enterprise-events/for-enterprise
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" }
+  ]}
+/>

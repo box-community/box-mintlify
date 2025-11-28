@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/events/enterprise-events/migrate-to-stream.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Boxでは、`admin_logs`を使用してライブイベントを登録しているアプリケーションを`admin_logs_streaming`に移行することをお勧めします。`admin_logs_streaming`を使用すると、レイテンシが低下し、一貫性が高まるだけでなく、遅れて届くイベントが見逃されなくなります。`admin_logs`と`admin_logs_streaming`の間のイベントの重複は、イベントIDを使用して排除することが可能です。
 
 ## Enterpriseの`stream_type`の比較
@@ -96,3 +99,17 @@ curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_posi
 </Frame>
 
 [events-api]: /ja/reference/events
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" }
+  ]}
+/>

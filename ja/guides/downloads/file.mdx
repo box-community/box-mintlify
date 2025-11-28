@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/downloads/file.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ファイルをダウンロードするには、取得するコンテンツが含まれるファイルのIDを[`GET /files/:id/content`][api]に渡します。
 
 <CodeGroup>
@@ -128,3 +131,16 @@ SDKでは、結果として、バイナリデータがダウンロードされ�
 [api]: /ja/reference/get-files-id-content
 
 [downloadurl]: /ja/guides/downloads/get-url
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "新しいファイルのアップロード", href: "/ja/guides/uploads/direct/file", badge: "GUIDE" }
+  ]}
+/>

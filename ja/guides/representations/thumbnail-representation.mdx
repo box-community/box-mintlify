@@ -25,6 +25,18 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/representations/thumbnail-representation.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "ファイルのすべてのレプリゼンテーションのリストの取得", href: "/ja/guides/representations/list-all-representations", badge: "GUIDE" },
+    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "GUIDE" },
+    { label: "ファイルレプリゼンテーションのダウンロード", href: "/ja/guides/representations/download-a-representation", badge: "GUIDE" }
+  ]}
+/>
 サムネイルとは小さい画像のことで、アプリケーション内でファイルのレプリゼンテーションとして使用できる`.png`または`.jpg`で表されます。たとえば、ファイルをダウンロードまたはプレビューするリンクのプレースホルダとして使用されます。
 
 `1024x1024`および`2048x2048`のPNGを除くすべてのサムネイルレプリゼンテーションは、元のファイルをBoxにアップロードしたときに生成されます。
@@ -120,3 +132,17 @@ fullyTranslated: true
 [download-a-representation]: /ja/guides/representations/download-a-representation
 
 [thumbnail_api]: /ja/guides/representations/thumbnail
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "PDFレプリゼンテーションの取得", href: "/ja/guides/representations/pdf", badge: "GUIDE" },
+    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

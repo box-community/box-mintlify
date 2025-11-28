@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/shared-links/permissions.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 共有リンクリソースには、`permissions`フィールドを使用して更新できる3つの権限`can_preview`、`can_download`、`can_edit`があります。
 
 <Warning>
@@ -48,3 +51,18 @@ curl -i -X PUT 'https://api.box.com/2.0/files/123456789?fields=shared_link' \
     }'
 
 ```
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "共有リンクの作成または更新", href: "/ja/guides/shared-links/create-or-update", badge: "GUIDE" },
+    { label: "共有リンクの削除", href: "/ja/guides/shared-links/remove", badge: "GUIDE" },
+    { label: "共有リンクの項目の検索", href: "/ja/guides/shared-links/find-for-item", badge: "GUIDE" }
+  ]}
+/>

@@ -9,6 +9,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To see what representations are available for a file you can call the
 [`GET /files/:id`][get_files_id] endpoint while requesting the
 [`representations`][file_representations] field.
@@ -49,3 +52,17 @@ representation.
 
 [get_files_id]: endpoint://get-files-id
 [file_representations]: /reference/resources/file#param-representations
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Request Desired Representation", href: "/guides/representations/request-a-representation", badge: "GUIDE" },
+    { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

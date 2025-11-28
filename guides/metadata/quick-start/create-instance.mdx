@@ -12,6 +12,8 @@ related_guides:
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/metadata/quick-start/list-all",
                           "guides/metadata/quick-start/create-template",
@@ -115,3 +117,18 @@ The API will return the newly created metadata instance.
 ```
 
 <Next>I've applied metadata to a file</Next>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create metadata instance on file", href: "/reference/post-files-id-metadata-id-id", badge: "POST" },
+    { label: "Create metadata instance on folder", href: "/reference/post-folders-id-metadata-id-id", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Metadata templates", href: "/guides/metadata/templates/index", badge: "GUIDE" },
+    { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" }
+  ]}
+/>

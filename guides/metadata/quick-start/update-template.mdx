@@ -11,6 +11,8 @@ related_guides:
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/metadata/quick-start/list-all",
                           "guides/metadata/quick-start/create-template",
@@ -171,3 +173,17 @@ created in previous steps would now look something like this.
 ```
 
 <Next>I've updated metadata template</Next>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" },
+    { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+  ]}
+/>

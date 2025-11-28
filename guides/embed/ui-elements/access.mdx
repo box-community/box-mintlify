@@ -10,6 +10,16 @@ related_resources: []
 alias_paths:
   - /docs/customizing-access-for-box-ui-elements
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 ## Motivation
 
 Box UI Elements are initialized on the client and make API calls directly to
@@ -308,3 +318,10 @@ such as preview, download, and upload which are bandwidth intensive and so we
 recommend that the client performs those operations directly with Box.
 
 [accesslevels]: https://community.box.com/t5/How-To-Guides-for-Sharing/What-Are-The-Different-Access-Levels-For-Collaborators/ta-p/144
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

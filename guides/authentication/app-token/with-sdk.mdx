@@ -11,6 +11,17 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with App Token Auth", href: "/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+  ]}
+/>
 The official Box SDKs have built-in support for App Token authentication.
 
 App Token authentication is designed for working directly with the
@@ -86,3 +97,16 @@ To learn more about Application Tokens for each SDK head over to:
 [Java]: https://github.com/box/box-java-sdk/blob/main/doc/authentication.md#box-view-authentication-with-app-token
 [Python]: https://github.com/box/box-python-sdk/blob/main/docs/usage/authentication.md#box-view-authentication-with-app-tokens
 [Node]: https://github.com/box/box-node-sdk/blob/main/docs/authentication.md#box-view-authentication-with-app-tokens
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Downscope a Token", href: "/guides/authentication/tokens/downscope", badge: "GUIDE" }
+  ]}
+/>

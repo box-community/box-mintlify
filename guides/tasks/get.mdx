@@ -7,6 +7,9 @@ related_guides:
   - tasks/for-file
   - tasks/update
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To get information about an assigned task, call the
 [`GET /tasks/:task_id`](/reference/get-tasks-id) API with the
 `id` of the task.
@@ -79,3 +82,18 @@ client.tasks.get('11111')
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get task", href: "/reference/get-tasks-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create a task", href: "/guides/tasks/create", badge: "GUIDE" },
+    { label: "Lists all tasks for a file", href: "/guides/tasks/for-file", badge: "GUIDE" },
+    { label: "Make changes to an existing task", href: "/guides/tasks/update", badge: "GUIDE" }
+  ]}
+/>

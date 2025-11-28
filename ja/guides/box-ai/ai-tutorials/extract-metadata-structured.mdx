@@ -27,6 +27,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box AI API を使用すると、指定したファイルからメタデータを抽出し、結果をキー/値ペアの形式で取得することができます。入力には、`fields`パラメータを使用して構造を作成するか、すでに定義済みのメタデータテンプレートを使用できます。テンプレートの作成の詳細については、[メタデータテンプレートのカスタマイズ][templates-console]を参照するか、[メタデータテンプレート API][templates-api]を使用してください。
 
 ## 開始する前に
@@ -432,3 +434,20 @@ print(f"box_ai_response: {box_ai_response.answer}")
 [blog]: https://medium.com/box-developer-blog
 [inline-field]: #use-fields-parameter
 [metadata-template]: #use-metadata-template
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Extract metadata (freeform)", href: "/reference/post-ai-extract", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" }
+  ]}
+/>

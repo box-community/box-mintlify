@@ -9,6 +9,16 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Box Skills Payload", href: "/guides/skills/handle/payload", badge: "GUIDE" }
+  ]}
+/>
 Once a processing service has determined the metadata for the file, your
 application can write that data back to the file stored on Box as metadata.
 

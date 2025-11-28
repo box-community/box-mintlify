@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Boxファイルリクエストを使用すると、どのユーザーに対しても、迅速かつ安全にファイルおよび関連付けられたメタデータをリクエストできます。ドラッグアンドドロップ方式のグラフィックインターフェースを使用して、以下が可能なウェブフォームを作成できます。
 
 * Boxアカウントの有無に関係なく、フォルダにコラボレータを追加せずに、どのユーザーに対しても安全にファイルをリクエストする。
@@ -46,3 +49,13 @@ Boxファイルリクエストを使用すると、どのユーザーに対し�
 ## 制限
 
 現在、このAPIで可能なのは、別のフォルダに関連付けられた既存のファイルリクエストをコピーして新しいファイルリクエストを作成することだけです。テンプレートのファイルリクエストを使用してテンプレートフォルダを作成するには、ガイドを確認してください。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" },
+    { label: "Get file request", href: "/reference/get-file-requests-id", badge: "GET" },
+    { label: "Update file request", href: "/reference/put-file-requests-id", badge: "PUT" },
+    { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
+  ]}
+/>

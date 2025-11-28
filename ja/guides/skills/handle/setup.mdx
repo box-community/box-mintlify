@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/skills/handle/setup.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 カスタムスキルの設定は、複数の手順からなるプロセスです。
 
 ## 前提条件
@@ -93,3 +96,10 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 [devconsole]: https://app.box.com/developers/console
 
 [devaccount]: https://account.box.com/signup/n/developer
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Skill cards on file", href: "/reference/post-files-id-metadata-global-boxSkillsCards", badge: "POST" }
+  ]}
+/>

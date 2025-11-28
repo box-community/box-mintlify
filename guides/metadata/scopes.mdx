@@ -10,6 +10,9 @@ related_resources:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Metadata templates are grouped into two distinct groups, or **scopes**.
 
 * **`global`**: a group of templates that is available to everyone using Box, regardless of the enterprise they are in. An example is the `global.properties` template that serves as a place to put free-form key/value `string` pairs without any additional schema associated with it.
@@ -22,3 +25,17 @@ Metadata templates are grouped into two distinct groups, or **scopes**.
   `global` scope, and that metadata templates made within the user's enterprise
   can only be accessed by users with access to that enterprise.
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all global metadata templates", href: "/reference/get-metadata-templates-global", badge: "GET" },
+    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

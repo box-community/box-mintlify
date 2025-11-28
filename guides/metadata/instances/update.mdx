@@ -12,6 +12,18 @@ required_guides:
   - metadata/instances/create
   - metadata/templates/list
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+    { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+    { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" }
+  ]}
+/>
 Updating the metadata applied to a file or folder can be done by using the
 item's `id`, the template's `templateKey` and `scope`, and a set of JSON
 operations to manipulate the data on the template instance.
@@ -780,3 +792,17 @@ useful to ensure all values are expected before any transformation is applied.
 [e_on_folder]: /reference/put_folders_id_metadata_id_id
 [jsonpatch]: https://tools.ietf.org/html/rfc6902
 [pointer]: https://tools.ietf.org/html/rfc6901
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
+    { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

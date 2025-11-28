@@ -7,6 +7,9 @@ required_guides: []
 alias_paths:
   - /docs/getting-started-box-view
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Before uploading files to Box and previewing them using Box View, a Box
 application must be created and an access token be generated for that
 application.
@@ -62,3 +65,10 @@ token to never expire.
 Once the app token is generated, copy and store it securely. It won’t be
 displayed once the page is reloaded since Box stores a one-way hash of the
 tokens instead of the actual token and cannot retrieve the original token again.
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Upload Files", href: "/guides/embed/box-view/upload-file", badge: "GUIDE" }
+  ]}
+/>

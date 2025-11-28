@@ -12,6 +12,16 @@ alias_paths:
   - /docs/box-content-explorer
   - /docs/content-explorer
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 <Note>
 The `v1` of the metadata view Content Explorer has reached end of support. While `v1` remains available in the `24.0.0` package, it will no longer receive bug fixes or new features. Follow the migration guide and switch to the `v2` metadata view of Content Explorer in order to receive the newest features.
 </Note>
@@ -196,3 +206,16 @@ Keys are based on the display names.
 [field-key]: /reference/post-metadata-templates-schema/#param-fields-key
 [display-name]: /reference/post-metadata-templates-schema/#param-fields-displayName
 [source]: /guides/metadata/scopes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get metadata template by ID", href: "/reference/get-metadata-templates-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

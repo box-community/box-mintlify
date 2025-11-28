@@ -12,6 +12,9 @@ related_guides:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To add content to an archive, you need to create it first. If you
 have not done this yet, use the [Create Archive][Create Archive] endpoint.
 
@@ -27,3 +30,24 @@ This can be either an ID of an archive or the ID of a folder that is inside an a
 [Update parent id of file]: /reference/put-files-id/#param-parent-id
 [Update folder]: /reference/put-folders-id
 [Update parent id of folder]: /reference/put-folders-id/#param-parent-id
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create archive", href: "/reference/v2025.0/post-archives", badge: "POST" },
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Restore content from Box Archive", href: "/guides/archives/restore-content", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Archive", href: "/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+  ]}
+/>

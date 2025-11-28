@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/developer-tokens.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" }
+  ]}
+/>
 開発者トークンは、開発およびテスト中に開発者が利用できるアクセストークンです。これらのトークンは60分後に期限切れになる有効期間の短いトークンであり、プログラムによって更新することはできません。
 
 ## 開発者トークンの作成
@@ -108,3 +118,10 @@ Box SDKは、基本のAPIクライアントを作成する際に、開発者ト�
 [IOS]: https://github.com/box/box-ios-sdk/blob/main/docs/usage/authentication.md#developer-token
 
 [apps]: /ja/guides/applications
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

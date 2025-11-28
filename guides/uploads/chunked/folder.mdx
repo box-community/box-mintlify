@@ -11,6 +11,9 @@ related_resources: []
 alias_paths:
   - /docs/upload-all-files-from-a-folder
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Sometimes an application might want to upload all files from a folder. To do so
 with the SDKs and the CLI requires traversing the folder tree, finding every
 file and uploading it accordingly.
@@ -483,3 +486,11 @@ files.
 
 [preflight]: /guides/uploads/check
 [chunked]: /guides/uploads/chunked
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
+    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" }
+  ]}
+/>

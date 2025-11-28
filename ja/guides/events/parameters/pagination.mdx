@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/events/parameters/pagination.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 イベントストリームのページネーションは、`stream_position`パラメータの使用によって機能します。
 
 最初に、`stream_position`クエリパラメータを指定せずにリクエストを[`GET /events`](/ja/reference/get-events) APIに送信します。
@@ -52,3 +55,18 @@ curl https://api.box.com/2.0/events?stream_position=now \
 ```
 
 この場合、APIによって空のリストと、次の呼び出しに使用できる`next_stream_position`が返されます。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" },
+    { label: "User Eventの取得", href: "/ja/guides/events/user-events/for-user", badge: "GUIDE" }
+  ]}
+/>

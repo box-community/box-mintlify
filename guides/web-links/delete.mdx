@@ -11,6 +11,16 @@ alias_paths: []
 related_resources:
   - web_link
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Web Link", href: "/guides/web-links/create", badge: "GUIDE" }
+  ]}
+/>
 To remove a web link in Box you will need to provide our API with the ID of
 the web link.
 
@@ -63,3 +73,16 @@ client.weblinks.delete('11111')
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove web link", href: "/reference/delete-web-links-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Web Link", href: "/guides/web-links/create", badge: "GUIDE" }
+  ]}
+/>

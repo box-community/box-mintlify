@@ -11,6 +11,16 @@ required_guides:
 related_resources:
   - metadata_templates
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
 To create a metadata template, pass a `scope`, `displayName` and an optional set
 of `fields` to the [`POST /metadata_templates/schema`][e_create_template] API.
 
@@ -372,3 +382,18 @@ template's information or assign it to an item.
 
 [user-types]: /platform/user-types
 [e_create_template]: /reference/post_metadata_templates_schema
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create metadata template", href: "/reference/post-metadata-templates-schema", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" },
+    { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+  ]}
+/>

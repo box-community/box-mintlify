@@ -8,6 +8,9 @@ required_guides: []
 related_resources:
   - file_request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Currently, the API only allows the creation of new file requests by copying an
 existing file request associated to another folder. Please check our below
 guide on creating a template folder with a template file request.
@@ -78,3 +81,16 @@ A template file request can be used to create new copies using the
 API. With the ID of a new folder in hand, you can copy the existing
 request, including its title, description and form-configuration
 to a new folder [with one API call](/guides/file-requests/copy).
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Copy a File Request", href: "/guides/file-requests/copy", badge: "GUIDE" }
+  ]}
+/>

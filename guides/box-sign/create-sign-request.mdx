@@ -8,6 +8,9 @@ related_guides:
   - box-sign/cancel-sign-request
   - box-sign/sign-templates
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 At minimum, to [create Box Sign request][create] you need
 the a file you want to be signed, a destination folder for the signed
 document/[signing log][log], and signers.
@@ -411,3 +414,18 @@ Encountering an error status requires creating a new sign request to retry.
 [cloudgame]: /guides/embed/box-embed#cloud-game
 [templates]: /guides/box-sign/sign-templates
 [CFR]: https://support.box.com/hc/en-us/articles/24169443030163
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Sign request", href: "/reference/post-sign-requests", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Resend Box Sign Request", href: "/guides/box-sign/resend-sign-request", badge: "GUIDE" },
+    { label: "Cancel Box Sign Request", href: "/guides/box-sign/cancel-sign-request", badge: "GUIDE" },
+    { label: "Create Sign Request with Sign Template", href: "/guides/box-sign/sign-templates", badge: "GUIDE" }
+  ]}
+/>

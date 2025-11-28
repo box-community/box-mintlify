@@ -29,6 +29,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Webhookを使用すると、Boxコンテンツのイベントを監視し、イベントの発生時に任意のURLへの通知を受け取ることができます。たとえば、ワークフローには、共有リンクを削除するためのファイルダウンロードの待機が含まれる場合があります。このファイルにWebhookを設定すれば、ダウンロードイベントが通知されたときに、スクリプトが起動し、共有リンクを削除するためのAPIコールを実行できます。
 
 <Frame center shadow border>
@@ -59,3 +62,14 @@ WebhookにはV1とV2の2種類があります。この2つの比較を以下に�
 | 拡張性が低い。                 | 拡張性に優れ、信頼性が高い。                          |
 
 [console]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" },
+    { label: "Get webhook", href: "/reference/get-webhooks-id", badge: "GET" },
+    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" },
+    { label: "Update webhook", href: "/reference/put-webhooks-id", badge: "PUT" },
+    { label: "Remove webhook", href: "/reference/delete-webhooks-id", badge: "DELETE" }
+  ]}
+/>

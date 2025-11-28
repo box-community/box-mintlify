@@ -21,6 +21,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/box-sign/resend-sign-request.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [Box Signのリクエストを再送信エンドポイント][resend]を使用すると、残りの署名者全員にリクエストのメールを再送信できます。
 
 [ステータス][status]が`signed`、`cancelled`、`declined`、`expired`、`error_sending`、または`error_converting`の場合は、Box Signのリクエストを再送信できません。
@@ -67,3 +70,18 @@ console.log(`Sign request id ${sr.id} resent`);
 [resend]: /ja/reference/post-sign-requests-id-resend
 
 [status]: /ja/guides/box-sign/create-sign-request/#request-status
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Resend Box Sign request", href: "/reference/post-sign-requests-id-resend", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Signのリクエストの作成", href: "/ja/guides/box-sign/create-sign-request", badge: "GUIDE" },
+    { label: "Box Signのリクエストのキャンセル", href: "/ja/guides/box-sign/cancel-sign-request", badge: "GUIDE" },
+    { label: "Signテンプレートを使用した署名リクエストの作成", href: "/ja/guides/box-sign/sign-templates", badge: "GUIDE" }
+  ]}
+/>

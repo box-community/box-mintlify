@@ -10,6 +10,9 @@ related_resources:
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To get the information for a specific Retention Policy that has been created in
 an enterprise, call the [`GET /retention_policies/:id`][retention] API endpoint
 with the `id` of the policy.
@@ -92,3 +95,16 @@ right scopes enabled. See [Required Scopes][scopes] for more details.
 
 [retention]: /reference/get_retention_policies_id
 [scopes]: /guides/retention-policies#required-scopes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get retention policy", href: "/reference/get-retention-policies-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "List All Retention Policies", href: "/guides/retention-policies/list", badge: "GUIDE" }
+  ]}
+/>

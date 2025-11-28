@@ -28,6 +28,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 V2 Webhook は、特定のファイルまたはフォルダを監視でき、[開発者コンソール][console]でも API でも作成できます。
 
 ## 開発者コンソール
@@ -202,3 +204,18 @@ Webhook はカスケードで適用されるため、Webhook を親フォルダ�
 [4]: /ja/guides/webhooks/triggers
 [sa]: /ja/platform/user-types/#service-account
 [console]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Webhookイベントトリガー", href: "/ja/guides/webhooks/triggers", badge: "GUIDE" },
+    { label: "V2 Webhook", href: "/ja/guides/webhooks/v2/index", badge: "GUIDE" },
+    { label: "Webhookの削除", href: "/ja/guides/webhooks/v2/delete-v2", badge: "GUIDE" }
+  ]}
+/>

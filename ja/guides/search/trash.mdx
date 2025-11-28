@@ -18,6 +18,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/search/7-trash.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 検索結果では、デフォルトで、ユーザーのごみ箱内のコンテンツは無視されます。ユーザーのごみ箱を検索するには、`trash_content`クエリパラメータを`trashed_only`に設定します。
 
 <CodeGroup>
@@ -70,3 +73,10 @@ client.search.query(
 現在、APIでサポートされているのは、ごみ箱にないコンテンツの検索 (`non_trashed_only`、デフォルト) かユーザーのごみ箱にあるコンテンツの検索 (`trashed_only`) のみです。現時点では、その両方の場所にある項目を同時に検索することはできません。
 
 </Info>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

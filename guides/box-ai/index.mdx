@@ -12,6 +12,9 @@ related_guides:
 - box-ai/ai-tutorials/extract-metadata
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box AI API allows you to use Box AI
 functionality
 in your platform applications. For example, you can
@@ -139,3 +142,21 @@ better results for this language.
 [extract]: /reference/post_ai_extract
 [extract-structured]: /reference/post_ai_extract_structured
 [eea-tutorial]: /guides/box-ai/ai-tutorials/extract-metadata-structured#
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+    { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" }
+  ]}
+/>

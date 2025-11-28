@@ -10,6 +10,9 @@ related_guides: []
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The number of fields returned for a resource depends on the API endpoint used
 to request the resource.
 
@@ -157,3 +160,13 @@ curl https://api.box.com/2.0/files/12345?fields=is_package,lock \
   "type": "file"
 }
 ```
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" },
+    { label: "Get folder information", href: "/reference/get-folders-id", badge: "GET" },
+    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" },
+    { label: "Get user", href: "/reference/get-users-id", badge: "GET" }
+  ]}
+/>

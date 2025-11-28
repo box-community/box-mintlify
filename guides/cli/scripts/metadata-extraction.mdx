@@ -11,6 +11,16 @@ required_guides:
   - authentication/oauth2/oauth2-setup
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 This script extracts metadata details for all the
 files and folders in any Box folder and
 saves the result in a CSV spreadsheet for
@@ -118,3 +128,11 @@ You have access to these log files:
 [console]: https://app.box.com/developers/console
 [auth]: /guides/authentication/oauth2/oauth2-setup
 [examples]:https://github.com/box/boxcli/tree/main/examples/Metadata%20Extraction
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Using PowerShell Scripts with the Box CLI", href: "/guides/cli/quick-start/powershell-script-templates", badge: "GUIDE" }
+  ]}
+/>

@@ -10,6 +10,9 @@ related_guides:
 alias_paths:
   - guides/box-ai/prerequisites 
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To implement Box AI API in your solutions, you need
 to make sure you have access to the functionality.
 You will also need a platform application with
@@ -89,3 +92,14 @@ calls.
 [form]: https://forms.gle/Nsh3TwM3W8qg4U35A
 [authorization]: /guides/authorization
 [reauthorization]: /guides/authorization/platform-app-approval#re-authorization-on-changes
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Override AI model configuration", href: "/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+    { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" }
+  ]}
+/>

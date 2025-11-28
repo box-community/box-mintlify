@@ -12,6 +12,9 @@ related_resources:
   - web_link
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To list all files, folders and web links in a folder call the [`GET
 /collections/:id/items`](/reference/get-collections-id-items) API.
 
@@ -89,3 +92,16 @@ client.collections.getItems('81934', {fields: 'name', limit: 2})
   collection. The ID of this collection is [different for every
   user](/guides/collections/list).
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List collection items", href: "/reference/get-collections-id-items", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Offset-based Pagination", href: "/guides/api-calls/pagination/offset-based", badge: "GUIDE" }
+  ]}
+/>

@@ -13,6 +13,17 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 The official Box SDKs have built-in support for JWT authentication.
 
 This guide will take you through user authentication using JWT with the use
@@ -164,3 +175,18 @@ To learn more about JWT for each SDK head over to:
 [Python]: https://github.com/box/box-python-sdk/blob/main/docs/usage/authentication.md#server-auth-with-jwt
 [Node]: https://github.com/box/box-node-sdk/blob/main/docs/authentication.md#server-auth-with-jwt
 [IOS]: https://github.com/box/box-ios-sdk/blob/main/docs/usage/authentication.md#server-auth-with-jwt
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>

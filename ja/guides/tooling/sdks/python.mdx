@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tooling/sdks/python.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Pythonプロジェクトでは、Box Python SDKを使用してBox APIを呼び出すことができます。
 
 <Card href="https://github.com/box/box-python-sdk" title="GitHubでPython SDKの詳細を確認する"/>
@@ -51,3 +54,11 @@ pip install "boxsdk[jwt]"
 [jwt]: /ja/guides/authentication/jwt
 
 [versioning]: /ja/guides/tooling/sdks/sdk-versioning
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

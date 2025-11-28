@@ -14,6 +14,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The Pre-flight check API allows an application to verify that a file will be
 accepted by Box before it uploads any bytes. It can both be used for new files,
 as well as uploading new versions of existing files.
@@ -147,3 +150,19 @@ upload.
 
 [chunked]: /guides/uploads/chunked
 [chunkedsession]: /guides/uploads/chunked/create-session
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
+    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
+    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" },
+    { label: "Upload File Version", href: "/guides/uploads/direct/file-version", badge: "GUIDE" }
+  ]}
+/>

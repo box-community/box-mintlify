@@ -8,6 +8,16 @@ required_guides:
 related_resources:
   - file_request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create a template File Request", href: "/guides/file-requests/template", badge: "GUIDE" }
+  ]}
+/>
 To create a copy of an existing [template](/guides/file-requests/template) file
 request, all you need is its unique ID, and the ID of the folder to apply the
 new file request to.
@@ -145,3 +155,10 @@ a template, please see the reference documentation for the
 [`POST /file-requests/:id/copy`](/reference/post-file-requests-id-copy) API.
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
+  ]}
+/>

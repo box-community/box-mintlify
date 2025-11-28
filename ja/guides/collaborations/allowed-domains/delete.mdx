@@ -26,6 +26,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/allowed-domains/delete.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 コラボレーションの許可されたドメインのリストからドメインを削除すると、自分の会社とそのドメイン内のユーザーとの間にコラボレーションを作成できなくなります。
 
 許可リストからドメインを削除するには、リストのエントリのIDを削除リクエストに指定します。このIDは、[新しいドメインを許可する][create]か[社内で許可されているドメインのリストを取得する][list]と返されます。
@@ -75,3 +78,18 @@ client.collaborationAllowlist.removeDomain('12345', callback);
 [create]: /ja/guides/collaborations/allowed-domains/create
 
 [list]: /ja/guides/collaborations/allowed-domains/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove domain from list of allowed collaboration domains", href: "/reference/delete-collaboration-whitelist-entries-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "コラボレーション", href: "/ja/guides/collaborations/index", badge: "GUIDE" },
+    { label: "コラボレーションが許可されているドメインのリストの取得", href: "/ja/guides/collaborations/allowed-domains/list", badge: "GUIDE" },
+    { label: "ドメインへのコラボレーションの許可", href: "/ja/guides/collaborations/allowed-domains/create", badge: "GUIDE" }
+  ]}
+/>

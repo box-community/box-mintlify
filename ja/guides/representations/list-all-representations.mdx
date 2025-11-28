@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/representations/list-all-representations.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ファイルに使用できるレプリゼンテーションを確認するには、[`representations`][file_representations]フィールドのリクエスト中に[`GET /files/:id`][get_files_id]エンドポイントを呼び出します。
 
 ```sh
@@ -62,3 +65,17 @@ curl https://api.box.com/2.0/files/123?fields=representations \
 [get_files_id]: endpoint://get-files-id
 
 [file_representations]: /ja/reference/resources/file#param-representations
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "GUIDE" },
+    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

@@ -10,6 +10,9 @@ alias_paths:
 related_endpoints:
   - post_files_id_metadata_global_boxSkillsCards
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 A Custom Skill, or Box Skill is a type of application that performs custom
 processing for files uploaded to Box. Skills are designed to make it
 straightforward to use third-party Machine Learning services to automatically
@@ -58,3 +61,10 @@ Before a Custom Skill can be used it needs to be assigned
 to a folder for which the skill should trigger.
 
 <Card href="/guides/authorization/custom-skill-approval" arrow title="Learn how to approve Custom Skills"/>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Skill cards on file", href: "/reference/post-files-id-metadata-global-boxSkillsCards", badge: "POST" }
+  ]}
+/>

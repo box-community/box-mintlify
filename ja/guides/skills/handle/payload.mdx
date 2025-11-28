@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/skills/handle/payload.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "カスタムスキル", href: "/ja/guides/applications/app-types/custom-skills", badge: "GUIDE" }
+  ]}
+/>
 Skillsアプリが監視するフォルダに新しいファイルがアップロード、コピー、または移動されると、アプリケーションの設定および認証中に指定された呼び出しURLに、Boxからイベントペイロードが送られます。
 
 このイベントペイロードには、アップロードされたファイルのコンテンツを読み込んで機械学習システムなどの処理システムに送信し、処理システムの完了後にファイルにメタデータを書き戻すために必要な情報がすべて含まれています。

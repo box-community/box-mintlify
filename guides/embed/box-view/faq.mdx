@@ -14,6 +14,8 @@ alias_paths:
   - /docs/box-view-faq
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <AccordionGroup>
 <Accordion title="How does Box View work?">
 
@@ -82,3 +84,18 @@ See this guide for information on customizing the logo within a
 {/* i18n-enable localize-links */}
 [annotations]: /guides/embed/ui-elements/annotations
 [cors]: /guides/security/cors
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Setup", href: "/guides/embed/box-view/setup", badge: "GUIDE" },
+    { label: "Upload Files", href: "/guides/embed/box-view/upload-file", badge: "GUIDE" },
+    { label: "Create File Preview", href: "/guides/embed/box-view/create-preview", badge: "GUIDE" }
+  ]}
+/>

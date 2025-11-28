@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/list-v2.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 認証済みユーザーのすべてのWebhookを取得するには、[すべてのWebhookのリストを取得][1]エンドポイントを使用します。
 
 <CodeGroup>
@@ -98,3 +101,16 @@ client.webhooks.getAll()
 このAPIコールは、認証済みユーザーのWebhookのみをリストし、会社内の他のユーザーのWebhookはリストしません。
 
 [1]: endpoint://get_webhooks
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/3-for-file.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 特定のファイルのすべてのタスクのリストを取得するには、ファイルの`id`を指定して[`GET /files/:id/tasks`](/ja/reference/get-files-id-tasks)を呼び出します。
 
 <CodeGroup>
@@ -86,3 +89,17 @@ client.files.getTasks('11111')
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List tasks on file", href: "/reference/get-files-id-tasks", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "タスクの作成", href: "/ja/guides/tasks/create", badge: "GUIDE" },
+    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "GUIDE" }
+  ]}
+/>

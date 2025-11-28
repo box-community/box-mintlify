@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/events/event-triggers/sign-events.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box Signイベントの監査には、Enterprise Event Streamを使用します。Box Signの詳細については、[ガイド][sign-guide]を参照してください。
 
 <Warning>
@@ -633,3 +636,17 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
 ```
 
 [sign-guide]: /ja/guides/box-sign
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" }
+  ]}
+/>
