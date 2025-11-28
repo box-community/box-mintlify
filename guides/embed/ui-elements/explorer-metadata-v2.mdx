@@ -16,7 +16,7 @@ The metadata view of [Content Explorer][content-explorer] allows you to display 
 The metadata view `v2` is a ground-up redesign of the original metadata view of the Box Content Explorer UI element. It introduces a streamlined interface tailored for metadata-driven workflows. Key features include filtering and editing interfaces with dedicated UI for each metadata field type, flexible display options with list and grid views, pagination support, and more.
 
 <Frame>
-![Metadata view](./images/explorer-metadata-v2.png)
+![Metadata view](/images/guides/embed/ui-elements/explorer-metadata-v2.png)
 </Frame>
 
 ## Prerequisites
@@ -195,7 +195,7 @@ The columns prop defines the structure and behavior of your metadata table colum
 You can enable selecting individual rows. When one or more rows are selected, the header updates to show a selection descriptor and a metadata edit button. This allows users to perform single or bulk actions. Row selection is scoped to the paginated content.
 
 <Frame>
-![Row selection](./images/explorer-select.png)
+![Row selection](/images/guides/embed/ui-elements/explorer-select.png)
 </Frame>
 
 To enable the selection feature, set the `isSelectionEnabled` property to `true` within the `metadataViewProps` object:
@@ -217,7 +217,7 @@ contentExplorer.show(FOLDER_ID, ACCESS_TOKEN, {
 When one or more items are selected, the component header displays the selected count and the **Metadata** button becomes active. Clicking the **Metadata** button opens a sidebar that lets users view and edit metadata for the selected items.
 
 <Frame>
-![Editing metadata](./images/explorer-edit.png)
+![Editing metadata](/images/guides/embed/ui-elements/explorer-edit.png)
 </Frame>
 
 This behavior is enabled by default; no additional properties are required to activate it.
@@ -250,7 +250,7 @@ metadataViewProps: {
 Grid view is available by default through the view mode toggle button in the action bar. When the grid view is active, a zoom control becomes available. Other functionalities like selecting, filtering, and editing are also available within this view.
 
 <Frame>
-![Grid view](./images/explorer-grid.png)
+![Grid view](/images/guides/embed/ui-elements/explorer-grid.png)
 </Frame>
 
 To disable grid view, set `actionBarProps.isViewModeButtonDisabled` to `true` within the `metadataViewProps` object:

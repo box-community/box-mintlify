@@ -33,7 +33,7 @@ fullyTranslated: true
 
 コンテンツエクスプローラを使用すると、メタデータに基づいてファイルおよびフォルダを表示できます。メタデータビューでは、[メタデータテンプレート][template]と[メタデータクエリ][metadata-query]を使用して、表示するデータを探します。
 
-<Frame>![メタデータビュー](./images/explorer-view.png)</Frame>
+<Frame>![メタデータビュー](/images/guides/embed/ui-elements/explorer-view.png)</Frame>
 
 ## 前提条件
 
@@ -45,7 +45,7 @@ fullyTranslated: true
 
 1. [Boxアプリを作成します][box-app]。
 2. \[CORSドメイン] にローカルでの開発用のアドレスを追加します。 
-    <Frame>![CORSドメイン](./images/box-app-cors.png)</Frame>
+    <Frame>![CORSドメイン](/images/guides/embed/ui-elements/box-app-cors.png)</Frame>
 3. [開発者トークン][token]を生成します。
 
 ## メタデータテンプレートの作成
@@ -79,7 +79,7 @@ fullyTranslated: true
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `DEVELOPER_TOKEN`        | 開発者コンソールで生成された[開発者トークン][token]。                                                                                                                                                                                                                       |
 | `ENTERPRISE_ID`          | Boxアプリケーションの \[**一般設定**] タブからコピーしたEnterprise ID。                                                                                                                                                                                                      |
-| `METADATA_TEMPLATE_NAME` | 作成済みのメタデータテンプレートの`templateKey`。**注**: 適切な名前を指定済みであることを確認するには、[メタデータAPI][get-template]を使用して名前を取得するか、管理コンソールでURLから名前をコピーします。<Frame>![管理コンソールにおけるメタデータ名](./images/metadata-template-name.png)</Frame> UIでテンプレート名を変更しても、変更されるのは表示名のみです。コンポーネントで使用する名前は、常に最初に指定した名前になります。 |
+| `METADATA_TEMPLATE_NAME` | 作成済みのメタデータテンプレートの`templateKey`。**注**: 適切な名前を指定済みであることを確認するには、[メタデータAPI][get-template]を使用して名前を取得するか、管理コンソールでURLから名前をコピーします。<Frame>![管理コンソールにおけるメタデータ名](/images/guides/embed/ui-elements/metadata-template-name.png)</Frame> UIでテンプレート名を変更しても、変更されるのは表示名のみです。コンポーネントで使用する名前は、常に最初に指定した名前になります。 |
 | `METADATA_SOURCE`        | [メタデータ][source]のソース。これは、スコープ、Enterprise ID、メタデータキーを組み合わせた文字列です。                                                                                                                                                                                       |
 | `ROOTFOLDER_ID`          | メタデータクエリを適用してフィルタがかけられたファイルを表示するBoxフォルダのID。                                                                                                                                                                                                           |
 

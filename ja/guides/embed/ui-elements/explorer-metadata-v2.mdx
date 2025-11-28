@@ -28,7 +28,7 @@ fullyTranslated: true
 
 メタデータビュー`v2`は、Box Content Explorer UI Elementの元のメタデータビューのデザインを根本から変更したもので、メタデータ駆動型ワークフローに合わせて合理化されたインターフェースが導入されています。主な機能には、メタデータフィールドのタイプごとに専用のUIを備えたフィルタおよび編集用のインターフェース、リストビューとグリッドビューを使用した柔軟な表示オプション、ページネーションのサポートなどがあります。
 
-<Frame>![メタデータビュー](./images/explorer-metadata-v2.png)</Frame>
+<Frame>![メタデータビュー](/images/guides/embed/ui-elements/explorer-metadata-v2.png)</Frame>
 
 ## 前提条件
 
@@ -210,7 +210,7 @@ export default ContentExplorerContainer;
 
 個々の行の選択を有効化できます。1行以上が選択されると、ヘッダーが更新され、選択記述子とメタデータ編集ボタンが表示されます。これにより、ユーザーは、単一の操作または一括操作を実行できます。行の選択の範囲は、ページ割りされたコンテンツに限定されます。
 
-<Frame>![行の選択](./images/explorer-select.png)</Frame>
+<Frame>![行の選択](/images/guides/embed/ui-elements/explorer-select.png)</Frame>
 
 選択機能を有効にするには、`metadataViewProps`オブジェクト内で`isSelectionEnabled`プロパティを`true`に設定します。
 
@@ -231,7 +231,7 @@ contentExplorer.show(FOLDER_ID, ACCESS_TOKEN, {
 
 1つ以上の項目が選択されると、コンポーネントのヘッダーには、選択した数が表示され、\[**メタデータ**] ボタンがアクティブになります。\[**メタデータ**] ボタンをクリックすると、サイドバーが開き、ユーザーは、選択した項目のメタデータを表示したり編集したりできます。
 
-<Frame>![メタデータの編集](./images/explorer-edit.png)</Frame>
+<Frame>![メタデータの編集](/images/guides/embed/ui-elements/explorer-edit.png)</Frame>
 
 この動作は、デフォルトで有効になっています。つまり、有効にするために、追加のプロパティは必要ありません。
 
@@ -263,7 +263,7 @@ metadataViewProps: {
 
 グリッドビューは、操作バーにある表示モード切り替えボタンからデフォルトで利用可能です。グリッドビューがアクティブな場合は、ズームコントロールが使用可能になります。選択、フィルタ、編集などのその他の機能もこのビュー内で使用できます。
 
-<Frame>![グリッドビュー](./images/explorer-grid.png)</Frame>
+<Frame>![グリッドビュー](/images/guides/embed/ui-elements/explorer-grid.png)</Frame>
 
 グリッドビューを無効にするには、`metadataViewProps`オブジェクト内で`actionBarProps.isViewModeButtonDisabled`を`true`に設定します。
 
