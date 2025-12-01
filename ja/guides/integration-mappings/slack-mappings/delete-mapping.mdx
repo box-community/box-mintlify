@@ -32,7 +32,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 <RelatedLinks
   title="REQUIRED GUIDES"
   items={[
-    { label: "Slack統合マッピングの設定", href: "/ja/guides/integration-mappings/slack-mappings/setup", badge: "GUIDE" }
+    { label: "Slack統合マッピングの設定", href: "/ja/guides/integration-mappings/slack-mappings/setup", badge: "ガイド" }
   ]}
 />
 `DELETE integration_mappings/slack/:integration_mapping_id`呼び出しを使用して、チャンネルとフォルダ間のマッピングを削除します。次のファイルがチャンネルにアップロードされると、デフォルトのフォルダ構造で新しいマッピングと新しいフォルダが作成されます。マッピングを削除しても、BoxフォルダもSlackチャンネルも削除されません。
@@ -78,16 +78,16 @@ await client.integrationMappings.deleteSlackIntegrationMappingById({
 </CodeGroup>
 
 <RelatedLinks
-  title="RELATED APIS"
+  title="関連するAPI"
   items={[
     { label: "Delete Slack integration mapping", href: "/reference/delete-integration-mappings-slack-id", badge: "DELETE" }
   ]}
 />
 <RelatedLinks
-  title="RELATED GUIDES"
+  title="関連するガイド"
   items={[
-    { label: "Slack統合マッピングの作成", href: "/ja/guides/integration-mappings/slack-mappings/create-mapping", badge: "GUIDE" },
-    { label: "Slack統合マッピングのリスト取得", href: "/ja/guides/integration-mappings/slack-mappings/list-mappings", badge: "GUIDE" },
-    { label: "Slack統合マッピングの更新", href: "/ja/guides/integration-mappings/slack-mappings/update-mapping", badge: "GUIDE" }
+    { label: "Slack統合マッピングの作成", href: "/ja/guides/integration-mappings/slack-mappings/create-mapping", badge: "ガイド" },
+    { label: "Slack統合マッピングのリスト取得", href: "/ja/guides/integration-mappings/slack-mappings/list-mappings", badge: "ガイド" },
+    { label: "Slack統合マッピングの更新", href: "/ja/guides/integration-mappings/slack-mappings/update-mapping", badge: "ガイド" }
   ]}
 />

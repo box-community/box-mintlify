@@ -30,8 +30,8 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 <RelatedLinks
   title="REQUIRED GUIDES"
   items={[
-    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "GUIDE" },
-    { label: "ファイルリクエストに関する情報の取得", href: "/ja/guides/file-requests/get", badge: "GUIDE" }
+    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "ガイド" },
+    { label: "ファイルリクエストに関する情報の取得", href: "/ja/guides/file-requests/get", badge: "ガイド" }
   ]}
 />
 ファイルリクエストを削除するのに必要なのは、その一意のIDだけです。
@@ -88,7 +88,7 @@ client.fileRequests.delete('2484517969').then(() => console.log('Removed file re
 </Note>
 
 <RelatedLinks
-  title="RELATED APIS"
+  title="関連するAPI"
   items={[
     { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
   ]}

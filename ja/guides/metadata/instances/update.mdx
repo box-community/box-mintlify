@@ -33,9 +33,9 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 <RelatedLinks
   title="REQUIRED GUIDES"
   items={[
-    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "GUIDE" },
-    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "GUIDE" },
-    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "GUIDE" }
+    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "ガイド" },
+    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "ガイド" },
+    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "ガイド" }
   ]}
 />
 ファイルまたはフォルダに適用されたメタデータを更新するには、項目の`id`、テンプレートの`templateKey`と`scope`に加え、テンプレートインスタンスのデータを操作するための一連のJSON操作を使用します。
@@ -808,7 +808,7 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
 [pointer]: https://tools.ietf.org/html/rfc6901
 
 <RelatedLinks
-  title="RELATED APIS"
+  title="関連するAPI"
   items={[
     { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
     { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
@@ -817,6 +817,6 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
 <RelatedLinks
   title="RELATED RESOURCES"
   items={[
-    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "GUIDE" }
+    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "ガイド" }
   ]}
 />

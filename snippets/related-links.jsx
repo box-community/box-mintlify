@@ -44,11 +44,11 @@ export const RelatedLinks = ({ title, items = [] }) => {
           <a
             key={index}
             href={item.href}
-            className="py-2 px-3 rounded related_link hover:bg-[#f2f2f2] flex items-center gap-3 group no-underline hover:no-underline border-b-0"
+            className="py-2 px-3 rounded related_link hover:bg-[#f2f2f2] dark:hover:bg-[#111827] flex items-center gap-3 group no-underline hover:no-underline border-b-0"
           >
             {/* Badge */}
             <span
-              className={`px-2 py-1 rounded text-xs font-semibold uppercase tracking-wide flex-shrink-0 ${getBadgeClass(
+              className={`px-2 py-1 rounded-full text-xs font-semibold uppercase tracking-wide flex-shrink-0 ${getBadgeClass(
                 item.badge
               )}`}
             >
