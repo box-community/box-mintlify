@@ -12,6 +12,9 @@ related_resources:
 required_guides: []
 alias_paths:
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 V2 webhooks can monitor specific files or folders. They can be
 created in the [Developer Console][console] and with API.
 
@@ -196,3 +199,18 @@ You can find a list of available triggers [in this guide][4].
 [4]: /guides/webhooks/triggers
 [sa]: /platform/user-types/#service-account
 [console]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Webhook Event Triggers", href: "/guides/webhooks/triggers", badge: "GUIDE" },
+    { label: "V2 Webhooks", href: "/guides/webhooks/v2/index", badge: "GUIDE" },
+    { label: "Delete Webhooks", href: "/guides/webhooks/v2/delete-v2", badge: "GUIDE" }
+  ]}
+/>

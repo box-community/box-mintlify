@@ -13,6 +13,16 @@ alias_paths:
 - /docs/authenticate-with-jwt
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>
 Server-side authentication using JSON Web Tokens (JWT) is the most common way to
 authenticate to the Box API. JWT is an [open standard](https://jwt.io/)
 designed to allow powerful server-to-server authentication.
@@ -53,3 +63,11 @@ that:
 [sa]: /platform/user-types/#service-account
 [jwtnosdk]: /guides/authentication/jwt/without-sdk
 [cca]: /guides/authentication/client-credentials
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/web-links/delete.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "ウェブリンクの作成", href: "/ja/guides/web-links/create", badge: "GUIDE" }
+  ]}
+/>
 Boxでウェブリンクを削除するには、そのウェブリンクのIDをAPIに渡す必要があります。
 
 <CodeGroup>
@@ -75,3 +85,16 @@ client.weblinks.delete('11111')
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove web link", href: "/reference/delete-web-links-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ウェブリンクの作成", href: "/ja/guides/web-links/create", badge: "GUIDE" }
+  ]}
+/>

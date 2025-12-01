@@ -11,6 +11,16 @@ required_guides:
   - authentication/oauth2/oauth2-setup
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 This script uses the Box CLI to build and create a
 personal folder structure, create managed users in bulk, 
 and provision such new users by adding them to the newly created 
@@ -20,3 +30,11 @@ For details, see the quick start guide on
 [using Box CLI and sample scripts][1].
 
 [1]: /guides/cli/quick-start/powershell-script-templates
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Using PowerShell Scripts with the Box CLI", href: "/guides/cli/quick-start/powershell-script-templates", badge: "GUIDE" }
+  ]}
+/>

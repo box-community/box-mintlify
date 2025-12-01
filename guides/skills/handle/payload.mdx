@@ -10,6 +10,16 @@ related_resources:
   - skill_invocation
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Custom Skill", href: "/guides/applications/app-types/custom-skills", badge: "GUIDE" }
+  ]}
+/>
 When a new file is uploaded, copied, or moved to a folder monitored by a Skills
 app, the invocation URL that was specified during application setup and
 authentication will receive an event payload from Box.

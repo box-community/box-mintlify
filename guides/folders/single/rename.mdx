@@ -10,6 +10,9 @@ related_resources:
   - folder
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To rename a folder in Box you will need to provide our API with a new `name` for
 the folder.
 
@@ -25,3 +28,16 @@ the folder.
   Additionally, the names `.` and `..` are reserved names and therefore
   also prohibited.
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Update Folder", href: "/guides/folders/single/update", badge: "GUIDE" }
+  ]}
+/>

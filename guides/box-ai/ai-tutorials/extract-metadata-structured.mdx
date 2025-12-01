@@ -13,6 +13,9 @@ alias_paths:
   - guides/box-ai/extract-metadata-structured
   - guides/extract-metadata
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 With Box AI API, you can extract metadata from the provided file
 and get the result in the form of key-value pairs.
 As input, you can either create a structure using the `fields` parameter, or use an already defined metadata template.
@@ -418,3 +421,20 @@ print(f"box_ai_response: {box_ai_response.answer}")
 [blog]: https://medium.com/box-developer-blog
 [inline-field]: #use-fields-parameter
 [metadata-template]: #use-metadata-template
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Extract metadata (freeform)", href: "/reference/post-ai-extract", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "Override AI model configuration", href: "/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" }
+  ]}
+/>

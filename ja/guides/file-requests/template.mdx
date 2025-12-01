@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/1-template.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 現在、このAPIで可能なのは、別のフォルダに関連付けられた既存のファイルリクエストをコピーして新しいファイルリクエストを作成することだけです。テンプレートのファイルリクエストを使用したテンプレートフォルダの作成に関する以下のガイドを確認してください。
 
 ## 1. テンプレートフォルダ
@@ -72,3 +75,16 @@ https://*.app.box.com/filerequest/2338423584
 ## 3. テンプレートの使用
 
 テンプレートのファイルリクエストを使用すると、[`POST /file-requests/:id/copy`](/ja/reference/post-file-requests-id-copy) APIによって新しいコピーを作成できます。新しいフォルダのIDを取得したら、[1回のAPIコール](/ja/guides/file-requests/copy)で既存のリクエスト (タイトル、説明、フォームの設定を含む) を新しいフォルダにコピーできます。
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "GUIDE" }
+  ]}
+/>

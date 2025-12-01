@@ -11,6 +11,16 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Preflight Check", href: "/guides/uploads/check", badge: "GUIDE" }
+  ]}
+/>
 To upload a file to Box via direct upload, make an API call to the
 [`POST /files/content`][upload] API with the content of the file, the desired
 file name, and the folder ID.
@@ -244,3 +254,11 @@ More information can be found [in our community article on this topic][fsizes].
 [fsizes]: https://community.box.com/t5/Upload-and-Download-Files-and/Understand-the-Maximum-File-Size-You-Can-Upload-to-Box/ta-p/50590
 {/* i18n-disable localize-links */}
 [GCM]: /guides/api-calls/permissions-and-errors/scopes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
+    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" }
+  ]}
+/>

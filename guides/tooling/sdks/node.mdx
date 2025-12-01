@@ -11,6 +11,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 You can use Box Node SDK to call Box APIs in a Node
 project.
 
@@ -36,3 +39,11 @@ yarn add box-node-sdk
 [npm]: https://www.npmjs.com/
 [yarn]: https://yarnpkg.com/
 [node]: https://github.com/box/box-node-sdk
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

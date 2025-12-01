@@ -21,6 +21,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/box-sign/create-sign-request.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [Box Signのリクエストを作成する][create]には、少なくとも、署名が必要なファイル、署名済みドキュメント/[署名ログ][log]の保存先フォルダ、署名者が必要です。
 
 <CodeGroup>
@@ -387,3 +390,18 @@ Box Signは、リクエストで指定された署名者のメールアドレス
 [templates]: /ja/guides/box-sign/sign-templates
 
 [CFR]: https://support.box.com/hc/en-us/articles/24169443030163
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Sign request", href: "/reference/post-sign-requests", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Signのリクエストの再送信", href: "/ja/guides/box-sign/resend-sign-request", badge: "GUIDE" },
+    { label: "Box Signのリクエストのキャンセル", href: "/ja/guides/box-sign/cancel-sign-request", badge: "GUIDE" },
+    { label: "Signテンプレートを使用した署名リクエストの作成", href: "/ja/guides/box-sign/sign-templates", badge: "GUIDE" }
+  ]}
+/>

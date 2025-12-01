@@ -7,6 +7,9 @@ related_guides:
 - box-ai/ai-tutorials/generate-text
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <Warning>
 
 Box AI Studio is available only for Enterprise Advanced accounts.
@@ -55,3 +58,12 @@ better results for this language.
 {/* alex enable */} 
 
 [ai-studio]: https://support.box.com/hc/en-us/articles/37228079461267-Enabling-Box-AI-Studio-and-Managing-Agents
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create agents", href: "/guides/ai-studio/ai-studio-agents/create-agents", badge: "GUIDE" },
+    { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" }
+  ]}
+/>

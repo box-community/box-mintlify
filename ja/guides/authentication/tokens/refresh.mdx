@@ -25,6 +25,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/refresh.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "GUIDE" }
+  ]}
+/>
 アクセストークンを更新するには、アクセストークンに付属された更新トークンを使用します。更新は、アクセストークンの有効期限の前でも後でも行うことができます。
 
 これを行うには、アプリケーションで以下のように`refresh_token`を[`POST
@@ -51,3 +61,16 @@ fullyTranslated: true
 その後、この新しい更新トークンは再度60日以内に1回だけ使用できます。
 
 </Danger>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "認証", href: "/ja/guides/authentication/index", badge: "GUIDE" }
+  ]}
+/>

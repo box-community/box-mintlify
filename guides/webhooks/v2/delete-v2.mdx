@@ -12,6 +12,17 @@ required_guides:
 alias_paths:
   - /webhooks/manage/delete
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "List Webhooks for a User", href: "/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+  ]}
+/>
 You can delete a webhook using the [Developer Console][console] or API.
 
 ## Developer Console
@@ -111,3 +122,17 @@ includes the following additional information.
 [delete]: /reference/delete-webhooks-id
 [list]: /reference/get-webhooks
 [console]: https://app.box.com/developers/console
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove webhook", href: "/reference/delete-webhooks-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "List Webhooks for a User", href: "/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+  ]}
+/>

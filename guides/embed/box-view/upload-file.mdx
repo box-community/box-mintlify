@@ -7,6 +7,16 @@ required_guides:
   - embed/box-view/setup
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup", href: "/guides/embed/box-view/setup", badge: "GUIDE" }
+  ]}
+/>
 To generate a preview embed link for a file, the file must be uploaded to
 Box. For most file types, conversion is triggered automatically upon upload.
 However, for video and 3D files, it is triggered upon first preview. No explicit
@@ -27,3 +37,10 @@ Once an authenticated client has been created, it may be used to upload files
 directly to the App Token application for conversion.
 
 <Card href="/guides/uploads/direct/file" arrow title="Upload files to Box"/>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create File Preview", href: "/guides/embed/box-view/create-preview", badge: "GUIDE" }
+  ]}
+/>

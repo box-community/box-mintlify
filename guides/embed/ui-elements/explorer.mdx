@@ -11,6 +11,16 @@ alias_paths:
   - /docs/box-content-explorer
   - /docs/content-explorer
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 The Box Content Explorer UI Element allows developers to embed a folder view of
 content stored on Box in their desktop or mobile web application. The library
 fetches information about a specified folder through the Box API and then
@@ -315,3 +325,10 @@ style={{width: "100%"}}
 [appjs]: https://github.com/box-community/content-explorer-metadata/blob/main/src/App.js
 [blogpost]: https://medium.com/box-developer-blog/metadata-view-in-box-content-explorer-4978e47e97e9
 [explorer-metadata]: /guides/embed/ui-elements/explorer-metadata-v2
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

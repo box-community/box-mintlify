@@ -26,6 +26,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 多くの Box Enterprise では、**シングルサインオン** (SSO) を使用して、Box にログインしている[管理対象ユーザー][mu]を認証します。Box Platform に作成されたアプリケーションと SSO プロバイダの対話方法は、作成されるアプリケーションの種類によって異なります。
 
 ## クライアント側認証を使用する Platform アプリ
@@ -81,3 +83,14 @@ Skills を使用した場合でも、スキルイベントをトリガーする�
 [platform_app]: /ja/guides/applications/app-types/platform-apps
 [custom_skills]: /ja/guides/applications/app-types/custom-skills
 [jwt]: /ja/guides/authentication/jwt/jwt-setup
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "アプリトークン認証", href: "/ja/guides/authentication/app-token/index", badge: "GUIDE" },
+    { label: "Platformアプリ", href: "/ja/guides/applications/app-types/platform-apps", badge: "GUIDE" },
+    { label: "カスタムスキル", href: "/ja/guides/applications/app-types/custom-skills", badge: "GUIDE" }
+  ]}
+/>

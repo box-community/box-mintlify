@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/cli/cli-docs/bulk-commands.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 Box CLIの一括コマンドを使用すると、反復タスクを自動化できます。コマンドに`--bulk-file-path`フラグを追加すると、多数の項目に対して操作を一度に実行できます。
 
 たとえば、次のコマンドは、CSVファイルを使用してフォルダの名前 (`Name`)、説明 (`Description`)、親フォルダの`ParentId`を指定し、複数のフォルダを作成します。
@@ -76,3 +86,10 @@ box folders:create --bulk-file-path <PATH_TO_CSV>/folders-create.csv
 [bulkactions]: https://github.com/box/boxcli/tree/main/docs/Bulk%20actions
 
 [folderstemplate]: https://github.com/box/boxcli/blob/main/docs/Bulk%20actions/folders/folders-create.csv
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

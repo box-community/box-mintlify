@@ -10,6 +10,9 @@ related_resources:
   - file
   - task
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To update a task in Box you will need to call the
 [`PUT /tasks/:task_id`](/reference/put-tasks-id) API with the ID of the task. This API
 can be used to change the `action` type of the task, add a `message`, or change
@@ -128,3 +131,18 @@ A task on a file can be assigned to more than one collaborator on the file, and
 a task has a `completion_rule` that can be used to define if all users who've
 been assigned the task (`all_assignees`) or only one assignee (`any_assignee`)
 need to complete the task.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update task", href: "/reference/put-tasks-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create a task", href: "/guides/tasks/create", badge: "GUIDE" },
+    { label: "Get information about a task", href: "/guides/tasks/get", badge: "GUIDE" },
+    { label: "Delete a task", href: "/guides/tasks/delete", badge: "GUIDE" }
+  ]}
+/>

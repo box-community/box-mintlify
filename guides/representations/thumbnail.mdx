@@ -12,6 +12,18 @@ required_guides:
   - representations/download-a-representation
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "List All Representations for File", href: "/guides/representations/list-all-representations", badge: "GUIDE" },
+    { label: "Request Desired Representation", href: "/guides/representations/request-a-representation", badge: "GUIDE" },
+    { label: "Download File Representation", href: "/guides/representations/download-a-representation", badge: "GUIDE" }
+  ]}
+/>
 A thumbnail is a small image, either as `.png` or as `.jpg` that can be used in
 an application as a representation of the file, for example as a placeholder for
 a link that downloads or previews the file.
@@ -118,3 +130,17 @@ At this time the following file types are supported.
 
 [get_files_id_thumbnail_id]: endpoint://get_files_id_thumbnail_id
 [thumb_representations]: /guides/representations/thumbnail-representation
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file thumbnail", href: "/reference/get-files-id-thumbnail-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get Thumbnail Representation", href: "/guides/representations/thumbnail-representation", badge: "GUIDE" },
+    { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+  ]}
+/>

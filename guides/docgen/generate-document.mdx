@@ -8,6 +8,9 @@ related_endpoints:
   - post_docgen_batches_v2025.0
   - post_docgen_templates_v2025.0
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The `POST /2.0/docgen_batches` endpoint allows you to generate a document using Box Doc Gen template as input.
 
 ## Prerequisites
@@ -167,3 +170,11 @@ When the request is being processed, each entry in the `document_generation_data
 Generated documents will be saved in the designated folder.
 
 [docgen-prerequisites]: /guides/docgen/docgen-getting-started
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "Mark file as Box Doc Gen template", href: "/guides/docgen/mark-template", badge: "GUIDE" }
+  ]}
+/>

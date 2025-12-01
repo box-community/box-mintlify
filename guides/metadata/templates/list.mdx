@@ -12,6 +12,16 @@ related_guides:
 related_resources:
   - metadata_templates
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
 Metadata templates can be listed for either the [enterprise or the global
 scope][scopes].
 
@@ -214,3 +224,19 @@ be available.
 [get_global]: /reference/get_metadata_templates_global
 [get_enterprise]: /reference/get_metadata_templates_enterprise
 [pagination]: /guides/api-calls/pagination/marker-based
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" },
+    { label: "List all global metadata templates", href: "/reference/get-metadata-templates-global", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get a metadata template", href: "/guides/metadata/templates/get", badge: "GUIDE" },
+    { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" },
+    { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+  ]}
+/>

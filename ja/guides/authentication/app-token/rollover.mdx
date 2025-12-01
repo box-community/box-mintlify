@@ -21,6 +21,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/app-token/rollover.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "アプリトークン認証を使用した設定", href: "/ja/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+  ]}
+/>
 アプリケーションのアプリトークンを1つずつ更新することで、アプリケーションではトークンの循環が可能となり、競合が発生することはありません。
 
 ## トークンを循環させる理由

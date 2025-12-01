@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/downloads/in-browser.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 アプリケーションでは、ファイルをHTML要素としてページに埋め込む場合があります。たとえば、オーディオプレーヤーを使用する場合です。
 
 ```html
@@ -61,3 +64,17 @@ https://api.box.com/2.0/files/[FILE_ID]/content?access_token=[ACCESS_TOKEN]
 [cors]: /ja/guides/security/cors
 
 [downscoping]: /ja/guides/authentication/tokens/downscope
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルのダウンロード", href: "/ja/guides/downloads/file", badge: "GUIDE" },
+    { label: "新しいファイルのアップロード", href: "/ja/guides/uploads/direct/file", badge: "GUIDE" }
+  ]}
+/>

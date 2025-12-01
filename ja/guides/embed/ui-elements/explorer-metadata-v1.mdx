@@ -25,6 +25,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/explorer-metadata-v1.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 <Note>
 
 コンテンツエクスプローラのメタデータビューの`v1`は公式サポートが終了しました。`v1`は`24.0.0`パッケージで引き続き利用できますが、バグ修正や新機能は提供されなくなります。最新の機能が提供されるようにするには、移行ガイドに従い、コンテンツエクスプローラの`v2`のメタデータビューに切り替えてください。
@@ -212,3 +222,16 @@ export default App;
 [display-name]: /ja/reference/post-metadata-templates-schema/#param-fields-displayName
 
 [source]: /ja/guides/metadata/scopes
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get metadata template by ID", href: "/reference/get-metadata-templates-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

@@ -12,6 +12,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Many Box Enterprises use **Single Sign On** (SSO) to authenticate
 [Managed Users][mu] logging in to Box. The way an application built on
 Box Platform interact with an SSO provider depends on the type of application
@@ -90,3 +93,14 @@ therefore SSO is not involved.
 [platform_app]: /guides/applications/app-types/platform-apps
 [custom_skills]: /guides/applications/app-types/custom-skills
 [jwt]: /guides/authentication/jwt/jwt-setup
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "App Token Auth", href: "/guides/authentication/app-token/index", badge: "GUIDE" },
+    { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" },
+    { label: "Custom Skill", href: "/guides/applications/app-types/custom-skills", badge: "GUIDE" }
+  ]}
+/>

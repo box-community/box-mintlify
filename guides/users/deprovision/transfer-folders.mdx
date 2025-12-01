@@ -11,6 +11,8 @@ related_resources: []
 alias_paths: []
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 As part of user account deprovisioning, a common requirement is to transfer all
 files and folders that are stored within the user account to another user
 account or into a location for long term storage, such as into the service
@@ -336,3 +338,16 @@ as a collaborator on the file or folder.
 
 The file or folder is now owned by the `transfer_to_user` account, and the
 `transfer_from_user` account no longer has access.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Transfer owned folders", href: "/reference/put-users-id-folders-0", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" }
+  ]}
+/>

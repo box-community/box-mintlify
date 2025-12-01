@@ -15,6 +15,8 @@ import { Store } from '/snippets/store.jsx';
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 import { LoginButton } from '/snippets/login-button.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/tooling/postman/quick-start/install-postman",
                           "guides/tooling/postman/quick-start/configure-box-app",
@@ -111,3 +113,17 @@ import { LoginButton } from '/snippets/login-button.jsx';
 <Observe option='postman.login' value='clicked'>
   <Next>I have logged in to Box</Next>
 </Observe>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" },
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

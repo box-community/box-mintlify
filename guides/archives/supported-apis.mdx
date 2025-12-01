@@ -8,6 +8,9 @@ related_guides: []
 required_guides: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The basic Box Archive APIs allow you to create, list, update and delete archives, but you can use other APIs to interact with an archive or its content.
 
 See the table below for the full list of those APIs.
@@ -72,3 +75,10 @@ See the table below for the full list of those APIs.
 [Update classification label on file]: /reference/put-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
 [Delete classification label on file]: /reference/delete-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
 [GCM scope]: /guides/api-calls/permissions-and-errors/scopes/#global-content-manager-gcm
+
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Archive", href: "/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+  ]}
+/>

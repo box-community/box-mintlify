@@ -10,6 +10,9 @@ required_guides: []
 related_resources:
   - files
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To restore a file that has been moved to the trash, but has not yet been
 purged, make a `POST` request to the `/files/:file_id` endpoint. This will
 place the file in the original folder if it is still available, or you
@@ -132,3 +135,23 @@ client.files.restoreFromTrash(
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Restore file", href: "/reference/post-files-id", badge: "POST" },
+    { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Permanently Delete File", href: "/guides/trash/permanently-delete-file", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Files", href: "/guides/files/index", badge: "GUIDE" }
+  ]}
+/>

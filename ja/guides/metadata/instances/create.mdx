@@ -27,6 +27,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/3-create.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "GUIDE" }
+  ]}
+/>
 メタデータテンプレートは、項目の`id`、テンプレートの`templateKey`と`scope`、およびテンプレート内の各フィールドの値のセットを使用してファイルまたはフォルダに適用できます。
 
 <Info>
@@ -398,3 +408,25 @@ client.folders.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketin
 [g_list_instances_item]: /ja/guides/metadata/instances/list
 
 [g_get_metadata_template]: /ja/guides/metadata/templates/get
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create metadata instance on file", href: "/reference/post-files-id-metadata-id-id", badge: "POST" },
+    { label: "Create metadata instance on folder", href: "/reference/post-folders-id-metadata-id-id", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "GUIDE" },
+    { label: "項目のメタデータの更新", href: "/ja/guides/metadata/instances/update", badge: "GUIDE" },
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

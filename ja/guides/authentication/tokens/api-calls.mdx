@@ -24,6 +24,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/api-calls.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" }
+  ]}
+/>
 すべての認証済みAPIコールでは、`Bearer Token`としてアクセストークンを`Authorization`ヘッダーに含めて渡す必要があります。そうしないと、`401 Unauthorized` HTTPステータスが返されます。
 
 ```sh
@@ -37,3 +47,10 @@ curl https://api.box.com/2.0/users/me \
 アクセストークンが認証されるユーザーを調べるには、[`GET /users/me`](endpoint://get-users-id)エンドポイントを使用してください。
 
 </Info>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "認証", href: "/ja/guides/authentication/index", badge: "GUIDE" }
+  ]}
+/>

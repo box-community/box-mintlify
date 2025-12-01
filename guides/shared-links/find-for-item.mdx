@@ -11,6 +11,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The [find item for shared link](endpoint://get_shared_items) API is designed to
 accept a shared link as an input using a `BoxApi` header and return the file or
 folder object that the shared link is set for.
@@ -93,3 +96,17 @@ client.sharedItems.get(
   those folders](/reference/get-folders-id-items), [get a nested file's
   information](/reference/get-files-id), or [download a file](/reference/get-files-id-content)
 </Info>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Find file for shared link", href: "/reference/get-shared-items", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Remove Shared Link", href: "/guides/shared-links/remove", badge: "GUIDE" },
+    { label: "Create or Update Shared Link", href: "/guides/shared-links/create-or-update", badge: "GUIDE" }
+  ]}
+/>

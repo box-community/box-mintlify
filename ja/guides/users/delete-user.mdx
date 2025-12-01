@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/users/delete-user.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 App Userと管理対象ユーザーの削除プロセスは同じです。ユーザーアカウントを削除するには、削除するアカウントのユーザーIDを指定します。
 
 <CodeGroup>
@@ -87,3 +90,17 @@ client.users.delete('123', {force: true})
 ユーザーアカウントにまだコンテンツがある場合、ユーザー削除リクエストは失敗します。これを解決するには、別のアカウントに[すべてのファイルまたはフォルダを転送する](/ja/guides/users/deprovision/transfer-folders)か、オプションの`force`パラメータを使用します。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete user", href: "/reference/delete-users-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "GUIDE" },
+    { label: "ファイルとフォルダの転送", href: "/ja/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+  ]}
+/>

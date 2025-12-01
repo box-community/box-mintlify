@@ -10,6 +10,17 @@ required_guides:
 related_resources:
   - metadata_template
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" }
+  ]}
+/>
 Updating a metadata template can be achieved by passing an array of operations
 to the [`PUT /metadata_templates/:scope/:templateKey/schema`][endpoint] API.
 
@@ -336,3 +347,16 @@ some additional operations to change the options of the fields.
 | [`removeMultiSelectOption`](/guides/metadata/fields/multi-select#remove-an-option)  | Removes a `multiSelect` field option          |
 
 [endpoint]: /reference/put_metadata_templates_id_id_schema
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" }
+  ]}
+/>

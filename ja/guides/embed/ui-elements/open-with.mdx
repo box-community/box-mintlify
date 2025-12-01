@@ -24,6 +24,15 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 <Warning>
 
 日本時間 2021 年 12 月 22 日をもって、新規のお客様に対する`OpenWith` UI Element のサポートは終了しました。
@@ -361,3 +370,10 @@ contentOpenWith.removeAllListeners();
 {/* i18n-disable localize-links */}
 
 [service-account]: /ja/platform/user-types/#service-account
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

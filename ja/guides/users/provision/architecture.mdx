@@ -207,6 +207,8 @@ import com.box.sdk.BoxFolder;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 public class BoxFolderTreeCreator {
     private BoxDeveloperEditionAPIConnection _boxClient;
     private JsonValue _boxFolderTree;
@@ -438,3 +440,10 @@ namespace BoxPlayground {
 </CodeGroup>
 
 [sa]: /ja/platform/user-types/#service-account
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "コンテンツの入力", href: "/ja/guides/users/provision/populate-content", badge: "GUIDE" }
+  ]}
+/>

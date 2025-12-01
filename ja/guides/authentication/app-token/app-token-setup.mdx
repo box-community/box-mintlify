@@ -27,6 +27,17 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/app-token/app-token-setup.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "Platformアプリ", href: "/ja/guides/applications/app-types/platform-apps", badge: "GUIDE" }
+  ]}
+/>
 アクセス制限付きアプリは、認証にサーバー側の[アプリトークン][app-token]を使用するよう設定できます。
 
 <Card href="/ja/guides/authentication/app-token" title="アプリトークン認証のしくみを確認する"/>
@@ -127,3 +138,12 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 [api-calls]: /ja/guides/api-calls
 
 [auth]: /ja/guides/authorization
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" },
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Platformアプリの承認", href: "/ja/guides/authorization/platform-app-approval", badge: "GUIDE" }
+  ]}
+/>

@@ -9,6 +9,9 @@ related_resources: []
 alias_paths:
   - /docs/configure-a-box-skill
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Setting up a Custom Skill is a multi-step process.
 
 ## Prerequisites
@@ -94,3 +97,10 @@ the **File Extensions** section.
 
 [devconsole]: https://app.box.com/developers/console
 [devaccount]: https://account.box.com/signup/n/developer
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Skill cards on file", href: "/reference/post-files-id-metadata-global-boxSkillsCards", badge: "POST" }
+  ]}
+/>

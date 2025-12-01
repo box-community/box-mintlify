@@ -11,6 +11,16 @@ alias_paths:
   - /docs/authenticate-with-developer-token
   - /authentication/access-tokens/developer-tokens
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" }
+  ]}
+/>
 A Developer Token is an Access Token available to developers during development
 and testing. These tokens are short lived, as they expire after 60 minutes, and
 cannot be refreshed programmatically.
@@ -87,3 +97,10 @@ To learn more about Developer Tokens for each SDK head over to:
 [Node]: https://github.com/box/box-node-sdk/blob/main/docs/authentication.md#developer-token
 [IOS]: https://github.com/box/box-ios-sdk/blob/main/docs/usage/authentication.md#developer-token
 [apps]: /guides/applications
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

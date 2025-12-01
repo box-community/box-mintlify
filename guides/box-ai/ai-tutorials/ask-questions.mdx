@@ -13,6 +13,8 @@ alias_paths:
   - guides/box-ai/ask-questions
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <Note>
 Box AI API is available to all customers Business and above.
 
@@ -319,3 +321,20 @@ The resulting answer includes the source file and direct content citations.
 [model-param]: /reference/resources/ai_agent_ask#param_basic_text_model
 [prompt-param]: /reference/ai_agent_ask#param_basic_text_prompt_template
 [overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "Override AI model configuration", href: "/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+    { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+    { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" }
+  ]}
+/>

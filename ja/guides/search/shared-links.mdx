@@ -18,6 +18,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/search/8-shared-links.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 デフォルトで検索APIによって返されるのは、ユーザーが所有する項目か、ユーザーが明示的にコラボレータに設定されている項目のみです。これらの検索結果には、ユーザーが共有リンクを介して最近アクセスした可能性がある項目は含まれません。
 
 このAPIで共有リンクを有効にするには、`include_recent_shared_links`クエリパラメータを`true`に設定します。
@@ -60,3 +63,10 @@ client.search.query(
 このパラメータがtrueに設定されている場合は、このAPIのレスポンス形式が[検索結果 (複数の共有リンクを含む)](/ja/reference/resources/search-results-with-shared-links) のリストを返すよう変更されることに十分注意してください。
 
 </Danger>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

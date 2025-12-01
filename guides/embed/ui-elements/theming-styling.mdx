@@ -10,6 +10,16 @@ required_guides:
   - embed/ui-elements/installation
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 {/* alex ignore */}
 
 
@@ -140,3 +150,12 @@ style={{width: "100%"}}
 [uploader]: /guides/embed/ui-elements/uploader
 [dt]: /guides/embed/ui-elements/ui-elements-design-tokens
 [blog]: https://medium.com/@stefaniuk.olga/b4a86518d5ca
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" },
+    { label: "Content Explorer", href: "/guides/embed/ui-elements/explorer", badge: "GUIDE" },
+    { label: "Content Uploader", href: "/guides/embed/ui-elements/uploader", badge: "GUIDE" }
+  ]}
+/>

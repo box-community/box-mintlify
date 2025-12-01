@@ -19,6 +19,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/2-create-app-user.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ユーザーがSSOプロバイダの資格情報を使用してカスタムのBoxアプリケーションに初めてサインインするときに、新しいBoxユーザーを作成し、ユーザーのSSOユーザーレコードと関連付ける必要があります。その際、このSSOユーザーレコードの一意の情報の一部を使用します。通常、この2つのアカウントの関連付けに使用されるデータは、一意のIDとメールアドレスのいずれかです。
 
 この関連付けを行うためにBoxアカウントを作成する方法がいくつかあります。
@@ -231,3 +234,16 @@ client.enterprise.addUser(
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create user", href: "/reference/post-users", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "SSO IDのApp Userの検索", href: "/ja/guides/sso-identities-and-app-users/find-app-user", badge: "GUIDE" }
+  ]}
+/>

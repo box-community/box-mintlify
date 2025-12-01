@@ -18,6 +18,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/search/9-fields.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 デフォルトでは、検索APIによって**標準**形式の[ファイル](/ja/reference/resources/file)、[フォルダ](/ja/reference/resources/folder)、または[ウェブリンク](/ja/reference/resources/web-link)が返されます。これらの各リソースでは、`fields`クエリパラメータを使用してリクエストできる追加のフィールドがサポートされています。
 
 <CodeGroup>
@@ -83,3 +86,10 @@ client.search.query(
 `fields`パラメータを使用して、項目の追加情報をクエリで照会すると、これらのフィールドといくつかの**基本**フィールド (`id`、`type`、`name`など) のみが返されます。レスポンスに最初から含まれていたフィールドは、明示的にリクエストする必要があります。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
+  ]}
+/>

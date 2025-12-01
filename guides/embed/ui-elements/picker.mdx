@@ -11,6 +11,16 @@ alias_paths:
   - /docs/box-content-picker
   - /docs/content-picker
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 The Box Content Picker UI Element allows developers to add support for selecting
 files and folders from Box in their desktop or mobile web application. The
 library fetches information about a specified folder through the Box API and
@@ -344,3 +354,10 @@ style={{width: "100%"}}
 
 [downscope]: /guides/authentication/tokens/downscope
 [scopes]: /guides/api-calls/permissions-and-errors/scopes
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

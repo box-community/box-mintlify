@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/trash/restore-folder.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ごみ箱に移動されたが削除されていないフォルダを復元するには、`/folders/:folder_id`エンドポイントに`POST`リクエストを送信します。これにより、フォルダがまだ使用可能であれば元の親フォルダに戻されます。または、オプションとして`parent`フォルダを指定することもできます。
 
 <CodeGroup>
@@ -150,3 +153,23 @@ client.folders.restoreFromTrash(
 フォルダの復元中、ロックされているフォルダに対して、それ以外の移動、コピー、削除、復元の操作を実行することはできません。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Restore folder", href: "/reference/post-folders-id", badge: "POST" },
+    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダを完全に削除", href: "/ja/guides/trash/permanently-delete-folder", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "フォルダ", href: "/ja/guides/folders/index", badge: "GUIDE" }
+  ]}
+/>

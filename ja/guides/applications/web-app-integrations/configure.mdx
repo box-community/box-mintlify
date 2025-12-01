@@ -25,6 +25,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 このガイドでは、Platform アプリとのウェブアプリ統合を設定する方法について説明します。
 
 <Warning>
@@ -146,3 +148,12 @@ Box 統合を一般公開するには、統合を App Center に掲載する必�
 [devconsole]: https://app.box.com/developers/console
 [devaccount]: https://account.box.com/signup/n/developer
 [integrations]: /ja/guides/applications/integrations
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "GUIDE" },
+    { label: "統合", href: "/ja/guides/applications/integrations/index", badge: "GUIDE" }
+  ]}
+/>

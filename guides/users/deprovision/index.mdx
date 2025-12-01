@@ -12,6 +12,9 @@ alias_paths:
 - /guides/users/deprovision/user
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Part of regular Box enterprise maintenance is removing accounts for users that
 are no longer active in your enterprise. When removing a user from your
 enterprise, you'll need to move all content owned by the user into another
@@ -112,3 +115,16 @@ box users:delete $transfer_from_user_id --yes
 
   </Tab>
 </Tabs>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete user", href: "/reference/delete-users-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Transfer Files & Folders", href: "/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+  ]}
+/>

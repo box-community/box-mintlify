@@ -20,6 +20,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box のドキュメントは、主に以下の 5 つのセクションに分かれています。
 
 - **Box Platform について**: Platform 全般の概要。
@@ -68,3 +70,12 @@ Box API を使用する開発が初めての方は、まずは[Box Platform に�
 {/* i18n-disable localize-links */}
 
 [forum-link]: https://forum.box.com
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "認証", href: "/ja/guides/authentication/index", badge: "GUIDE" },
+    { label: "承認", href: "/ja/guides/authorization/index", badge: "GUIDE" },
+    { label: "APIコール", href: "/ja/guides/api-calls/index", badge: "GUIDE" }
+  ]}
+/>

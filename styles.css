@@ -109,3 +109,94 @@ footer div.flex.gap-4.flex-col.md\:flex-row.md\:items-center.md\:gap-8.md\:justi
 .nav-logo {
   min-width: 109px;
 }
+
+/* Related links badge styles */
+/* Guide badges */
+.badge-guide,
+.badge-tutorial {
+  background-color: #f9f5e3;
+  color: #5c4a1f;
+}
+
+.dark .badge-guide,
+.dark .badge-tutorial {
+  background-color: #3d3520;
+  color: #f9f5e3;
+}
+
+/* HTTP method badges */
+.badge-get {
+  background-color: #e0f2f1;
+  color: #004d40;
+}
+
+.dark .badge-get {
+  background-color: #004d40;
+  color: #b2dfdb;
+}
+
+.badge-post {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+}
+
+.dark .badge-post {
+  background-color: #1b5e20;
+  color: #c8e6c9;
+}
+
+.badge-put,
+.badge-patch {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.dark .badge-put,
+.dark .badge-patch {
+  background-color: #e65100;
+  color: #ffe0b2;
+}
+
+.badge-delete {
+  background-color: #ffebee;
+  color: #b71c1c;
+}
+
+.dark .badge-delete {
+  background-color: #b71c1c;
+  color: #ffcdd2;
+}
+
+/* Other badge types */
+.badge-api {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.dark .badge-api {
+  background-color: #0d47a1;
+  color: #bbdefb;
+}
+
+.badge-reference,
+.badge-documentation {
+  background-color: #f3e5f5;
+  color: #4a148c;
+}
+
+.dark .badge-reference,
+.dark .badge-documentation {
+  background-color: #4a148c;
+  color: #e1bee7;
+}
+
+/* Default badge */
+.badge-default {
+  background-color: #f5f5f5;
+  color: #424242;
+}
+
+.dark .badge-default {
+  background-color: #424242;
+  color: #e0e0e0;
+}

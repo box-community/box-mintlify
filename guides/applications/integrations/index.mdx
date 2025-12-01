@@ -12,6 +12,9 @@ alias_paths:
   - /guides/applications/app-gallery
   - /guides/applications/app-gallery/
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [Box Integrations][app-center] is the first place for Box users to find out
 about applications they can use in combination with Box. If your
 application can be used by other enterprises, listing your service in
@@ -71,3 +74,11 @@ control panel:
 [app-center]: https://app.box.com/services
 [email]: mailto:integrate@box.com
 [bp]: https://support.box.com/hc/en-us/sections/21356597387539-Box-Partner-Programs
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

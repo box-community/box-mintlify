@@ -25,6 +25,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/upload-part.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "アップロードセッションの作成", href: "/ja/guides/uploads/chunked/create-session", badge: "GUIDE" }
+  ]}
+/>
 大きいファイルをアップロードする際は、そのファイルを小さいパーツに分割し、パーツのアップロードAPIを使用してそれらのパーツをアップロードできます。
 
 ## アップロードセッションの作成
@@ -238,3 +248,16 @@ client.files.uploadPart('93D9A837B45F', part, 8388608, 2147483648, {part_id: 'fe
 [commit]: /ja/guides/uploads/chunked/commit-session
 
 [createsession]: /ja/guides/uploads/chunked/create-session
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Upload part of file", href: "/reference/put-files-upload-sessions-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アップロードセッションのコミット", href: "/ja/guides/uploads/chunked/commit-session", badge: "GUIDE" }
+  ]}
+/>

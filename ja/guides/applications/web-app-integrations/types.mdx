@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/applications/web-app-integrations/types.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 現在、Boxではポップアップ統合を提供しています。
 
 ## ポップアップ統合
@@ -35,3 +38,11 @@ fullyTranslated: true
 ポップアップパネルでは、HTMLの`<iframe>`タグを使用し、埋め込みコンテンツを表示します。Boxのコンテンツのセキュリティを保護するには、コールバックURLでSSLを使用する必要があります。また、コールバックURLからのレスポンスには、ランダムな文字列値に設定された`X-Frame-Options`ヘッダーを含める必要があります。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリケーション", href: "/ja/guides/applications/index", badge: "GUIDE" },
+    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "GUIDE" }
+  ]}
+/>

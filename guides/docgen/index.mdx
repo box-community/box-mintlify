@@ -15,6 +15,9 @@ related_endpoints:
 - post_docgen_templates_v2025.0
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box Doc Gen allows you to generate business documents such as offer letters, sales contracts, invoices or agreements.
 You can generate documents based on Box Doc Gen templates uploaded to Box, with data fields that can be dynamically filled using Box Doc Gen API.
 
@@ -78,3 +81,14 @@ For more details, see [Box API versioning][api-versioning].
 [upload-template]: https://support.box.com/hc/en-us/articles/36587432368275-Managing-Box-Doc-Gen-Templates-in-Relay
 [generate-document]: /guides/docgen/generate-document
 [api-versioning]:/guides/api-calls/api-versioning-strategy
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "Box Doc Gen templates", href: "/guides/docgen/docgen-templates", badge: "GUIDE" },
+    { label: "Box Doc Gen jobs", href: "/guides/docgen/docgen-jobs", badge: "GUIDE" },
+    { label: "Mark file as Box Doc Gen template", href: "/guides/docgen/mark-template", badge: "GUIDE" },
+    { label: "Generate documents", href: "/guides/docgen/generate-document", badge: "GUIDE" }
+  ]}
+/>

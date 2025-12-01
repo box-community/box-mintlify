@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/limitations-v2.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## Webhookは1項目につき1つ
 
 Webhookは、1つの項目 (ファイルまたはフォルダ)、1つのアプリケーション、1人の認証済みユーザーごとに1つだけという制限があります。
@@ -94,3 +97,11 @@ Webhookは以下の理由で削除される可能性があります。
 [update]: /ja/guides/webhooks/v2/update-v2
 
 [app authorization]: https://support.box.com/hc/en-us/articles/360043697014-Authorizing-Apps-in-the-Box-App-Approval-Process
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+    { label: "Webhookの更新", href: "/ja/guides/webhooks/v2/update-v2", badge: "GUIDE" }
+  ]}
+/>

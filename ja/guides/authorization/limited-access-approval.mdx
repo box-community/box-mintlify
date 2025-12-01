@@ -24,6 +24,17 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authorization/limited-access-approval.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "承認", href: "/ja/guides/authorization/index", badge: "GUIDE" },
+    { label: "アプリトークン認証を使用した設定", href: "/ja/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+  ]}
+/>
 アクセス制限付き統合は、作成時に企業での使用について自動的に承認されます。
 
 ただし、Enterprise設定の \[**アクセス制限付きアプリの場合に管理者の承認を要求する**] が有効になっている場合、管理者は追加の手順を行う必要があります。
@@ -111,3 +122,11 @@ Box管理者は、[管理コンソール][adminconsole]に移動し、\[**統合
 {/* i18n-disable localize-links */}
 
 [apps]: /ja/guides/applications
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Platformアプリの承認", href: "/ja/guides/authorization/platform-app-approval", badge: "GUIDE" },
+    { label: "カスタムスキルの承認", href: "/ja/guides/authorization/custom-skill-approval", badge: "GUIDE" }
+  ]}
+/>

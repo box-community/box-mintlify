@@ -11,6 +11,9 @@ related_resources:
   - folder
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Creates a copy of a folder within a destination folder.
 
 The original folder will not be changed.
@@ -194,3 +197,17 @@ If the destination folder has a metadata cascade policy attached to any of the
 parent folders a metadata cascade operation will be kicked off asynchronously.
 
 We currently have no API to check when this operation has finished.
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Copy folder", href: "/reference/post-folders-id-copy", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" },
+    { label: "Delete Folder", href: "/guides/folders/single/delete", badge: "GUIDE" }
+  ]}
+/>

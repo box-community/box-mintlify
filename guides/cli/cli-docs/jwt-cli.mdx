@@ -14,6 +14,16 @@ alias_paths:
   - /guides/tooling/quick-start/create-jwt-app/
   - /guides/tooling/cli/jwt-cli
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with JWT", href: "/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+  ]}
+/>
 Previously, our [Box CLI Quick Start Guide][qs], followed the JWT or server
 authentication application setup flow. Since we released a new OAuth 2.0
 version of the Box CLI, we updated it to use the new feature. We migrated
@@ -215,3 +225,11 @@ Notification Email: []
 [ac]: https://github.com/box/boxcli/blob/master/docs/autocomplete.md
 [commands]: https://github.com/box/boxcli#command-topics
 [qs]: /guides/cli/quick-start
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "Setup with JWT", href: "/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+  ]}
+/>

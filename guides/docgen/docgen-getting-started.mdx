@@ -10,6 +10,9 @@ related_guides:
   - docgen/docgen-jobs
   - docgen/docgen-templates
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To start generating documents with Box Doc Gen API you will need a platform application and a developer token to
 authenticate your calls. You also need a Doc Gen template that will serve as an input source for your document.
 
@@ -99,3 +102,13 @@ Information that is posted in a notification:
 [json-template]: https://support.box.com/hc/en-us/articles/36148012877843-Creating-a-Box-Doc-Gen-Template-using-JSON-data
 [webhooks]: /guides/webhooks/v2/create-v2/
 [events]: /guides/webhooks/triggers
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Generate documents", href: "/guides/docgen/generate-document", badge: "GUIDE" },
+    { label: "Mark file as Box Doc Gen template", href: "/guides/docgen/mark-template", badge: "GUIDE" },
+    { label: "Box Doc Gen jobs", href: "/guides/docgen/docgen-jobs", badge: "GUIDE" },
+    { label: "Box Doc Gen templates", href: "/guides/docgen/docgen-templates", badge: "GUIDE" }
+  ]}
+/>

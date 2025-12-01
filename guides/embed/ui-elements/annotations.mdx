@@ -11,6 +11,16 @@ alias_paths:
   - /docs/annotations
   - /annotations-beta
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 Box Annotations allow developers to provide collaboration capabilities right
 from within the embedded Box preview in their application. Box Annotations fit a
 wide range of use cases and can be used to draw the previewer's attention and/or
@@ -558,3 +568,10 @@ Supported image file extensions: `ai`, `bmp`, `dcm`, `eps`, `gif`, `idml`,
 {/* i18n-enable localize-links */}
 [filetypes]: https://support.box.com/hc/en-us/articles/360043695794-Viewing-Different-File-Types-Supported-in-Box-Content-Preview
 {/* i18n-disable localize-links */}
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

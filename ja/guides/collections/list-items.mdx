@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collections/list-items.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 フォルダ内のすべてのファイル、フォルダ、およびウェブリンクのリストを取得するには、[`GET
 /collections/:id/items`](/ja/reference/get-collections-id-items) APIを呼び出します。
 
@@ -102,3 +105,16 @@ client.collections.getItems('81934', {fields: 'name', limit: 2})
 APIを介して使用できるコレクションは「お気に入り」コレクションのみです。このコレクションのIDは[ユーザーごとに異なります](/ja/guides/collections/list)。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List collection items", href: "/reference/get-collections-id-items", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "オフセットベースのページネーション", href: "/ja/guides/api-calls/pagination/offset-based", badge: "GUIDE" }
+  ]}
+/>

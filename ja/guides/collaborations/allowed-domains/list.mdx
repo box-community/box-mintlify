@@ -25,6 +25,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/allowed-domains/list.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 コラボレーションが許可されているドメインのリストを取得すると、現在の会社でのコラボレーションの作成を許可するドメインがすべて返されます。
 
 リクエストに必須のパラメータはありませんが、オプションで`limit`および`market`パラメータを設定すると、結果セット全体を制限してページ単位で表示できます。
@@ -66,3 +69,17 @@ client.collaborationAllowlist.getAllAllowlistedDomains(callback);
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List allowed collaboration domains", href: "/reference/get-collaboration-whitelist-entries", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "コラボレーション", href: "/ja/guides/collaborations/index", badge: "GUIDE" },
+    { label: "以前コラボレーションが許可されたドメインの削除", href: "/ja/guides/collaborations/allowed-domains/delete", badge: "GUIDE" }
+  ]}
+/>

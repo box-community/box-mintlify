@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tooling/postman/access-token.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 すべてのAPIコールでは、認証済みユーザーの本人確認のために**アクセストークン**が要求されます。セキュリティ上の理由により、アクセストークンは60分後に期限切れになります。[OAuth 2.0][oauth]を使用している場合は、提供された[更新トークン][rt]を使用して、新しいアクセストークンを取得してください。サーバー認証、[JWT][jwt]、または[クライアント資格情報許可][ccg]を使用している場合は、[トークンエンドポイント][token]に対してAPIコールを実行して、新しいアクセストークンをリクエストしてください。
 
 ## OAuth 2.0
@@ -62,3 +65,18 @@ fullyTranslated: true
 [token]: /ja/reference/post-oauth2-token
 
 [rt]: /ja/guides/authentication/tokens/refresh/
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "GUIDE" },
+    { label: "トークンの更新", href: "/ja/guides/authentication/tokens/refresh", badge: "GUIDE" },
+    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "GUIDE" }
+  ]}
+/>

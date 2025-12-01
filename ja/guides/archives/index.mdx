@@ -29,6 +29,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/archives/index.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <Note>
 
 Box Archiveは、Enterprise Advancedアカウントでのみ使用できます。
@@ -56,3 +59,28 @@ Box Archive APIのいずれかを使用する前に、[管理コンソール内�
 [Box Archive in Admin Console]: https://support.box.com/hc/en-us/p/Product_Page_2023?section-id=40168863437843
 
 [Scopes]: /ja/guides/api-calls/permissions-and-errors/scopes/
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create archive", href: "/reference/v2025.0/post-archives", badge: "POST" },
+    { label: "List archives", href: "/reference/v2025.0/get-archives", badge: "GET" },
+    { label: "Delete archive", href: "/reference/v2025.0/delete-archives-id", badge: "DELETE" },
+    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Archiveへのコンテンツの追加", href: "/ja/guides/archives/add-content", badge: "GUIDE" },
+    { label: "Box Archiveからのコンテンツの復元", href: "/ja/guides/archives/restore-content", badge: "GUIDE" },
+    { label: "Box ArchiveでサポートされているAPI", href: "/ja/guides/archives/supported-apis", badge: "GUIDE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Archive", href: "/ja/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+  ]}
+/>

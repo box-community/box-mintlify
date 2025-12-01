@@ -27,6 +27,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box API を使い始めたばかりの開発者でも、アプリケーションの[承認][auth]を担当する Box 管理者でも、Box に保存されたコンテンツを保護するためにセキュリティメカニズムを理解することは非常に重要です。
 
 Box API は、Box ウェブアプリと同じセキュリティの原則と制限に従います。つまり、Box API を利用しても、コンテンツの[権限][perm]、[ウォーターフォール型のフォルダ構造][waterfall]、または管理者向けの要件を回避することはできません。
@@ -167,3 +169,20 @@ Platform アプリケーションは、公開アプリケーションと未公�
 {/* i18n-disable localize-links */}
 
 [auth]: /ja/guides/authorization
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Request access token", href: "/reference/post-oauth2-token", badge: "POST" },
+    { label: "Refresh access token", href: "/reference/post-oauth2-token--refresh", badge: "POST" },
+    { label: "Revoke access token", href: "/reference/post-oauth2-revoke", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "GUIDE" },
+    { label: "承認", href: "/ja/guides/authorization/index", badge: "GUIDE" },
+    { label: "スコープ", href: "/ja/guides/api-calls/permissions-and-errors/scopes", badge: "GUIDE" }
+  ]}
+/>

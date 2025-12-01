@@ -90,6 +90,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 public class Playground {
 
     public static void main(String[] args) throws Exception {
@@ -241,3 +243,17 @@ function autoPage(iterator) {
   Lear more about [User Types](/platform/user-types) in our guides on
   authentication.
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Download File", href: "/guides/downloads/file", badge: "GUIDE" },
+    { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" }
+  ]}
+/>

@@ -11,6 +11,16 @@ required_guides:
   - authentication/oauth2/oauth2-setup
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
 This script helps manage the folder mappings between Slack and Box if using Box
 as the content store for Slack. It creates a list of current Slack channel and
 Box folder mappings and can create or update mappings based on input csv. This
@@ -142,3 +152,11 @@ This project is a collection of open source examples and should not be treated a
 [install-slack]: https://support.box.com/hc/en-us/articles/360044195313-Installing-and-Using-the-Box-for-Slack-Integration
 [content-layer]: https://support.box.com/hc/en-us/articles/4415585987859-Box-as-the-Content-Layer-for-Slack
 [1]: https://github.com/box/boxcli/tree/main/examples/Integration%20Mappings
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+    { label: "Using PowerShell Scripts with the Box CLI", href: "/guides/cli/quick-start/powershell-script-templates", badge: "GUIDE" }
+  ]}
+/>

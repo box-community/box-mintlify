@@ -11,6 +11,8 @@ related_endpoints:
 ---
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 <ProgressBar pages={[
                           "guides/metadata/quick-start/list-all",
                           "guides/metadata/quick-start/create-template",
@@ -252,3 +254,17 @@ having a field for the customer name as well as the customer's industry.
 <Next>I've listed the templates available to me</Next>
 
 [template]: /guides/metadata/templates
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all global metadata templates", href: "/reference/get-metadata-templates-global", badge: "GET" },
+    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>

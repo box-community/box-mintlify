@@ -23,6 +23,16 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/access.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 ## 動機
 
 Box UI Elementsは、クライアントで初期化され、Boxに対して直接APIコールを実行します。したがって、すべてのBox APIリクエストが認証されなければならないため、有効なアクセストークンがクライアントにある必要があります。
@@ -241,3 +251,10 @@ curl https://api.box.com/oauth2/token \
 BoxからのAPIレスポンスをプロキシ/フィルタリングして、クライアントへのデータやコンテンツの公開を制限するだけの場合は、トークン交換を使用することで公開を制限できるかどうかを確認してみてください。特に、プレビュー、ダウンロード、アップロードなどの帯域幅を集中的に使用する、高帯域幅の処理に当てはまります。そのため、Boxでは、クライアントがBoxを使用してこれらの処理を直接実行することをお勧めします。
 
 [accesslevels]: https://community.box.com/t5/How-To-Guides-for-Sharing/What-Are-The-Different-Access-Levels-For-Collaborators/ta-p/144
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

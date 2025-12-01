@@ -493,6 +493,15 @@ To localize the `suggestedQuestions` properly, make sure that the prompts are tr
 import ContentPreview from 'box-ui-elements/es/elements/content-preview';
 import { IntlProvider } from "react-intl";
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 const suggestedQuestions = [
   {
     label: 'Key takeaways',
@@ -596,3 +605,10 @@ more, see [Dedicated Scopes for Box UI Elements][scopes].
 [blueprint-web]: https://www.npmjs.com/package/@box/blueprint-web
 [box-ai-content-answers]: https://www.npmjs.com/package/@box/box-ai-content-answers
 [blueprint-web-assets]: https://www.npmjs.com/package/@box/blueprint-web-assets
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

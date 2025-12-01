@@ -13,6 +13,9 @@ related_resources:
   - upload_session
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To create an upload session, call the
 [`POST /files/upload_sessions`][createsession] API with the desired `file_name`
 and `folder_id` to put the file in, as well as the `file_size` of the file to be
@@ -64,3 +67,18 @@ individual parts.
 [createsessionversion]: /reference/post_files_id_upload_sessions
 [check]: /guides/uploads/check
 [uploadsession]: /reference/resources/upload_session
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create upload session", href: "/reference/post-files-upload-sessions", badge: "POST" },
+    { label: "Create upload session for existing file", href: "/reference/post-files-id-upload-sessions", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Upload Part", href: "/guides/uploads/chunked/upload-part", badge: "GUIDE" },
+    { label: "Commit Upload Session", href: "/guides/uploads/chunked/commit-session", badge: "GUIDE" }
+  ]}
+/>

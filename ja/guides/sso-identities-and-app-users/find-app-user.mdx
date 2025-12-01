@@ -19,6 +19,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/3-find-app-user.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ユーザーがSSOプロバイダを使用してBox Platformアプリケーションにログインする際、まず必要なのは、Boxユーザーレコードが作成された前回のログイン試行から、そのユーザーがすでに存在するかどうかを確認することです。
 
 Boxユーザーが検出されたら、そのユーザーとしてBox APIにアクセスするために、[ユーザーアクセストークンを作成](/ja/guides/authentication/jwt/user-access-tokens)するか[as-user呼び出し](/ja/guides/authentication/jwt/as-user)を実行する必要があります。
@@ -155,3 +158,16 @@ else:
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List enterprise users", href: "/reference/get-users", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "SSO IDとApp Userの関連付け", href: "/ja/guides/sso-identities-and-app-users/create-app-user", badge: "GUIDE" }
+  ]}
+/>

@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/move.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 フォルダを移動するには、その親フォルダのIDを更新します。
 
 {/* <Samples id="put_folders_id" variant="move">
@@ -44,3 +47,18 @@ fullyTranslated: true
 {/* <Samples id="put_folders_id" variant="move_private">
 
 </Samples> */}
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "GUIDE" },
+    { label: "フォルダの更新", href: "/ja/guides/folders/single/update", badge: "GUIDE" },
+    { label: "フォルダの削除", href: "/ja/guides/folders/single/delete", badge: "GUIDE" }
+  ]}
+/>

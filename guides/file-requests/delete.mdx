@@ -9,6 +9,17 @@ required_guides:
 related_resources:
   - file_request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Copy a File Request", href: "/guides/file-requests/copy", badge: "GUIDE" },
+    { label: "Get information for a File Request", href: "/guides/file-requests/get", badge: "GUIDE" }
+  ]}
+/>
 To delete a file request, all you need is its unique ID.
 
 <CodeGroup>
@@ -64,3 +75,10 @@ app and inspecting the URL. Please
 request template to learn how to determine a file request ID.
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
+  ]}
+/>

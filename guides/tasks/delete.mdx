@@ -10,6 +10,9 @@ related_resources:
   - file
   - task
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To remove a task, call the [`DELETE /tasks/:task_id`](/reference/delete-tasks-id) API
 with the `id` of the task.
  
@@ -60,3 +63,18 @@ client.tasks.delete('11111')
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove task", href: "/reference/delete-tasks-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create a task", href: "/guides/tasks/create", badge: "GUIDE" },
+    { label: "Get information about a task", href: "/guides/tasks/get", badge: "GUIDE" },
+    { label: "Make changes to an existing task", href: "/guides/tasks/update", badge: "GUIDE" }
+  ]}
+/>

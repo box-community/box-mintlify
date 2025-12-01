@@ -7,6 +7,9 @@ related_endpoints:
 - post_files_id_metadata_global_boxSkillsCards
 sidebarTitle: Overview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Box Skills are designed to allow custom processing of files uploaded to Box,
 with the intent of enhancing the underlying metadata of the file. The benefit
 towards this system is that it permits the storage of rich information about any
@@ -32,3 +35,10 @@ Node.
 
 [1]: /guides/webhooks/v2/signatures-v2
 [2]: https://github.com/box-community/Box-Custom-Skills-Starter
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create Box Skill cards on file", href: "/reference/post-files-id-metadata-global-boxSkillsCards", badge: "POST" }
+  ]}
+/>

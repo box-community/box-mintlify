@@ -5,6 +5,9 @@ related_endpoints:
 related_guides:
   - sso-identities-and-app-users/find-app-user
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 When a user signs in to a custom Box application for the first time using their
 SSO provider credentials a new Box user will need to be created and associated
 with their SSO user record using some piece of unique information from that SSO
@@ -221,3 +224,16 @@ client.enterprise.addUser(
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create user", href: "/reference/post-users", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Find app user for SSO identity", href: "/guides/sso-identities-and-app-users/find-app-user", badge: "GUIDE" }
+  ]}
+/>

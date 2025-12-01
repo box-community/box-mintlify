@@ -11,6 +11,17 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with App Token Auth", href: "/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+  ]}
+/>
 If you are not ready to use any of the official Box SDKs, or an SDK is not
 available in your language of choice, it is totally possible to use the Box APIs
 without them.
@@ -43,3 +54,16 @@ it would use any Access Token.
 curl https://api.box.com/2.0/users/me \
     -H "authorization: Bearer EGmDmRVfhfHsqesn5yVYHAqUkD0dyDfk"
 ```
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Downscope a Token", href: "/guides/authentication/tokens/downscope", badge: "GUIDE" }
+  ]}
+/>

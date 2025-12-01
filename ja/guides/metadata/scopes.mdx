@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/1-scopes.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 メタデータテンプレートは、2つの異なるグループ、つまり**スコープ**にグループ化されます。
 
 * **`global`**: 所属する会社に関係なく、Boxを使用するすべてのユーザーが使用できるテンプレートのグループ。たとえば、追加のスキーマを関連付けずに自由形式のキー/値の`string`ペアを配置する場所として使用される`global.properties`テンプレートがあります。
@@ -35,3 +38,17 @@ fullyTranslated: true
 `global`スコープ内ではメタデータテンプレートを作成できないことと、ユーザーの会社内で作成されたメタデータテンプレートにアクセスできるのはその会社へのアクセス権限を持つユーザーのみであることに注意してください。
 
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List all global metadata templates", href: "/reference/get-metadata-templates-global", badge: "GET" },
+    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "GUIDE" }
+  ]}
+/>

@@ -7,6 +7,9 @@ related_endpoints:
 related_guides:
   - box-sign/create-sign-request
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The Sign Request API allows you to use a predefined Box Sign
 template when creating a sign request.
 The template includes placeholders
@@ -349,3 +352,17 @@ Follow these steps to [create sign request][signrequest] using a template:
 [parentfolder]: /guides/box-sign/create-sign-request#parent-folder
 [signers]: /guides/box-sign/create-sign-request#signers
 [template]: /reference/get-sign-templates#response-example
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List Box Sign templates", href: "/reference/get-sign-templates", badge: "GET" },
+    { label: "Get Box Sign template by ID", href: "/reference/get-sign-templates-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create Box Sign Request", href: "/guides/box-sign/create-sign-request", badge: "GUIDE" }
+  ]}
+/>

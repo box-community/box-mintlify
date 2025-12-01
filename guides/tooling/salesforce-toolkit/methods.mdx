@@ -8,6 +8,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## Toolkit Details
 
 Class Name: `box.Toolkit`
@@ -910,3 +913,10 @@ This method calls the [manage hub items][23] endpoint to add an item to a hub.
 [21]: /reference/get-hub-collaborations
 [22]: /reference/put-hub-collaborations-id
 [23]: /reference/post-hubs-id-manage-items
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Install Salesforce SDK", href: "/guides/tooling/sdks/salesforce", badge: "GUIDE" }
+  ]}
+/>

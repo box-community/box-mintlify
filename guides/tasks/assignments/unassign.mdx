@@ -6,6 +6,9 @@ related_guides:
   - tasks/assignments/assign
   - tasks/assignments/change-state
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To unassign a task, you will need to provide the 
 [`DELETE /task_assignments`](/reference/delete-task-assignments-id) API with the `id`
 of the task assignment.
@@ -63,3 +66,17 @@ client.tasks.deleteAssignment('12345')
 
   The user deleting the assignment needs to be a collaborator on the file.
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Unassign task", href: "/reference/delete-task-assignments-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Assign a task to a user", href: "/guides/tasks/assignments/assign", badge: "GUIDE" },
+    { label: "Change task assignment state", href: "/guides/tasks/assignments/change-state", badge: "GUIDE" }
+  ]}
+/>

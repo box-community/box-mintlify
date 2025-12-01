@@ -12,6 +12,16 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Find Item from Shared Link", href: "/guides/shared-links/find-for-item", badge: "GUIDE" }
+  ]}
+/>
 To download the file for a [Shared Link][shared-link], first [determine the
 file][get-file] for the link.
 
@@ -33,3 +43,18 @@ Once the file ID has been determined, the file can be downloaded by passing the
 [shared-link]: /guides/shared-links
 [get-file]: /guides/shared-links/find-for-item
 [zip-archive-download]: /guides/downloads/zip-archive
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Download File", href: "/guides/downloads/file", badge: "GUIDE" },
+    { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" },
+    { label: "Download ZIP Archive", href: "/guides/downloads/zip-archive", badge: "GUIDE" }
+  ]}
+/>

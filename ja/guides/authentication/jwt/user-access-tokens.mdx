@@ -25,6 +25,16 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "SDKを使用したOAuth 2.0", href: "/ja/guides/authentication/oauth2/with-sdk", badge: "GUIDE" },
+    { label: "SDKを使用しないOAuth 2.0", href: "/ja/guides/authentication/oauth2/without-sdk", badge: "GUIDE" }
+  ]}
+/>
 JWT アプリケーションは、[サービスアカウント][sa]ではなく特定のユーザーに対してアクセストークンを作成できます。
 
 ## 前提条件
@@ -176,3 +186,11 @@ $claims = [
 
 [devconsole]: https://app.box.com/developers/console
 [sa]: /ja/platform/user-types/#service-account
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

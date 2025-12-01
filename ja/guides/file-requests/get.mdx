@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/3-get.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 既存の[ファイルリクエスト](/ja/guides/file-requests/template)の詳細を取得するのに必要なのは、その一意のIDだけです。
 
 <CodeGroup>
@@ -75,3 +78,16 @@ client.fileRequests.getById(fileRequestId)
 ファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。ファイルリクエストテンプレートの設定に関する[ガイド](/ja/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
 
 </Note>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get file request", href: "/reference/get-file-requests-id", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "GUIDE" }
+  ]}
+/>

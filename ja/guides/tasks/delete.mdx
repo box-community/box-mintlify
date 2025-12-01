@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/tasks/5-delete.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 タスクを削除するには、タスクの`id`を指定して[`DELETE /tasks/:task_id`](/ja/reference/delete-tasks-id) APIを呼び出します。
 
 <CodeGroup>
@@ -73,3 +76,18 @@ client.tasks.delete('11111')
  });
 ```
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove task", href: "/reference/delete-tasks-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "タスクの作成", href: "/ja/guides/tasks/create", badge: "GUIDE" },
+    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "GUIDE" },
+    { label: "既存のタスクの変更", href: "/ja/guides/tasks/update", badge: "GUIDE" }
+  ]}
+/>

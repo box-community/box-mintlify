@@ -7,6 +7,9 @@ required_guides: []
 related_resources:
   - files
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Once a file has been moved to the trash, it will stay in the trash for 30
 days by default before being purged. Administrators of Business or
 Enterprise accounts can alter the purge window. If you wish to permanently
@@ -64,3 +67,10 @@ client.files.deletePermanently('11111')
 ```
 
 </CodeGroup>
+
+<RelatedLinks
+  title="RELATED RESOURCES"
+  items={[
+    { label: "Files", href: "/guides/files/index", badge: "GUIDE" }
+  ]}
+/>

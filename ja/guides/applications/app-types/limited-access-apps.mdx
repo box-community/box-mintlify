@@ -17,6 +17,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/applications/app-types/limited-access-apps.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 アクセス制限付きアプリは、[Box View][bv]を利用したり、別のアプリケーション内でBoxコンテンツをプレビューしたりする場合に使用されます。この種類のアプリケーションで操作できる[エンドポイントの数は限られています][limited]。
 
 ## 認証方法
@@ -47,3 +50,10 @@ fullyTranslated: true
 [bv]: /ja/guides/embed/box-view
 
 [limited]: /ja/guides/authentication/app-token/endpoints
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "アプリトークン認証", href: "/ja/guides/authentication/app-token/index", badge: "GUIDE" }
+  ]}
+/>

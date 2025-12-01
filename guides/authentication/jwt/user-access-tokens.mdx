@@ -11,6 +11,17 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "OAuth 2.0 with SDKs", href: "/guides/authentication/oauth2/with-sdk", badge: "GUIDE" },
+    { label: "OAuth 2.0 without SDKs", href: "/guides/authentication/oauth2/without-sdk", badge: "GUIDE" }
+  ]}
+/>
 It is possible for a JWT application to create an Access Token for a specific
 user instead of for the [Service Account][sa].
 
@@ -156,3 +167,11 @@ $claims = [
 
 [devconsole]: https://app.box.com/developers/console
 [sa]: /platform/user-types/#service-account
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+  ]}
+/>

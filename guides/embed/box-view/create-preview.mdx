@@ -10,6 +10,19 @@ required_guides:
   - embed/ui-elements/preview
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Setup", href: "/guides/embed/box-view/setup", badge: "GUIDE" },
+    { label: "Upload Files", href: "/guides/embed/box-view/upload-file", badge: "GUIDE" },
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" },
+    { label: "Content Preview", href: "/guides/embed/ui-elements/preview", badge: "GUIDE" }
+  ]}
+/>
 Once a file is uploaded to an App Token application, it can be previewed
 using two different methods:
 
@@ -130,3 +143,10 @@ Replace the placeholders in the code sample with the following:
 </Warning>
 
 [uie]: /guides/embed/ui-elements
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Create File Preview", href: "/guides/embed/box-view/create-preview", badge: "GUIDE" }
+  ]}
+/>

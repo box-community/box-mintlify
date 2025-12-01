@@ -13,6 +13,9 @@ related_resources: []
 alias_paths:
   - /guides/collaboration-whitelists/delete-whitelist
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Deleting a domain from the list of allowed collaboration domains will remove the
 ability for collaborations to be created between your enterprise and users in
 that domain.
@@ -65,3 +68,18 @@ client.collaborationAllowlist.removeDomain('12345', callback);
 
 [create]: /guides/collaborations/allowed-domains/create
 [list]: /guides/collaborations/allowed-domains/list
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Remove domain from list of allowed collaboration domains", href: "/reference/delete-collaboration-whitelist-entries-id", badge: "DELETE" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Collaborations", href: "/guides/collaborations/index", badge: "GUIDE" },
+    { label: "List allowed domains for collaboration", href: "/guides/collaborations/allowed-domains/list", badge: "GUIDE" },
+    { label: "Allow a domain for collaboration", href: "/guides/collaborations/allowed-domains/create", badge: "GUIDE" }
+  ]}
+/>

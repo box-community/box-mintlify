@@ -6,6 +6,9 @@ related_guides:
   - tasks/assignments/unassign
   - tasks/assignments/change-state
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 To assign a task to a user you will need to provide the 
 [`POST /task_assignments`](/reference/post-task-assignments) API with the `id` of the
 task and the user's details. For the user an application can either use the user
@@ -135,3 +138,17 @@ client.tasks.assignByUserID(taskID, userID)
   Both the user assigning the task and the user the task is being assigned to
   needs to be a collaborator on the file.
 </Warning>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Assign task", href: "/reference/post-task-assignments", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Unassign a task", href: "/guides/tasks/assignments/unassign", badge: "GUIDE" },
+    { label: "Change task assignment state", href: "/guides/tasks/assignments/change-state", badge: "GUIDE" }
+  ]}
+/>

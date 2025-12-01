@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/docgen/mark-template.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 既存のドキュメントをBox Doc Genテンプレートとして設定し、それを使用してドキュメントを生成できます。
 
 ## 開始する前に
@@ -131,3 +134,12 @@ client.getDocgenTemplate().deleteDocgenTemplateByIdV2025R0(createdDocgenTemplate
 </CodeGroup>
 
 [docgen-prerequisites]: /ja/guides/docgen/docgen-getting-started
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+    { label: "Box Doc Genテンプレート", href: "/ja/guides/docgen/docgen-templates", badge: "GUIDE" },
+    { label: "ドキュメントの生成", href: "/ja/guides/docgen/generate-document", badge: "GUIDE" }
+  ]}
+/>

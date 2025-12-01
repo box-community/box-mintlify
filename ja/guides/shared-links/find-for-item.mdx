@@ -24,6 +24,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/shared-links/find-for-item.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 [共有リンクの項目を検索](endpoint://get_shared_items)APIは、`BoxApi`ヘッダーを使用して共有リンクを入力として受け取り、その共有リンクが設定されているファイルまたはフォルダオブジェクトを返します。
 
 共有リンクに関連付けられているファイルオブジェクトまたはフォルダオブジェクトを取得するには、リクエストの際に共有リンクの完全なURLを指定します。
@@ -101,3 +104,17 @@ client.sharedItems.get(
 フォルダ内の項目をさらにトラバースするには、同じ`BoxApi`ヘッダーを使用して、[ネストされたフォルダ情報を取得する](/ja/reference/get-folders-id)、[これらのフォルダ内の項目をリストする](/ja/reference/get-folders-id-items)、[ネストされたファイル情報を取得する](/ja/reference/get-files-id)、または[ファイルをダウンロード](/ja/reference/get-files-id-content)してください。
 
 </Info>
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Find file for shared link", href: "/reference/get-shared-items", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "共有リンクの削除", href: "/ja/guides/shared-links/remove", badge: "GUIDE" },
+    { label: "共有リンクの作成または更新", href: "/ja/guides/shared-links/create-or-update", badge: "GUIDE" }
+  ]}
+/>

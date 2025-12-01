@@ -28,6 +28,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/ai-tutorials/default-agent-overrides.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 ## 開始する前に
 
 Platformアプリを作成して認証するには、[Box AIの使い方][prereq]に記載されている手順に従っていることを確認してください。さらにコンテキストを取得するには、[エージェントの上書き][agent-overrides]を参照してください。
@@ -237,3 +240,23 @@ curl -i -L 'https://api.box.com/2.0/ai/extract' \
 [agent-overrides]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
 
 [prereq]: /ja/guides/box-ai/ai-tutorials/prerequisites
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-agents/ai-agent-overrides", badge: "GUIDE" }
+  ]}
+/>

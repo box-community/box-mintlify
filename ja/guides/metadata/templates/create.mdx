@@ -26,6 +26,15 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" }
+  ]}
+/>
 メタデータテンプレートを作成するには、`scope`、`displayName`、および必要に応じて一連の`fields`を[`POST /metadata_templates/schema`][e_create_template] API に渡します。
 
 <CodeGroup>
@@ -369,3 +378,18 @@ client.metadata
 
 [user-types]: /ja/platform/user-types
 [e_create_template]: /ja/reference/post_metadata_templates_schema
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Create metadata template", href: "/reference/post-metadata-templates-schema", badge: "POST" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "GUIDE" },
+    { label: "メタデータテンプレートの更新", href: "/ja/guides/metadata/templates/update", badge: "GUIDE" }
+  ]}
+/>

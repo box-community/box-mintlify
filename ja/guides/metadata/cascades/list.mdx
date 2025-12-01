@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/1-list.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 フォルダのメタデータカスケードポリシーのリストを取得するには、`folder_id`を指定して[`GET /metadata_cascade_policies`][get_policies] APIエンドポイントを呼び出します。
 
 <CodeGroup>
@@ -109,3 +112,17 @@ client.metadata.getCascadePolicies(folderID)
 [get_policies]: /ja/reference/get_metadata_cascade_policies
 
 [pagination]: /ja/guides/api-calls/pagination/marker-based
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "List metadata cascade policies", href: "/reference/get-metadata-cascade-policies", badge: "GET" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータカスケードポリシーの取得", href: "/ja/guides/metadata/cascades/get", badge: "GUIDE" },
+    { label: "メタデータカスケードポリシーの作成", href: "/ja/guides/metadata/cascades/create", badge: "GUIDE" }
+  ]}
+/>

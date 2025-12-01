@@ -10,6 +10,16 @@ related_resources: []
 alias_paths:
   - /docs/box-content-open-with
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
 <Warning>
   We no longer support the `OpenWith` UI element for any new customers
   as of December 21, 2021.
@@ -398,3 +408,10 @@ using `openWith.addListener('execute', callback)` and
 [safari]: https://support.box.com/hc/en-us/articles/360043697334-Installing-Box-Tools
 {/* i18n-disable localize-links */}
 [service-account]: /platform/user-types/#service-account
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+  ]}
+/>

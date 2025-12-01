@@ -13,6 +13,17 @@ alias_paths:
   - /docs/setting-up-an-oauth-app
   - /docs/oauth-20
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" }
+  ]}
+/>
 A Platform App can be set up to use client-side [OAuth 2.0][oauth2] authentication.
 
 <Card href="/guides/authentication/oauth2" arrow title="Learn how OAuth 2.0 authentication works"/>
@@ -142,3 +153,11 @@ section at the bottom of the **Configuration** tab in the
 [cors]: https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 [oauth2]: /guides/authentication/oauth2
 [url-redirect]: /reference/get-authorize/#param-redirect_uri
+
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>

@@ -24,6 +24,17 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/metadata/2-templates/5-update.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "GUIDE" },
+    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "GUIDE" }
+  ]}
+/>
 メタデータテンプレートを更新するには、操作の配列を[`PUT /metadata_templates/:scope/:templateKey/schema`][endpoint] APIに渡します。
 
 <CodeGroup>
@@ -344,3 +355,16 @@ client.metadata.updateTemplate('enterprise', 'vcontract', operations)
 | [`removeMultiSelectOption`](/ja/guides/metadata/fields/multi-select#remove-an-option)  | `multiSelect`フィールドのオプションを削除します  |
 
 [endpoint]: /ja/reference/put_metadata_templates_id_id_schema
+
+<RelatedLinks
+  title="RELATED APIS"
+  items={[
+    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+  ]}
+/>
+<RelatedLinks
+  title="RELATED GUIDES"
+  items={[
+    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "GUIDE" }
+  ]}
+/>
