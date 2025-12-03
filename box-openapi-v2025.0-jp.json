@@ -2747,7 +2747,7 @@
       "BoxVersionHeader": {
         "name": "box-version",
         "in": "header",
-        "description": "バージョンヘッダー。",
+        "description": "Version header.",
         "allowEmptyValue": false,
         "required": true,
         "schema": {
@@ -3195,8 +3195,8 @@
                         "$ref": "#/components/schemas/FileReference"
                       },
                       {
-                        "title": "OpenAPI 3.0 null スキーマタイプ",
-                        "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                        "title": "OpenAPI 3.0 null schema type",
+                        "description": "The definition for a null schema type in OpenAPI `3.0`.",
                         "type": "object",
                         "nullable": true,
                         "additionalProperties": false
@@ -3216,8 +3216,8 @@
                         "$ref": "#/components/schemas/FileVersion--Base"
                       },
                       {
-                        "title": "OpenAPI 3.0 null スキーマタイプ",
-                        "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                        "title": "OpenAPI 3.0 null schema type",
+                        "description": "The definition for a null schema type in OpenAPI `3.0`.",
                         "type": "object",
                         "nullable": true,
                         "additionalProperties": false
@@ -3714,8 +3714,8 @@
                     "$ref": "#/components/schemas/EnterpriseConfigurationSecurity"
                   },
                   {
-                    "title": "OpenAPI 3.0 null スキーマタイプ",
-                    "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
                     "type": "object",
                     "nullable": true,
                     "additionalProperties": false
@@ -3735,8 +3735,8 @@
                     "$ref": "#/components/schemas/EnterpriseConfigurationContentAndSharing"
                   },
                   {
-                    "title": "OpenAPI 3.0 null スキーマタイプ",
-                    "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
                     "type": "object",
                     "nullable": true,
                     "additionalProperties": false
@@ -3756,8 +3756,8 @@
                     "$ref": "#/components/schemas/EnterpriseConfigurationUserSettings"
                   },
                   {
-                    "title": "OpenAPI 3.0 null スキーマタイプ",
-                    "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
                     "type": "object",
                     "nullable": true,
                     "additionalProperties": false
@@ -3777,8 +3777,8 @@
                     "$ref": "#/components/schemas/EnterpriseConfigurationShield"
                   },
                   {
-                    "title": "OpenAPI 3.0 null スキーマタイプ",
-                    "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
                     "type": "object",
                     "nullable": true,
                     "additionalProperties": false
@@ -4678,8 +4678,8 @@
                             "$ref": "#/components/schemas/ExternalCollabSecuritySettings"
                           },
                           {
-                            "title": "OpenAPI 3.0 null スキーマタイプ",
-                            "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                            "title": "OpenAPI 3.0 null schema type",
+                            "description": "The definition for a null schema type in OpenAPI `3.0`.",
                             "type": "object",
                             "nullable": true,
                             "additionalProperties": false
@@ -4710,8 +4710,8 @@
                             "$ref": "#/components/schemas/KeysafeSettings"
                           },
                           {
-                            "title": "OpenAPI 3.0 null スキーマタイプ",
-                            "description": "OpenAPI `3.0` の null スキーマ タイプの定義。",
+                            "title": "OpenAPI 3.0 null schema type",
+                            "description": "The definition for a null schema type in OpenAPI `3.0`.",
                             "type": "object",
                             "nullable": true,
                             "additionalProperties": false
