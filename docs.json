@@ -2686,6 +2686,13 @@
             ]
           },
           {
+            "tab": "Quickstarts",
+            "pages": [
+              "quickstarts/index",
+              "quickstarts/box-ai-extract"
+            ]
+          },
+          {
             "tab": "SDKs and tools",
             "pages": [
               "/sdks-and-tools"
