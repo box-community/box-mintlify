@@ -1,0 +1,23 @@
+<Update label={<span>ファイルの新しい<code>classification</code>フィールド</span>} description="2020-04-23" tags={["新機能", "API"]}>
+  `Field`オブジェクト内で、省略可能な新しいフィールド`classification`が使用できるようになりました。このフィールドは、現在ファイルに適用されている分類を表します。
+
+{/* more */}
+
+分類は、[ファイル情報の取得](endpoint://get-files-id)など、ファイルを返す任意のエンドポイントを介してリクエストでき、[追加`fields`のリクエスト](g://api-calls/request-extra-fields)をサポートします。
+
+```js
+{
+  "id": "123456789",
+  "type": "file",
+  "etag": "1",
+  "classification": {     
+    "name": "Top Secret",     
+    "definition": "Content that should not be shared outside the company.",
+    "color": "#FF0000"
+  },
+  ...
+}
+```
+
+分類は、APIまたはBox Shieldを介して設定することも、ユーザーがウェブアプリケーションを使用して設定することもできます。
+</Update>

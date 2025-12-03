@@ -1,0 +1,19 @@
+<Update label={<span>Box Java SDK <code>v2.56.0</code>のリリース</span>} description="2021-08-31" tags={["新機能", "Java"]}>
+  **新機能と機能強化:**
+
+* `submaster` `GroupMembershipRole`を`coadmin`に置き換え、`MASTER_INVITE_ACCEPT`および`MASTER_INVITE_REJECT`を`ADMIN_INVITE_ACCEPT`および`ADMIN_INVITE_REJECT`に置き換え ([#907][1])
+* ユーザーの作成APIコールに`tracking_codes`を追加 ([#910][2])
+
+**バグ修正:**
+
+* `BoxFileRequest.Info`オブジェクトの`url`を修正 ([#906][3])
+* アクセストークンの更新時に発生するスレッドロックの問題の修正を試行 ([#912][4])
+
+[1]: https://github.com/box/box-java-sdk/pull/907
+
+[2]: https://github.com/box/box-java-sdk/pull/910
+
+[3]: https://github.com/box/box-java-sdk/pull/906
+
+[4]: https://github.com/box/box-java-sdk/pull/912
+</Update>

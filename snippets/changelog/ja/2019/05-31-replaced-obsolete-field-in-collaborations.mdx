@@ -1,0 +1,40 @@
+<Update label={<span>コラボレーションで廃止されたフィールドを置き換え</span>} description="2019-05-31" tags={["新機能", "影響度の高い変更", "API"]}>
+  2018年に、新しいフィールド`acceptance_requirements_status`がGETコラボレーション/ID APIエンドポイントに追加され、追加の通知ユースケースがサポートされるようになりました。このフィールドには、サービス利用規約、2要素認証、強力なパスワードの要件が含まれます。サービス利用規約の要件のみを含む既存の`acceptance_requirements`フィールドは、新しい`acceptance_requirements_status`に置き換えられました。
+
+{/* more */}
+
+以前は、`GET
+/collaboration/<collaboration_id>?fields=acceptance_requirements`への呼び出しで以下のようなオブジェクトが返されていました。
+
+```js
+"acceptance_requirements": {
+    "terms_of_service": {
+        "type": "terms_of_service",
+        "id": <tos_id>
+    }
+}
+```
+
+新しいフィールドを使用すると、リクエスト`GET
+/collaboration/<collaboration_id>?fields=acceptance_requirements_status`は以下を返します。
+
+```js
+ "acceptance_requirements_status": {
+    "terms_of_service_requirement": {
+        "is_accepted": true,
+        "terms_of_service": {
+            "type": "terms_of_service",
+            "id": <tos_id>
+        }
+    },
+    "strong_password_requirement": {
+        "enterprise_has_strong_password_required_for_external_users": true,
+        "user_has_strong_password": false
+    },
+    "two_factor_authentication_requirement": {
+        "enterprise_has_two_factor_auth_enabled": true,
+        "user_has_two_factor_authentication_enabled" true
+    }
+}
+```
+</Update>

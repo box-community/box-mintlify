@@ -1,0 +1,19 @@
+<Update label={<span>デフォルトのAIの構成の取得と上書き</span>} description="2024-07-25" tags={["新機能", "影響度の高い変更", "API"]}>
+  [`GET /2.0/ai_agent_default`][1]エンドポイントにより、AIサービスのデフォルトの構成を取得できるようになりました。
+
+{/* more */}
+
+構成の詳細を取得したら、[`POST /2.0/ai/ask`][2]および[`POST /2.0/ai/text_gen`][3]リクエストで利用可能な`ai_agent`パラメータを使用して構成を上書きできます。
+
+## サポート情報
+
+問題がある場合やさらにガイドが必要な場合は、必要なサポートについて、Boxの[Developer Forum][4]に英語でリクエストを投稿してください。
+
+[1]: e://get_ai_agent_default
+
+[2]: e://post_ai_ask#param_ai_agent
+
+[3]: e://post_ai_text_gen#param_ai_agent
+
+[4]: https://forum.box.com/
+</Update>

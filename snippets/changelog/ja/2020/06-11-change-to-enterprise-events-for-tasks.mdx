@@ -1,0 +1,58 @@
+<Update label={<span>タスクに関するEnterprise Eventの変更</span>} description="2020-06-11" tags={["新機能", "影響度の高い変更", "API"]}>
+  本日以降、[Enterprise Event Stream](g://events/enterprise-events/for-enterprise/)は、新しいタスクとタスク割り当てイベントの生成を開始します。一部の既存のタスクイベントでは追加のフィールドが返されます。
+
+{/* more */}
+
+## 新しいイベント
+
+* タスクが更新されると、新しい`TASK_UPDATE`イベントがトリガーされます
+* ユーザーからタスクの割り当てが解除されると、新しい`TASK_ASSIGNMENT_DELETE`イベントがトリガーされます
+
+## 更新されたイベント
+
+### `TASK_CREATE`の変更
+
+タスクが作成されたときに、このイベントでは、タスクのID (`task.id`)、タスクを作成したユーザーのID (`task.created_by.id`)、タスクの説明 (`task.message`)、およびタスクの期日 (`task.due_date`、省略可) が`additional_details`オブジェクト内に含まれるようになりました。
+
+```json
+"additional_details": {
+  "task": {
+    "id": "1234567",
+    "due_at": "2020-07-06T10:49:44-07:00",
+    "message": "task description",
+    "created_by": {
+      "id": 123456,
+      "login": "email@example.com"
+    },
+    ...
+  }
+}
+```
+
+### `TASK_ASSIGNMENT_CREATE`および`TASK_ASSIGNMENT_UPDATE`の変更
+
+タスク割り当てが作成または更新されたときに、このイベントでは、タスクのID (`task.id`)、タスクを割り当てられたユーザーのID (`task_assignment.assigned_to.id`) とそのログイン (`task_assignment.assigned_to.login`)、タスクの説明 (`task.message`)、およびタスクの期日 (`task.due_date`、省略可) が`additional_details`オブジェクト内に含まれるようになりました。
+
+```json
+"additional_details": {
+  "task": {
+    "id": "1234567",
+    "created_by": {
+      "id": 12345,
+      "login": "email@example.com"
+    }
+  },
+  "task_assignment": {
+    "assigned_to": {
+      "id": 12346,
+      "login": "email+2@example.com"
+    },
+    "status": "NOT_STARTED",
+    "message": "assignee message"
+  },
+  ...
+}
+```
+
+その他のイベントタイプの詳細については、[Enterprise Event](g://events/enterprise-events/for-enterprise/)に関するドキュメントを参照してください。
+</Update>

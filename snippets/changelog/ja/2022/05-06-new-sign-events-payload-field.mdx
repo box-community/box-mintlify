@@ -1,0 +1,17 @@
+<Update label={<span>Signイベントペイロードへの新しいフィールドの追加</span>} description="2022-05-06" tags={["新機能", "影響度の高い変更", "API"]}>
+  `additional_details` Signイベントペイロードに、複数の受信者に一度に送信される署名リクエストを識別するための`batch_send`が含まれるようになりました。そのような一括送信リクエストが存在する場合、ペイロードはその`id`も提供します。
+
+{/* more */}
+
+## 更新内容
+
+* 新しいフィールド`batch_send`を[Signイベント][2]の`additional_details`ペイロードに追加しました。
+
+## サポート情報
+
+問題がある場合やさらにガイドが必要な場合は、必要なサポートについて、Boxの[Developer Forum][1]に英語でリクエストを投稿してください。
+
+[1]: https://support.box.com/hc/en-us/community/topics/360001932973-Platform-and-Developer-Forum
+
+[2]: g://events/event-triggers/sign-events
+</Update>

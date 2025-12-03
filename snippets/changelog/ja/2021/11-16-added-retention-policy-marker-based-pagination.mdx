@@ -1,0 +1,18 @@
+<Update label={<span>リテンションポリシーのマーカーベースのページネーションの追加</span>} description="2021-11-16" tags={["API"]}>
+  BoxのOpenAPIの仕様は、リテンションポリシーおよびリテンションポリシー割り当てのエンドポイントで`marker`ベースのページネーションと`fields`クエリパラメータの使用を示すために更新されました。
+
+{/* more */}
+
+## 更新内容
+
+更新内容は以下のとおりです。
+
+* [`GET /retention-policies`](e://get-retention-policies)および[`GET /retention-policies-id-assignments`](e://get-retention-policies-id-assignments)エンドポイントに`fields`、`limit`、`marker`クエリパラメータを追加しました。
+* [リテンションポリシー](e://resources/retention-policies)および[リテンションポリシー割り当て](e://resources/retention-policy-assignments)のレスポンスオブジェクトに`limit`と`next_marker `を追加しました。
+
+## サポート情報
+
+問題がある場合やさらにガイドが必要な場合は、必要なサポートについて、Boxの[Developer Forum][forum]に英語で投稿してください。
+
+[forum]: https://support.box.com/hc/en-us/community/topics/360001932973-Platform-and-Developer-Forum
+</Update>

@@ -1,0 +1,11 @@
+<Update label={<span>Enterprise Eventに新しい<code>action_by</code>フィールドを追加</span>} description="2018-08-21" tags={["新機能", "API"]}>
+  ユーザーアカウントで実行された管理者アクションをより適切に記録するために、Enterprise Eventのレスポンスデータに`action_by`ミニユーザーオブジェクトが追加されました。このフィールドには、該当する場合に、ユーザー操作を実行した管理者アカウントが表示されます。
+
+Enterpriseの管理者の場合、これにはアカウントのID、ログイン、および名前が含まれます。Boxの内部管理者が実行したアクションの場合、これは以下のようになります。
+
+* id: `box_support`
+* login: `support@box.com`
+* name: `Box Support`
+
+追加のオブジェクトは、Enterpriseの[イベントオブジェクト属性](endpoint://resources/event/)内に記録されます。
+</Update>

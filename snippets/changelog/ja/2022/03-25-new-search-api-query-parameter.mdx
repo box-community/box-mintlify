@@ -1,0 +1,29 @@
+<Update label={<span>検索APIの新しいクエリパラメータ</span>} description="2021-03-24" tags={["新機能", "影響度の高い変更", "API"]}>
+  新しいフィールド`recent_updater_user_ids`を使用してAPIでのコンテンツの検索にフィルタをかけられるようになりました。
+
+{/* more */}
+
+## 更新内容
+
+* [`GET /get-search`][2] APIエンドポイントに新しいクエリパラメータ`recent_updater_user_ids`を追加
+
+## 機能
+
+* 指定したユーザーリスト (ユーザーIDのコンマ区切りリストとして定義) によって更新された項目のみに検索結果を絞り込みます。
+* この機能では、項目の過去10バージョンのみを検索します。
+
+### cURLの例
+
+```curl
+curl -i -X GET "https://api.box.com/2.0/search?query=sales&recent_updater_user_ids=1234567890,2314567890" \
+     -H "Authorization: Bearer <ACCESS_TOKEN>"
+```
+
+## サポート情報
+
+問題がある場合やさらにガイドが必要な場合は、必要なサポートについて、Boxの[Developer Forum][1]に英語でリクエストを投稿してください。
+
+[1]: https://support.box.com/hc/en-us/community/topics/360001932973-Platform-and-Developer-Forum
+
+[2]: e://get-search/#param-recent_updater_user_ids
+</Update>

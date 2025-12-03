@@ -1,0 +1,9 @@
+<Update label={<span>Python SDK <code>v2.7.0</code> released</span>} description="2020-01-16" tags={["新機能", "Python"]}>
+  - Fixed bug in `get_admin_events` function which caused errors when the optional `event_types` parameter was omitted.
+- Add marker based pagination for listing users.
+- Added support for more attribute parameters when uploading new files and new versions of existing files.
+- Combined preflight check and lookup of accelerator URL into a single request for uploads.
+- Fixed JWT retry logic so a new JTI claim is generated on each retry.
+- Fixed bug where JWT authentication requests returned incorrect error codes.
+- Fixed retry logic so when a Retry-After header is passed back from the API, the SDK waits for the amount of time specified in the header before retrying.
+</Update>

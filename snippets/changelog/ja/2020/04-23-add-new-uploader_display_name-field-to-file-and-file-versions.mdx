@@ -1,0 +1,21 @@
+<Update label={<span>ファイルおよびファイルバージョンに新しい<code>uploader_display_name</code>を追加</span>} description="2020-04-23" tags={["新機能", "API"]}>
+  新しいフィールド`uploader_display_name`がファイルリソースとファイルバージョンリソースの両方に追加されました。このフィールドでは、アップロード時にユーザーの名前を指定します。
+
+{/* more */}
+
+```json
+{
+  ...
+  "uploader_display_name": "Ellis Wiggins"
+}
+```
+
+このフィールドをファイルおよびファイルバージョンのエンドポイントのいずれかでリクエストするには、`fields`クエリパラメータを指定します。以下に例を示します。
+
+```bash
+curl -X GET https://api.box.com/2.0/files/12345?fields=uploader_display_name \
+     -H 'Authorization: Bearer <ACCESS_TOKEN>'
+```
+
+ログアウトした匿名ユーザーがファイルをアップロードすると、そのユーザーのメールアドレスが返されます。使用可能なメールアドレスがない場合、このフィールドはデフォルトで`Someone`というテキストが設定されます。
+</Update>

@@ -1,0 +1,197 @@
+---
+title: 2020 変更ログ
+sidebarTitle: "2020"
+---
+
+import Update1 from "/snippets/changelog/ja/2020/12-14-blank-oauth2-redirect-uri-change.mdx";
+import Update2 from "/snippets/changelog/ja/2020/12-03-new-type-field-in-search-api-responses.mdx";
+import Update3 from "/snippets/changelog/ja/2020/12-03-box-cli-v280-released.mdx";
+import Update4 from "/snippets/changelog/ja/2020/11-24-box-java-sdk-v2520-released.mdx";
+import Update5 from "/snippets/changelog/ja/2020/11-17-client-credentials-grant.mdx";
+import Update6 from "/snippets/changelog/ja/2020/11-17-box-ios-sdk-v420-released.mdx";
+import Update7 from "/snippets/changelog/ja/2020/11-13-box-java-sdk-v2511-released.mdx";
+import Update8 from "/snippets/changelog/ja/2020/11-13-box-content-preview-v2570-released.mdx";
+import Update9 from "/snippets/changelog/ja/2020/11-09-simplified-app-creation-flow.mdx";
+import Update10 from "/snippets/changelog/ja/2020/11-04-box-cli-v270-released.mdx";
+import Update11 from "/snippets/changelog/ja/2020/11-02-box-node-sdk-v1350-released.mdx";
+import Update12 from "/snippets/changelog/ja/2020/10-29-box-java-sdk-v2510-released.mdx";
+import Update13 from "/snippets/changelog/ja/2020/10-26-new-folder-lock-apis-now-available.mdx";
+import Update14 from "/snippets/changelog/ja/2020/10-22-new-folder-lock-apis-now-available.mdx";
+import Update15 from "/snippets/changelog/ja/2020/10-21-metadata-cascade-policy-api-leaves-beta.mdx";
+import Update16 from "/snippets/changelog/ja/2020/10-19-box-windows-sdk-v3250-released.mdx";
+import Update17 from "/snippets/changelog/ja/2020/10-08-search-api-adds-support-for-shared-links.mdx";
+import Update18 from "/snippets/changelog/ja/2020/10-05-box-node-sdk-v1343-released.mdx";
+import Update19 from "/snippets/changelog/ja/2020/10-02-new-file-request-apis-available.mdx";
+import Update20 from "/snippets/changelog/ja/2020/10-02-box-python-sdk-v2100-released.mdx";
+import Update21 from "/snippets/changelog/ja/2020/09-29-changes-to-oauth-2-app-redirect-url-requirements.mdx";
+import Update22 from "/snippets/changelog/ja/2020/09-25-search-api-adds-support-for-shared-links.mdx";
+import Update23 from "/snippets/changelog/ja/2020/09-10-group-api-adds-new-filter-and-permissions.mdx";
+import Update24 from "/snippets/changelog/ja/2020/08-25-multi-select-metadata-support-in-search-api.mdx";
+import Update25 from "/snippets/changelog/ja/2020/08-21-box-cli-v260-released.mdx";
+import Update26 from "/snippets/changelog/ja/2020/08-20-box-node-sdk-v1342-released.mdx";
+import Update27 from "/snippets/changelog/ja/2020/08-20-box-java-sdk-v2501-released.mdx";
+import Update28 from "/snippets/changelog/ja/2020/08-17-box-node-sdk-v1341-released.mdx";
+import Update29 from "/snippets/changelog/ja/2020/08-07-box-node-sdk-v1340-released.mdx";
+import Update30 from "/snippets/changelog/ja/2020/07-30-updates-to-search-relevance-performance.mdx";
+import Update31 from "/snippets/changelog/ja/2020/07-22-new-zip-download-apis-available.mdx";
+import Update32 from "/snippets/changelog/ja/2020/07-22-box-java-sdk-v2500-released.mdx";
+import Update33 from "/snippets/changelog/ja/2020/07-21-box-windows-sdk-v3240-released.mdx";
+import Update34 from "/snippets/changelog/ja/2020/07-17-box-java-sdk-v2490-released.mdx";
+import Update35 from "/snippets/changelog/ja/2020/07-16-change-to-enterprise-events-for-content-access.mdx";
+import Update36 from "/snippets/changelog/ja/2020/07-15-changes-to-metadata-query-api-syntax.mdx";
+import Update37 from "/snippets/changelog/ja/2020/06-25-box-node-sdk-v1330-released.mdx";
+import Update38 from "/snippets/changelog/ja/2020/06-24-box-java-sdk-v2480-released.mdx";
+import Update39 from "/snippets/changelog/ja/2020/06-23-box-python-sdk-v290-released.mdx";
+import Update40 from "/snippets/changelog/ja/2020/06-11-change-to-enterprise-events-for-tasks.mdx";
+import Update41 from "/snippets/changelog/ja/2020/05-15-box-ios-sdk-v410-released.mdx";
+import Update42 from "/snippets/changelog/ja/2020/05-12-windows-net-sdk-v3230-release.mdx";
+import Update43 from "/snippets/changelog/ja/2020/05-12-new-shield-alert-events.mdx";
+import Update44 from "/snippets/changelog/ja/2020/04-24-python-sdk-v280-release.mdx";
+import Update45 from "/snippets/changelog/ja/2020/04-23-new-classification-field-for-files.mdx";
+import Update46 from "/snippets/changelog/ja/2020/04-23-java-sdk-v2470-release.mdx";
+import Update47 from "/snippets/changelog/ja/2020/04-23-add-new-uploader_display_name-field-to-file-and-file-versions.mdx";
+import Update48 from "/snippets/changelog/ja/2020/04-21-new-metadata-query-apis-available.mdx";
+import Update49 from "/snippets/changelog/ja/2020/04-21-box-cli-v251-release.mdx";
+import Update50 from "/snippets/changelog/ja/2020/04-09-java-sdk-v2460-release.mdx";
+import Update51 from "/snippets/changelog/ja/2020/04-02-java-sdk-v2450-release.mdx";
+import Update52 from "/snippets/changelog/ja/2020/04-01-node-sdk-v1320-release.mdx";
+import Update53 from "/snippets/changelog/ja/2020/03-30-potential-impactful-changes-to-format-of-metadata-date-fields.mdx";
+import Update54 from "/snippets/changelog/ja/2020/03-30-change-to-metadata-instance-version.mdx";
+import Update55 from "/snippets/changelog/ja/2020/02-25-windows-net-sdk-v3220-release.mdx";
+import Update56 from "/snippets/changelog/ja/2020/02-14-node-sdk-v1310-release.mdx";
+import Update57 from "/snippets/changelog/ja/2020/02-13-java-sdk-v2441-release.mdx";
+import Update58 from "/snippets/changelog/ja/2020/02-13-box-ios-sdk-v400-released.mdx";
+import Update59 from "/snippets/changelog/ja/2020/02-03-preview-sdk-v2340-released.mdx";
+import Update60 from "/snippets/changelog/ja/2020/01-22-python-sdk-v271-release.mdx";
+import Update61 from "/snippets/changelog/ja/2020/01-22-preview-sdk-v2331-released.mdx";
+import Update62 from "/snippets/changelog/ja/2020/01-21-java-sdk-v2440-release.mdx";
+import Update63 from "/snippets/changelog/ja/2020/01-20-refreshed-postman-collection-quick-start.mdx";
+import Update64 from "/snippets/changelog/ja/2020/01-16-python-sdk-v270-release.mdx";
+
+<Update1/>
+
+<Update2/>
+
+<Update3/>
+
+<Update4/>
+
+<Update5/>
+
+<Update6/>
+
+<Update7/>
+
+<Update8/>
+
+<Update9/>
+
+<Update10/>
+
+<Update11/>
+
+<Update12/>
+
+<Update13/>
+
+<Update14/>
+
+<Update15/>
+
+<Update16/>
+
+<Update17/>
+
+<Update18/>
+
+<Update19/>
+
+<Update20/>
+
+<Update21/>
+
+<Update22/>
+
+<Update23/>
+
+<Update24/>
+
+<Update25/>
+
+<Update26/>
+
+<Update27/>
+
+<Update28/>
+
+<Update29/>
+
+<Update30/>
+
+<Update31/>
+
+<Update32/>
+
+<Update33/>
+
+<Update34/>
+
+<Update35/>
+
+<Update36/>
+
+<Update37/>
+
+<Update38/>
+
+<Update39/>
+
+<Update40/>
+
+<Update41/>
+
+<Update42/>
+
+<Update43/>
+
+<Update44/>
+
+<Update45/>
+
+<Update46/>
+
+<Update47/>
+
+<Update48/>
+
+<Update49/>
+
+<Update50/>
+
+<Update51/>
+
+<Update52/>
+
+<Update53/>
+
+<Update54/>
+
+<Update55/>
+
+<Update56/>
+
+<Update57/>
+
+<Update58/>
+
+<Update59/>
+
+<Update60/>
+
+<Update61/>
+
+<Update62/>
+
+<Update63/>
+
+<Update64/>

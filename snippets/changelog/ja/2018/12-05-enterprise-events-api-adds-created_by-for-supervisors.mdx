@@ -1,0 +1,29 @@
+<Update label={<span>Enterprise Event APIにスーパーバイザ向けの<code>created_by</code>を追加</span>} description="2018-12-05" tags={["影響度の高い変更", "API"]}>
+  Box管理者などのスーパーバイザまたは内部管理者ユーザーがアクションを実行する場合の[Enterprise Event](endpoint://get-events/#request) APIエンドポイントのレスポンスオブジェクトに小さな変更が加えられました。
+
+{/* more */}
+
+この更新の前は、スーパーバイザまたは内部管理者ユーザーのユーザー情報がレスポンスオブジェクトの`created_by`フィールドに表示されていました。今回の更新により、そのユーザーがスーパーバイザまたは内部管理者である場合、レスポンスに一般的なユーザー情報が表示されるようになりました。
+
+これまで、レスポンスの`created_by`フィールドは以下のように表示されていました。
+
+```js
+"created_by": {
+  "type": "user",
+  "id": "2030401181",
+  "name": "sshah+iadev",
+  "login": "admin_sshah"
+}
+```
+
+今回の更新により、同じレスポンスが以下のように表示されます。
+
+```js
+"created_by": {
+  "type": "user",
+  "id": "box_support",
+  "name": "Box Support",
+  "login": "support@box.com"
+}
+```
+</Update>
