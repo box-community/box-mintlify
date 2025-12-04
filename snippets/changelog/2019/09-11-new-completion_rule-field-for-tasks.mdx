@@ -1,9 +1,9 @@
-<Update label={<span>New <code>completion_rule</code> field for Tasks</span>} description="2019-09-11" tags={["API"]}>
+<Update label="New completion_rule field for Tasks" description="2019-09-11" tags={["API"]}>
   A new optional field has been made available within the Task object,
 `completion_rule`. This field may be set through the use of the the
-[Create Task](endpoint://post-tasks) and [Update Task](endpoint://put-tasks-id)
+[Create Task](/reference/post-tasks) and [Update Task](/reference/put-tasks-id)
 endpoints, and will be returned as part of the standard
-[Task object](endpoint://resources/task/).
+[Task object](/reference/resources/task/).
 
 The purpose of this field is to set the conditions under which a task is
 completed, based on user involvement. When a task is created with a completion
