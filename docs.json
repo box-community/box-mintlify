@@ -2702,6 +2702,12 @@
             "pages": [
               "/ai-dev-zone"
             ]
+          },
+          {
+            "tab": "Changelog",
+            "pages": [
+              "changelog/index"
+            ]
           }
         ]
       },
