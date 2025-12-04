@@ -5385,6 +5385,12 @@
             "pages": [
               "/ja/ai-dev-zone"
             ]
+          },
+          {
+            "tab": "変更ログ",
+            "pages": [
+              "ja/changelog/index"
+            ]
           }
         ]
       }
