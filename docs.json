@@ -22,7 +22,7 @@
     "family": "Inter"
   },
   "banner": {
-    "content": "Welcome to the beta version of the new Box developer documentation site! If you wish to use the previous version, go to [box.dev](https://box.dev/).",
+    "content": "Welcome to the beta version of the new Box developer documentation site! If you wish to use the previous version, go to [box.dev](https://box.dev/). 以前のバージョンは[ja.developer.box.com](https://ja.developer.box.com)でご覧いただけます。",
     "dismissible": true
   },
   "favicon": "/favicon.ico",
@@ -2702,91 +2702,6 @@
             "pages": [
               "/ai-dev-zone"
             ]
-          },
-          {
-            "tab": "Platform",
-            "pages": [
-              {
-                "group": "Learn Box Platform",
-                "pages": [
-                  "platform/index",
-                  "platform/box-platform-101",
-                  "platform/use-cases",
-                  "platform/user-types",
-                  "platform/application-types",
-                  "platform/authentication-methods",
-                  "platform/support",
-                  "platform/tools",
-                  "platform/box-glossary",
-                  "platform/start-creating",
-                  {
-                    "group": "Appendix",
-                    "pages": [
-                      "platform/appendix/index",
-                      "platform/appendix/user-models",
-                      "platform/appendix/architecture-patterns",
-                      "platform/appendix/locating-values",
-                      "platform/appendix/branding-guidelines"
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Sign",
-            "pages": [
-              {
-                "group": "Working with Box Sign",
-                "pages": [
-                  "sign/index",
-                  {
-                    "group": "Quick start",
-                    "pages": [
-                      "sign/quick-start/index",
-                      "sign/quick-start/api-basics",
-                      "sign/quick-start/your-first-request"
-                    ]
-                  },
-                  {
-                    "group": "Technical use cases",
-                    "pages": [
-                      "sign/technical-use-cases/index",
-                      "sign/technical-use-cases/sign-unstructured-docs",
-                      "sign/technical-use-cases/sign-template",
-                      "sign/technical-use-cases/sign-structured-docs"
-                    ]
-                  },
-                  {
-                    "group": "Request options",
-                    "pages": [
-                      "sign/request-options/index",
-                      "sign/request-options/multiple-signers",
-                      "sign/request-options/extra-security",
-                      "sign/request-options/custom-urls",
-                      "sign/request-options/resend-requests",
-                      "sign/request-options/request-expiration",
-                      "sign/request-options/custom-email",
-                      "sign/request-options/in-person"
-                    ]
-                  },
-                  "sign/webhooks/index"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Changelog",
-            "pages": [
-              "changelog/index",
-              "changelog/2025",
-              "changelog/2023",
-              "changelog/2022",
-              "changelog/2021",
-              "changelog/2020",
-              "changelog/2019",
-              "changelog/2018"
-            ]
           }
         ]
       },
@@ -5463,91 +5378,6 @@
             "tab": "AI",
             "pages": [
               "/ja/ai-dev-zone"
-            ]
-          },
-          {
-            "tab": "Platform",
-            "pages": [
-              {
-                "group": "Box Platformについて",
-                "pages": [
-                  "ja/platform/index",
-                  "ja/platform/box-platform-101",
-                  "ja/platform/use-cases",
-                  "ja/platform/user-types",
-                  "ja/platform/application-types",
-                  "ja/platform/authentication-methods",
-                  "ja/platform/support",
-                  "ja/platform/tools",
-                  "ja/platform/box-glossary",
-                  "ja/platform/start-creating",
-                  {
-                    "group": "付録",
-                    "pages": [
-                      "ja/platform/appendix/index",
-                      "ja/platform/appendix/user-models",
-                      "ja/platform/appendix/architecture-patterns",
-                      "ja/platform/appendix/locating-values",
-                      "ja/platform/appendix/branding-guidelines"
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Sign",
-            "pages": [
-              {
-                "group": "Box Signの使用",
-                "pages": [
-                  "ja/sign/index",
-                  {
-                    "group": "クイックスタート",
-                    "pages": [
-                      "/ja/sign/quick-start/index",
-                      "/ja/sign/quick-start/api-basics",
-                      "/ja/sign/quick-start/your-first-request"
-                    ]
-                  },
-                  {
-                    "group": "技術的なユースケース",
-                    "pages": [
-                      "/ja/sign/technical-use-cases/index",
-                      "/ja/sign/technical-use-cases/sign-unstructured-docs",
-                      "/ja/sign/technical-use-cases/sign-template",
-                      "/ja/sign/technical-use-cases/sign-structured-docs"
-                    ]
-                  },
-                  {
-                    "group": "リクエストのオプション",
-                    "pages": [
-                      "/ja/sign/request-options/index",
-                      "/ja/sign/request-options/multiple-signers",
-                      "/ja/sign/request-options/extra-security",
-                      "/ja/sign/request-options/custom-urls",
-                      "/ja/sign/request-options/resend-requests",
-                      "/ja/sign/request-options/request-expiration",
-                      "/ja/sign/request-options/custom-email",
-                      "/ja/sign/request-options/in-person"
-                    ]
-                  },
-                  "/ja/sign/webhooks/index"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "変更ログ",
-            "pages": [
-              "ja/changelog/index",
-              "ja/changelog/2025",
-              "ja/changelog/2023",
-              "ja/changelog/2022",
-              "ja/changelog/2021",
-              "ja/changelog/2020",
-              "ja/changelog/2019",
-              "ja/changelog/2018"
             ]
           }
         ]
