@@ -2,45 +2,1860 @@
 title: Changelog
 ---
 
-<Columns cols={2}>
-  <Card
-    title="2025"
-    href="/changelog/2025"
-  />
 
-  <Card
-    title="2024"
-    href="/changelog/2024"
-  />
+import Update2025_1 from "/snippets/changelog/2025/11-27-new-ai-models.mdx";
+import Update2025_2 from "/snippets/changelog/2025/11-20-box-ios-sdk-610-released.mdx";
+import Update2025_3 from "/snippets/changelog/2025/11-20-box-ios-sdk-1010-released.mdx";
+import Update2025_4 from "/snippets/changelog/2025/11-20-box-cli-v450-released.mdx";
+import Update2025_5 from "/snippets/changelog/2025/11-19-box-windows-sdk-v610-released.mdx";
+import Update2025_6 from "/snippets/changelog/2025/11-19-box-windows-sdk-v1020-released.mdx";
+import Update2025_7 from "/snippets/changelog/2025/11-19-box-python-sdk-v1010-released.mdx";
+import Update2025_8 from "/snippets/changelog/2025/11-12-box-node-sdk-v411-released.mdx";
+import Update2025_9 from "/snippets/changelog/2025/11-10-box-node-sdk-v1010-released.mdx";
+import Update2025_10 from "/snippets/changelog/2025/11-07-box-ui-elements-v2530-released.mdx";
+import Update2025_11 from "/snippets/changelog/2025/11-04-box-ui-elements-v2520-released.mdx";
+import Update2025_12 from "/snippets/changelog/2025/10-23-new-ai-models.mdx";
+import Update2025_13 from "/snippets/changelog/2025/10-23-box-windows-sdk-v600-released.mdx";
+import Update2025_14 from "/snippets/changelog/2025/10-23-box-sdks-major-version.mdx";
+import Update2025_15 from "/snippets/changelog/2025/10-23-box-python-sdk-v400-released.mdx";
+import Update2025_16 from "/snippets/changelog/2025/10-23-box-node-sdk-v400-released.mdx";
+import Update2025_17 from "/snippets/changelog/2025/10-23-box-java-sdk-v500-released.mdx";
+import Update2025_18 from "/snippets/changelog/2025/10-23-box-ios-sdk-600-released.mdx";
+import Update2025_19 from "/snippets/changelog/2025/10-21-box-cli-v441-released.mdx";
+import Update2025_20 from "/snippets/changelog/2025/10-14-box-cli-v440-released.mdx";
+import Update2025_21 from "/snippets/changelog/2025/10-06-box-windows-sdk-v1010-released.mdx";
+import Update2025_22 from "/snippets/changelog/2025/10-06-box-python-sdk-v1001-released.mdx";
+import Update2025_23 from "/snippets/changelog/2025/10-06-box-node-sdk-v1001-released.mdx";
+import Update2025_24 from "/snippets/changelog/2025/10-06-box-java-sdk-v1010-released.mdx";
+import Update2025_25 from "/snippets/changelog/2025/10-06-box-ios-sdk-1001-released.mdx";
+import Update2025_26 from "/snippets/changelog/2025/10-03-box-java-sdk-v4164-released.mdx";
+import Update2025_27 from "/snippets/changelog/2025/10-01-salesforce-toolkit-changelog.mdx";
+import Update2025_28 from "/snippets/changelog/2025/10-01-box-ui-elements-v2510-released.mdx";
+import Update2025_29 from "/snippets/changelog/2025/09-30-aws-claude-sonnet-4-5.mdx";
+import Update2025_30 from "/snippets/changelog/2025/09-29-box-cli-v431-released.mdx";
+import Update2025_31 from "/snippets/changelog/2025/09-26-box-ui-elements-v2500-released.mdx";
+import Update2025_32 from "/snippets/changelog/2025/09-24-metadata-view-enhancements.mdx";
+import Update2025_33 from "/snippets/changelog/2025/09-17-box-windows-sdk-v1000-released.mdx";
+import Update2025_34 from "/snippets/changelog/2025/09-17-box-sdk-v10.mdx";
+import Update2025_35 from "/snippets/changelog/2025/09-17-box-next-generation-sdk-deprecation.mdx";
+import Update2025_36 from "/snippets/changelog/2025/09-17-box-java-sdk-v1000-released.mdx";
+import Update2025_37 from "/snippets/changelog/2025/09-17-box-ios-sdk-1000-released.mdx";
+import Update2025_38 from "/snippets/changelog/2025/09-16-box-typescript-sdk-generated-v1191-released.mdx";
+import Update2025_39 from "/snippets/changelog/2025/09-05-box-ui-elements-v2400-released.mdx";
+import Update2025_40 from "/snippets/changelog/2025/09-05-box-typescript-sdk-generated-v1190-released.mdx";
+import Update2025_41 from "/snippets/changelog/2025/09-05-box-swift-sdk-generated-063-released.mdx";
+import Update2025_42 from "/snippets/changelog/2025/09-05-box-python-sdk-generated-v1170-released.mdx";
+import Update2025_43 from "/snippets/changelog/2025/09-05-box-dotnet-sdk-generated-v1120-released.mdx";
+import Update2025_44 from "/snippets/changelog/2025/08-26-box-typescript-sdk-generated-v1181-released.mdx";
+import Update2025_45 from "/snippets/changelog/2025/08-26-box-typescript-sdk-generated-v1180-released.mdx";
+import Update2025_46 from "/snippets/changelog/2025/08-15-external-users-bulk-delete.mdx";
+import Update2025_47 from "/snippets/changelog/2025/08-13-box-swift-sdk-generated-062-released.mdx";
+import Update2025_48 from "/snippets/changelog/2025/08-12-box-ui-elements-v2340-released.mdx";
+import Update2025_49 from "/snippets/changelog/2025/08-07-box-typescript-sdk-generated-v1171-released.mdx";
+import Update2025_50 from "/snippets/changelog/2025/08-07-box-cli-v430-released.mdx";
+import Update2025_51 from "/snippets/changelog/2025/08-05-box-typescript-sdk-generated-v1170-released.mdx";
+import Update2025_52 from "/snippets/changelog/2025/08-05-box-python-sdk-generated-v1160-released.mdx";
+import Update2025_53 from "/snippets/changelog/2025/08-05-box-dotnet-sdk-generated-v1110-released.mdx";
+import Update2025_54 from "/snippets/changelog/2025/08-01-box-hubs-apis.mdx";
+import Update2025_55 from "/snippets/changelog/2025/07-29-box-node-sdk-v382-released.mdx";
+import Update2025_56 from "/snippets/changelog/2025/07-27-new-model-deprecated-models.mdx";
+import Update2025_57 from "/snippets/changelog/2025/07-23-box-java-sdk-v4163-released.mdx";
+import Update2025_58 from "/snippets/changelog/2025/06-24-enhanced-extract-agent.mdx";
+import Update2025_59 from "/snippets/changelog/2025/06-24-AI-studio-v2.mdx";
+import Update2025_60 from "/snippets/changelog/2025/06-20-box-cli-v420-released.mdx";
+import Update2025_61 from "/snippets/changelog/2025/06-12-box-typescript-sdk-generated-v1160-released.mdx";
+import Update2025_62 from "/snippets/changelog/2025/06-12-box-python-sdk-generated-v1150-released.mdx";
+import Update2025_63 from "/snippets/changelog/2025/06-11-box-node-sdk-v381-released.mdx";
+import Update2025_64 from "/snippets/changelog/2025/06-02-box-java-sdk-v4162-released.mdx";
+import Update2025_65 from "/snippets/changelog/2025/05-24-new-models-deprecated-models.mdx";
+import Update2025_66 from "/snippets/changelog/2025/05-15-box-cli-v410-released.mdx";
+import Update2025_67 from "/snippets/changelog/2025/05-13-box-dotnet-sdk-generated-v1100-released.mdx";
+import Update2025_68 from "/snippets/changelog/2025/05-12-box-ui-elements-v2330-released.mdx";
+import Update2025_69 from "/snippets/changelog/2025/05-02-box-python-sdk-generated-v1140-released.mdx";
+import Update2025_70 from "/snippets/changelog/2025/04-30-new-ai-models.mdx";
+import Update2025_71 from "/snippets/changelog/2025/04-29-new-ai-models.mdx";
+import Update2025_72 from "/snippets/changelog/2025/04-29-box-java-sdk-v4161-released.mdx";
+import Update2025_73 from "/snippets/changelog/2025/04-25-box-ui-elements-v2320-released.mdx";
+import Update2025_74 from "/snippets/changelog/2025/04-17-box-ui-elements-v2310-released.mdx";
+import Update2025_75 from "/snippets/changelog/2025/04-15-box-java-sdk-v4160-released.mdx";
+import Update2025_76 from "/snippets/changelog/2025/04-11-box-typescript-sdk-generated-v1151-released.mdx";
+import Update2025_77 from "/snippets/changelog/2025/04-10-box-typescript-sdk-generated-v1150-released.mdx";
+import Update2025_78 from "/snippets/changelog/2025/04-09-box-python-sdk-v3140-released.mdx";
+import Update2025_79 from "/snippets/changelog/2025/04-09-box-node-sdk-v380-released.mdx";
+import Update2025_80 from "/snippets/changelog/2025/03-26-box-ui-elements-v2300-released.mdx";
+import Update2025_81 from "/snippets/changelog/2025/03-18-box-typescript-sdk-generated-v1140-released.mdx";
+import Update2025_82 from "/snippets/changelog/2025/03-18-box-swift-sdk-generated-061-released.mdx";
+import Update2025_83 from "/snippets/changelog/2025/03-18-box-python-sdk-generated-v1130-released.mdx";
+import Update2025_84 from "/snippets/changelog/2025/03-18-box-dotnet-sdk-generated-v190-released.mdx";
+import Update2025_85 from "/snippets/changelog/2025/03-12-teams-integration-mappings.mdx";
+import Update2025_86 from "/snippets/changelog/2025/03-12-box-java-sdk-v4153-released.mdx";
+import Update2025_87 from "/snippets/changelog/2025/03-11-box-typescript-sdk-generated-v1132-released.mdx";
+import Update2025_88 from "/snippets/changelog/2025/03-07-box-typescript-sdk-generated-v1131-released.mdx";
+import Update2025_89 from "/snippets/changelog/2025/03-07-box-cli-v401-released.mdx";
+import Update2025_90 from "/snippets/changelog/2025/02-26-box-java-sdk-v4152-released.mdx";
+import Update2025_91 from "/snippets/changelog/2025/02-26-aws-claude-3-7.mdx";
+import Update2025_92 from "/snippets/changelog/2025/02-24-box-java-sdk-v4151-released.mdx";
+import Update2025_93 from "/snippets/changelog/2025/02-20-box-typescript-sdk-generated-v1130-released.mdx";
+import Update2025_94 from "/snippets/changelog/2025/02-20-box-dotnet-sdk-generated-v180-released.mdx";
+import Update2025_95 from "/snippets/changelog/2025/02-19-box-java-sdk-v4150-released.mdx";
+import Update2025_96 from "/snippets/changelog/2025/02-18-box-ai-studio.mdx";
+import Update2025_97 from "/snippets/changelog/2025/02-12-box-python-sdk-generated-v1111-released.mdx";
+import Update2025_98 from "/snippets/changelog/2025/02-06-box-typescript-sdk-generated-v1120-released.mdx";
+import Update2025_99 from "/snippets/changelog/2025/02-06-box-python-sdk-generated-v1110-released.mdx";
+import Update2025_100 from "/snippets/changelog/2025/02-06-box-dotnet-sdk-generated-v170-released.mdx";
+import Update2025_101 from "/snippets/changelog/2025/01-28-box-cli-v400-released.mdx";
+import Update2025_102 from "/snippets/changelog/2025/01-22-box-java-sdk-v4140-released.mdx";
+import Update2025_103 from "/snippets/changelog/2025/01-13-box-doc-gen.mdx";
+import Update2025_104 from "/snippets/changelog/2025/01-09-google-palm-deprecation-and-removal.mdx";
 
-  <Card
-    title="2023"
-    href="/changelog/2023"
-  />
+<Update2025_1/>
 
-  <Card
-    title="2022"
-    href="/changelog/2022"
-  />
+<Update2025_2/>
 
-  <Card
-    title="2021"
-    href="/changelog/2021"
-  />
+<Update2025_3/>
 
-  <Card
-    title="2020"
-    href="/changelog/2020"
-  />
+<Update2025_4/>
 
-  <Card
-    title="2019"
-    href="/changelog/2019"
-  />
+<Update2025_5/>
 
-  <Card
-    title="2018"
-    href="/changelog/2018"
-  />
+<Update2025_6/>
 
-</Columns>
+<Update2025_7/>
+
+<Update2025_8/>
+
+<Update2025_9/>
+
+<Update2025_10/>
+
+<Update2025_11/>
+
+<Update2025_12/>
+
+<Update2025_13/>
+
+<Update2025_14/>
+
+<Update2025_15/>
+
+<Update2025_16/>
+
+<Update2025_17/>
+
+<Update2025_18/>
+
+<Update2025_19/>
+
+<Update2025_20/>
+
+<Update2025_21/>
+
+<Update2025_22/>
+
+<Update2025_23/>
+
+<Update2025_24/>
+
+<Update2025_25/>
+
+<Update2025_26/>
+
+<Update2025_27/>
+
+<Update2025_28/>
+
+<Update2025_29/>
+
+<Update2025_30/>
+
+<Update2025_31/>
+
+<Update2025_32/>
+
+<Update2025_33/>
+
+<Update2025_34/>
+
+<Update2025_35/>
+
+<Update2025_36/>
+
+<Update2025_37/>
+
+<Update2025_38/>
+
+<Update2025_39/>
+
+<Update2025_40/>
+
+<Update2025_41/>
+
+<Update2025_42/>
+
+<Update2025_43/>
+
+<Update2025_44/>
+
+<Update2025_45/>
+
+<Update2025_46/>
+
+<Update2025_47/>
+
+<Update2025_48/>
+
+<Update2025_49/>
+
+<Update2025_50/>
+
+<Update2025_51/>
+
+<Update2025_52/>
+
+<Update2025_53/>
+
+<Update2025_54/>
+
+<Update2025_55/>
+
+<Update2025_56/>
+
+<Update2025_57/>
+
+<Update2025_58/>
+
+<Update2025_59/>
+
+<Update2025_60/>
+
+<Update2025_61/>
+
+<Update2025_62/>
+
+<Update2025_63/>
+
+<Update2025_64/>
+
+<Update2025_65/>
+
+<Update2025_66/>
+
+<Update2025_67/>
+
+<Update2025_68/>
+
+<Update2025_69/>
+
+<Update2025_70/>
+
+<Update2025_71/>
+
+<Update2025_72/>
+
+<Update2025_73/>
+
+<Update2025_74/>
+
+<Update2025_75/>
+
+<Update2025_76/>
+
+<Update2025_77/>
+
+<Update2025_78/>
+
+<Update2025_79/>
+
+<Update2025_80/>
+
+<Update2025_81/>
+
+<Update2025_82/>
+
+<Update2025_83/>
+
+<Update2025_84/>
+
+<Update2025_85/>
+
+<Update2025_86/>
+
+<Update2025_87/>
+
+<Update2025_88/>
+
+<Update2025_89/>
+
+<Update2025_90/>
+
+<Update2025_91/>
+
+<Update2025_92/>
+
+<Update2025_93/>
+
+<Update2025_94/>
+
+<Update2025_95/>
+
+<Update2025_96/>
+
+<Update2025_97/>
+
+<Update2025_98/>
+
+<Update2025_99/>
+
+<Update2025_100/>
+
+<Update2025_101/>
+
+<Update2025_102/>
+
+<Update2025_103/>
+
+<Update2025_104/>
+
+
+import Update2024_1 from "/snippets/changelog/2024/12-30-box-typescript-sdk-generated-v1100-released.mdx";
+import Update2024_2 from "/snippets/changelog/2024/12-30-box-python-sdk-generated-v190-released.mdx";
+import Update2024_3 from "/snippets/changelog/2024/12-10-upcoming-breaking-change-in-the-box-ai-api.mdx";
+import Update2024_4 from "/snippets/changelog/2024/12-09-box-typescript-sdk-generated-v190-released.mdx";
+import Update2024_5 from "/snippets/changelog/2024/12-05-crowdstrike-integration.mdx";
+import Update2024_6 from "/snippets/changelog/2024/12-04-box-dotnet-sdk-generated-v150-released.mdx";
+import Update2024_7 from "/snippets/changelog/2024/12-03-box-typescript-sdk-generated-v180-released.mdx";
+import Update2024_8 from "/snippets/changelog/2024/12-02-box-python-sdk-generated-v180-released.mdx";
+import Update2024_9 from "/snippets/changelog/2024/11-29-box-java-sdk-v4131-released.mdx";
+import Update2024_10 from "/snippets/changelog/2024/11-12-naming-change-apps-integrations.mdx";
+import Update2024_11 from "/snippets/changelog/2024/11-04-box-python-sdk-generated-v170-released.mdx";
+import Update2024_12 from "/snippets/changelog/2024/10-31-box-dotnet-sdk-generated-v140-released.mdx";
+import Update2024_13 from "/snippets/changelog/2024/10-30-box-python-sdk-generated-v160-released.mdx";
+import Update2024_14 from "/snippets/changelog/2024/10-24-box-dotnet-sdk-generated-v131-released.mdx";
+import Update2024_15 from "/snippets/changelog/2024/10-24-box-ai-aws-models.mdx";
+import Update2024_16 from "/snippets/changelog/2024/10-22-box-ai-text-gen-ask-ga.mdx";
+import Update2024_17 from "/snippets/changelog/2024/10-21-box-ui-elements-v2200-released.mdx";
+import Update2024_18 from "/snippets/changelog/2024/10-18-box-java-sdk-v4120-released.mdx";
+import Update2024_19 from "/snippets/changelog/2024/10-17-box-typescript-sdk-generated-v170-released.mdx";
+import Update2024_20 from "/snippets/changelog/2024/10-17-box-dotnet-sdk-generated-v130-released.mdx";
+import Update2024_21 from "/snippets/changelog/2024/09-26-box-dotnet-sdk-generated-v120-released.mdx";
+import Update2024_22 from "/snippets/changelog/2024/09-23-box-ai-api-defaul-model-update.mdx";
+import Update2024_23 from "/snippets/changelog/2024/09-19-box-python-sdk-generated-v151-released.mdx";
+import Update2024_24 from "/snippets/changelog/2024/09-18-box-python-sdk-generated-v150-released.mdx";
+import Update2024_25 from "/snippets/changelog/2024/09-17-box-ai-extract.mdx";
+import Update2024_26 from "/snippets/changelog/2024/09-16-app-item-associations.mdx";
+import Update2024_27 from "/snippets/changelog/2024/09-11-box-typescript-sdk-generated-v160-released.mdx";
+import Update2024_28 from "/snippets/changelog/2024/09-11-box-swift-sdk-generated-050-released.mdx";
+import Update2024_29 from "/snippets/changelog/2024/09-05-box-swift-sdk-generated-040-released.mdx";
+import Update2024_30 from "/snippets/changelog/2024/08-30-box-typescript-sdk-generated-v151-released.mdx";
+import Update2024_31 from "/snippets/changelog/2024/08-30-box-python-sdk-generated-v141-released.mdx";
+import Update2024_32 from "/snippets/changelog/2024/08-23-box-typescript-sdk-generated-v150-released.mdx";
+import Update2024_33 from "/snippets/changelog/2024/08-23-box-python-sdk-generated-v140-released.mdx";
+import Update2024_34 from "/snippets/changelog/2024/08-23-box-dotnet-sdk-generated-v110-released.mdx";
+import Update2024_35 from "/snippets/changelog/2024/08-22-box-swift-sdk-generated-031-released.mdx";
+import Update2024_36 from "/snippets/changelog/2024/08-22-box-python-sdk-v3130-released.mdx";
+import Update2024_37 from "/snippets/changelog/2024/08-12-box-typescript-sdk-generated-v140-released.mdx";
+import Update2024_38 from "/snippets/changelog/2024/08-12-box-python-sdk-generated-v130-released.mdx";
+import Update2024_39 from "/snippets/changelog/2024/08-06-box-python-sdk-v3120-released.mdx";
+import Update2024_40 from "/snippets/changelog/2024/08-06-box-node-sdk-v371-released.mdx";
+import Update2024_41 from "/snippets/changelog/2024/08-06-box-cli-v3150-released.mdx";
+import Update2024_42 from "/snippets/changelog/2024/07-26-box-python-sdk-generated-v120-released.mdx";
+import Update2024_43 from "/snippets/changelog/2024/07-25-box-swift-sdk-new-gen-released.mdx";
+import Update2024_44 from "/snippets/changelog/2024/07-25-box-ai-overrides.mdx";
+import Update2024_45 from "/snippets/changelog/2024/07-24-box-typescript-sdk-generated-v130-released.mdx";
+import Update2024_46 from "/snippets/changelog/2024/07-24-box-dotnet-sdk-generated-v100-released.mdx";
+import Update2024_47 from "/snippets/changelog/2024/07-22-box-windows-sdk-v580-released.mdx";
+import Update2024_48 from "/snippets/changelog/2024/07-16-react-18-buie.mdx";
+import Update2024_49 from "/snippets/changelog/2024/07-16-box-ui-elements-v2100-released.mdx";
+import Update2024_50 from "/snippets/changelog/2024/07-16-box-node-sdk-v370-released.mdx";
+import Update2024_51 from "/snippets/changelog/2024/07-16-box-java-sdk-v4111-released.mdx";
+import Update2024_52 from "/snippets/changelog/2024/07-15-box-java-sdk-v4110-released.mdx";
+import Update2024_53 from "/snippets/changelog/2024/07-08-box-typescript-sdk-generated-v120-released.mdx";
+import Update2024_54 from "/snippets/changelog/2024/07-03-box-dotnet-sdk-generated-v040-released.mdx";
+import Update2024_55 from "/snippets/changelog/2024/06-28-box-windows-sdk-v571-released.mdx";
+import Update2024_56 from "/snippets/changelog/2024/06-28-box-swift-sdk-generated-030-released.mdx";
+import Update2024_57 from "/snippets/changelog/2024/06-12-box-typescript-sdk-generated-v110-released.mdx";
+import Update2024_58 from "/snippets/changelog/2024/06-12-box-python-sdk-generated-v110-released.mdx";
+import Update2024_59 from "/snippets/changelog/2024/06-07-box-python-sdk-v3110-released.mdx";
+import Update2024_60 from "/snippets/changelog/2024/06-06-box-java-sdk-v491-released.mdx";
+import Update2024_61 from "/snippets/changelog/2024/06-06-box-java-sdk-v4100-released.mdx";
+import Update2024_62 from "/snippets/changelog/2024/06-06-box-cli-v3141-released.mdx";
+import Update2024_63 from "/snippets/changelog/2024/05-31-box-ui-elements-v2001-beta1-released.mdx";
+import Update2024_64 from "/snippets/changelog/2024/05-23-pdf-js-vulnerability.mdx";
+import Update2024_65 from "/snippets/changelog/2024/05-22-box-ui-elements-v2000-released.mdx";
+import Update2024_66 from "/snippets/changelog/2024/05-22-box-python-sdk-v3100-released.mdx";
+import Update2024_67 from "/snippets/changelog/2024/05-20-box-python-sdk-new-gen.mdx";
+import Update2024_68 from "/snippets/changelog/2024/05-20-box-node-sdk-v360-released.mdx";
+import Update2024_69 from "/snippets/changelog/2024/05-20-box-node-sdk-new-gen-released.mdx";
+import Update2024_70 from "/snippets/changelog/2024/05-08-notification-suppression-for-sign.mdx";
+import Update2024_71 from "/snippets/changelog/2024/05-07-box-java-sdk-v490-released.mdx";
+import Update2024_72 from "/snippets/changelog/2024/05-02-introducing-box-ai.mdx";
+import Update2024_73 from "/snippets/changelog/2024/05-02-box-node-sdk-v351-released.mdx";
+import Update2024_74 from "/snippets/changelog/2024/04-05-box-ios-sdk-v560-released.mdx";
+import Update2024_75 from "/snippets/changelog/2024/03-06-box-cli-v3140-released.mdx";
+import Update2024_76 from "/snippets/changelog/2024/02-27-box-windows-sdk-v570-released.mdx";
+import Update2024_77 from "/snippets/changelog/2024/02-27-box-java-sdk-v480-released.mdx";
+import Update2024_78 from "/snippets/changelog/2024/02-22-box-cli-v3130-released.mdx";
+import Update2024_79 from "/snippets/changelog/2024/02-19-box-node-sdk-v350-released.mdx";
+import Update2024_80 from "/snippets/changelog/2024/02-06-working-with-box-sign.mdx";
+import Update2024_81 from "/snippets/changelog/2024/02-02-metadata-view-content-explorer.mdx";
+import Update2024_82 from "/snippets/changelog/2024/01-25-box-ui-elements-v1900-released.mdx";
+import Update2024_83 from "/snippets/changelog/2024/01-19-rule-response-action-param-added.mdx";
+import Update2024_84 from "/snippets/changelog/2024/01-16-box-java-sdk-v470-released.mdx";
+
+<Update2024_1/>
+
+<Update2024_2/>
+
+<Update2024_3/>
+
+<Update2024_4/>
+
+<Update2024_5/>
+
+<Update2024_6/>
+
+<Update2024_7/>
+
+<Update2024_8/>
+
+<Update2024_9/>
+
+<Update2024_10/>
+
+<Update2024_11/>
+
+<Update2024_12/>
+
+<Update2024_13/>
+
+<Update2024_14/>
+
+<Update2024_15/>
+
+<Update2024_16/>
+
+<Update2024_17/>
+
+<Update2024_18/>
+
+<Update2024_19/>
+
+<Update2024_20/>
+
+<Update2024_21/>
+
+<Update2024_22/>
+
+<Update2024_23/>
+
+<Update2024_24/>
+
+<Update2024_25/>
+
+<Update2024_26/>
+
+<Update2024_27/>
+
+<Update2024_28/>
+
+<Update2024_29/>
+
+<Update2024_30/>
+
+<Update2024_31/>
+
+<Update2024_32/>
+
+<Update2024_33/>
+
+<Update2024_34/>
+
+<Update2024_35/>
+
+<Update2024_36/>
+
+<Update2024_37/>
+
+<Update2024_38/>
+
+<Update2024_39/>
+
+<Update2024_40/>
+
+<Update2024_41/>
+
+<Update2024_42/>
+
+<Update2024_43/>
+
+<Update2024_44/>
+
+<Update2024_45/>
+
+<Update2024_46/>
+
+<Update2024_47/>
+
+<Update2024_48/>
+
+<Update2024_49/>
+
+<Update2024_50/>
+
+<Update2024_51/>
+
+<Update2024_52/>
+
+<Update2024_53/>
+
+<Update2024_54/>
+
+<Update2024_55/>
+
+<Update2024_56/>
+
+<Update2024_57/>
+
+<Update2024_58/>
+
+<Update2024_59/>
+
+<Update2024_60/>
+
+<Update2024_61/>
+
+<Update2024_62/>
+
+<Update2024_63/>
+
+<Update2024_64/>
+
+<Update2024_65/>
+
+<Update2024_66/>
+
+<Update2024_67/>
+
+<Update2024_68/>
+
+<Update2024_69/>
+
+<Update2024_70/>
+
+<Update2024_71/>
+
+<Update2024_72/>
+
+<Update2024_73/>
+
+<Update2024_74/>
+
+<Update2024_75/>
+
+<Update2024_76/>
+
+<Update2024_77/>
+
+<Update2024_78/>
+
+<Update2024_79/>
+
+<Update2024_80/>
+
+<Update2024_81/>
+
+<Update2024_82/>
+
+<Update2024_83/>
+
+<Update2024_84/>
+
+import Update2023_1 from "/snippets/changelog/2023/12-11-introducing-my-apps-view.mdx";
+import Update2023_2 from "/snippets/changelog/2023/11-30-learn-page-updates.mdx";
+import Update2023_3 from "/snippets/changelog/2023/11-29-box-windows-sdk-v561-released.mdx";
+import Update2023_4 from "/snippets/changelog/2023/11-08-box-node-sdk-v342-released.mdx";
+import Update2023_5 from "/snippets/changelog/2023/11-08-box-cli-v3122-released.mdx";
+import Update2023_6 from "/snippets/changelog/2023/11-06-box-cli-v3121-released.mdx";
+import Update2023_7 from "/snippets/changelog/2023/11-03-box-node-sdk-v341-released.mdx";
+import Update2023_8 from "/snippets/changelog/2023/11-03-box-node-sdk-v340-released.mdx";
+import Update2023_9 from "/snippets/changelog/2023/11-02-box-java-sdk-v461-released.mdx";
+import Update2023_10 from "/snippets/changelog/2023/10-26-box-node-sdk-v330-released.mdx";
+import Update2023_11 from "/snippets/changelog/2023/10-18-box-python-sdk-v392-released.mdx";
+import Update2023_12 from "/snippets/changelog/2023/10-06-box-platform-glossary.mdx";
+import Update2023_13 from "/snippets/changelog/2023/10-06-box-node-sdk-v321-released.mdx";
+import Update2023_14 from "/snippets/changelog/2023/10-03-platform-insights.mdx";
+import Update2023_15 from "/snippets/changelog/2023/10-02-salesforce-toolkit-method-update.mdx";
+import Update2023_16 from "/snippets/changelog/2023/09-29-box-python-sdk-new-gen-released.mdx";
+import Update2023_17 from "/snippets/changelog/2023/09-29-box-node-sdk-new-generation-released.mdx";
+import Update2023_18 from "/snippets/changelog/2023/09-29-box-java-sdk-v460-released.mdx";
+import Update2023_19 from "/snippets/changelog/2023/09-25-box-windows-sdk-v560-released.mdx";
+import Update2023_20 from "/snippets/changelog/2023/09-18-box-cli-v3120-released.mdx";
+import Update2023_21 from "/snippets/changelog/2023/09-14-box-python-sdk-v391-released.mdx";
+import Update2023_22 from "/snippets/changelog/2023/09-14-box-java-sdk-v450-released.mdx";
+import Update2023_23 from "/snippets/changelog/2023/09-07-box-windows-sdk-v540-released.mdx";
+import Update2023_24 from "/snippets/changelog/2023/09-07-box-node-sdk-v320-released.mdx";
+import Update2023_25 from "/snippets/changelog/2023/09-06-box-python-sdk-v390-released.mdx";
+import Update2023_26 from "/snippets/changelog/2023/09-04-box-windows-sdk-v530-released.mdx";
+import Update2023_27 from "/snippets/changelog/2023/08-29-box-java-sdk-v440-released.mdx";
+import Update2023_28 from "/snippets/changelog/2023/08-16-embedded-sign-client.mdx";
+import Update2023_29 from "/snippets/changelog/2023/08-16-box-cli-v3100-released.mdx";
+import Update2023_30 from "/snippets/changelog/2023/08-11-box-java-sdk-v430-released.mdx";
+import Update2023_31 from "/snippets/changelog/2023/08-08-box-ios-sdk-v550-released.mdx";
+import Update2023_32 from "/snippets/changelog/2023/08-08-box-cli-v392-released.mdx";
+import Update2023_33 from "/snippets/changelog/2023/08-03-box-java-sdk-v421-released.mdx";
+import Update2023_34 from "/snippets/changelog/2023/08-01-box-python-sdk-v381-released.mdx";
+import Update2023_35 from "/snippets/changelog/2023/07-25-box-python-sdk-v380-released.mdx";
+import Update2023_36 from "/snippets/changelog/2023/07-25-JWT-access-group-access.mdx";
+import Update2023_37 from "/snippets/changelog/2023/07-19-box-node-sdk-v311-released.mdx";
+import Update2023_38 from "/snippets/changelog/2023/07-19-box-cli-v391-released.mdx";
+import Update2023_39 from "/snippets/changelog/2023/07-12-sign-request-status.mdx";
+import Update2023_40 from "/snippets/changelog/2023/07-12-box-ui-elements-v1810-released.mdx";
+import Update2023_41 from "/snippets/changelog/2023/07-07-box-python-sdk-v373-released.mdx";
+import Update2023_42 from "/snippets/changelog/2023/06-30-folder-items-api-update.mdx";
+import Update2023_43 from "/snippets/changelog/2023/06-27-box-ui-elements-v1800-released.mdx";
+import Update2023_44 from "/snippets/changelog/2023/06-26-integration-mappings-guide.mdx";
+import Update2023_45 from "/snippets/changelog/2023/06-21-box-java-sdk-v420-released.mdx";
+import Update2023_46 from "/snippets/changelog/2023/06-15-shared-link-passwords.mdx";
+import Update2023_47 from "/snippets/changelog/2023/06-14-box-java-sdk-v412-released.mdx";
+import Update2023_48 from "/snippets/changelog/2023/06-13-join-box-developer-community.mdx";
+import Update2023_49 from "/snippets/changelog/2023/06-02-box-cli-v390-released.mdx";
+import Update2023_50 from "/snippets/changelog/2023/06-01-box-node-sdk-v310-released.mdx";
+import Update2023_51 from "/snippets/changelog/2023/05-26-salesforce-ui-elements.mdx";
+import Update2023_52 from "/snippets/changelog/2023/05-26-box-python-sdk-v372-released.mdx";
+import Update2023_53 from "/snippets/changelog/2023/05-24-integration-mappings-API.mdx";
+import Update2023_54 from "/snippets/changelog/2023/05-23-box-windows-sdk-v522-released.mdx";
+import Update2023_55 from "/snippets/changelog/2023/05-23-box-node-sdk-v300-released.mdx";
+import Update2023_56 from "/snippets/changelog/2023/05-16-box-java-sdk-v411-released.mdx";
+import Update2023_57 from "/snippets/changelog/2023/05-11-box-node-sdk-v2100-released.mdx";
+import Update2023_58 from "/snippets/changelog/2023/05-10-box-ui-elements-v1710-released.mdx";
+import Update2023_59 from "/snippets/changelog/2023/05-10-box-sign-templates.mdx";
+import Update2023_60 from "/snippets/changelog/2023/04-25-upload-api-update.mdx";
+import Update2023_61 from "/snippets/changelog/2023/04-24-box-java-sdk-v410-released.mdx";
+import Update2023_62 from "/snippets/changelog/2023/04-20-box-ui-elements-v1700-released.mdx";
+import Update2023_63 from "/snippets/changelog/2023/04-20-box-embed-guide-update.mdx";
+import Update2023_64 from "/snippets/changelog/2023/04-19-box-node-sdk-v290-released.mdx";
+import Update2023_65 from "/snippets/changelog/2023/04-19-box-ios-sdk-v542-released.mdx";
+import Update2023_66 from "/snippets/changelog/2023/04-18-box-windows-sdk-v521-released.mdx";
+import Update2023_67 from "/snippets/changelog/2023/04-18-box-python-sdk-v371-released.mdx";
+import Update2023_68 from "/snippets/changelog/2023/04-17-new-custom-app-modal.mdx";
+import Update2023_69 from "/snippets/changelog/2023/03-28-collaborations-api-update.mdx";
+import Update2023_70 from "/snippets/changelog/2023/03-14-box-windows-sdk-v520-released.mdx";
+import Update2023_71 from "/snippets/changelog/2023/03-08-downloading-zip-archives.mdx";
+import Update2023_72 from "/snippets/changelog/2023/03-08-box-python-sdk-v370-released.mdx";
+import Update2023_73 from "/snippets/changelog/2023/03-06-box-java-sdk-v401-released.mdx";
+import Update2023_74 from "/snippets/changelog/2023/03-03-box-cli-v380-released.mdx";
+import Update2023_75 from "/snippets/changelog/2023/02-24-box-ios-sdk-v541-released.mdx";
+import Update2023_76 from "/snippets/changelog/2023/02-24-android-end-of-support.mdx";
+import Update2023_77 from "/snippets/changelog/2023/02-23-multidoc-support-API-and-signer-attachments.mdx";
+import Update2023_78 from "/snippets/changelog/2023/02-08-sample-code-catalog-released.mdx";
+import Update2023_79 from "/snippets/changelog/2023/02-07-box-python-sdk-v362-released.mdx";
+import Update2023_80 from "/snippets/changelog/2023/01-19-box-cli-v370-released.mdx";
+import Update2023_81 from "/snippets/changelog/2023/01-18-box-java-sdk-v400-released.mdx";
+import Update2023_82 from "/snippets/changelog/2023/01-17-box-windows-sdk-v510-released.mdx";
+import Update2023_83 from "/snippets/changelog/2023/01-12-box-windows-sdk-v500-released.mdx";
+import Update2023_84 from "/snippets/changelog/2023/01-11-salesforce-toolkit-flow-actions.mdx";
+import Update2023_85 from "/snippets/changelog/2023/01-09-box-python-sdk-v361-released.mdx";
+import Update2023_86 from "/snippets/changelog/2023/01-05-box-node-sdk-v281-released.mdx";
+import Update2023_87 from "/snippets/changelog/2023/01-04-box-java-sdk-v382-released.mdx";
+import Update2023_88 from "/snippets/changelog/2023/01-03-box-python-sdk-v360-released.mdx";
+
+<Update2023_1/>
+
+<Update2023_2/>
+
+<Update2023_3/>
+
+<Update2023_4/>
+
+<Update2023_5/>
+
+<Update2023_6/>
+
+<Update2023_7/>
+
+<Update2023_8/>
+
+<Update2023_9/>
+
+<Update2023_10/>
+
+<Update2023_11/>
+
+<Update2023_12/>
+
+<Update2023_13/>
+
+<Update2023_14/>
+
+<Update2023_15/>
+
+<Update2023_16/>
+
+<Update2023_17/>
+
+<Update2023_18/>
+
+<Update2023_19/>
+
+<Update2023_20/>
+
+<Update2023_21/>
+
+<Update2023_22/>
+
+<Update2023_23/>
+
+<Update2023_24/>
+
+<Update2023_25/>
+
+<Update2023_26/>
+
+<Update2023_27/>
+
+<Update2023_28/>
+
+<Update2023_29/>
+
+<Update2023_30/>
+
+<Update2023_31/>
+
+<Update2023_32/>
+
+<Update2023_33/>
+
+<Update2023_34/>
+
+<Update2023_35/>
+
+<Update2023_36/>
+
+<Update2023_37/>
+
+<Update2023_38/>
+
+<Update2023_39/>
+
+<Update2023_40/>
+
+<Update2023_41/>
+
+<Update2023_42/>
+
+<Update2023_43/>
+
+<Update2023_44/>
+
+<Update2023_45/>
+
+<Update2023_46/>
+
+<Update2023_47/>
+
+<Update2023_48/>
+
+<Update2023_49/>
+
+<Update2023_50/>
+
+<Update2023_51/>
+
+<Update2023_52/>
+
+<Update2023_53/>
+
+<Update2023_54/>
+
+<Update2023_55/>
+
+<Update2023_56/>
+
+<Update2023_57/>
+
+<Update2023_58/>
+
+<Update2023_59/>
+
+<Update2023_60/>
+
+<Update2023_61/>
+
+<Update2023_62/>
+
+<Update2023_63/>
+
+<Update2023_64/>
+
+<Update2023_65/>
+
+<Update2023_66/>
+
+<Update2023_67/>
+
+<Update2023_68/>
+
+<Update2023_69/>
+
+<Update2023_70/>
+
+<Update2023_71/>
+
+<Update2023_72/>
+
+<Update2023_73/>
+
+<Update2023_74/>
+
+<Update2023_75/>
+
+<Update2023_76/>
+
+<Update2023_77/>
+
+<Update2023_78/>
+
+<Update2023_79/>
+
+<Update2023_80/>
+
+<Update2023_81/>
+
+<Update2023_82/>
+
+<Update2023_83/>
+
+<Update2023_84/>
+
+<Update2023_85/>
+
+<Update2023_86/>
+
+<Update2023_87/>
+
+<Update2023_88/>
+
+import Update2022_1 from "/snippets/changelog/2022/12-21-box-node-sdk-v280-released.mdx";
+import Update2022_2 from "/snippets/changelog/2022/12-19-sdk-box-java-net-releases.mdx";
+import Update2022_3 from "/snippets/changelog/2022/12-19-box-java-sdk-v381-released.mdx";
+import Update2022_4 from "/snippets/changelog/2022/12-01-server-server-service-action-eol.mdx";
+import Update2022_5 from "/snippets/changelog/2022/11-30-box-python-sdk-v351-released.mdx";
+import Update2022_6 from "/snippets/changelog/2022/11-22-box-cli-v360-released.mdx";
+import Update2022_7 from "/snippets/changelog/2022/11-16-box-java-sdk-v380-released.mdx";
+import Update2022_8 from "/snippets/changelog/2022/11-10-box-node-sdk-v272-released.mdx";
+import Update2022_9 from "/snippets/changelog/2022/11-08-box-ios-sdk-v540-released.mdx";
+import Update2022_10 from "/snippets/changelog/2022/11-02-box-cli-v350-released.mdx";
+import Update2022_11 from "/snippets/changelog/2022/10-28-information-barrier.mdx";
+import Update2022_12 from "/snippets/changelog/2022/10-28-box-node-sdk-v271-released.mdx";
+import Update2022_13 from "/snippets/changelog/2022/10-27-box-node-sdk-v270-released.mdx";
+import Update2022_14 from "/snippets/changelog/2022/10-20-box-ui-elements-v1600-released.mdx";
+import Update2022_15 from "/snippets/changelog/2022/10-19-webhooksv2-in-developer-console.mdx";
+import Update2022_16 from "/snippets/changelog/2022/10-19-annotations-in-preview.mdx";
+import Update2022_17 from "/snippets/changelog/2022/10-18-box-windows-sdk-v460-released.mdx";
+import Update2022_18 from "/snippets/changelog/2022/10-05-metadata-extraction-script.mdx";
+import Update2022_19 from "/snippets/changelog/2022/09-30-box-java-sdk-v371-released.mdx";
+import Update2022_20 from "/snippets/changelog/2022/09-26-box-cli-v340-released.mdx";
+import Update2022_21 from "/snippets/changelog/2022/09-23-box-python-sdk-v350-released.mdx";
+import Update2022_22 from "/snippets/changelog/2022/09-23-box-node-sdk-v260-released.mdx";
+import Update2022_23 from "/snippets/changelog/2022/09-21-box-java-sdk-v370-released.mdx";
+import Update2022_24 from "/snippets/changelog/2022/09-12-upload-part-improvements.mdx";
+import Update2022_25 from "/snippets/changelog/2022/09-07-box-java-sdk-v360-released.mdx";
+import Update2022_26 from "/snippets/changelog/2022/09-06-cli-video-3.mdx";
+import Update2022_27 from "/snippets/changelog/2022/08-29-box-sign-available-for-starter.mdx";
+import Update2022_28 from "/snippets/changelog/2022/08-26-box-java-sdk-v350-released.mdx";
+import Update2022_29 from "/snippets/changelog/2022/08-24-new-cli-scripts-added.mdx";
+import Update2022_30 from "/snippets/changelog/2022/08-24-box-windows-sdk-v450-released.mdx";
+import Update2022_31 from "/snippets/changelog/2022/08-19-box-ios-sdk-v530-released.mdx";
+import Update2022_32 from "/snippets/changelog/2022/08-11-box-java-sdk-v340-released.mdx";
+import Update2022_33 from "/snippets/changelog/2022/08-09-box-node-sdk-v250-released.mdx";
+import Update2022_34 from "/snippets/changelog/2022/07-29-box-cli-v332-released.mdx";
+import Update2022_35 from "/snippets/changelog/2022/07-25-box-cli-v331-released.mdx";
+import Update2022_36 from "/snippets/changelog/2022/07-23-retention-api-updates.mdx";
+import Update2022_37 from "/snippets/changelog/2022/07-19-box-cli-v330-released.mdx";
+import Update2022_38 from "/snippets/changelog/2022/07-13-box-node-sdk-v240-released.mdx";
+import Update2022_39 from "/snippets/changelog/2022/07-11-sign-webhooks-support.mdx";
+import Update2022_40 from "/snippets/changelog/2022/07-06-cors-issues.mdx";
+import Update2022_41 from "/snippets/changelog/2022/07-06-box-python-sdk-v340-released.mdx";
+import Update2022_42 from "/snippets/changelog/2022/07-04-box-java-sdk-v330-released.mdx";
+import Update2022_43 from "/snippets/changelog/2022/06-30-improvements-in-web-app-integrations-documentation.mdx";
+import Update2022_44 from "/snippets/changelog/2022/06-30-box-cli-v320-released.mdx";
+import Update2022_45 from "/snippets/changelog/2022/06-24-new-redirect-url-parameters.mdx";
+import Update2022_46 from "/snippets/changelog/2022/06-23-new-cli-script.mdx";
+import Update2022_47 from "/snippets/changelog/2022/06-17-box-cli-v310-released.mdx";
+import Update2022_48 from "/snippets/changelog/2022/06-14-box-windows-sdk-v440-released.mdx";
+import Update2022_49 from "/snippets/changelog/2022/06-11-box-java-sdk-v321-released.mdx";
+import Update2022_50 from "/snippets/changelog/2022/05-24-new-app-center.mdx";
+import Update2022_51 from "/snippets/changelog/2022/05-24-box-java-sdk-v320-released.mdx";
+import Update2022_52 from "/snippets/changelog/2022/05-18-oauth-20-redirect-url-release.mdx";
+import Update2022_53 from "/snippets/changelog/2022/05-18-new-endpoints-for-user-avatar.mdx";
+import Update2022_54 from "/snippets/changelog/2022/05-16-box-ui-elements-v1500-released.mdx";
+import Update2022_55 from "/snippets/changelog/2022/05-12-new-sign-requests-field.mdx";
+import Update2022_56 from "/snippets/changelog/2022/05-11-new-fields-in-event-api-ref.mdx";
+import Update2022_57 from "/snippets/changelog/2022/05-06-new-sign-events-payload-field.mdx";
+import Update2022_58 from "/snippets/changelog/2022/05-06-new-editable-shared-links-api.mdx";
+import Update2022_59 from "/snippets/changelog/2022/04-28-box-python-sdk-v330-released.mdx";
+import Update2022_60 from "/snippets/changelog/2022/04-28-box-node-sdk-v230-released.mdx";
+import Update2022_61 from "/snippets/changelog/2022/04-22-box-ios-sdk-v521-released.mdx";
+import Update2022_62 from "/snippets/changelog/2022/04-21-improvements-in-custom-apps-approval-flow.mdx";
+import Update2022_63 from "/snippets/changelog/2022/04-20-box-node-sdk-v220-released.mdx";
+import Update2022_64 from "/snippets/changelog/2022/04-19-box-windows-sdk-v431-released.mdx";
+import Update2022_65 from "/snippets/changelog/2022/04-06-notice-of-behavior-change-for-collab-events.mdx";
+import Update2022_66 from "/snippets/changelog/2022/04-01-box-windows-sdk-v430-released.mdx";
+import Update2022_67 from "/snippets/changelog/2022/03-28-box-node-sdk-v210-released.mdx";
+import Update2022_68 from "/snippets/changelog/2022/03-25-new-search-api-query-parameter.mdx";
+import Update2022_69 from "/snippets/changelog/2022/03-22-box-java-sdk-v312-released.mdx";
+import Update2022_70 from "/snippets/changelog/2022/03-18-box-ios-sdk-v520-released.mdx";
+import Update2022_71 from "/snippets/changelog/2022/03-17-new-box-cli-youtube-video.mdx";
+import Update2022_72 from "/snippets/changelog/2022/03-16-announcing-sdk-supported-versions.mdx";
+import Update2022_73 from "/snippets/changelog/2022/03-11-box-python-sdk-v320-released.mdx";
+import Update2022_74 from "/snippets/changelog/2022/03-03-developer-documentation-updates.mdx";
+import Update2022_75 from "/snippets/changelog/2022/02-28-box-java-sdk-v311-released.mdx";
+import Update2022_76 from "/snippets/changelog/2022/02-18-box-java-sdk-v310-released.mdx";
+import Update2022_77 from "/snippets/changelog/2022/02-16-client-credentials-support-in-the-sdks.mdx";
+import Update2022_78 from "/snippets/changelog/2022/02-16-box-python-sdk-v310-released.mdx";
+import Update2022_79 from "/snippets/changelog/2022/02-14-new-box-shield-event-field.mdx";
+import Update2022_80 from "/snippets/changelog/2022/02-10-box-windows-sdk-v420-released.mdx";
+import Update2022_81 from "/snippets/changelog/2022/02-02-end-of-support-for-dicom.mdx";
+import Update2022_82 from "/snippets/changelog/2022/02-01-box-cli-v300-released.mdx";
+import Update2022_83 from "/snippets/changelog/2022/01-26-box-python-sdk-v301-released.mdx";
+import Update2022_84 from "/snippets/changelog/2022/01-17-box-python-sdk-v300-released.mdx";
+import Update2022_85 from "/snippets/changelog/2022/01-17-box-java-sdk-v300-released.mdx";
+import Update2022_86 from "/snippets/changelog/2022/01-17-box-ios-sdk-v510-released.mdx";
+import Update2022_87 from "/snippets/changelog/2022/01-06-new-features-for-custom-app-management.mdx";
+
+<Update2022_1/>
+
+<Update2022_2/>
+
+<Update2022_3/>
+
+<Update2022_4/>
+
+<Update2022_5/>
+
+<Update2022_6/>
+
+<Update2022_7/>
+
+<Update2022_8/>
+
+<Update2022_9/>
+
+<Update2022_10/>
+
+<Update2022_11/>
+
+<Update2022_12/>
+
+<Update2022_13/>
+
+<Update2022_14/>
+
+<Update2022_15/>
+
+<Update2022_16/>
+
+<Update2022_17/>
+
+<Update2022_18/>
+
+<Update2022_19/>
+
+<Update2022_20/>
+
+<Update2022_21/>
+
+<Update2022_22/>
+
+<Update2022_23/>
+
+<Update2022_24/>
+
+<Update2022_25/>
+
+<Update2022_26/>
+
+<Update2022_27/>
+
+<Update2022_28/>
+
+<Update2022_29/>
+
+<Update2022_30/>
+
+<Update2022_31/>
+
+<Update2022_32/>
+
+<Update2022_33/>
+
+<Update2022_34/>
+
+<Update2022_35/>
+
+<Update2022_36/>
+
+<Update2022_37/>
+
+<Update2022_38/>
+
+<Update2022_39/>
+
+<Update2022_40/>
+
+<Update2022_41/>
+
+<Update2022_42/>
+
+<Update2022_43/>
+
+<Update2022_44/>
+
+<Update2022_45/>
+
+<Update2022_46/>
+
+<Update2022_47/>
+
+<Update2022_48/>
+
+<Update2022_49/>
+
+<Update2022_50/>
+
+<Update2022_51/>
+
+<Update2022_52/>
+
+<Update2022_53/>
+
+<Update2022_54/>
+
+<Update2022_55/>
+
+<Update2022_56/>
+
+<Update2022_57/>
+
+<Update2022_58/>
+
+<Update2022_59/>
+
+<Update2022_60/>
+
+<Update2022_61/>
+
+<Update2022_62/>
+
+<Update2022_63/>
+
+<Update2022_64/>
+
+<Update2022_65/>
+
+<Update2022_66/>
+
+<Update2022_67/>
+
+<Update2022_68/>
+
+<Update2022_69/>
+
+<Update2022_70/>
+
+<Update2022_71/>
+
+<Update2022_72/>
+
+<Update2022_73/>
+
+<Update2022_74/>
+
+<Update2022_75/>
+
+<Update2022_76/>
+
+<Update2022_77/>
+
+<Update2022_78/>
+
+<Update2022_79/>
+
+<Update2022_80/>
+
+<Update2022_81/>
+
+<Update2022_82/>
+
+<Update2022_83/>
+
+<Update2022_84/>
+
+<Update2022_85/>
+
+<Update2022_86/>
+
+<Update2022_87/>
+
+import Update2021_1 from "/snippets/changelog/2021/12-17-end-of-support-for-obsolete-language-versions.mdx";
+import Update2021_2 from "/snippets/changelog/2021/12-14-box-windows-sdk-v410-released.mdx";
+import Update2021_3 from "/snippets/changelog/2021/12-08-box-python-sdk-v2140-released.mdx";
+import Update2021_4 from "/snippets/changelog/2021/11-29-oauth-20-redirect-url-updates.mdx";
+import Update2021_5 from "/snippets/changelog/2021/11-23-box-java-sdk-v2580-released.mdx";
+import Update2021_6 from "/snippets/changelog/2021/11-22-new-shield-download-event.mdx";
+import Update2021_7 from "/snippets/changelog/2021/11-17-new-event-stream-live-monitoring.mdx";
+import Update2021_8 from "/snippets/changelog/2021/11-16-added-retention-policy-marker-based-pagination.mdx";
+import Update2021_9 from "/snippets/changelog/2021/11-03-extend-retention-via-files-api.mdx";
+import Update2021_10 from "/snippets/changelog/2021/11-02-box-windows-sdk-v400-released.mdx";
+import Update2021_11 from "/snippets/changelog/2021/10-28-box-ios-sdk-v500-released.mdx";
+import Update2021_12 from "/snippets/changelog/2021/10-27-box-sign-enterprise-events.mdx";
+import Update2021_13 from "/snippets/changelog/2021/10-20-box-ui-elements-v1400-released.mdx";
+import Update2021_14 from "/snippets/changelog/2021/10-20-app-diagnostics-report-feedback.mdx";
+import Update2021_15 from "/snippets/changelog/2021/10-18-box-java-sdk-v2570-released.mdx";
+import Update2021_16 from "/snippets/changelog/2021/10-07-update-to-webhooks-response.mdx";
+import Update2021_17 from "/snippets/changelog/2021/10-07-new-app-diagnostics-report.mdx";
+import Update2021_18 from "/snippets/changelog/2021/10-06-support-for-adobe-creative-cloud-preview.mdx";
+import Update2021_19 from "/snippets/changelog/2021/09-30-box-python-sdk-v2130-released.mdx";
+import Update2021_20 from "/snippets/changelog/2021/09-29-box-node-sdk-v200-released.mdx";
+import Update2021_21 from "/snippets/changelog/2021/09-21-end-of-support-for-open-with-ui-element.mdx";
+import Update2021_22 from "/snippets/changelog/2021/09-07-new-enhancements-to-retention-apis.mdx";
+import Update2021_23 from "/snippets/changelog/2021/09-01-classification-name-field-now-in-events.mdx";
+import Update2021_24 from "/snippets/changelog/2021/08-31-notice-of-behavior-change-for-item-preview-events.mdx";
+import Update2021_25 from "/snippets/changelog/2021/08-31-box-java-sdk-v2560-released.mdx";
+import Update2021_26 from "/snippets/changelog/2021/08-30-box-node-sdk-v1390-released.mdx";
+import Update2021_27 from "/snippets/changelog/2021/08-06-box-node-sdk-v1380-released.mdx";
+import Update2021_28 from "/snippets/changelog/2021/08-04-changes-to-jwt-token-format.mdx";
+import Update2021_29 from "/snippets/changelog/2021/08-03-getting-started-guide.mdx";
+import Update2021_30 from "/snippets/changelog/2021/07-30-box-java-sdk-v2551-released.mdx";
+import Update2021_31 from "/snippets/changelog/2021/07-26-release-of-box-sign-api.mdx";
+import Update2021_32 from "/snippets/changelog/2021/07-26-box-java-sdk-v2550-released.mdx";
+import Update2021_33 from "/snippets/changelog/2021/07-16-updated-file-size-limits.mdx";
+import Update2021_34 from "/snippets/changelog/2021/07-16-manual-start-workflow-endpoints-now-active.mdx";
+import Update2021_35 from "/snippets/changelog/2021/07-01-notice-of-behavior-change-for-item-open-events.mdx";
+import Update2021_36 from "/snippets/changelog/2021/06-16-box-python-sdk-v2121-released.mdx";
+import Update2021_37 from "/snippets/changelog/2021/05-20-box-node-sdk-v1372-released.mdx";
+import Update2021_38 from "/snippets/changelog/2021/05-19-box-node-sdk-v1371-released.mdx";
+import Update2021_39 from "/snippets/changelog/2021/04-22-box-ui-elements-v1300-released.mdx";
+import Update2021_40 from "/snippets/changelog/2021/04-20-box-ios-sdk-v440-released.mdx";
+import Update2021_41 from "/snippets/changelog/2021/04-16-box-python-sdk-v2120-released.mdx";
+import Update2021_42 from "/snippets/changelog/2021/04-16-box-node-sdk-v1370-released.mdx";
+import Update2021_43 from "/snippets/changelog/2021/04-15-notice-of-behavior-change-for-item_download-events.mdx";
+import Update2021_44 from "/snippets/changelog/2021/04-13-token-exchange-optional-parameter-added.mdx";
+import Update2021_45 from "/snippets/changelog/2021/04-01-box-java-sdk-v2540-released.mdx";
+import Update2021_46 from "/snippets/changelog/2021/03-25-service-account-information-in-developer-console.mdx";
+import Update2021_47 from "/snippets/changelog/2021/03-25-new-metadata-query-indicies-endpoint.mdx";
+import Update2021_48 from "/snippets/changelog/2021/03-16-new-collection-events.mdx";
+import Update2021_49 from "/snippets/changelog/2021/02-26-box-shield-smart-access-events.mdx";
+import Update2021_50 from "/snippets/changelog/2021/02-26-box-cli-v290-released.mdx";
+import Update2021_51 from "/snippets/changelog/2021/02-05-box-api-response-header-changes.mdx";
+import Update2021_52 from "/snippets/changelog/2021/02-01-box-ios-sdk-v430-released.mdx";
+import Update2021_53 from "/snippets/changelog/2021/01-28-box-node-sdk-v1360-released.mdx";
+import Update2021_54 from "/snippets/changelog/2021/01-25-maximum-upload-file-size-limit-increases.mdx";
+import Update2021_55 from "/snippets/changelog/2021/01-15-metadata-query-index-changes.mdx";
+import Update2021_56 from "/snippets/changelog/2021/01-14-developer-console-updates.mdx";
+import Update2021_57 from "/snippets/changelog/2021/01-11-box-python-sdk-v2110-released.mdx";
+import Update2021_58 from "/snippets/changelog/2021/01-09-box-java-sdk-v2530-released.mdx";
+
+<Update2021_1/>
+
+<Update2021_2/>
+
+<Update2021_3/>
+
+<Update2021_4/>
+
+<Update2021_5/>
+
+<Update2021_6/>
+
+<Update2021_7/>
+
+<Update2021_8/>
+
+<Update2021_9/>
+
+<Update2021_10/>
+
+<Update2021_11/>
+
+<Update2021_12/>
+
+<Update2021_13/>
+
+<Update2021_14/>
+
+<Update2021_15/>
+
+<Update2021_16/>
+
+<Update2021_17/>
+
+<Update2021_18/>
+
+<Update2021_19/>
+
+<Update2021_20/>
+
+<Update2021_21/>
+
+<Update2021_22/>
+
+<Update2021_23/>
+
+<Update2021_24/>
+
+<Update2021_25/>
+
+<Update2021_26/>
+
+<Update2021_27/>
+
+<Update2021_28/>
+
+<Update2021_29/>
+
+<Update2021_30/>
+
+<Update2021_31/>
+
+<Update2021_32/>
+
+<Update2021_33/>
+
+<Update2021_34/>
+
+<Update2021_35/>
+
+<Update2021_36/>
+
+<Update2021_37/>
+
+<Update2021_38/>
+
+<Update2021_39/>
+
+<Update2021_40/>
+
+<Update2021_41/>
+
+<Update2021_42/>
+
+<Update2021_43/>
+
+<Update2021_44/>
+
+<Update2021_45/>
+
+<Update2021_46/>
+
+<Update2021_47/>
+
+<Update2021_48/>
+
+<Update2021_49/>
+
+<Update2021_50/>
+
+<Update2021_51/>
+
+<Update2021_52/>
+
+<Update2021_53/>
+
+<Update2021_54/>
+
+<Update2021_55/>
+
+<Update2021_56/>
+
+<Update2021_57/>
+
+<Update2021_58/>
+
+import Update2020_1 from "/snippets/changelog/2020/12-14-blank-oauth2-redirect-uri-change.mdx";
+import Update2020_2 from "/snippets/changelog/2020/12-03-new-type-field-in-search-api-responses.mdx";
+import Update2020_3 from "/snippets/changelog/2020/12-03-box-cli-v280-released.mdx";
+import Update2020_4 from "/snippets/changelog/2020/11-24-box-java-sdk-v2520-released.mdx";
+import Update2020_5 from "/snippets/changelog/2020/11-17-client-credentials-grant.mdx";
+import Update2020_6 from "/snippets/changelog/2020/11-17-box-ios-sdk-v420-released.mdx";
+import Update2020_7 from "/snippets/changelog/2020/11-13-box-java-sdk-v2511-released.mdx";
+import Update2020_8 from "/snippets/changelog/2020/11-13-box-content-preview-v2570-released.mdx";
+import Update2020_9 from "/snippets/changelog/2020/11-09-simplified-app-creation-flow.mdx";
+import Update2020_10 from "/snippets/changelog/2020/11-04-box-cli-v270-released.mdx";
+import Update2020_11 from "/snippets/changelog/2020/11-02-box-node-sdk-v1350-released.mdx";
+import Update2020_12 from "/snippets/changelog/2020/10-29-box-java-sdk-v2510-released.mdx";
+import Update2020_13 from "/snippets/changelog/2020/10-26-new-folder-lock-apis-now-available.mdx";
+import Update2020_14 from "/snippets/changelog/2020/10-22-new-folder-lock-apis-now-available.mdx";
+import Update2020_15 from "/snippets/changelog/2020/10-21-metadata-cascade-policy-api-leaves-beta.mdx";
+import Update2020_16 from "/snippets/changelog/2020/10-19-box-windows-sdk-v3250-released.mdx";
+import Update2020_17 from "/snippets/changelog/2020/10-08-search-api-adds-support-for-shared-links.mdx";
+import Update2020_18 from "/snippets/changelog/2020/10-05-box-node-sdk-v1343-released.mdx";
+import Update2020_19 from "/snippets/changelog/2020/10-02-new-file-request-apis-available.mdx";
+import Update2020_20 from "/snippets/changelog/2020/10-02-box-python-sdk-v2100-released.mdx";
+import Update2020_21 from "/snippets/changelog/2020/09-29-changes-to-oauth-2-app-redirect-url-requirements.mdx";
+import Update2020_22 from "/snippets/changelog/2020/09-25-search-api-adds-support-for-shared-links.mdx";
+import Update2020_23 from "/snippets/changelog/2020/09-10-group-api-adds-new-filter-and-permissions.mdx";
+import Update2020_24 from "/snippets/changelog/2020/08-25-multi-select-metadata-support-in-search-api.mdx";
+import Update2020_25 from "/snippets/changelog/2020/08-21-box-cli-v260-released.mdx";
+import Update2020_26 from "/snippets/changelog/2020/08-20-box-node-sdk-v1342-released.mdx";
+import Update2020_27 from "/snippets/changelog/2020/08-20-box-java-sdk-v2501-released.mdx";
+import Update2020_28 from "/snippets/changelog/2020/08-17-box-node-sdk-v1341-released.mdx";
+import Update2020_29 from "/snippets/changelog/2020/08-07-box-node-sdk-v1340-released.mdx";
+import Update2020_30 from "/snippets/changelog/2020/07-30-updates-to-search-relevance-performance.mdx";
+import Update2020_31 from "/snippets/changelog/2020/07-22-new-zip-download-apis-available.mdx";
+import Update2020_32 from "/snippets/changelog/2020/07-22-box-java-sdk-v2500-released.mdx";
+import Update2020_33 from "/snippets/changelog/2020/07-21-box-windows-sdk-v3240-released.mdx";
+import Update2020_34 from "/snippets/changelog/2020/07-17-box-java-sdk-v2490-released.mdx";
+import Update2020_35 from "/snippets/changelog/2020/07-16-change-to-enterprise-events-for-content-access.mdx";
+import Update2020_36 from "/snippets/changelog/2020/07-15-changes-to-metadata-query-api-syntax.mdx";
+import Update2020_37 from "/snippets/changelog/2020/06-25-box-node-sdk-v1330-released.mdx";
+import Update2020_38 from "/snippets/changelog/2020/06-24-box-java-sdk-v2480-released.mdx";
+import Update2020_39 from "/snippets/changelog/2020/06-23-box-python-sdk-v290-released.mdx";
+import Update2020_40 from "/snippets/changelog/2020/06-11-change-to-enterprise-events-for-tasks.mdx";
+import Update2020_41 from "/snippets/changelog/2020/05-15-box-ios-sdk-v410-released.mdx";
+import Update2020_42 from "/snippets/changelog/2020/05-12-windows-net-sdk-v3230-release.mdx";
+import Update2020_43 from "/snippets/changelog/2020/05-12-new-shield-alert-events.mdx";
+import Update2020_44 from "/snippets/changelog/2020/04-24-python-sdk-v280-release.mdx";
+import Update2020_45 from "/snippets/changelog/2020/04-23-new-classification-field-for-files.mdx";
+import Update2020_46 from "/snippets/changelog/2020/04-23-java-sdk-v2470-release.mdx";
+import Update2020_47 from "/snippets/changelog/2020/04-23-add-new-uploader_display_name-field-to-file-and-file-versions.mdx";
+import Update2020_48 from "/snippets/changelog/2020/04-21-new-metadata-query-apis-available.mdx";
+import Update2020_49 from "/snippets/changelog/2020/04-21-box-cli-v251-release.mdx";
+import Update2020_50 from "/snippets/changelog/2020/04-09-java-sdk-v2460-release.mdx";
+import Update2020_51 from "/snippets/changelog/2020/04-02-java-sdk-v2450-release.mdx";
+import Update2020_52 from "/snippets/changelog/2020/04-01-node-sdk-v1320-release.mdx";
+import Update2020_53 from "/snippets/changelog/2020/03-30-potential-impactful-changes-to-format-of-metadata-date-fields.mdx";
+import Update2020_54 from "/snippets/changelog/2020/03-30-change-to-metadata-instance-version.mdx";
+import Update2020_55 from "/snippets/changelog/2020/02-25-windows-net-sdk-v3220-release.mdx";
+import Update2020_56 from "/snippets/changelog/2020/02-14-node-sdk-v1310-release.mdx";
+import Update2020_57 from "/snippets/changelog/2020/02-13-java-sdk-v2441-release.mdx";
+import Update2020_58 from "/snippets/changelog/2020/02-13-box-ios-sdk-v400-released.mdx";
+import Update2020_59 from "/snippets/changelog/2020/02-03-preview-sdk-v2340-released.mdx";
+import Update2020_60 from "/snippets/changelog/2020/01-22-python-sdk-v271-release.mdx";
+import Update2020_61 from "/snippets/changelog/2020/01-22-preview-sdk-v2331-released.mdx";
+import Update2020_62 from "/snippets/changelog/2020/01-21-java-sdk-v2440-release.mdx";
+import Update2020_63 from "/snippets/changelog/2020/01-20-refreshed-postman-collection-quick-start.mdx";
+import Update2020_64 from "/snippets/changelog/2020/01-16-python-sdk-v270-release.mdx";
+
+<Update2020_1/>
+
+<Update2020_2/>
+
+<Update2020_3/>
+
+<Update2020_4/>
+
+<Update2020_5/>
+
+<Update2020_6/>
+
+<Update2020_7/>
+
+<Update2020_8/>
+
+<Update2020_9/>
+
+<Update2020_10/>
+
+<Update2020_11/>
+
+<Update2020_12/>
+
+<Update2020_13/>
+
+<Update2020_14/>
+
+<Update2020_15/>
+
+<Update2020_16/>
+
+<Update2020_17/>
+
+<Update2020_18/>
+
+<Update2020_19/>
+
+<Update2020_20/>
+
+<Update2020_21/>
+
+<Update2020_22/>
+
+<Update2020_23/>
+
+<Update2020_24/>
+
+<Update2020_25/>
+
+<Update2020_26/>
+
+<Update2020_27/>
+
+<Update2020_28/>
+
+<Update2020_29/>
+
+<Update2020_30/>
+
+<Update2020_31/>
+
+<Update2020_32/>
+
+<Update2020_33/>
+
+<Update2020_34/>
+
+<Update2020_35/>
+
+<Update2020_36/>
+
+<Update2020_37/>
+
+<Update2020_38/>
+
+<Update2020_39/>
+
+<Update2020_40/>
+
+<Update2020_41/>
+
+<Update2020_42/>
+
+<Update2020_43/>
+
+<Update2020_44/>
+
+<Update2020_45/>
+
+<Update2020_46/>
+
+<Update2020_47/>
+
+<Update2020_48/>
+
+<Update2020_49/>
+
+<Update2020_50/>
+
+<Update2020_51/>
+
+<Update2020_52/>
+
+<Update2020_53/>
+
+<Update2020_54/>
+
+<Update2020_55/>
+
+<Update2020_56/>
+
+<Update2020_57/>
+
+<Update2020_58/>
+
+<Update2020_59/>
+
+<Update2020_60/>
+
+<Update2020_61/>
+
+<Update2020_62/>
+
+<Update2020_63/>
+
+<Update2020_64/>
+
+import Update2019_1 from "/snippets/changelog/2019/12-30-eol-of-classic-relay-api-endpoints.mdx";
+import Update2019_2 from "/snippets/changelog/2019/12-20-java-sdk-v2430-release.mdx";
+import Update2019_3 from "/snippets/changelog/2019/12-17-java-sdk-v2420-release.mdx";
+import Update2019_4 from "/snippets/changelog/2019/12-06-windows-net-sdk-v3210-release.mdx";
+import Update2019_5 from "/snippets/changelog/2019/12-05-marker-based-pagination-support-for-users-api.mdx";
+import Update2019_6 from "/snippets/changelog/2019/12-03-preview-sdk-v2290-released.mdx";
+import Update2019_7 from "/snippets/changelog/2019/11-26-box-ui-elements-v1102-released.mdx";
+import Update2019_8 from "/snippets/changelog/2019/11-25-elements-v110-released.mdx";
+import Update2019_9 from "/snippets/changelog/2019/11-21-node-sdk-v1300-release.mdx";
+import Update2019_10 from "/snippets/changelog/2019/11-20-preview-sdk-v2260-released.mdx";
+import Update2019_11 from "/snippets/changelog/2019/11-18-new-ios-sdk-now-available.mdx";
+import Update2019_12 from "/snippets/changelog/2019/11-09-box-ui-elements-v1100-released.mdx";
+import Update2019_13 from "/snippets/changelog/2019/10-25-new-parameters-for-search-api.mdx";
+import Update2019_14 from "/snippets/changelog/2019/10-25-new-fields-for-file-versions.mdx";
+import Update2019_15 from "/snippets/changelog/2019/10-24-python-sdk-v261-release.mdx";
+import Update2019_16 from "/snippets/changelog/2019/10-24-java-sdk-v2410-release.mdx";
+import Update2019_17 from "/snippets/changelog/2019/10-24-java-sdk-v2400-release.mdx";
+import Update2019_18 from "/snippets/changelog/2019/10-23-new-shield-error-code.mdx";
+import Update2019_19 from "/snippets/changelog/2019/10-18-relay-api-endpoints-will-eol-on-december-31st-2019.mdx";
+import Update2019_20 from "/snippets/changelog/2019/10-17-java-sdk-v2390-release.mdx";
+import Update2019_21 from "/snippets/changelog/2019/09-19-windows-net-sdk-v3200-release.mdx";
+import Update2019_22 from "/snippets/changelog/2019/09-19-java-sdk-v2380-release.mdx";
+import Update2019_23 from "/snippets/changelog/2019/09-18-new-security-enhancements-for-token-revocation.mdx";
+import Update2019_24 from "/snippets/changelog/2019/09-11-new-completion_rule-field-for-tasks.mdx";
+import Update2019_25 from "/snippets/changelog/2019/08-29-windows-net-sdk-v3190-release.mdx";
+import Update2019_26 from "/snippets/changelog/2019/08-29-python-sdk-v260-release.mdx";
+import Update2019_27 from "/snippets/changelog/2019/08-29-box-cli-v240-release.mdx";
+import Update2019_28 from "/snippets/changelog/2019/08-22-node-sdk-v1291-release.mdx";
+import Update2019_29 from "/snippets/changelog/2019/08-22-java-sdk-v2370-release.mdx";
+import Update2019_30 from "/snippets/changelog/2019/08-01-java-sdk-v2360-release.mdx";
+import Update2019_31 from "/snippets/changelog/2019/07-18-java-sdk-v2350-release.mdx";
+import Update2019_32 from "/snippets/changelog/2019/06-26-new-supported-values-in-tasks-api.mdx";
+import Update2019_33 from "/snippets/changelog/2019/06-20-windows-net-sdk-v3180-release.mdx";
+import Update2019_34 from "/snippets/changelog/2019/06-20-python-sdk-v250-release.mdx";
+import Update2019_35 from "/snippets/changelog/2019/06-06-java-sdk-v2340-release.mdx";
+import Update2019_36 from "/snippets/changelog/2019/05-31-replaced-obsolete-field-in-collaborations.mdx";
+import Update2019_37 from "/snippets/changelog/2019/05-23-java-sdk-v2330-release.mdx";
+import Update2019_38 from "/snippets/changelog/2019/05-23-box-cli-v230-release.mdx";
+import Update2019_39 from "/snippets/changelog/2019/05-16-python-sdk-v241-release.mdx";
+import Update2019_40 from "/snippets/changelog/2019/05-15-tls-10-deprecated-complete.mdx";
+import Update2019_41 from "/snippets/changelog/2019/05-10-box-cli-v220-release.mdx";
+import Update2019_42 from "/snippets/changelog/2019/05-09-windows-net-sdk-v3170-release.mdx";
+import Update2019_43 from "/snippets/changelog/2019/04-29-windows-net-sdk-v3160-release.mdx";
+import Update2019_44 from "/snippets/changelog/2019/04-25-node-sdk-v1290-release.mdx";
+import Update2019_45 from "/snippets/changelog/2019/04-25-java-sdk-v2320-release.mdx";
+import Update2019_46 from "/snippets/changelog/2019/04-15-changes-to-task-assignment-api-responses.mdx";
+import Update2019_47 from "/snippets/changelog/2019/04-11-java-sdk-v2310-release.mdx";
+import Update2019_48 from "/snippets/changelog/2019/04-10-box-cli-v140-release.mdx";
+import Update2019_49 from "/snippets/changelog/2019/04-08-java-sdk-v2301-release.mdx";
+import Update2019_50 from "/snippets/changelog/2019/04-04-java-sdk-v2300-release.mdx";
+import Update2019_51 from "/snippets/changelog/2019/04-01-java-sdk-v2290-release.mdx";
+import Update2019_52 from "/snippets/changelog/2019/03-29-python-sdk-v232-release.mdx";
+import Update2019_53 from "/snippets/changelog/2019/03-29-box-cli-210-released.mdx";
+import Update2019_54 from "/snippets/changelog/2019/03-28-windows-net-sdk-v3150-release.mdx";
+import Update2019_55 from "/snippets/changelog/2019/03-28-python-sdk-v230-release.mdx";
+import Update2019_56 from "/snippets/changelog/2019/03-28-node-sdk-v1280-release.mdx";
+import Update2019_57 from "/snippets/changelog/2019/03-18-box-android-sdk-v423-released.mdx";
+import Update2019_58 from "/snippets/changelog/2019/03-14-python-sdk-v222-release.mdx";
+import Update2019_59 from "/snippets/changelog/2019/03-07-windows-net-sdk-v3141-release.mdx";
+import Update2019_60 from "/snippets/changelog/2019/03-07-java-sdk-v2281-release.mdx";
+import Update2019_61 from "/snippets/changelog/2019/03-01-windows-net-sdk-v3140-release.mdx";
+import Update2019_62 from "/snippets/changelog/2019/02-21-windows-net-sdk-v3131-release.mdx";
+import Update2019_63 from "/snippets/changelog/2019/02-21-java-sdk-v2280-release.mdx";
+import Update2019_64 from "/snippets/changelog/2019/02-15-python-sdk-v221-release.mdx";
+import Update2019_65 from "/snippets/changelog/2019/02-15-python-sdk-v220-release.mdx";
+import Update2019_66 from "/snippets/changelog/2019/02-14-windows-net-sdk-v3130-release.mdx";
+import Update2019_67 from "/snippets/changelog/2019/02-08-windows-net-sdk-v3120-release.mdx";
+import Update2019_68 from "/snippets/changelog/2019/02-08-python-sdk-v210-release.mdx";
+import Update2019_69 from "/snippets/changelog/2019/01-31-java-sdk-v2270-release.mdx";
+import Update2019_70 from "/snippets/changelog/2019/01-18-windows-net-sdk-v3110-release.mdx";
+import Update2019_71 from "/snippets/changelog/2019/01-18-new-sidebar-ui-element-open-with-element-ga.mdx";
+import Update2019_72 from "/snippets/changelog/2019/01-17-java-sdk-v2260-release.mdx";
+import Update2019_73 from "/snippets/changelog/2019/01-03-java-sdk-v2251-release.mdx";
+
+<Update2019_1/>
+
+<Update2019_2/>
+
+<Update2019_3/>
+
+<Update2019_4/>
+
+<Update2019_5/>
+
+<Update2019_6/>
+
+<Update2019_7/>
+
+<Update2019_8/>
+
+<Update2019_9/>
+
+<Update2019_10/>
+
+<Update2019_11/>
+
+<Update2019_12/>
+
+<Update2019_13/>
+
+<Update2019_14/>
+
+<Update2019_15/>
+
+<Update2019_16/>
+
+<Update2019_17/>
+
+<Update2019_18/>
+
+<Update2019_19/>
+
+<Update2019_20/>
+
+<Update2019_21/>
+
+<Update2019_22/>
+
+<Update2019_23/>
+
+<Update2019_24/>
+
+<Update2019_25/>
+
+<Update2019_26/>
+
+<Update2019_27/>
+
+<Update2019_28/>
+
+<Update2019_29/>
+
+<Update2019_30/>
+
+<Update2019_31/>
+
+<Update2019_32/>
+
+<Update2019_33/>
+
+<Update2019_34/>
+
+<Update2019_35/>
+
+<Update2019_36/>
+
+<Update2019_37/>
+
+<Update2019_38/>
+
+<Update2019_39/>
+
+<Update2019_40/>
+
+<Update2019_41/>
+
+<Update2019_42/>
+
+<Update2019_43/>
+
+<Update2019_44/>
+
+<Update2019_45/>
+
+<Update2019_46/>
+
+<Update2019_47/>
+
+<Update2019_48/>
+
+<Update2019_49/>
+
+<Update2019_50/>
+
+<Update2019_51/>
+
+<Update2019_52/>
+
+<Update2019_53/>
+
+<Update2019_54/>
+
+<Update2019_55/>
+
+<Update2019_56/>
+
+<Update2019_57/>
+
+<Update2019_58/>
+
+<Update2019_59/>
+
+<Update2019_60/>
+
+<Update2019_61/>
+
+<Update2019_62/>
+
+<Update2019_63/>
+
+<Update2019_64/>
+
+<Update2019_65/>
+
+<Update2019_66/>
+
+<Update2019_67/>
+
+<Update2019_68/>
+
+<Update2019_69/>
+
+<Update2019_70/>
+
+<Update2019_71/>
+
+<Update2019_72/>
+
+<Update2019_73/>
+
+import Update2018_1 from "/snippets/changelog/2018/12-21-box-cli-v2-released.mdx";
+import Update2018_2 from "/snippets/changelog/2018/12-14-windows-net-sdk-v3100-release.mdx";
+import Update2018_3 from "/snippets/changelog/2018/12-13-java-sdk-v2250-release.mdx";
+import Update2018_4 from "/snippets/changelog/2018/12-12-collaborations-now-show-unregistered-users.mdx";
+import Update2018_5 from "/snippets/changelog/2018/12-05-enterprise-events-api-adds-created_by-for-supervisors.mdx";
+import Update2018_6 from "/snippets/changelog/2018/11-16-java-sdk-v2240-release.mdx";
+import Update2018_7 from "/snippets/changelog/2018/11-01-python-sdk-v200-release.mdx";
+import Update2018_8 from "/snippets/changelog/2018/10-19-python-sdk-v2-launched.mdx";
+import Update2018_9 from "/snippets/changelog/2018/09-27-new-box-open-with-sidebar-ui-element.mdx";
+import Update2018_10 from "/snippets/changelog/2018/09-27-java-sdk-v2232-release.mdx";
+import Update2018_11 from "/snippets/changelog/2018/09-13-java-sdk-v2231-release.mdx";
+import Update2018_12 from "/snippets/changelog/2018/09-05-annotations-available-for-excel-files-in-preview.mdx";
+import Update2018_13 from "/snippets/changelog/2018/09-04-windows-net-sdk-v393-release.mdx";
+import Update2018_14 from "/snippets/changelog/2018/08-23-java-sdk-v2230-release.mdx";
+import Update2018_15 from "/snippets/changelog/2018/08-21-add-new-fields-to-folder-update-and-get-info-endpoints.mdx";
+import Update2018_16 from "/snippets/changelog/2018/08-21-add-new-action_by-field-to-enterprise-events.mdx";
+import Update2018_17 from "/snippets/changelog/2018/08-17-box-user_id-field-size-changed.mdx";
+import Update2018_18 from "/snippets/changelog/2018/08-16-generic-method-added-to-the-salesforce-sdk.mdx";
+import Update2018_19 from "/snippets/changelog/2018/08-09-java-sdk-v2220-release.mdx";
+import Update2018_20 from "/snippets/changelog/2018/07-31-expanded-relay-workflow-api.mdx";
+import Update2018_21 from "/snippets/changelog/2018/07-11-historical-platform-activity-csv-report.mdx";
+import Update2018_22 from "/snippets/changelog/2018/07-06-java-sdk-v2210-release.mdx";
+import Update2018_23 from "/snippets/changelog/2018/06-28-java-sdk-v2202-release.mdx";
+import Update2018_24 from "/snippets/changelog/2018/06-25-update-to-the-box-cli.mdx";
+import Update2018_25 from "/snippets/changelog/2018/06-18-box-android-sdk-v420-released.mdx";
+import Update2018_26 from "/snippets/changelog/2018/06-14-windows-net-sdk-v392-release.mdx";
+import Update2018_27 from "/snippets/changelog/2018/06-07-windows-net-sdk-v391-release.mdx";
+import Update2018_28 from "/snippets/changelog/2018/06-04-java-sdk-v2201-release.mdx";
+import Update2018_29 from "/snippets/changelog/2018/05-24-java-sdk-v2200-release.mdx";
+import Update2018_30 from "/snippets/changelog/2018/05-10-windows-net-sdk-v390-release.mdx";
+import Update2018_31 from "/snippets/changelog/2018/05-10-java-sdk-v2190-release.mdx";
+import Update2018_32 from "/snippets/changelog/2018/04-30-windows-net-sdk-v380-release.mdx";
+import Update2018_33 from "/snippets/changelog/2018/04-30-java-sdk-v2180-release.mdx";
+import Update2018_34 from "/snippets/changelog/2018/04-18-platform-activity-csv-report.mdx";
+import Update2018_35 from "/snippets/changelog/2018/04-11-windows-net-sdk-v370-release.mdx";
+import Update2018_36 from "/snippets/changelog/2018/04-11-metadata-driven-retention-policies.mdx";
+import Update2018_37 from "/snippets/changelog/2018/04-11-box-cli-v120-release.mdx";
+import Update2018_38 from "/snippets/changelog/2018/04-10-java-sdk-v2170-release.mdx";
+import Update2018_39 from "/snippets/changelog/2018/03-29-multiselect-field-type-added-to-metadata-templates.mdx";
+import Update2018_40 from "/snippets/changelog/2018/03-29-java-sdk-v2161-release.mdx";
+import Update2018_41 from "/snippets/changelog/2018/03-28-update-to-box-annotations.mdx";
+import Update2018_42 from "/snippets/changelog/2018/03-27-windows-net-sdk-v360-release.mdx";
+import Update2018_43 from "/snippets/changelog/2018/03-22-java-sdk-v2160-release.mdx";
+import Update2018_44 from "/snippets/changelog/2018/03-21-windows-net-sdk-v352-release.mdx";
+import Update2018_45 from "/snippets/changelog/2018/03-15-windows-net-sdk-v351-release.mdx";
+import Update2018_46 from "/snippets/changelog/2018/03-13-update-to-box-annotations.mdx";
+import Update2018_47 from "/snippets/changelog/2018/03-12-java-sdk-v2150-release.mdx";
+import Update2018_48 from "/snippets/changelog/2018/03-05-update-to-box-annotations.mdx";
+import Update2018_49 from "/snippets/changelog/2018/03-01-java-sdk-v2141-release.mdx";
+import Update2018_50 from "/snippets/changelog/2018/02-28-breaking-change-to-metadata-apis.mdx";
+import Update2018_51 from "/snippets/changelog/2018/02-15-java-sdk-v2140-release.mdx";
+import Update2018_52 from "/snippets/changelog/2018/02-08-java-sdk-v2130-release.mdx";
+import Update2018_53 from "/snippets/changelog/2018/02-01-java-sdk-v2120-release.mdx";
+import Update2018_54 from "/snippets/changelog/2018/01-31-windows-net-sdk-v342-release.mdx";
+import Update2018_55 from "/snippets/changelog/2018/01-25-java-sdk-v2110-release.mdx";
+import Update2018_56 from "/snippets/changelog/2018/01-12-java-sdk-v2100-release.mdx";
+import Update2018_57 from "/snippets/changelog/2018/01-10-windows-net-sdk-v341-release.mdx";
+import Update2018_58 from "/snippets/changelog/2018/01-04-java-sdk-v290-release.mdx";
+
+<Update2018_1/>
+
+<Update2018_2/>
+
+<Update2018_3/>
+
+<Update2018_4/>
+
+<Update2018_5/>
+
+<Update2018_6/>
+
+<Update2018_7/>
+
+<Update2018_8/>
+
+<Update2018_9/>
+
+<Update2018_10/>
+
+<Update2018_11/>
+
+<Update2018_12/>
+
+<Update2018_13/>
+
+<Update2018_14/>
+
+<Update2018_15/>
+
+<Update2018_16/>
+
+<Update2018_17/>
+
+<Update2018_18/>
+
+<Update2018_19/>
+
+<Update2018_20/>
+
+<Update2018_21/>
+
+<Update2018_22/>
+
+<Update2018_23/>
+
+<Update2018_24/>
+
+<Update2018_25/>
+
+<Update2018_26/>
+
+<Update2018_27/>
+
+<Update2018_28/>
+
+<Update2018_29/>
+
+<Update2018_30/>
+
+<Update2018_31/>
+
+<Update2018_32/>
+
+<Update2018_33/>
+
+<Update2018_34/>
+
+<Update2018_35/>
+
+<Update2018_36/>
+
+<Update2018_37/>
+
+<Update2018_38/>
+
+<Update2018_39/>
+
+<Update2018_40/>
+
+<Update2018_41/>
+
+<Update2018_42/>
+
+<Update2018_43/>
+
+<Update2018_44/>
+
+<Update2018_45/>
+
+<Update2018_46/>
+
+<Update2018_47/>
+
+<Update2018_48/>
+
+<Update2018_49/>
+
+<Update2018_50/>
+
+<Update2018_51/>
+
+<Update2018_52/>
+
+<Update2018_53/>
+
+<Update2018_54/>
+
+<Update2018_55/>
+
+<Update2018_56/>
+
+<Update2018_57/>
+
+<Update2018_58/>

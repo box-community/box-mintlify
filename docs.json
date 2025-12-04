@@ -2702,6 +2702,12 @@
             "pages": [
               "/ai-dev-zone"
             ]
+          },
+          {
+            "tab": "Changelog",
+            "pages": [
+              "changelog/index"
+            ]
           }
         ]
       },
@@ -5378,6 +5384,12 @@
             "tab": "AI",
             "pages": [
               "/ja/ai-dev-zone"
+            ]
+          },
+          {
+            "tab": "変更ログ",
+            "pages": [
+              "ja/changelog/index"
             ]
           }
         ]
