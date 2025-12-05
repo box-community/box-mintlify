@@ -78,6 +78,15 @@ a code {
   max-height: 200px;
 }
 
+.homepage_container h1 {
+  margin-top: 0;
+}
+
+.homepage_container h1 span,
+.homepage_container h2 span {
+  margin: auto;
+}
+
 /* disable breadcrumbs */
 header#header .eyebrow {
   display: none !important;
@@ -195,4 +204,36 @@ footer div.flex.gap-4.flex-col.md\:flex-row.md\:items-center.md\:gap-8.md\:justi
 .dark .badge-default {
   background-color: #424242;
   color: #e0e0e0;
+}
+
+.update > div:first-child > div:nth-child(3) {
+  padding: 0;
+}
+.update > div:first-child > div:nth-child(3) > span {
+  display: flex;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  align-items: center;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #374151;
+  background-color: #f3f4f6;
+}
+
+.dark .update > div:first-child > div:nth-child(3) > span {
+  color: #cecece;
+  background-color: #161616;
+}
+
+/* Target the third child (tag list) - should be 2nd */
+.update > div:first-child > div:nth-child(3) {
+  order: 4;
+}
+
+/* Target the fourth child (description) - add order if needed */
+.update > div:first-child > div:nth-child(4) {
+  order: 3;
 }
