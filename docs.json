@@ -18,6 +18,11 @@
       ]
     }
   },
+  "seo": {
+    "metatags": {
+      "canonical": "https://box.dev/"
+    }
+  },
   "fonts": {
     "family": "Inter"
   },
