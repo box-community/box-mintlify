@@ -78,10 +78,6 @@ a code {
   max-height: 200px;
 }
 
-.homepage_container h1 {
-  margin-top: 0;
-}
-
 .homepage_container h1 span,
 .homepage_container h2 span {
   margin: auto;
