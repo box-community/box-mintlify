@@ -101,7 +101,7 @@ export const MCPServersJA = () => {
         "リモートBox MCPサーバーを使用すると、サードパーティ製のAIシステムを安全にBoxに接続してコンテンツを操作することができます。",
       icon: "/static/ai-dev-zone/mcp.svg",
       badges: ["新着", "MCP"],
-      href: "/guides/box-mcp/remote/",
+      href: "/ja/guides/box-mcp/remote/",
     },
     {
       id: "self-hosted-mcp",
@@ -110,7 +110,7 @@ export const MCPServersJA = () => {
         "PythonのDeveloper Communityオープンソースプロジェクト。これは、さまざまな操作 (ファイル検索、テキスト抽出、AIベースのクエリ実行、データ抽出など) を行うためにBox APIと統合されています。",
       icon: "/static/ai-dev-zone/mcp.svg",
       badges: ["MCP"],
-      href: "/guides/box-mcp/self-hosted/",
+      href: "/ja/guides/box-mcp/self-hosted/",
     },
     {
       id: "mcp-course",
@@ -126,7 +126,7 @@ export const MCPServersJA = () => {
       description: "Box MCPサーバーからBox Doc Genを使用して、AIを活用したドキュメント生成を行います。",
       icon: "/static/ai-dev-zone/mcp.svg",
       badges: ["チュートリアル"],
-      href: "https://medium.com/box-developer-blog/building-ai-powered-document-generation-with-box-mcp-and-pydantic-ai-48775b18ae32",
+      href: "https://medium.com/box-developer-japan-blog/box-mcp%E3%81%A8pydantic-ai%E3%81%AB%E3%82%88%E3%82%8Bai%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%9F%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E7%94%9F%E6%88%90%E3%81%AE%E6%A7%8B%E7%AF%89-f0d2f9471de1",
     },
     {
       id: "mcp-langchain",
@@ -134,7 +134,7 @@ export const MCPServersJA = () => {
       description: "LangChain MCPアダプタを使用して、Box MCPサーバーをLangChain互換のエージェントに変換します。",
       icon: "/static/ai-dev-zone/mcp.svg",
       badges: ["チュートリアル"],
-      href: "https://medium.com/box-developer-blog/using-an-existing-mcp-server-with-langchain-mcp-adapters-94cdd4af6d1b",
+      href: "https://medium.com/box-developer-japan-blog/%E6%97%A2%E5%AD%98%E3%81%AEmcp%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A8langchain-mcp%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF%E3%82%92%E7%B5%84%E3%81%BF%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E4%BD%BF%E7%94%A8-f02acc311079",
     },
   ];
 

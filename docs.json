@@ -22,8 +22,8 @@
     "family": "Inter"
   },
   "banner": {
-    "content": "Welcome to the beta version of the new Box developer documentation site! If you wish to use the previous version, go to [box.dev](https://box.dev/). 以前のバージョンは[ja.developer.box.com](https://ja.developer.box.com)でご覧いただけます。",
-    "dismissible": true
+    "content": "Welcome to the beta version of the new Box developer documentation site! If you wish to use the previous version, go to [box.dev](https://box.dev/).",
+    "dismissible": false
   },
   "favicon": "/favicon.ico",
   "navigation": {

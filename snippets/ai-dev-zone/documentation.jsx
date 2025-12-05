@@ -90,7 +90,7 @@ export const DocumentationJA = () => {
       description: "仕様の詳細については、APIリファレンスをご確認ください。",
       icon: "/static/ai-dev-zone/code.svg",
       badges: ["ドキュメント"],
-      href: "/reference/resources/ai-response/",
+      href: "/ja/reference/resources/ai-response/",
     },
     {
       id: "how-to-use",
@@ -98,7 +98,7 @@ export const DocumentationJA = () => {
       description: "Box AI APIの使用方法については、ガイドをご覧ください。",
       icon: "/static/ai-dev-zone/code.svg",
       badges: ["ドキュメント"],
-      href: "/guides/box-ai/",
+      href: "/ja/guides/box-ai/",
     },
     {
       id: "supported-models",
@@ -107,7 +107,7 @@ export const DocumentationJA = () => {
         "Boxでは、さまざまなAIモデルがサポートされており、アクセスレベルと機能レベルという2つの側面で分類されます。サポートされているAIモデルのリストを確認できます。",
       icon: "/static/ai-dev-zone/code.svg",
       badges: ["ドキュメント"],
-      href: "/guides/box-ai/supported-models/",
+      href: "/ja/guides/box-ai/supported-models/",
     },
     {
       id: "ai-agent-overrides",
@@ -115,7 +115,7 @@ export const DocumentationJA = () => {
       description: "デフォルトのAIモデルの構成を上書きし、Box AI APIを使用してLLMを微調整します。",
       icon: "/static/ai-dev-zone/code.svg",
       badges: ["ドキュメント"],
-      href: "/guides/box-ai/ai-agents/ai-agent-overrides/",
+      href: "/ja/guides/box-ai/ai-agents/ai-agent-overrides/",
     },
   ];
 
