@@ -152,7 +152,7 @@ export const AIIntegrationsJA = () => {
         "WeaviateのベクトルデータベースにBoxコンテンツを埋め込み、Weaviateの新しいQuery Agentを利用して、RAGワークフローを作成します。",
       icon: "/static/ai-dev-zone/langchain.svg",
       badges: ["統合"],
-      href: "https://medium.com/box-developer-blog/weaviate-box-rag-recipe-with-weaviate-query-agent-1cb41cf9e68b",
+      href: "https://medium.com/box-developer-japan-blog/weaviate-query-agent%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fweaviate-box%E3%81%AErag%E3%83%AC%E3%82%B7%E3%83%94-b2200aaccd34",
     },
     {
       id: "pinecone",
@@ -161,7 +161,7 @@ export const AIIntegrationsJA = () => {
         "BoxとPineconeを関連付けることで、ベクトル埋め込みをカスタマイズし、LLMからより関連性の高い回答を取得できます。",
       icon: "/static/ai-dev-zone/langchain.svg",
       badges: ["統合"],
-      href: "https://medium.com/box-developer-blog/demo-box-pinecone-f03783c412bb",
+      href: "https://medium.com/box-developer-japan-blog/%E3%83%87%E3%83%A2-box-pinecone-fd7a3b4d7c6b",
     },
     {
       id: "llamaindex",

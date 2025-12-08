@@ -89,7 +89,7 @@ export const AIAgentsJA = () => {
       description: "Box AI Studio APIを使用してカスタムAIエージェントを作成および管理します。",
       icon: "/static/ai-dev-zone/ai-agents.svg",
       badges: ["新着", "Box AI Studio"],
-      href: "/guides/ai-studio/getting-started-ai-studio/",
+      href: "/ja/guides/ai-studio/getting-started-ai-studio/",
     },
     {
       id: "agentforce",
@@ -98,7 +98,7 @@ export const AIAgentsJA = () => {
         "Salesforce内でワークフローを自動化したり、インテリジェントなエージェントベースのプロセスを強化したりするのに役立つ、再利用可能なAgentforceアクションの利用を開始します。",
       icon: "/static/ai-dev-zone/ai-agents.svg",
       badges: ["新着", "Salesforce"],
-      href: "/guides/tooling/salesforce-toolkit/box-agentforce-package/",
+      href: "/ja/guides/tooling/salesforce-toolkit/box-agentforce-package/",
     },
     {
       id: "openai-workflow",
@@ -107,7 +107,7 @@ export const AIAgentsJA = () => {
         "OpenAI Responses APIとBoxエージェントを使用して、Boxインスタンスからエージェント型ワークフローに非構造化データを追加します。",
       icon: "/static/ai-dev-zone/ai-agents.svg",
       badges: ["OpenAI"],
-      href: "https://medium.com/box-developer-blog/building-multi-agent-workflows-with-openais-new-sdk-and-box-3e3c81cf4715",
+      href: "https://medium.com/box-developer-japan-blog/openai%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84sdk%E3%81%A8box%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9E%E3%83%AB%E3%83%81%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89-9494e7833c0a",
     },
     {
       id: "ai-agents-toolkit",

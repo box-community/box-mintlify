@@ -119,7 +119,7 @@ export const TryDemosJA = () => {
         "新しい抽出エージェント (強化) を使用して、ドキュメントのメタデータの候補を抽出します。思考連鎖処理により最良の回答が得られます。",
       icon: "/static/ai-dev-zone/icon-ai.svg",
       badges: ["新着", "チュートリアル"],
-      href: "https://medium.com/box-developer-blog/box-ai-enhanced-extract-agent-a-developers-guide-41eb59b2cc54",
+      href: "https://medium.com/box-developer-japan-blog/box-ai%E6%8A%BD%E5%87%BA%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88-%E5%BC%B7%E5%8C%96-%E9%96%8B%E7%99%BA%E8%80%85%E5%90%91%E3%81%91%E3%82%AC%E3%82%A4%E3%83%89-8ebe5e96b778",
     },
   ];
 
