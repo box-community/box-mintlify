@@ -28,7 +28,11 @@ fullyTranslated: true
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-Box AI APIを使用すると、ドキュメントまたは画像に対してクエリを実行し、指定したプロンプトに基づいてメタデータを抽出できます。**自由形式**とは、JSONやXMLなどの形式の文字列化バージョン、またはプレーンテキストをプロンプトに含めることができるという意味です。
+Box AI APIを使用すると、ドキュメントを照会し、指定したプロンプトに基づいてメタデータを抽出できます。**自由形式**とは、JSONやXMLなどの形式の文字列化バージョン、またはプレーンテキストをプロンプトに含めることができるという意味です。
+
+<Note>
+**メタデータを抽出 (自由形式)** エンドポイントはOCRをサポートしていません。英語以外の言語の画像ファイル (TIFF、PNG、JPEG) またはドキュメントからメタデータを抽出するには、[メタデータを抽出 (構造化)][structured-endpoint] エンドポイントを使用してください。
+</Note>
 
 ## 開始する前に
 
@@ -238,6 +242,7 @@ curl --location 'https://api.box.com/2.0/ai/extract' \
 [prompt-param]: /ja/reference/resources/ai_agent_text_gen#param_basic_gen_prompt_template
 
 [overrides]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
+[structured-endpoint]: /ja/guides/box-ai/ai-tutorials/extract-metadata-structured
 
 <RelatedLinks
   title="関連するAPI"
