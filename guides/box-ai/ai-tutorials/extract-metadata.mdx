@@ -15,8 +15,12 @@ alias_paths:
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-Box AI API allows you to query a document or image and extract metadata based on a provided prompt.
+Box AI API allows you to query a document and extract metadata based on a provided prompt.
 **Freeform** means that the prompt can include a stringified version of formats such as JSON or XML, or even plain text.
+
+<Note>
+The **Extract metadata (freeform)** endpoint doesn't support OCR. To extract metadata from image files (TIFF, PNG, JPEG) or documents in languages other than English, use the [Extract metadata (structured)][structured-endpoint] endpoint.
+</Note>
 
 ## Before you start
 
@@ -216,6 +220,7 @@ The response includes the `fields` present in the file, along with their values:
 [model-param]: /reference/resources/ai_agent_text_gen#param_basic_gen_model
 [prompt-param]: /reference/resources/ai_agent_text_gen#param_basic_gen_prompt_template
 [overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
+[structured-endpoint]: /guides/box-ai/ai-tutorials/extract-metadata-structured
 
 <RelatedLinks
   title="RELATED APIS"
