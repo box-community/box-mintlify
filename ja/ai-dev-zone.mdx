@@ -1,53 +1,188 @@
 ---
-mode: "custom"
-title: "Box AI Developer Zone"
+title: "Box AI"
 ---
 
-import {TryDemosJA} from "/snippets/ai-dev-zone/try-demos.jsx";
-import {DocumentationJA} from "/snippets/ai-dev-zone/documentation.jsx";
-import {MCPServersJA} from "/snippets/ai-dev-zone/mcp-servers.jsx";
-import {AIAgentsJA} from "/snippets/ai-dev-zone/ai-agents.jsx";
-import {AIIntegrationsJA} from "/snippets/ai-dev-zone/ai-integrations.jsx";
-import {VideosJA} from "/snippets/ai-dev-zone/videos.jsx";
+<p>
+  このページでは、AIエージェントやインテリジェントなワークフローを作成するためのクイックスタートガイド、サンプルコード、ツールを紹介します。ユースケースを確認したり、Box AI APIを実際に体験したり、Box AI Studioでエージェントを作成したりしてみましょう。
+</p>
 
-<div className="flex flex-col gap-16 py-20 transition-colors">
-  {/* Hero Section */}
-  <section className="grid grid-cols-2 gap-12 items-center max-w-[1400px] mx-auto px-4">
-    <div className="space-y-6">
-      <h1 className="text-6xl font-bold text-gray-900 dark:text-white">
-        Box AI Developer Zone
-      </h1>
-      <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-        Box AI Developer Zoneでは、AIエージェントやインテリジェントなワークフローを作成するための対話型のデモ、サンプルコード、ツールを紹介します。ユースケースを確認したり、Box AI APIを実際に体験したり、Box AI Studioでエージェントを作成したりしてみましょう。
-      </p>
-    </div>
-    <div className="relative">
-      <img
-        noZoom
-        src="/static/ai-dev-zone/AiDevZone.png"
-        alt="Box AI Developer Zone showing Box AI API integration with various platforms and tools"
-        className="w-full rounded-lg"
-      />
-    </div>
-  </section>
+## クイックスタートに従う
 
-  <TryDemosJA />
+Box AI APIは、Business以上をご利用のすべてのお客様が利用できます。
 
-  <DocumentationJA />
+<CardGroup cols={2}>
+  <Card
+    title="選択した語調でドキュメントを要約する"
+    href="/ja/guides/box-ai/ai-tutorials/ask-questions"
+    icon="sparkles"
+  />
 
-  <MCPServersJA />
+  <Card
+    title="自然言語を使用するか、文字列化したデータ構造を渡してドキュメントからメタデータを抽出する"
+    href="/ja/guides/box-ai/ai-tutorials/extract-metadata"
+    icon="sparkles"
+  />
 
-  <AIAgentsJA />
+  <Card
+    title="Boxメタデータテンプレートを使用してドキュメントのメタデータ候補を抽出する"
+    href="/ja/guides/box-ai/ai-tutorials/extract-metadata-structured"
+    icon="sparkles"
+  />
 
-  <AIIntegrationsJA />
+  <Card
+    title="Box AI抽出エージェント (強化) を使用する"
+    href="https://medium.com/box-developer-japan-blog/box-ai%E6%8A%BD%E5%87%BA%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88-%E5%BC%B7%E5%8C%96-%E9%96%8B%E7%99%BA%E8%80%85%E5%90%91%E3%81%91%E3%82%AC%E3%82%A4%E3%83%89-8ebe5e96b778"
+    icon="sparkles"
+  />
+</CardGroup>
 
-  <VideosJA />
+## ドキュメント
 
-  {/* CTA Button */}
-  <section className="max-w-[1400px] mx-auto px-4 text-center">
-    <a href="https://www.youtube.com/playlist?list=PLCSEWOlbcUyIjaK2hCZMk6rSR1jg4r_4H" target="_blank" className="inline-block bg-[#006AE9] text-white border-2 border-gray-300 dark:border-gray-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
-      さらに動画を表示
-    </a>
-  </section>
+Box AI APIを使用する際は、以下のリソースが参考になります。
 
-</div>
+<CardGroup cols={2}>
+  <Card
+    title="Box AI APIリファレンス"
+    href="/ja/reference/resources/ai-response/"
+    icon="book"
+  />
+
+  <Card
+    title="Box AI APIの使い方"
+    href="/ja/guides/box-ai/"
+    icon="book"
+  />
+
+  <Card
+    title="サポートされているAIモデル"
+    href="/ja/guides/box-ai/ai-models/"
+    icon="book"
+  />
+
+  <Card
+    title="AIモデルの構成の上書き"
+    href="/ja/guides/box-ai/ai-agents/ai-agent-overrides/"
+    icon="book"
+  />
+</CardGroup>
+
+## MCPサーバー
+
+Box MCPサーバーを使用する際は、以下のリソースが参考になります。
+
+<CardGroup cols={2}>
+  <Card
+    title="リモートBox MCPサーバー"
+    href="/ja/guides/box-mcp/remote/"
+    icon="server"
+  />
+
+  <Card
+    title="セルフホストBox MCPサーバー"
+    href="/ja/guides/box-mcp/self-hosted/"
+    icon="server"
+  />
+
+  <Card
+    title="オンラインコース: MCPサーバーを使用したAIアプリの構築"
+    href="https://www.deeplearning.ai/short-courses/build-ai-apps-with-mcp-server-working-with-box-files/"
+    icon="server"
+  />
+
+  <Card
+    title="Box MCPサーバーとPydantic AI"
+    href="https://medium.com/box-developer-japan-blog/box-mcp%E3%81%A8pydantic-ai%E3%81%AB%E3%82%88%E3%82%8Bai%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%9F%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E7%94%9F%E6%88%90%E3%81%AE%E6%A7%8B%E7%AF%89-f0d2f9471de1"
+    icon="server"
+  />
+
+  <Card
+    title="Box MCPサーバーとLangChain MCPアダプタ"
+    href="https://medium.com/box-developer-japan-blog/%E6%97%A2%E5%AD%98%E3%81%AEmcp%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A8langchain-mcp%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF%E3%82%92%E7%B5%84%E3%81%BF%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E4%BD%BF%E7%94%A8-f02acc311079"
+    icon="server"
+  />
+</CardGroup>
+
+## AIエージェント
+
+Boxで高度なAIエージェントを作成する方法を確認します。
+
+<CardGroup cols={2}>
+  <Card
+    title="Box AI Studio APIを使用したエージェントの管理"
+    href="/ja/guides/ai-studio/getting-started-ai-studio/"
+    icon="robot"
+  />
+
+  <Card
+    title="Box for Agentforce拡張パッケージ"
+    href="/ja/guides/tooling/salesforce-toolkit/box-agentforce-package/"
+    icon="robot"
+  />
+
+  <Card
+    title="BoxとOpenAIを使用したマルチエージェントワークフロー"
+    href="https://medium.com/box-developer-japan-blog/openai%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84sdk%E3%81%A8box%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9E%E3%83%AB%E3%83%81%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89-9494e7833c0a"
+    icon="robot"
+  />
+
+  <Card
+    title="Box AI Agents Toolkit"
+    href="https://pypi.org/project/box-ai-agents-toolkit/"
+    icon="robot"
+  />
+</CardGroup>
+
+## BoxのAI統合
+
+BoxのAI統合を使用して、LLMモデルの既存のナレッジベースを拡張します。
+
+<CardGroup cols={2}>
+  <Card
+    title="LangChain.js向けのBox loader"
+    href="https://www.npmjs.com/package/langchainjs-box"
+    icon="link"
+  />
+
+  <Card
+    title="Snowflake Openflow Connector for Box"
+    href="https://docs.snowflake.com/en/user-guide/data-integration/openflow/connectors/box/setup"
+    icon="link"
+  />
+
+  <Card
+    title="Airbyte向けのBoxソースコネクタ"
+    href="https://github.com/box-community/airbyte/blob/barduinor/source-box-devrel/docs/integrations/sources/box-data-extract.md"
+    icon="link"
+  />
+
+
+  <Card
+    title="BoxとWeaviateを接続する"
+    href="https://medium.com/box-developer-japan-blog/weaviate-query-agent%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fweaviate-box%E3%81%AErag%E3%83%AC%E3%82%B7%E3%83%94-b2200aaccd34"
+    icon="link"
+  />
+
+  <Card
+    title="BoxとPineconeを接続する"
+    href="https://medium.com/box-developer-japan-blog/%E3%83%87%E3%83%A2-box-pinecone-fd7a3b4d7c6b"
+    icon="link"
+  />
+
+  <Card
+    title="BoxとLlamaIndexでRAGワークフローを構築する"
+    href="https://github.com/run-llama/llama_index/tree/main/llama-index-integrations/readers/llama-index-readers-box#readme"
+    icon="link"
+  />
+
+  <Card
+    title="BoxとLangChainでRAGワークフローを構築する"
+    href="https://python.langchain.com/docs/integrations/providers/box/"
+    icon="link"
+  />
+
+  <Card
+    title="Pydantic AIとBox MCP"
+    href="https://github.com/box-community/box-mcp-pydantic-ai"
+    icon="link"
+  />
+</CardGroup>
