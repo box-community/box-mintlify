@@ -7,14 +7,14 @@
 
 ## Updates
 
-* Use the new [`DELETE`][1] endpoint to remove an existing retention policy assignment:
+* Use the new [`DELETE`][2022-07-23_1] endpoint to remove an existing retention policy assignment:
 
 ```bash
 curl -i -X DELETE -L https://api.box.net/2.0/retention_policy_assignments/123456/
     -H 'Authorization: Bearer <ACCESS_TOKEN>' 
 ```
 
-* Specify the following parameters when [creating][2] or [updating][3] retention policies:
+* Specify the following parameters when [creating][2022-07-23_2] or [updating][2022-07-23_3] retention policies:
 
     * `retention_length`: Specifies the duration in days that the retention policy will be active for after being assigned to content.
     * `retention_type`: Specifies if the policy is `modifiable` or `non-modifiable`. This means you can either modify the retention policy in full or in a limited way depending on the need to comply with specific regulatory requirements. 
@@ -22,16 +22,16 @@ curl -i -X DELETE -L https://api.box.net/2.0/retention_policy_assignments/123456
 ## Developer Resources
 
 Are you interested in creating applications for the Box App Center or becoming a Box Partner? Check out the
-[Box Partner Resources][4] guides for more information!
+[Box Partner Resources][2022-07-23_4] guides for more information!
 
 ## Where to get support
 
 Should you have any issues or need further guidance, please post a request to
-our [developer forum][5] for any help needed.
+our [developer forum][2022-07-23_5] for any help needed.
 
-[1]: /reference/delete-retention-policy-assignments-id
-[2]: /reference/post-retention-policies
-[3]: /reference/put-retention-policies-id
-[4]: https://support.box.com/hc/en-us/sections/360009473734-Box-Partner-Resources
-[5]: https://support.box.com/hc/en-us/community/topics/360001932973-Platform-and-Developer-Forum
+[2022-07-23_1]: /reference/delete-retention-policy-assignments-id
+[2022-07-23_2]: /reference/post-retention-policies
+[2022-07-23_3]: /reference/put-retention-policies-id
+[2022-07-23_4]: https://support.box.com/hc/en-us/sections/360009473734-Box-Partner-Resources
+[2022-07-23_5]: https://support.box.com/hc/en-us/community/topics/360001932973-Platform-and-Developer-Forum
 </Update>

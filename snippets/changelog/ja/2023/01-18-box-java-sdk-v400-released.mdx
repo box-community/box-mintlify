@@ -1,10 +1,10 @@
 <Update label="2023-01-18"  tags={["新機能", "影響度の高い変更", "Java"]}>
 ## Box Java SDK v4.0.0のリリース
 
-  このリリースに含まれる最も重要な変更は、ネイティブのHTTPライブラリから[OkHttp][1]のライブラリへの置き換えです。これにより、SDKで以下が可能になります。
+  このリリースに含まれる最も重要な変更は、ネイティブのHTTPライブラリから[OkHttp][2023-01-18_1]のライブラリへの置き換えです。これにより、SDKで以下が可能になります。
 
 * HTTPプロトコルのHTTP2バージョンのサポート
-* Basic認証方法以外も使用するプロキシのサポート。カスタムプロキシ認証の作成の詳細とNTLMプロキシ認証の例については、[こちら][2]を参照してください。
+* Basic認証方法以外も使用するプロキシのサポート。カスタムプロキシ認証の作成の詳細とNTLMプロキシ認証の例については、[こちら][2023-01-18_2]を参照してください。
 
 ### 重大な変更
 
@@ -14,19 +14,19 @@
 * `BoxEvent.Type`は`EventType`に置き換えられました
 * 非推奨となったメソッドが`BoxFile`、`BoxFileVersionRetention`、`BoxFolder`、`BoxGroup`、`BoxGroupMembership`、`BoxItem`、`BoxRetentionPolicy`、`BoxTask`、`BoxUser`、`BoxWebLink`、`EventLog`、`Metadata`、`MetadataTemplate`から削除されました
 
-移行の詳細については[こちら][3]を参照してください。
+移行の詳細については[こちら][2023-01-18_3]を参照してください。
 
 ### 新機能と機能強化
 
-* Java SDKでの`OkHttp`の使用 ([#1083][4]) ([`2656698`][5])
+* Java SDKでの`OkHttp`の使用 ([#1083][2023-01-18_4]) ([`2656698`][2023-01-18_5])
 
-[1]: https://square.github.io/okhttp/
+[2023-01-18_1]: https://square.github.io/okhttp/
 
-[2]: https://github.com/box/box-java-sdk/blob/main/doc/configuration.md#example-ntlm-authenticator
+[2023-01-18_2]: https://github.com/box/box-java-sdk/blob/main/doc/configuration.md#example-ntlm-authenticator
 
-[3]: https://github.com/box/box-java-sdk/blob/main/doc/upgrades/3.x.x%20to%204.x.x.md
+[2023-01-18_3]: https://github.com/box/box-java-sdk/blob/main/doc/upgrades/3.x.x%20to%204.x.x.md
 
-[4]: https://github.com/box/box-java-sdk/issues/1083
+[2023-01-18_4]: https://github.com/box/box-java-sdk/issues/1083
 
-[5]: https://github.com/box/box-java-sdk/commit/265669897100dd8f1757fc2c5f25665da42c2889
+[2023-01-18_5]: https://github.com/box/box-java-sdk/commit/265669897100dd8f1757fc2c5f25665da42c2889
 </Update>

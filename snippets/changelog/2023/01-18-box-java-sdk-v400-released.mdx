@@ -2,11 +2,11 @@
 ## Box Java SDK v4.0.0 released
 
   The most important change this release includes is the replacement of the HTTP library from a native one to
-[OkHttp][1] which allows SDK to
+[OkHttp][2023-01-18_1] which allows SDK to
 
 * Support the HTTP2 version of the HTTP protocol.
 * Support proxies that do not use only basic authentication method. For details on creating custom proxy authenticators and an example of
-    [NTLM proxy authentication][2].
+    [NTLM proxy authentication][2023-01-18_2].
 
 ### Breaking Changes
 
@@ -16,19 +16,19 @@
 * `BoxEvent.Type` is replaced with `EventType`
 *  Removed deprecated methods from `BoxFile`, `BoxFileVersionRetention`, `BoxFolder`, `BoxGroup`, `BoxGroupMembership`,`BoxItem`, `BoxRetentionPolicy`, `BoxTask`, `BoxUser`, `BoxWebLink`, `EventLog`, `Metadata` and `MetadataTemplate`.
 
-Migration details can be found [here][3].
+Migration details can be found [here][2023-01-18_3].
 
 ### New Features and Enhancements
 
-* Using `OkHttp` in Java SDK ([#1083][4]) ([`2656698`][5])
+* Using `OkHttp` in Java SDK ([#1083][2023-01-18_4]) ([`2656698`][2023-01-18_5])
 
-[1]: https://square.github.io/okhttp/
+[2023-01-18_1]: https://square.github.io/okhttp/
 
-[2]: https://github.com/box/box-java-sdk/blob/main/doc/configuration.md#example-ntlm-authenticator
+[2023-01-18_2]: https://github.com/box/box-java-sdk/blob/main/doc/configuration.md#example-ntlm-authenticator
 
-[3]: https://github.com/box/box-java-sdk/blob/main/doc/upgrades/3.x.x%20to%204.x.x.md
+[2023-01-18_3]: https://github.com/box/box-java-sdk/blob/main/doc/upgrades/3.x.x%20to%204.x.x.md
 
-[4]: https://github.com/box/box-java-sdk/issues/1083
+[2023-01-18_4]: https://github.com/box/box-java-sdk/issues/1083
 
-[5]: https://github.com/box/box-java-sdk/commit/265669897100dd8f1757fc2c5f25665da42c2889
+[2023-01-18_5]: https://github.com/box/box-java-sdk/commit/265669897100dd8f1757fc2c5f25665da42c2889
 </Update>
