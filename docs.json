@@ -23,7 +23,7 @@
     "family": "Inter"
   },
   "banner": {
-    "content": "Welcome to the beta version of the new Box developer documentation site! If you wish to use the previous version, go to [box.dev](https://box.dev/).",
+    "content": "Welcome to the beta version of the new Box developer documentation site! See [what's changed](/changelog#2025-12-11).",
     "dismissible": false
   },
   "favicon": "/favicon.ico",
