@@ -6,7 +6,7 @@ curl -i -X GET "https://api.box.com/2.0/groups?filter_term=Engineering" \
      -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-さらに、グループのすべてのエンドポイントにより、開発者は、新しい[`permissions`](r://group--full/#param-permissions)フィールドをリクエストできるようになりました。このフィールドには、現在、認証済みユーザーが任意の項目にグループを招待できるかどうかを定義する属性が1つあります。
+さらに、グループのすべてのエンドポイントにより、開発者は、新しい[`permissions`](/ja/reference/group--full/#param-permissions)フィールドをリクエストできるようになりました。このフィールドには、現在、認証済みユーザーが任意の項目にグループを招待できるかどうかを定義する属性が1つあります。
 
 ```curl
 curl -i -X GET "https://api.box.com/2.0/groups?field=permissions" \
