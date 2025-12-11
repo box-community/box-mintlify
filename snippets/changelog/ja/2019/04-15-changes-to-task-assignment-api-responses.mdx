@@ -1,4 +1,5 @@
-<Update label="2019-04-15" description="Task (Assignment) APIのレスポンスの変更" tags={["影響度の高い変更", "API"]}>
+<Update label="2019-04-15" tags={["影響度の高い変更", "API"]}>
+## Task (Assignment) APIのレスポンスの変更
   [タスクを取得](/ja/reference/get-tasks-id)エンドポイントおよび[タスク割り当てを取得](/ja/reference/get-task-assignments-id)エンドポイントのAPIレスポンスの更新がリリースされました。
 
 この変更の前は、有効なタスクIDでタスクまたはタスク割り当てを取得する呼び出しを実行したときに、そのファイルが削除されているか、自分の権限が変更されてファイルを表示できなくなっていると、タスクがファイルとともに削除されたという404エラーが返されていました。
