@@ -1,4 +1,5 @@
-<Update label="2023-05-26" description="Updates to File Upload API" tags={["Impactful changes", "API"]}>
+<Update label="2023-05-26" tags={["Impactful changes", "API"]}>
+## Updates to File Upload API
   In response to a potential security vulnerability while uploading a file using [Upload File API][1] and downscoped token,
 we’re updating the Upload File API to return a 404 error in scenarios where the parent Folder ID is found, but the requester does not have permissions to access it.
 
