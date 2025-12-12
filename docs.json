@@ -5409,7 +5409,7 @@
         },
         {
           "anchor": "Blog",
-          "href": "https://blog.box.com/category/developer",
+          "href": "https://blog.box.com/developer",
           "icon": "newspaper"
         }
       ]
@@ -5427,7 +5427,7 @@
       },
       {
         "label": "Blog",
-        "href": "https://blog.box.com/category/developer"
+        "href": "https://blog.box.com/developer"
       }
     ],
     "primary": {
