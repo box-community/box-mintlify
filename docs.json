@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "aspen",
-  "name": "Box Developer Documentation",
+  "name": "Box Dev Docs",
   "colors": {
     "primary": "#0061d5",
     "light": "#f6fafd",
@@ -117,6 +117,12 @@
                           "guides/box-ai/ai-models/xai-grok-3-beta-model-card",
                           "guides/box-ai/ai-models/xai-grok-3-mini-beta-model-card",
                           "guides/box-ai/ai-models/openai-gpt-o3-model-card"
+                        ]
+                      },
+                      {
+                        "group": "AI quick starts",
+                        "pages": [
+                          "guides/box-ai/quick-start/box-ai-extract"
                         ]
                       }
                     ]
@@ -2686,6 +2692,13 @@
                   }
                 ]
               }
+            ]
+          },
+          {
+            "tab": "Quick starts",
+            "pages": [
+              "get-started",
+              "/guides/box-ai/quick-start/box-ai-extract"
             ]
           },
           {

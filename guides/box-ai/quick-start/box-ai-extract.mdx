@@ -1,0 +1,333 @@
+---
+title: Extract structured data with Box AI in Python
+description: Learn how to use Box AI to automatically extract structured data from documents and store it as searchable metadata using the Box Python SDK.
+---
+
+[Box AI](/ai-dev-zone) exposes intelligent extraction capabilities that enable developers to automatically extract structured
+key-value pairs from documents through a single API call. This powerful feature transforms unstructured
+document content into actionable metadata without manual data entry, streamlining document processing
+workflows for invoices, forms, contracts, and other business documents.
+
+This quick start demonstrates how to configure the Box Python SDK, create a metadata template,
+and use Box AI to extract invoice data and store it as searchable metadata in Box.
+
+<Steps>
+  <Step title="Create and configure a Box application">
+    The first step for any Box Platform integration is to create and configure a Box 
+    application. 
+    1. Go to [Box Developer Console](https://app.box.com/developers/console).
+    2. For this quick start, create an App with the `Client Credentials Grant` 
+    application type. 
+    3. Once the app is created, enable the following scopes:
+        * `Read all files and folders stored in Box`
+        * `Write all files and folders stored in Box`
+        * `Manage AI`
+
+    For more information about creating a new Box application, see [Create your first application](/guides/getting-started/first-application#create-your-first-application).
+  </Step>
+  <Step title="Create a Box metadata template">
+    <Tip>
+      This step requires Admin access to your Box Enterprise. If you do not have access
+      in your current environment, contact your Box administrator.
+    </Tip>
+
+    Box AI enables you to extract data from documents in several ways:
+
+    Type | Description | Use case
+    ---|---|---
+    Freeform extraction| Accepts a string prompt. | Provide a natural language prompt.
+    Structured extraction with template | Accepts a Box Metadata template key. | Define fields and data types once; simplifies pushing back to Box as metadata.
+    Structured extraction with fields | Accepts a JSON array of fields. | Run one-off extractions without creating a template.
+    Enhanced Extract Agent | Uses a specialized agent with a reasoning model. | Use for complex documents or nuanced extraction; works with structured templates or fields.
+
+    For this quick start, create a Box metadata template to define the fields you want
+    to extract from your documents. See [Customizing Metadata Templates](https://support.box.com/hc/en-us/articles/360044194033-Customizing-Metadata-Templates) 
+    for a detailed walkthrough of the steps to create a Box metadata template in the Box Admin 
+    Console.
+
+1. Give your template a name, for example, `Box AI extract quick start`.
+2. Create the following fields:
+    Field name | Type | Description
+    ---|---|---
+    Client Name | Text | The name of the client receiving the invoice
+    Invoice Amount | Number | The total amount of the invoice after taxes and fees
+    Products | Text | The names of the products delivered in the invoice, returned as a comma-delimited string
+
+    <Tip>
+      The field description is used by Box AI to supplement the prompt to the LLM to ensure the 
+      right data is extracted.
+    </Tip>
+
+3.     Click **Save** to create your template. Make note of the template key to use 
+    in a later step. 
+    
+    When you save the template, a list of templates appears. To find the template key, 
+    open the template you just created and inspect the URL. The last part of the path is 
+    your template key. For example, the URL might look like this:
+    `https://app.box.com/master/metadata/templates/boxAiExtractquick start`.
+    
+    In this case, the template key is `boxAiExtractquick start`.
+
+  </Step>
+  <Step title="Upload a test file">
+    After preparing the template, select a file to test. For this quick start, use this
+    [sample invoice document](/static/quickstarts/extract/files/demo-invoice-20tax-2.pdf).
+
+1. Download the test document, and then drag and drop it into your Box account.
+2. Get the file ID by opening the file in Box and inspecting the URL.
+The last part of the path is your file ID. For example, the URL might look like this:
+    `https://app.box.com/file/2064123286902`
+    
+    In this case, the file ID is `2064123286902`.
+  </Step>
+  <Step title="Configure the environment">
+    Now set up our development environment to run the extraction. For this quick start, use Python and the 
+    Box Python SDK version 10. Make sure you have Python 3.11 or higher installed on your machine.
+    1. Create a new directory for your project and navigate into it.
+    2. Create a virtual environment:
+       ```bash
+       python3 -m venv .venv
+       source .venv/bin/activate
+       ```
+    3. Install the Box Python SDK:
+       ```bash
+       pip install "boxsdk~=10"
+       ```
+    4. Install the `python-dotenv` package to load environment variables from the `.env` file:
+       ```bash
+       pip install python-dotenv
+       ```
+    5. Create an `.env` file in the root of your project directory and add the following 
+    environment variables, replacing the placeholder values with your actual Box app credentials
+    and the IDs from the previous steps:
+       ```bash
+        BOX_DEVELOPER_TOKEN=your_box_developer_token
+
+        BOX_METADATA_TEMPLATE_KEY=your_metadata_template_key
+        BOX_FILE_ID=your_box_file_id
+       ```
+    
+    To get your Developer Token, go to the Box Developer Console, open your app, and navigate to 
+    the **Configuration** tab. 
+    
+    6. Click **Generate Developer Token** to create a new token.  
+
+    <Tip>
+      For simplicity, this quick start uses a short-lived developer token. In production, you 
+      should authenticate using your app’s configured method (for example, Client Credentials Grant) 
+      instead of a developer token.
+    </Tip>
+
+  </Step>
+  <Step title="Create the extract.py file">
+    Your development environment is now ready to create the Python script to extract data from the document using Box AI. 
+    
+1. Create a new file named `extract.py` in the root of your project directory and add the following code:
+
+    ```python
+    import os
+
+    from dotenv import load_dotenv
+
+    from box_sdk_gen import (
+        AiItemBase,
+        BoxClient,
+        BoxDeveloperTokenAuth,
+        CreateAiExtractStructuredMetadataTemplate,
+        CreateAiExtractStructuredMetadataTemplateTypeField,
+        CreateFileMetadataByIdScope
+    )
+
+    load_dotenv()
+
+    developer_token = os.getenv("BOX_DEVELOPER_TOKEN")
+    file_id = os.getenv("BOX_FILE_ID")
+    template_key = os.getenv("BOX_METADATA_TEMPLATE_KEY")
+
+    def get_box_client(token: str) -> BoxClient:
+        
+        if not developer_token:
+            raise ValueError("BOX_DEVELOPER_TOKEN is not set in environment variables.")
+        
+        auth = BoxDeveloperTokenAuth(token=token)
+        client = BoxClient(auth=auth)
+
+        return client
+
+    def main():
+        client = get_box_client(token=developer_token)
+
+        me = client.users.get_user_me()
+        print(f"My user ID is {me.id}")
+
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+    This code loads the environment variables from the `.env` file, initializes the Box SDK client, 
+    and prints the current user's ID to validate that the client is working correctly.
+
+2. Run the script using the following command in your terminal:
+
+    ```bash
+    python extract.py
+    ```
+
+    If the Box SDK client is set up correctly, the console displays your user ID. For example:
+
+    ```bash
+    My user ID is 123456789
+    ```
+
+  </Step>
+  <Step title="Extract data">
+    With a working Box SDK client, you can add the code to extract data from the document using Box AI.
+
+1. Between the `get_box_client` function and the `main` function, add the following function:
+
+    ```python
+    def extract_metadata(client: BoxClient, file_id: str, template_key: str) -> dict:
+        metadata = client.ai.create_ai_extract_structured(
+            [AiItemBase(id=file_id)],
+            metadata_template=CreateAiExtractStructuredMetadataTemplate(
+                template_key=template_key,
+                type=CreateAiExtractStructuredMetadataTemplateTypeField.METADATA_TEMPLATE,
+                scope="enterprise",
+            ),
+        )
+        
+        return metadata.to_dict()['answer']
+    ```
+
+    This function uses the Box AI `create_ai_extract_structured` method to extract metadata from the specified file.
+    Your BoxClient, the file ID, and the metadata template key created earlier are sent to the function, which 
+   returns the extracted metadata as a dictionary.
+
+2. Add the function call to extract the metadata in the `main` function. Ensure that the new `main` function contains the following logic: 
+
+    ```python
+    def main():
+        client = get_box_client(token=developer_token)
+
+        me = client.users.get_user_me()
+        print(f"My user ID is {me.id}")
+
+        metadata = extract_metadata(client=client, file_id=file_id, template_key=template_key)
+
+        print(f"Extracted Metadata: {metadata}")
+    ```
+
+    The SDK handles the API call to Box AI and returns the extracted metadata as an
+    [`AiExtractStructuredResponse`](/reference/resources/ai-extract-structured-response) object. In this quick start,
+    the code converts this object to a dictionary and returns the `answer` field that contains the extracted
+    key/value pairs.
+
+
+3. Print out the extracted metadata to the console to verify that the extraction was successful by running the following command in your terminal:
+
+
+    ```bash
+    python extract.py
+    ```
+
+    If the extraction was successful, the console displays your user ID followed by the extracted metadata from the invoice document.
+
+    ```bash
+    My user ID is 123456789
+
+    Extracted Metadata: {'clientName': 'ACME Inc', 'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate, 
+    Carbon Dioxide, Laser, Lens, Oleic Acid, Glycerine, Sodium Tallowate, Paint Base, Polypropylene, Rubber, 
+    Additive, Pigment, Aluminum Silicate, Magnesium Silicate, Zinc Oxide, Distilled Solvent, Petroleum Distillate, 
+    Sulfur Dioxide, Sodium Benzoate, Dust cap, Ferrite cap, Cone and coil assembly, Cleaner, Polypropylene pellets, 
+    Polypropylene chips, Polypropylene blocks, Polypropylene slag, Parts Wash Solvent, Jar, 
+    Plastic Bottle - 15.2 FL Oz (450 ml), Polymer'}
+    ```
+  </Step>
+  <Step title="Add Box metadata to the file">
+    Now that you have extracted metadata from the document, you can use these key/value pairs in your
+    application: push to databases, integrate with CRMs, feed to agents for processing, or trigger automated workflows.
+
+    This quick start demonstrates pushing the extracted data back to Box as file metadata. Box metadata management
+    enables powerful filtering and search capabilities across your content. For example, you can query
+    all invoices over $500 from the last 30 days, create dashboards in Box Apps, or surface key document
+    insights directly in the Box web application.
+
+1. Push the extracted metadata back to Box by adding the following function between the `extract_metadata` function
+    and the `main` function:
+
+    ```python
+    def push_metadata(client: BoxClient, file_id: str, metadata: dict, template_key: str) -> dict:
+        attached_metadata = client.file_metadata.create_file_metadata_by_id(
+            file_id,
+            CreateFileMetadataByIdScope.ENTERPRISE,
+            template_key,
+            metadata,
+        )
+        return attached_metadata.to_dict()
+    ```
+
+    This function uses the `create_file_metadata_by_id` method to attach metadata to the specified file, processing
+ the BoxClient, file ID, metadata dictionary, and template key. The API itself returns a 
+    [`MetadataFull`](/reference/resources/metadata--full) object. The function converts this object to a 
+    dictionary and returns it.
+
+2. Add the function call to push the metadata in the `main` function. Ensure that the updated `main` function 
+    contains the following logic:
+
+    ```python
+    def main():
+        client = get_box_client(token=developer_token)
+
+        me = client.users.get_user_me()
+        print(f"My user ID is {me.id}")
+
+        metadata = extract_metadata(client=client, file_id=file_id, template_key=template_key)
+
+        print(f"Extracted Metadata: {metadata}")
+
+        attached_metadata = push_metadata(client=client, file_id=file_id, metadata=metadata, template_key=template_key)
+
+        print(f"Attached Metadata: {attached_metadata}")
+    ```
+
+3. Run the following command in your terminal:
+
+    ```bash
+    python extract.py
+    ```
+
+    If the script is successful, the console displays your user ID, the extracted metadata, and the attached metadata response from Box. For example:
+
+    ```bash
+    My user ID is 123456789
+
+    Extracted Metadata: {'clientName': 'ACME Inc', 'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate,
+    Carbon Dioxide, Laser, Lens, Oleic Acid, Glycerine, Sodium Tallowate, Paint Base, Polypropylene, Rubber,
+    Additive, Pigment, Aluminum Silicate, Magnesium Silicate, Zinc Oxide, Distilled Solvent, Petroleum Distillate,
+    Sulfur Dioxide, Sodium Benzoate, Dust cap, Ferrite cap, Cone and coil assembly, Cleaner, Polypropylene pellets,
+    Polypropylene chips, Polypropylene blocks, Polypropylene slag, Parts Wash Solvent, Jar,
+    Plastic Bottle - 15.2 FL Oz (450 ml), Polymer'}
+
+    Attached Metadata: {'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate, Carbon Dioxide, Laser, Lens, 
+    Oleic Acid, Glycerine, Sodium Tallowate, Paint Base, Polypropylene, Rubber, Additive, Pigment, Aluminum Silicate, 
+    Magnesium Silicate, Zinc Oxide, Distilled Solvent, Petroleum Distillate, Sulfur Dioxide, Sodium Benzoate, Dust cap, 
+    Ferrite cap, Cone and coil assembly, Cleaner, Polypropylene pellets, Polypropylene chips, Polypropylene blocks, 
+    Polypropylene slag, Parts Wash Solvent, Jar, Plastic Bottle - 15.2 FL Oz (450 ml), Polymer', 
+    'clientName': 'ACME Inc', '$parent': 'file_1956534287859', '$template': 'boxAiExtractquick start', 
+    '$scope': 'enterprise_899905961', '$version': 0, '$canEdit': True, '$id': '4d4f0b55-d45a-4ba4-9ff6-1241182cb76a', 
+    '$type': 'boxAiExtractquick start-c4024235-2384-49f4-9286-ada6d68fd6a9', '$typeVersion': 0, 'extra_data': 
+    {'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate, Carbon Dioxide, Laser, Lens, Oleic Acid, Glycerine, 
+    Sodium Tallowate, Paint Base, Polypropylene, Rubber, Additive, Pigment, Aluminum Silicate, Magnesium Silicate, 
+    Zinc Oxide, Distilled Solvent, Petroleum Distillate, Sulfur Dioxide, Sodium Benzoate, Dust cap, Ferrite cap, 
+    Cone and coil assembly, Cleaner, Polypropylene pellets, Polypropylene chips, Polypropylene blocks, Polypropylene slag, 
+    Parts Wash Solvent, Jar, Plastic Bottle - 15.2 FL Oz (450 ml), Polymer', 'clientName': 'ACME Inc'}}
+    ```
+  </Step>
+</Steps>
+
+## Resources
+- [Final code](https://github.com/box-community/box-ai-extract-quick)
+- [Extract Structured Metadata API Reference](/reference/post-ai-extract-structured)
+- [Create metadata instance on file](/reference/post-files-id-metadata-id-id)
+- [Box SDK for Python](https://github.com/box/box-python-sdk/tree/main)
