@@ -233,3 +233,31 @@ footer div.flex.gap-4.flex-col.md\:flex-row.md\:items-center.md\:gap-8.md\:justi
 .update > div:first-child > div:nth-child(4) {
   order: 3;
 }
+
+div#banner a {
+  text-decoration: none !important;
+  color: #fff;
+  font-weight: 600;
+}
+
+nav ul .navbar-link a,
+nav ul #topbar-cta-button a span {
+  border-radius: 50px !important;
+}
+
+nav ul #topbar-cta-button a span {
+  background-color: #0061d5;
+}
+
+#content-area h1,
+#content-area h2,
+#content-area h3,
+#content-area h4,
+#content-area h5,
+#content-area h6 {
+  font-weight: 600 !important;
+}
+
+#content-area h1 {
+  font-size: 32px !important;
+}
