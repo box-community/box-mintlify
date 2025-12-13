@@ -12,6 +12,9 @@ related_resources:
 alias_paths:
   - /docs/build-a-folder-tree
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 The following examples provide an example on how to create a JSON representation
 of a folder tree. A folder tree is the name of a folder, and every subfolder
 within that folder.
@@ -223,8 +226,6 @@ import com.box.sdk.BoxFolder;
 import com.box.sdk.BoxItem;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class BoxFolderTreeBuilder {
     private BoxDeveloperEditionAPIConnection _boxClient;

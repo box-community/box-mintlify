@@ -9,6 +9,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Once the architecture files have been defined through the `etc/skel`
 structure in your service account, you can now use the following script to copy
 anything under the `skel` directly to the new user's root directory.
@@ -187,8 +190,6 @@ import com.box.sdk.BoxFolder;
 import com.box.sdk.BoxItem;
 import com.box.sdk.BoxUser;
 import com.eclipsesource.json.JsonObject;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class BoxPlayground {
 

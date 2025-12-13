@@ -9,6 +9,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Our first requirement is to copy general files and folders into each individual
 user's root folder on account creation. This problem has been solved within
 standard Linux distributions through a directory called `/etc/skel`,
@@ -223,8 +226,6 @@ import com.box.sdk.BoxDeveloperEditionAPIConnection;
 import com.box.sdk.BoxFolder;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class BoxFolderTreeCreator {
     private BoxDeveloperEditionAPIConnection _boxClient;

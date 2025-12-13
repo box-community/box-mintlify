@@ -14,6 +14,19 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Box SDKs", href: "/guides/tooling/sdks/index", badge: "GUIDE" },
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
+
 The Box SDKs have built-in support for client-side OAuth 2.0.
 
 In the process a user is redirected to the Box web app in a browser where they
@@ -64,17 +77,6 @@ var sdk = new BoxClient(config);
 ```java Java
 import com.box.sdk.BoxAPIConnection;
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Box SDKs", href: "/guides/tooling/sdks/index", badge: "GUIDE" },
-    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
-    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
-  ]}
-/>
 String authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
 ```
 

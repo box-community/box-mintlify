@@ -9,6 +9,17 @@ required_guides:
   - embed/ui-elements/installation
 related_resources: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
+
 The metadata view of [Content Explorer][content-explorer] allows you to display files and folders based on their metadata.
 
 ## Overview
@@ -105,15 +116,6 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import ContentExplorer from "box-ui-elements/es/elements/content-explorer"
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
-  ]}
-/>
 // Fill with custom values of your metadata template
 // You can use this endpoint to get all needed values: /reference/get-metadata-templates-id-id-schema/
 const metadataScopeAndKey = `${METADATA_TEMPLATE_SCOPE}.${METADATA_TEMPLATE_KEY}`;

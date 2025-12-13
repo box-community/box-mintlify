@@ -13,6 +13,18 @@ related_resources:
   - upload_part
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Create Upload Session", href: "/guides/uploads/chunked/create-session", badge: "GUIDE" },
+    { label: "Upload Part", href: "/guides/uploads/chunked/upload-part", badge: "GUIDE" }
+  ]}
+/>
+
 The final step in a chunked upload is to commit the session.
 
 To commit a file upload session, call the
@@ -86,16 +98,6 @@ BoxFile.Info fileInfo = session.commit(digestStr, parts, null, null, null);
 ```python Python v4
 import hashlib
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Create Upload Session", href: "/guides/uploads/chunked/create-session", badge: "GUIDE" },
-    { label: "Upload Part", href: "/guides/uploads/chunked/upload-part", badge: "GUIDE" }
-  ]}
-/>
 sha1 = hashlib.sha1()
 # sha1 should have been updated with all the bytes of the file
 

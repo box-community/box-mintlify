@@ -26,6 +26,18 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/jwt/without-sdk.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
+  ]}
+/>
+
 このガイドでは、Box SDKを使用しないJWT認証について説明します。JWTはエンドユーザーによる操作を必要とせず、Box APIで直接認証するよう設計されています。
 
 このトークンの使用方法を確認するには、[APIコールの実行](/ja/guides/api-calls)に関するガイドを参照してください。
@@ -647,16 +659,6 @@ String accessToken = token.access_token;
 import json
 import requests
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
-/>
 params = {
     'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
     'assertion': assertion,

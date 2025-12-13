@@ -8,6 +8,9 @@ alias_paths:
   - /guides/webhooks/handle/verify-signatures
   - /guides/webhooks/handle/rotate-signatures
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Webhook signatures help ensure that a webhook payload was sent by Box and was
 not tampered with. Signatures greatly reduce the likelihood of
 a successful man-in-the-middle or replay attacks.
@@ -199,8 +202,6 @@ const valid = !expired && (primarySignatureValid || secondarySignatureValid)
 
 ```python
 import hmac
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 def compare_signatures(expected_signature: Optional[str], received_signature: Optional[str]) -> bool:
     if not expected_signature or not received_signature:

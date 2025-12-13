@@ -27,6 +27,18 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/authentication/oauth2/with-sdk.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Box SDK", href: "/ja/guides/tooling/sdks/index", badge: "ガイド" },
+    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
+    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
+  ]}
+/>
 Box SDKには、クライアント側OAuth 2.0のサポートが組み込まれています。
 
 このプロセスでは、ユーザーはブラウザでBoxウェブアプリにリダイレクトされます。そこで、ユーザーはログインし、アプリケーションによる自分のデータへのアクセスを承認すると、アプリケーションの`redirect_url`に再度リダイレクトされます。この最後の手順では、ユーザーがアクセス可能な場所にあるウェブサーバー上でアプリケーションが実行されている必要があります。
@@ -75,17 +87,6 @@ var sdk = new BoxClient(config);
 ```java Java
 import com.box.sdk.BoxAPIConnection;
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Box SDK", href: "/ja/guides/tooling/sdks/index", badge: "ガイド" },
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
-/>
 String authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
 
 ```

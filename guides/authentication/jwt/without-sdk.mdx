@@ -13,6 +13,17 @@ required_guides:
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+  ]}
+/>
+
 This guide takes you through JWT authentication without using a Box SDK.
 JWT does not require end-user interaction and is designed to authenticate
 directly with the Box API.
@@ -601,16 +612,6 @@ String accessToken = token.access_token;
 import json
 import requests
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
-    { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
-  ]}
-/>
 params = {
     'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
     'assertion': assertion,

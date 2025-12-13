@@ -21,6 +21,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/signatures-v2.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Webhook署名は、Boxから送信されたWebhookペイロードが改ざんされていないことを確認するために役立ちます。署名により、中間者攻撃または再生攻撃が成功する可能性を大幅に低減できます。
 
 署名を構成すると、Boxは通知の本文の暗号化ダイジェストを生成し、これをWebhookペイロードのヘッダーに添付します。アプリケーションがペイロードを受信したら、同じダイジェストを計算し、それを受信したダイジェストと比較して署名を検証してください。ダイジェストが一致しない場合、ペイロードは信頼できません。
@@ -187,8 +190,6 @@ const valid = !expired && (primarySignatureValid || secondarySignatureValid)
 
 ```python Python
 import hmac
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 def compare_signatures(expected_signature: Optional[str], received_signature: Optional[str]) -> bool:
     if not expected_signature or not received_signature:

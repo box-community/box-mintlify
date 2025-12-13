@@ -12,6 +12,9 @@ alias_paths:
   - /docs/download-all-files-from-a-folder-1
   - /docs/get-all-files
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 Sometimes an application might want to download all files for a folder. To do so
 with the SDKs and the CLI requires traversing the folder tree, finding every
 file and downloading it accordingly.
@@ -89,8 +92,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class Playground {
 

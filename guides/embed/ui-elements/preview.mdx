@@ -11,6 +11,16 @@ alias_paths:
   - /docs/box-content-preview
   - /docs/content-preview
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+  ]}
+/>
+
 The Box Content Preview UI Element allows developers to embed high
 quality and interactive previews of Box files in their desktop or mobile web
 application.
@@ -493,15 +503,6 @@ To localize the `suggestedQuestions` properly, make sure that the prompts are tr
 import ContentPreview from 'box-ui-elements/es/elements/content-preview';
 import { IntlProvider } from "react-intl";
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
-  ]}
-/>
 const suggestedQuestions = [
   {
     label: 'Key takeaways',

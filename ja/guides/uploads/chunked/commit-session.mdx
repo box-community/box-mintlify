@@ -26,6 +26,19 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/commit-session.md
 fullyTranslated: true
 ---
+
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "アップロードセッションの作成", href: "/ja/guides/uploads/chunked/create-session", badge: "ガイド" },
+    { label: "パーツのアップロード", href: "/ja/guides/uploads/chunked/upload-part", badge: "ガイド" }
+  ]}
+/>
+
 分割アップロードの最後の手順はセッションのコミットです。
 
 ファイルアップロードセッションをコミットするには、コミットするアップロード済みパーツのリストを指定して[`POST /files/upload_sessions/:id/commit`][e_commit]を呼び出します。
@@ -97,16 +110,6 @@ BoxFile.Info fileInfo = session.commit(digestStr, parts, null, null, null);
 ```python Python v4
 import hashlib
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "アップロードセッションの作成", href: "/ja/guides/uploads/chunked/create-session", badge: "ガイド" },
-    { label: "パーツのアップロード", href: "/ja/guides/uploads/chunked/upload-part", badge: "ガイド" }
-  ]}
-/>
 sha1 = hashlib.sha1()
 # sha1 should have been updated with all the bytes of the file
 

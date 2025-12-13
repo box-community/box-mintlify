@@ -22,6 +22,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/users/provision/populate-content.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 サービスアカウントの`etc/skel`構造を使用してアーキテクチャファイルを定義すると、次のスクリプトを使用して`skel`の下にあるすべての項目を新しいユーザーのルートディレクトリに直接コピーできます。
 
 <CodeGroup>
@@ -195,8 +198,6 @@ import com.box.sdk.BoxFolder;
 import com.box.sdk.BoxItem;
 import com.box.sdk.BoxUser;
 import com.eclipsesource.json.JsonObject;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class BoxPlayground {
 

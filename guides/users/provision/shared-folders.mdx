@@ -10,6 +10,9 @@ required_guides: []
 related_resources: []
 alias_paths: []
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 As a final step to manage access to shared folders, we'll create the folder
 structures needed within the service account. Then, groups will map to the
 needed permissions based on user types and level of access needed to those
@@ -652,8 +655,6 @@ import com.box.sdk.BoxGroupMembership;
 import com.box.sdk.BoxUser;
 import com.box.sdk.BoxGroupMembership.Role;
 import com.eclipsesource.json.JsonObject;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class BoxPlayground {
 
