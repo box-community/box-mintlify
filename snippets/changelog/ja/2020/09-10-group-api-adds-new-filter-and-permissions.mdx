@@ -1,12 +1,12 @@
 <Update label="2020-09-10" description="グループAPIで新しいフィルタと権限を追加" tags={["新機能", "API"]}>
-  [`GET /groups`](e://get_groups) APIでは、新しい`filter_term`フィールドを使用して、名前でグループにフィルタをかけられるようになりました。
+  [`GET /groups`](/ja/reference/get_groups) APIでは、新しい`filter_term`フィールドを使用して、名前でグループにフィルタをかけられるようになりました。
 
 ```curl
 curl -i -X GET "https://api.box.com/2.0/groups?filter_term=Engineering" \
      -H "Authorization: Bearer <ACCESS_TOKEN>"
 ```
 
-さらに、グループのすべてのエンドポイントにより、開発者は、新しい[`permissions`](r://group--full/#param-permissions)フィールドをリクエストできるようになりました。このフィールドには、現在、認証済みユーザーが任意の項目にグループを招待できるかどうかを定義する属性が1つあります。
+さらに、グループのすべてのエンドポイントにより、開発者は、新しい[`permissions`](/ja/reference/resources/group--full/#param-permissions)フィールドをリクエストできるようになりました。このフィールドには、現在、認証済みユーザーが任意の項目にグループを招待できるかどうかを定義する属性が1つあります。
 
 ```curl
 curl -i -X GET "https://api.box.com/2.0/groups?field=permissions" \
@@ -30,5 +30,5 @@ curl -i -X GET "https://api.box.com/2.0/groups?field=permissions" \
 }
 ```
 
-グループの操作方法の詳細については、[`Group API documentation`](e://get_groups)を参照してください。
+グループの操作方法の詳細については、[`Group API documentation`](/ja/reference/get_groups)を参照してください。
 </Update>

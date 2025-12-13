@@ -1,15 +1,15 @@
 <Update label="2020-10-29" description="Change to OAuth 2 app redirect URI requirements" tags={["Impactful changes", "API"]}>
   On October 29th, 2020, Box will begin employing stricter requirements for
 redirect URIs used within new and existing
-[OAuth 2](g://authentication/oauth2/)-based Box integrations that may affect
+[OAuth 2](/guides/authentication/oauth2/)-based Box integrations that may affect
 your application.
 
 Existing application owners that currently use a blank redirect URI in their
 application configuration, as
-[described here](g://authentication/oauth2/oauth2-setup/#redirect-uri), will
+[described here](/guides/authentication/oauth2/oauth2-setup/#redirect-uri), will
 need to update the redirect URI to match the redirect used within the code
 redirect step,
-[described here](g://authentication/oauth2/with-sdk/#2-redirect-user). 
+[described here](/guides/authentication/oauth2/with-sdk/#2-redirect-user). 
 
 On October 29th, 2020, applications that are still configured with a blank URI
 will begin returning an error when the user is redirected back to your
@@ -32,5 +32,5 @@ affected, take the following steps:
 * For any application where this URI is blank, add the URI that is being used
  in the application code when redirecting the user back to your application
  from the Box auth step,
- [as is described in this guide](g://authentication/oauth2/with-sdk/#2-redirect-user).
+ [as is described in this guide](/guides/authentication/oauth2/with-sdk/#2-redirect-user).
 </Update>
