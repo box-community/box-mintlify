@@ -5496,6 +5496,7 @@
   },
   "analytics": {
     "customScripts": [
+      "/scripts/analitics.js",
       "/scripts/locale-links.js",
       "/scripts/locale-footer-combined.js"
     ]
