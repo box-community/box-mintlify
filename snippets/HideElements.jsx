@@ -12,6 +12,11 @@ export const HideElements = () => {
 
         .mdx-content {
           margin-top: 0 !important;
+          margin-bottom: 0 !important;
+        }
+        
+        #content-container {
+          padding: 0 !important;
         }
       `}
     </style>
