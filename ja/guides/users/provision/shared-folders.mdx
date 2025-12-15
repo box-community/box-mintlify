@@ -23,6 +23,9 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/users/provision/shared-folders.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 共有フォルダへのアクセスを管理する最後の手順として、必要なフォルダ構造をサービスアカウント内に作成します。次に、これらのフォルダに必要なユーザーの種類とアクセスレベルに基づいて、グループに必要な権限をマップします。ここでは、マーケティング部門を例に挙げて説明します。
 
 <CodeGroup>
@@ -642,8 +645,6 @@ import com.box.sdk.BoxGroupMembership;
 import com.box.sdk.BoxUser;
 import com.box.sdk.BoxGroupMembership.Role;
 import com.eclipsesource.json.JsonObject;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class BoxPlayground {
 

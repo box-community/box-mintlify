@@ -23,6 +23,8 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
 最初の要件は、アカウントの作成時に一般的なファイルとフォルダを個々のユーザーのルートフォルダにコピーすることです。この問題は、標準の Linux ディストリビューション内の`/etc/skel`と呼ばれるディレクトリを介して解決されています。このディレクトリは、Box 固有のソリューションによってエミュレートされます。Linux で新しいユーザーを追加すると、`/etc/skel`内のファイルとフォルダが新しいユーザーのホームディレクトリにコピーされます。
 
 [JWT ベースの Box アプリケーション](/ja/guides/authentication/jwt/jwt-setup)を作成すると、Box Enterprise 内に[サービスアカウント][sa]が作成されます。サービスアカウントは Box Enterprise の共同管理者に似た機能を持っており、このユースケースに最も有用で、ファイルおよびフォルダに対し、所有、コピー、および他のユーザーとのコラボレーションを行うことができます。さらに重要な点は、サービスアカウントは厳密にユーザー向けの Platform アプリケーションの開発のみに使用する必要がなく、自動化処理の用途でも使用できるということです。
@@ -206,8 +208,6 @@ import com.box.sdk.BoxDeveloperEditionAPIConnection;
 import com.box.sdk.BoxFolder;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 public class BoxFolderTreeCreator {
     private BoxDeveloperEditionAPIConnection _boxClient;

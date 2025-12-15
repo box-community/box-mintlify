@@ -22,6 +22,17 @@ source_url: >-
   https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/explorer-metadata-v2.md
 fullyTranslated: true
 ---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
+  ]}
+/>
+
 [コンテンツエクスプローラ][content-explorer]のメタデータビューを使用すると、メタデータに基づいてファイルやフォルダを表示できます。
 
 ## 概要
@@ -120,15 +131,6 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import ContentExplorer from "box-ui-elements/es/elements/content-explorer"
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
-/>
 // Fill with custom values of your metadata template
 // You can use this endpoint to get all needed values: /ja/reference/get-metadata-templates-id-id-schema/
 const metadataScopeAndKey = `${METADATA_TEMPLATE_SCOPE}.${METADATA_TEMPLATE_KEY}`;

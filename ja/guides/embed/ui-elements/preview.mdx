@@ -25,6 +25,16 @@ source_url: >-
 fullyTranslated: true
 ---
 
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+
+<RelatedLinks
+  title="REQUIRED GUIDES"
+  items={[
+    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
+  ]}
+/>
+
 Box Content Preview UI Elementを使用すると、開発者は、Boxファイルの高品質でインタラクティブなプレビューをデスクトップアプリやモバイルウェブアプリに埋め込むことができます。
 
 ## コンテンツプレビューUI Elementとコンテンツプレビューライブラリ
@@ -482,15 +492,6 @@ ReactコンポーネントのヘッダーにBox AI要素を追加することも
 import ContentPreview from 'box-ui-elements/es/elements/content-preview';
 import { IntlProvider } from "react-intl";
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
-/>
 const suggestedQuestions = [
   {
     label: 'Key takeaways',
