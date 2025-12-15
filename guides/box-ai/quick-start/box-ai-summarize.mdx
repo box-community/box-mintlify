@@ -1,5 +1,6 @@
 ---
 title: Summarize files with Box AI in Python
+sidebarTitle: Box AI - Summarization
 description: Learn how to use Box AI to automatically extract structured data from documents and store it as searchable metadata using the Box Python SDK.
 ---
 
@@ -21,22 +22,21 @@ This quick start demonstrates how to configure the Box Python SDK and use Box AI
 
     For more information about creating a new Box application, see [Create your first application](/guides/getting-started/first-application#create-your-first-application).
   </Step>
-  
 
   <Step title="Upload a test file">
     To use Box AI to get insights from documents, you need a file in Box. For this quick start, use this document containing
-    [federal code](/static/quickstarts/summarize/files/CFR-2024-title28-vol1-sec2-20.pdf).
+    [federal code](/static/quickstarts/summarize/files/ai-summary-document.pdf).
 
-1. Download the test document, and then drag and drop it into your Box account.
-2. Get the file ID by opening the file in Box and inspecting the URL.
-The last part of the path is your file ID. For example, the URL might look like this:
-    `https://app.box.com/file/2064123286902`
+    1. Download the test document, and then drag and drop it into your Box account.
+    2. Get the file ID by opening the file in Box and inspecting the URL.
+        The last part of the path is your file ID. For example, the URL might look like this:
+            `https://app.box.com/file/2064123286902`
     
     In this case, the file ID is `2064123286902`.
   </Step>
   <Step title="Configure the environment">
-    Now set up your development environment to run this quickstart. We use Python and the 
-    Box Python SDK version 10 to run the code. Make sure you have Python 3.11 or higher installed on your machine.
+    Now set up your development environment to run this quickstart. This tutorial uses Python and the 
+    latest Box Python SDK to run the code. Make sure you have Python 3.11 or higher installed on your machine.
     1. Create a new directory for your project and navigate into it.
     2. Create a virtual environment:
        ```bash
@@ -60,8 +60,8 @@ The last part of the path is your file ID. For example, the URL might look like 
         BOX_FILE_ID=your_box_file_id
        ```
     
-    To get your Developer Token, go to the Box Developer Console, open your app, and navigate to 
-    the **Configuration** tab. 
+    To get your Developer Token, go to the [Box Developer Console](https://app.box.com/developers/console), 
+    open your app, and navigate to the **Configuration** tab. 
     
     6. Click **Generate Developer Token** to create a new token.  
 
@@ -75,46 +75,46 @@ The last part of the path is your file ID. For example, the URL might look like 
   <Step title="Create the summarize.py file">
     Your development environment is now ready to create the Python script to summarize the document using Box AI. 
     
-1. Create a new file named `summarize.py` in the root of your project directory and add the following code:
+    1. Create a new file named `summarize.py` in the root of your project directory and add the following code:
 
-    ```python
-    import os
+        ```python
+        import os
 
-    from dotenv import load_dotenv
+        from dotenv import load_dotenv
 
-    from box_sdk_gen import (
-        AiItemAsk,
-        AiItemAskTypeField,
-        BoxClient,
-        BoxDeveloperTokenAuth,
-        CreateAiAskMode
-    )
+        from box_sdk_gen import (
+            AiItemAsk,
+            AiItemAskTypeField,
+            BoxClient,
+            BoxDeveloperTokenAuth,
+            CreateAiAskMode
+        )
 
-    load_dotenv()
+        load_dotenv()
 
-    developer_token = os.getenv("BOX_DEVELOPER_TOKEN")
-    file_id = os.getenv("BOX_FILE_ID")
+        developer_token = os.getenv("BOX_DEVELOPER_TOKEN")
+        file_id = os.getenv("BOX_FILE_ID")
 
-    def get_box_client(token: str) -> BoxClient:
-        
-        if not developer_token:
-            raise ValueError("BOX_DEVELOPER_TOKEN is not set in environment variables.")
-        
-        auth = BoxDeveloperTokenAuth(token=token)
-        client = BoxClient(auth=auth)
+        def get_box_client(token: str) -> BoxClient:
+            
+            if not developer_token:
+                raise ValueError("BOX_DEVELOPER_TOKEN is not set in environment variables.")
+            
+            auth = BoxDeveloperTokenAuth(token=token)
+            client = BoxClient(auth=auth)
 
-        return client
+            return client
 
-    def main():
-        client = get_box_client(token=developer_token)
+        def main():
+            client = get_box_client(token=developer_token)
 
-        me = client.users.get_user_me()
-        print(f"My user ID is {me.id}")
+            me = client.users.get_user_me()
+            print(f"My user ID is {me.id}")
 
 
-    if __name__ == "__main__":
-        main()
-    ```
+        if __name__ == "__main__":
+            main()
+        ```
 
     This code loads the environment variables from the `.env` file, initializes the Box SDK client, 
     and prints the current user's ID to validate that the client is working correctly.
@@ -135,77 +135,76 @@ The last part of the path is your file ID. For example, the URL might look like 
   <Step title="Summarize the file">
     With a working Box SDK client, you can add the code to summarize the document using Box AI.
 
-1. Between the `get_box_client` function and the `main` function, add the following function:
+    1. Between the `get_box_client` function and the `main` function, add the following function:
 
-    ```python
-    def summarize_file(client: BoxClient, file_id: str) -> str:
-        prompt = """
-        Summarize the content of the following file in a few sentences.
-        """
+        ```python
+        def summarize_file(client: BoxClient, file_id: str) -> str:
+            prompt = """
+            Summarize the content of the following file in a few sentences.
+            """
 
-        summary = client.ai.create_ai_ask(
-            CreateAiAskMode.SINGLE_ITEM_QA,
-            prompt,
-            [
-                AiItemAsk(
-                    id=file_id,
-                    type=AiItemAskTypeField.FILE
-                )
-            ]
-        )
-        
-        return summary.to_dict()['answer']
-    ```
+            summary = client.ai.create_ai_ask(
+                CreateAiAskMode.SINGLE_ITEM_QA,
+                prompt,
+                [
+                    AiItemAsk(
+                        id=file_id,
+                        type=AiItemAskTypeField.FILE
+                    )
+                ]
+            )
+            
+            return summary.to_dict()['answer']
+        ```
 
-    This function uses the Box AI `create_ai_ask` method to interrogate the specified file.
-    Your BoxClient and file ID created earlier are sent to the function, which 
-   returns the summary of the file as a string.
+        This function uses the Box AI `create_ai_ask` method to interrogate the specified file.
+        Your BoxClient and file ID created earlier are sent to the function, which 
+    returns the summary of the file as a string.
 
-2. Add the function call to extract the metadata in the `main` function. Ensure that the new `main` function contains the following logic: 
+    2. Add the function call to summarize the file in the `main` function. Ensure that the new `main` function contains the following logic: 
 
-    ```python
-    def main():
-        client = get_box_client(token=developer_token)
+        ```python
+        def main():
+            client = get_box_client(token=developer_token)
 
-        # Get the current user and print the ID to validate the client is working
-        me = client.users.get_user_me()
-        print(f"My user ID is {me.id}")
+            # Get the current user and print the ID to validate the client is working
+            me = client.users.get_user_me()
+            print(f"My user ID is {me.id}")
 
-        summary = summarize_file(client=client, file_id=file_id)
+            summary = summarize_file(client=client, file_id=file_id)
 
-        # Print the extracted metadata
-        print(f"\n\nSummary: {summary}")
-    ```
+            # Print the extracted metadata
+            print(f"\n\nSummary: {summary}")
+        ```
 
-    The SDK handles the API call to Box AI and returns the summary as an
-    [`AiResponseFull`](/reference/resources/ai-response--full) object. In this quick start,
-    the code converts this object to a dictionary and returns the `answer` field that contains the summary.
+        The SDK handles the API call to Box AI and returns the summary as an
+        [`AiResponseFull`](/reference/resources/ai-response--full) object. In this quick start,
+        the code converts this object to a dictionary and returns the `answer` field that contains the summary.
+
+    3. Print out the summary to the console to verify that the operation was successful by running the following command in your terminal:
 
 
-3. Print out the summary to the console to verify that the operation was successful by running the following command in your terminal:
+        ```bash
+        python summarize.py
+        ```
 
+        If the summarization was successful, the console displays your user ID followed by the summary from the test document.
 
-    ```bash
-    python summarize.py
-    ```
+        ```bash
+        My user ID is 123456789
 
-    If the summarization was successful, the console displays your user ID followed by the summary from the federal code document.
+        Summary: **Summary of 28 CFR § 2.20 (Paroling Policy Guidelines)**
 
-    ```bash
-    My user ID is 123456789
-
-    Summary: **Summary of 28 CFR § 2.20 (Paroling Policy Guidelines)**
-
-    - The document sets forth the U.S. Parole Commission’s purpose and framework for national parole policy, emphasizing guidelines to promote consistent, equitable parole decisions while preserving individualized review.
-    - It provides a matrix of customary total time-to-release ranges by offense severity categories (1–8) and offender parole prognosis (salient factor scores), noting guidelines apply to inmates with good institutional adjustment and are discretionary.
-    - A comprehensive Offense Behavior Severity Index (Chapters 1–12) assigns categories to specific crimes (homicide, assault, theft, drugs, firearms, national defense, etc.) with detailed rules, exceptions, and examples for grading offenses (including monetary thresholds and drug-quantity bands).
-    - Chapter Thirteen contains general notes, multiple-offense scoring guidance, definitions of key terms, and the Salient Factor Scoring Manual explaining how to compute parole prognosis points (prior convictions, commitments, age, recent commitment-free period, probation/parole status, and older-offender adjustment).
-    - The document also references reparole guidelines and authority to revise guidelines; aggravated crimes and Category Eight cases receive special treatment.
-    ```
+        - The document sets forth the U.S. Parole Commission’s purpose and framework for national parole policy, emphasizing guidelines to promote consistent, equitable parole decisions while preserving individualized review.
+        - It provides a matrix of customary total time-to-release ranges by offense severity categories (1–8) and offender parole prognosis (salient factor scores), noting guidelines apply to inmates with good institutional adjustment and are discretionary.
+        - A comprehensive Offense Behavior Severity Index (Chapters 1–12) assigns categories to specific crimes (homicide, assault, theft, drugs, firearms, national defense, etc.) with detailed rules, exceptions, and examples for grading offenses (including monetary thresholds and drug-quantity bands).
+        - Chapter Thirteen contains general notes, multiple-offense scoring guidance, definitions of key terms, and the Salient Factor Scoring Manual explaining how to compute parole prognosis points (prior convictions, commitments, age, recent commitment-free period, probation/parole status, and older-offender adjustment).
+        - The document also references reparole guidelines and authority to revise guidelines; aggravated crimes and Category Eight cases receive special treatment.
+        ```
   </Step>
 </Steps>
 
 ## Resources
 - [Final code](https://github.com/box-community/box-quickstarts/tree/main/box-ai-summarize-quickstart)
 - [Box AI Ask API Reference](/reference/post-ai-ask)
-- [Box SDK for Python](https://github.com/box/box-python-sdk/tree/main)
+- [Box Python SDK](https://github.com/box/box-python-sdk/tree/main)
