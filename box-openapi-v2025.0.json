@@ -14,7 +14,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     },
     "version": "2025.0",
-    "x-box-commit-hash": ""
+    "x-box-commit-hash": "2e9c861c73"
   },
   "servers": [
     {
@@ -3190,10 +3190,18 @@
               "output_file": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/FileReference"
-                  },
-                  {
-                    "nullable": true
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/FileReference"
+                      },
+                      {
+                        "title": "OpenAPI 3.0 null schema type",
+                        "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                        "type": "object",
+                        "nullable": true,
+                        "additionalProperties": false
+                      }
+                    ]
                   },
                   {
                     "description": "The output file of the job. This property is `null` until the job is completed."
@@ -3203,10 +3211,18 @@
               "output_file_version": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/FileVersion--Base"
-                  },
-                  {
-                    "nullable": true
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/FileVersion--Base"
+                      },
+                      {
+                        "title": "OpenAPI 3.0 null schema type",
+                        "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                        "type": "object",
+                        "nullable": true,
+                        "additionalProperties": false
+                      }
+                    ]
                   },
                   {
                     "description": "File version of the output file. This property is `null` until the job is completed."
@@ -3693,10 +3709,18 @@
           "security": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/EnterpriseConfigurationSecurity"
-              },
-              {
-                "nullable": true
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/EnterpriseConfigurationSecurity"
+                  },
+                  {
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                    "type": "object",
+                    "nullable": true,
+                    "additionalProperties": false
+                  }
+                ]
               },
               {
                 "description": "The enterprise configurations for the security category."
@@ -3706,10 +3730,18 @@
           "content_and_sharing": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/EnterpriseConfigurationContentAndSharing"
-              },
-              {
-                "nullable": true
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/EnterpriseConfigurationContentAndSharing"
+                  },
+                  {
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                    "type": "object",
+                    "nullable": true,
+                    "additionalProperties": false
+                  }
+                ]
               },
               {
                 "description": "The enterprise configurations for the content and sharing category."
@@ -3719,10 +3751,18 @@
           "user_settings": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/EnterpriseConfigurationUserSettings"
-              },
-              {
-                "nullable": true
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/EnterpriseConfigurationUserSettings"
+                  },
+                  {
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                    "type": "object",
+                    "nullable": true,
+                    "additionalProperties": false
+                  }
+                ]
               },
               {
                 "description": "The enterprise configurations for the user settings category."
@@ -3732,10 +3772,18 @@
           "shield": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/EnterpriseConfigurationShield"
-              },
-              {
-                "nullable": true
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/EnterpriseConfigurationShield"
+                  },
+                  {
+                    "title": "OpenAPI 3.0 null schema type",
+                    "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                    "type": "object",
+                    "nullable": true,
+                    "additionalProperties": false
+                  }
+                ]
               },
               {
                 "description": "The enterprise configurations for the shield category. If shield is turned off for given enterprise, the response will be 404."
@@ -4625,10 +4673,18 @@
                   "value": {
                     "allOf": [
                       {
-                        "$ref": "#/components/schemas/ExternalCollabSecuritySettings"
-                      },
-                      {
-                        "nullable": true
+                        "oneOf": [
+                          {
+                            "$ref": "#/components/schemas/ExternalCollabSecuritySettings"
+                          },
+                          {
+                            "title": "OpenAPI 3.0 null schema type",
+                            "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                            "type": "object",
+                            "nullable": true,
+                            "additionalProperties": false
+                          }
+                        ]
                       },
                       {
                         "description": "External collab security settings."
@@ -4649,10 +4705,18 @@
                   "value": {
                     "allOf": [
                       {
-                        "$ref": "#/components/schemas/KeysafeSettings"
-                      },
-                      {
-                        "nullable": true
+                        "oneOf": [
+                          {
+                            "$ref": "#/components/schemas/KeysafeSettings"
+                          },
+                          {
+                            "title": "OpenAPI 3.0 null schema type",
+                            "description": "The definition for a null schema type in OpenAPI `3.0`.",
+                            "type": "object",
+                            "nullable": true,
+                            "additionalProperties": false
+                          }
+                        ]
                       },
                       {
                         "description": "Keysafe settings."
