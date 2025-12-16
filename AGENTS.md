@@ -16,6 +16,8 @@
 - Search for existing content before adding anything new. Avoid duplication unless it is done for a strategic reason
 - Check existing patterns for consistency
 - Start by making the smallest reasonable changes
+- Suggest optimizing screenshost and images
+- Ensure terminology follows Box standards (`Service Account`, `App User`, etc.).
 
 ## docs.json
 
