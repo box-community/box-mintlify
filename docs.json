@@ -85,16 +85,25 @@
                           "guides/box-ai/ai-models/index",
                           "guides/box-ai/ai-models/openai-gpt-5-1-model-card",
                           "guides/box-ai/ai-models/openai-gpt-5-model-card",
+<<<<<<< HEAD
+=======
+                          "guides/box-ai/ai-models/openai-gpt-o3-model-card",
+>>>>>>> 09828d98 (migrates english version delta changes)
                           "guides/box-ai/ai-models/openai-gpt-5-mini-model-card",
                           "guides/box-ai/ai-models/azure-openai-gpt-4-1-model-card",
                           "guides/box-ai/ai-models/azure-openai-gpt-4-1-mini-model-card",
                           "guides/box-ai/ai-models/azure-openai-gpt-4o-model-card",
                           "guides/box-ai/ai-models/azure-openai-gpt-4o-mini-model-card",
                           "guides/box-ai/ai-models/azure-text-embedding-ada-002-model-card",
+                          "guides/box-ai/ai-models/google-gemini-3-pro-model-card",
+                          "guides/box-ai/ai-models/google-gemini-2-5-flash-model-card",
                           "guides/box-ai/ai-models/google-gemini-2-5-pro-model-card",
                           "guides/box-ai/ai-models/google-gemini-2-5-flash-model-card",
                           "guides/box-ai/ai-models/google-gemini-2-0-flash-001-model-card",
+<<<<<<< HEAD
                           "guides/box-ai/ai-models/google-gemini-2-0-flash-lite-preview-02-05",
+=======
+>>>>>>> 09828d98 (migrates english version delta changes)
                           "guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card",
                           "guides/box-ai/ai-models/aws-claude-4-5-haiku-model-card",
                           "guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card",
@@ -2786,16 +2795,25 @@
                           "ja/guides/box-ai/ai-models/index",
                           "ja/guides/box-ai/ai-models/openai-gpt-5-1-model-card",
                           "ja/guides/box-ai/ai-models/openai-gpt-5-model-card",
+<<<<<<< HEAD
+=======
+                          "ja/guides/box-ai/ai-models/openai-gpt-o3-model-card",
+>>>>>>> 09828d98 (migrates english version delta changes)
                           "ja/guides/box-ai/ai-models/openai-gpt-5-mini-model-card",
                           "ja/guides/box-ai/ai-models/azure-openai-gpt-4-1-model-card",
                           "ja/guides/box-ai/ai-models/azure-openai-gpt-4-1-mini-model-card",
                           "ja/guides/box-ai/ai-models/azure-openai-gpt-4o-model-card",
                           "ja/guides/box-ai/ai-models/azure-openai-gpt-4o-mini-model-card",
                           "ja/guides/box-ai/ai-models/azure-text-embedding-ada-002-model-card",
+                          "ja/guides/box-ai/ai-models/google-gemini-2-5-flash-model-card",
+                          "ja/guides/box-ai/ai-models/google-gemini-3-pro-model-card",
                           "ja/guides/box-ai/ai-models/google-gemini-2-5-pro-model-card",
                           "ja/guides/box-ai/ai-models/google-gemini-2-5-flash-model-card",
                           "ja/guides/box-ai/ai-models/google-gemini-2-0-flash-001-model-card",
+<<<<<<< HEAD
                           "ja/guides/box-ai/ai-models/google-gemini-2-0-flash-lite-preview-02-05",
+=======
+>>>>>>> 09828d98 (migrates english version delta changes)
                           "ja/guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card",
                           "ja/guides/box-ai/ai-models/aws-claude-4-5-haiku-model-card",
                           "ja/guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card",
