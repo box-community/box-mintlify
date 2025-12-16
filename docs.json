@@ -988,7 +988,7 @@
             ]
           },
           {
-            "tab": "API Reference",
+            "tab": "API reference",
             "groups": [
               {
                 "group": " ",
@@ -5449,14 +5449,14 @@
   },
   "contextual": {
     "options": [
-      "copy",
-      "view",
+      "cursor",
+      "vscode",
+      "mcp",
       "chatgpt",
       "claude",
       "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "copy",
+      "view"
     ]
   },
   "footer": {

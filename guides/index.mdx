@@ -60,7 +60,41 @@ import {HideElements} from "/snippets/HideElements.jsx";
     </Card>
   </Columns>
 
-  <h2 className="mt-12 text-2xl text-black dark:text-white md:text-3xl lg:text-4xl font-bold mb-4 text-center">Developer tools</h2>
+  <h2 className="mt-12 text-2xl text-black dark:text-white md:text-3xl lg:text-4xl font-bold mb-4 text-center homepage_h2">Get started</h2>
+  <CardGroup cols={3}>
+    <Card
+      title="Explore user types"
+      href="/platform/user-types/"
+      icon="users"
+    />
+    <Card
+      title="Understand application types"
+      href="/guides/applications/app-types/select/"
+      icon="puzzle"
+    />
+    <Card
+      title="Learn about authentication methods"
+      href="/guides/authentication/select/"
+      icon="fingerprint"
+    />
+    <Card
+      title="Authorize an application"
+      href="/guides/authorization/"
+      icon="shield-check"
+    />
+    <Card
+      title="Upload files to Box"
+      href="/guides/authorization/"
+      icon="cloud-arrow-up"
+    />
+    <Card
+      title="Download files from Box"
+      href="/guides/authorization/"
+      icon="download"
+    />
+  </CardGroup>
+
+  <h2 className="mt-12 text-2xl text-black dark:text-white md:text-3xl lg:text-4xl font-bold mb-4 text-center homepage_h2">Explore tools</h2>
   <CardGroup cols={3}>
     <Card
       title="Box SDKs and tools"
@@ -82,31 +116,6 @@ import {HideElements} from "/snippets/HideElements.jsx";
       icon="sparkles"
     >
       Embed Box UI Elements to custom apps.
-    </Card>
-  </CardGroup>
-
-  <h2 className="mt-12 text-2xl text-black dark:text-white md:text-3xl lg:text-4xl font-bold mb-4 text-center">Additional resources</h2>
-  <CardGroup cols={3}>
-    <Card
-      title="Blog"
-      href="https://blog.box.com/developer"
-      icon="globe"
-    >
-      Read technical deep dives and follow tutorials.
-    </Card>
-    <Card
-      title="Videos"
-      href="https://www.youtube.com/playlist?list=PLCSEWOlbcUyIjaK2hCZMk6rSR1jg4r_4H"
-      icon="image"
-    >
-      Learn from videos and short demos.
-    </Card>
-    <Card
-      title="Community"
-      href="https://community.box.com/box-platform-5"
-      icon="users"
-    >
-      Ask questions and interact with Box developer champions.
     </Card>
   </CardGroup>
 </div>
