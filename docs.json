@@ -5439,14 +5439,14 @@
     "links": [
       {
         "type": "button",
-        "label": "My Platform apps",
-        "href": "https://account.box.com/developers/console"
+        "label": "Sign up",
+        "href": "https://account.box.com/signup/developer#ty9l3"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Sign up",
-      "href": "https://account.box.com/signup/developer#ty9l3"
+      "label": "My Platform apps",
+      "href": "https://account.box.com/developers/console"
     }
   },
   "contextual": {
