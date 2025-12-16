@@ -15,8 +15,10 @@ export const HideElements = () => {
           margin-bottom: 0 !important;
         }
         
-        #content-container {
-          padding: 0 !important;
+        @media (min-width: 1030px) {
+          #content-container {
+            padding: 0 !important;
+          }
         }
       `}
     </style>
