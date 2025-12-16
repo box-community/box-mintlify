@@ -5463,6 +5463,12 @@
       "view"
     ]
   },
+  "redirects": [
+    {
+      "source": "/guides/extract-metadata",
+      "destination": "/guides/box-ai/ai-tutorials/extract-metadata-structured"
+    }
+  ],
   "footer": {
     "socials": {
       "x": "https://x.com/box",
