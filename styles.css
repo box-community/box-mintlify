@@ -265,3 +265,7 @@ nav ul #topbar-cta-button a span {
 .homepage_h2 {
   font-size: 28px !important;
 }
+
+.chat-assistant-floating-input {
+  z-index: 20 !important;
+}
