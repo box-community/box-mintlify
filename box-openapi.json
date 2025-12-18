@@ -2,19 +2,19 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Box Platform API",
-    "description": "[Box Platform](https://box.dev) provides functionality to provide access to content stored within [Box](https://box.com). It provides endpoints for basic manipulation of files and folders, management of users within an enterprise, as well as more complex topics such as legal holds and retention policies.",
+    "description": "[Box Platform](https://developer.box.com) provides functionality to provide access to content stored within [Box](https://box.com). It provides endpoints for basic manipulation of files and folders, management of users within an enterprise, as well as more complex topics such as legal holds and retention policies.",
     "termsOfService": "https://cloud.app.box.com/s/rmwxu64h1ipr41u49w3bbuvbsa29wku9",
     "contact": {
       "name": "Box, Inc",
-      "url": "https://box.dev",
+      "url": "https://developer.box.com",
       "email": "devrel@box.com"
     },
     "license": {
       "name": "Apache-2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
     },
     "version": "2024.0",
-    "x-box-commit-hash": "2e9c861c73"
+    "x-box-commit-hash": "770a648384"
   },
   "servers": [
     {
@@ -127,6 +127,11 @@
             "source": "curl -i -X GET \"https://account.box.com/api/oauth2/authorize?response_type=code&client_id=ly1nj6n11vionaie65emwzk575hnnmrk&redirect_uri=http://example.com/auth/callback\""
           },
           {
+            "lang": "dotnet",
+            "label": "Authorize user",
+            "source": "using Box.Sdk.Gen;\n\nvar config = new OAuthConfig(clientId: \"YOUR_CLIENT_ID\", clientSecret: \"YOUR_CLIENT_SECRET\");\nvar auth = new BoxOAuth(config: config);\n\n// the URL to redirect the user to\nvar authorizeUrl = auth.GetAuthorizeUrl();"
+          },
+          {
             "lang": "swift",
             "label": "Authorize user",
             "source": "do {\n    // Initialize configuration with required clientId and clientSecret\n    let config = OAuthConfig(clientId: \"<<YOUR CLIENT ID HERE>>\", clientSecret: \"<<YOUR CLIENT SECRET HERE>>\")\n    // Initialize BoxOAuth with configuration\n    let oauth = BoxOAuth(config: config)\n    // Run login flow which opens a secure web view,\n    // where users enter their login credentials to obtain an authorization code,\n    // which is then exchanged for an access token.\n    try await oauth.runLoginFlow(options: .init(), context: self)\n    // Initialize BoxClient with already authorized OAuth\n    let client = BoxClient(auth: oauth)\n\n    // Use client to make API calls\n    let folder = try await client.folders.getFolderById(folderId: \"<<YOUR_FOLDER_ID>>\")\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"
@@ -145,11 +150,6 @@
             "lang": "python",
             "label": "Authorize user",
             "source": "from box_sdk_gen import BoxOAuth, OAuthConfig\n\nauth = BoxOAuth(\n    OAuthConfig(client_id=\"YOUR_CLIENT_ID\", client_secret=\"YOUR_CLIENT_SECRET\")\n)\nauth_url = auth.get_authorize_url()"
-          },
-          {
-            "lang": "dotnet",
-            "label": "Authorize user",
-            "source": "using Box.Sdk.Gen;\n\nvar config = new OAuthConfig(clientId: \"YOUR_CLIENT_ID\", clientSecret: \"YOUR_CLIENT_SECRET\");\nvar auth = new BoxOAuth(config: config);\n\n// the URL to redirect the user to\nvar authorizeUrl = auth.GetAuthorizeUrl();"
           }
         ]
       }
@@ -218,6 +218,11 @@
             "source": "curl -i -X POST \"https://api.box.com/oauth2/token\" \\\n     -H \"content-type: application/x-www-form-urlencoded\" \\\n     -d \"client_id=[CLIENT_ID]\" \\\n     -d \"client_secret=[CLIENT_SECRET]\" \\\n     -d \"code=[CODE]\" \\\n     -d \"grant_type=authorization_code\""
           },
           {
+            "lang": "dotnet",
+            "label": "Request access token",
+            "source": "await auth.RetrieveTokenAsync();"
+          },
+          {
             "lang": "swift",
             "label": "Request access token",
             "source": "try await auth.retrieveToken();"
@@ -236,11 +241,6 @@
             "lang": "python",
             "label": "Request access token",
             "source": "auth.retrieve_token()"
-          },
-          {
-            "lang": "dotnet",
-            "label": "Request access token",
-            "source": "await auth.RetrieveTokenAsync();"
           }
         ]
       }
@@ -310,6 +310,11 @@
             "source": "curl -i -X POST \"https://api.box.com/oauth2/token\" \\\n     -H \"content-type: application/x-www-form-urlencoded\" \\\n     -d \"client_id=[CLIENT_ID]\" \\\n     -d \"client_secret=[CLIENT_SECRET]\" \\\n     -d \"refresh_token=[REFRESH_TOKEN]\" \\\n     -d \"grant_type=refresh_token\""
           },
           {
+            "lang": "dotnet",
+            "label": "Refresh access token",
+            "source": "await auth.RefreshTokenAsync();"
+          },
+          {
             "lang": "swift",
             "label": "Refresh access token",
             "source": "try await auth.refreshToken();"
@@ -328,11 +333,6 @@
             "lang": "python",
             "label": "Refresh access token",
             "source": "auth.refresh_token()"
-          },
-          {
-            "lang": "dotnet",
-            "label": "Refresh access token",
-            "source": "await auth.RefreshTokenAsync();"
           }
         ]
       }
@@ -394,6 +394,11 @@
             "source": "curl -i -X POST \"https://api.box.com/oauth2/revoke\" \\\n     -H \"content-type: application/x-www-form-urlencoded\" \\\n     -d \"client_id=[CLIENT_ID]\" \\\n     -d \"client_secret=[CLIENT_SECRET]\" \\\n     -d \"token=[ACCESS_TOKEN]\""
           },
           {
+            "lang": "dotnet",
+            "label": "Revoke access token",
+            "source": "await auth.RevokeTokenAsync();"
+          },
+          {
             "lang": "swift",
             "label": "Revoke access token",
             "source": "try await auth.revokeToken()"
@@ -412,11 +417,6 @@
             "lang": "python",
             "label": "Revoke access token",
             "source": "client.auth.revoke_token()"
-          },
-          {
-            "lang": "dotnet",
-            "label": "Revoke access token",
-            "source": "await auth.RevokeTokenAsync();"
           }
         ]
       }
@@ -797,7 +797,7 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "description": "An optional different name for the file. This can be used to\nrename the file.\n\nFile names must be unique within their parent folder. The name check is case-insensitive, so a file \nnamed `New File` cannot be created in a parent folder that already contains a folder named `new file`.",
+                    "description": "An optional different name for the file. This can be used to\nrename the file.\n\nFile names must be unique within their parent folder. The name check is case-insensitive, so a file\nnamed `New File` cannot be created in a parent folder that already contains a folder named `new file`.",
                     "type": "string",
                     "example": "NewFile.txt"
                   },
@@ -932,7 +932,7 @@
                     }
                   },
                   "collections": {
-                    "description": "An array of collections to make this file\na member of. Currently\nwe only support the `favorites` collection.\n\nTo get the ID for a collection, use the\n[List all collections][1] endpoint.\n\nPassing an empty array `[]` or `null` will remove\nthe file from all collections.\n\n[1]: e://get-collections",
+                    "description": "An array of collections to make this file\na member of. Currently\nwe only support the `favorites` collection.\n\nTo get the ID for a collection, use the\n[List all collections][1] endpoint.\n\nPassing an empty array `[]` or `null` will remove\nthe file from all collections.\n\n[1]: https://developer.box.com/reference/get-collections",
                     "type": "array",
                     "items": {
                       "title": "Reference",
@@ -3503,7 +3503,7 @@
       "get": {
         "operationId": "get_files_id_trash",
         "summary": "Get trashed file",
-        "description": "Retrieves a file that has been moved to the trash.\n\nPlease note that only if the file itself has been moved to the\ntrash can it be retrieved with this API call. If instead one of\nits parent folders was moved to the trash, only that folder\ncan be inspected using the\n[`GET /folders/:id/trash`](https://developer.box.com/reference/get_folders_id_trash) API.\n\nTo list all items that have been moved to the trash, please\nuse the [`GET /folders/trash/items`](https://developer.box.com/reference/get-folders-trash-items/)\nAPI.",
+        "description": "Retrieves a file that has been moved to the trash.\n\nPlease note that only if the file itself has been moved to the\ntrash can it be retrieved with this API call. If instead one of\nits parent folders was moved to the trash, only that folder\ncan be inspected using the\n[`GET /folders/:id/trash`](https://developer.box.com/reference/get-folders-id-trash) API.\n\nTo list all items that have been moved to the trash, please\nuse the [`GET /folders/trash/items`](https://developer.box.com/reference/get-folders-trash-items/)\nAPI.",
         "parameters": [
           {
             "name": "file_id",
@@ -3546,7 +3546,7 @@
             }
           },
           "404": {
-            "description": "Returns an error if the file can not be found directly\nin the trash.\n\nPlease note that a `HTTP 404` is also returned if any of\nthe file's parent folders have been moved to the trash.\n\nIn that case, only that parent folder can be inspected using\nthe [`GET /folders/:id/trash`](https://developer.box.com/reference/get_folders_id_trash) API.",
+            "description": "Returns an error if the file can not be found directly\nin the trash.\n\nPlease note that a `HTTP 404` is also returned if any of\nthe file's parent folders have been moved to the trash.\n\nIn that case, only that parent folder can be inspected using\nthe [`GET /folders/:id/trash`](https://developer.box.com/reference/get-folders-id-trash) API.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4416,7 +4416,7 @@
                 "type": "object",
                 "properties": {
                   "Box__Security__Classification__Key": {
-                    "description": "The name of the classification to apply to this file.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema)\nwhich lists all available classification keys.",
+                    "description": "The name of the classification to apply to this file.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get-metadata-templates-enterprise-securityClassification-6VMVochwUWo-schema)\nwhich lists all available classification keys.",
                     "type": "string",
                     "example": "Sensitive"
                   }
@@ -4522,7 +4522,7 @@
                       ]
                     },
                     "path": {
-                      "description": "Defines classifications \navailable in the enterprise.",
+                      "description": "Defines classifications\navailable in the enterprise.",
                       "type": "string",
                       "example": "/Box__Security__Classification__Key",
                       "enum": [
@@ -4530,7 +4530,7 @@
                       ]
                     },
                     "value": {
-                      "description": "The name of the classification to apply to this file.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema)\nwhich lists all available classification keys.",
+                      "description": "The name of the classification to apply to this file.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get-metadata-templates-enterprise-securityClassification-6VMVochwUWo-schema)\nwhich lists all available classification keys.",
                       "type": "string",
                       "example": "Sensitive"
                     }
@@ -6366,7 +6366,7 @@
       "get": {
         "operationId": "get_folders_id",
         "summary": "Get folder information",
-        "description": "Retrieves details for a folder, including the first 100 entries\nin the folder.\n\nPassing `sort`, `direction`, `offset`, and `limit`\nparameters in query allows you to manage the\nlist of returned\n[folder items](https://developer.box.com/reference/folder--full#param-item-collection).\n\nTo fetch more items within the folder, use the\n[Get items in a folder](https://developer.box.com/reference/get-folders-id-items) endpoint.",
+        "description": "Retrieves details for a folder, including the first 100 entries\nin the folder.\n\nPassing `sort`, `direction`, `offset`, and `limit`\nparameters in query allows you to manage the\nlist of returned\n[folder items](https://developer.box.com/reference/resources/folder--full#param-item-collection).\n\nTo fetch more items within the folder, use the\n[Get items in a folder](https://developer.box.com/reference/get-folders-id-items) endpoint.",
         "parameters": [
           {
             "name": "folder_id",
@@ -6774,7 +6774,7 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "description": "The optional new name for this folder.\n\nThe following restrictions to folder names apply: names containing\nnon-printable ASCII characters, forward and backward slashes\n(`/`, `\\`), names with trailing spaces, and names `.` and `..` are\nnot allowed.\n\nFolder names must be unique within their parent folder. The name check is case-insensitive, \nso a folder named `New Folder` cannot be created in a parent folder that already contains \na folder named `new folder`.",
+                    "description": "The optional new name for this folder.\n\nThe following restrictions to folder names apply: names containing\nnon-printable ASCII characters, forward and backward slashes\n(`/`, `\\`), names with trailing spaces, and names `.` and `..` are\nnot allowed.\n\nFolder names must be unique within their parent folder. The name check is case-insensitive,\nso a folder named `New Folder` cannot be created in a parent folder that already contains\na folder named `new folder`.",
                     "type": "string",
                     "example": "New Folder"
                   },
@@ -6917,7 +6917,7 @@
                     "example": true
                   },
                   "collections": {
-                    "description": "An array of collections to make this folder\na member of. Currently\nwe only support the `favorites` collection.\n\nTo get the ID for a collection, use the\n[List all collections][1] endpoint.\n\nPassing an empty array `[]` or `null` will remove\nthe folder from all collections.\n\n[1]: e://get-collections",
+                    "description": "An array of collections to make this folder\na member of. Currently\nwe only support the `favorites` collection.\n\nTo get the ID for a collection, use the\n[List all collections][1] endpoint.\n\nPassing an empty array `[]` or `null` will remove\nthe folder from all collections.\n\n[1]: https://developer.box.com/reference/get-collections",
                     "type": "array",
                     "items": {
                       "title": "Reference",
@@ -8046,7 +8046,7 @@
       "get": {
         "operationId": "get_folders_id_trash",
         "summary": "Get trashed folder",
-        "description": "Retrieves a folder that has been moved to the trash.\n\nPlease note that only if the folder itself has been moved to the\ntrash can it be retrieved with this API call. If instead one of\nits parent folders was moved to the trash, only that folder\ncan be inspected using the\n[`GET /folders/:id/trash`](https://developer.box.com/reference/get_folders_id_trash) API.\n\nTo list all items that have been moved to the trash, please\nuse the [`GET /folders/trash/items`](https://developer.box.com/reference/get-folders-trash-items/)\nAPI.",
+        "description": "Retrieves a folder that has been moved to the trash.\n\nPlease note that only if the folder itself has been moved to the\ntrash can it be retrieved with this API call. If instead one of\nits parent folders was moved to the trash, only that folder\ncan be inspected using the\n[`GET /folders/:id/trash`](https://developer.box.com/reference/get-folders-id-trash) API.\n\nTo list all items that have been moved to the trash, please\nuse the [`GET /folders/trash/items`](https://developer.box.com/reference/get-folders-trash-items/)\nAPI.",
         "parameters": [
           {
             "name": "folder_id",
@@ -8090,7 +8090,7 @@
             }
           },
           "404": {
-            "description": "Returns an error if the folder can not be found directly\nin the trash.\n\nPlease note that a `HTTP 404` is also returned if any of\nthe folder's parent folders have been moved to the trash.\n\nIn that case, only that parent folder can be inspected using\nthe [`GET /folders/:id/trash`](https://developer.box.com/reference/get_folders_id_trash) API.",
+            "description": "Returns an error if the folder can not be found directly\nin the trash.\n\nPlease note that a `HTTP 404` is also returned if any of\nthe folder's parent folders have been moved to the trash.\n\nIn that case, only that parent folder can be inspected using\nthe [`GET /folders/:id/trash`](https://developer.box.com/reference/get-folders-id-trash) API.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8434,7 +8434,7 @@
                 "type": "object",
                 "properties": {
                   "Box__Security__Classification__Key": {
-                    "description": "The name of the classification to apply to this folder.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema)\nwhich lists all available classification keys.",
+                    "description": "The name of the classification to apply to this folder.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get-metadata-templates-enterprise-securityClassification-6VMVochwUWo-schema)\nwhich lists all available classification keys.",
                     "type": "string",
                     "example": "Sensitive"
                   }
@@ -8541,7 +8541,7 @@
                       ]
                     },
                     "path": {
-                      "description": "Defines classifications \navailable in the enterprise.",
+                      "description": "Defines classifications\navailable in the enterprise.",
                       "type": "string",
                       "example": "/Box__Security__Classification__Key",
                       "enum": [
@@ -8549,7 +8549,7 @@
                       ]
                     },
                     "value": {
-                      "description": "The name of the classification to apply to this folder.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema)\nwhich lists all available classification keys.",
+                      "description": "The name of the classification to apply to this folder.\n\nTo list the available classifications in an enterprise,\nuse the classification API to retrieve the\n[classification template](https://developer.box.com/reference/get-metadata-templates-enterprise-securityClassification-6VMVochwUWo-schema)\nwhich lists all available classification keys.",
                       "type": "string",
                       "example": "Sensitive"
                     }
@@ -11777,7 +11777,7 @@
                     ]
                   },
                   "templateKey": {
-                    "description": "The key of the targeted metadata template. This template will\nneed to already have an instance applied to the targeted folder.\n\nIn many cases the template key is automatically derived\nof its display name, for example `Contract Template` would\nbecome `contractTemplate`. In some cases the creator of the\ntemplate will have provided its own template key.\n\nPlease [list the templates for an enterprise][list], or\nget all instances on a [file][file] or [folder][folder]\nto inspect a template's key.\n\n[list]: e://get-metadata-templates-enterprise\n[file]: e://get-files-id-metadata\n[folder]: e://get-folders-id-metadata",
+                    "description": "The key of the targeted metadata template. This template will\nneed to already have an instance applied to the targeted folder.\n\nIn many cases the template key is automatically derived\nof its display name, for example `Contract Template` would\nbecome `contractTemplate`. In some cases the creator of the\ntemplate will have provided its own template key.\n\nPlease [list the templates for an enterprise][list], or\nget all instances on a [file][file] or [folder][folder]\nto inspect a template's key.\n\n[list]: https://developer.box.com/reference/get-metadata-templates-enterprise\n[file]: https://developer.box.com/reference/get-files-id-metadata\n[folder]: https://developer.box.com/reference/get-folders-id-metadata",
                     "type": "string",
                     "example": "productInfo"
                   }
@@ -13560,7 +13560,7 @@
           {
             "name": "include_recent_shared_links",
             "in": "query",
-            "description": "Defines whether the search results should include any items\nthat the user recently accessed through a shared link.\n\nWhen this parameter has been set to true,\nthe format of the response of this API changes to return\na list of [Search Results with\nShared Links](https://developer.box.com/reference/search_results_with_shared_links).",
+            "description": "Defines whether the search results should include any items\nthat the user recently accessed through a shared link.\n\nWhen this parameter has been set to true,\nthe format of the response of this API changes to return\na list of [Search Results with\nShared Links](https://developer.box.com/reference/resources/search-results-with-shared-links).",
             "required": false,
             "schema": {
               "type": "boolean",
@@ -25281,7 +25281,7 @@
       "get": {
         "operationId": "get_file_version_retentions",
         "summary": "List file version retentions",
-        "description": "Retrieves all file version retentions for the given enterprise.\n\n**Note**:\nFile retention API is now **deprecated**. \nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
+        "description": "Retrieves all file version retentions for the given enterprise.\n\n**Note**:\nFile retention API is now **deprecated**.\nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
         "parameters": [
           {
             "name": "file_id",
@@ -25519,7 +25519,7 @@
       "get": {
         "operationId": "get_file_version_retentions_id",
         "summary": "Get retention on file",
-        "description": "Returns information about a file version retention.\n\n**Note**:\nFile retention API is now **deprecated**. \nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
+        "description": "Returns information about a file version retention.\n\n**Note**:\nFile retention API is now **deprecated**.\nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
         "parameters": [
           {
             "name": "file_version_retention_id",
@@ -30019,7 +30019,7 @@
       "get": {
         "operationId": "get_zip_downloads_id_content",
         "summary": "Download zip archive",
-        "description": "Returns the contents of a `zip` archive in binary format. This URL does not\nrequire any form of authentication and could be used in a user's browser to\ndownload the archive to a user's device.\n\nBy default, this URL is only valid for a few seconds from the creation of\nthe request for this archive. Once a download has started it can not be\nstopped and resumed, instead a new request for a zip archive would need to\nbe created.\n\nThe URL of this endpoint should not be considered as fixed. Instead, use\nthe [Create zip download](https://developer.box.com/reference/post_zip_downloads) API to request to create a\n`zip` archive, and then follow the `download_url` field in the response to\nthis endpoint.",
+        "description": "Returns the contents of a `zip` archive in binary format. This URL does not\nrequire any form of authentication and could be used in a user's browser to\ndownload the archive to a user's device.\n\nBy default, this URL is only valid for a few seconds from the creation of\nthe request for this archive. Once a download has started it can not be\nstopped and resumed, instead a new request for a zip archive would need to\nbe created.\n\nThe URL of this endpoint should not be considered as fixed. Instead, use\nthe [Create zip download](https://developer.box.com/reference/post-zip-downloads) API to request to create a\n`zip` archive, and then follow the `download_url` field in the response to\nthis endpoint.",
         "parameters": [
           {
             "name": "zip_download_id",
@@ -30135,7 +30135,7 @@
       "get": {
         "operationId": "get_zip_downloads_id_status",
         "summary": "Get zip download status",
-        "description": "Returns the download status of a `zip` archive, allowing an application to\ninspect the progress of the download as well as the number of items that\nmight have been skipped.\n\nThis endpoint can only be accessed once the download has started.\nSubsequently this endpoint is valid for 12 hours from the start of the\ndownload.\n\nThe URL of this endpoint should not be considered as fixed. Instead, use\nthe [Create zip download](https://developer.box.com/reference/post_zip_downloads) API to request to create a\n`zip` archive, and then follow the `status_url` field in the response to\nthis endpoint.",
+        "description": "Returns the download status of a `zip` archive, allowing an application to\ninspect the progress of the download as well as the number of items that\nmight have been skipped.\n\nThis endpoint can only be accessed once the download has started.\nSubsequently this endpoint is valid for 12 hours from the start of the\ndownload.\n\nThe URL of this endpoint should not be considered as fixed. Instead, use\nthe [Create zip download](https://developer.box.com/reference/post-zip-downloads) API to request to create a\n`zip` archive, and then follow the `status_url` field in the response to\nthis endpoint.",
         "parameters": [
           {
             "name": "zip_download_id",
@@ -32429,7 +32429,7 @@
       "post": {
         "operationId": "post_ai_extract_structured",
         "summary": "Extract metadata (structured)",
-        "description": "Sends an AI request to supported Large Language Models (LLMs) and returns extracted metadata as a set of key-value pairs.\n\nTo define the extraction structure, provide either a metadata template or a list of fields. To learn more about creating templates, see [Creating metadata templates in the Admin Console](https://support.box.com/hc/en-us/articles/360044194033-Customizing-Metadata-Templates)\nor use the [metadata template API](https://developer.box.com/guides/metadata/templates/create). \n\nThis endpoint also supports [Enhanced Extract Agent](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured/#enhanced-extract-agent).\n\nFor information about supported file formats and languages, see the [Extract metadata from file (structured)](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured) API guide.",
+        "description": "Sends an AI request to supported Large Language Models (LLMs) and returns extracted metadata as a set of key-value pairs.\n\nTo define the extraction structure, provide either a metadata template or a list of fields. To learn more about creating templates, see [Creating metadata templates in the Admin Console](https://support.box.com/hc/en-us/articles/360044194033-Customizing-Metadata-Templates)\nor use the [metadata template API](https://developer.box.com/guides/metadata/templates/create).\n\nThis endpoint also supports [Enhanced Extract Agent](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured#enhanced-extract-agent).\n\nFor information about supported file formats and languages, see the [Extract metadata from file (structured)](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured) API guide.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -33120,7 +33120,34 @@
         "tags": [
           "Metadata taxonomies"
         ],
-        "x-box-requires-admin": true
+        "x-box-requires-admin": true,
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Create metadata taxonomy",
+            "source": "await client.MetadataTaxonomies.CreateMetadataTaxonomyAsync(requestBody: new CreateMetadataTaxonomyRequestBody(displayName: displayName, namespaceParam: namespaceParam) { Key = taxonomyKey });"
+          },
+          {
+            "lang": "swift",
+            "label": "Create metadata taxonomy",
+            "source": "try await client.metadataTaxonomies.createMetadataTaxonomy(requestBody: CreateMetadataTaxonomyRequestBody(displayName: displayName, key: taxonomyKey, namespace: namespace))"
+          },
+          {
+            "lang": "java",
+            "label": "Create metadata taxonomy",
+            "source": "client.getMetadataTaxonomies().createMetadataTaxonomy(new CreateMetadataTaxonomyRequestBody.Builder(displayName, namespace).key(taxonomyKey).build())"
+          },
+          {
+            "lang": "node",
+            "label": "Create metadata taxonomy",
+            "source": "await client.metadataTaxonomies.createMetadataTaxonomy({\n  displayName: displayName,\n  key: taxonomyKey,\n  namespace: namespace,\n} satisfies CreateMetadataTaxonomyRequestBody);"
+          },
+          {
+            "lang": "python",
+            "label": "Create metadata taxonomy",
+            "source": "client.metadata_taxonomies.create_metadata_taxonomy(\n    display_name, namespace, key=taxonomy_key\n)"
+          }
+        ]
       }
     },
     "/metadata_taxonomies/{namespace}": {
@@ -33197,6 +33224,33 @@
         "x-box-tag": "metadata_taxonomies",
         "tags": [
           "Metadata taxonomies"
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Get metadata taxonomies for namespace",
+            "source": "await client.MetadataTaxonomies.GetMetadataTaxonomiesAsync(namespaceParam: namespaceParam);"
+          },
+          {
+            "lang": "swift",
+            "label": "Get metadata taxonomies for namespace",
+            "source": "try await client.metadataTaxonomies.getMetadataTaxonomies(namespace: namespace)"
+          },
+          {
+            "lang": "java",
+            "label": "Get metadata taxonomies for namespace",
+            "source": "client.getMetadataTaxonomies().getMetadataTaxonomies(namespace)"
+          },
+          {
+            "lang": "node",
+            "label": "Get metadata taxonomies for namespace",
+            "source": "await client.metadataTaxonomies.getMetadataTaxonomies(namespace);"
+          },
+          {
+            "lang": "python",
+            "label": "Get metadata taxonomies for namespace",
+            "source": "client.metadata_taxonomies.get_metadata_taxonomies(namespace)"
+          }
         ]
       }
     },
@@ -33272,6 +33326,33 @@
         "x-box-tag": "metadata_taxonomies",
         "tags": [
           "Metadata taxonomies"
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Get metadata taxonomy by taxonomy key",
+            "source": "await client.MetadataTaxonomies.GetMetadataTaxonomyByKeyAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey);"
+          },
+          {
+            "lang": "swift",
+            "label": "Get metadata taxonomy by taxonomy key",
+            "source": "try await client.metadataTaxonomies.getMetadataTaxonomyByKey(namespace: namespace, taxonomyKey: taxonomyKey)"
+          },
+          {
+            "lang": "java",
+            "label": "Get metadata taxonomy by taxonomy key",
+            "source": "client.getMetadataTaxonomies().getMetadataTaxonomyByKey(namespace, taxonomyKey)"
+          },
+          {
+            "lang": "node",
+            "label": "Get metadata taxonomy by taxonomy key",
+            "source": "await client.metadataTaxonomies.getMetadataTaxonomyByKey(\n  namespace,\n  taxonomyKey,\n);"
+          },
+          {
+            "lang": "python",
+            "label": "Get metadata taxonomy by taxonomy key",
+            "source": "client.metadata_taxonomies.get_metadata_taxonomy_by_key(namespace, taxonomy_key)"
+          }
         ]
       },
       "patch": {
@@ -33366,7 +33447,34 @@
         "tags": [
           "Metadata taxonomies"
         ],
-        "x-box-requires-admin": true
+        "x-box-requires-admin": true,
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Update metadata taxonomy",
+            "source": "await client.MetadataTaxonomies.UpdateMetadataTaxonomyAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey, requestBody: new UpdateMetadataTaxonomyRequestBody(displayName: updatedDisplayName));"
+          },
+          {
+            "lang": "swift",
+            "label": "Update metadata taxonomy",
+            "source": "try await client.metadataTaxonomies.updateMetadataTaxonomy(namespace: namespace, taxonomyKey: taxonomyKey, requestBody: UpdateMetadataTaxonomyRequestBody(displayName: updatedDisplayName))"
+          },
+          {
+            "lang": "java",
+            "label": "Update metadata taxonomy",
+            "source": "client.getMetadataTaxonomies().updateMetadataTaxonomy(namespace, taxonomyKey, new UpdateMetadataTaxonomyRequestBody(updatedDisplayName))"
+          },
+          {
+            "lang": "node",
+            "label": "Update metadata taxonomy",
+            "source": "await client.metadataTaxonomies.updateMetadataTaxonomy(namespace, taxonomyKey, {\n  displayName: updatedDisplayName,\n} satisfies UpdateMetadataTaxonomyRequestBody);"
+          },
+          {
+            "lang": "python",
+            "label": "Update metadata taxonomy",
+            "source": "client.metadata_taxonomies.update_metadata_taxonomy(\n    namespace, taxonomy_key, updated_display_name\n)"
+          }
+        ]
       },
       "delete": {
         "operationId": "delete_metadata_taxonomies_id_id",
@@ -33443,7 +33551,34 @@
         "tags": [
           "Metadata taxonomies"
         ],
-        "x-box-requires-admin": true
+        "x-box-requires-admin": true,
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Remove metadata taxonomy",
+            "source": "await client.MetadataTaxonomies.DeleteMetadataTaxonomyAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey);"
+          },
+          {
+            "lang": "swift",
+            "label": "Remove metadata taxonomy",
+            "source": "try await client.metadataTaxonomies.deleteMetadataTaxonomy(namespace: namespace, taxonomyKey: taxonomyKey)"
+          },
+          {
+            "lang": "java",
+            "label": "Remove metadata taxonomy",
+            "source": "client.getMetadataTaxonomies().deleteMetadataTaxonomy(namespace, taxonomyKey)"
+          },
+          {
+            "lang": "node",
+            "label": "Remove metadata taxonomy",
+            "source": "await client.metadataTaxonomies.deleteMetadataTaxonomy(namespace, taxonomyKey);"
+          },
+          {
+            "lang": "python",
+            "label": "Remove metadata taxonomy",
+            "source": "client.metadata_taxonomies.delete_metadata_taxonomy(namespace, taxonomy_key)"
+          }
+        ]
       }
     },
     "/metadata_taxonomies/{namespace}/{taxonomy_key}/levels": {
@@ -33532,7 +33667,34 @@
         "tags": [
           "Metadata taxonomies"
         ],
-        "x-box-requires-admin": true
+        "x-box-requires-admin": true,
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Create metadata taxonomy levels",
+            "source": "await client.MetadataTaxonomies.CreateMetadataTaxonomyLevelAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey, requestBody: Array.AsReadOnly(new [] {new MetadataTaxonomyLevel() { DisplayName = \"Continent\", Description = \"Continent Level\" },new MetadataTaxonomyLevel() { DisplayName = \"Country\", Description = \"Country Level\" }}));"
+          },
+          {
+            "lang": "swift",
+            "label": "Create metadata taxonomy levels",
+            "source": "try await client.metadataTaxonomies.createMetadataTaxonomyLevel(namespace: namespace, taxonomyKey: taxonomyKey, requestBody: [MetadataTaxonomyLevel(displayName: \"Continent\", description: \"Continent Level\"), MetadataTaxonomyLevel(displayName: \"Country\", description: \"Country Level\")])"
+          },
+          {
+            "lang": "java",
+            "label": "Create metadata taxonomy levels",
+            "source": "client.getMetadataTaxonomies().createMetadataTaxonomyLevel(namespace, taxonomyKey, Arrays.asList(new MetadataTaxonomyLevel.Builder().displayName(\"Continent\").description(\"Continent Level\").build(), new MetadataTaxonomyLevel.Builder().displayName(\"Country\").description(\"Country Level\").build()))"
+          },
+          {
+            "lang": "node",
+            "label": "Create metadata taxonomy levels",
+            "source": "await client.metadataTaxonomies.createMetadataTaxonomyLevel(\n  namespace,\n  taxonomyKey,\n  [\n    {\n      displayName: 'Continent',\n      description: 'Continent Level',\n    } satisfies MetadataTaxonomyLevel,\n    {\n      displayName: 'Country',\n      description: 'Country Level',\n    } satisfies MetadataTaxonomyLevel,\n  ],\n);"
+          },
+          {
+            "lang": "python",
+            "label": "Create metadata taxonomy levels",
+            "source": "client.metadata_taxonomies.create_metadata_taxonomy_level(\n    namespace,\n    taxonomy_key,\n    [\n        MetadataTaxonomyLevel(display_name=\"Continent\", description=\"Continent Level\"),\n        MetadataTaxonomyLevel(display_name=\"Country\", description=\"Country Level\"),\n    ],\n)"
+          }
+        ]
       }
     },
     "/metadata_taxonomies/{namespace}/{taxonomy_key}/levels/{level_index}": {
@@ -33971,6 +34133,33 @@
         "x-box-tag": "metadata_taxonomies",
         "tags": [
           "Metadata taxonomies"
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "List metadata taxonomy nodes",
+            "source": "await client.MetadataTaxonomies.GetMetadataTaxonomyNodesAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey);"
+          },
+          {
+            "lang": "swift",
+            "label": "List metadata taxonomy nodes",
+            "source": "try await client.metadataTaxonomies.getMetadataTaxonomyNodes(namespace: namespace, taxonomyKey: taxonomyKey)"
+          },
+          {
+            "lang": "java",
+            "label": "List metadata taxonomy nodes",
+            "source": "client.getMetadataTaxonomies().getMetadataTaxonomyNodes(namespace, taxonomyKey)"
+          },
+          {
+            "lang": "node",
+            "label": "List metadata taxonomy nodes",
+            "source": "await client.metadataTaxonomies.getMetadataTaxonomyNodes(\n  namespace,\n  taxonomyKey,\n);"
+          },
+          {
+            "lang": "python",
+            "label": "List metadata taxonomy nodes",
+            "source": "client.metadata_taxonomies.get_metadata_taxonomy_nodes(namespace, taxonomy_key)"
+          }
         ]
       },
       "post": {
@@ -34075,7 +34264,34 @@
         "tags": [
           "Metadata taxonomies"
         ],
-        "x-box-requires-admin": true
+        "x-box-requires-admin": true,
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Create metadata taxonomy node",
+            "source": "await client.MetadataTaxonomies.CreateMetadataTaxonomyNodeAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey, requestBody: new CreateMetadataTaxonomyNodeRequestBody(displayName: \"Europe\", level: 1));"
+          },
+          {
+            "lang": "swift",
+            "label": "Create metadata taxonomy node",
+            "source": "try await client.metadataTaxonomies.createMetadataTaxonomyNode(namespace: namespace, taxonomyKey: taxonomyKey, requestBody: CreateMetadataTaxonomyNodeRequestBody(displayName: \"Europe\", level: 1))"
+          },
+          {
+            "lang": "java",
+            "label": "Create metadata taxonomy node",
+            "source": "client.getMetadataTaxonomies().createMetadataTaxonomyNode(namespace, taxonomyKey, new CreateMetadataTaxonomyNodeRequestBody(\"Europe\", 1))"
+          },
+          {
+            "lang": "node",
+            "label": "Create metadata taxonomy node",
+            "source": "await client.metadataTaxonomies.createMetadataTaxonomyNode(\n  namespace,\n  taxonomyKey,\n  {\n    displayName: 'Europe',\n    level: 1,\n  } satisfies CreateMetadataTaxonomyNodeRequestBody,\n);"
+          },
+          {
+            "lang": "python",
+            "label": "Create metadata taxonomy node",
+            "source": "client.metadata_taxonomies.create_metadata_taxonomy_node(\n    namespace, taxonomy_key, \"Europe\", 1\n)"
+          }
+        ]
       }
     },
     "/metadata_taxonomies/{namespace}/{taxonomy_key}/nodes/{node_id}": {
@@ -34160,6 +34376,33 @@
         "x-box-tag": "metadata_taxonomies",
         "tags": [
           "Metadata taxonomies"
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Get metadata taxonomy node by ID",
+            "source": "await client.MetadataTaxonomies.GetMetadataTaxonomyNodeByIdAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey, nodeId: countryNode.Id);"
+          },
+          {
+            "lang": "swift",
+            "label": "Get metadata taxonomy node by ID",
+            "source": "try await client.metadataTaxonomies.getMetadataTaxonomyNodeById(namespace: namespace, taxonomyKey: taxonomyKey, nodeId: countryNode.id)"
+          },
+          {
+            "lang": "java",
+            "label": "Get metadata taxonomy node by ID",
+            "source": "client.getMetadataTaxonomies().getMetadataTaxonomyNodeById(namespace, taxonomyKey, countryNode.getId())"
+          },
+          {
+            "lang": "node",
+            "label": "Get metadata taxonomy node by ID",
+            "source": "await client.metadataTaxonomies.getMetadataTaxonomyNodeById(\n  namespace,\n  taxonomyKey,\n  countryNode.id,\n);"
+          },
+          {
+            "lang": "python",
+            "label": "Get metadata taxonomy node by ID",
+            "source": "client.metadata_taxonomies.get_metadata_taxonomy_node_by_id(\n    namespace, taxonomy_key, country_node.id\n)"
+          }
         ]
       },
       "patch": {
@@ -34260,7 +34503,34 @@
         "tags": [
           "Metadata taxonomies"
         ],
-        "x-box-requires-admin": true
+        "x-box-requires-admin": true,
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Update metadata taxonomy node",
+            "source": "await client.MetadataTaxonomies.UpdateMetadataTaxonomyNodeAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey, nodeId: countryNode.Id, requestBody: new UpdateMetadataTaxonomyNodeRequestBody() { DisplayName = \"Poland UPDATED\" });"
+          },
+          {
+            "lang": "swift",
+            "label": "Update metadata taxonomy node",
+            "source": "try await client.metadataTaxonomies.updateMetadataTaxonomyNode(namespace: namespace, taxonomyKey: taxonomyKey, nodeId: countryNode.id, requestBody: UpdateMetadataTaxonomyNodeRequestBody(displayName: \"Poland UPDATED\"))"
+          },
+          {
+            "lang": "java",
+            "label": "Update metadata taxonomy node",
+            "source": "client.getMetadataTaxonomies().updateMetadataTaxonomyNode(namespace, taxonomyKey, countryNode.getId(), new UpdateMetadataTaxonomyNodeRequestBody.Builder().displayName(\"Poland UPDATED\").build())"
+          },
+          {
+            "lang": "node",
+            "label": "Update metadata taxonomy node",
+            "source": "await client.metadataTaxonomies.updateMetadataTaxonomyNode(\n  namespace,\n  taxonomyKey,\n  countryNode.id,\n  {\n    requestBody: {\n      displayName: 'Poland UPDATED',\n    } satisfies UpdateMetadataTaxonomyNodeRequestBody,\n  } satisfies UpdateMetadataTaxonomyNodeOptionalsInput,\n);"
+          },
+          {
+            "lang": "python",
+            "label": "Update metadata taxonomy node",
+            "source": "client.metadata_taxonomies.update_metadata_taxonomy_node(\n    namespace, taxonomy_key, country_node.id, display_name=\"Poland UPDATED\"\n)"
+          }
+        ]
       },
       "delete": {
         "operationId": "delete_metadata_taxonomies_id_id_nodes_id",
@@ -34347,28 +34617,51 @@
         "tags": [
           "Metadata taxonomies"
         ],
-        "x-box-requires-admin": true
+        "x-box-requires-admin": true,
+        "x-codeSamples": [
+          {
+            "lang": "dotnet",
+            "label": "Remove metadata taxonomy node",
+            "source": "await client.MetadataTaxonomies.DeleteMetadataTaxonomyNodeAsync(namespaceParam: namespaceParam, taxonomyKey: taxonomyKey, nodeId: countryNode.Id);"
+          },
+          {
+            "lang": "swift",
+            "label": "Remove metadata taxonomy node",
+            "source": "try await client.metadataTaxonomies.deleteMetadataTaxonomyNode(namespace: namespace, taxonomyKey: taxonomyKey, nodeId: countryNode.id)"
+          },
+          {
+            "lang": "java",
+            "label": "Remove metadata taxonomy node",
+            "source": "client.getMetadataTaxonomies().deleteMetadataTaxonomyNode(namespace, taxonomyKey, countryNode.getId())"
+          },
+          {
+            "lang": "node",
+            "label": "Remove metadata taxonomy node",
+            "source": "await client.metadataTaxonomies.deleteMetadataTaxonomyNode(\n  namespace,\n  taxonomyKey,\n  countryNode.id,\n);"
+          },
+          {
+            "lang": "python",
+            "label": "Remove metadata taxonomy node",
+            "source": "client.metadata_taxonomies.delete_metadata_taxonomy_node(\n    namespace, taxonomy_key, country_node.id\n)"
+          }
+        ]
       }
     },
-    "/metadata_templates/{scope}/{template_key}/fields/{field_key}/options": {
+    "/metadata_templates/{namespace}/{template_key}/fields/{field_key}/options": {
       "get": {
         "operationId": "get_metadata_templates_id_id_fields_id_options",
         "summary": "List metadata template's options for taxonomy field",
         "description": "Used to retrieve metadata taxonomy nodes which are available for the taxonomy field based \non its configuration and the parameters specified. \nResults are sorted in lexicographic order unless a `query` parameter is passed. \nWith a `query` parameter specified, results are sorted in order of relevance.",
         "parameters": [
           {
-            "name": "scope",
+            "name": "namespace",
             "in": "path",
-            "description": "The scope of the metadata template.",
+            "description": "The namespace of the metadata taxonomy.",
             "required": true,
             "schema": {
-              "type": "string",
-              "enum": [
-                "global",
-                "enterprise"
-              ]
+              "type": "string"
             },
-            "example": "global"
+            "example": "enterprise_123456"
           },
           {
             "name": "template_key",
@@ -34946,7 +35239,7 @@
             "nullable": false
           },
           "id": {
-            "description": "The ID of an Agent. This can be a numeric ID for custom agents (for example, `14031`) \nor a unique identifier for pre-built agents (for example, `enhanced_extract_agent` \nfor the [Enhanced Extract Agent](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured/#enhanced-extract-agent)).",
+            "description": "The ID of an Agent. This can be a numeric ID for custom agents (for example, `14031`)\nor a unique identifier for pre-built agents (for example, `enhanced_extract_agent`\nfor the [Enhanced Extract Agent](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured#enhanced-extract-agent)).",
             "type": "string",
             "example": "14031",
             "nullable": false
@@ -35299,7 +35592,7 @@
                 "$ref": "#/components/schemas/AiExtractStructuredAgent"
               },
               {
-                "description": "The AI agent to be used for the structured extraction. Defaults to the Standard Agent if not specified. If you want to use Enhanced Extract Agent, see [Enhanced Extract Agent](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured/#enhanced-extract-agent) for details."
+                "description": "The AI agent to be used for the structured extraction. Defaults to the Standard Agent if not specified. If you want to use Enhanced Extract Agent, see [Enhanced Extract Agent](https://developer.box.com/guides/box-ai/ai-tutorials/extract-metadata-structured#enhanced-extract-agent) for details."
               }
             ]
           }
@@ -39962,7 +40255,7 @@
         "x-box-tag": "file_version_legal_holds"
       },
       "FileVersionRetention": {
-        "description": "A retention policy blocks permanent deletion of content\nfor a specified amount of time. Admins can apply policies to\nspecified folders, or an entire enterprise. A file version retention\nis a  record for a retained file version. To use this feature,\nyou must  have the manage retention policies scope enabled for your\nAPI key in your application management console.\n\n**Note**:\nFile retention API is now **deprecated**. \nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
+        "description": "A retention policy blocks permanent deletion of content\nfor a specified amount of time. Admins can apply policies to\nspecified folders, or an entire enterprise. A file version retention\nis a  record for a retained file version. To use this feature,\nyou must  have the manage retention policies scope enabled for your\nAPI key in your application management console.\n\n**Note**:\nFile retention API is now **deprecated**.\nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
         "type": "object",
         "properties": {
           "id": {
@@ -40026,7 +40319,7 @@
         "x-box-tag": "file_version_retentions"
       },
       "FileVersionRetentions": {
-        "description": "A list of file version retentions.\n\n**Note**:\nFile retention API is now **deprecated**. \nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
+        "description": "A list of file version retentions.\n\n**Note**:\nFile retention API is now **deprecated**.\nTo get information about files and file versions under retention,\nsee [files under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-files-under-retention) or [file versions under retention](https://developer.box.com/reference/get-retention-policy-assignments-id-file-versions-under-retention) endpoints.",
         "type": "object",
         "allOf": [
           {
@@ -42889,7 +43182,7 @@
             "example": "enterprise_123456"
           },
           "templateKey": {
-            "description": "The key of the template that is cascaded down to the folder's\nchildren.\n\nIn many cases the template key is automatically derived\nof its display name, for example `Contract Template` would\nbecome `contractTemplate`. In some cases the creator of the\ntemplate will have provided its own template key.\n\nPlease [list the templates for an enterprise][list], or\nget all instances on a [file][file] or [folder][folder]\nto inspect a template's key.\n\n[list]: e://get-metadata-templates-enterprise\n[file]: e://get-files-id-metadata\n[folder]: e://get-folders-id-metadata",
+            "description": "The key of the template that is cascaded down to the folder's\nchildren.\n\nIn many cases the template key is automatically derived\nof its display name, for example `Contract Template` would\nbecome `contractTemplate`. In some cases the creator of the\ntemplate will have provided its own template key.\n\nPlease [list the templates for an enterprise][list], or\nget all instances on a [file][file] or [folder][folder]\nto inspect a template's key.\n\n[list]: https://developer.box.com/reference/get-metadata-templates-enterprise\n[file]: https://developer.box.com/reference/get-files-id-metadata\n[folder]: https://developer.box.com/reference/get-folders-id-metadata",
             "type": "string",
             "example": "productInfo"
           }
@@ -42980,7 +43273,7 @@
             ]
           },
           "templateKey": {
-            "description": "The key of the template used to filter search results.\n\nIn many cases the template key is automatically derived\nof its display name, for example `Contract Template` would\nbecome `contractTemplate`. In some cases the creator of the\ntemplate will have provided its own template key.\n\nPlease [list the templates for an enterprise][list], or\nget all instances on a [file][file] or [folder][folder]\nto inspect a template's key.\n\n[list]: e://get-metadata-templates-enterprise\n[file]: e://get-files-id-metadata\n[folder]: e://get-folders-id-metadata",
+            "description": "The key of the template used to filter search results.\n\nIn many cases the template key is automatically derived\nof its display name, for example `Contract Template` would\nbecome `contractTemplate`. In some cases the creator of the\ntemplate will have provided its own template key.\n\nPlease [list the templates for an enterprise][list], or\nget all instances on a [file][file] or [folder][folder]\nto inspect a template's key.\n\n[list]: https://developer.box.com/reference/get-metadata-templates-enterprise\n[file]: https://developer.box.com/reference/get-files-id-metadata\n[folder]: https://developer.box.com/reference/get-folders-id-metadata",
             "type": "string",
             "example": "contract"
           },
@@ -43521,7 +43814,8 @@
                         "date",
                         "enum",
                         "multiSelect",
-                        "integer"
+                        "integer",
+                        "taxonomy"
                       ]
                     },
                     "key": {
@@ -45855,7 +46149,7 @@
                 "nullable": true
               },
               "signers": {
-                "description": "Array of signers for the signature request. 35 is the\nmax number of signers permitted.\n\n**Note**: It may happen that some signers belong to conflicting [segments](https://developer.box.com/reference/shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send the sign request will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
+                "description": "Array of signers for the signature request. 35 is the\nmax number of signers permitted.\n\n**Note**: It may happen that some signers belong to conflicting [segments](https://developer.box.com/reference/resources/shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send the sign request will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SignRequestCreateSigner"
@@ -46532,7 +46826,7 @@
                 "example": true
               },
               "signers": {
-                "description": "Array of signers for the template.\n\n**Note**: It may happen that some signers specified in the template belong to conflicting [segments](https://developer.box.com/reference/shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send a sign request based on a template that lists signers in conflicting segments will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
+                "description": "Array of signers for the template.\n\n**Note**: It may happen that some signers specified in the template belong to conflicting [segments](https://developer.box.com/reference/resources/shield-information-barrier-segment-member) (user groups).\nThis means that due to the security policies, users are assigned to segments to prevent exchanges or communication that could lead to ethical conflicts.\nIn such a case, an attempt to send a sign request based on a template that lists signers in conflicting segments will result in an error.\n\nRead more about [segments and ethical walls](https://support.box.com/hc/en-us/articles/9920431507603-Understanding-Information-Barriers#h_01GFVJEHQA06N7XEZ4GCZ9GFAQ).",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/TemplateSigner"
