@@ -10,23 +10,23 @@ import { CustomCard } from "/snippets/custom-card.jsx";
 
 Box supports a variety of AI models, categorized along two dimensions: access level and capability tier.
 
-## Access Levels
+## Access levels
 
-### Core Models 
+### Core models 
 
 These models are built into Box AI and available by default for all customers. No configuration is required.
 
-### Customer-Enabled Models
+### Customer-enabled models
 
 These models require activation by Box admins in the Admin Console or a request to Box to enable them. Some models may be subject to additional terms or pricing.
 
-## Capability Tiers
+## Capability tiers
 
-### Standard Models
+### Standard models
 
 Designed for high-speed, cost-efficient tasks like basic summarization, Q&A, and structured data extraction from shorter or simpler documents. Ideal for high-volume, low-complexity use cases.
 
-### Premium Models
+### Premium models
 
 Offer more advanced reasoning, larger context windows, and better performance on long-form, complex, or domain-specific content. Suitable for sophisticated tasks like multi-step reasoning, understanding large taxonomies, and analyzing lengthy or unstructured documents.
 
@@ -51,7 +51,7 @@ The list may change depending on the model availability.
 Models offered in **Beta** mode have not been fully performance-tested at scale and are made available on an as-is basis. You may experience variability in model/output quality, availability, and accuracy.
 </Note>
 
-## Core Box AI Models
+## Core Box AI models
 
 Box AI is powered by the following AI models. These models are integrated with Box AI to facilitate various use cases while adhering to enterprise grade standards. Below, you’ll find information about each model, including its capabilities, intended applications, and applicable usage guidelines.
 <Columns cols={2}>
@@ -460,6 +460,18 @@ Certain Box AI customers may enable additional AI models upon their request and/
 		]}
 	>
 	A natively multimodal model for complex tasks with a 1 million token context window.
+	</CustomCard>
+	<CustomCard
+		icon="/static/guides-box-ai-ai-models/gemini.svg"
+		title="google__gemini_3_flash"
+		href="/guides/box-ai/ai-models/google-gemini-3-flash-model-card"
+		tags={[
+			{ text: "Chat", bgColor: "#e8e8e8" },
+			{ text: "Beta", bgColor: "#f0e2ff" },
+			{ text: "Premium", bgColor: "#f8d59b" }
+		]}
+	>
+	A natively multimodal model designed for speed and efficiency across a wide range of tasks.
 	</CustomCard>
 	<CustomCard
 		icon="/static/guides-box-ai-ai-models/aws.svg"
