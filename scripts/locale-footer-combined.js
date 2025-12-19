@@ -35,19 +35,15 @@
     return false;
   }
 
-  // Keep a reference to the cloned cookie link
-  let cachedCookieLink = null;
+  let originalCookieLink = null;
+  let footerCookieLink = null;
 
-  // Step 1: Move Cookie Preferences to Footer
   function moveCookieToFooter() {
     const footer = document.querySelector("#footer, footer");
-
-    // Check if footer exists
     if (!footer) {
       return false;
     }
 
-    // Find the footer links container
     const linksContainer = footer.querySelector(
       "div.flex.gap-4.flex-col.md\\:flex-row.md\\:items-center.md\\:gap-8.md\\:justify-center"
     );
@@ -56,55 +52,84 @@
       return false;
     }
 
-    // Check if cookie preferences link already exists in footer (using data attribute)
     const existingCookieLink = linksContainer.querySelector('a[data-cookie-preferences="true"]');
-
     if (existingCookieLink) {
+      footerCookieLink = existingCookieLink;
       return true;
     }
 
-    // Try to get the cookie link from teconsent
     const teconsent = document.getElementById("teconsent");
-    let cookieLink = null;
+    if (teconsent && !originalCookieLink) {
+      originalCookieLink =
+        teconsent.querySelector('a[id^="icon-"]') ||
+        teconsent.querySelector('a[href*="cookie"]') ||
+        teconsent.querySelector('a[href*="preferences"]') ||
+        teconsent.querySelector('a') ||
+        teconsent.querySelector('button') ||
+        teconsent.querySelector('[role="button"]') ||
+        teconsent.querySelector('[onclick]') ||
+        teconsent.querySelector('div[id^="icon-"]') ||
+        teconsent.querySelector('div[class*="icon"]') ||
+        teconsent.querySelector('div[tabindex]') ||
+        (teconsent.children.length > 0 ? teconsent.children[0] : null) ||
+        teconsent;
 
-    if (teconsent) {
-      const originalLink = teconsent.querySelector('a[id^="icon-"]');
-      if (originalLink) {
-        // Clone the link instead of moving it
-        cookieLink = originalLink.cloneNode(true);
-        cachedCookieLink = cookieLink;
-
-        // Hide the original teconsent container
-        teconsent.style.display = "none";
+      if (originalCookieLink) {
+        teconsent.style.cssText = "display: none !important; visibility: hidden !important; opacity: 0 !important; position: absolute !important; left: -9999px !important;";
+        teconsent.setAttribute('aria-hidden', 'true');
       }
     }
 
-    // If teconsent not available, use cached link
-    if (!cookieLink && cachedCookieLink) {
-      cookieLink = cachedCookieLink.cloneNode(true);
-    }
-
-    if (!cookieLink) {
+    if (!originalCookieLink) {
       return false;
     }
 
-    // Apply the same styling as other footer links
+    const cookieLink = document.createElement("a");
+    cookieLink.href = "#";
     cookieLink.className =
       "text-sm max-w-36 whitespace-normal md:truncate text-gray-950/50 dark:text-white/50 hover:text-gray-950/70 dark:hover:text-white/70";
-
-    // Remove unnecessary attributes
-    cookieLink.removeAttribute("role");
-    cookieLink.removeAttribute("tabindex");
-
-    // Add a unique marker to identify this as the cookie preferences link
     cookieLink.setAttribute("data-cookie-preferences", "true");
 
-    // Set the appropriate text based on page language
     const isJapanese = isJapanesePage();
     cookieLink.textContent = isJapanese ? "Cookie設定" : "Cookie Preferences";
 
-    // Append the cloned link to the footer links container
+    cookieLink.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (typeof window.truste !== 'undefined' && window.truste.eu) {
+        window.truste.eu.clickListener();
+        return;
+      }
+
+      if (originalCookieLink) {
+        const clickEvent = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+          composed: true
+        });
+        originalCookieLink.dispatchEvent(clickEvent);
+        originalCookieLink.click();
+      }
+
+      const teconsent = document.getElementById("teconsent");
+      if (teconsent) {
+        const oldStyle = teconsent.style.cssText;
+        teconsent.style.cssText = "position: absolute !important; left: -9999px !important;";
+        teconsent.click();
+
+        if (teconsent.children.length > 0) {
+          teconsent.children[0].click();
+        }
+
+        setTimeout(() => {
+          teconsent.style.cssText = oldStyle;
+        }, 100);
+      }
+    });
+
     linksContainer.appendChild(cookieLink);
+    footerCookieLink = cookieLink;
 
     return true;
   }
@@ -145,29 +170,43 @@
     });
   }
 
-  // Combined process: Move cookie link first, then localize
   function processFooter() {
     const footer = document.querySelector("#footer, footer");
     if (!footer) {
       return false;
     }
 
-    // Step 1: Move cookie link if it exists
-    moveCookieToFooter();
-
-    // Step 2: Localize all footer links (including the newly added cookie link)
+    const cookieMoved = moveCookieToFooter();
     localizeFooterLinks();
+
+    if (cookieMoved && originalCookieLink && footerCookieLink) {
+      maybeDisconnectObserver();
+    }
 
     return true;
   }
 
-  // Watch for dynamically added content and footer changes
+  let processTimeout = null;
+  function debouncedProcessFooter() {
+    if (processTimeout) {
+      clearTimeout(processTimeout);
+    }
+    processTimeout = setTimeout(() => {
+      processFooter();
+      processTimeout = null;
+    }, 100);
+  }
+
+  let mutationObserver = null;
   function setupMutationObserver() {
-    const observer = new MutationObserver((mutations) => {
+    if (mutationObserver) {
+      return;
+    }
+
+    mutationObserver = new MutationObserver((mutations) => {
       let shouldProcess = false;
 
       mutations.forEach((mutation) => {
-        // Check if footer or teconsent elements were added/modified
         mutation.addedNodes.forEach((node) => {
           if (node.nodeType === 1) {
             if (
@@ -180,123 +219,91 @@
             }
           }
         });
-
-        // Check if changes happened within footer
-        if (mutation.target.id === "footer" || mutation.target.closest?.("#footer, footer")) {
-          shouldProcess = true;
-        }
       });
 
       if (shouldProcess) {
-        // Small delay to ensure DOM is fully updated
-        setTimeout(() => processFooter(), 50);
+        debouncedProcessFooter();
       }
     });
 
-    observer.observe(document.body, {
+    mutationObserver.observe(document.body, {
       childList: true,
       subtree: true,
       attributes: false,
     });
   }
 
-  // Continuously check for cookie preferences link and re-add if needed
-  function setupContinuousCheck() {
-    setInterval(() => {
-      const footer = document.querySelector("#footer, footer");
-      if (!footer) return;
-
-      // Look for "Cookie Preferences" specifically (not "Cookie Notification")
-      const isJapanese = isJapanesePage();
-      const expectedText = isJapanese ? "Cookie設定" : "Cookie Preferences";
-
-      let cookiePrefsFound = false;
-      const footerLinks = footer.querySelectorAll("a[href]");
-
-      footerLinks.forEach((link) => {
-        const linkText = link.textContent.trim();
-        if (linkText === expectedText || linkText === "Cookie Preferences" || linkText === "Cookie設定") {
-          cookiePrefsFound = true;
-        }
-      });
-
-      // If Cookie Preferences link is missing, try to move and localize
-      if (!cookiePrefsFound) {
-        const moved = moveCookieToFooter();
-        if (moved) {
-          localizeFooterLinks();
-        }
-      }
-    }, 200); // Check every 200ms for faster response
+  function maybeDisconnectObserver() {
+    if (originalCookieLink && footerCookieLink && mutationObserver) {
+      mutationObserver.disconnect();
+      mutationObserver = null;
+    }
   }
 
-  // Initialize with retry logic
   function initializeFooterProcessing() {
     if (processFooter()) {
       setupMutationObserver();
-      setupContinuousCheck();
       return true;
     }
     return false;
   }
 
-  // Listen for navigation events (for SPA-style navigation)
   function setupNavigationListeners() {
-    // Listen for popstate (browser back/forward)
     window.addEventListener("popstate", () => {
-      setTimeout(() => processFooter(), 100);
+      if (!mutationObserver) {
+        setupMutationObserver();
+      }
+      debouncedProcessFooter();
     });
 
-    // Listen for pushstate/replacestate (client-side navigation)
     const originalPushState = history.pushState;
     const originalReplaceState = history.replaceState;
 
     history.pushState = function () {
       originalPushState.apply(this, arguments);
-      setTimeout(() => processFooter(), 100);
+      if (!mutationObserver) {
+        setupMutationObserver();
+      }
+      debouncedProcessFooter();
     };
 
     history.replaceState = function () {
       originalReplaceState.apply(this, arguments);
-      setTimeout(() => processFooter(), 100);
+      if (!mutationObserver) {
+        setupMutationObserver();
+      }
+      debouncedProcessFooter();
     };
   }
 
-  // Try to initialize immediately
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
       if (!initializeFooterProcessing()) {
-        // Footer not found, retry with interval
         const retryInterval = setInterval(() => {
           if (initializeFooterProcessing()) {
             clearInterval(retryInterval);
           }
         }, 100);
-        // Stop retrying after 10 seconds
         setTimeout(() => clearInterval(retryInterval), 10000);
       }
       setupNavigationListeners();
     });
   } else {
     if (!initializeFooterProcessing()) {
-      // Footer not found, retry with interval
       const retryInterval = setInterval(() => {
         if (initializeFooterProcessing()) {
           clearInterval(retryInterval);
         }
       }, 100);
-      // Stop retrying after 10 seconds
       setTimeout(() => clearInterval(retryInterval), 10000);
     }
     setupNavigationListeners();
   }
 
-  // Re-process on language change
   const langObserver = new MutationObserver(() => {
-    processFooter();
+    debouncedProcessFooter();
   });
 
-  // Watch for changes to the language selector
   const checkForLangSelector = setInterval(() => {
     const langButton = document.querySelector("#localization-select-trigger");
     if (langButton) {
@@ -309,6 +316,5 @@
     }
   }, 500);
 
-  // Clear the interval after 10 seconds
   setTimeout(() => clearInterval(checkForLangSelector), 10000);
 })();
