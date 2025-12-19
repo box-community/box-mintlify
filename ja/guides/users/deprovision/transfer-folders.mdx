@@ -319,9 +319,40 @@ client.collaborations.createWithUserID('123456', '987654', client.collaborationR
 
 `transfer_to_user`アカウントとして呼び出しを実行し、[コラボレーションを取得エンドポイント](/ja/reference/get-collaborations-id)を使用して、転送するファイルまたはフォルダのIDのコラボレーションを取得します。コラボレーションIDをキャプチャします。
 
-{/* <Sample id="get_collaborations_id">
+<CodeGroup>
+```sh cURL
+curl -i -X GET "https://api.box.com/2.0/collaborations/1234" \
+     -H "authorization: Bearer <ACCESS_TOKEN>"
+```
 
-</Sample> */}
+```typescript Node/TypeScript v10
+await client.userCollaborations.getCollaborationById(collaborationId);
+```
+
+```python Python v10
+client.user_collaborations.get_collaboration_by_id(collaboration_id)
+```
+
+```cs .NET v10
+await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```swift Swift v10
+try await client.userCollaborations.getCollaborationById(collaborationId: collaborationId)
+```
+
+```java Java v10
+client.getUserCollaborations().getCollaborationById(collaborationId)
+```
+
+```cs .NET v6
+await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```javascript Node v4
+await client.userCollaborations.getCollaborationById(collaborationId);
+```
+</CodeGroup>
 
 ### 転送元ユーザーを所有者として削除
 
@@ -329,9 +360,41 @@ client.collaborations.createWithUserID('123456', '987654', client.collaborationR
 
 `transfer_to_user`アカウントとして呼び出しを実行し、ファイルまたはフォルダのコラボレータとして`transfer_from_user`を削除します。
 
-{/* <Sample id="delete_collaborations_id">
+<CodeGroup>
+```sh cURL
+curl -i -X DELETE "https://api.box.com/2.0/collaborations/1234" \
+     -H "authorization: Bearer <ACCESS_TOKEN>"
+```
 
-</Sample> */}
+```typescript Node/TypeScript v10
+await client.userCollaborations.deleteCollaborationById(collaborationId);
+```
+
+```python Python v10
+client.user_collaborations.delete_collaboration_by_id(collaboration_id)
+```
+
+```cs .NET v10
+await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```swift Swift v10
+try await client.userCollaborations.deleteCollaborationById(collaborationId: collaborationId)
+```
+
+```java Java v10
+client.getUserCollaborations().deleteCollaborationById(collaborationId)
+```
+
+```cs .NET v6
+await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```javascript Node v4
+await client.userCollaborations.getCollaborationById(collaborationId);
+```
+</CodeGroup>
+
 
 これにより、ファイルまたはフォルダの所有者は`transfer_to_user`アカウントになり、`transfer_from_user`アカウントはアクセスできなくなります。
 

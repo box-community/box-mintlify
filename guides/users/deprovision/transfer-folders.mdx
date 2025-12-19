@@ -323,7 +323,41 @@ file or folder ID being transferred, using the
 [get collaboration endpoint](/reference/get-collaborations-id). Capture the
 collaboration ID.
 
-{/* <Sample id='get_collaborations_id' /> */}
+<CodeGroup>
+```sh cURL
+curl -i -X GET "https://api.box.com/2.0/collaborations/1234" \
+     -H "authorization: Bearer <ACCESS_TOKEN>"
+```
+
+```typescript Node/TypeScript v10
+await client.userCollaborations.getCollaborationById(collaborationId);
+```
+
+```python Python v10
+client.user_collaborations.get_collaboration_by_id(collaboration_id)
+```
+
+```cs .NET v10
+await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```swift Swift v10
+try await client.userCollaborations.getCollaborationById(collaborationId: collaborationId)
+```
+
+```java Java v10
+client.getUserCollaborations().getCollaborationById(collaborationId)
+```
+
+```cs .NET v6
+await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```javascript Node v4
+await client.userCollaborations.getCollaborationById(collaborationId);
+```
+</CodeGroup>
+
 
 ### Remove Transfer From User as Owner
 
@@ -334,7 +368,41 @@ file or folder, which is accomplished using the
 Making call as the `transfer_to_user` account, remove the `transfer_from_user`
 as a collaborator on the file or folder.
 
-{/* <Sample id='delete_collaborations_id' /> */}
+<CodeGroup>
+```sh cURL
+curl -i -X DELETE "https://api.box.com/2.0/collaborations/1234" \
+     -H "authorization: Bearer <ACCESS_TOKEN>"
+```
+
+```typescript Node/TypeScript v10
+await client.userCollaborations.deleteCollaborationById(collaborationId);
+```
+
+```python Python v10
+client.user_collaborations.delete_collaboration_by_id(collaboration_id)
+```
+
+```cs .NET v10
+await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```swift Swift v10
+try await client.userCollaborations.deleteCollaborationById(collaborationId: collaborationId)
+```
+
+```java Java v10
+client.getUserCollaborations().deleteCollaborationById(collaborationId)
+```
+
+```cs .NET v6
+await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
+```
+
+```javascript Node v4
+await client.userCollaborations.getCollaborationById(collaborationId);
+```
+</CodeGroup>
+
 
 The file or folder is now owned by the `transfer_to_user` account, and the
 `transfer_from_user` account no longer has access.

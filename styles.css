@@ -249,6 +249,16 @@ nav ul #topbar-cta-button a span {
   background-color: #0061d5;
 }
 
+#topbar-cta-button a:hover span {
+  opacity: 1 !important;
+  background-color: #146bd5;
+}
+
+.dark #topbar-cta-button a:hover span {
+  opacity: 1 !important;
+  background-color: #0058c3;
+}
+
 #content-area h1,
 #content-area h2,
 #content-area h3,
