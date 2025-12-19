@@ -1946,6 +1946,31 @@
                     ]
                   },
                   {
+                    "group": "Metadata taxonomies",
+                    "pages": [
+                      {
+                        "group": "Endpoints",
+                        "pages": [
+                          "reference/post-metadata-taxonomies",
+                          "reference/post-metadata-taxonomies-id-id-levels",
+                          "reference/post-metadata-taxonomies-id-id-levels:append",
+                          "reference/post-metadata-taxonomies-id-id-levels:trim",
+                          "reference/post-metadata-taxonomies-id-id-nodes",
+                          "reference/get-metadata-taxonomies-id",
+                          "reference/get-metadata-taxonomies-id-id",
+                          "reference/get-metadata-taxonomies-id-id-nodes",
+                          "reference/get-metadata-taxonomies-id-id-nodes-id",
+                          "reference/get-metadata-templates-id-id-fields-id-options",
+                          "reference/delete-metadata-taxonomies-id-id",
+                          "reference/delete-metadata-taxonomies-id-id-nodes-id",
+                          "reference/patch-metadata-taxonomies-id-id",
+                          "reference/patch-metadata-taxonomies-id-id-levels-id",
+                          "reference/patch-metadata-taxonomies-id-id-nodes-id"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "Metadata templates",
                     "pages": [
                       {
@@ -4980,6 +5005,31 @@
                           "ja/reference/post-folders-id-metadata-id-id",
                           "ja/reference/put-folders-id-metadata-id-id",
                           "ja/reference/delete-folders-id-metadata-id-id"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Metadata taxonomies",
+                    "pages": [
+                      {
+                        "group": "Endpoints",
+                        "pages": [
+                          "ja/reference/post-metadata-taxonomies",
+                          "ja/reference/post-metadata-taxonomies-id-id-levels",
+                          "ja/reference/post-metadata-taxonomies-id-id-levels:append",
+                          "ja/reference/post-metadata-taxonomies-id-id-levels:trim",
+                          "ja/reference/post-metadata-taxonomies-id-id-nodes",
+                          "ja/reference/get-metadata-taxonomies-id",
+                          "ja/reference/get-metadata-taxonomies-id-id",
+                          "ja/reference/get-metadata-taxonomies-id-id-nodes",
+                          "ja/reference/get-metadata-taxonomies-id-id-nodes-id",
+                          "ja/reference/get-metadata-templates-id-id-fields-id-options",
+                          "ja/reference/delete-metadata-taxonomies-id-id",
+                          "ja/reference/delete-metadata-taxonomies-id-id-nodes-id",
+                          "ja/reference/patch-metadata-taxonomies-id-id",
+                          "ja/reference/patch-metadata-taxonomies-id-id-levels-id",
+                          "ja/reference/patch-metadata-taxonomies-id-id-nodes-id"
                         ]
                       }
                     ]
