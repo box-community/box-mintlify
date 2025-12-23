@@ -64,30 +64,29 @@ To add the remote Box MCP server in ChatGPT, follow these steps:
 1. Go to **Box** > **Admin Console** > **Integrations** and find **Box MCP Server** - either by using the MCP Category filter, or by using the search bar at the top of the page.  
 2. Go to **Configuration**. 
 3. Click the **Add Integration Credentials** button to generate new credentials. 
-4. In **Redirect URIs**, change the Box redirect URIs to: https://chatgpt.com/connector_platform_oauth_redirect 
-5. The **Client ID** and **Client Secret** are displayed. These will be required later for ChatGPT to make the authorization connection. 
+4. In **Redirect URIs**, change the Box redirect URIs to: https://chatgpt.com/connector_platform_oauth_redirect
+The **Client ID** and **Client Secret** are displayed. These will be required later for ChatGPT to make the authorization connection. 
 6. Check the **Access** scopes: 
   * Read all files and folders stored in Box. 
   * Read and write all files and folders stored in Box. 
   * Manage AI Requests. 
 7. Click **Save**. 
-8. On the ChatGPT side (you need to be a ChatGPT Workspace admin), click the profile in the bottom left corner. 
-9. Click **Settings**. 
-10. Click **Apps & Connectors**. 
-11. Click **Advanced Settings**. 
-12. Toggle **Developer mode** on. This enables you to add custom connectors. 
-13. Go back to **Apps & Connectors**. 
-14. Click **Create** at the top right corner of the modal. 
-15. Fill in the data: 
-  * **Name** (pick a name that works for you, e.g. Box MCP Server Connector) 
-  * **MCP Server URL**: https://mcp.box.com. 
+8. On the ChatGPT side, as a ChatGPT Workspace admin, click the profile in the bottom-left corner. 
+9. Click **Settings** > **Apps & Connectors** > **Advanced Settings**. 
+10. Toggle the **Developer mode** on. 
+This enables you to add custom connectors. 
+11. Go back to **Apps & Connectors**. 
+12. Click **Create** at the top-right corner of the modal. 
+13. Fill in the data: 
+  * **Name**: For example, `Box MCP Server Connector`. 
+  * **MCP Server URL**: https://mcp.box.com
   * **OAuth Client ID**: Found in Box **Admin Console** > **Integrations** > **Box MCP Server** > **Configuration**. 
   * **OAuth Client Secret**: Found in Box **Admin Console** > **Integrations** > **Box MCP Server** > **Configuration**. 
-16. Select the “I understand and want to continue” checkbox and click **Create**. 
-17. Authorize the Box User. 
-18. If an error displays, such as “Something went wrong with setting up the connection”, you can continue to click through. The setup should work even if this displays.  
-19. You can test it by going to the chat, clicking the **+** icon, then hovering over **More** and selecting the newly added connector. Make sure that the other, built by OpenAI Box connector, is turned off or disconnected, so the answer is provided by the custom connector. 
-20. If you want to add this connector for the whole workspace, you can publish it within ChatGPT Workspace: https://help.openai.com/en/articles/12584461-developer-mode-and-full-mcp-connectors-in-chatgpt-beta#:~:text=Publish%20connector,settings%20in%20ChatGPT. 
+14. Select the `I understand and want to continue` checkbox and click **Create**. 
+15. Authorize the Box user. 
+<note> If an error displays, such as `Something went wrong with setting up the connection`, you can continue to click through. The setup should work even if this displays. </note> 
+17. Test the setup by going to the chat, clicking the **+** icon, then hovering over **More** and selecting the newly added connector. Make sure that the other, built by OpenAI Box connector, is turned off or disconnected, so the answer is provided by the custom connector. 
+18. If you want to add this connector for the whole workspace, you can publish it within ChatGPT Workspace: https://help.openai.com/en/articles/12584461-developer-mode-and-full-mcp-connectors-in-chatgpt-beta#:~:text=Publish%20connector,settings%20in%20ChatGPT. 
 
 ### Claude
 
