@@ -1,0 +1,253 @@
+---
+title: Structured extraction with the Box AI enhanced extract agent in Python
+sidebarTitle: Box AI - Enhanced extract agent
+description: Learn how to use the Box AI enhanced extract agent to automatically extract data from large, complex documents using the Box Python SDK.
+---
+
+[Box AI](/ai-dev-zone) exposes intelligent extraction capabilities that enable developers to automatically extract
+key-value pairs from documents through a single API call. The Enhanced Extract Agent uses advanced reasoning models 
+to transform complex unstructured document content into actionable metadata without manual data entry, streamlining 
+document processing workflows for invoices, forms, contracts, and other business documents.
+
+This quick start demonstrates how to configure the Box Python SDK and use Box AI to extract data from a stock purchase
+agreement stored in Box.
+
+<Steps>
+  <Step title="Create and configure a Box application">
+    The first step for any Box Platform integration is to create and configure a Box 
+    application. 
+    1. Go to [Box Developer Console](https://app.box.com/developers/console).
+    2. For this quick start, create an App with the `Client Credentials Grant` 
+    application type. 
+    3. Once the app is created, enable the following scopes:
+        * `Read all files and folders stored in Box`
+        * `Write all files and folders stored in Box`
+        * `Manage AI`
+
+    For more information about creating a new Box application, see [Create your first application](/guides/getting-started/first-application#create-your-first-application).
+  </Step>
+  <Step title="Upload a test file">
+    After preparing the template, select a file to test. For this quick start, use this
+    [sample stock purchase agreement](/static/quickstarts/extract/files/enhanced-extract-file.docx).
+
+1. Download the test document, and then drag and drop it into your Box account.
+2. Get the file ID by opening the file in Box and inspecting the URL.
+The last part of the path is your file ID. For example, the URL might look like this:
+    `https://app.box.com/file/2064123286902`
+    
+    In this case, the file ID is `2064123286902`.
+  </Step>
+  <Step title="Configure the environment">
+    Now set up your development environment to run the extraction. For this quick start, use Python and the 
+    Box Python SDK version 10. Make sure you have Python 3.11 or higher installed on your machine.
+    1. Create a new directory for your project and navigate into it.
+    2. Create a virtual environment:
+       ```bash
+       python3 -m venv .venv
+       source .venv/bin/activate
+       ```
+    3. Install the Box Python SDK:
+       ```bash
+       pip install "boxsdk~=10"
+       ```
+    4. Install the `python-dotenv` package to load environment variables from the `.env` file:
+       ```bash
+       pip install python-dotenv
+       ```
+    5. Create an `.env` file in the root of your project directory and add the following 
+    environment variables, replacing the placeholder values with your actual Box app credentials
+    and the IDs from the previous steps:
+       ```bash
+        BOX_DEVELOPER_TOKEN=your_box_developer_token
+
+        BOX_METADATA_TEMPLATE_KEY=your_metadata_template_key
+        BOX_FILE_ID=your_box_file_id
+       ```
+    
+    To get your Developer Token, go to the Box Developer Console, open your app, and navigate to 
+    the **Configuration** tab. 
+    
+    6. Click **Generate Developer Token** to create a new token.  
+
+    <Tip>
+      For simplicity, this quick start uses a short-lived developer token. In production, you 
+      should authenticate using your app’s configured method (for example, Client Credentials Grant) 
+      instead of a developer token.
+    </Tip>
+
+  </Step>
+  <Step title="Create the enhanced-extract.py file">
+    Your development environment is now ready to create the Python script to extract data from the document using Box AI. 
+    
+1. Create a new file named `enhanced-extract.py` in the root of your project directory and add the following code:
+
+    ```python
+    import os
+
+    from dotenv import load_dotenv
+
+    from box_sdk_gen import (
+        AiAgentReference,
+        AiAgentReferenceTypeField,
+        AiItemBase,
+        BoxClient,
+        BoxDeveloperTokenAuth,
+        CreateAiExtractStructuredFields,
+        CreateAiExtractStructuredFieldsOptionsField
+    )
+
+    load_dotenv()
+
+    developer_token = os.getenv("BOX_DEVELOPER_TOKEN")
+    file_id = os.getenv("BOX_FILE_ID")
+
+    def get_box_client(token: str) -> BoxClient:
+        
+        if not developer_token:
+            raise ValueError("BOX_DEVELOPER_TOKEN is not set in environment variables.")
+        
+        auth = BoxDeveloperTokenAuth(token=token)
+        client = BoxClient(auth=auth)
+
+        return client
+
+    def main():
+        client = get_box_client(token=developer_token)
+
+        me = client.users.get_user_me()
+        print(f"My user ID is {me.id}")
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+    This code loads the environment variables from the `.env` file, initializes the Box SDK client, 
+    and prints the current user's ID to validate that the client is working correctly.
+
+2. Run the script using the following command in your terminal:
+
+    ```bash
+    python enhanced-extract.py
+    ```
+
+    If the Box SDK client is set up correctly, the console displays your user ID. For example:
+
+    ```bash
+    My user ID is 123456789
+    ```
+
+  </Step>
+  <Step title="Extract data">
+    With a working Box SDK client, you can add the code to extract data from the document using Box AI.
+
+1. Between the `get_box_client` function and the `main` function, add the following function:
+
+    ```python
+    def extract_metadata(client: BoxClient, file_id: str) -> dict:
+
+        enhanced_extract_config = AiAgentReference(
+            id="enhanced_extract_agent",
+            type=AiAgentReferenceTypeField.AI_AGENT_ID
+        )
+
+        fields=[
+            CreateAiExtractStructuredFields(
+                key="parties",
+                display_name="Parties",
+                description="The named parties involved",
+                prompt="A comma separated list of the named parties involved",
+                type="string",
+            ),
+            CreateAiExtractStructuredFields(
+                key="effectiveDate",
+                display_name="Effective date",
+                description="The effective date of the contract",
+                prompt="The effective date of the contract",
+                type="date",
+            ),
+            CreateAiExtractStructuredFields(
+                key="purchasePrice",
+                display_name="Purchase price",
+                description="The purchase price stated in the contract",
+                prompt="The purchase price stated in the contract",
+                type="float",
+            ),
+            CreateAiExtractStructuredFields(
+                key="summary",
+                display_name="Summary",
+                description="A summary of the contract in 50 words or less",
+                prompt="A summary of the contract in 50 words or less including key obligations",
+                type="string",
+            ),
+            CreateAiExtractStructuredFields(
+                key="recommendation",
+                display_name="Recommendation",
+                description="Should we make this purchase?",
+                prompt="Given the financial details, would you recommend proceeding with the purchase? Answer Yes or No.",
+                type="enum",
+                options=[
+                    CreateAiExtractStructuredFieldsOptionsField(key="Yes"),
+                    CreateAiExtractStructuredFieldsOptionsField(key="No"),
+                ],
+            ),
+        ]
+
+        metadata = client.ai.create_ai_extract_structured(
+            [ AiItemBase(id=file_id) ],
+            fields=fields,
+            ai_agent=enhanced_extract_config,
+        )
+        
+        return metadata.to_dict()['answer']
+
+    ```
+
+    This function uses the Box AI `create_ai_extract_structured` method to extract metadata from the specified file.
+    Your BoxClient and the file ID are sent to the function, which returns the extracted metadata as a dictionary.
+
+    <Tip>
+      The `fields` parameter defines the specific data points to extract from the document. You can also reference
+      a metadata template key instead to extract fields defined in a Box metadata template. 
+    </Tip>
+
+2. Add the function call to extract the metadata in the `main` function. Ensure that the new `main` function contains the following logic: 
+
+    ```python
+    def main():
+        client = get_box_client(token=developer_token)
+
+        me = client.users.get_user_me()
+        print(f"My user ID is {me.id}")
+
+        metadata = extract_metadata(client=client, file_id=file_id)
+
+        print(f"\n\nExtracted Metadata: {metadata}")
+    ```
+
+    The SDK handles the API call to Box AI and returns the extracted metadata as an
+    [`AiExtractStructuredResponse`](/reference/resources/ai-extract-structured-response) object. In this quick start,
+    the code converts this object to a dictionary and returns the `answer` field that contains the extracted
+    key/value pairs.
+
+
+3. Print out the extracted metadata to the console to verify that the extraction was successful by running the following command in your terminal:
+
+
+    ```bash
+    python enhanced-extract.py
+    ```
+
+    If the extraction was successful, the console displays your user ID followed by the extracted metadata from the stock purchase agreement.
+
+    ```bash
+    My user ID is 123456789
+
+    Extracted Metadata: {'parties': 'Argyle LLP, Suregood Family Trust', 'effectiveDate': '2023-03-31', 'purchasePrice': 231000000, 'summary': 'Argyle LLP agrees to purchase 51% of Erebor Life, Inc. from Suregood Family Trust for $231,000,000. The Seller must operate the business normally until closing, and the Buyer must pay the purchase price. The agreement is effective March 31, 2023.', 'recommendation': 'Yes'}
+    ```
+  </Step>
+</Steps>
+
+## Resources
+- [Final code](https://github.com/box-community/box-quickstarts/tree/main/box-ai-enhanced-extract-quickstart)
+- [Extract Structured Metadata API Reference](/reference/post-ai-extract-structured)
+- [Box Python SDK](https://github.com/box/box-python-sdk/tree/main)

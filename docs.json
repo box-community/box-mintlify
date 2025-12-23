@@ -122,6 +122,8 @@
                         "group": "AI quick starts",
                         "pages": [
                           "guides/box-ai/quick-start/box-ai-extract",
+                          "guides/box-ai/quick-start/box-ai-extract-freeform",
+                          "guides/box-ai/quick-start/box-ai-extract-enhanced",
                           "guides/box-ai/quick-start/box-ai-summarize"
                         ]
                       }
@@ -2724,6 +2726,8 @@
             "pages": [
               "get-started",
               "/guides/box-ai/quick-start/box-ai-extract",
+              "/guides/box-ai/quick-start/box-ai-extract-freeform",
+              "/guides/box-ai/quick-start/box-ai-extract-enhanced",
               "/guides/box-ai/quick-start/box-ai-summarize"
             ]
           },
