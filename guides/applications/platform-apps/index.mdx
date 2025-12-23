@@ -16,33 +16,31 @@ related_guides:
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-Platform Apps encompass most use cases and is the most flexible application type.
-
-A platform application typically presents Box functionality to a user within a
+Platform App typically presents Box functionality to a user through a
 custom interface. Box offers pre-built, customizable user interface components,
-known as [UI Elements][uie], for functionality like browsing, searching, and
+known as [UI Elements][uie], for functionalities like browsing, searching, and
 previewing content.
 
 ## Authentication methods
 
 Platform Apps support [OAuth 2.0][oauth2], [JWT][jwt], and
-[Client Credentials Grant][cc].
+[Client Credentials Grant][cc] authentication methods.
 
 <Card href="/guides/authentication/select" arrow title="Learn more about authentication methods"/>
 
 ## When to use
 
-A Platform App is best used when the application:
+Use a Platform App when you want to:
 
-- Wants to use [OAuth 2.0][oauth2], [JWT][jwt] or [Client Credentials Grant][cc] for authentication.
-- Wants to upload and download files
-- Wants the freedom to access both their own files, as well as files owned by [managed or external users][users].
-- Wants the option to list the application in the Box Integrations
-- Wants to provide integration into the Box Web App
+- Use [OAuth 2.0][oauth2], [JWT][jwt] or [Client Credentials Grant][cc] for authentication.
+- Upload and download files
+- Access both your own files and files owned by [managed or external users][users].
+- List the application in the Box Integrations
+- Provide integration into the Box Web App
 
 ## Use cases
 
-Example use cases for a Platform App include:
+Example use cases include:
 
 - A file vault in an application that allows an end user to access files that have been shared with them, while also providing access for employees to the same files through the Box Web app.
 

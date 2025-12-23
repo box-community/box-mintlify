@@ -20,13 +20,9 @@ fullyTranslated: true
 ---
 Box APIを使用する認証では、ユーザーの本人確認にアクセストークンを使用します。アクセストークンの取得方法は、ユーザーの承認に使用した方法によって異なります。アプリケーションで利用できる承認の種類は、ユースケースのほか、開発者コンソールで作成されたアプリケーションの種類に応じて異なります。
 
-| Boxアプリケーションの種類            | 認証方法                                                  |
-| ------------------------- | ----------------------------------------------------- |
-| [Platformアプリ][custom-app] | [OAuth 2.0][oauth2]、[JWT][jwt]、または[クライアント資格情報許可][ccg] |
-| [アクセス制限付きアプリ][la]         | [アプリトークン][apptoken]                                   |
-| [カスタムスキル][custom-skill]   | 認証方法は選択不要                                             |
-
-<Card href="/ja/guides/authentication/select" title="承認の種類の選択方法を確認する"/>
+<Frame border width="600" center>
+  ![Authentication methods](/images/guides/applications/app-types/authentication-methods.png)
+</Frame>
 
 ## 認証のアクセストークン
 
@@ -49,9 +45,5 @@ curl https://api.box.com/2.0/users/me \
 [devtoken]: /ja/guides/authentication/tokens/developer-tokens
 
 [custom-app]: /ja/guides/applications/app-types/platform-apps
-
-[custom-skill]: /ja/guides/applications/app-types/custom-skills
-
-[la]: /ja/guides/applications/app-types/select/#limited-access-app
 
 [ccg]: /ja/guides/authentication/client-credentials
