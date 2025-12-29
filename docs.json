@@ -189,13 +189,10 @@
                       "guides/applications/index",
                       "guides/applications/integrations/index",
                       {
-                        "group": "Application Types",
+                        "group": "Platform Apps",
                         "pages": [
-                          "guides/applications/app-types/index",
-                          "guides/applications/app-types/select",
-                          "guides/applications/app-types/platform-apps",
-                          "guides/applications/app-types/limited-access-apps",
-                          "guides/applications/app-types/custom-skills"
+                          "guides/applications/platform-apps/index",
+                          "guides/applications/platform-apps/create"
                         ]
                       },
                       {
@@ -213,7 +210,6 @@
                     "group": "Authentication",
                     "pages": [
                       "guides/authentication/index",
-                      "guides/authentication/select",
                       "guides/authentication/best-practices",
                       "guides/authentication/sso",
                       {
@@ -277,8 +273,7 @@
                       "guides/authorization/index",
                       "guides/authorization/platform-app-approval",
                       "guides/authorization/limited-access-approval",
-                      "guides/authorization/common-errors",
-                      "guides/authorization/custom-skill-approval"
+                      "guides/authorization/common-errors"
                     ]
                   },
                   {
@@ -864,23 +859,6 @@
                       "guides/box-sign/suppress-sign-notifications",
                       "guides/box-sign/sign-templates",
                       "guides/box-sign/embedded-sign-client"
-                    ]
-                  },
-                  {
-                    "group": "Box Skills",
-                    "pages": [
-                      "guides/skills/index",
-                      "guides/skills/invocation-url",
-                      "guides/skills/kit",
-                      {
-                        "group": "Handle Skills Payloads",
-                        "pages": [
-                          "guides/skills/handle/index",
-                          "guides/skills/handle/setup",
-                          "guides/skills/handle/payload",
-                          "guides/skills/handle/metadata"
-                        ]
-                      }
                     ]
                   },
                   {
@@ -2927,13 +2905,9 @@
                       "ja/guides/applications/index",
                       "ja/guides/applications/integrations/index",
                       {
-                        "group": "アプリケーションの種類",
+                        "group": "プラットフォームアプリ",
                         "pages": [
-                          "ja/guides/applications/app-types/index",
-                          "ja/guides/applications/app-types/select",
-                          "ja/guides/applications/app-types/platform-apps",
-                          "ja/guides/applications/app-types/limited-access-apps",
-                          "ja/guides/applications/app-types/custom-skills"
+                          "ja/guides/applications/app-types/platform-apps"
                         ]
                       },
                       {
@@ -2951,7 +2925,6 @@
                     "group": "認証",
                     "pages": [
                       "ja/guides/authentication/index",
-                      "ja/guides/authentication/select",
                       "ja/guides/authentication/best-practices",
                       "ja/guides/authentication/sso",
                       {
@@ -3014,9 +2987,7 @@
                     "pages": [
                       "ja/guides/authorization/index",
                       "ja/guides/authorization/platform-app-approval",
-                      "ja/guides/authorization/limited-access-approval",
-                      "ja/guides/authorization/common-errors",
-                      "ja/guides/authorization/custom-skill-approval"
+                      "ja/guides/authorization/common-errors"
                     ]
                   },
                   {
@@ -3602,23 +3573,6 @@
                       "ja/guides/box-sign/suppress-sign-notifications",
                       "ja/guides/box-sign/sign-templates",
                       "ja/guides/box-sign/embedded-sign-client"
-                    ]
-                  },
-                  {
-                    "group": "Box Skills",
-                    "pages": [
-                      "ja/guides/skills/index",
-                      "ja/guides/skills/invocation-url",
-                      "ja/guides/skills/kit",
-                      {
-                        "group": "Skillsペイロードの処理",
-                        "pages": [
-                          "ja/guides/skills/handle/index",
-                          "ja/guides/skills/handle/setup",
-                          "ja/guides/skills/handle/payload",
-                          "ja/guides/skills/handle/metadata"
-                        ]
-                      }
                     ]
                   },
                   {
