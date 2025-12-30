@@ -27,6 +27,25 @@
     "languages": [
       {
         "language": "en",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Community",
+              "href": "https://community.box.com/box-platform-5",
+              "icon": "book-open-cover"
+            },
+            {
+              "anchor": "Developer Blog",
+              "href": "https://blog.box.com/developer",
+              "icon": "newspaper"
+            },
+            {
+              "anchor": "Box SDKs",
+              "href": "https://github.com/box/sdks",
+              "icon": "code"
+            }
+          ]
+        },
         "tabs": [
           {
             "tab": "Guides",
@@ -2733,6 +2752,25 @@
       },
       {
         "language": "jp",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "コミュニティ",
+              "href": "https://community.box.com/box-platform-5?lang=ja",
+              "icon": "book-open-cover"
+            },
+            {
+              "anchor": "開発者ブログ",
+              "href": "https://medium.com/box-developer-japan-blog",
+              "icon": "newspaper"
+            },
+            {
+              "anchor": "Box SDKs",
+              "href": "https://github.com/box/sdks",
+              "icon": "code"
+            }
+          ]
+        },
         "tabs": [
           {
             "tab": "ガイド",
@@ -5417,26 +5455,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community",
-          "href": "https://community.box.com/box-platform-5",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Developer Blog",
-          "href": "https://blog.box.com/developer",
-          "icon": "newspaper"
-        },
-        {
-          "anchor": "Box SDKs",
-          "href": "https://github.com/box/sdks",
-          "icon": "code"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "dark": "/logo/boxdev-dark.svg",
