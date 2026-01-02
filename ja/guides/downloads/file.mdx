@@ -1,25 +1,14 @@
 ---
-title: "ファイルのダウンロード"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - get_files_id_content
+  0: get_files_id_content
 related_guides:
-  - uploads/direct/file
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: downloads
-subcategory_id: null
-is_index: false
-id: downloads/file
-type: guide
-total_steps: 7
-sibling_id: downloads
-parent_id: downloads
-next_page_id: downloads/file-version
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/downloads/file.md
+  0: uploads/direct/file
+related_resources: {}
+required_guides: {}
+title: ファイルのダウンロード
+
 fullyTranslated: true
 ---
 
@@ -28,75 +17,73 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルをダウンロードするには、取得するコンテンツが含まれるファイルのIDを[`GET /files/:id/content`][api]に渡します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -L -X GET "https://api.box.com/2.0/files/12345/content" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+  ```
 
-```sh cURL
-curl -i -L -X GET "https://api.box.com/2.0/files/12345/content" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-```
+  ```typescript Node/TypeScript v10
+  const fs = require('fs');
 
-```typescript Node/TypeScript v10
-const fs = require('fs');
+  const fileContent = await client.downloads.downloadFile('123456789');
+  const fileWriteStream = fs.createWriteStream('file.pdf');
+  fileContent.pipe(fileWriteStream);
+  ```
 
-const fileContent = await client.downloads.downloadFile('123456789');
-const fileWriteStream = fs.createWriteStream('file.pdf');
-fileContent.pipe(fileWriteStream);
-```
+  ```python Python v10
+  client.downloads.download_file(uploaded_file.id)
+  ```
 
-```python Python v10
-client.downloads.download_file(uploaded_file.id)
-```
+  ```cs .NET v10
+  await client.Downloads.DownloadFileAsync(fileId: uploadedFile.Id);
+  ```
 
-```cs .NET v10
-await client.Downloads.DownloadFileAsync(fileId: uploadedFile.Id);
-```
+  ```swift Swift v10
+  let downloadsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+  let destinationURL = downloadsDirectoryURL.appendingPathComponent("file.txt")
 
-```swift Swift v10
-let downloadsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-let destinationURL = downloadsDirectoryURL.appendingPathComponent("file.txt")
+  let url = try await client.downloads.downloadFile(fileId: file.id, downloadDestinationURL: destinationURL)
 
-let url = try await client.downloads.downloadFile(fileId: file.id, downloadDestinationURL: destinationURL)
+  if let fileContent = try? String(contentsOf: url, encoding: .utf8) {
+      print("The content of the file: \(fileContent)")
+  }
+  ```
 
-if let fileContent = try? String(contentsOf: url, encoding: .utf8) {
-    print("The content of the file: \(fileContent)")
-}
-```
+  ```java Java v10
+  client.getDownloads().downloadFile(uploadedFile.getId())
+  ```
 
-```java Java v10
-client.getDownloads().downloadFile(uploadedFile.getId())
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  BoxFile.Info info = file.getInfo();
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-BoxFile.Info info = file.getInfo();
+  FileOutputStream stream = new FileOutputStream(info.getName());
+  file.download(stream);
+  stream.close();
+  ```
 
-FileOutputStream stream = new FileOutputStream(info.getName());
-file.download(stream);
-stream.close();
-```
+  ```python Python v4
+  file_id = '11111'
+  file_content = client.file(file_id).content()
+  ```
 
-```python Python v4
-file_id = '11111'
-file_content = client.file(file_id).content()
-```
+  ```cs .NET v6
+  Stream fileContents = await client.FilesManager.DownloadStreamAsync(id: "11111");
+  ```
 
-```cs .NET v6
-Stream fileContents = await client.FilesManager.DownloadStreamAsync(id: "11111");
-```
+  ```javascript Node v4
+  var fs = require('fs');
+  client.files.getReadStream('12345', null, function(error, stream) {
 
-```javascript Node v4
-var fs = require('fs');
-client.files.getReadStream('12345', null, function(error, stream) {
+  	if (error) {
+  		// handle error
+  	}
 
-	if (error) {
-		// handle error
-	}
-
-	// write the file to disk
-	var output = fs.createWriteStream('/path/to/file');
-	stream.pipe(output);
-});
-```
-
+  	// write the file to disk
+  	var output = fs.createWriteStream('/path/to/file');
+  	stream.pipe(output);
+  });
+  ```
 </CodeGroup>
 
 ## ダウンロードURL
@@ -105,17 +92,14 @@ SDKを使用しない場合、このAPIコールでは、`HTTP 302 Found`ステ�
 
 ```sh
 https://dl.boxcloud.com/d/1/[long-random-string]/download
-
 ```
 
 cURLで`-L`フラグを使用することで、自動的にこのリダイレクトに従うことができます。
 
 <Info>
+  SDKでは、結果として、バイナリデータがダウンロードされます。APIでは、ダウンロードURLが`location`ヘッダーを介して返されます。
 
-SDKでは、結果として、バイナリデータがダウンロードされます。APIでは、ダウンロードURLが`location`ヘッダーを介して返されます。
-
-また、SDKを介して[ダウンロードURLを取得][downloadurl]することも可能です。
-
+  また、SDKを介して[ダウンロードURLを取得][downloadurl]することも可能です。
 </Info>
 
 ## ダウンロードURLの有効期限
@@ -128,19 +112,20 @@ SDKでは、結果として、バイナリデータがダウンロードされ�
 
 このレスポンスは、ダウンロードリクエストの直前にファイルがアップロードされた場合に発生することがあります。
 
-[api]: /ja/reference/get-files-id-content
+[api]: /reference/get-files-id-content
 
-[downloadurl]: /ja/guides/downloads/get-url
+[downloadurl]: /guides/downloads/get-url
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
-  ]}
+  { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "新しいファイルのアップロード", href: "/ja/guides/uploads/direct/file", badge: "ガイド" }
-  ]}
+  { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" }
+]}
 />

@@ -1,27 +1,16 @@
 ---
-title: "Java SDKのインストール"
+alias_paths: {}
 rank: 3
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/jwt
-  - authentication/oauth2
+  0: authentication/jwt
+  1: authentication/oauth2
 related_pages:
-  - sdks-and-tools
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: tooling
-subcategory_id: tooling/sdks
-is_index: false
-id: tooling/sdks/java
-type: guide
-total_steps: 11
-sibling_id: tooling/sdks
-parent_id: tooling/sdks
-next_page_id: tooling/sdks/python
-previous_page_id: tooling/sdks/dotnet
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tooling/sdks/java.md
+  0: sdks-and-tools
+related_resources: {}
+required_guides: {}
+title: Java SDKのインストール
+
 fullyTranslated: true
 ---
 
@@ -31,7 +20,7 @@ Javaプロジェクトでは、Box Java SDKを使用してBox APIを呼び出す
 
 Java SDKをインストールするには、Gradle依存関係またはMaven依存関係を追加するか、ソースをプロジェクトに複製します。また、GitHubのリリースページからプリコンパイル済みJARのいずれかをダウンロードすることもできます。
 
-<Card href="https://github.com/box/box-java-sdk" title="GitHubでJava SDKの詳細を確認する"/>
+<Card href="https://github.com/box/box-java-sdk" arrow title="GitHubでJava SDKの詳細を確認する" />
 
 ## Gradle
 
@@ -39,13 +28,10 @@ Java SDKをインストールするには、Gradle依存関係またはMaven依�
 
 ```shell
 compile 'com.box:box-java-sdk:2.32.0'
-
 ```
 
 <Info>
-
-Java SDKの最新のバージョン番号については、[Java SDKのオープンソースに関するページ][java-os]を参照してください。
-
+  Java SDKの最新のバージョン番号については、[Java SDKのオープンソースに関するページ][java-os]を参照してください。
 </Info>
 
 ## Maven
@@ -58,13 +44,10 @@ Java SDKの最新のバージョン番号については、[Java SDKのオープ
     <artifactId>box-java-sdk</artifactId>
     <version>2.32.0</version>
 </dependency>
-
 ```
 
 <Info>
-
-Java SDKの最新のバージョン番号については、[Java SDKのオープンソースに関するページ][java-os]を参照してください。
-
+  Java SDKの最新のバージョン番号については、[Java SDKのオープンソースに関するページ][java-os]を参照してください。
 </Info>
 
 ## ソースからのインストール
@@ -106,7 +89,7 @@ GitHubの[リリースに関するページ][java-sdk-releases]からJava SDK用
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" }
-  ]}
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+]}
 />

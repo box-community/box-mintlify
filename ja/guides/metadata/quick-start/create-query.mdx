@@ -1,40 +1,32 @@
 ---
-title: "メタデータクエリの作成"
-sidebarTitle: 6. メタデータクエリの作成
-type: quick-start
 hide_in_page_nav: true
 related_endpoints:
-  - post_metadata_queries_execute_read
+  0: post_metadata_queries_execute_read
 related_guides:
-  - metadata/queries/create
-  - metadata/queries/syntax
-category_id: metadata
-subcategory_id: metadata/1-quick-start
-is_index: false
-id: metadata/quick-start/create-query
-rank: 6
-total_steps: 7
-sibling_id: metadata/quick-start
-parent_id: metadata/quick-start
-next_page_id: metadata/quick-start/next-steps
-previous_page_id: metadata/quick-start/update-template
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/1-quick-start/6-create-query.md
+  0: metadata/queries/create
+  1: metadata/queries/syntax
+sidebarTitle: 6. Create a metadata query
+title: メタデータクエリの作成
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-<ProgressBar pages={[
-                          "ja/guides/metadata/quick-start/list-all",
-                          "ja/guides/metadata/quick-start/create-template",
-                          "ja/guides/metadata/quick-start/create-instance",
-                          "ja/guides/metadata/quick-start/update-instance",
-                          "ja/guides/metadata/quick-start/update-template",
-                          "ja/guides/metadata/quick-start/create-query",
-                          "ja/guides/metadata/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/metadata/quick-start/list-all",
+                        "guides/metadata/quick-start/create-template",
+                        "guides/metadata/quick-start/create-instance",
+                        "guides/metadata/quick-start/update-instance",
+                        "guides/metadata/quick-start/update-template",
+                        "guides/metadata/quick-start/create-query",
+                        "guides/metadata/quick-start/next-steps"
+                      ]}
+/>
 
 最後の手順として、ファイル/フォルダに追加されているメタデータに基づいてそのファイルおよびフォルダを見つけるためのクエリを作成する方法を見てみましょう。
 
@@ -42,10 +34,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 この例では、`customerInfo`メタデータテンプレートのインスタンスが適用されているファイルまたはファイルを検索するクエリを作成します。このリストを、預金総額が200,000ドルを超える顧客に属しているファイルに絞り込みます。
 
-<CodeGroup>
-
-
-```curl cURL
+```sh cURL
 curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
     -H 'Authorization: Bearer <ACCESS_TOKEN>" ' \
     -H 'Content-Type: application/json' \
@@ -62,9 +51,7 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
       },
       "ancestor_folder_id": "0"
     }'
-
 ```
-</CodeGroup>
 
 このAPIにより、一致したファイルとフォルダのリストのほか、そのファイルのクエリに一致したメタデータが返されます。
 
@@ -92,32 +79,27 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
   "limit": 20,
   "next_marker": "AAAAAmVYB1FWec8GH6yWu2nwmanfMh07IyYInaa7DZDYjgO1H4KoLW29vPlLY173OKsci6h6xGh61gG73gnaxoS+o0BbI1/h6le6cikjlupVhASwJ2Cj0tOD9wlnrUMHHw3/ISf+uuACzrOMhN6d5fYrbidPzS6MdhJOejuYlvsg4tcBYzjauP3+VU51p77HFAIuObnJT0ff"
 }
-
 ```
 
 このAPIはデフォルトで、ページあたり`20`個の項目を返しますが、マーカーベースのページネーションを使用すると、さらに多くの項目をリクエストできます。
 
+<Card href="/guides/metadata/queries" arrow title="メタデータクエリの詳細を確認する" />
 
-<Card href="/ja/guides/metadata/queries" title="メタデータクエリの詳細を確認する"/>
+<Next>メタデータを使用してファイルにクエリを実行しました</Next>
 
-<Next>
-
-メタデータを使用してファイルにクエリを実行しました
-
-</Next>
-
-[query]: /ja/guides/metadata/queries
+[query]: /guides/metadata/queries
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Query files/folders by metadata", href: "/reference/post-metadata-queries-execute-read", badge: "POST" }
-  ]}
+  { label: "Query files/folders by metadata", href: "/reference/post-metadata-queries-execute-read", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "クエリの作成", href: "/ja/guides/metadata/queries/create", badge: "ガイド" },
-    { label: "クエリ構文", href: "/ja/guides/metadata/queries/syntax", badge: "ガイド" }
-  ]}
+  { label: "Create a query", href: "/guides/metadata/queries/create", badge: "GUIDE" },
+  { label: "Query syntax", href: "/guides/metadata/queries/syntax", badge: "GUIDE" }
+]}
 />

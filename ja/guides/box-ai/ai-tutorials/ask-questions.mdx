@@ -1,37 +1,24 @@
 ---
-title: "Box AIに質問する"
+alias_paths:
+  0: guides/box-ai/ask-questions
 rank: 2
 related_endpoints:
-  - post_ai_ask
+  0: post_ai_ask
 related_guides:
-  - box-ai/ai-tutorials/prerequisites
-  - box-ai/ai-tutorials/default-agent-overrides
-  - box-ai/ai-tutorials/generate-text
-  - box-ai/ai-tutorials/extract-metadata
-  - box-ai/ai-tutorials/extract-metadata-structured
-alias_paths:
-  - guides/box-ai/ask-questions
-category_id: box-ai
-subcategory_id: box-ai/ai-tutorials
-is_index: false
-id: box-ai/ai-tutorials/ask-questions
-type: guide
-total_steps: 6
-sibling_id: box-ai/ai-tutorials
-parent_id: box-ai/ai-tutorials
-next_page_id: box-ai/ai-tutorials/generate-text
-previous_page_id: box-ai/ai-tutorials/prerequisites
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/ai-tutorials/ask-questions.md
+  0: box-ai/ai-tutorials/prerequisites
+  1: box-ai/ai-tutorials/default-agent-overrides
+  2: box-ai/ai-tutorials/generate-text
+  3: box-ai/ai-tutorials/extract-metadata
+  4: box-ai/ai-tutorials/extract-metadata-structured
+title: Box AIに質問する
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 <Note>
-
-Box AI APIは、Business以上をご利用のすべてのお客様が利用できます。
-
+  Box AI APIは、Business以上をご利用のすべてのお客様が利用できます。
 </Note>
 
 Box AI APIを使用すると、指定した1ファイルまたは一連のファイルについて質問し、そのコンテンツに基づいた応答を得ることができます。たとえば、Boxでドキュメントを表示している場合に、Box AIに対して、コンテンツの要約を求めることができます。
@@ -45,145 +32,143 @@ Platformアプリを作成して認証するには、[Box AIの使い方][prereq
 質問を含むリクエストを送信するには、`POST /2.0/ai/ask`エンドポイントを使用し、必須のパラメータを指定します。
 
 <CodeGroup>
-
-```sh cURL
-curl -i -L POST "https://api.box.com/2.0/ai/ask" \
-     -H "content-type: application/json" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -d '{
-         "mode": "single_item_qa",
-         "prompt": "What is the value provided by public APIs based on this document?",
-         "items": [
-            {
-            "type": "file",
-            "id": "9842787262"
-            }
-         ],
-         "dialogue_history": [
+  ```sh cURL
+  curl -i -L POST "https://api.box.com/2.0/ai/ask" \
+       -H "content-type: application/json" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -d '{
+           "mode": "single_item_qa",
+           "prompt": "What is the value provided by public APIs based on this document?",
+           "items": [
               {
-              "prompt": "Make my email about public APIs sound more professional",
-              "answer": "Here is the first draft of your professional email about public APIs",
-              "created_at": "2013-12-12T10:53:43-08:00"
+              "type": "file",
+              "id": "9842787262"
+              }
+           ],
+           "dialogue_history": [
+                {
+                "prompt": "Make my email about public APIs sound more professional",
+                "answer": "Here is the first draft of your professional email about public APIs",
+                "created_at": "2013-12-12T10:53:43-08:00"
+                }
+            ],
+            "include_citations": true,
+            "ai_agent": {
+              "type": "ai_agent_ask",
+              "long_text": {
+                "model": "azure__openai__gpt_4o_mini",
+                "prompt_template": "It is `{current_date}`, and I have $8000 and want to spend a week in the Azores. What should I see?",
+              },
+              "basic_text": {
+                "model": "azure__openai__gpt_4o_mini",
+             }
+           }
+        }'
+  ```
+
+  ```typescript Node/TypeScript v10
+  await client.ai.createAiAsk({
+    mode: 'single_item_qa' as AiAskModeField,
+    prompt: 'which direction sun rises',
+    items: [
+      {
+        id: fileToAsk.id,
+        type: 'file' as AiItemAskTypeField,
+        content: 'Sun rises in the East',
+      } satisfies AiItemAsk,
+    ],
+    aiAgent: aiAskAgentConfig,
+  } satisfies AiAsk);
+  ```
+
+  ```python Python v10
+  client.ai.create_ai_ask(
+      CreateAiAskMode.SINGLE_ITEM_QA,
+      "which direction sun rises",
+      [
+          AiItemAsk(
+              id=file_to_ask.id,
+              type=AiItemAskTypeField.FILE,
+              content="Sun rises in the East",
+          )
+      ],
+      ai_agent=ai_ask_agent_config,
+  )
+  ```
+
+  ```cs .NET v10
+  await client.Ai.CreateAiAskAsync(requestBody: new AiAsk(mode: AiAskModeField.SingleItemQa, prompt: "which direction sun rises", items: Array.AsReadOnly(new [] {new AiItemAsk(id: fileToAsk.Id, type: AiItemAskTypeField.File) { Content = "Sun rises in the East" }})));
+  ```
+
+  ```swift Swift v10
+  try await client.ai.createAiAsk(requestBody: AiAsk(mode: AiAskModeField.singleItemQa, prompt: "which direction sun rises", items: [AiItemAsk(id: fileToAsk.id, type: AiItemAskTypeField.file, content: "Sun rises in the East")]))
+  ```
+
+  ```java Java v10
+  client.getAi().createAiAsk(new AiAsk.Builder(AiAskModeField.SINGLE_ITEM_QA, "which direction sun rises", Arrays.asList(new AiItemAsk.Builder(fileToAsk.getId(), AiItemAskTypeField.FILE).content("Sun rises in the East").build())).aiAgent(aiAskAgentConfig).build())
+  ```
+
+  ```java Java v5
+  BoxAIResponse response = BoxAI.sendAIRequest(
+      api,
+      "What is the content of the file?",
+      Collections.singletonList("123456", BoxAIItem.Type.FILE),
+      BoxAI.Mode.SINGLE_ITEM_QA
+  );
+  ```
+
+  ```python Python v4
+  items = [{
+      "id": "1582915952443",
+      "type": "file",
+      "content": "More information about public APIs"
+  }]
+  ai_agent = {
+      'type': 'ai_agent_ask',
+      'basic_text_multi': {
+          'model': 'openai__gpt_3_5_turbo'
+      }
+  }
+  answer = client.send_ai_question(
+      items=items, 
+      prompt="What is this file?",
+      mode="single_item_qa",
+      ai_agent=ai_agent
+  )
+  print(answer)
+  ```
+
+  ```cs .NET v6
+  BoxAIResponse response = await client.BoxAIManager.SendAIQuestionAsync(
+      new BoxAIAskRequest
+      {
+          Prompt = "What is the name of the file?",
+          Items = new List<BoxAIAskItem>() { new BoxAIAskItem() { Id = "12345" } },
+          Mode = AiAskMode.single_item_qa
+      };
+  );
+  ```
+
+  ```javascript Node v4
+  client.ai.ask(
+      {
+          prompt: 'What is the capital of France?',
+          items: [
+              {
+                  type: 'file',
+                  id: '12345'
               }
           ],
-          "include_citations": true,
-          "ai_agent": {
-            "type": "ai_agent_ask",
-            "long_text": {
-              "model": "azure__openai__gpt_4o_mini",
-              "prompt_template": "It is `{current_date}`, and I have $8000 and want to spend a week in the Azores. What should I see?",
-            },
-            "basic_text": {
-              "model": "azure__openai__gpt_4o_mini",
-           }
-         }
-      }'
-```
-
-```typescript Node/TypeScript v10
-await client.ai.createAiAsk({
-  mode: 'single_item_qa' as AiAskModeField,
-  prompt: 'which direction sun rises',
-  items: [
-    {
-      id: fileToAsk.id,
-      type: 'file' as AiItemAskTypeField,
-      content: 'Sun rises in the East',
-    } satisfies AiItemAsk,
-  ],
-  aiAgent: aiAskAgentConfig,
-} satisfies AiAsk);
-```
-
-```python Python v10
-client.ai.create_ai_ask(
-    CreateAiAskMode.SINGLE_ITEM_QA,
-    "which direction sun rises",
-    [
-        AiItemAsk(
-            id=file_to_ask.id,
-            type=AiItemAskTypeField.FILE,
-            content="Sun rises in the East",
-        )
-    ],
-    ai_agent=ai_ask_agent_config,
-)
-```
-
-```cs .NET v10
-await client.Ai.CreateAiAskAsync(requestBody: new AiAsk(mode: AiAskModeField.SingleItemQa, prompt: "which direction sun rises", items: Array.AsReadOnly(new [] {new AiItemAsk(id: fileToAsk.Id, type: AiItemAskTypeField.File) { Content = "Sun rises in the East" }})));
-```
-
-```swift Swift v10
-try await client.ai.createAiAsk(requestBody: AiAsk(mode: AiAskModeField.singleItemQa, prompt: "which direction sun rises", items: [AiItemAsk(id: fileToAsk.id, type: AiItemAskTypeField.file, content: "Sun rises in the East")]))
-```
-
-```java Java v10
-client.getAi().createAiAsk(new AiAsk.Builder(AiAskModeField.SINGLE_ITEM_QA, "which direction sun rises", Arrays.asList(new AiItemAsk.Builder(fileToAsk.getId(), AiItemAskTypeField.FILE).content("Sun rises in the East").build())).aiAgent(aiAskAgentConfig).build())
-```
-
-```java Java v5
-BoxAIResponse response = BoxAI.sendAIRequest(
-    api,
-    "What is the content of the file?",
-    Collections.singletonList("123456", BoxAIItem.Type.FILE),
-    BoxAI.Mode.SINGLE_ITEM_QA
-);
-```
-
-```python Python v4
-items = [{
-    "id": "1582915952443",
-    "type": "file",
-    "content": "More information about public APIs"
-}]
-ai_agent = {
-    'type': 'ai_agent_ask',
-    'basic_text_multi': {
-        'model': 'openai__gpt_3_5_turbo'
-    }
-}
-answer = client.send_ai_question(
-    items=items, 
-    prompt="What is this file?",
-    mode="single_item_qa",
-    ai_agent=ai_agent
-)
-print(answer)
-```
-
-```cs .NET v6
-BoxAIResponse response = await client.BoxAIManager.SendAIQuestionAsync(
-    new BoxAIAskRequest
-    {
-        Prompt = "What is the name of the file?",
-        Items = new List<BoxAIAskItem>() { new BoxAIAskItem() { Id = "12345" } },
-        Mode = AiAskMode.single_item_qa
-    };
-);
-```
-
-```javascript Node v4
-client.ai.ask(
-    {
-        prompt: 'What is the capital of France?',
-        items: [
-            {
-                type: 'file',
-                id: '12345'
-            }
-        ],
-        mode: 'single_item_qa'
-    })
-    .then(response => {
-        /* response -> {
-            "answer": "Paris",
-            "created_at": "2021-10-01T00:00:00Z",
-            "completion_reason": "done"
-        } */
-    });
-```
-
+          mode: 'single_item_qa'
+      })
+      .then(response => {
+          /* response -> {
+              "answer": "Paris",
+              "created_at": "2021-10-01T00:00:00Z",
+              "completion_reason": "done"
+          } */
+      });
+  ```
 </CodeGroup>
 
 ### パラメータ
@@ -223,7 +208,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
     ],
     "prompt": "List the guidelines on creating questions in Box AI for Documents"
 }'
-
 ```
 
 レスポンスは次のようになります。
@@ -234,7 +218,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
     "created_at": "2024-11-04T02:30:09.557-08:00",
     "completion_reason": "done"
 }
-
 ```
 
 ## `content`パラメータを使用して質問する
@@ -256,7 +239,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
     ],
     "prompt": "List the guidelines on creating questions in Box AI for Documents"
 }'
-
 ```
 
 このリクエストに対するレスポンスは、ファイルのコンテンツではなく`content`パラメータに基づきます。
@@ -267,7 +249,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
     "created_at": "2024-11-04T02:31:51.125-08:00",
     "completion_reason": "done"
 }
-
 ```
 
 ## `citations`パラメータを使用して質問する
@@ -289,7 +270,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
     ],
     "prompt": "List the guidelines on working with responses in Box AI for Documents"
 }'
-
 ```
 
 その結果の回答には、ソースファイルとコンテンツの直接引用が含まれます。
@@ -326,32 +306,32 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
         }
     ]
 }
-
 ```
 
-[prereq]: /ja/guides/box-ai/ai-tutorials/prerequisites
+[prereq]: /guides/box-ai/ai-tutorials/prerequisites
 
-[agent]: /ja/reference/get_ai_agent_default
+[agent]: /reference/get_ai_agent_default
 
-[model-param]: /ja/reference/resources/ai_agent_ask#param_basic_text_model
+[model-param]: /reference/resources/ai_agent_ask#param_basic_text_model
 
-[prompt-param]: /ja/reference/ai_agent_ask#param_basic_text_prompt_template
+[prompt-param]: /reference/ai_agent_ask#param_basic_text_prompt_template
 
-[overrides]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
+[overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
-  ]}
+  { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "ガイド" },
-    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "ガイド" },
-    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+  { label: "Override AI model configuration", href: "/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+  { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+  { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+  { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" }
+]}
 />

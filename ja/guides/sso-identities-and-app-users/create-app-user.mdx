@@ -1,22 +1,10 @@
 ---
-title: "SSO IDとApp Userの関連付け"
 related_endpoints:
-  - post_users
+  0: post_users
 related_guides:
-  - sso-identities-and-app-users/find-app-user
-category_id: sso-identities-and-app-users
-subcategory_id: null
-is_index: false
-id: sso-identities-and-app-users/create-app-user
-rank: 2
-type: guide
-total_steps: 3
-sibling_id: sso-identities-and-app-users
-parent_id: sso-identities-and-app-users
-next_page_id: sso-identities-and-app-users/find-app-user
-previous_page_id: sso-identities-and-app-users/connect-identities
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/2-create-app-user.md
+  0: sso-identities-and-app-users/find-app-user
+title: SSO IDとApp Userの関連付け
+
 fullyTranslated: true
 ---
 
@@ -43,51 +31,44 @@ Boxユーザーレコードの`external_app_user_id`フィールドを使用す�
 取得したら、ユーザーパラメータでオプションの`external_app_user_id`定義を指定して、新しいApp Userを作成するリクエストを実行します。
 
 <CodeGroup>
+  ```js Node
+  const ssoName = 'SSO User Name';
+  const ssoUID = 'SSO User Unique ID';
+  const spaceAmount = 1073741824;
 
-```js Node
-const ssoName = 'SSO User Name';
-const ssoUID = 'SSO User Unique ID';
-const spaceAmount = 1073741824;
+  // Create app user
+  client.enterprise.addAppUser(
+      ssoName,
+      {
+        space_amount: spaceAmount,
+        external_app_user_id: ssoUID
+      }
+  ).then(appUser => {
+      console.log(`New user created: ${appUser.name}`);
+  });
+  ```
 
-// Create app user
-client.enterprise.addAppUser(
-    ssoName,
-    {
-      space_amount: spaceAmount,
-      external_app_user_id: ssoUID
-    }
-).then(appUser => {
-    console.log(`New user created: ${appUser.name}`);
-});
+  ```java Java
+  String ssoName = "SSO User Name";
+  String ssoUID = "SSO User Unique ID";
 
-```
+  // Create app user
+  CreateUserParams params = new CreateUserParams();
+  params.setExternalAppUserId(ssoUID);
+  BoxUser.Info createdUserInfo = BoxUser.createAppUser(client, ssoName, params);
 
+  outputString = "New user created: " + createdUserInfo.getName();
+  ```
 
-```java Java
-String ssoName = "SSO User Name";
-String ssoUID = "SSO User Unique ID";
+  ```python Python
+  sso_name = 'SSO User Name'
+  sso_uid = 'SSO User Unique ID'
+  space = 1073741824
 
-// Create app user
-CreateUserParams params = new CreateUserParams();
-params.setExternalAppUserId(ssoUID);
-BoxUser.Info createdUserInfo = BoxUser.createAppUser(client, ssoName, params);
-
-outputString = "New user created: " + createdUserInfo.getName();
-
-```
-
-```python Python
-sso_name = 'SSO User Name'
-sso_uid = 'SSO User Unique ID'
-space = 1073741824
-
-# Create app user
-user = box_client.create_user(sso_name, None, space_amount=space, external_app_user_id=sso_uid)
-print('New user created: {name}')
-
-```
-
-
+  # Create app user
+  user = box_client.create_user(sso_name, None, space_amount=space, external_app_user_id=sso_uid)
+  print('New user created: {name}')
+  ```
 </CodeGroup>
 
 ### 管理対象ユーザー
@@ -100,150 +81,146 @@ print('New user created: {name}')
 取得したら、ログイン用のSSOユーザーレコードのメールアドレスを指定して、新しい管理対象ユーザーを作成するリクエストを実行します。
 
 <CodeGroup>
+  ```js Node
+  const ssoName = 'SSO User Name';
+  const ssoEmail = 'ssouser@email.com';
+  const spaceAmount = 1073741824;
 
-```js Node
-const ssoName = 'SSO User Name';
-const ssoEmail = 'ssouser@email.com';
-const spaceAmount = 1073741824;
+  // Create app user
+  client.enterprise.addUser(
+      ssoEmail,
+      ssoName,
+      {
+          space_amount: spaceAmount
+      }
+  ).then(managedUser => {
+      console.log(`New user created: ${managedUser.name}`);
+  });
+  ```
 
-// Create app user
-client.enterprise.addUser(
-    ssoEmail,
-    ssoName,
-    {
-        space_amount: spaceAmount
-    }
-).then(managedUser => {
-    console.log(`New user created: ${managedUser.name}`);
-});
+  ```java Java
+  String ssoName = "SSO User Name";
+  String ssoEmail = "ssouser@email.com";
 
-```
+  // Create managed user
+  BoxUser.Info createdUserInfo =
+    BoxUser.createEnterpriseUser(client, ssoEmail, ssoName);
 
+  outputString = "New user created: " + createdUserInfo.getName();
+  ```
 
-```java Java
-String ssoName = "SSO User Name";
-String ssoEmail = "ssouser@email.com";
+  ```python Python
+  sso_name = 'SSO User Name'
+  sso_email = 'ssouser@email.com'
+  space = 1073741824
 
-// Create managed user
-BoxUser.Info createdUserInfo =
-  BoxUser.createEnterpriseUser(client, ssoEmail, ssoName);
-
-outputString = "New user created: " + createdUserInfo.getName();
-
-```
-
-```python Python
-sso_name = 'SSO User Name'
-sso_email = 'ssouser@email.com'
-space = 1073741824
-
-# Create managed user
-user = box_client.create_user(sso_name, sso_email, space_amount=space)
-print('New user created: {name}')
-
-```
+  # Create managed user
+  user = box_client.create_user(sso_name, sso_email, space_amount=space)
+  print('New user created: {name}')
+  ```
 </CodeGroup>
 
 ## メールアドレスによる関連付け
 
-SSOユーザーのメールアドレスによって関連付けられている新しい[管理対象ユーザー](https://developer.box.com/platform/user-types/#managed-users)の作成は、標準的な管理対象ユーザーの作成プロセスと同じです。
+SSOユーザーのメールアドレスによって関連付けられている新しい[管理対象ユーザー](/platform/user-types/#managed-users)の作成は、標準的な管理対象ユーザーの作成プロセスと同じです。
 
 ユーザーは、SSOプロバイダを介してログインした後、まだBoxユーザーとして存在しない場合に、SSOユーザーレコードからメールアドレスを抽出して、新しいBox管理対象ユーザーを作成するリクエストを実行します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/users" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "login": "ceo@example.com",
-       "name": "Aaron Levie"
-     }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/users" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "login": "ceo@example.com",
+         "name": "Aaron Levie"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.users.createUser({
-  name: userName,
-  login: userLogin,
-  isPlatformAccessOnly: true,
-} satisfies CreateUserRequestBody);
-```
+  ```typescript Node/TypeScript v10
+  await client.users.createUser({
+    name: userName,
+    login: userLogin,
+    isPlatformAccessOnly: true,
+  } satisfies CreateUserRequestBody);
+  ```
 
-```python Python v10
-client.users.create_user(user_name, login=user_login, is_platform_access_only=True)
-```
+  ```python Python v10
+  client.users.create_user(user_name, login=user_login, is_platform_access_only=True)
+  ```
 
-```csharp .NET v10
-await client.Users.CreateUserAsync(requestBody: new CreateUserRequestBody(name: userName) { Login = userLogin, IsPlatformAccessOnly = true });
-```
+  ```csharp .NET v10
+  await client.Users.CreateUserAsync(requestBody: new CreateUserRequestBody(name: userName) { Login = userLogin, IsPlatformAccessOnly = true });
+  ```
 
-```swift Swift v10
-try await client.users.createUser(requestBody: CreateUserRequestBody(name: userName, login: userLogin, isPlatformAccessOnly: true))
-```
+  ```swift Swift v10
+  try await client.users.createUser(requestBody: CreateUserRequestBody(name: userName, login: userLogin, isPlatformAccessOnly: true))
+  ```
 
-```java Java v10
-client.getUsers().createUser(new CreateUserRequestBody.Builder(userName).login(userLogin).isPlatformAccessOnly(true).build())
-```
+  ```java Java v10
+  client.getUsers().createUser(new CreateUserRequestBody.Builder(userName).login(userLogin).isPlatformAccessOnly(true).build())
+  ```
 
-```java Java v5
-BoxUser.Info createdUserInfo = BoxUser.createEnterpriseUser(api, "user@example.com", "A User");
-```
+  ```java Java v5
+  BoxUser.Info createdUserInfo = BoxUser.createEnterpriseUser(api, "user@example.com", "A User");
+  ```
 
-```py Python v4
-new_user = client.create_user('Temp User', 'user@example.com')
-```
+  ```py Python v4
+  new_user = client.create_user('Temp User', 'user@example.com')
+  ```
 
-```csharp .NET v6
-var userParams = new BoxUserRequest()
-{
-    Name = "Example User",
-    Login = "user@example.com"
-};
-BoxUser newUser = await client.UsersManager.CreateEnterpriseUserAsync(userParams);
-```
+  ```csharp .NET v6
+  var userParams = new BoxUserRequest()
+  {
+      Name = "Example User",
+      Login = "user@example.com"
+  };
+  BoxUser newUser = await client.UsersManager.CreateEnterpriseUserAsync(userParams);
+  ```
 
-```js Node v4
-client.enterprise.addUser(
- 'eddard@winterfell.example.com',
- 'Ned Stark',
- {
-  role: client.enterprise.userRoles.COADMIN,
-  address: '555 Box Lane',
-  status: client.enterprise.userStatuses.CANNOT_DELETE_OR_EDIT
- })
- .then(user => {
-  /* user -> {
-   type: 'user',
-   id: '44444',
-   name: 'Ned Stark',
-   login: 'eddard@winterfell.example.com',
-   created_at: '2012-11-15T16:34:28-08:00',
-   modified_at: '2012-11-15T16:34:29-08:00',
-   role: 'coadmin',
-   language: 'en',
-   timezone: 'America/Los_Angeles',
-   space_amount: 5368709120,
-   space_used: 0,
-   max_upload_size: 2147483648,
-   status: 'active',
-   job_title: '',
-   phone: '',
-   address: '555 Box Lane',
-   avatar_url: 'https://www.box.com/api/avatar/large/deprecated' }
-        */
- });
-```
+  ```js Node v4
+  client.enterprise.addUser(
+   'eddard@winterfell.example.com',
+   'Ned Stark',
+   {
+    role: client.enterprise.userRoles.COADMIN,
+    address: '555 Box Lane',
+    status: client.enterprise.userStatuses.CANNOT_DELETE_OR_EDIT
+   })
+   .then(user => {
+    /* user -> {
+     type: 'user',
+     id: '44444',
+     name: 'Ned Stark',
+     login: 'eddard@winterfell.example.com',
+     created_at: '2012-11-15T16:34:28-08:00',
+     modified_at: '2012-11-15T16:34:29-08:00',
+     role: 'coadmin',
+     language: 'en',
+     timezone: 'America/Los_Angeles',
+     space_amount: 5368709120,
+     space_used: 0,
+     max_upload_size: 2147483648,
+     status: 'active',
+     job_title: '',
+     phone: '',
+     address: '555 Box Lane',
+     avatar_url: 'https://www.box.com/api/avatar/large/deprecated' }
+          */
+   });
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create user", href: "/reference/post-users", badge: "POST" }
-  ]}
+  { label: "Create user", href: "/reference/post-users", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "SSO IDのApp Userの検索", href: "/ja/guides/sso-identities-and-app-users/find-app-user", badge: "ガイド" }
-  ]}
+  { label: "Find app user for SSO identity", href: "/guides/sso-identities-and-app-users/find-app-user", badge: "GUIDE" }
+]}
 />

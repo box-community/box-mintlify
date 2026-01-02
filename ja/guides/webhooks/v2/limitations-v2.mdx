@@ -1,25 +1,14 @@
 ---
-title: "制限"
-rank: 6
-related_endpoints: []
-related_guides:
-  - webhooks/v2/create-v2
-  - webhooks/v2/update-v2
-required_guides: []
 alias_paths:
-  - /webhooks/limitations
-category_id: webhooks
-subcategory_id: webhooks/v2
-is_index: false
-id: webhooks/v2/limitations-v2
-type: guide
-total_steps: 6
-sibling_id: webhooks/v2
-parent_id: webhooks/v2
-next_page_id: ''
-previous_page_id: webhooks/v2/signatures-v2
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/limitations-v2.md
+  0: /webhooks/limitations
+rank: 6
+related_endpoints: {}
+related_guides:
+  0: webhooks/v2/create-v2
+  1: webhooks/v2/update-v2
+required_guides: {}
+title: 制限事項
+
 fullyTranslated: true
 ---
 
@@ -54,9 +43,7 @@ Webhookの通知URL (`address`) は、有効なIPアドレスに解決される�
 V2 Webhookをルートフォルダ (IDが`0`のフォルダ) に作成することはできません。代わりに[V1 Webhook][v1]を使用する必要があります。
 
 <Note>
-
-項目の権限が原因でアクションを実行できない場合、試行されたアクションについての通知は送信されません。
-
+  項目の権限が原因でアクションを実行できない場合、試行されたアクションについての通知は送信されません。
 </Note>
 
 ## `NO_ACTIVE_SESSION`はWebhookペイロードで設定
@@ -89,19 +76,18 @@ Webhookは以下の理由で削除される可能性があります。
 "additional_info": {
   "reason": "auto_cleanup"
 }
-
 ```
 
-[v1]: /ja/guides/webhooks/v1
+[v1]: /guides/webhooks/v1
 
-[update]: /ja/guides/webhooks/v2/update-v2
+[update]: /guides/webhooks/v2/update-v2
 
 [app authorization]: https://support.box.com/hc/en-us/articles/360043697014-Authorizing-Apps-in-the-Box-App-Approval-Process
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" },
-    { label: "Webhookの更新", href: "/ja/guides/webhooks/v2/update-v2", badge: "ガイド" }
-  ]}
+  { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+  { label: "Update Webhooks", href: "/guides/webhooks/v2/update-v2", badge: "GUIDE" }
+]}
 />

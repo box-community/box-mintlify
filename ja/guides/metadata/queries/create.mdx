@@ -1,22 +1,11 @@
 ---
-title: "クエリの作成"
-related_endpoints: []
-required_guides: []
-category_id: metadata
-subcategory_id: metadata/5-queries
-is_index: false
-id: metadata/queries/create
-rank: 1
-type: guide
-total_steps: 7
-sibling_id: metadata/queries
-parent_id: metadata/queries
-next_page_id: metadata/queries/syntax
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/5-queries/1-create.md
+related_endpoints: {}
+required_guides: {}
+title: クエリの作成
+
 fullyTranslated: true
 ---
+
 メタデータクエリとは、`/metadata_queries/execute_read`エンドポイントに対する`POST`リクエストで、その本文にはメタデータクエリのすべてのパーツが含まれています。ここで最も重要なのは、検索対象のテンプレートを指定する`from`属性、検索するフォルダを指定する`ancestor_folder_id`、検索に使用するすべてのテンプレートフィールドを決定する`query`です。
 
 ```sh
@@ -43,12 +32,11 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
       ],
       "limit": 100
     }'
-
 ```
 
-使用可能なすべてのパラメータの詳細については、Boxの他の[メタデータクエリガイド](/ja/guides/metadata/queries)または関連する[エンドポイントリファレンス](/ja/reference/post-metadata-queries-execute-read)を参照してください。
+使用可能なすべてのパラメータの詳細については、Boxの他の[メタデータクエリガイド](/guides/metadata/queries)または関連する[エンドポイントリファレンス](/reference/post-metadata-queries-execute-read)を参照してください。
 
-<Card href="/ja/guides/metadata/queries/syntax" title="クエリ構文の詳細を確認する"/>
+<Card href="/guides/metadata/queries/syntax" arrow title="クエリ構文の詳細を確認する" />
 
 ## レスポンス
 
@@ -78,9 +66,8 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
   "limit": 20,
   "next_marker": "AAAAAmVYB1FWec8GH6yWu2nwmanfMh07IyYInaa7DZDYjgO1H4KoLW29vPlLY173OKsci6h6xGh61gG73gnaxoS+o0BbI1/h6le6cikjlupVhASwJ2Cj0tOD9wlnrUMHHw3/ISf+uuACzrOMhN6d5fYrbidPzS6MdhJOejuYlvsg4tcBYzjauP3+VU51p77HFAIuObnJT0ff"
 }
-
 ```
 
 このAPIはデフォルトで、ページあたり`20`個の項目を返しますが、マーカーベースのページネーションを使用すると、さらに多くの項目をリクエストできます。
 
-<Card href="/ja/guides/metadata/queries/pagination" title="ページ割りクエリの結果の詳細を確認する"/>
+<Card href="/guides/metadata/queries/pagination" arrow title="ページ割りクエリの結果の詳細を確認する" />

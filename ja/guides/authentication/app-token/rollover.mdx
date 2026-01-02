@@ -1,36 +1,25 @@
 ---
-title: "アプリトークンの循環"
+alias_paths: {}
 rank: 5
-related_endpoints: []
-related_guides: []
+related_endpoints: {}
+related_guides: {}
+related_resources: {}
 required_guides:
-  - authentication/app-token/app-token-setup
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: authentication/app-token
-is_index: false
-id: authentication/app-token/rollover
-type: guide
-total_steps: 5
-sibling_id: authentication/app-token
-parent_id: authentication/app-token
-next_page_id: ''
-previous_page_id: authentication/app-token/endpoints
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/app-token/rollover.md
+  0: authentication/app-token/app-token-setup
+title: アプリトークンの循環
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "アプリトークン認証を使用した設定", href: "/ja/guides/authentication/app-token/app-token-setup", badge: "ガイド" }
-  ]}
+  { label: "Setup with App Token Auth", href: "/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+]}
 />
+
 アプリケーションのアプリトークンを1つずつ更新することで、アプリケーションではトークンの循環が可能となり、競合が発生することはありません。
 
 ## トークンを循環させる理由
@@ -53,9 +42,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 3. プライマリアプリトークンが使用されていないことを確信したら、[開発者コンソール][console]に移動して、プライマリアプリトークンの \[取り消し] ボタンをクリックします。
 
 <Info>
-
-セカンダリアプリトークンからプライマリアプリトークンにロールバックするには、トークンが交換された状態で同じ手順を繰り返します。
-
+  セカンダリアプリトークンからプライマリアプリトークンにロールバックするには、トークンが交換された状態で同じ手順を繰り返します。
 </Info>
 
 [console]: https://app.box.com/developers/console

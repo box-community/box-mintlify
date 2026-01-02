@@ -1,25 +1,14 @@
 ---
-title: "SSOとApp User"
 rank: 70
 related_endpoints:
-  - post_users
+  0: post_users
 related_guides:
-  - authentication/jwt/
-  - users/provision/
-  - users/create-app-user
-  - users/create-managed-user
-category_id: sso-identities-and-app-users
-subcategory_id: null
-is_index: true
-id: sso-identities-and-app-users
-type: guide
-total_steps: 3
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: sso-identities-and-app-users/find-app-user
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/index.md
+  0: authentication/jwt/
+  1: users/provision/
+  2: users/create-app-user
+  3: users/create-managed-user
+title: SSOとApp User
+
 fullyTranslated: true
 ---
 
@@ -30,9 +19,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Boxは、会社のSSOサービスに接続可能なアプリケーションの1つです。こうしたアプリケーションをPlatformアプリに統合すれば、いずれのエンドユーザーに対しても即座にBoxユーザーがプロビジョニングされます。その際、このエンドユーザーにBoxアカウントが用意されたことは知らされません。
 
 <Note>
-
-一般的なSSOサービスには`Okta`、`Auth0`、`Microsoft Azure AD`、`OneLogin`、`G Suite`、`Ping Identity`などがありますが、これ以外にも展開可能なサービスは多数あります。
-
+  一般的なSSOサービスには`Okta`、`Auth0`、`Microsoft Azure AD`、`OneLogin`、`G Suite`、`Ping Identity`などがありますが、これ以外にも展開可能なサービスは多数あります。
 </Note>
 
 ## SSOをアプリに接続する
@@ -47,10 +34,9 @@ Boxは、会社のSSOサービスに接続可能なアプリケーションの1�
 6. このユーザーに関連付けられたBoxアカウントがまだない場合は、SSO IDに基づいて新しいBoxユーザーアカウントが作成されます。SSOサービスの一意のユーザーIDが新しいBoxユーザーにリンクされ、2つのアカウントの間に関連付けが作成されます。その後、この新しいBoxユーザーがBoxでそのユーザーに代わってAPIコールを実行します。
 
 <Note>
-**BoxウェブアプリとSSO**
+  **BoxウェブアプリとSSO**
 
-SSOサービスをBoxアプリケーションではなくBoxウェブサイトに接続したい方のために、Boxでは、SAML 2.0を通じて[Boxウェブアプリケーション](https://www.box.com)のSSO統合をサポートするための[統合オプション][sso-support]を多数用意しています。
-
+  SSOサービスをBoxアプリケーションではなくBoxウェブサイトに接続したい方のために、Boxでは、SAML 2.0を通じて[Boxウェブアプリケーション](https://www.box.com)のSSO統合をサポートするための[統合オプション][sso-support]を多数用意しています。
 </Note>
 
 {/* i18n-enable localize-links */}
@@ -62,15 +48,16 @@ SSOサービスをBoxアプリケーションではなくBoxウェブサイト�
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create user", href: "/reference/post-users", badge: "POST" }
-  ]}
+  { label: "Create user", href: "/reference/post-users", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "ユーザーのプロビジョニング", href: "/ja/guides/users/provision/index", badge: "ガイド" },
-    { label: "App Userの作成", href: "/ja/guides/users/create-app-user", badge: "ガイド" },
-    { label: "管理対象ユーザーの作成", href: "/ja/guides/users/create-managed-user", badge: "ガイド" }
-  ]}
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "Provision Users", href: "/guides/users/provision/index", badge: "GUIDE" },
+  { label: "Create App User", href: "/guides/users/create-app-user", badge: "GUIDE" },
+  { label: "Create Managed User", href: "/guides/users/create-managed-user", badge: "GUIDE" }
+]}
 />

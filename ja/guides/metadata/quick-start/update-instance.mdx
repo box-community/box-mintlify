@@ -1,135 +1,120 @@
 ---
-title: "ファイルのメタデータの更新"
-sidebarTitle: 4. ファイルのメタデータの更新
-type: quick-start
 hide_in_page_nav: true
 related_endpoints:
-  - put_files_id_metadata_id_id
-  - put_folders_id_metadata_id_id
+  0: put_files_id_metadata_id_id
+  1: put_folders_id_metadata_id_id
 related_guides:
-  - metadata/templates
-  - metadata/instances/update
-category_id: metadata
-subcategory_id: metadata/1-quick-start
-is_index: false
-id: metadata/quick-start/update-instance
-rank: 4
-total_steps: 7
-sibling_id: metadata/quick-start
-parent_id: metadata/quick-start
-next_page_id: metadata/quick-start/update-template
-previous_page_id: metadata/quick-start/create-instance
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/1-quick-start/4-update-instance.md
+  0: metadata/templates
+  1: metadata/instances/update
+sidebarTitle: 4. Update metadata on a file
+title: ファイルのメタデータの更新
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-<ProgressBar pages={[
-                          "ja/guides/metadata/quick-start/list-all",
-                          "ja/guides/metadata/quick-start/create-template",
-                          "ja/guides/metadata/quick-start/create-instance",
-                          "ja/guides/metadata/quick-start/update-instance",
-                          "ja/guides/metadata/quick-start/update-template",
-                          "ja/guides/metadata/quick-start/create-query",
-                          "ja/guides/metadata/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/metadata/quick-start/list-all",
+                        "guides/metadata/quick-start/create-template",
+                        "guides/metadata/quick-start/create-instance",
+                        "guides/metadata/quick-start/update-instance",
+                        "guides/metadata/quick-start/update-template",
+                        "guides/metadata/quick-start/create-query",
+                        "guides/metadata/quick-start/next-steps"
+                      ]}
+/>
 
 メタデータをファイルまたはフォルダに適用したら、多くの場合は、後日メタデータの更新が必要になります。
 
 メタデータインスタンスを更新するには、元のデータに一連の操作を適用します。これらの操作はアトミックに実行されるため、変更はすべて適用されるか、まったく適用されないかのいずれかになります。
 
-<Card href="/ja/guides/metadata/instances/update" title="インスタンスの更新の詳細を確認する"/>
+<Card href="/guides/metadata/instances/update" arrow title="インスタンスの更新の詳細を確認する" />
 
 この場合、顧客の`name`を`Box, Inc`から`Box`に変更するとします。適用できる操作は2つあり、まず、変更前に名前の値がまだ`Box, Inc`であることを確認し、次に変更を行います。
 
 <CodeGroup>
+  ```sh cURL
+  curl -X PUT https://api.box.com/2.0/files/12345/metadata/enterprise/customerInfo \
+      -H "authorization: Bearer <ACCESS_TOKEN>" \
+      -H "content-type: application/json-patch+json" \
+      -d '[
+        {
+          "op": "test",
+          "path": "/name",
+          "value": "Box, Inc"
+        },
+        {
+          "op": "replace",
+          "path": "/name",
+          "value": "Box"
+        }
+      ]'
+  ```
 
-```curl cURL
-curl -X PUT https://api.box.com/2.0/files/12345/metadata/enterprise/customerInfo \
-    -H "authorization: Bearer <ACCESS_TOKEN>" \
-    -H "content-type: application/json-patch+json" \
-    -d '[
-      {
-        "op": "test",
-        "path": "/name",
-        "value": "Box, Inc"
-      },
-      {
-        "op": "replace",
-        "path": "/name",
-        "value": "Box"
-      }
-    ]'
-
-```
-
-```csharp .NET
-var updates = new List<BoxMetadataUpdate>()
-{
-  new BoxMetadataUpdate()
+  ```csharp .NET
+  var updates = new List<BoxMetadataUpdate>()
   {
-      Op = MetadataUpdateOp.test,
-      Path = "/name",
-      Value = "Box, Inc"
-  },
-  new BoxMetadataUpdate()
-  {
-      Op = MetadataUpdateOp.replace,
-      Path = "/name",
-      Value = "Box"
-  }
-};
-Dictionary<string, object> updatedMetadata = await client.MetadataManager
-    .UpdateFileMetadataAsync("12345", updates, "enterprise", "customerInfo");
+    new BoxMetadataUpdate()
+    {
+        Op = MetadataUpdateOp.test,
+        Path = "/name",
+        Value = "Box, Inc"
+    },
+    new BoxMetadataUpdate()
+    {
+        Op = MetadataUpdateOp.replace,
+        Path = "/name",
+        Value = "Box"
+    }
+  };
+  Dictionary<string, object> updatedMetadata = await client.MetadataManager
+      .UpdateFileMetadataAsync("12345", updates, "enterprise", "customerInfo");
+  ```
 
-```
-
-```java Java
-BoxFile file = new BoxFile(api, "12345");
-file.updateMetadata(
-  file.createMetadata(
-  "customerInfo",
-  "enterprise",
-  new Metadata().test("/name", "Box, Inc").replace("/name", "Box")
-);
-
-```
-
-```python Python
-file = client.file(file_id='12345')
-metadata = file.metadata(scope='enterprise', template='customerInfo')
-
-updates = metadata.start_update()
-updates.test('/name', 'Box, Inc')
-updates.replace('/name', 'Box')
-
-file.update(updates)
-
-```
-
-```js Node
-var updates = [
-    { op: 'test', path: '/name', value: 'Box, Inc' },
-    { op: 'replace', path: '/name', value: 'Box' }
-];
-
-client.files.updateMetadata(
-    '12345',
-    client.metadata.scopes.ENTERPRISE,
+  ```java Java
+  BoxFile file = new BoxFile(api, "12345");
+  file.updateMetadata(
+    file.createMetadata(
     "customerInfo",
-    updates
-).then(metadata => {
-    //...
-});
+    "enterprise",
+    new Metadata().test("/name", "Box, Inc").replace("/name", "Box")
+  );
+  ```
 
-```
+  ```python Python
+  file = client.file(file_id='12345')
+  metadata = file.metadata(scope='enterprise', template='customerInfo')
 
+  updates = metadata.start_update()
+  updates.test('/name', 'Box, Inc')
+  updates.replace('/name', 'Box')
+
+  file.update(updates)
+  ```
+
+  ```js Node
+  var updates = [
+      { op: 'test', path: '/name', value: 'Box, Inc' },
+      { op: 'replace', path: '/name', value: 'Box' }
+  ];
+
+  client.files.updateMetadata(
+      '12345',
+      client.metadata.scopes.ENTERPRISE,
+      "customerInfo",
+      updates
+  ).then(metadata => {
+      //...
+  });
+  ```
 </CodeGroup>
 
-<Card href="/ja/guides/metadata/instances/update" title="すべての操作の詳細を確認する"/>
+<Card href="/guides/metadata/instances/update" arrow title="すべての操作の詳細を確認する" />
 
 このAPIにより、更新されたメタデータインスタンスが返されます。
 
@@ -147,26 +132,22 @@ client.files.updateMetadata(
   "$version": 1,
   "$canEdit": true
 }
-
 ```
 
-<Next>
-
-ファイルのメタデータを更新しました
-
-</Next>
+<Next>ファイルのメタデータを更新しました</Next>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
-    { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
-  ]}
+  { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
+  { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレート", href: "/ja/guides/metadata/templates/index", badge: "ガイド" },
-    { label: "項目のメタデータの更新", href: "/ja/guides/metadata/instances/update", badge: "ガイド" }
-  ]}
+  { label: "Metadata templates", href: "/guides/metadata/templates/index", badge: "GUIDE" },
+  { label: "Update metadata on an item", href: "/guides/metadata/instances/update", badge: "GUIDE" }
+]}
 />

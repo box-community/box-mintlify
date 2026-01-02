@@ -1,24 +1,10 @@
 ---
-title: "最初のアプリケーションの作成"
 rank: 2
-related_guides:
-  - api-calls
-category_id: getting-started
-subcategory_id: null
-is_index: false
-id: getting-started/first-application
-type: guide
-total_steps: 3
-sibling_id: getting-started
-parent_id: getting-started
-next_page_id: getting-started/publish-app
-previous_page_id: getting-started
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/getting-started/first-application.md
+related_guides: ""
+title: 最初のアプリケーションの作成
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 開発者用エンタープライズを設定したら、アプリケーションの作成を開始できます。
 
@@ -26,11 +12,11 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ## アプリケーションの種類の選択
 
-まず、作成するアプリケーションの種類を選択します。ほとんどのパートナーが統合に \[**Platform アプリ**] のオプションを使用しているため、このガイドではこの種類を使用します。
+まず、作成するアプリケーションの種類を選択します。ほとんどのパートナーが統合に \[**Platformアプリ**] のオプションを使用しているため、このガイドではこの種類を使用します。
 
 ## 認証方法の選択
 
-\[**Platform アプリ**] を選択したら、アプリで使用する[認証方法を選択][auth]する必要があります。ほとんどのパートナーが統合に \[[**ユーザー認証 (OAuth 2.0)**][oauth2]] のオプションを使用しているため、このガイドではこの種類を使用します。
+\[**Platformアプリ**] を選択したら、アプリで使用する[認証方法を選択][auth]する必要があります。ほとんどのパートナーが統合に \[[**ユーザー認証 (OAuth 2.0)**][oauth2]] のオプションを使用しているため、このガイドではこの種類を使用します。
 
 ## アプリの命名
 
@@ -42,50 +28,48 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 最も基本的な設定から始めます。\[**一般設定**] タブを開き、以下のフィールドでチェックボックスをオンにしたり、入力したりします。
 
-- \[**アプリ名**] - アプリ作成時に設定する名前。ここで必要に応じて変更できます。
-- \[**連絡先メール**] - デフォルトでアプリケーションの開発者のアドレスに設定されます。アプリを公開すると、[統合][integrations]でアプリを表示した Box ユーザーにこのアドレスが表示されることに注意してください。統合に問題があった場合にユーザーがサポートに連絡できるよう、サポートのメールアドレスに変更することをお勧めします。
-- \[**コラボレータ**] - この統合の作成に取り組むことができる他の開発者を追加します。追加された開発者は、設定を調整する必要があるときに開発者インターフェースにアクセスできるようになります。
+* \[**アプリ名**] - アプリ作成時に設定する名前。ここで必要に応じて変更できます。
+* \[**連絡先メール**] - デフォルトでアプリケーションの開発者のアドレスに設定されます。アプリを公開すると、[統合][integrations]でアプリを表示したBoxユーザーにこのアドレスが表示されることに注意してください。統合に問題があった場合にユーザーがサポートに連絡できるよう、サポートのメールアドレスに変更することをお勧めします。
+* \[**コラボレータ**] - この統合の作成に取り組むことができる他の開発者を追加します。追加された開発者は、設定を調整する必要があるときに開発者インターフェースにアクセスできるようになります。
 
 <Note>
-
-ここに追加する開発者はすでに Box ユーザーである必要があります。Box アカウントを持っていない場合は、開発者用エンタープライズで[アカウントを作成][add-users]できます。
-
+  ここに追加する開発者はすでにBoxユーザーである必要があります。Boxアカウントを持っていない場合は、開発者用エンタープライズで[アカウントを作成][add-users]できます。
 </Note>
 
 ## 詳細設定
 
-\[**構成**] タブに移動します。ここでは、アプリの詳細の指定、開発者トークンの生成、OAuth 2.0 資格情報の確認、OAuth 2.0 リダイレクト URI の追加と編集、アプリケーションスコープの選択、アプリの高度な機能の設定、CORS ドメインの追加を行うことができます。
+\[**構成**] タブに移動します。ここでは、アプリの詳細の指定、開発者トークンの生成、OAuth 2.0資格情報の確認、OAuth 2.0リダイレクトURIの追加と編集、アプリケーションスコープの選択、アプリの高度な機能の設定、CORSドメインの追加を行うことができます。
 
-その他のタブでは、Webhook やウェブアプリ統合を作成したり、Enterprise へのアクセスを有効化するためにアプリを送信したり、[Box 統合][integrations]にアプリを送信したり、このアプリケーションのアクティビティを確認できるレポートを生成したりすることができます。
+その他のタブでは、Webhookやウェブアプリ統合を作成したり、Enterpriseへのアクセスを有効化するためにアプリを送信したり、[Box統合][integrations]にアプリを送信したり、このアプリケーションのアクティビティを確認できるレポートを生成したりすることができます。
 
 ## アプリのテスト
 
-API コールを行ってアプリをテストし、Box でのレスポンス形式を確認できるようになりました。
+APIコールを行ってアプリをテストし、Boxでのレスポンス形式を確認できるようになりました。
 
 現在の開発者アカウントに対して認証された[開発者トークン][dev-token]を使用します。
 
 <Warning>
-
-このトークンの有効期限は、生成されてから 1 時間です。
-
+  このトークンの有効期限は、生成されてから1時間です。
 </Warning>
 
-[Postman コレクション][postman-collection]から始めて、特定のコールを確認し、返されるレスポンスを確かめます。API コールの例については、[API リファレンスドキュメント][api-ref]を参照してください。ターミナルを使用したい場合は、[Box CLI ツール][box-cli]を使用することもできます。
+[Postmanコレクション][postman-collection]から始めて、特定のコールを確認し、返されるレスポンスを確かめます。APIコールの例については、[APIリファレンスドキュメント][api-ref]を参照してください。ターミナルを使用したい場合は、[Box CLIツール][box-cli]を使用することもできます。
 
 [console]: https://cloud.app.box.com/developers/console
-[auth]: /ja/guides/authentication/select
-[oauth2]: /ja/guides/authentication/oauth2
-[integrations]: /ja/guides/applications/integrations
-[add-users]: https://support.box.com/hc/en-us/articles/360043694594-Add-Users
-[integrations]: https://cloud.app.box.com/integrations
-[dev-token]: /ja/guides/authentication/tokens/developer-tokens/#create-developer-token
-[postman-collection]: /ja/guides/tooling/postman
-[api-ref]: https://ja.developer.box.com/reference
-[box-cli]: https://github.com/box/boxcli
 
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "APIコール", href: "/ja/guides/api-calls/index", badge: "ガイド" }
-  ]}
-/>
+[auth]: /guides/authentication/select
+
+[oauth2]: /guides/authentication/oauth2
+
+[integrations]: /guides/applications/integrations
+
+[add-users]: https://support.box.com/hc/en-us/articles/360043694594-Add-Users
+
+[integrations]: https://cloud.app.box.com/integrations
+
+[dev-token]: /guides/authentication/tokens/developer-tokens/#create-developer-token
+
+[postman-collection]: /guides/tooling/postman
+
+[api-ref]: /reference
+
+[box-cli]: https://github.com/box/boxcli

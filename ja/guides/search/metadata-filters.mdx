@@ -1,116 +1,88 @@
 ---
-title: "メタデータクエリフィルタ"
-related_endpoints:
-  - get_search
-required_guides: []
-category_id: search
-subcategory_id: null
-is_index: false
-id: search/metadata-filters
-rank: 5
-type: guide
-total_steps: 9
-sibling_id: search
-parent_id: search
-next_page_id: search/enterprise
-previous_page_id: search/pagination
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/search/5-metadata-filters.md
+related_endpoints: ""
+required_guides: {}
+title: メタデータクエリフィルタ
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 [`GET /search`][search_api] APIでは、関連付けられたメタデータを使用して、検索結果にフィルタをかけることができます。`mdfilters`クエリパラメータを使用すると、開発者はメタデータテンプレートとクエリの対象となる値を指定できます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/search?query=sales&mdfilters=%5B%7B%22scope%22%3A%22enterprise%22%2C%22templateKey%22%3A%22contract%22%2C%22filters%22%3A%7B%22category%22%3A%22online%22%7D%7D%5D" \
+      -H "Authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```curl cURL
-curl -i -X GET "https://api.box.com/2.0/search?query=sales&mdfilters=%5B%7B%22scope%22%3A%22enterprise%22%2C%22templateKey%22%3A%22contract%22%2C%22filters%22%3A%7B%22category%22%3A%22online%22%7D%7D%5D" \
-    -H "Authorization: Bearer <ACCESS_TOKEN>"
+  ```java Java
+  long offsetValue = 0;
+  long limitValue = 10;
 
-```
+  BoxSearch boxSearch = new BoxSearch(api);
+  BoxSearchParameters searchParams = new BoxSearchParameters();
+  searchParams.setQuery("sales");
 
+  BoxMetadataFilter bmf = new BoxMetadataFilter();
+  bmf.setScope("enterprise");
+  bmf.setTemplateKey("contract");
+  bmf.setFilter("category", "online")
+  searchParams.setMetadataFilter(bmf)
 
-```java Java
-long offsetValue = 0;
-long limitValue = 10;
+  PartialCollection<BoxItem.Info> searchResults = boxSearch.searchRange(offsetValue, limitValue, searchParams);
+  ```
 
-BoxSearch boxSearch = new BoxSearch(api);
-BoxSearchParameters searchParams = new BoxSearchParameters();
-searchParams.setQuery("sales");
+  ```csharp .NET
+  var filter = new
+  {
+      category = "online"
+  };
 
-BoxMetadataFilter bmf = new BoxMetadataFilter();
-bmf.setScope("enterprise");
-bmf.setTemplateKey("contract");
-bmf.setFilter("category", "online")
-searchParams.setMetadataFilter(bmf)
+  var filters = new List<BoxMetadataFilterRequest>()
+  {
+      new BoxMetadataFilterRequest()
+      {
+          Scope = "enterprise",
+          TemplateKey = "contract",
+          Filters: filter
+      }
+  };
+  BoxCollection<BoxItem> results = await client.SearchManager
+      .QueryAsync("sales", mdFilters: filters);
+  ```
 
-PartialCollection<BoxItem.Info> searchResults = boxSearch.searchRange(offsetValue, limitValue, searchParams);
+  ```python Python
+  from boxsdk.object.search import MetadataSearchFilter, MetadataSearchFilters
 
-```
+  metadata_search_filter = MetadataSearchFilter(scope='enterprise', template_key='contract')
+  metadata_search_filter.add_value_based_filter(field_key='category', value='online')
+  metadata_search_filters = MetadataSearchFilters()
+  metadata_search_filters.add_filter(metadata_search_filter)
 
+  client.search().query("sales", metadata_filters=metadata_search_filters)
+  ```
 
-```csharp .NET
-var filter = new
-{
-    category = "online"
-};
-
-var filters = new List<BoxMetadataFilterRequest>()
-{
-    new BoxMetadataFilterRequest()
-    {
-        Scope = "enterprise",
-        TemplateKey = "contract",
-        Filters: filter
-    }
-};
-BoxCollection<BoxItem> results = await client.SearchManager
-    .QueryAsync("sales", mdFilters: filters);
-
-```
-
-
-```python Python
-from boxsdk.object.search import MetadataSearchFilter, MetadataSearchFilters
-
-metadata_search_filter = MetadataSearchFilter(scope='enterprise', template_key='contract')
-metadata_search_filter.add_value_based_filter(field_key='category', value='online')
-metadata_search_filters = MetadataSearchFilters()
-metadata_search_filters.add_filter(metadata_search_filter)
-
-client.search().query("sales", metadata_filters=metadata_search_filters)
-
-```
-
-```js Node
-client.search.query(
-    'sales',
-    {
-        mdfilters: [
-            {
-                scope: 'enterprise',
-                templateKey: 'contract',
-                filters: {
-                    category: 'online'
-                }
-            }
-        ]
-    })
-    .then(results => {
-        // ...
-    });
-
-```
-
-
+  ```js Node
+  client.search.query(
+      'sales',
+      {
+          mdfilters: [
+              {
+                  scope: 'enterprise',
+                  templateKey: 'contract',
+                  filters: {
+                      category: 'online'
+                  }
+              }
+          ]
+      })
+      .then(results => {
+          // ...
+      });
+  ```
 </CodeGroup>
 
 <Info>
-
-この例では、`enterprise.contract`メタデータが追加され、`category`フィールドが`online`に設定されている項目によって、クエリ`sales`に一致するコンテンツの検索にフィルタをかけます。
-
+  この例では、`enterprise.contract`メタデータが追加され、`category`フィールドが`online`に設定されている項目によって、クエリ`sales`に一致するコンテンツの検索にフィルタをかけます。
 </Info>
 
 ## メタデータの概要
@@ -118,16 +90,14 @@ client.search.query(
 メタデータを使用すると、ユーザーやアプリケーションは、ファイルやフォルダに関連付けられたカスタムデータを定義、格納できます。
 
 <Frame border center>
-
-![文字列フィールド](../metadata/metadata-example.png)
-
+  ![文字列フィールド](../metadata/metadata-example.png)
 </Frame>
 
 メタデータは、ファイルまたはフォルダに割り当てられているキー/値ペアで構成されます。たとえば、重要な契約には、`clientNumber: 820183`と`category: online`のキー/値ペアが使用されている場合があります。
 
 `mdfilters`クエリパラメータを使用すると、開発者は、特定のメタデータが追加されているファイルとフォルダを検索できます。
 
-<Card href="/ja/guides/metadata" title="メタデータテンプレートおよびインスタンスの詳細を確認する"/>
+<Card href="/guides/metadata" arrow title="メタデータテンプレートおよびインスタンスの詳細を確認する" />
 
 ## メタデータフィルタ構文
 
@@ -143,13 +113,10 @@ client.search.query(
     "filters": {}
   }
 ]
-
 ```
 
 <Info>
-
-テンプレートの`scope`と`templateKey`を取得するには、会社の[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[項目のすべてのメタデータインスタンスのリストを取得][g_list_instances_item]します。
-
+  テンプレートの`scope`と`templateKey`を取得するには、会社の[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[項目のすべてのメタデータインスタンスのリストを取得][g_list_instances_item]します。
 </Info>
 
 テンプレートが定義されると、`filters`フィールドではいくつかの異なるフィルタ形式が受け入れられます。フィルタの形式は、フィルタとして使用するフィールドのタイプによって大きく異なります。
@@ -168,13 +135,10 @@ client.search.query(
     }
   }
 ]
-
 ```
 
 <Info>
-
-この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、キー`category`のフィールドが値`online`に設定されているすべてのファイルとフォルダが検索されます。
-
+  この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、キー`category`のフィールドが値`online`に設定されているすべてのファイルとフォルダが検索されます。
 </Info>
 
 ### `float`フィールドによるフィルタ
@@ -194,15 +158,12 @@ client.search.query(
     }
   }
 ]
-
 ```
 
 この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、キー`amount`のフィールドが`10000`以上`2000`以下の値に設定されているすべてのファイルおよびフォルダが検索されます。`gt`と`lt`はその値を含むことと、必ずしも両方を設定する必要がないことに注意してください。
 
 <Info>
-
-数値に基づいてクエリを作成する場合は、-16777215～+16777215の範囲を超えないようにしてください。数値属性を使用したメタデータ検索では、インデックス値がFLOAT32として保存されます。結果として、-16777215～+16777215の整数は正確に表すことができます。この範囲外の数値を扱う処理では、精度が失われる場合があります。
-
+  数値に基づいてクエリを作成する場合は、-16777215～+16777215の範囲を超えないようにしてください。数値属性を使用したメタデータ検索では、インデックス値がFLOAT32として保存されます。結果として、-16777215～+16777215の整数は正確に表すことができます。この範囲外の数値を扱う処理では、精度が失われる場合があります。
 </Info>
 
 ### `date`フィールドによるフィルタ
@@ -222,13 +183,10 @@ client.search.query(
     }
   }
 ]
-
 ```
 
 <Info>
-
-この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、`expirationDate`が`2016-08-01T00:00:00Z`から`2017-08-01T00:00:00Z`までの日付に設定されているファイルとフォルダがすべて検索されます。
-
+  この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、`expirationDate`が`2016-08-01T00:00:00Z`から`2017-08-01T00:00:00Z`までの日付に設定されているファイルとフォルダがすべて検索されます。
 </Info>
 
 ### `enum`フィールドによるフィルタ
@@ -245,13 +203,10 @@ client.search.query(
     }
   }
 ]
-
 ```
 
 <Info>
-
-この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、キー`category`のフィールドが値`online`に設定されているすべてのファイルとフォルダが検索されます。
-
+  この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、キー`category`のフィールドが値`online`に設定されているすべてのファイルとフォルダが検索されます。
 </Info>
 
 ### `multiSelect`フィールドによるフィルタ
@@ -271,24 +226,14 @@ client.search.query(
     }
   }
 ]
-
 ```
 
 <Info>
-
-この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、キー`category`のフィールドが値`online`または`enterprise`に設定されているすべてのファイルとフォルダが検索されます。
-
+  この例では、`enterprise.contract`テンプレートのインスタンスが適用されていて、キー`category`のフィールドが値`online`または`enterprise`に設定されているすべてのファイルとフォルダが検索されます。
 </Info>
 
-[search_api]: /ja/reference/get_search
+[search_api]: /reference/get_search
 
-[g_list_templates]: /ja/guides/metadata/templates/list
+[g_list_templates]: /guides/metadata/templates/list
 
-[g_list_instances_item]: /ja/guides/metadata/instances/list
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
-  ]}
-/>
+[g_list_instances_item]: /guides/metadata/instances/list

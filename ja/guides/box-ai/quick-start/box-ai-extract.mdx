@@ -1,0 +1,303 @@
+---
+description: Learn how to use Box AI to automatically extract structured data from documents and store it as searchable metadata using the Box Python SDK.
+sidebarTitle: Box AI - Structured extraction
+title: PythonでのBox AIを使用した構造化データの抽出
+
+fullyTranslated: true
+---
+
+[Box AI](/ai-dev-zone)は、構造化されたキー/値ペアを単一のAPIコールでドキュメントから自動的に抽出できる、インテリジェントな抽出機能を開発者向けに備えています。この強力な機能により、データの手動入力なしに、非構造化ドキュメントコンテンツがすぐに使用可能なメタデータに変換され、請求書、フォーム、契約書などのビジネスドキュメントのドキュメント処理ワークフローが効率化されます。
+
+このクイックスタートでは、Box Python SDKを構成して、メタデータテンプレートを作成し、Box AIを使用して請求書データを抽出し、それを検索可能なメタデータとしてBoxに保存する方法を説明します。
+
+<Steps>
+  <Step title="Boxアプリケーションを作成して構成する">
+    任意のBox Platform統合では、最初のステップとして、Boxアプリケーションを作成して構成します。
+
+    1. [Box開発者コンソール](https://app.box.com/developers/console)に移動します。
+    2. このクイックスタートでは、アプリケーションの種類として`Client Credentials Grant`を使用してアプリを作成します。
+    3. アプリが作成されたら、以下のスコープを有効にします。
+       * `Read all files and folders stored in Box`
+       * `Write all files and folders stored in Box`
+       * `Manage AI`
+
+    Boxアプリケーションの新規作成の詳細については、[最初のアプリケーションの作成](/guides/getting-started/first-application#create-your-first-application)を参照してください。
+  </Step>
+
+  <Step title="Boxメタデータテンプレートを作成する">
+    <Tip>
+      この手順では、管理者がBox Enterpriseにアクセスできる必要があります。現在の環境でアクセス権限がない場合は、Box管理者に連絡してください。
+    </Tip>
+
+    Box AIを使用すると、いくつかの方法でドキュメントからデータを抽出できます。
+
+    | 型                   | 説明                       | ユースケース                                               |
+    | ------------------- | ------------------------ | ---------------------------------------------------- |
+    | 抽出 (自由形式)           | 文字列のプロンプトを使用できます。        | 自然言語のプロンプトを入力します。                                    |
+    | テンプレートを使用した抽出 (構造化) | Boxメタデータテンプレートキーを使用できます。 | フィールドとデータ型を1回定義します。そうすると、メタデータとしてBoxに戻す処理がシンプルになります。 |
+    | フィールドを使用した抽出 (構造化)  | フィールドのJSON配列を使用できます。     | テンプレートを作成せず、1回限りの抽出を実行します。                           |
+    | 抽出エージェント (強化)       | 推論モデルを備えた専任エージェントを使用します。 | 複雑なドキュメントや、複雑かつ繊細な抽出に適しており、構造化されたテンプレートやフィールドで動作します。 |
+
+    このクイックスタートでは、ドキュメントから抽出するフィールドを定義するためのBoxメタデータテンプレートを作成します。Box管理コンソールでBoxメタデータテンプレートを作成する手順の詳細な説明については、[メタデータテンプレートのカスタマイズ](https://support.box.com/hc/en-us/articles/360044194033-Customizing-Metadata-Templates)を参照してください。
+
+    1. テンプレートに名前を付けます (例: `Box AI extract quick start`)。
+
+    2. 以下のフィールドを作成します。
+
+       | フィールド名  | 型      | 説明                                  |
+       | ------- | ------ | ----------------------------------- |
+       | クライアント名 | テキスト   | 請求書を受け取るクライアントの名前                   |
+       | 請求書の金額  | Number | 税および手数料徴収後の請求書の総額                   |
+       | 製品      | テキスト   | 請求書記載の納品された製品名 (コンマ区切りの文字列として返されます) |
+
+       <Tip>
+         フィールドの説明は、正しいデータが抽出されるように、LLMへのプロンプトの補完情報としてBox AIによって使用されます。
+       </Tip>
+
+    3. \[**保存**] をクリックしてテンプレートを作成します。テンプレートキーは後で使用できるようにメモしておきます。
+
+    テンプレートを保存すると、テンプレートのリストが表示されます。テンプレートキーを確認するには、先ほど作成したテンプレートを開き、URLを調べます。パスの最後の部分がテンプレートキーです。たとえば、次のようなURLがあるとします: `https://app.box.com/master/metadata/templates/boxAiExtractquick start`。
+
+    この場合、テンプレートキーは`boxAiExtractquick start`です。
+  </Step>
+
+  <Step title="テストファイルをアップロードする">
+    テンプレートを準備できたら、テストするファイルを選択します。このクイックスタートでは、こちらの[サンプル請求書のドキュメント](/static/quickstarts/extract/files/demo-invoice-20tax-2.pdf)を使用します。
+
+    1. テスト用ドキュメントをダウンロードして、Boxアカウントにドラッグアンドドロップします。
+    2. ファイルIDを確認するには、Boxでファイルを開いてURLを調べます。パスの最後の部分がファイルIDです。たとえば、次のようなURLがあるとします: `https://app.box.com/file/2064123286902`
+
+       この場合、ファイルIDは`2064123286902`です。
+  </Step>
+
+  <Step title="環境を設定する">
+    抽出を実行するために、開発環境を設定します。このクイックスタートでは、PythonとBox Python SDKバージョン10を使用します。お使いのマシンにPython 3.11以上がインストールされていることを確認してください。
+
+    1. プロジェクト用に新しいディレクトリを作成し、そのディレクトリに移動します。
+    2. 仮想環境を作成します。
+       ```bash
+       python3 -m venv .venv
+       source .venv/bin/activate
+       ```
+    3. Box Python SDKをインストールします。
+       ```bash
+       pip install "boxsdk~=10"
+       ```
+    4. `.env`ファイルから環境変数を読み込むために`python-dotenv`パッケージをインストールします。
+       ```bash
+       pip install python-dotenv
+       ```
+    5. プロジェクトディレクトリのルートに`.env`ファイルを作成し、以下の環境変数を追加します。その際、プレースホルダの値を実際のBoxアプリの資格情報と前の手順で確認したIDに置き換えます。
+       ```bash
+        BOX_DEVELOPER_TOKEN=your_box_developer_token
+
+        BOX_METADATA_TEMPLATE_KEY=your_metadata_template_key
+        BOX_FILE_ID=your_box_file_id
+       ```
+
+    開発者トークンを取得するには、Box開発者コンソールに移動し、アプリを開いて、\[**構成**] タブに移動します。
+
+    6. \[**開発者トークンを生成**] をクリックして新しいトークンを作成します。
+
+    <Tip>
+      簡略化するために、このクイックスタートでは、有効期間の短い開発者トークンを使用します。実稼働環境では、開発者トークンではなく、お使いのアプリに設定された方法 (クライアント資格情報許可など) で認証する必要があります。
+    </Tip>
+  </Step>
+
+  <Step title="extract.pyファイルを作成する">
+    開発環境の準備ができました。Box AIを使用してドキュメントからデータを抽出するPythonスクリプトを作成できます。
+
+    1. プロジェクトディレクトリのルートに`extract.py`という名前の新しいファイルを作成し、以下のコードを追加します。
+
+       ```python
+       import os
+
+       from dotenv import load_dotenv
+
+       from box_sdk_gen import (
+           AiItemBase,
+           BoxClient,
+           BoxDeveloperTokenAuth,
+           CreateAiExtractStructuredMetadataTemplate,
+           CreateAiExtractStructuredMetadataTemplateTypeField,
+           CreateFileMetadataByIdScope
+       )
+
+       load_dotenv()
+
+       developer_token = os.getenv("BOX_DEVELOPER_TOKEN")
+       file_id = os.getenv("BOX_FILE_ID")
+       template_key = os.getenv("BOX_METADATA_TEMPLATE_KEY")
+
+       def get_box_client(token: str) -> BoxClient:
+           
+           if not developer_token:
+               raise ValueError("BOX_DEVELOPER_TOKEN is not set in environment variables.")
+           
+           auth = BoxDeveloperTokenAuth(token=token)
+           client = BoxClient(auth=auth)
+
+           return client
+
+       def main():
+           client = get_box_client(token=developer_token)
+
+           me = client.users.get_user_me()
+           print(f"My user ID is {me.id}")
+
+
+       if __name__ == "__main__":
+           main()
+       ```
+
+       このコードは、環境変数を`.env`ファイルから読み込み、Box SDKクライアントを初期化し、現在のユーザーのIDを出力して、クライアントが正しく動作していることを確認します。
+
+    2. ターミナルで次のコマンドを使用してスクリプトを実行します。
+
+       ```bash
+       python extract.py
+       ```
+
+       Box SDKクライアントが正しく設定されると、コンソールにはユーザーIDが表示されます。次に例を示します。
+
+       ```bash
+       My user ID is 123456789
+       ```
+  </Step>
+
+  <Step title="データを抽出する">
+    Box SDKクライアントが動作を開始したら、Box AIを使用してドキュメントからデータを抽出するためのコードを追加できます。
+
+    1. `get_box_client`関数と`main`関数の間に次の関数を追加します。
+
+       ```python
+       def extract_metadata(client: BoxClient, file_id: str, template_key: str) -> dict:
+           metadata = client.ai.create_ai_extract_structured(
+               [AiItemBase(id=file_id)],
+               metadata_template=CreateAiExtractStructuredMetadataTemplate(
+                   template_key=template_key,
+                   type=CreateAiExtractStructuredMetadataTemplateTypeField.METADATA_TEMPLATE,
+                   scope="enterprise",
+               ),
+           )
+           
+           return metadata.to_dict()['answer']
+       ```
+
+       この関数はBox AIの`create_ai_extract_structured`メソッドを使用して、指定されたファイルからメタデータを抽出します。BoxClient、ファイルID、前の手順で作成したメタデータテンプレートキーが関数に送信され、抽出されたメタデータがディクショナリとして返されます。
+
+    2. `main`関数でメタデータを抽出する関数呼び出しを追加します。新しい`main`関数に次のロジックが含まれていることを確認します。
+
+       ```python
+       def main():
+           client = get_box_client(token=developer_token)
+
+           me = client.users.get_user_me()
+           print(f"My user ID is {me.id}")
+
+           metadata = extract_metadata(client=client, file_id=file_id, template_key=template_key)
+
+           print(f"Extracted Metadata: {metadata}")
+       ```
+
+       SDKはBox AIへのAPIコールを処理し、抽出されたメタデータを[`AiExtractStructuredResponse`](/reference/resources/ai-extract-structured-response)オブジェクトとして返します。このクイックスタートでは、このコードによって、このオブジェクトがディクショナリに変換され、抽出されたキー/値ペアを含む`answer`フィールドが返されます。
+
+    3. ターミナルで次のコマンドを実行して、抽出されたメタデータをコンソールに出力し、抽出が成功したかどうかを確認します。
+
+       ```bash
+       python extract.py
+       ```
+
+       抽出が成功した場合、コンソールでは、ユーザーIDの後に請求書ドキュメントから抽出されたメタデータが表示されます。
+
+       ```bash
+       My user ID is 123456789
+
+       Extracted Metadata: {'clientName': 'ACME Inc', 'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate, 
+       Carbon Dioxide, Laser, Lens, Oleic Acid, Glycerine, Sodium Tallowate, Paint Base, Polypropylene, Rubber, 
+       Additive, Pigment, Aluminum Silicate, Magnesium Silicate, Zinc Oxide, Distilled Solvent, Petroleum Distillate, 
+       Sulfur Dioxide, Sodium Benzoate, Dust cap, Ferrite cap, Cone and coil assembly, Cleaner, Polypropylene pellets, 
+       Polypropylene chips, Polypropylene blocks, Polypropylene slag, Parts Wash Solvent, Jar, 
+       Plastic Bottle - 15.2 FL Oz (450 ml), Polymer'}
+       ```
+  </Step>
+
+  <Step title="ファイルにBoxメタデータを追加する">
+    ドキュメントからメタデータを抽出できました。これで、データベースへのプッシュ、CRMとの統合、エージェントへの処理用フィード、自動化ワークフローの開始などの目的で、キー/値ペアを自分のアプリケーションで使用できるようになります。
+
+    このクイックスタートでは、抽出されたデータをファイルのメタデータとしてBoxに戻す方法を説明します。Boxのメタデータ管理機能では、強力なフィルタ機能と検索機能をコンテンツ全体で使用できます。たとえば、過去30日間の500ドルを超える請求書を全件照会したり、Box Appsでダッシュボードを作成したり、ドキュメントの主なインサイトをBoxウェブアプリに直接表示したりできます。
+
+    1. 次の関数を`extract_metadata`関数と`main`関数の間に追加して、抽出されたメタデータをBoxに戻します。
+
+       ```python
+       def push_metadata(client: BoxClient, file_id: str, metadata: dict, template_key: str) -> dict:
+           attached_metadata = client.file_metadata.create_file_metadata_by_id(
+               file_id,
+               CreateFileMetadataByIdScope.ENTERPRISE,
+               template_key,
+               metadata,
+           )
+           return attached_metadata.to_dict()
+       ```
+
+       この関数では`create_file_metadata_by_id`メソッドを使用して、指定されたファイルにメタデータを追加し、BoxClient、ファイルID、メタデータディクショナリ、テンプレートキーを処理します。API自体は[`MetadataFull`](/reference/resources/metadata--full)オブジェクトを返します。この関数によって、このオブジェクトがディクショナリに変換され、返されます。
+
+    2. `main`関数でメタデータをプッシュする関数呼び出しを追加します。更新された`main`関数に次のロジックが含まれていることを確認します。
+
+       ```python
+       def main():
+           client = get_box_client(token=developer_token)
+
+           me = client.users.get_user_me()
+           print(f"My user ID is {me.id}")
+
+           metadata = extract_metadata(client=client, file_id=file_id, template_key=template_key)
+
+           print(f"Extracted Metadata: {metadata}")
+
+           attached_metadata = push_metadata(client=client, file_id=file_id, metadata=metadata, template_key=template_key)
+
+           print(f"Attached Metadata: {attached_metadata}")
+       ```
+
+    3. ターミナルで次のコマンドを実行します。
+
+       ```bash
+       python extract.py
+       ```
+
+       スクリプトが成功すると、コンソールには、ユーザーID、抽出されたメタデータ、Boxから追加されたメタデータレスポンスが表示されます。次に例を示します。
+
+       ```bash
+       My user ID is 123456789
+
+       Extracted Metadata: {'clientName': 'ACME Inc', 'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate,
+       Carbon Dioxide, Laser, Lens, Oleic Acid, Glycerine, Sodium Tallowate, Paint Base, Polypropylene, Rubber,
+       Additive, Pigment, Aluminum Silicate, Magnesium Silicate, Zinc Oxide, Distilled Solvent, Petroleum Distillate,
+       Sulfur Dioxide, Sodium Benzoate, Dust cap, Ferrite cap, Cone and coil assembly, Cleaner, Polypropylene pellets,
+       Polypropylene chips, Polypropylene blocks, Polypropylene slag, Parts Wash Solvent, Jar,
+       Plastic Bottle - 15.2 FL Oz (450 ml), Polymer'}
+
+       Attached Metadata: {'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate, Carbon Dioxide, Laser, Lens, 
+       Oleic Acid, Glycerine, Sodium Tallowate, Paint Base, Polypropylene, Rubber, Additive, Pigment, Aluminum Silicate, 
+       Magnesium Silicate, Zinc Oxide, Distilled Solvent, Petroleum Distillate, Sulfur Dioxide, Sodium Benzoate, Dust cap, 
+       Ferrite cap, Cone and coil assembly, Cleaner, Polypropylene pellets, Polypropylene chips, Polypropylene blocks, 
+       Polypropylene slag, Parts Wash Solvent, Jar, Plastic Bottle - 15.2 FL Oz (450 ml), Polymer', 
+       'clientName': 'ACME Inc', '$parent': 'file_1956534287859', '$template': 'boxAiExtractquick start', 
+       '$scope': 'enterprise_899905961', '$version': 0, '$canEdit': True, '$id': '4d4f0b55-d45a-4ba4-9ff6-1241182cb76a', 
+       '$type': 'boxAiExtractquick start-c4024235-2384-49f4-9286-ada6d68fd6a9', '$typeVersion': 0, 'extra_data': 
+       {'invoiceAmount': 1106.06, 'products': 'Polyol, Diisocyanate, Carbon Dioxide, Laser, Lens, Oleic Acid, Glycerine, 
+       Sodium Tallowate, Paint Base, Polypropylene, Rubber, Additive, Pigment, Aluminum Silicate, Magnesium Silicate, 
+       Zinc Oxide, Distilled Solvent, Petroleum Distillate, Sulfur Dioxide, Sodium Benzoate, Dust cap, Ferrite cap, 
+       Cone and coil assembly, Cleaner, Polypropylene pellets, Polypropylene chips, Polypropylene blocks, Polypropylene slag, 
+       Parts Wash Solvent, Jar, Plastic Bottle - 15.2 FL Oz (450 ml), Polymer', 'clientName': 'ACME Inc'}}
+       ```
+  </Step>
+</Steps>
+
+## リソース
+
+* [最終的なコード](https://github.com/box-community/box-quickstarts/tree/main/box-ai-extract-quickstart)
+* [構造化メタデータの抽出のAPIリファレンス](/reference/post-ai-extract-structured)
+* [ファイルにメタデータインスタンスを作成](/reference/post-files-id-metadata-id-id)
+* [Box Python SDK](https://github.com/box/box-python-sdk/tree/main)

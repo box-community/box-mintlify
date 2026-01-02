@@ -1,27 +1,16 @@
 ---
-title: "フォルダのロックの作成"
+alias_paths: {}
 rank: 8
 related_endpoints:
-  - post_folder_locks
+  0: post_folder_locks
 related_guides:
-  - folders/single/get-locks
-  - folders/single/delete-lock
-required_guides: []
+  0: folders/single/get-locks
+  1: folders/single/delete-lock
 related_resources:
-  - folder_lock
-alias_paths: []
-category_id: folders
-subcategory_id: folders/single
-is_index: false
-id: folders/single/create-lock
-type: guide
-total_steps: 10
-sibling_id: folders/single
-parent_id: folders/single
-next_page_id: folders/single/get-locks
-previous_page_id: folders/single/change-owner
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/create-lock.md
+  0: folder_lock
+required_guides: {}
+title: フォルダのロックの作成
+
 fullyTranslated: true
 ---
 
@@ -30,69 +19,65 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box内のフォルダにロックを作成するには、ロックを適用するフォルダの`id`をBoxのAPIに指定します。必要に応じて、フォルダのロックとともに適用する特定の`locked_operations`を指定できます。
 
 <Note>
-**フォルダロック**
+  **フォルダロック**
 
-フォルダロックAPIエンドポイントを使用する際は、アクセスしようとしているフォルダの所有者/共同所有者として認証されている必要があります。
-
+  フォルダロックAPIエンドポイントを使用する際は、アクセスしようとしているフォルダの所有者/共同所有者として認証されている必要があります。
 </Note>
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/folder_locks" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "folder": {
+           "type": "folder",
+           "id": "33552487093"
+         },
+         "locked_operations": {
+           "move": true,
+           "delete": true
+         }
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/folder_locks" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "folder": {
-         "type": "folder",
-         "id": "33552487093"
-       },
-       "locked_operations": {
-         "move": true,
-         "delete": true
-       }
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.folderLocks.createFolderLock({
+    folder: {
+      id: folder.id,
+      type: 'folder',
+    } satisfies CreateFolderLockRequestBodyFolderField,
+    lockedOperations: {
+      move: true,
+      delete: true,
+    } satisfies CreateFolderLockRequestBodyLockedOperationsField,
+  } satisfies CreateFolderLockRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderLocks.createFolderLock({
-  folder: {
-    id: folder.id,
-    type: 'folder',
-  } satisfies CreateFolderLockRequestBodyFolderField,
-  lockedOperations: {
-    move: true,
-    delete: true,
-  } satisfies CreateFolderLockRequestBodyLockedOperationsField,
-} satisfies CreateFolderLockRequestBody);
-```
+  ```python Python v10
+  client.folder_locks.create_folder_lock(
+      CreateFolderLockFolder(id=folder.id, type="folder"),
+      locked_operations=CreateFolderLockLockedOperations(move=True, delete=True),
+  )
+  ```
 
-```python Python v10
-client.folder_locks.create_folder_lock(
-    CreateFolderLockFolder(id=folder.id, type="folder"),
-    locked_operations=CreateFolderLockLockedOperations(move=True, delete=True),
-)
-```
+  ```cs .NET v10
+  await client.FolderLocks.CreateFolderLockAsync(requestBody: new CreateFolderLockRequestBody(folder: new CreateFolderLockRequestBodyFolderField(id: folder.Id, type: "folder")) { LockedOperations = new CreateFolderLockRequestBodyLockedOperationsField(move: true, delete: true) });
+  ```
 
-```cs .NET v10
-await client.FolderLocks.CreateFolderLockAsync(requestBody: new CreateFolderLockRequestBody(folder: new CreateFolderLockRequestBodyFolderField(id: folder.Id, type: "folder")) { LockedOperations = new CreateFolderLockRequestBodyLockedOperationsField(move: true, delete: true) });
-```
+  ```swift Swift v10
+  try await client.folderLocks.createFolderLock(requestBody: CreateFolderLockRequestBody(folder: CreateFolderLockRequestBodyFolderField(id: folder.id, type: "folder"), lockedOperations: CreateFolderLockRequestBodyLockedOperationsField(move: true, delete: true)))
+  ```
 
-```swift Swift v10
-try await client.folderLocks.createFolderLock(requestBody: CreateFolderLockRequestBody(folder: CreateFolderLockRequestBodyFolderField(id: folder.id, type: "folder"), lockedOperations: CreateFolderLockRequestBodyLockedOperationsField(move: true, delete: true)))
-```
-
-```java Java v10
-client.getFolderLocks().createFolderLock(new CreateFolderLockRequestBody.Builder(new CreateFolderLockRequestBodyFolderField("folder", folder.getId())).lockedOperations(new CreateFolderLockRequestBodyLockedOperationsField(true, true)).build())
-```
-
+  ```java Java v10
+  client.getFolderLocks().createFolderLock(new CreateFolderLockRequestBody.Builder(new CreateFolderLockRequestBodyFolderField("folder", folder.getId())).lockedOperations(new CreateFolderLockRequestBodyLockedOperationsField(true, true)).build())
+  ```
 </CodeGroup>
 
 <Warning>
-**ロックされる操作の設定**
+  **ロックされる操作の設定**
 
-フォルダロックリクエストに`locked_operations`オブジェクトが含まれる場合は、`move`と`delete`の両方を`true`に設定する必要があります。このオブジェクトでロック操作を1つだけ指定した場合または両方の値を`true`以外に設定した場合は、エラーが発生します。これらのオプションは、今後追加の操作を可能にするために実装されています。
-
+  フォルダロックリクエストに`locked_operations`オブジェクトが含まれる場合は、`move`と`delete`の両方を`true`に設定する必要があります。このオブジェクトでロック操作を1つだけ指定した場合または両方の値を`true`以外に設定した場合は、エラーが発生します。これらのオプションは、今後追加の操作を可能にするために実装されています。
 </Warning>
 
 ## ロック操作
@@ -106,13 +91,14 @@ client.getFolderLocks().createFolderLock(new CreateFolderLockRequestBody.Builder
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create folder lock", href: "/reference/post-folder-locks", badge: "POST" }
-  ]}
+  { label: "Create folder lock", href: "/reference/post-folder-locks", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "フォルダのロックの取得", href: "/ja/guides/folders/single/get-locks", badge: "ガイド" },
-    { label: "フォルダのロックの削除", href: "/ja/guides/folders/single/delete-lock", badge: "ガイド" }
-  ]}
+  { label: "Get Folder Lock", href: "/guides/folders/single/get-locks", badge: "GUIDE" },
+  { label: "Delete Folder Lock", href: "/guides/folders/single/delete-lock", badge: "GUIDE" }
+]}
 />

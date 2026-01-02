@@ -1,44 +1,31 @@
 ---
-title: "ロゴのカスタマイズ"
-rank: 12
-related_endpoints: []
-related_guides:
-  - embed/ui-elements
-required_guides:
-  - embed/ui-elements/installation
-related_resources: []
 alias_paths:
-  - /docs/specifying-a-logo-for-box-ui-elements
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/logo
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/ui-elements-design-tokens
-previous_page_id: embed/ui-elements/annotations
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/logo.md
+  0: /docs/specifying-a-logo-for-box-ui-elements
+rank: 12
+related_endpoints: {}
+related_guides:
+  0: embed/ui-elements
+related_resources: {}
+required_guides:
+  0: embed/ui-elements/installation
+title: ロゴのカスタマイズ
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
+
 それぞれのBox UI Elementsでは、埋め込まれたコンテナの左上隅に配置するカスタムロゴを指定できます。
 
 <Frame border>
-
-![カスタムロゴ](/images/guides/embed/ui-elements/elements-logo.png)
-
+  ![カスタムロゴ](/images/guides/embed/ui-elements/elements-logo.png)
 </Frame>
 
 デフォルトでは、それぞれのUI Elementでロゴとして汎用的なプレースホルダが使用されます。このプレースホルダは、Boxのロゴまたはカスタムロゴ (会社のロゴなど) に置き換えられます。
@@ -57,14 +44,12 @@ preview.show(fileId, accessToken, {
     showAnnotations: true,
     showDownload: true
 });
-
 ```
 
 <Info>
-**Boxのロゴ**
+  **Boxのロゴ**
 
-UI ElementにBoxのロゴを表示するには、文字列`box`を`logoURL`オプションとして指定してください。
-
+  UI ElementにBoxのロゴを表示するには、文字列`box`を`logoURL`オプションとして指定してください。
 </Info>
 
 ## 画像サイズ
@@ -74,6 +59,6 @@ UI ElementにBoxのロゴを表示するには、文字列`box`を`logoURL`オ�
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

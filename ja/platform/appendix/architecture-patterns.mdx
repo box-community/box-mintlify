@@ -1,41 +1,26 @@
 ---
+alias_paths: ""
 centered: true
 rank: 3
-related_endpoints: []
-related_guides: []
-required_guides: []
-related_resources: []
-alias_paths: 
-category_id: platform
-subcategory_id: platform/appendix
-is_index: false
-id: platform/appendix/architecture-patterns
-type: page
-total_steps: 4
-sibling_id: platform/appendix
-parent_id: platform/appendix
-next_page_id: platform/appendix/locating-values
-previous_page_id: platform/appendix/user-models
-source_url: >-
-https: //github.com/box/developer.box.com/blob/main/content/pages/platform/appendix/architecture-patterns.md
-fullyTranslated: true
+related_endpoints: {}
+related_guides: {}
+related_resources: {}
+required_guides: {}
 title: アーキテクチャパターン
+
+fullyTranslated: true
 ---
 
 コードを書く前に、アプリケーションの視覚的なレプリゼンテーションを作成することをお勧めします。以下に示すアーキテクチャパターンは汎用的なものであり、すべての可能性を網羅しているわけではありません。
 
 <Tip>
-
-アプリケーションアーキテクチャに関するサポートをご希望の場合は、Box Consultingサービスの購入について、お客様のアカウントチームにお問い合わせください。
-
+  アプリケーションアーキテクチャに関するサポートをご希望の場合は、Box Consultingサービスの購入について、お客様のアカウントチームにお問い合わせください。
 </Tip>
 
 ## 管理タスク
 
 <Frame center shadow border>
-
-![管理タスクの図](./images/admin_tasks.png)
-
+  ![管理タスクの図](./images/admin_tasks.png)
 </Frame>
 
 コンポーネント:
@@ -48,9 +33,7 @@ title: アーキテクチャパターン
 ## 保管庫ポータル
 
 <Frame center shadow border>
-
-![保管庫ポータルの図](./images/vault_portal.png)
-
+  ![保管庫ポータルの図](./images/vault_portal.png)
 </Frame>
 
 コンポーネント:
@@ -63,35 +46,33 @@ title: アーキテクチャパターン
 ## Box Skill
 
 <Frame center shadow border>
-
-![Box Skillの図](./images/box_skill2.png)
-
+  ![Box Skillの図](./images/box_skill2.png)
 </Frame>
 
 この例では、外部ユーザーが[ファイルリクエスト][fr]を介して履歴書をアップロードします。
 
 [Box Skill][skill]は、特定のフォルダでのアップロード/移動/コピー操作を監視するように設定されています。イベントが発生すると、ファイルは、任意の機械学習サービスで処理するためにクラウドプロバイダに送信されます。処理が済むと、情報は[メタデータとしてファイルに再度保存][metadata]されます。このメタデータは、その後、別のプロセスで使用したり、後で参照したりすることができます。
 
-[usermodel]: /ja/platform/appendix/user-models
+[usermodel]: page://platform/appendix/user-models
 
-[auth]: /ja/guides/authentication
+[auth]: /guides/authentication
 
-[apptype]: /ja/guides/applications/app-types/select
+[apptype]: /guides/applications/app-types/select
 
-[events]: /ja/reference/resources/event
+[events]: e://resources/event
 
-[userevents]: /ja/guides/events/user-events/for-user
+[userevents]: /guides/events/user-events/for-user
 
-[sa]: /ja/platform/user-types/#service-account
+[sa]: page://platform/user-types/#service-account
 
 {/* i18n-enable localize-links */}
 
 [fr]: https://support.box.com/hc/ja/articles/360045304813-ファイルリクエストを使用してコンテンツを取得する
 
-{/* i18n-disable  localize-links */}
+{/* i18n-disable localize-links */}
 
-[skill]: /ja/guides/applications/app-types/custom-skills
+[skill]: /guides/applications/app-types/custom-skills
 
-[au]: /ja/platform/user-types/#app-user
+[au]: page://platform/user-types/#app-user
 
-[metadata]: /ja/reference/post-files-id-metadata-global-boxSkillsCards
+[metadata]: e://post-files-id-metadata-global-boxSkillsCards

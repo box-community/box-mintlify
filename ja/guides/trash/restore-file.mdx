@@ -1,26 +1,15 @@
 ---
-title: "ファイルの復元"
 rank: 1
 related_endpoints:
-  - post_files_id
-  - delete_files_id
+  0: post_files_id
+  1: delete_files_id
 related_guides:
-  - trash/permanently-delete-file
-required_guides: []
+  0: trash/permanently-delete-file
 related_resources:
-  - files
-category_id: trash
-subcategory_id: null
-is_index: false
-id: trash/restore-file
-type: guide
-total_steps: 6
-sibling_id: trash
-parent_id: trash
-next_page_id: trash/permanently-delete-file
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/trash/restore-file.md
+  0: files
+required_guides: {}
+title: ファイルの復元
+
 fullyTranslated: true
 ---
 
@@ -29,139 +18,139 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ごみ箱に移動されたが削除されていないファイルを復元するには、`/files/:file_id`エンドポイントに`POST`リクエストを送信します。これにより、ファイルがまだ使用可能であれば元のフォルダに戻されます。または、オプションとして`parent`フォルダを指定することもできます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/files/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/files/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.trashedFiles.restoreFileFromTrash(file.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.trashedFiles.restoreFileFromTrash(file.id);
-```
+  ```python Python v10
+  client.trashed_files.restore_file_from_trash(file.id)
+  ```
 
-```python Python v10
-client.trashed_files.restore_file_from_trash(file.id)
-```
+  ```cs .NET v10
+  await client.TrashedFiles.RestoreFileFromTrashAsync(fileId: file.Id);
+  ```
 
-```cs .NET v10
-await client.TrashedFiles.RestoreFileFromTrashAsync(fileId: file.Id);
-```
+  ```swift Swift v10
+  try await client.trashedFiles.restoreFileFromTrash(fileId: file.id)
+  ```
 
-```swift Swift v10
-try await client.trashedFiles.restoreFileFromTrash(fileId: file.id)
-```
+  ```java Java v10
+  client.getTrashedFiles().restoreFileFromTrash(file.getId())
+  ```
 
-```java Java v10
-client.getTrashedFiles().restoreFileFromTrash(file.getId())
-```
+  ```java Java v5
+  String fileID = "125367";
+  String newName = "Presentation 2018 ORIGINAL.pptx";
+  String newParentID = "98765";
 
-```java Java v5
-String fileID = "125367";
-String newName = "Presentation 2018 ORIGINAL.pptx";
-String newParentID = "98765";
+  BoxTrash trash = new BoxTrash(api);
+  // Avoid conflicts at the original location
+  trash.restoreFile(fileID, newName, newParentID);
+  ```
 
-BoxTrash trash = new BoxTrash(api);
-// Avoid conflicts at the original location
-trash.restoreFile(fileID, newName, newParentID);
-```
+  ```python Python v4
+  file_to_restore = client.file(file_id='11111')
+  restored_file = client.trash().restore_item(file_to_restore)
+  print(f'File ID is {restored_file.id} and name is {restored_file.name}')
+  ```
 
-```python Python v4
-file_to_restore = client.file(file_id='11111')
-restored_file = client.trash().restore_item(file_to_restore)
-print(f'File ID is {restored_file.id} and name is {restored_file.name}')
-```
+  ```cs .NET v6
+  var requestParams = new BoxFileRequest()
+  {
+      Name = "Name in case of conflict",
+      Parent = new BoxRequestEntity()
+      {
+          // File will be placed in this folder if original location no longer exists
+          Id = "12345" 
+      }
+  };
+  BoxFile restoredFile = await client.FilesManager.RestoreTrashedAsync(requestParams);
+  ```
 
-```cs .NET v6
-var requestParams = new BoxFileRequest()
-{
-    Name = "Name in case of conflict",
-    Parent = new BoxRequestEntity()
-    {
-        // File will be placed in this folder if original location no longer exists
-        Id = "12345" 
-    }
-};
-BoxFile restoredFile = await client.FilesManager.RestoreTrashedAsync(requestParams);
-```
-
-```javascript Node v4
-client.files.restoreFromTrash(
-	'11111',
-	{
-		// New name in case of conflict
-		name: 'New Name',
-		// File will be placed in this folder if original location no longer exists
-		parent_id: '0'
-	})
-	.then(restoredFile => {
-		/* trashedFile -> {
-			type: 'file',
-			id: '11111',
-			sequence_id: '2',
-			etag: '2',
-			sha1: '4bd9e98652799fc57cf9423e13629c151152ce6c',
-			name: 'Screenshot_1_30_13_6_37_PM.png',
-			description: '',
-			size: 163265,
-			path_collection: 
-			{ total_count: 1,
-				entries: 
-				[ { type: 'folder',
-					id: '0',
-					sequence_id: null,
-					etag: null,
-					name: 'All Files' } ] },
-			created_at: '2013-01-30T18:43:56-08:00',
-			modified_at: '2013-01-30T18:44:00-08:00',
-			trashed_at: null,
-			purged_at: null,
-			content_created_at: '2013-01-30T18:43:56-08:00',
-			content_modified_at: '2013-01-30T18:44:00-08:00',
-			created_by: 
-			{ type: 'user',
-				id: '33333',
-				name: 'Example User',
-				login: 'user@example.com' },
-			modified_by: 
-			{ type: 'user',
-				id: '33333',
-				name: 'Example User',
-				login: 'user@example.com' },
-			owned_by: 
-			{ type: 'user',
-				id: '33333',
-				name: 'Example User',
-				login: 'user@example.com' },
-			shared_link: null,
-			parent: 
-			{ type: 'folder',
-				id: '0',
-				sequence_id: null,
-				etag: null,
-				name: 'All Files' },
-			item_status: 'active' }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  client.files.restoreFromTrash(
+  	'11111',
+  	{
+  		// New name in case of conflict
+  		name: 'New Name',
+  		// File will be placed in this folder if original location no longer exists
+  		parent_id: '0'
+  	})
+  	.then(restoredFile => {
+  		/* trashedFile -> {
+  			type: 'file',
+  			id: '11111',
+  			sequence_id: '2',
+  			etag: '2',
+  			sha1: '4bd9e98652799fc57cf9423e13629c151152ce6c',
+  			name: 'Screenshot_1_30_13_6_37_PM.png',
+  			description: '',
+  			size: 163265,
+  			path_collection: 
+  			{ total_count: 1,
+  				entries: 
+  				[ { type: 'folder',
+  					id: '0',
+  					sequence_id: null,
+  					etag: null,
+  					name: 'All Files' } ] },
+  			created_at: '2013-01-30T18:43:56-08:00',
+  			modified_at: '2013-01-30T18:44:00-08:00',
+  			trashed_at: null,
+  			purged_at: null,
+  			content_created_at: '2013-01-30T18:43:56-08:00',
+  			content_modified_at: '2013-01-30T18:44:00-08:00',
+  			created_by: 
+  			{ type: 'user',
+  				id: '33333',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			modified_by: 
+  			{ type: 'user',
+  				id: '33333',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			owned_by: 
+  			{ type: 'user',
+  				id: '33333',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			shared_link: null,
+  			parent: 
+  			{ type: 'folder',
+  				id: '0',
+  				sequence_id: null,
+  				etag: null,
+  				name: 'All Files' },
+  			item_status: 'active' }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Restore file", href: "/reference/post-files-id", badge: "POST" },
-    { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" }
-  ]}
+  { label: "Restore file", href: "/reference/post-files-id", badge: "POST" },
+  { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルを完全に削除", href: "/ja/guides/trash/permanently-delete-file", badge: "ガイド" }
-  ]}
+  { label: "Permanently Delete File", href: "/guides/trash/permanently-delete-file", badge: "GUIDE" }
+]}
 />
+
 <RelatedLinks
-  title="RELATED RESOURCES"
+  title="関連するリソース"
   items={[
-    { label: "ファイル", href: "/ja/guides/files/index", badge: "ガイド" }
-  ]}
+  { label: "Files", href: "/guides/files/index", badge: "GUIDE" }
+]}
 />

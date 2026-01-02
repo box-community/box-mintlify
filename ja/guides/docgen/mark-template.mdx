@@ -1,25 +1,14 @@
 ---
-title: "ファイルをBox Doc Genテンプレートとして設定"
 rank: 2
-related_guides:
-  - docgen/docgen-getting-started
-  - docgen/docgen-templates
-  - docgen/generate-document
 related_endpoints:
-  - post_docgen_batches_v2025.0
-  - post_docgen_templates_v2025.0
-category_id: docgen
-subcategory_id: null
-is_index: false
-id: docgen/mark-template
-type: guide
-total_steps: 5
-sibling_id: docgen
-parent_id: docgen
-next_page_id: docgen/generate-document
-previous_page_id: docgen/docgen-getting-started
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/docgen/mark-template.md
+  0: post_docgen_batches_v2025.0
+  1: post_docgen_templates_v2025.0
+related_guides:
+  0: docgen/docgen-getting-started
+  1: docgen/docgen-templates
+  2: docgen/generate-document
+title: ファイルをBox Doc Genテンプレートとして設定
+
 fullyTranslated: true
 ---
 
@@ -39,10 +28,10 @@ Box Doc Gen APIの使用を開始する前に、[Box Doc Genの使い方][docgen
 
 コールを実行するには、以下のパラメータを渡す必要があります。必須のパラメータは**太字**で示されています。
 
-| パラメータ           | 説明                                | 例          |
-| --------------- | --------------------------------- | ---------- |
-| **`file.id`**   | Box Doc Genテンプレートとして設定するファイルのID。  | `12345678` |
-| **`file.type`** | 指定した入力データの種類。値は常に**`file`**になります。 | `file`     |
+| パラメータ           | 説明                                              | 例          |
+| --------------- | ----------------------------------------------- | ---------- |
+| **`file.id`**   | Box Doc Genテンプレートとして設定するファイルのID。                | `12345678` |
+| **`file.type`** | 指定した入力データの種類。値は常&#x306B;**`file`**&#x306B;なります。 | `file`     |
 
 ## ユースケース
 
@@ -51,48 +40,44 @@ Box Doc Gen APIの使用を開始する前に、[Box Doc Genの使い方][docgen
 次のサンプルでは、ファイルがBox Doc Genテンプレートとして認識されるように設定する方法を示します。
 
 <Note>
-
-ファイルは`.docx`形式である必要があります。
-
+  ファイルは`.docx`形式である必要があります。
 </Note>
 
 <CodeGroup>
+  ```sh cURL
+  curl -L 'https://api.box.com/2.0/docgen_templates' \
+       -H 'box-version: 2025.0' \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>' \
+       -H 'Content-Type: application/json' \
+       -D '{
+          "file": {
+              "id": "12345678",
+              "type": "file"
+          }
+  }'
+  ```
 
-```sh cURL
-curl -L 'https://api.box.com/2.0/docgen_templates' \
-     -H 'box-version: 2025.0' \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>' \
-     -H 'Content-Type: application/json' \
-     -D '{
-        "file": {
-            "id": "12345678",
-            "type": "file"
-        }
-}'
-```
+  ```typescript Node/TypeScript v10
+  await client.docgenTemplate.createDocgenTemplateV2025R0({
+    file: new FileReferenceV2025R0({ id: file.id }),
+  } satisfies DocGenTemplateCreateRequestV2025R0);
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgenTemplate.createDocgenTemplateV2025R0({
-  file: new FileReferenceV2025R0({ id: file.id }),
-} satisfies DocGenTemplateCreateRequestV2025R0);
-```
+  ```python Python v10
+  client.docgen_template.create_docgen_template_v2025_r0(FileReferenceV2025R0(id=file.id))
+  ```
 
-```python Python v10
-client.docgen_template.create_docgen_template_v2025_r0(FileReferenceV2025R0(id=file.id))
-```
+  ```cs .NET v10
+  await client.DocgenTemplate.CreateDocgenTemplateV2025R0Async(requestBody: new DocGenTemplateCreateRequestV2025R0(file: new FileReferenceV2025R0(id: file.Id)));
+  ```
 
-```cs .NET v10
-await client.DocgenTemplate.CreateDocgenTemplateV2025R0Async(requestBody: new DocGenTemplateCreateRequestV2025R0(file: new FileReferenceV2025R0(id: file.Id)));
-```
+  ```swift Swift v10
+  try await client.docgenTemplate.createDocgenTemplateV2025R0(requestBody: DocGenTemplateCreateRequestV2025R0(file: FileReferenceV2025R0(id: file.id)))
+  ```
 
-```swift Swift v10
-try await client.docgenTemplate.createDocgenTemplateV2025R0(requestBody: DocGenTemplateCreateRequestV2025R0(file: FileReferenceV2025R0(id: file.id)))
-```
-
-```java Java v10
-client.getDocgenTemplate().createDocgenTemplateV2025R0(new DocGenTemplateCreateRequestV2025R0(new FileReferenceV2025R0(file.getId())))
-```
-
+  ```java Java v10
+  client.getDocgenTemplate().createDocgenTemplateV2025R0(new DocGenTemplateCreateRequestV2025R0(new FileReferenceV2025R0(file.getId())))
+  ```
 </CodeGroup>
 
 ### ファイルからBox Doc Genテンプレートの設定を削除する
@@ -100,46 +85,44 @@ client.getDocgenTemplate().createDocgenTemplateV2025R0(new DocGenTemplateCreateR
 ファイルのBox Doc Genテンプレートの設定が解除されるようにするには、`DELETE 2.0/docgen_templates/:template_id`リクエストを使用します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L -X DELETE 'https://api.box.com/2.0/docgen_templates/12345678' \
+       -H 'box-version: 2025.0' \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>'
+  ```
 
-```sh cURL
-curl -L -X DELETE 'https://api.box.com/2.0/docgen_templates/12345678' \
-     -H 'box-version: 2025.0' \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>'
-```
+  ```typescript Node/TypeScript v10
+  await client.docgenTemplate.deleteDocgenTemplateByIdV2025R0(
+    createdDocgenTemplate.file!.id,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgenTemplate.deleteDocgenTemplateByIdV2025R0(
-  createdDocgenTemplate.file!.id,
-);
-```
+  ```python Python v10
+  client.docgen_template.delete_docgen_template_by_id_v2025_r0(
+      created_docgen_template.file.id
+  )
+  ```
 
-```python Python v10
-client.docgen_template.delete_docgen_template_by_id_v2025_r0(
-    created_docgen_template.file.id
-)
-```
+  ```cs .NET v10
+  await client.DocgenTemplate.DeleteDocgenTemplateByIdV2025R0Async(templateId: NullableUtils.Unwrap(createdDocgenTemplate.File).Id);
+  ```
 
-```cs .NET v10
-await client.DocgenTemplate.DeleteDocgenTemplateByIdV2025R0Async(templateId: NullableUtils.Unwrap(createdDocgenTemplate.File).Id);
-```
+  ```swift Swift v10
+  try await client.docgenTemplate.deleteDocgenTemplateByIdV2025R0(templateId: createdDocgenTemplate.file!.id)
+  ```
 
-```swift Swift v10
-try await client.docgenTemplate.deleteDocgenTemplateByIdV2025R0(templateId: createdDocgenTemplate.file!.id)
-```
-
-```java Java v10
-client.getDocgenTemplate().deleteDocgenTemplateByIdV2025R0(createdDocgenTemplate.getFile().getId())
-```
-
+  ```java Java v10
+  client.getDocgenTemplate().deleteDocgenTemplateByIdV2025R0(createdDocgenTemplate.getFile().getId())
+  ```
 </CodeGroup>
 
-[docgen-prerequisites]: /ja/guides/docgen/docgen-getting-started
+[docgen-prerequisites]: /guides/docgen/docgen-getting-started
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "ガイド" },
-    { label: "Box Doc Genテンプレート", href: "/ja/guides/docgen/docgen-templates", badge: "ガイド" },
-    { label: "ドキュメントの生成", href: "/ja/guides/docgen/generate-document", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+  { label: "Box Doc Gen templates", href: "/guides/docgen/docgen-templates", badge: "GUIDE" },
+  { label: "Generate documents", href: "/guides/docgen/generate-document", badge: "GUIDE" }
+]}
 />

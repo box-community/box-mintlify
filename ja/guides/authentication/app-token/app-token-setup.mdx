@@ -1,46 +1,36 @@
 ---
-title: "アプリトークン認証を使用した設定"
-rank: 3
-type: guide
-hide_step_number: false
-related_endpoints: []
-related_guides:
-  - authentication/select
-  - authentication/oauth2
-  - authorization/platform-app-approval
-required_guides:
-  - authentication/select
-  - applications/app-types/platform-apps
-related_resources: []
 alias_paths:
-  - /guides/applications/app-types/custom-apps/app-token-setup
-category_id: authentication
-subcategory_id: authentication/app-token
-is_index: false
-id: authentication/app-token/app-token-setup
-total_steps: 5
-sibling_id: authentication/app-token
-parent_id: authentication/app-token
-next_page_id: authentication/app-token/endpoints
-previous_page_id: authentication/app-token/without-sdk
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/app-token/app-token-setup.md
+  0: /guides/applications/app-types/custom-apps/app-token-setup
+hide_step_number: false
+rank: 3
+related_endpoints: {}
+related_guides:
+  0: authentication/select
+  1: authentication/oauth2
+  2: authorization/platform-app-approval
+related_resources: {}
+required_guides:
+  0: authentication/select
+  1: applications/app-types/platform-apps
+title: アプリトークン認証を使用した設定
+type: guide
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "Platformアプリ", href: "/ja/guides/applications/app-types/platform-apps", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" }
+]}
 />
+
 アクセス制限付きアプリは、認証にサーバー側の[アプリトークン][app-token]を使用するよう設定できます。
 
-<Card href="/ja/guides/authentication/app-token" title="アプリトークン認証のしくみを確認する"/>
+<Card href="/guides/authentication/app-token" arrow title="アプリトークン認証のしくみを確認する" />
 
 ## 前提条件
 
@@ -57,9 +47,7 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 アプリケーションの種類のリストから \[**アクセス制限付きアプリ**] を選択します。次の手順を促すウィンドウが表示されます。
 
 <Frame border>
-
-![アプリケーションの選択画面](/images/guides/authentication/select-app-type.png)
-
+  ![アプリケーションの選択画面](/images/guides/authentication/select-app-type.png)
 </Frame>
 
 ### 3. アプリ名を選択する
@@ -67,9 +55,7 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 最後に、アプリケーションの一意の名前を選択し、\[**アプリの作成**] をクリックします。
 
 <Frame border width="600" center>
-
-![アプリ名のフォーム](/images/guides/authentication/limited-access-naming.png)
-
+  ![アプリ名のフォーム](/images/guides/authentication/limited-access-naming.png)
 </Frame>
 
 ## アプリ承認
@@ -79,9 +65,7 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 [開発者コンソール][devconsole]内でアプリケーションの \[**一般設定**] タブに移動し、\[**アプリ承認**] セクションまで下にスクロールします。
 
 <Frame border width="400" center>
-
-![キーの追加と管理](/images/guides/authentication/app-authorization.png)
-
+  ![キーの追加と管理](/images/guides/authentication/app-authorization.png)
 </Frame>
 
 \[**確認して送信**] をクリックして、承認を得るためにBox Enterprise管理者にメールを送信します。このプロセスの詳細については、[承認ガイド][auth]を参照してください。
@@ -97,18 +81,15 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 \[**プライマリアクセストークン**] セクションまで下にスクロールし、\[**キーを生成**] ボタンをクリックします。
 
 <Frame border width="600" center>
-
-![アプリトークンの作成](/images/guides/authentication/app-generate-key.png)
-
+  ![アプリトークンの作成](/images/guides/authentication/app-generate-key.png)
 </Frame>
 
 アプリトークンは、自動的に期限切れになるよう構成することも、有効期限なしで構成することもできます。作成後は、このキーを使用して[APIコール][api-calls]を実行できます。
 
 <Warning>
-**アプリ承認**
+  **アプリ承認**
 
-アプリトークンは、Box管理コンソール内でアプリケーションの承認が成功するまで生成できません。
-
+  アプリトークンは、Box管理コンソール内でアプリケーションの承認が成功するまで生成できません。
 </Warning>
 
 ### CORSドメイン
@@ -118,32 +99,30 @@ Boxにログインし、[開発者コンソール][devconsole]に移動して、
 許可リストにすべてのURIを追加するには、[開発者コンソール][devconsole]の \[**構成**] タブの下部にある \[**CORSドメイン**] セクションに移動します。
 
 <Frame border>
-
-![アプリ名のフォーム](/images/guides/authentication/app-cors.png)
-
+  ![アプリ名のフォーム](/images/guides/authentication/app-cors.png)
 </Frame>
 
 [devconsole]: https://app.box.com/developers/console
 
 [devaccount]: https://account.box.com/signup/n/developer
 
-[devtoken]: /ja/guides/authentication/tokens/developer-tokens
+[devtoken]: /guides/authentication/tokens/developer-tokens
 
-[scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
+[scopes]: /guides/api-calls/permissions-and-errors/scopes
 
 [cors]: https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 
-[app-token]: /ja/guides/authentication/app-token
+[app-token]: /guides/authentication/app-token
 
-[api-calls]: /ja/guides/api-calls
+[api-calls]: /guides/api-calls
 
-[auth]: /ja/guides/authorization
+[auth]: /guides/authorization
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" },
-    { label: "Platformアプリの承認", href: "/ja/guides/authorization/platform-app-approval", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+  { label: "Platform App Approval", href: "/guides/authorization/platform-app-approval", badge: "GUIDE" }
+]}
 />

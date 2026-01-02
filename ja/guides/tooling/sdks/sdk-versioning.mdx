@@ -1,27 +1,16 @@
 ---
-title: "Box SDKのバージョン戦略"
+alias_paths: {}
 rank: 1
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/jwt
-  - authentication/oauth2
+  0: authentication/jwt
+  1: authentication/oauth2
 related_pages:
-  - sdks-and-tools
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: tooling
-subcategory_id: tooling/sdks
-is_index: false
-id: tooling/sdks/sdk-versioning
-type: guide
-total_steps: 11
-sibling_id: tooling/sdks
-parent_id: tooling/sdks
-next_page_id: tooling/sdks/dotnet
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tooling/sdks/sdk-versioning.md
+  0: sdks-and-tools
+related_resources: {}
+required_guides: {}
+title: Box SDKのバージョン戦略
+
 fullyTranslated: true
 ---
 
@@ -44,47 +33,35 @@ Box SDKの生成されたパッケージに実装予定の機能を以下に示�
 ## プロジェクトに必要な対応
 
 <Columns cols={2}>
+  <Card icon="cog" title="1. 既存のアプリ - BoxコアSDK" href="/guides/tooling/sdks/sdk-versioning/#migration-from-manually-maintained-sdk-version-to-the-consolidated-sdk-version">
+    BoxコアSDKを利用している既存のアプリケーションがあり、プロジェクトをさらに進化させたい場合:
 
-<Card icon="gear" title="1. 既存のアプリ - BoxコアSDK" href="/ja/guides/tooling/sdks/sdk-versioning/#migration-from-manually-maintained-sdk-version-to-the-consolidated-sdk-version">
+    **対応** 統合されたパッケージを含むメジャーバージョンを使用します。生成されたパッケージから便利なメソッドや新機能の使用を開始し、段階的にコードベースを移行します。最終的には、BoxコアSDKパッケージ (`v10.0.0`以上) に移行します。
+  </Card>
 
-BoxコアSDKを利用している既存のアプリケーションがあり、プロジェクトをさらに進化させたい場合:
+  <Card icon="code" title="2. 既存のアプリ - Boxの次世代SDK" href="/guides/tooling/sdks/sdk-versioning/#migration-from-the-box-next-generation-sdks-to-the-box-core-sdks">
+    Boxの次世代SDKを利用している既存のアプリケーションがあり、プロジェクトをさらに進化させたい場合:
 
-**対応** 統合されたパッケージを含むメジャーバージョンを使用します。生成されたパッケージから便利なメソッドや新機能の使用を開始し、段階的にコードベースを移行します。最終的には、BoxコアSDKパッケージ (`v10.0.0`以上) に移行します。
+    **対応** パッケージマネージャ内のライブラリ名をBoxコアSDKパッケージ (`v10.0.0`以上) に置き換えます。詳細な手順については、移行ガイドを確認してください。
+  </Card>
 
-</Card>
+  <Card icon="code-branch" title="3. 既存のアプリ - BoxコアSDKおよびBoxの次世代SDK" href="/guides/tooling/sdks/sdk-versioning/#migration-from-manually-maintained-sdk-version-to-the-consolidated-sdk-version">
+    BoxコアSDKと次世代SDKの両方を利用している既存のアプリケーションがある場合:
 
-<Card icon="code" title="2. 既存のアプリ - Boxの次世代SDK" href="/ja/guides/tooling/sdks/sdk-versioning/#migration-from-the-box-next-generation-sdks-to-the-box-core-sdks">
+    **対応** 統合されたパッケージを含むメジャーバージョンを使用します。最終的には、BoxコアSDKパッケージ (`v10.0.0`以上) に移行します。
+  </Card>
 
-Boxの次世代SDKを利用している既存のアプリケーションがあり、プロジェクトをさらに進化させたい場合:
+  <Card icon="square-terminal" title="4. 新規アプリケーション" href="/guides/tooling/sdks/sdk-versioning/#box-core-sdk-versions-and-artifacts-overview">
+    新規アプリケーションを作成する場合:
 
-**対応** パッケージマネージャ内のライブラリ名をBoxコアSDKパッケージ (`v10.0.0`以上) に置き換えます。詳細な手順については、移行ガイドを確認してください。
+    **対応** BoxコアSDKの`v10.0.0`以上を使用します。
+  </Card>
 
-</Card>
+  <Card icon="circle-info" title="5. 積極的な開発なし" href="/guides/tooling/sdks/sdk-versioning/#migration-from-manually-maintained-sdk-version-to-the-consolidated-sdk-version">
+    変更する予定のない既存のアプリケーションがある場合:
 
-<Card icon="code-branch" title="3. 既存のアプリ - BoxコアSDKおよびBoxの次世代SDK" href="/ja/guides/tooling/sdks/sdk-versioning/#migration-from-manually-maintained-sdk-version-to-the-consolidated-sdk-version">
-
-BoxコアSDKと次世代SDKの両方を利用している既存のアプリケーションがある場合:
-
-**対応** 統合されたパッケージを含むメジャーバージョンを使用します。最終的には、BoxコアSDKパッケージ (`v10.0.0`以上) に移行します。
-
-</Card>
-
-<Card icon="square-terminal" title="4. 新規アプリケーション" href="/ja/guides/tooling/sdks/sdk-versioning/#box-core-sdk-versions-and-artifacts-overview">
-
-新規アプリケーションを作成する場合:
-
-**対応** BoxコアSDKの`v10.0.0`以上を使用します。
-
-</Card>
-
-<Card icon="circle-info" title="5. 積極的な開発なし" href="/ja/guides/tooling/sdks/sdk-versioning/#migration-from-manually-maintained-sdk-version-to-the-consolidated-sdk-version">
-
-変更する予定のない既存のアプリケーションがある場合:
-
-**対応** パッケージマネージャに特定のバージョンを含めることで、誤って更新されないようにします。Boxでは、統合されたパッケージを含むメジャーバージョンにアップグレードして、継続しているセキュリティパッチや改善が提供されるようにすることを強くお勧めします。
-
-</Card>
-
+    **対応** パッケージマネージャに特定のバージョンを含めることで、誤って更新されないようにします。Boxでは、統合されたパッケージを含むメジャーバージョンにアップグレードして、継続しているセキュリティパッチや改善が提供されるようにすることを強くお勧めします。
+  </Card>
 </Columns>
 
 ## バージョン管理の概要
@@ -210,7 +187,7 @@ Boxの次世代SDKからBoxコアSDK `v10`以上に移行するには、以下�
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" }
-  ]}
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+]}
 />

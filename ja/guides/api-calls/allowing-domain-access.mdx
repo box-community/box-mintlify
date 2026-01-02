@@ -1,27 +1,16 @@
 ---
-title: "ドメインへのアクセスの許可"
+alias_paths:
+  0: /docs/domain-whitelisting
+  1: /guides/api-calls/domain-whitelisting
 rank: 6
 related_endpoints:
-  - get_files_id_content
-  - post_files_content
-  - post_files_id_content
-related_guides: []
-required_guides: []
-alias_paths:
-  - /docs/domain-whitelisting
-  - /guides/api-calls/domain-whitelisting
-category_id: api-calls
-subcategory_id: null
-is_index: false
-id: api-calls/allowing-domain-access
-type: guide
-total_steps: 9
-sibling_id: api-calls
-parent_id: api-calls
-next_page_id: api-calls/suppress-notifications
-previous_page_id: api-calls/ensure-consistency
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/allowing-domain-access.md
+  0: get_files_id_content
+  1: post_files_content
+  2: post_files_id_content
+related_guides: {}
+required_guides: {}
+title: ドメインへのアクセスの許可
+
 fullyTranslated: true
 ---
 
@@ -47,9 +36,7 @@ Box APIを使用する際に重要なのは、必要に応じてアプリケー�
 * `public.boxcloud.com` - 認証されていないユーザー用のファイルを実際にダウンロードする
 
 <Warning>
-
-これらのドメインへのアクセス権限の確認は、ファイルをダウンロードするための最初のステップにすぎません。ファイルをダウンロードするには、ユーザーは適切なアクセス権限を持ち、必要に応じて完全に認証されている必要があります。
-
+  これらのドメインへのアクセス権限の確認は、ファイルをダウンロードするための最初のステップにすぎません。ファイルをダウンロードするには、ユーザーは適切なアクセス権限を持ち、必要に応じて完全に認証されている必要があります。
 </Warning>
 
 ## ファイルのアップロード
@@ -62,8 +49,8 @@ Box APIを使用する際に重要なのは、必要に応じてアプリケー�
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" },
-    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
-    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
-  ]}
+  { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" },
+  { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
+  { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
+]}
 />

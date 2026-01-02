@@ -1,111 +1,100 @@
 ---
-title: "タスクに関する情報の取得"
 related_endpoints:
-  - get_tasks_id
+  0: get_tasks_id
 related_guides:
-  - tasks/create
-  - tasks/for-file
-  - tasks/update
-category_id: tasks
-subcategory_id: null
-is_index: false
-id: tasks/get
-rank: 2
-type: guide
-total_steps: 5
-sibling_id: tasks
-parent_id: tasks
-next_page_id: tasks/for-file
-previous_page_id: tasks/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/2-get.md
+  0: tasks/create
+  1: tasks/for-file
+  2: tasks/update
+title: タスクに関する情報の取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-割り当てられたタスクに関する情報を取得するには、タスクの`id`を指定して[`GET /tasks/:task_id`](/ja/reference/get-tasks-id) APIを呼び出します。
+割り当てられたタスクに関する情報を取得するには、タスクの`id`を指定して[`GET /tasks/:task_id`](/reference/get-tasks-id) APIを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/tasks/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/tasks/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.tasks.getTaskById(task.id!);
-```
+  ```typescript Node/TypeScript v10
+  await client.tasks.getTaskById(task.id!);
+  ```
 
-```python Python v10
-client.tasks.get_task_by_id(task.id)
-```
+  ```python Python v10
+  client.tasks.get_task_by_id(task.id)
+  ```
 
-```csharp .NET v10
-await client.Tasks.GetTaskByIdAsync(taskId: NullableUtils.Unwrap(task.Id));
-```
+  ```csharp .NET v10
+  await client.Tasks.GetTaskByIdAsync(taskId: NullableUtils.Unwrap(task.Id));
+  ```
 
-```swift Swift v10
-try await client.tasks.getTaskById(taskId: task.id!)
-```
+  ```swift Swift v10
+  try await client.tasks.getTaskById(taskId: task.id!)
+  ```
 
-```java Java v10
-client.getTasks().getTaskById(task.getId())
-```
+  ```java Java v10
+  client.getTasks().getTaskById(task.getId())
+  ```
 
-```java Java v5
-BoxTask task = new BoxTask(api, "id");
-BoxTask.Info info = task.getInfo();
-```
+  ```java Java v5
+  BoxTask task = new BoxTask(api, "id");
+  BoxTask.Info info = task.getInfo();
+  ```
 
-```py Python v4
-task = client.task(task_id='12345').get()
-print(f'Task ID is {task.id} and the type is {task.type}')
-```
+  ```py Python v4
+  task = client.task(task_id='12345').get()
+  print(f'Task ID is {task.id} and the type is {task.type}')
+  ```
 
-```csharp .NET v6
-BoxTask task = await client.TasksManager.GetTaskAsync("11111");
-```
+  ```csharp .NET v6
+  BoxTask task = await client.TasksManager.GetTaskAsync("11111");
+  ```
 
-```js Node v4
-client.tasks.get('11111')
- .then(task => {
-  /* task -> {
-   type: 'task',
-   id: '11111',
-   item: 
-   { type: 'file',
-    id: '22222',
-    sequence_id: '0',
-    etag: '0',
-    sha1: '0bbd79a105c504f99573e3799756debba4c760cd',
-    name: 'box-logo.png' },
-   due_at: '2014-04-03T11:09:43-07:00',
-   action: 'review',
-   message: 'Please review for publication!',
-   task_assignment_collection: { total_count: 0, entries: [] },
-   is_completed: false,
-   created_by: 
-   { type: 'user',
-    id: '33333',
-    name: 'Example User',
-    login: 'user@example.com' },
-   created_at: '2013-04-03T11:12:54-07:00' }
-  */
- });
-```
+  ```js Node v4
+  client.tasks.get('11111')
+   .then(task => {
+    /* task -> {
+     type: 'task',
+     id: '11111',
+     item: 
+     { type: 'file',
+      id: '22222',
+      sequence_id: '0',
+      etag: '0',
+      sha1: '0bbd79a105c504f99573e3799756debba4c760cd',
+      name: 'box-logo.png' },
+     due_at: '2014-04-03T11:09:43-07:00',
+     action: 'review',
+     message: 'Please review for publication!',
+     task_assignment_collection: { total_count: 0, entries: [] },
+     is_completed: false,
+     created_by: 
+     { type: 'user',
+      id: '33333',
+      name: 'Example User',
+      login: 'user@example.com' },
+     created_at: '2013-04-03T11:12:54-07:00' }
+    */
+   });
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get task", href: "/reference/get-tasks-id", badge: "GET" }
-  ]}
+  { label: "Get task", href: "/reference/get-tasks-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "タスクの作成", href: "/ja/guides/tasks/create", badge: "ガイド" },
-    { label: "ファイルのすべてのタスクのリストの取得", href: "/ja/guides/tasks/for-file", badge: "ガイド" },
-    { label: "既存のタスクの変更", href: "/ja/guides/tasks/update", badge: "ガイド" }
-  ]}
+  { label: "Create a task", href: "/guides/tasks/create", badge: "GUIDE" },
+  { label: "Lists all tasks for a file", href: "/guides/tasks/for-file", badge: "GUIDE" },
+  { label: "Make changes to an existing task", href: "/guides/tasks/update", badge: "GUIDE" }
+]}
 />

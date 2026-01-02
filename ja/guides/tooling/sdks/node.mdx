@@ -1,27 +1,16 @@
 ---
-title: "Node SDKのインストール"
+alias_paths: {}
 rank: 5
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/jwt
-  - authentication/oauth2
+  0: authentication/jwt
+  1: authentication/oauth2
 related_pages:
-  - sdks-and-tools
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: tooling
-subcategory_id: tooling/sdks
-is_index: false
-id: tooling/sdks/node
-type: guide
-total_steps: 11
-sibling_id: tooling/sdks
-parent_id: tooling/sdks
-next_page_id: tooling/sdks/salesforce
-previous_page_id: tooling/sdks/python
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tooling/sdks/node.md
+  0: sdks-and-tools
+related_resources: {}
+required_guides: {}
+title: Node SDKのインストール
+
 fullyTranslated: true
 ---
 
@@ -29,7 +18,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 Nodeプロジェクトでは、Box Node SDKを使用してBox APIを呼び出すことができます。
 
-<Card href="https://github.com/box/box-node-sdk" title="GitHubでNode SDKの詳細を確認する"/>
+<Card href="https://github.com/box/box-node-sdk" arrow title="GitHubでNode SDKの詳細を確認する" />
 
 ## NPMのインストール
 
@@ -37,7 +26,6 @@ Node SDKをインストールするには、[Nodeパッケージマネージャ]
 
 ```shell
 npm install box-node-sdk --save
-
 ```
 
 ## Yarnインストール
@@ -46,7 +34,6 @@ npm install box-node-sdk --save
 
 ```shell
 yarn add box-node-sdk
-
 ```
 
 [npm]: https://www.npmjs.com/
@@ -58,7 +45,7 @@ yarn add box-node-sdk
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" }
-  ]}
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+]}
 />

@@ -1,20 +1,9 @@
 ---
 centered: true
 rank: 1
-category_id: sign
-subcategory_id: sign/30-request-options
-is_index: false
-id: sign/request-options/multiple-signers
-type: page
-total_steps: 7
-sibling_id: sign/request-options
-parent_id: sign/request-options
-next_page_id: sign/request-options/extra-security
-previous_page_id: 
-source_url: >-
-https: //github.com/box/developer.box.com/blob/main/content/pages/sign/30-request-options/10-multiple-signers.md
-fullyTranslated: true
 title: 複数の署名者と役割
+
+fullyTranslated: true
 ---
 
 ## 複数の署名者
@@ -32,98 +21,92 @@ title: 複数の署名者と役割
 このためのメソッドを作成します。
 
 <CodeGroup>
-
-```sh cURL
-curl --location 'https://api.box.com/2.0/sign_requests' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer ej...3t' \
-    --data-raw '{
-      "is_document_preparation_needed": true,
-      "parent_folder": {
-        "id": "234102987614",
-        "type": "folder"
-      },
-      "source_files": [
-        {
-          "id": "1358047520478",
-          "type": "file"
-        }
-      ],
-      "signers": [
-        {
-          "email": "institution@example.com",
-          "role": "signer",
-          "order": 1
+  ```sh cURL
+  curl --location 'https://api.box.com/2.0/sign_requests' \
+      --header 'Content-Type: application/json' \
+      --header 'Authorization: Bearer ej...3t' \
+      --data-raw '{
+        "is_document_preparation_needed": true,
+        "parent_folder": {
+          "id": "234102987614",
+          "type": "folder"
         },
-        {
-          "email": "student@example.com",
-          "role": "signer",
-          "order": 2
-        },
-      ]
-    }'
+        "source_files": [
+          {
+            "id": "1358047520478",
+            "type": "file"
+          }
+        ],
+        "signers": [
+          {
+            "email": "institution@example.com",
+            "role": "signer",
+            "order": 1
+          },
+          {
+            "email": "student@example.com",
+            "role": "signer",
+            "order": 2
+          },
+        ]
+      }'
+  ```
 
-```
+  ```python Python Gen SDK
+  def sign_contract(
+      client: Client,
+      document_id: str,
+      destination_folder_id: str,
+      institution_email: str,
+      student_email: str,
+      prep_needed: bool = False,
+  ) -> SignRequest:
+      """Sign contract"""
 
+      # Sign request params
+      source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
+      destination_folder = FolderMini(
+          id=destination_folder_id, type=FolderBaseTypeField.FOLDER
+      )
 
+      # signers
+      institution = SignRequestCreateSigner(
+          email=institution_email,
+          role=SignRequestCreateSignerRoleField.SIGNER,
+          order=1,
+      )
 
-```python Pythonの次世代SDK
-def sign_contract(
-    client: Client,
-    document_id: str,
-    destination_folder_id: str,
-    institution_email: str,
-    student_email: str,
-    prep_needed: bool = False,
-) -> SignRequest:
-    """Sign contract"""
+      student = SignRequestCreateSigner(
+          email=student_email,
+          role=SignRequestCreateSignerRoleField.SIGNER,
+          order=2,
+      )
 
-    # Sign request params
-    source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
-    destination_folder = FolderMini(
-        id=destination_folder_id, type=FolderBaseTypeField.FOLDER
-    )
+      # create sign request
+      sign_request = client.sign_requests.create_sign_request(
+          signers=[institution, student],
+          parent_folder=destination_folder,
+          source_files=[source_file],
+          is_document_preparation_needed=prep_needed,
+      )
 
-    # signers
-    institution = SignRequestCreateSigner(
-        email=institution_email,
-        role=SignRequestCreateSignerRoleField.SIGNER,
-        order=1,
-    )
+      return sign_request
 
-    student = SignRequestCreateSigner(
-        email=student_email,
-        role=SignRequestCreateSignerRoleField.SIGNER,
-        order=2,
-    )
+  def main():
+      ...
 
-    # create sign request
-    sign_request = client.sign_requests.create_sign_request(
-        signers=[institution, student],
-        parent_folder=destination_folder,
-        source_files=[source_file],
-        is_document_preparation_needed=prep_needed,
-    )
-
-    return sign_request
-
-def main():
-    ...
-
-    # Multiple signers
-    sign_contract_multi = sign_contract(
-        client,
-        CONTRACT,
-        SIGN_DOCS_FOLDER,
-        institution_email=SIGNER_A,
-        student_email=SIGNER_B,
-        prep_needed=True,
-    )
-    if sign_contract_multi.prepare_url is not None:
-        open_browser(sign_contract_multi.prepare_url)
-
-```
-
+      # Multiple signers
+      sign_contract_multi = sign_contract(
+          client,
+          CONTRACT,
+          SIGN_DOCS_FOLDER,
+          institution_email=SIGNER_A,
+          student_email=SIGNER_B,
+          prep_needed=True,
+      )
+      if sign_contract_multi.prepare_url is not None:
+          open_browser(sign_contract_multi.prepare_url)
+  ```
 </CodeGroup>
 
 この例では、ドキュメントを準備する必要があるため、ブラウザで準備のURLを開きます。
@@ -131,7 +114,7 @@ def main():
 署名パッド、フルネーム、日付をドキュメント内の適切な場所にドラッグし、\[リクエストの送信] をクリックします。
 
 <Frame>
-![契約書の準備](./images/sign-multi-prep.png)
+  ![契約書の準備](./images/sign-multi-prep.png)
 </Frame>
 
 この時点で2人の署名者が設定され、順序もすでに指定されていることに注目してください。また、`color`は署名者を識別するために重要で (この場合、教育機関は青、教員は緑)、どの署名者にどの署名パッド、名前、日付が属しているかを特定します。
@@ -139,7 +122,7 @@ def main():
 署名リクエストの詳細を確認すると、次のように表示されます。
 
 <Frame>
-![ドキュメントと署名者を示す署名リクエストの詳細](./images/sign-multi-prep-details.png)
+  ![ドキュメントと署名者を示す署名リクエストの詳細](./images/sign-multi-prep-details.png)
 </Frame>
 
 最初のリクエストは送信済みですが、2番目のリクエストは最初のリクエストが完了するのを待っていることを示します。
@@ -169,124 +152,118 @@ def main():
 フローは署名リクエストで始まり、学部長による承認、教育機関による署名、学生による署名と続き、最後に、法務部門が署名済みドキュメントのコピーを受け取ります。
 
 <Frame>
-![複数の署名者と役割](./images/sign-flow-multi-role.png)
+  ![複数の署名者と役割](./images/sign-flow-multi-role.png)
 </Frame>
 
 このためのメソッドを作成しましょう。
 
 <CodeGroup>
-
-```sh cURL
-curl --location 'https://api.box.com/2.0/sign_requests' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer ej...3t' \
-    --data-raw '{
-      "is_document_preparation_needed": true,
-      "parent_folder": {
-        "id": "234102987614",
-        "type": "folder"
-      },
-      "source_files": [
-        {
-          "id": "1358047520478",
-          "type": "file"
-        }
-      ],
-      "signers": [
-        {
-          "email": "institution@example.com",
-          "role": "signer",
-          "order": 1
+  ```sh cURL
+  curl --location 'https://api.box.com/2.0/sign_requests' \
+      --header 'Content-Type: application/json' \
+      --header 'Authorization: Bearer ej...3t' \
+      --data-raw '{
+        "is_document_preparation_needed": true,
+        "parent_folder": {
+          "id": "234102987614",
+          "type": "folder"
         },
-        {
-          "email": "student@example.com",
-          "role": "signer",
-          "order": 2
-        },
-        {
-          "email": "dean@example.com",
-          "role": "approver"
-        },
-        {
-          "email": "legal@example.com",
-          "role": "final_copy_reader"
-        }
-      ]
-    }'
+        "source_files": [
+          {
+            "id": "1358047520478",
+            "type": "file"
+          }
+        ],
+        "signers": [
+          {
+            "email": "institution@example.com",
+            "role": "signer",
+            "order": 1
+          },
+          {
+            "email": "student@example.com",
+            "role": "signer",
+            "order": 2
+          },
+          {
+            "email": "dean@example.com",
+            "role": "approver"
+          },
+          {
+            "email": "legal@example.com",
+            "role": "final_copy_reader"
+          }
+        ]
+      }'
+  ```
 
-```
+  ```python Python Gen SDK
+  def sign_contract_step(
+      client: Client,
+      document_id: str,
+      destination_folder_id: str,
+      institution_email: str,
+      student_email: str,
+      dean_email: str,
+      legal_email: str,
+  ) -> SignRequest:
+      """Sign contract"""
 
+      # Sign request params
+      source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
+      destination_folder = FolderMini(
+          id=destination_folder_id, type=FolderBaseTypeField.FOLDER
+      )
 
+      # signers
+      institution = SignRequestCreateSigner(
+          email=institution_email,
+          role=SignRequestCreateSignerRoleField.SIGNER,
+          order=1,
+      )
 
-```python Pythonの次世代SDK
-def sign_contract_step(
-    client: Client,
-    document_id: str,
-    destination_folder_id: str,
-    institution_email: str,
-    student_email: str,
-    dean_email: str,
-    legal_email: str,
-) -> SignRequest:
-    """Sign contract"""
+      student = SignRequestCreateSigner(
+          email=student_email,
+          role=SignRequestCreateSignerRoleField.SIGNER,
+          order=2,
+      )
 
-    # Sign request params
-    source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
-    destination_folder = FolderMini(
-        id=destination_folder_id, type=FolderBaseTypeField.FOLDER
-    )
+      dean = SignRequestCreateSigner(
+          email=dean_email,
+          role=SignRequestCreateSignerRoleField.APPROVER,
+      )
 
-    # signers
-    institution = SignRequestCreateSigner(
-        email=institution_email,
-        role=SignRequestCreateSignerRoleField.SIGNER,
-        order=1,
-    )
+      legal = SignRequestCreateSigner(
+          email=legal_email,
+          role=SignRequestCreateSignerRoleField.FINAL_COPY_READER,
+      )
 
-    student = SignRequestCreateSigner(
-        email=student_email,
-        role=SignRequestCreateSignerRoleField.SIGNER,
-        order=2,
-    )
+      # create sign request
+      sign_request = client.sign_requests.create_sign_request(
+          signers=[institution, student, dean, legal],
+          parent_folder=destination_folder,
+          source_files=[source_file],
+          is_document_preparation_needed=True,
+      )
 
-    dean = SignRequestCreateSigner(
-        email=dean_email,
-        role=SignRequestCreateSignerRoleField.APPROVER,
-    )
+      return sign_request
 
-    legal = SignRequestCreateSigner(
-        email=legal_email,
-        role=SignRequestCreateSignerRoleField.FINAL_COPY_READER,
-    )
+  def main():
+      ...
 
-    # create sign request
-    sign_request = client.sign_requests.create_sign_request(
-        signers=[institution, student, dean, legal],
-        parent_folder=destination_folder,
-        source_files=[source_file],
-        is_document_preparation_needed=True,
-    )
-
-    return sign_request
-
-def main():
-    ...
-
-    # Multiple signers and steps
-    sign_contract_multi_step = sign_contract_step(
-        client,
-        CONTRACT,
-        SIGN_DOCS_FOLDER,
-        institution_email=SIGNER_A,
-        student_email=SIGNER_B,
-        dean_email=APPROVER,
-        legal_email=FINAL_COPY,
-    )
-    if sign_contract_multi_step.prepare_url is not None:
-        open_browser(sign_contract_multi_step.prepare_url)
-
-```
-
+      # Multiple signers and steps
+      sign_contract_multi_step = sign_contract_step(
+          client,
+          CONTRACT,
+          SIGN_DOCS_FOLDER,
+          institution_email=SIGNER_A,
+          student_email=SIGNER_B,
+          dean_email=APPROVER,
+          legal_email=FINAL_COPY,
+      )
+      if sign_contract_multi_step.prepare_url is not None:
+          open_browser(sign_contract_multi_step.prepare_url)
+  ```
 </CodeGroup>
 
 先ほどと同様、ドキュメントを準備する必要があるため、ブラウザで準備のURLを開きます。
@@ -296,7 +273,7 @@ def main():
 `approver`にも`final copy reader`にも入力データを関連付けることはできません。関連付けると、その役割は`signer`に変更されます。
 
 <Frame>
-![複数の役割の準備](./images/sign_multi-steps-prep.png)
+  ![複数の役割の準備](./images/sign_multi-steps-prep.png)
 </Frame>
 
 署名プロセスを続行します。

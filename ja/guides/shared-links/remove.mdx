@@ -1,29 +1,18 @@
 ---
-title: "共有リンクの削除"
+alias_paths: {}
 rank: 4
 related_endpoints:
-  - put_files_id
-  - put_folders_id
-  - put_web_links_id
+  0: put_files_id
+  1: put_folders_id
+  2: put_web_links_id
 related_guides:
-  - shared-links/create-or-update
-  - shared-links/find-for-item
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: shared-links
-subcategory_id: null
-is_index: false
-id: shared-links/remove
-type: guide
-total_steps: 4
-sibling_id: shared-links
-parent_id: shared-links
-next_page_id: shared-links/permissions
-previous_page_id: shared-links/find-for-item
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/shared-links/remove.md
+  0: shared-links/create-or-update
+  1: shared-links/find-for-item
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 共有リンクの削除
+
 fullyTranslated: true
 ---
 
@@ -32,47 +21,40 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 [ファイルを更新](endpoint://put_files_id)、[フォルダを更新](endpoint://put_folders_id)、または[ウェブリンクを更新](endpoint://put_web_links_id)エンドポイントを呼び出し、`shared_link`値を`null`に設定することで、リソースから共有リンクを削除できます。
 
 <Warning>
-
-共有リンクを削除して新しい共有リンクを作成すると、新しい共有リンクのURLは以前と異なるものになり、以前のURLしか知らないユーザーはリソースにアクセスできなくなります。
-
+  共有リンクを削除して新しい共有リンクを作成すると、新しい共有リンクのURLは以前と異なるものになり、以前のURLしか知らないユーザーはリソースにアクセスできなくなります。
 </Warning>
 
 ## ファイルの共有リンクの削除
 
 ファイルの共有リンクを削除するには、ファイルのIDを指定し、`shared_link`フィールドを`null`に設定します。
 
-{/* <Samples id="put_files_id" variant="remove_shared_link">
-
-</Samples> */}
+{/* <Samples id='put_files_id' variant='remove_shared_link' /> */}
 
 ## フォルダの共有リンクの削除
 
 フォルダの共有リンクを削除するには、フォルダのIDを指定し、`shared_link`フィールドを`null`に設定します。
 
-{/* <Samples id="put_folders_id" variant="remove_shared_link">
-
-</Samples> */}
+{/* <Samples id='put_folders_id' variant='remove_shared_link' /> */}
 
 ## ウェブリンクの共有リンクの削除
 
 ウェブリンクの共有リンクを削除するには、ウェブリンクのIDを指定し、`shared_link`フィールドを`null`に設定します。
 
-{/* <Samples id="put_web_links_id" variant="remove_shared_link">
-
-</Samples> */}
+{/* <Samples id='put_web_links_id' variant='remove_shared_link' /> */}
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
-    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
-    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" }
-  ]}
+  { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+  { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+  { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "共有リンクの作成または更新", href: "/ja/guides/shared-links/create-or-update", badge: "ガイド" },
-    { label: "共有リンクの項目の検索", href: "/ja/guides/shared-links/find-for-item", badge: "ガイド" }
-  ]}
+  { label: "Create or Update Shared Link", href: "/guides/shared-links/create-or-update", badge: "GUIDE" },
+  { label: "Find Item from Shared Link", href: "/guides/shared-links/find-for-item", badge: "GUIDE" }
+]}
 />

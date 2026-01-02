@@ -1,27 +1,16 @@
 ---
-title: "外部ユーザーの一括削除"
+alias_paths: {}
 rank: 7
 related_endpoints:
-  - post_external_users_submit_delete_job
+  0: post_external_users_submit_delete_job
 related_guides:
-  - users/delete-user
-  - users/deprovision
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: users
-subcategory_id: null
-is_index: false
-id: users/bulk-delete-external-users
-type: guide
-total_steps: 4
-sibling_id: users
-parent_id: users
-next_page_id: users
-previous_page_id: users/delete-user
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/users/bulk-delete-external-users.md
+  0: users/delete-user
+  1: users/deprovision
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 外部ユーザーの一括削除
+
 fullyTranslated: true
 ---
 
@@ -29,42 +18,39 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 APIを使用して、企業から最大100件の外部ユーザーを削除できます。このAPIエンドポイントにより、リストの外部ユーザーをコラボレーションに招待したすべての種類のコンテンツへのアクセスが削除されます。
 
-外部ユーザーを削除するには、[`POST /external_users/post_external_users_submit_delete_job`][`POST /external_users/post_external_users_submit_delete_job`]を呼び出します。
+外部ユーザーを削除するには、\[`POST /external_users/post_external_users_submit_delete_job`] を呼び出します。
 
 <CodeGroup>
-
-```sh cURL
-curl -X -L POST "https://api.box.com/2.0/external_users/external_users_submit_delete_job" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -d '{
-      "external_users":
-        "type": "array"
-        "description": "List of external users to delete."
-        "items":
-          "$ref: #/components/schemas/UserReference"
-      }'
-```
-
+  ```sh cURL
+  curl -X -L POST "https://api.box.com/2.0/external_users/external_users_submit_delete_job" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -d '{
+        "external_users":
+          "type": "array"
+          "description": "List of external users to delete."
+          "items":
+            "$ref: #/components/schemas/UserReference"
+        }'
+  ```
 </CodeGroup>
 
 このジョブはバックグラウンドで実行され、終了時に、各ユーザーの削除ステータスが記載されている完了レポートを送信します。
 
 <Note>
-
-外部ユーザーを削除しても、保留中のコラボレーションの招待は削除されません。
-
+  外部ユーザーを削除しても、保留中のコラボレーションの招待は削除されません。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Submit job to delete external users", href: "/reference/v2025.0/post-external-users-submit-delete-job", badge: "POST" }
-  ]}
+  { label: "Submit job to delete external users", href: "/reference/v2025.0/post-external-users-submit-delete-job", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ユーザーの削除", href: "/ja/guides/users/delete-user", badge: "ガイド" },
-    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "ガイド" }
-  ]}
+  { label: "Delete User", href: "/guides/users/delete-user", badge: "GUIDE" },
+  { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" }
+]}
 />

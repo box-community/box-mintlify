@@ -1,29 +1,17 @@
 ---
-title: "項目のメタデータの取得"
-related_resources:
-  - metadata
-  - metadata_template
 related_endpoints:
-  - get_files_id_metadata_id_id
-  - get_folders_id_metadata_id_id
+  0: get_files_id_metadata_id_id
+  1: get_folders_id_metadata_id_id
 related_guides:
-  - metadata/instances/list
-  - metadata/instances/create
-  - metadata/scopes
-  - metadata/templates/list
-category_id: metadata
-subcategory_id: metadata/4-instances
-is_index: false
-id: metadata/instances/get
-rank: 2
-type: guide
-total_steps: 5
-sibling_id: metadata/instances
-parent_id: metadata/instances
-next_page_id: metadata/instances/create
-previous_page_id: metadata/instances/list
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/2-get.md
+  0: metadata/instances/list
+  1: metadata/instances/create
+  2: metadata/scopes
+  3: metadata/templates/list
+related_resources:
+  0: metadata
+  1: metadata_template
+title: 項目のメタデータの取得
+
 fullyTranslated: true
 ---
 
@@ -32,9 +20,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルまたはフォルダに割り当てられたメタデータテンプレートのインスタンスに関する情報を取得するには、項目の`id`に加え、テンプレートの`templateKey`と`scope`を使用します。
 
 <Info>
-
-メタデータの[スコープ][scopes]には、`global` (すべての会社が利用できるテンプレートの場合)、`enterprise` (現在の会社が利用できるテンプレートの場合)、または`enterprise_:id` (IDがスコープ名の`:id`である会社に属するテンプレートの場合) のいずれかを指定できます。
-
+  メタデータの[スコープ][scopes]には、`global` (すべての会社が利用できるテンプレートの場合)、`enterprise` (現在の会社が利用できるテンプレートの場合)、または`enterprise_:id` (IDがスコープ名の`:id`である会社に属するテンプレートの場合) のいずれかを指定できます。
 </Info>
 
 ## ファイルのメタデータインスタンスを取得
@@ -42,94 +28,92 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルのメタデータテンプレートのインスタンスを取得するには、ファイルの`file_id`およびテンプレートの`scope`と`templateKey`を指定して、[`GET /files/:file_id/metadata/:scope/:templateKey`][e_on_file] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.fileMetadata.getFileMetadataById(
-  file.id,
-  'global' as GetFileMetadataByIdScope,
-  'properties',
-);
-```
+  ```typescript Node/TypeScript v10
+  await client.fileMetadata.getFileMetadataById(
+    file.id,
+    'global' as GetFileMetadataByIdScope,
+    'properties',
+  );
+  ```
 
-```python Python v10
-client.file_metadata.get_file_metadata_by_id(
-    file.id, GetFileMetadataByIdScope.GLOBAL, "properties"
-)
-```
+  ```python Python v10
+  client.file_metadata.get_file_metadata_by_id(
+      file.id, GetFileMetadataByIdScope.GLOBAL, "properties"
+  )
+  ```
 
-```csharp .NET v10
-await client.FileMetadata.GetFileMetadataByIdAsync(fileId: file.Id, scope: GetFileMetadataByIdScope.Global, templateKey: "properties");
-```
+  ```csharp .NET v10
+  await client.FileMetadata.GetFileMetadataByIdAsync(fileId: file.Id, scope: GetFileMetadataByIdScope.Global, templateKey: "properties");
+  ```
 
-```swift Swift v10
-try await client.fileMetadata.getFileMetadataById(fileId: file.id, scope: GetFileMetadataByIdScope.global, templateKey: "properties")
-```
+  ```swift Swift v10
+  try await client.fileMetadata.getFileMetadataById(fileId: file.id, scope: GetFileMetadataByIdScope.global, templateKey: "properties")
+  ```
 
-```java Java v10
-client.getFileMetadata().getFileMetadataById(file.getId(), GetFileMetadataByIdScope.GLOBAL, "properties")
-```
+  ```java Java v10
+  client.getFileMetadata().getFileMetadataById(file.getId(), GetFileMetadataByIdScope.GLOBAL, "properties")
+  ```
 
-```java Java v5
-// Get the default free-form metadata properties
-BoxFile file = new BoxFile(api, "id");
-Metadata metadata = file.getMetadata();
+  ```java Java v5
+  // Get the default free-form metadata properties
+  BoxFile file = new BoxFile(api, "id");
+  Metadata metadata = file.getMetadata();
 
-// Unknown type metadata field, you can test for type or try to get as any type
-JsonValue unknownValue = metadata.getValue("/someField");
+  // Unknown type metadata field, you can test for type or try to get as any type
+  JsonValue unknownValue = metadata.getValue("/someField");
 
-// String or Enum metadata fields
-String stringValue = metadata.getString("/author");
+  // String or Enum metadata fields
+  String stringValue = metadata.getString("/author");
 
-// Float metadata fields can be interpreted as any numeric type
-float floatValue = metadata.getFloat("/price");
+  // Float metadata fields can be interpreted as any numeric type
+  float floatValue = metadata.getFloat("/price");
 
-// Date metadata fields
-Date dateValue = metadata.getDate("/deadline");
+  // Date metadata fields
+  Date dateValue = metadata.getDate("/deadline");
 
-// Multiselect metadata fields
-List<String> multiSelectValues = metadata.getMultiSelect("/categories");
-```
+  // Multiselect metadata fields
+  List<String> multiSelectValues = metadata.getMultiSelect("/categories");
+  ```
 
-```py Python v4
-metadata = client.file(file_id='11111').metadata(scope='enterprise', template='myMetadata').get()
-print(f'Got metadata instance {metadata["$id"]}')
-```
+  ```py Python v4
+  metadata = client.file(file_id='11111').metadata(scope='enterprise', template='myMetadata').get()
+  print(f'Got metadata instance {metadata["$id"]}')
+  ```
 
-```csharp .NET v6
-Dictionary<string, object> metadata = await client.MetadataManager.
-    .GetFileMetadataAsync(fileId: "11111", "enterprise", "marketingCollateral");
-```
+  ```csharp .NET v6
+  Dictionary<string, object> metadata = await client.MetadataManager.
+      .GetFileMetadataAsync(fileId: "11111", "enterprise", "marketingCollateral");
+  ```
 
-```js Node v4
-client.files.getMetadata('11111', client.metadata.scopes.ENTERPRISE, 'marketingCollateral')
- .then(metadata => {
-  /* metadata -> {
-   audience: 'internal',
-   documentType: 'Q1 plans',
-   competitiveDocument: 'no',
-   status: 'active',
-   author: 'Jones',
-   currentState: 'proposal',
-   '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
-   '$parent': 'file_11111',
-   '$id': '2094c584-68e1-475c-a581-534a4609594e',
-   '$version': 0,
-   '$typeVersion': 0,
-   '$template': 'marketingCollateral',
-   '$scope': 'enterprise_12345' }
-  */
- });
-```
+  ```js Node v4
+  client.files.getMetadata('11111', client.metadata.scopes.ENTERPRISE, 'marketingCollateral')
+   .then(metadata => {
+    /* metadata -> {
+     audience: 'internal',
+     documentType: 'Q1 plans',
+     competitiveDocument: 'no',
+     status: 'active',
+     author: 'Jones',
+     currentState: 'proposal',
+     '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
+     '$parent': 'file_11111',
+     '$id': '2094c584-68e1-475c-a581-534a4609594e',
+     '$version': 0,
+     '$typeVersion': 0,
+     '$template': 'marketingCollateral',
+     '$scope': 'enterprise_12345' }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[ファイルのすべてのインスタンスのリストを取得][g_list_instances_item]します。
-
+  テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[ファイルのすべてのインスタンスのリストを取得][g_list_instances_item]します。
 </Info>
 
 ## フォルダのメタデータインスタンスを取得
@@ -137,121 +121,121 @@ client.files.getMetadata('11111', client.metadata.scopes.ENTERPRISE, 'marketingC
 フォルダのメタデータテンプレートのインスタンスを取得するには、フォルダの`folder_id`およびテンプレートの`scope`と`templateKey`を指定して、[`GET /folders/:folder_id/metadata/:scope/:templateKey`][e_on_file] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderMetadata.getFolderMetadataById(
-  folder.id,
-  'global' as GetFolderMetadataByIdScope,
-  'properties',
-);
-```
+  ```typescript Node/TypeScript v10
+  await client.folderMetadata.getFolderMetadataById(
+    folder.id,
+    'global' as GetFolderMetadataByIdScope,
+    'properties',
+  );
+  ```
 
-```python Python v10
-client.folder_metadata.get_folder_metadata_by_id(
-    folder.id, GetFolderMetadataByIdScope.GLOBAL, "properties"
-)
-```
+  ```python Python v10
+  client.folder_metadata.get_folder_metadata_by_id(
+      folder.id, GetFolderMetadataByIdScope.GLOBAL, "properties"
+  )
+  ```
 
-```csharp .NET v10
-await client.FolderMetadata.GetFolderMetadataByIdAsync(folderId: folder.Id, scope: GetFolderMetadataByIdScope.Global, templateKey: "properties");
-```
+  ```csharp .NET v10
+  await client.FolderMetadata.GetFolderMetadataByIdAsync(folderId: folder.Id, scope: GetFolderMetadataByIdScope.Global, templateKey: "properties");
+  ```
 
-```swift Swift v10
-try await client.folderMetadata.getFolderMetadataById(folderId: folder.id, scope: GetFolderMetadataByIdScope.global, templateKey: "properties")
-```
+  ```swift Swift v10
+  try await client.folderMetadata.getFolderMetadataById(folderId: folder.id, scope: GetFolderMetadataByIdScope.global, templateKey: "properties")
+  ```
 
-```java Java v10
-client.getFolderMetadata().getFolderMetadataById(folder.getId(), GetFolderMetadataByIdScope.GLOBAL, "properties")
-```
+  ```java Java v10
+  client.getFolderMetadata().getFolderMetadataById(folder.getId(), GetFolderMetadataByIdScope.GLOBAL, "properties")
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, "id");
-Metadata metadata = folder.getMetadata();
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, "id");
+  Metadata metadata = folder.getMetadata();
 
-// Unknown type metadata field, you can test for type or try to get as any type
-JsonValue unknownValue = metadata.getValue("/someField");
+  // Unknown type metadata field, you can test for type or try to get as any type
+  JsonValue unknownValue = metadata.getValue("/someField");
 
-// String or Enum metadata fields
-String stringValue = metadata.getString("/author");
+  // String or Enum metadata fields
+  String stringValue = metadata.getString("/author");
 
-// Float metadata fields can be interpreted as any numeric type
-float floatValue = metadata.getFloat("/price");
+  // Float metadata fields can be interpreted as any numeric type
+  float floatValue = metadata.getFloat("/price");
 
-// Date metadata fields
-Date dateValue = metadata.getDate("/deadline");
-```
+  // Date metadata fields
+  Date dateValue = metadata.getDate("/deadline");
+  ```
 
-```py Python v4
-metadata = client.folder(folder_id='22222').metadata(scope='enterprise', template='myMetadata').get()
-print(f'Got metadata instance {metadata["$id"]}')
-```
+  ```py Python v4
+  metadata = client.folder(folder_id='22222').metadata(scope='enterprise', template='myMetadata').get()
+  print(f'Got metadata instance {metadata["$id"]}')
+  ```
 
-```csharp .NET v6
-Dictionary<string, object> metadata = await client.MetadataManager.
-    .GetFolderMetadataAsync(folderId: "11111", "enterprise", "marketingCollateral");
-```
+  ```csharp .NET v6
+  Dictionary<string, object> metadata = await client.MetadataManager.
+      .GetFolderMetadataAsync(folderId: "11111", "enterprise", "marketingCollateral");
+  ```
 
-```js Node v4
-client.folders.getMetadata('11111', client.metadata.scopes.ENTERPRISE, 'marketingCollateral')
- .then(metadata => {
-  /* metadata -> {
-   audience: 'internal',
-   documentType: 'Q1 plans',
-   competitiveDocument: 'no',
-   status: 'active',
-   author: 'Jones',
-   currentState: 'proposal',
-   '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
-   '$parent': 'folder_11111',
-   '$id': '2094c584-68e1-475c-a581-534a4609594e',
-   '$version': 0,
-   '$typeVersion': 0,
-   '$template': 'marketingCollateral',
-   '$scope': 'enterprise_12345' }
-  */
- });
-```
+  ```js Node v4
+  client.folders.getMetadata('11111', client.metadata.scopes.ENTERPRISE, 'marketingCollateral')
+   .then(metadata => {
+    /* metadata -> {
+     audience: 'internal',
+     documentType: 'Q1 plans',
+     competitiveDocument: 'no',
+     status: 'active',
+     author: 'Jones',
+     currentState: 'proposal',
+     '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
+     '$parent': 'folder_11111',
+     '$id': '2094c584-68e1-475c-a581-534a4609594e',
+     '$version': 0,
+     '$typeVersion': 0,
+     '$template': 'marketingCollateral',
+     '$scope': 'enterprise_12345' }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[フォルダのすべてのインスタンスのリストを取得][g_list_instances_item]します。
-
+  テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[フォルダのすべてのインスタンスのリストを取得][g_list_instances_item]します。
 </Info>
 
-[e_on_file]: /ja/reference/get_files_id_metadata_id_id
+[e_on_file]: /reference/get_files_id_metadata_id_id
 
-[e_on_folder]: /ja/reference/get_folders_id_metadata_id_id
+[e_on_folder]: /reference/get_folders_id_metadata_id_id
 
-[scopes]: /ja/guides/metadata/scopes
+[scopes]: /guides/metadata/scopes
 
-[g_list_templates]: /ja/guides/metadata/templates/list
+[g_list_templates]: /guides/metadata/templates/list
 
-[g_list_instances_item]: /ja/guides/metadata/instances/list
+[g_list_instances_item]: /guides/metadata/instances/list
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get metadata instance on file", href: "/reference/get-files-id-metadata-id-id", badge: "GET" },
-    { label: "Get metadata instance on folder", href: "/reference/get-folders-id-metadata-id-id", badge: "GET" }
-  ]}
+  { label: "Get metadata instance on file", href: "/reference/get-files-id-metadata-id-id", badge: "GET" },
+  { label: "Get metadata instance on folder", href: "/reference/get-folders-id-metadata-id-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "ガイド" },
-    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "ガイド" },
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" },
-    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "ガイド" }
-  ]}
+  { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+  { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+  { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" }
+]}
 />
+
 <RelatedLinks
-  title="RELATED RESOURCES"
+  title="関連するリソース"
   items={[
-    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "ガイド" }
-  ]}
+  { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+]}
 />

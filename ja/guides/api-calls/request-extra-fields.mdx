@@ -1,26 +1,15 @@
 ---
-title: "追加フィールドのリクエスト"
+alias_paths: {}
 rank: 4
 related_endpoints:
-  - get_files_id
-  - get_folders_id
-  - get_folders_id_items
-  - get_users_id
-related_guides: []
-required_guides: []
-alias_paths: []
-category_id: api-calls
-subcategory_id: null
-is_index: false
-id: api-calls/request-extra-fields
-type: guide
-total_steps: 9
-sibling_id: api-calls
-parent_id: api-calls
-next_page_id: api-calls/ensure-consistency
-previous_page_id: api-calls/sorting
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/request-extra-fields.md
+  0: get_files_id
+  1: get_folders_id
+  2: get_folders_id_items
+  3: get_users_id
+related_guides: {}
+required_guides: {}
+title: 追加フィールドのリクエスト
+
 fullyTranslated: true
 ---
 
@@ -35,7 +24,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ```sh
 curl https://api.box.com/2.0/files/12345?fields=is_package,lock \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -46,13 +34,10 @@ curl https://api.box.com/2.0/files/12345?fields=is_package,lock \
   "lock": null,
   "type": "file"
 }
-
 ```
 
 <Note>
-
-特定のフィールドがリクエストされると、リクエストされたフィールドとフィールドの**基本**セット以外のフィールドが返されない点に注意してください。ファイルの場合、この基本セットは`etag`、`id`、および`type`値で構成されます。
-
+  特定のフィールドがリクエストされると、リクエストされたフィールドとフィールドの**基本**セット以外のフィールドが返されない点に注意してください。ファイルの場合、この基本セットは`etag`、`id`、および`type`値で構成されます。
 </Note>
 
 ## リソースバリアント
@@ -66,7 +51,6 @@ APIレスポンスで返されるデフォルトのフィールドセットで�
 ```sh
 curl https://api.box.com/2.0/files/12345 \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -93,7 +77,6 @@ curl https://api.box.com/2.0/files/12345 \
     "trashed_at": null,
     "type": "file"
 }
-
 ```
 
 ### Mini
@@ -105,7 +88,6 @@ curl https://api.box.com/2.0/files/12345 \
 ```sh
 curl https://api.box.com/2.0/files/12345 \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -133,15 +115,12 @@ curl https://api.box.com/2.0/files/12345 \
   }
   ...
 }
-
 ```
 
 <Note>
+  ネストされたリソースの詳細をリクエストするには、そのリソースに対してAPIを呼び出して、IDでそのリソースをリクエストすることをお勧めします。その際、オプションで`field`クエリパラメータを渡すこともできます。
 
-ネストされたリソースの詳細をリクエストするには、そのリソースに対してAPIを呼び出して、IDでそのリソースをリクエストすることをお勧めします。その際、オプションで`field`クエリパラメータを渡すこともできます。
-
-たとえば、フォルダ内の項目のリストを取得するときに返されるファイルの所有者を取得する場合は、クエリパラメータ`field=owned_by`を指定して、IDでそのファイルをリクエストします。
-
+  たとえば、フォルダ内の項目のリストを取得するときに返されるファイルの所有者を取得する場合は、クエリパラメータ`field=owned_by`を指定して、IDでそのファイルをリクエストします。
 </Note>
 
 ### Full
@@ -153,7 +132,6 @@ APIレスポンスで返すことができるフィールドセット全体で�
 ```sh
 curl https://api.box.com/2.0/files/12345?fields=is_package,lock \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -164,15 +142,14 @@ curl https://api.box.com/2.0/files/12345?fields=is_package,lock \
   "lock": null,
   "type": "file"
 }
-
 ```
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" },
-    { label: "Get folder information", href: "/reference/get-folders-id", badge: "GET" },
-    { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" },
-    { label: "Get user", href: "/reference/get-users-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" },
+  { label: "Get folder information", href: "/reference/get-folders-id", badge: "GET" },
+  { label: "List items in folder", href: "/reference/get-folders-id-items", badge: "GET" },
+  { label: "Get user", href: "/reference/get-users-id", badge: "GET" }
+]}
 />

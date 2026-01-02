@@ -1,52 +1,41 @@
 ---
-title: "コンテンツエクスプローラ"
-rank: 3
-related_endpoints: []
-related_guides:
-  - embed/ui-elements
-required_guides:
-  - embed/ui-elements/installation
-related_resources: []
 alias_paths:
-  - /docs/box-content-explorer
-  - /docs/content-explorer
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/explorer
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/explorer-metadata-v2
-previous_page_id: embed/ui-elements/browser
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/explorer.md
+  0: /docs/box-content-explorer
+  1: /docs/content-explorer
+rank: 3
+related_endpoints: {}
+related_guides:
+  0: embed/ui-elements
+related_resources: {}
+required_guides:
+  0: embed/ui-elements/installation
+title: コンテンツエクスプローラ
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
+
 Box Content Explorer UI Elementを使用すると、開発者は、Boxに保存されているコンテンツのフォルダビューをデスクトップまたはモバイルウェブアプリに埋め込むことができます。ライブラリはBox APIを介して指定されたフォルダに関する情報を取得した後、メインのBoxウェブアプリと同様にそのコンテンツをフォルダビューにレンダリングします。ユーザーは、そのフォルダ階層内を移動し、名前の変更、削除、共有などのファイル操作を実行できます。
 
 コンテンツエクスプローラで、[メタデータビュー][explorer-metadata]を使用できるようになりました。このビューでは、メタデータクエリを使用して、メタデータに基づいてファイルやフォルダを検索できます。データは埋め込みのビューに表示されます。
 
 ## インストール
 
-NPMまたはBox CDN経由でBox UI Elementsをインストールする方法は、[こちら](/ja/guides/embed/ui-elements/installation)を参照してください。
+NPMまたはBox CDN経由でBox UI Elementsをインストールする方法は、[こちら](/guides/embed/ui-elements/installation)を参照してください。
 
 ## 認証
 
 UI Elementは認証に依存しない方法で設計されているため、Boxアカウントを持つユーザー (管理対象ユーザー) とBox以外のアカウントを持つユーザー (App User) のどちらにUI Elementを使用するかどうかに関係なく、UI Elementを使用するのに特別な設定は必要ありません。その理由は、UI Elementは認証のために「トークン」を受け取ることのみを予期しており、Boxにはトークンの生成方法としてOAuthとJWTの2つがあるからです。
 
-<Card href="/ja/guides/authentication/select" title="認証方法の選択について確認する"/>
+<Card href="/guides/authentication/select" arrow title="認証方法の選択について確認する" />
 
 ## サンプルHTML
 
@@ -76,14 +65,11 @@ UI Elementは認証に依存しない方法で設計されているため、Box�
         </script>
     </body>
 </html>
-
 ```
 
 ## デモ
 
-<iframe height="560" scrolling="no" title="Box Content Explorer" src="//codepen.io/box-platform/embed/wdWWdN/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" frameborder="no" allowtransparency allowfullscreen style={{width: "100%"}}>
-
-</iframe>
+<iframe height="560" scrolling="no" title="Box Content Explorer" src="//codepen.io/box-platform/embed/wdWWdN/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true" style={{width: "100%"}} />
 
 ## API
 
@@ -144,7 +130,6 @@ contentExplorer.removeListener(eventName, listener);
  * @return {void}
  */
 contentExplorer.removeAllListeners();
-
 ```
 
 ### パラメータ
@@ -220,7 +205,7 @@ contentExplorer.removeAllListeners();
 | `g then b`              | ルートフォルダの階層リンクをフォーカス |
 | `g then r`              | 最近使用した項目            |
 
-##  スコープ 
+## &#x20;スコープ&#x20;
 
 アプリケーションで、エンドユーザーがコンテンツエクスプローラ機能のサブセットのみにアクセスできるようにする必要がある場合は、[ダウンスコープ][downscope]を使用して、アクセストークンを適切にダウンスコープして必要な権限のセットを含むトークンを生成し、コンテンツエクスプローラを初期化するエンドユーザークライアントに安全に渡すことができます。
 
@@ -263,7 +248,6 @@ contentExplorer.show(configData.FOLDER_ID, configData.ACCESS_TOKEN, {
     container: ".container",
     itemActions: customActions,
 });
-
 ```
 
 この配列には、複数の操作を含めることができます。操作オブジェクトには、`label`および`onAction`コールバック関数を含める必要があります。`file`または`folder`の値を渡すことで、特定の項目の`type`のみに表示されるようカスタム操作にフィルタをかけることができます。`filter`値は、特定のファイル拡張子など、高度なフィルタに使用します。
@@ -285,44 +269,41 @@ const customActions = [
         filter: (item) => item.extension?.toLowerCase() === 'pdf',
     }
 ];
-
 ```
 
 CodePenで実装例を確認してください。
 
-<iframe height="560" scrolling="no" title="Boxのカスタムアイコン" src="https://codepen.io/box-platform/embed/EaaMMKQ?default-tab=html%2Cresult" frameborder="no" allowtransparency allowfullscreen style={{width: "100%"}}>
+<iframe height="560" scrolling="no" title="Boxのカスタムアイコン" src="https://codepen.io/box-platform/embed/EaaMMKQ?default-tab=html%2Cresult" frameborder="no" allowtransparency="true" allowfullscreen="true" style={{width: "100%"}} />
 
-</iframe>
+[downscope]: /guides/authentication/tokens/downscope
 
-[downscope]: /ja/guides/authentication/tokens/downscope
+[scopes]: /guides/api-calls/permissions-and-errors/scopes
 
-[scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
+[box-app]: /guides/applications/app-types
 
-[box-app]: /ja/guides//applications/app-types
+[token]: /guides/authentication/tokens/developer-tokens
 
-[token]: /ja/guides/authentication/tokens/developer-tokens
-
-[templates]: /ja/guides/metadata/templates
+[templates]: /guides/metadata/templates
 
 [metadata-project]: https://github.com/box-community/content-explorer-metadata/tree/main
 
 [apply-templates]: https://support.box.com/hc/en-us/articles/360044196173-Using-Metadata
 
-[metadata-query]: /ja/guides/metadata/queries
+[metadata-query]: /guides/metadata/queries
 
-[get-template]: /ja/guides/metadata/templates/get/#get-a-metadata-template-by-name
+[get-template]: /guides/metadata/templates/get/#get-a-metadata-template-by-name
 
-[creating-templates-api]: /ja/guides//metadata/templates/create
+[creating-templates-api]: /guides/metadata/templates/create
 
 [appjs]: https://github.com/box-community/content-explorer-metadata/blob/main/src/App.js
 
 [blogpost]: https://medium.com/box-developer-blog/metadata-view-in-box-content-explorer-4978e47e97e9
 
-[explorer-metadata]: /ja/guides/embed/ui-elements/explorer-metadata-v2
+[explorer-metadata]: /guides/embed/ui-elements/explorer-metadata-v2
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

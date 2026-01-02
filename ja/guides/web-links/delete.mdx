@@ -1,100 +1,88 @@
 ---
-title: "ウェブリンクの削除"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - delete_web_links_id
+  0: delete_web_links_id
 related_guides:
-  - web-links/create
-required_guides:
-  - web-links/create
-alias_paths: []
+  0: web-links/create
 related_resources:
-  - web_link
-category_id: web-links
-subcategory_id: null
-is_index: false
-id: web-links/delete
-type: guide
-total_steps: 2
-sibling_id: web-links
-parent_id: web-links
-next_page_id: web-links
-previous_page_id: web-links/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/web-links/delete.md
+  0: web_link
+required_guides:
+  0: web-links/create
+title: ウェブリンクの削除
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "ウェブリンクの作成", href: "/ja/guides/web-links/create", badge: "ガイド" }
-  ]}
+  { label: "Create Web Link", href: "/guides/web-links/create", badge: "GUIDE" }
+]}
 />
+
 Boxでウェブリンクを削除するには、そのウェブリンクのIDをAPIに渡す必要があります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/web_links/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/web_links/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.webLinks.deleteWebLinkById(webLinkId);
+  ```
 
-```typescript Node/TypeScript v10
-await client.webLinks.deleteWebLinkById(webLinkId);
-```
+  ```python Python v10
+  client.web_links.delete_web_link_by_id(web_link_id)
+  ```
 
-```python Python v10
-client.web_links.delete_web_link_by_id(web_link_id)
-```
+  ```cs .NET v10
+  await client.WebLinks.DeleteWebLinkByIdAsync(webLinkId: webLinkId);
+  ```
 
-```cs .NET v10
-await client.WebLinks.DeleteWebLinkByIdAsync(webLinkId: webLinkId);
-```
+  ```swift Swift v10
+  try await client.webLinks.deleteWebLinkById(webLinkId: webLinkId)
+  ```
 
-```swift Swift v10
-try await client.webLinks.deleteWebLinkById(webLinkId: webLinkId)
-```
+  ```java Java v10
+  client.getWebLinks().deleteWebLinkById(weblink.getId())
+  ```
 
-```java Java v10
-client.getWebLinks().deleteWebLinkById(weblink.getId())
-```
+  ```java Java v5
+  BoxWebLink webLink = new BoxWebLink(api, id);
+  webLink.delete();
+  ```
 
-```java Java v5
-BoxWebLink webLink = new BoxWebLink(api, id);
-webLink.delete();
-```
+  ```python Python v4
+  client.web_link('12345').delete()
+  print('The web link was deleted!')
+  ```
 
-```python Python v4
-client.web_link('12345').delete()
-print('The web link was deleted!')
-```
+  ```cs .NET v6
+  await client.WebLinksManager.DeleteWebLinkAsync("11111");
+  ```
 
-```cs .NET v6
-await client.WebLinksManager.DeleteWebLinkAsync("11111");
-```
-
-```javascript Node v4
-client.weblinks.delete('11111')
-	.then(() => {
-		// deletion succeeded — no value returned
-	});
-```
-
+  ```javascript Node v4
+  client.weblinks.delete('11111')
+  	.then(() => {
+  		// deletion succeeded — no value returned
+  	});
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Remove web link", href: "/reference/delete-web-links-id", badge: "DELETE" }
-  ]}
+  { label: "Remove web link", href: "/reference/delete-web-links-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ウェブリンクの作成", href: "/ja/guides/web-links/create", badge: "ガイド" }
-  ]}
+  { label: "Create Web Link", href: "/guides/web-links/create", badge: "GUIDE" }
+]}
 />

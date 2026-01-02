@@ -1,26 +1,12 @@
 ---
-title: "フォルダを完全に削除"
 rank: 6
-related_endpoints:
-  - delete_folders_id
-  - delete_folders_id_trash
-related_guides:
-  - trash/restore-folder
-required_guides: []
+related_endpoints: ""
+related_guides: ""
 related_resources:
-  - folders
-category_id: trash
-subcategory_id: null
-is_index: false
-id: trash/permanently-delete-folder
-type: guide
-total_steps: 6
-sibling_id: trash
-parent_id: trash
-next_page_id: trash/restore-web-link
-previous_page_id: trash/restore-folder
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/trash/permanently-delete-folder.md
+  0: folders
+required_guides: {}
+title: フォルダを完全に削除
+
 fullyTranslated: true
 ---
 
@@ -29,73 +15,58 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ごみ箱に移動されたフォルダは、デフォルトで30日間ごみ箱に保持された後で削除されます。BusinessアカウントまたはEnterpriseアカウントの管理者は、削除までの期間を変更できます。削除までの期間が経過する前にごみ箱からフォルダを完全に削除する場合は、ごみ箱に移動されたフォルダの`ID`を使用して`DELETE`リクエストを`/folders/:folder_id/trash`に送信します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/folders/4353455/trash" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/folders/4353455/trash" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.trashedFolders.deleteTrashedFolderById(folder.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.trashedFolders.deleteTrashedFolderById(folder.id);
-```
+  ```python Python v10
+  client.trashed_folders.delete_trashed_folder_by_id(folder.id)
+  ```
 
-```python Python v10
-client.trashed_folders.delete_trashed_folder_by_id(folder.id)
-```
+  ```cs .NET v10
+  await client.TrashedFolders.DeleteTrashedFolderByIdAsync(folderId: folder.Id);
+  ```
 
-```cs .NET v10
-await client.TrashedFolders.DeleteTrashedFolderByIdAsync(folderId: folder.Id);
-```
+  ```swift Swift v10
+  try await client.trashedFolders.deleteTrashedFolderById(folderId: folder.id)
+  ```
 
-```swift Swift v10
-try await client.trashedFolders.deleteTrashedFolderById(folderId: folder.id)
-```
+  ```java Java v10
+  client.getTrashedFolders().deleteTrashedFolderById(folder.getId())
+  ```
 
-```java Java v10
-client.getTrashedFolders().deleteTrashedFolderById(folder.getId())
-```
+  ```java Java v5
+  String folder = "123456";
+  BoxTrash trash = new BoxTrash(api);
+  trash.deleteFolder(folderID);
+  ```
 
-```java Java v5
-String folder = "123456";
-BoxTrash trash = new BoxTrash(api);
-trash.deleteFolder(folderID);
-```
+  ```python Python v4
+  folder = client.folder(folder_id='22222')
+  client.trash().permanently_delete_item(folder)
+  print('The folder was deleted from trash!')
+  ```
 
-```python Python v4
-folder = client.folder(folder_id='22222')
-client.trash().permanently_delete_item(folder)
-print('The folder was deleted from trash!')
-```
+  ```cs .NET v6
+  await client.FoldersManager.PurgeTrashedFolderAsync("22222");
+  ```
 
-```cs .NET v6
-await client.FoldersManager.PurgeTrashedFolderAsync("22222");
-```
-
-```javascript Node v4
-client.folders.deletePermanently('22222')
-	.then(() => {
-		// deletion succeeded — no value returned
-	});
-```
-
+  ```javascript Node v4
+  client.folders.deletePermanently('22222')
+  	.then(() => {
+  		// deletion succeeded — no value returned
+  	});
+  ```
 </CodeGroup>
 
 <RelatedLinks
-  title="関連するAPI"
+  title="関連するリソース"
   items={[
-    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" },
-    { label: "Permanently remove folder", href: "/reference/delete-folders-id-trash", badge: "DELETE" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "フォルダの復元", href: "/ja/guides/trash/restore-folder", badge: "ガイド" }
-  ]}
-/>
-<RelatedLinks
-  title="RELATED RESOURCES"
-  items={[
-    { label: "フォルダ", href: "/ja/guides/folders/index", badge: "ガイド" }
-  ]}
+  { label: "Folders", href: "/guides/folders/index", badge: "GUIDE" }
+]}
 />

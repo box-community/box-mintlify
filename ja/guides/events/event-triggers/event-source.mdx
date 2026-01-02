@@ -1,37 +1,26 @@
 ---
-title: "イベントソース"
+alias_paths:
+  0: /guides/events/event-triggers
+  1: /guides/events/event-triggers/
 rank: 3
 related_endpoints:
-  - get_events
+  0: get_events
 related_guides:
-  - events/enterprise-events/for-enterprise
-  - events/user-events/for-user
-required_guides: []
-alias_paths:
-  - /guides/events/event-triggers
-  - /guides/events/event-triggers/
-category_id: events
-subcategory_id: events/event-triggers
-is_index: false
-id: events/event-triggers/event-source
-type: guide
-total_steps: 5
-sibling_id: events/event-triggers
-parent_id: events/event-triggers
-next_page_id: events/event-triggers
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/event-triggers/event-source.md
+  0: events/enterprise-events/for-enterprise
+  1: events/user-events/for-user
+required_guides: {}
+title: イベントソース
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-ユーザーまたは項目によってイベントがトリガーされると、[`GET /events`](/ja/reference/get-events)エンドポイントのレスポンスにはイベントソースオブジェクトが含まれます。
+ユーザーまたは項目によってイベントがトリガーされると、[`GET /events`](/reference/get-events)エンドポイントのレスポンスにはイベントソースオブジェクトが含まれます。
 
 ## ユーザーソースオブジェクト
 
-ユーザーがイベントをトリガーした場合、ソースオブジェクトは[ユーザーリソース](/ja/reference/resources/user)の標準レプリゼンテーションになります。
+ユーザーがイベントをトリガーした場合、ソースオブジェクトは[ユーザーリソース](/reference/resources/user)の標準レプリゼンテーションになります。
 
 ```json
 {
@@ -58,17 +47,14 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
     "timezone": "Africa/Bujumbura"
   }
 }
-
 ```
 
 ## 項目ソースオブジェクト
 
-項目がイベントをトリガーした場合、ソースオブジェクトは[イベントソースリソース](/ja/reference/resources/event-source)になります。
+項目がイベントをトリガーした場合、ソースオブジェクトは[イベントソースリソース](/reference/resources/event-source)になります。
 
 <Note>
-
-以下の例には`classification`オブジェクトが含まれています。これは、項目に分類が設定されていない場合は表示されません。また、一部のイベントタイプでは表示されません。
-
+  以下の例には`classification`オブジェクトが含まれています。これは、項目に分類が設定されていない場合は表示されません。また、一部のイベントタイプでは表示されません。
 </Note>
 
 ```json
@@ -93,19 +79,19 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
     }
   }
 }
-
 ```
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" }
-  ]}
+  { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "ガイド" },
-    { label: "User Eventの取得", href: "/ja/guides/events/user-events/for-user", badge: "ガイド" }
-  ]}
+  { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" },
+  { label: "Get User Events", href: "/guides/events/user-events/for-user", badge: "GUIDE" }
+]}
 />

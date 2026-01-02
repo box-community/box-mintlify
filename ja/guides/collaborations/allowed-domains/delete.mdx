@@ -1,29 +1,18 @@
 ---
-title: "以前コラボレーションが許可されたドメインの削除"
+alias_paths:
+  0: /guides/collaboration-whitelists/delete-whitelist
 rank: 3
 related_endpoints:
-  - delete_collaboration_whitelist_entries_id
+  0: delete_collaboration_whitelist_entries_id
 related_guides:
-  - collaborations
-  - collaborations/allowed-domains/list
-  - collaborations/allowed-domains/create
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths:
-  - /guides/collaboration-whitelists/delete-whitelist
-category_id: collaborations
-subcategory_id: collaborations/allowed-domains
-is_index: false
-id: collaborations/allowed-domains/delete
-type: guide
-total_steps: 3
-sibling_id: collaborations/allowed-domains
-parent_id: collaborations/allowed-domains
-next_page_id: collaborations/allowed-domains
-previous_page_id: collaborations/allowed-domains/list
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/allowed-domains/delete.md
+  0: collaborations
+  1: collaborations/allowed-domains/list
+  2: collaborations/allowed-domains/create
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 以前コラボレーションが許可されたドメインの削除
+
 fullyTranslated: true
 ---
 
@@ -34,62 +23,61 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 許可リストからドメインを削除するには、リストのエントリのIDを削除リクエストに指定します。このIDは、[新しいドメインを許可する][create]か[社内で許可されているドメインのリストを取得する][list]と返されます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/collaboration_whitelist_entries/213123" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/collaboration_whitelist_entries/213123" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.collaborationAllowlistEntries.deleteCollaborationWhitelistEntryById(
+    entry.id!,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await client.collaborationAllowlistEntries.deleteCollaborationWhitelistEntryById(
-  entry.id!,
-);
-```
+  ```python Python v10
+  client.collaboration_allowlist_entries.delete_collaboration_whitelist_entry_by_id(
+      entry.id
+  )
+  ```
 
-```python Python v10
-client.collaboration_allowlist_entries.delete_collaboration_whitelist_entry_by_id(
-    entry.id
-)
-```
+  ```cs .NET v10
+  await client.CollaborationAllowlistEntries.DeleteCollaborationWhitelistEntryByIdAsync(collaborationWhitelistEntryId: NullableUtils.Unwrap(entry.Id));
+  ```
 
-```cs .NET v10
-await client.CollaborationAllowlistEntries.DeleteCollaborationWhitelistEntryByIdAsync(collaborationWhitelistEntryId: NullableUtils.Unwrap(entry.Id));
-```
+  ```swift Swift v10
+  try await client.collaborationAllowlistEntries.deleteCollaborationWhitelistEntryById(collaborationWhitelistEntryId: entry.id!)
+  ```
 
-```swift Swift v10
-try await client.collaborationAllowlistEntries.deleteCollaborationWhitelistEntryById(collaborationWhitelistEntryId: entry.id!)
-```
+  ```java Java v10
+  client.getCollaborationAllowlistEntries().deleteCollaborationWhitelistEntryById(entry.getId())
+  ```
 
-```java Java v10
-client.getCollaborationAllowlistEntries().deleteCollaborationWhitelistEntryById(entry.getId())
-```
+  ```cs .NET v6
+  string entryID = "11111";
+  await client.CollaborationWhitelistManager.DeleteCollaborationWhitelistEntryAsync(entryID);
+  ```
 
-```cs .NET v6
-string entryID = "11111";
-await client.CollaborationWhitelistManager.DeleteCollaborationWhitelistEntryAsync(entryID);
-```
-
-```javascript Node v4
-client.collaborationAllowlist.removeDomain('12345', callback);
-```
-
+  ```javascript Node v4
+  client.collaborationAllowlist.removeDomain('12345', callback);
+  ```
 </CodeGroup>
 
-[create]: /ja/guides/collaborations/allowed-domains/create
+[create]: /guides/collaborations/allowed-domains/create
 
-[list]: /ja/guides/collaborations/allowed-domains/list
+[list]: /guides/collaborations/allowed-domains/list
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Remove domain from list of allowed collaboration domains", href: "/reference/delete-collaboration-whitelist-entries-id", badge: "DELETE" }
-  ]}
+  { label: "Remove domain from list of allowed collaboration domains", href: "/reference/delete-collaboration-whitelist-entries-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "コラボレーション", href: "/ja/guides/collaborations/index", badge: "ガイド" },
-    { label: "コラボレーションが許可されているドメインのリストの取得", href: "/ja/guides/collaborations/allowed-domains/list", badge: "ガイド" },
-    { label: "ドメインへのコラボレーションの許可", href: "/ja/guides/collaborations/allowed-domains/create", badge: "ガイド" }
-  ]}
+  { label: "Collaborations", href: "/guides/collaborations/index", badge: "GUIDE" },
+  { label: "List allowed domains for collaboration", href: "/guides/collaborations/allowed-domains/list", badge: "GUIDE" },
+  { label: "Allow a domain for collaboration", href: "/guides/collaborations/allowed-domains/create", badge: "GUIDE" }
+]}
 />

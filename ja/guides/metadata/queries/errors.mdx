@@ -1,22 +1,11 @@
 ---
-title: "一般的なエラー"
-related_endpoints: []
-required_guides: []
-category_id: metadata
-subcategory_id: metadata/5-queries
-is_index: false
-id: metadata/queries/errors
-rank: 4
-type: guide
-total_steps: 7
-sibling_id: metadata/queries
-parent_id: metadata/queries
-next_page_id: metadata/queries
-previous_page_id: metadata/queries/item-fields
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/5-queries/4-errors.md
+related_endpoints: {}
+required_guides: {}
+title: 一般的なエラー
+
 fullyTranslated: true
 ---
+
 メタデータクエリAPIのエラーのほとんどは、[他のAPIによって返されるエラーに似ています][errors]。ただし、現在、一部の正しくないクライアントリクエストでは、適切な`400 Bad Request`エラーではなく、サーバー側のエラーとともに、`5XX`の範囲のHTTPステータスコードが返される場合があります。
 
 これは既知の問題であり、近日中に解決される予定です。
@@ -32,9 +21,7 @@ fullyTranslated: true
 `templateKey`は、社内のメタデータテンプレートの一意のキーです。指定したキーを持つテンプレートが存在しない場合、またはキーが存在しないのにそのキーが誤った会社で使用されている場合は、このAPIによってエラーが返されます。
 
 <Note>
-
-[企業のすべてのメタデータテンプレートのリストを取得エンドポイント][get-templates]を使用すると、`scope`と`templateKey`を含む、社内で使用できるすべてのテンプレートのリストを取得できます。
-
+  [企業のすべてのメタデータテンプレートのリストを取得エンドポイント][get-templates]を使用すると、`scope`と`templateKey`を含む、社内で使用できるすべてのテンプレートのリストを取得できます。
 </Note>
 
 ## `query_param`に値がない
@@ -50,13 +37,10 @@ fullyTranslated: true
   "value": 100,
   "status": "active"
 }
-
 ```
 
 <Note>
-
-各引数の名前は開発者の好みに合わせて構成できるため、フィールドキーと一致させる必要はありません。必要なのは、先頭に`:`を付けることだけです。
-
+  各引数の名前は開発者の好みに合わせて構成できるため、フィールドキーと一致させる必要はありません。必要なのは、先頭に`:`を付けることだけです。
 </Note>
 
 ## `ancestor_folder_id`がない
@@ -65,6 +49,6 @@ fullyTranslated: true
 
 `ancestor_folder_id`値がないと、APIは、検索対象の結果が含まれているフォルダを認識できません。よくわからない場合は、値`0`を使用すると、ユーザーのルートフォルダを指定できます。
 
-[errors]: /ja/guides/api-calls/permissions-and-errors/common-errors
+[errors]: /guides/api-calls/permissions-and-errors/common-errors
 
-[get-templates]: /ja/reference/get-metadata-templates-enterprise
+[get-templates]: /reference/get-metadata-templates-enterprise

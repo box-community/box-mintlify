@@ -1,70 +1,54 @@
 ---
-title: "コンテンツアップローダー"
-rank: 10
-related_endpoints: []
-related_guides:
-  - embed/ui-elements
-required_guides:
-  - embed/ui-elements/installation
-related_resources: []
 alias_paths:
-  - /docs/box-content-uploader
-  - /docs/content-uploader
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/uploader
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/annotations
-previous_page_id: embed/ui-elements/sidebar
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/uploader.md
+  0: /docs/box-content-uploader
+  1: /docs/content-uploader
+rank: 10
+related_endpoints: {}
+related_guides:
+  0: embed/ui-elements
+related_resources: {}
+required_guides:
+  0: embed/ui-elements/installation
+title: コンテンツアップローダー
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
-Box Content Uploader UI Elementを使用すると、開発者は、デスクトップまたはモバイルウェブアプリにアップロードウィジェットを埋め込むことができます。ユーザーはファイルを選択するかドラッグアンドドロップしてアップロードできます。サイズの大きなファイルのアップロードには、[分割アップロード](/ja/reference/post-files-upload-sessions)APIを使用します。
+
+Box Content Uploader UI Elementを使用すると、開発者は、デスクトップまたはモバイルウェブアプリにアップロードウィジェットを埋め込むことができます。ユーザーはファイルを選択するかドラッグアンドドロップしてアップロードできます。サイズの大きなファイルのアップロードには、[分割アップロード](/reference/post-files-upload-sessions)APIを使用します。
 
 ## インストール
 
-NPMまたはBox CDN経由でBox UI Elementsをインストールする方法は、[こちら](/ja/guides/embed/ui-elements/installation)を参照してください。
+NPMまたはBox CDN経由でBox UI Elementsをインストールする方法は、[こちら](/guides/embed/ui-elements/installation)を参照してください。
 
 ## 認証
 
 UI Elementは認証に依存しない方法で設計されているため、Boxアカウントを持つユーザー (管理対象ユーザー) とBox以外のアカウントを持つユーザー (App User) のどちらにUI Elementを使用するかどうかに関係なく、UI Elementを使用するのに特別な設定は必要ありません。その理由は、UI Elementは認証のために「トークン」を受け取ることのみを予期しており、Boxにはトークンの生成方法としてOAuthとJWTの2つがあるからです。
 
-<Card href="/ja/guides/authentication/select" title="認証方法の選択について確認する"/>
+<Card href="/guides/authentication/select" arrow title="認証方法の選択について確認する" />
 
 ## デモ
 
 ### Uploader
 
-<iframe height="560" scrolling="no" title="Box Content Uploader" src="//codepen.io/box-platform/embed/QvqGwr/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" frameborder="no" allowtransparency allowfullscreen style={{width: "100%"}}>
-
-</iframe>
+<iframe height="560" scrolling="no" title="Box Content Uploader" src="//codepen.io/box-platform/embed/QvqGwr/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true" style={{width: "100%"}} />
 
 ### ポップアップ形式のアップローダー
 
-<iframe height="560" scrolling="no" title="ポップアップ形式のBox File Pickerとアップローダー" src="//codepen.io/box-platform/embed/oWEKdq/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" frameborder="no" allowtransparency allowfullscreen style={{width: "100%"}}>
-
-</iframe>
+<iframe height="560" scrolling="no" title="ポップアップ形式のBox File Pickerとアップローダー" src="//codepen.io/box-platform/embed/oWEKdq/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true" style={{width: "100%"}} />
 
 <Info>
-**アクセストークン**
+  **アクセストークン**
 
-上記のデモは、有効なアクセストークンを指定しなければ、完全に動作しない可能性があります。テスト目的の場合は、一時的な開発者トークンを使用できます。このトークンは、デモにある \[JS] タブで更新する必要があります。
-
+  上記のデモは、有効なアクセストークンを指定しなければ、完全に動作しない可能性があります。テスト目的の場合は、一時的な開発者トークンを使用できます。このトークンは、デモにある \[JS] タブで更新する必要があります。
 </Info>
 
 ## API
@@ -121,7 +105,6 @@ uploader.removeListener(eventName, listener);
  * @return {void}
  */
 uploader.removeAllListeners();
-
 ```
 
 ### パラメータ
@@ -165,7 +148,7 @@ uploader.removeAllListeners();
 | `upload`   | ファイル          | 1つのファイルが正常にアップロードされたときに発生します。イベントデータはファイルオブジェクトになります。                                     |
 | `error`    | Object        | 1つのファイルでアップロードエラーが生じたときに発生します。イベントデータはFile Web APIのプロパティファイルとエラーオブジェクトのエラーを含むオブジェクトになります。 |
 
-##  スコープ 
+## &#x20;スコープ&#x20;
 
 アプリケーションで、エンドユーザーがコンテンツアップローダー機能のサブセットのみにアクセスできるようにする必要がある場合は、[ダウンスコープ][downscope]を使用して、アクセストークンを適切にダウンスコープして必要な権限のセットを含むトークンを生成し、コンテンツアップローダーを初期化するエンドユーザークライアントに安全に渡すことができます。
 
@@ -183,13 +166,13 @@ uploader.removeAllListeners();
 | -------------------------- | ------------- |
 | ユーザーがファイルをBoxフォルダにアップロードする | `base_upload` |
 
-[downscope]: /ja/guides/authentication/tokens/downscope
+[downscope]: /guides/authentication/tokens/downscope
 
-[scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
+[scopes]: /guides/api-calls/permissions-and-errors/scopes
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

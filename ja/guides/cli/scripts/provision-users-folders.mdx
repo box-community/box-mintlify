@@ -1,49 +1,38 @@
 ---
-title: "ユーザーとフォルダのプロビジョニング"
 rank: 2
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/oauth2
-  - cli/quick-start/powershell-script-templates
+  0: authentication/oauth2
+  1: cli/quick-start/powershell-script-templates
 related_pages:
-  - sdks-and-tools
+  0: sdks-and-tools
+related_resources: {}
 required_guides:
-  - authentication/oauth2/oauth2-setup
-related_resources: []
-category_id: cli
-subcategory_id: cli/scripts
-is_index: false
-id: cli/scripts/provision-users-folders
-type: guide
-total_steps: 7
-sibling_id: cli/scripts
-parent_id: cli/scripts
-next_page_id: cli/scripts/user-zones-mass-update
-previous_page_id: cli/scripts
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/cli/scripts/provision-users-folders.md
+  0: authentication/oauth2/oauth2-setup
+title: ユーザーとフォルダのプロビジョニング
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+]}
 />
+
 このスクリプトでは、Box CLIを使用して、個人用フォルダ構造の作成と管理対象ユーザーの一括作成を実行し、新しく作成したフォルダ構造に新しいユーザーをビューアー/アップローダーのロールを持つコラボレータとして追加することでそのユーザーのプロビジョニングを行います。
 
 詳細については、クイックスタートガイドで[Box CLIの使い方とサンプルスクリプト][1]を参照してください。
 
-[1]: /ja/guides/cli/quick-start/powershell-script-templates
+[1]: /guides/cli/quick-start/powershell-script-templates
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" },
-    { label: "Box CLIでのPowerShellスクリプトの使用", href: "/ja/guides/cli/quick-start/powershell-script-templates", badge: "ガイド" }
-  ]}
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+  { label: "Using PowerShell Scripts with the Box CLI", href: "/guides/cli/quick-start/powershell-script-templates", badge: "GUIDE" }
+]}
 />

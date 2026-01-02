@@ -1,31 +1,23 @@
 ---
-title: "メタデータクエリAPIの使用"
-sidebarTitle: 4. メタデータクエリAPIの使用
-type: quick-start
 hide_in_page_nav: true
-category_id: search
-subcategory_id: search/quick-start
-is_index: false
-id: search/quick-start/metadata-query-api
-rank: 4
-total_steps: 5
-sibling_id: search/quick-start
-parent_id: search/quick-start
-next_page_id: search/quick-start/next-steps
-previous_page_id: search/quick-start/apply-template-to-file
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/search/quick-start/4-metadata-query-api.md
+sidebarTitle: 4. Use the Metadata Query API
+title: メタデータクエリAPIの使用
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/search/quick-start/create-metadata-template",
-                          "ja/guides/search/quick-start/locate-template-info",
-                          "ja/guides/search/quick-start/apply-template-to-file",
-                          "ja/guides/search/quick-start/metadata-query-api",
-                          "ja/guides/search/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/search/quick-start/create-metadata-template",
+                        "guides/search/quick-start/locate-template-info",
+                        "guides/search/quick-start/apply-template-to-file",
+                        "guides/search/quick-start/metadata-query-api",
+                        "guides/search/quick-start/next-steps"
+                      ]}
+/>
 
 最後に、[メタデータクエリAPIコール][mq]を作成します。このAPIコールの本文の例を以下に示します。
 
@@ -37,10 +29,9 @@ import { ProgressBar } from '/snippets/progress-bar.jsx';
   "ancestor_folder_id": "0",
   "fields": ["id"]
 }
-
 ```
 
-このAPIコールでは、以下の条件を満たすファイルIDが返されます。
+このAPIコールでは、以下の条件を満たすファイルIDが返されます。 
 
 * Contact Roleテンプレートが適用されている
 * departmentsの値がlegalである
@@ -49,15 +40,9 @@ import { ProgressBar } from '/snippets/progress-bar.jsx';
 以下に示すように、この結果、呼び出しは成功し、手順2でテンプレートを追加したファイルに関する情報が表示されます。
 
 <Frame center>
-
-![検索クエリの結果](/images/guides/search/quick-start/query-result.png)
-
+  ![検索クエリの結果](/images/guides/search/quick-start/query-result.png)
 </Frame>
 
-<Next>
+<Next>検索クエリを使用してコンテンツが見つかりました</Next>
 
-検索クエリを使用してコンテンツが見つかりました
-
-</Next>
-
-[mq]: /ja/reference/post-metadata-queries-execute-read/
+[mq]: /reference/post-metadata-queries-execute-read/

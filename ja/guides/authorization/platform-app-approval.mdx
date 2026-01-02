@@ -1,43 +1,14 @@
 ---
-title: "Platformアプリの承認"
+alias_paths: ""
 rank: 1
-related_endpoints: []
-related_guides:
-  - authorization/limited-access-approval
-  - authorization/custom-skill-approval
-required_guides:
-  - authorization
-  - authentication/oauth2/oauth2-setup
-  - authentication/jwt/jwt-setup
-alias_paths:
-  - /guides/applications/custom-apps/app-approval
-  - /guides/authorization/custom-app-approval
-category_id: authorization
-subcategory_id: null
-is_index: false
-id: authorization/platform-app-approval
-type: guide
-total_steps: 4
-sibling_id: authorization
-parent_id: authorization
-next_page_id: authorization/limited-access-approval
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authorization/platform-app-approval.md
+related_endpoints: {}
+related_guides: ""
+required_guides: ""
+title: Platformアプリの承認
+
 fullyTranslated: true
 ---
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "承認", href: "/ja/guides/authorization/index", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" },
-    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "ガイド" }
-  ]}
-/>
 [JWT][jwt]または[クライアント資格情報許可][ccg]を使用するサーバー認証アプリケーションは、使用前にBox管理者が承認する必要があります。
 
 [OAuth 2.0][oauth]認証を使用する未公開アプリケーションは、[デフォルトで非アクティブ][upa]になっている場合、Box管理者による有効化が必要になることがあります。
@@ -45,9 +16,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box管理者は、管理コンソールでアプリケーションを適切に承認または有効化するために、そのクライアントIDが必要になります。
 
 <Info>
-
-\[[Platformアプリ][apps]] ビューを使用すると、アプリケーションの承認ステータスと有効化ステータスをすばやく確認できます。
-
+  \[[Platformアプリ][apps]] ビューを使用すると、アプリケーションの承認ステータスと有効化ステータスをすばやく確認できます。
 </Info>
 
 ## 承認の通知
@@ -59,9 +28,7 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 [開発者コンソール][devconsole]で、目的のアプリケーションの \[**承認**] タブに移動します。
 
 <Frame border center>
-
-![\[承認\] タブ](/images/guides/authorization/app_authorization.png)
-
+  ![\[承認\] タブ](/images/guides/authorization/app_authorization.png)
 </Frame>
 
 ### ユーザー認証アプリ
@@ -69,9 +36,7 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 [開発者コンソール][devconsole]で、目的のアプリケーションの \[**有効化**] タブに移動します。
 
 <Frame border center>
-
-![\[有効化\] タブ](/images/guides/authorization/app_enablement.png)
-
+  ![\[有効化\] タブ](/images/guides/authorization/app_enablement.png)
 </Frame>
 
 承認を得るためにアプリケーションを送信すると、企業のプライマリ管理者宛てにアプリケーションを承認するようメールが送信されます。Box管理者がリクエストを承認または拒否すると、その決定が記載されたメールが届きます。このプロセスの詳細については、[アプリ承認に関するサポート記事][app-auth]を参照してください。
@@ -88,10 +53,9 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 また、\[[Platformアプリ][apps]] ビューでアプリケーションにカーソルを合わせて**クライアントID**を調べ、`copy`ボタンを使用してそのIDをコピーすることもできます。
 
 <Info>
-**Box管理者の確認方法**
+  **Box管理者の確認方法**
 
-自分の会社の管理者がわからない場合は、Boxの \[[アカウント設定][settings]] ページに移動し、一番下までスクロールしてください。管理者の連絡先が設定されている場合は、\[管理者の連絡先] の下に連絡先情報が表示されます。
-
+  自分の会社の管理者がわからない場合は、Boxの \[[アカウント設定][settings]] ページに移動し、一番下までスクロールしてください。管理者の連絡先が設定されている場合は、\[管理者の連絡先] の下に連絡先情報が表示されます。
 </Info>
 
 ### 管理者の場合
@@ -104,17 +68,13 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 #### サーバー認証アプリ
 
 <Frame border center>
-
-![サーバーアプリのタブ](/images/guides/authorization/jwt_app_approval_flow.png)
-
+  ![サーバーアプリのタブ](/images/guides/authorization/jwt_app_approval_flow.png)
 </Frame>
 
 #### ユーザー認証アプリ
 
 <Frame border center>
-
-![ユーザーアプリのタブ](/images/guides/authorization/oauth_app_approval_flow.png)
-
+  ![ユーザーアプリのタブ](/images/guides/authorization/oauth_app_approval_flow.png)
 </Frame>
 
 表示されたポップアップで、開発者が[開発者コンソール][devconsole]の \[**構成**] タブから収集した、アプリケーションのクライアントIDを入力します。
@@ -126,9 +86,7 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 管理者は、アプリケーションが最初に承認されたのと同じセクションで、そのアプリケーションを再承認できます。再承認するには、アプリケーション名の右側にある省略記号をクリックし、\[**アプリを再承認**] を選択します。
 
 <Frame border center>
-
-![アプリの再承認](/images/guides/authorization/reauthorize_app.png)
-
+  ![アプリの再承認](/images/guides/authorization/reauthorize_app.png)
 </Frame>
 
 {/* i18n-enable localize-links */}
@@ -137,7 +95,7 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 
 {/* i18n-disable localize-links */}
 
-[ccg]: /ja/guides/authentication/client-credentials
+[ccg]: /guides/authentication/client-credentials
 
 {/* i18n-enable localize-links */}
 
@@ -147,13 +105,13 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 
 {/* i18n-disable localize-links */}
 
-[jwt]: /ja/guides/authentication/jwt
+[jwt]: /guides/authentication/jwt
 
-[app-token]: /ja/guides/authentication/app-token
+[app-token]: /guides/authentication/app-token
 
-[oauth]: /ja/guides/authentication/oauth2
+[oauth]: /guides/authentication/oauth2
 
-[upa]: /ja/guides/security/#enterprise-settings-and-authorization
+[upa]: /guides/security/#enterprise-settings-and-authorization
 
 {/* i18n-enable localize-links */}
 
@@ -162,11 +120,3 @@ Box管理者は、管理コンソールでアプリケーションを適切に�
 {/* i18n-enable localize-links */}
 
 [apps]: /ja/guides/applications
-
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "アクセス制限付きアプリの承認", href: "/ja/guides/authorization/limited-access-approval", badge: "ガイド" },
-    { label: "カスタムスキルの承認", href: "/ja/guides/authorization/custom-skill-approval", badge: "ガイド" }
-  ]}
-/>

@@ -1,42 +1,31 @@
 ---
-title: "グループとコラボレーションの管理"
 rank: 5
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/oauth2
-  - cli/scripts/provision-users-folders
-  - cli/scripts/deprovision-users
-  - cli/scripts/user-zones-mass-update
-  - cli/scripts/report-inactive-users
+  0: authentication/oauth2
+  1: cli/scripts/provision-users-folders
+  2: cli/scripts/deprovision-users
+  3: cli/scripts/user-zones-mass-update
+  4: cli/scripts/report-inactive-users
 related_pages:
-  - sdks-and-tools
+  0: sdks-and-tools
+related_resources: {}
 required_guides:
-  - authentication/oauth2/oauth2-setup
-related_resources: []
-category_id: cli
-subcategory_id: cli/scripts
-is_index: false
-id: cli/scripts/manage-groups-collaborations
-type: guide
-total_steps: 7
-sibling_id: cli/scripts
-parent_id: cli/scripts
-next_page_id: cli/scripts/metadata-extraction
-previous_page_id: cli/scripts/report-inactive-users
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/cli/scripts/manage-groups-collaborations.md
+  0: authentication/oauth2/oauth2-setup
+title: グループとコラボレーションの管理
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+]}
 />
+
 ## スクリプト構造
 
 このスクリプトでは、Box CLIを使用して、グループの作成や更新、グループへのユーザーの追加、グループとフォルダの間のコラボレーションの作成を行います。このスクリプトは、2つのパートから構成されています (以下のセクションで詳しく説明します)。両方のパートを実行することも、オプションのフラグを使用して実行するパートを決めることもできます。
@@ -63,9 +52,9 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
    | `GroupName` | `FolderId` | `CollaborationRole` |
    | ----------- | ---------- | ------------------- |
    | Group1      | 1111111    | editor              |
-   | Group2      | 1111111    | viewer_uploader     |
+   | Group2      | 1111111    | viewer\_uploader    |
    | Group2      | 2222222    | viewer              |
-   | Group3      | 1111111    | viewer_uploader     |
+   | Group3      | 1111111    | viewer\_uploader    |
 
 3. 両方の条件を満たしている場合、`CollaborationRole`列で定義されたロールを使用してグループがフォルダに割り当てられます。また、グループはすでに存在していても、`CollaborationRole`を変更した場合、スクリプトの実行時に`-UpdateExistingCollabs`フラグを渡すと、コラボレーションロールが更新されます。
 
@@ -81,7 +70,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ```bash
 pwsh
-
 ```
 
 どのディレクトリでこのコマンドを実行するかに応じて、出力が異なる場合があります。以下に例を示します。
@@ -94,14 +82,11 @@ https://aka.ms/powershell
 Type 'help' to get help.
 
 PS /Users/user/repos/boxcli/examples>
-
 ```
 
-<Note>
-
-問題が発生する場合は、[.NET Core](https://dotnet.microsoft.com/download)と[PowerShell][pwsh]の両方をインストールしたかどうか確認してください。
-
-</Note>
+<message>
+  問題が発生する場合は、[.NET Core](https://dotnet.microsoft.com/download)と[PowerShell][pwsh]の両方をインストールしたかどうか確認してください。
+</message>
 
 ### Box CLI
 
@@ -111,55 +96,49 @@ PS /Users/user/repos/boxcli/examples>
 
 1. `boxcli` GitHubリポジトリを複製してこの例のフォルダにcdコマンドで移動するか、[`examples`][examples]ディレクトリからファイルをダウンロードします。
 
-```bash
-    git clone https://github.com/box/boxcli.git boxcli
-    cd boxcli/examples/Mass\ Groups\ \&\ Collaborations\ Update/
-
-```
+   ```bash
+   git clone https://github.com/box/boxcli.git boxcli
+   cd boxcli/examples/Mass\ Groups\ \&\ Collaborations\ Update/
+   ```
 
 2. グループとユーザーのメールアドレスのリストが含まれる`.csv`ファイルのパスを設定します。
 
-```bash
-    $UserGroupAdditionPath = "./User_Group_Addition.csv"
+   ```bash
+   $UserGroupAdditionPath = "./User_Group_Addition.csv"
+   ```
 
-```
-
-    * `UserEmail` is the primary email address for the user in Box.
-    * `GroupName` is the name of the group.
+   * `UserEmail`は、Boxにおけるこのユーザーのプライマリメールアドレスです。
+   * `GroupName`は、グループの名前です。
 
 3. グループとユーザーのメールアドレスのリストが含まれる`.csv`ファイルに独自のパスを設定します。
 
-```bash
-    $CollaborationsCreationPath = "./Collaborations_Creation.csv"
+   ```bash
+   $CollaborationsCreationPath = "./Collaborations_Creation.csv"
+   ```
 
-```
+   * `GroupName`は、スクリプトによってフォルダにコラボレータとして追加されるグループの名前です。
+   * `FolderId`は、コラボレータの追加先となるフォルダIDです。
+   * `CollaborationRole`は、コラボレーションの作成時に使用されるロールの名前です。
 
-    * `GroupName` is name of the group the script will add as a collaborator to the folder.
-    * `FolderId` is the folder ID the collaborator will be added to.
-    * `CollaborationRole` is the name of the role used when creating a collaboration.
+   使用可能なロールを設定するには、`AvailableCollaborationRoles`パラメータを設定します。
 
-    You can configure the available roles by setting the `AvailableCollaborationRoles` parameter:
-
-```bash
-    $AvailableCollaborationRoles = @("editor", "viewer", "previewer", "uploader", "previewer_uploader", "viewer_uploader", "co-owner")
-
-```
+   ```bash
+   $AvailableCollaborationRoles = @("editor", "viewer", "previewer", "uploader", "previewer_uploader", "viewer_uploader", "co-owner")
+   ```
 
 ## スクリプトの実行
 
 1. PowerShellコマンドを実行します。
 
-```bash
-    pwsh
-
-```
+   ```bash
+   pwsh
+   ```
 
 2. スクリプトを実行します。
 
-```bash
-    ./Mass_Groups_Collabs_Update.ps1
-
-```
+   ```bash
+   ./Mass_Groups_Collabs_Update.ps1
+   ```
 
 ### オプションのフラグ
 
@@ -167,24 +146,21 @@ PS /Users/user/repos/boxcli/examples>
 
 * グループがすでに特定のフォルダのコラボレータとして設定されているものの、その役割が.`csv`ファイルで定義されたものとは異なる場合は、スクリプトによってそのことが通知されます。スクリプトによって既存のコラボレーションが変更されることはありません。`.csv`ファイルで定義された役割で既存のコラボレーションを更新するには、スクリプトを実行する際に追加の`-UpdateExistingCollabs`フラグを設定します。
 
-```bash
-    Mass_Groups_Collabs_Update.ps1 -UpdateExistingCollabs
-
-```
+  ```bash
+  Mass_Groups_Collabs_Update.ps1 -UpdateExistingCollabs
+  ```
 
 * コラボレーションを作成せずにグループを更新するには、スクリプトの実行時に`-SkipCollabsCreation`ブール値フラグを追加します。
 
-```bash
-    Mass_Groups_Collabs_Update.ps1 -SkipCollabsCreation
-
-```
+  ```bash
+  Mass_Groups_Collabs_Update.ps1 -SkipCollabsCreation
+  ```
 
 * グループを更新せずにコラボレーションを作成するには、スクリプトの実行時に`-SkipGroupsUpdate`ブール値フラグを追加します。
 
-```bash
-    Mass_Groups_Collabs_Update.ps1 -SkipGroupsUpdate
-
-```
+  ```bash
+  Mass_Groups_Collabs_Update.ps1 -SkipGroupsUpdate
+  ```
 
 ## ログ
 
@@ -197,19 +173,19 @@ PS /Users/user/repos/boxcli/examples>
 
 [pwsh]: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2
 
-[quickstart]: /ja/guides/cli/quick-start/create-oauth-app
+[quickstart]: /guides/cli/quick-start/create-oauth-app
 
 [console]: https://app.box.com/developers/console
 
-[auth]: /ja/guides/authentication/oauth2/oauth2-setup
+[auth]: /guides/authentication/oauth2/oauth2-setup
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" },
-    { label: "ユーザーとフォルダのプロビジョニング", href: "/ja/guides/cli/scripts/provision-users-folders", badge: "ガイド" },
-    { label: "ユーザーのプロビジョニング解除とフォルダのアーカイブ", href: "/ja/guides/cli/scripts/deprovision-users", badge: "ガイド" },
-    { label: "ユーザーのゾーンの更新", href: "/ja/guides/cli/scripts/user-zones-mass-update", badge: "ガイド" },
-    { label: "非アクティブなユーザーのレポート", href: "/ja/guides/cli/scripts/report-inactive-users", badge: "ガイド" }
-  ]}
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+  { label: "Provision users and folders", href: "/guides/cli/scripts/provision-users-folders", badge: "GUIDE" },
+  { label: "Deprovision users and archive folders", href: "/guides/cli/scripts/deprovision-users", badge: "GUIDE" },
+  { label: "Update user zones", href: "/guides/cli/scripts/user-zones-mass-update", badge: "GUIDE" },
+  { label: "Report inactive users", href: "/guides/cli/scripts/report-inactive-users", badge: "GUIDE" }
+]}
 />

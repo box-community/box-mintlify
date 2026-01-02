@@ -1,26 +1,15 @@
 ---
-title: "ファイルバージョンのダウンロード"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_files_id_content
+  0: get_files_id_content
 related_guides:
-  - downloads/file
-  - uploads/direct/file
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: downloads
-subcategory_id: null
-is_index: false
-id: downloads/file-version
-type: guide
-total_steps: 7
-sibling_id: downloads
-parent_id: downloads
-next_page_id: downloads/get-url
-previous_page_id: downloads/file
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/downloads/file-version.md
+  0: downloads/file
+  1: uploads/direct/file
+related_resources: {}
+required_guides: {}
+title: ファイルバージョンのダウンロード
+
 fullyTranslated: true
 ---
 
@@ -28,9 +17,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 特定のファイルバージョンをダウンロードするには、取得するコンテンツが含まれるファイルのIDとそのファイルのバージョンIDを[`GET /files/:id/content`][api]に渡します。
 
-{/* <Samples id="get_files_id_content" variant="for_version">
-
-</Samples> */}
+{/* <Samples id='get_files_id_content' variant='for_version' /> */}
 
 ## ダウンロードURL
 
@@ -38,17 +25,14 @@ SDKを使用しない場合、このAPIコールでは、`HTTP 302 Found`ステ�
 
 ```sh
 https://dl.boxcloud.com/d/1/[long-random-string]/download
-
 ```
 
 cURLで`-L`フラグを使用することで、自動的にこのリダイレクトに従うことができます。
 
 <Info>
+  SDKでは、結果として、バイナリデータがダウンロードされます。APIでは、ダウンロードURLが`location`ヘッダーを介して返されます。
 
-SDKでは、結果として、バイナリデータがダウンロードされます。APIでは、ダウンロードURLが`location`ヘッダーを介して返されます。
-
-また、SDKを介して[ダウンロードURLを取得][downloadurl]することも可能です。
-
+  また、SDKを介して[ダウンロードURLを取得][downloadurl]することも可能です。
 </Info>
 
 ## ダウンロードURLの有効期限
@@ -61,20 +45,21 @@ SDKでは、結果として、バイナリデータがダウンロードされ�
 
 このレスポンスは、ダウンロードリクエストの直前にファイルがアップロードされた場合に発生することがあります。
 
-[api]: /ja/reference/get-files-id-content
+[api]: /reference/get-files-id-content
 
-[downloadurl]: /ja/guides/downloads/get-url
+[downloadurl]: /guides/downloads/get-url
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
-  ]}
+  { label: "Download file", href: "/reference/get-files-id-content", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルのダウンロード", href: "/ja/guides/downloads/file", badge: "ガイド" },
-    { label: "新しいファイルのアップロード", href: "/ja/guides/uploads/direct/file", badge: "ガイド" }
-  ]}
+  { label: "Download File", href: "/guides/downloads/file", badge: "GUIDE" },
+  { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" }
+]}
 />

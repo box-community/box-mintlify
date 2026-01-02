@@ -1,27 +1,16 @@
 ---
-title: "Signイベント"
+alias_paths:
+  0: /guides/events/sign-events
+  1: /guides/events/sign-events/
 rank: 9
 related_endpoints:
-  - get_events
-  - options_events
+  0: get_events
+  1: options_events
 related_guides:
-  - events/enterprise-events/for-enterprise
-required_guides: []
-alias_paths:
-  - /guides/events/sign-events
-  - /guides/events/sign-events/
-category_id: events
-subcategory_id: events/event-triggers
-is_index: false
-id: events/event-triggers/sign-events
-type: guide
-total_steps: 5
-sibling_id: events/event-triggers
-parent_id: events/event-triggers
-next_page_id: ''
-previous_page_id: events/event-triggers/shield-smart-access-events
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/event-triggers/sign-events.md
+  0: events/enterprise-events/for-enterprise
+required_guides: {}
+title: Signイベント
+
 fullyTranslated: true
 ---
 
@@ -30,9 +19,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box Signイベントの監査には、Enterprise Event Streamを使用します。Box Signの詳細については、[ガイド][sign-guide]を参照してください。
 
 <Warning>
-
-以下に示す各`additional_details`ペイロードのステータスは、具体的な署名リクエストの詳細に基づいた例とは異なる場合があります。たとえば、リクエスト送信者が唯一の署名者の場合は、`SIGN_DOCUMENT_CREATED`イベントのステータスがすぐに`viewed`になります。
-
+  以下に示す各`additional_details`ペイロードのステータスは、具体的な署名リクエストの詳細に基づいた例とは異なる場合があります。たとえば、リクエスト送信者が唯一の署名者の場合は、`SIGN_DOCUMENT_CREATED`イベントのステータスがすぐに`viewed`になります。
 </Warning>
 
 ## ドキュメントイベント
@@ -88,7 +75,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ### 変換
@@ -137,7 +123,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ### 完了
@@ -186,7 +171,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ### キャンセル
@@ -235,7 +219,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ### 期限切れ
@@ -284,7 +267,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ## 署名者イベント
@@ -343,7 +325,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ### 署名者による表示
@@ -400,7 +381,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ### ダウンロード
@@ -459,7 +439,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     }
   }
 }
-
 ```
 
 ### 転送
@@ -518,7 +497,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     },
   }
 }
-
 ```
 
 ### 署名
@@ -575,7 +553,6 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
 ### 拒否
@@ -632,21 +609,21 @@ APIまたはUIを使用して署名リクエストが作成されると、`SIGN_
     "forward": null
   }
 }
-
 ```
 
-[sign-guide]: /ja/guides/box-sign
+[sign-guide]: /guides/box-sign
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
-    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
-  ]}
+  { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+  { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "ガイド" }
-  ]}
+  { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" }
+]}
 />

@@ -1,171 +1,143 @@
 ---
-title: "CLIのインストールと構成"
-sidebarTitle: 2. CLIのインストールと構成
-type: quick-start
 hide_in_page_nav: true
-category_id: cli
-subcategory_id: cli/quick-start
-is_index: false
-id: cli/quick-start/install-and-configure
-rank: 2
-total_steps: 6
-sibling_id: cli/quick-start
-parent_id: cli/quick-start
-next_page_id: cli/quick-start/build-commands-help
-previous_page_id: cli/quick-start/create-oauth-app
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/cli/quick-start/2-install-and-configure.md
+sidebarTitle: 2. CLI Installation and Configuration
+title: CLIのインストールと構成
+type: quick-start
+
 fullyTranslated: true
 ---
 
-import { Choose, Choice, Grid, Trigger, Observe, ChoiceDebug } from "/snippets/choose-choice-components.jsx";
-import { Store } from "/snippets/store.jsx";
-import { ProgressBar } from "/snippets/progress-bar.jsx";
+import { Choose, Choice, Grid, Trigger, Observe, ChoiceDebug } from '/snippets/choose-choice-components.jsx';
+import { Store } from '/snippets/store.jsx';
+import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 <ProgressBar
   pages={[
-    "ja/guides/cli/quick-start/create-oauth-app",
-    "ja/guides/cli/quick-start/install-and-configure",
-    "ja/guides/cli/quick-start/build-commands-help",
-    "ja/guides/cli/quick-start/options-and-bulk-commands",
-    "ja/guides/cli/quick-start/powershell-script-templates",
-    "ja/guides/cli/quick-start/next-steps",
-  ]}
+                        "guides/cli/quick-start/create-oauth-app",
+                        "guides/cli/quick-start/install-and-configure",
+                        "guides/cli/quick-start/build-commands-help",
+                        "guides/cli/quick-start/options-and-bulk-commands",
+                        "guides/cli/quick-start/powershell-script-templates",
+                        "guides/cli/quick-start/next-steps"
+                      ]}
 />
 
 <Choice option="cli.app_type" value="create_new,use_existing,clicked" color="none">
+  Windows用およびmacOS用のインストーラが提供されていますが、その他の環境でCLIを構築する場合はRawソースコードを利用できます。
 
-Windows 用および macOS 用のインストーラが提供されていますが、その他の環境で CLI を構築する場合は Raw ソースコードを利用できます。
+  ## Windows用およびmacOS用インストーラ
 
-## Windows 用および macOS 用インストーラ
+  お使いのマシンに最新のCLIをインストールするには、最新リリースに対応する最新の`.exe` (Windowsの場合) または`.pkg` (macOSの場合) をダウンロードします。
 
-お使いのマシンに最新の CLI をインストールするには、最新リリースに対応する最新の`.exe` (Windows の場合) または`.pkg` (macOS の場合) をダウンロードします。
+  <Card href="https://github.com/box/boxcli/releases" title="最新のCLIインストーラをダウンロード" />
 
-<Card href="https://github.com/box/boxcli/releases" title="最新のCLIインストーラをダウンロード" />
+  ## LinuxとNodeのインストール
 
-## Linux と Node のインストール
+  さらに、CLIは、任意のプラットフォーム (Linuxなど) にNodeパッケージとしてインストールすることができます。このためには、[Node JS](https://nodejs.org/)をマシンにインストールしておく必要があります。
 
-さらに、CLI は、任意のプラットフォーム (Linux など) に Node パッケージとしてインストールすることができます。このためには、[Node JS](https://nodejs.org/)をマシンにインストールしておく必要があります。
+  ```bash
+  npm install --global @box/cli
+  ```
 
-```bash
-npm install --global @box/cli
+  ## ソースコード
 
-```
+  CLIのソースコードは、[GitHub][cli]で提供されています。
 
-## ソースコード
+  ## 構成コマンドの実行
 
-CLI のソースコードは、[GitHub][cli]で提供されています。
+  ここで、BoxアプリにログインしてCLIを構成する必要があります。
 
-## 構成コマンドの実行
+  この手順では、前の手順の**クライアントID**と**クライアントシークレット**を使用してログインし、ユーザー用に**アクセストークン**を作成します。
 
-ここで、Box アプリにログインして CLI を構成する必要があります。
+  ## ログインする理由
 
-この手順では、前の手順の**クライアント ID**と**クライアントシークレット**を使用してログインし、ユーザー用に**アクセストークン**を作成します。
+  現時点では、以下の情報が提示されています。
 
-## ログインする理由
+  <Store disabled inline id="cli_credentials.client_id">
+    クライアントID
+  </Store>
 
-現時点では、以下の情報が提示されています。
+  <Store disabled inline obscured id="cli_credentials.client_secret">
+    クライアントシークレット
+  </Store>
 
-<Store disabled inline id="cli_credentials.client_id">
+  {/* alex ignore execute */}
 
-クライアント ID
+  ターミナルまたはコマンドラインを開き、`box login -n example_name`コマンドを実行します。
 
-</Store>
+  <br />
 
-<Store disabled inline obscured id="cli_credentials.client_secret">
+  求められたら、ターミナルウィンドウにクライアントIDとクライアントシークレットをコピーします。
 
-クライアントシークレット
+  <Frame center>
+    ![CLIログイン](/images/guides/cli/cli-login.png)
+  </Frame>
 
-</Store>
+  ブラウザウィンドウに表示された \[**Boxへのアクセスを許可**] ボタンをクリックします。
 
-{/* alex ignore execute */}
+  <Frame center>
+    ![CLIにアクセスを許可](/images/guides/cli/cli-grant-access.png)
+  </Frame>
 
-ターミナルまたはコマンドラインを開き、`box login -n example_name`コマンドを実行します。
+  成功すると、成功を示す次のメッセージが表示されます。
 
-求められたら、ターミナルウィンドウにクライアント ID とクライアントシークレットをコピーします。
+  <Frame center>
+    ![CLI環境の設定](/images/guides/cli/cli-env-setup.png)
+  </Frame>
 
-<Frame center>
+  ## 構成の確認
 
-![CLIログイン](/images/guides/cli/cli-login.png)
+  うまく構成されているか確認するには、`box users:get me`コマンドを入力して、Box CLIで最初のBox APIコールを実行します。
 
-</Frame>
+  <Frame center>
+    ![CLIのユーザー呼び出し](/images/guides/cli/cli-first-call.png)
+  </Frame>
 
-ブラウザウィンドウに表示された \[**Box へのアクセスを許可**] ボタンをクリックします。
+  成功を示すレスポンスには、ユーザーアカウントの詳細が示されます。
 
-<Frame center>
+  ```json
+  Type: user
+  ID: ''0123456789''
+  Name: Aaron Levie
+  Login: example@box.com
+  Created At: '2020-01-01T09:45:01-07:00'
+  Modified At: '2021-03-01T09:30:05-07:00'
+  Language: en
+  Timezone: America/Los_Angeles
+  Space Amount: 999999999999999
+  Space Used: 6291500
+  Max Upload Size: 16106127360
+  Status: active
+  Job Title: ''
+  Phone: ''
+  Address: example+user@box.com
+  Avatar URL: ''
+  Notification Email: []
+  ```
 
-![CLIにアクセスを許可](/images/guides/cli/cli-grant-access.png)
+  ## まとめ
 
-</Frame>
+  * CLIをインストールしました。
+  * 前に作成したOAuth 2.0アプリケーションを使用するようCLIを構成しました。
+  * **Box CLIの最初のBox APIコールを実行**し、アクセストークンに関連付けられたユーザーを確認しました。
 
-成功すると、成功を示す次のメッセージが表示されます。
-
-<Frame center>
-
-![CLI環境の設定](/images/guides/cli/cli-env-setup.png)
-
-</Frame>
-
-## 構成の確認
-
-うまく構成されているか確認するには、`box users:get me`コマンドを入力して、Box CLI で最初の Box API コールを実行します。
-
-<Frame center>
-
-![CLIのユーザー呼び出し](/images/guides/cli/cli-first-call.png)
-
-</Frame>
-
-成功を示すレスポンスには、ユーザーアカウントの詳細が示されます。
-
-```json
-Type: user
-ID: ''0123456789''
-Name: Aaron Levie
-Login: example@box.com
-Created At: '2020-01-01T09:45:01-07:00'
-Modified At: '2021-03-01T09:30:05-07:00'
-Language: en
-Timezone: America/Los_Angeles
-Space Amount: 999999999999999
-Space Used: 6291500
-Max Upload Size: 16106127360
-Status: active
-Job Title: ''
-Phone: ''
-Address: example+user@box.com
-Avatar URL: ''
-Notification Email: []
-
-```
-
-## まとめ
-
-- CLI をインストールしました。
-- 前に作成した OAuth 2.0 アプリケーションを使用するよう CLI を構成しました。
-- **Box CLI の最初の Box API コールを実行**し、アクセストークンに関連付けられたユーザーを確認しました。
-
-<Next>
-
-CLI をインストールして構成しました
-
-</Next>
-
+  <Next>CLIをインストールして構成しました</Next>
 </Choice>
 
 <Choice option="cli.app_type" unset color="none">
+  <Danger>
+    **前の手順が完了していません**
 
-<Danger>
-**前の手順が完了していません**
-
-前の手順を完了し、使用する**Box アプリ**をセットアップしてください。
-
-</Danger>
-
+    前の手順を完了し、使用する**Boxアプリ**をセットアップしてください。
+  </Danger>
 </Choice>
 
 [cli]: https://github.com/box/boxcli
-[auth]: /ja/guides/authentication/jwt/without-sdk
-[sa]: /ja/platform/user-types/#service-account
-[at]: /ja/guides/authentication/tokens
+
+[auth]: /guides/authentication/jwt/without-sdk
+
+[sa]: /platform/user-types/#service-account
+
+[at]: /guides/authentication/tokens
+
 [dc]: https://app.box.com/developers/console

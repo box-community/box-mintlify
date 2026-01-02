@@ -1,35 +1,20 @@
 ---
-title: "エージェントの作成"
 rank: 1
 related_guides:
-  - authentication/tokens/developer-tokens/
-  - box-ai/ai-tutorials/ask-questions
-  - box-ai/ai-tutorials/default-agent-overrides
-  - box-ai/ai-tutorials/generate-text
-  - box-ai/ai-tutorials/extract-metadata-structured
-  - box-ai/ai-tutorials/extract-metadata
-category_id: ai-studio
-subcategory_id: ai-studio/ai-studio-agents
-is_index: false
-id: ai-studio/ai-studio-agents/create-agents
-type: guide
-total_steps: 5
-sibling_id: ai-studio/ai-studio-agents
-parent_id: ai-studio/ai-studio-agents
-next_page_id: ai-studio/ai-studio-agents/get-agents
-previous_page_id: ai-studio/ai-studio-agents
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/ai-studio/ai-studio-agents/create-agents.md
+  0: authentication/tokens/developer-tokens/
+  1: box-ai/ai-tutorials/ask-questions
+  2: box-ai/ai-tutorials/default-agent-overrides
+  3: box-ai/ai-tutorials/generate-text
+  4: box-ai/ai-tutorials/extract-metadata-structured
+  5: box-ai/ai-tutorials/extract-metadata
+title: エージェントの作成
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-<Warning>
-
 Box AI Studioは、Enterprise Advancedアカウントでのみ使用できます。
-
-</Warning>
 
 `POST /2.0/ai_agents`エンドポイントを使用すると、新しいカスタム[AIエージェント][agents]を作成できます。
 
@@ -40,35 +25,33 @@ Box AI Studioは、Enterprise Advancedアカウントでのみ使用できます
 アプリを承認するための開発者トークンを生成済みであることを確認します。詳細については、[Box AIの使い方][prereq]を参照してください。
 
 <CodeGroup>
+  ```typescript Node/TypeScript v10
+  await client.aiStudio.createAiAgent({
+    name: agentName,
+    accessState: 'enabled',
+    ask: new AiStudioAgentAsk({ accessState: 'enabled', description: 'desc1' }),
+  } satisfies CreateAiAgentInput);
+  ```
 
-```typescript Node/TypeScript v10
-await client.aiStudio.createAiAgent({
-  name: agentName,
-  accessState: 'enabled',
-  ask: new AiStudioAgentAsk({ accessState: 'enabled', description: 'desc1' }),
-} satisfies CreateAiAgentInput);
-```
+  ```python Python v10
+  client.ai_studio.create_ai_agent(
+      agent_name,
+      "enabled",
+      ask=AiStudioAgentAsk(access_state="enabled", description="desc1"),
+  )
+  ```
 
-```python Python v10
-client.ai_studio.create_ai_agent(
-    agent_name,
-    "enabled",
-    ask=AiStudioAgentAsk(access_state="enabled", description="desc1"),
-)
-```
+  ```cs .NET v10
+  await client.AiStudio.CreateAiAgentAsync(requestBody: new CreateAiAgent(name: agentName, accessState: "enabled") { Ask = new AiStudioAgentAsk(accessState: "enabled", description: "desc1") });
+  ```
 
-```cs .NET v10
-await client.AiStudio.CreateAiAgentAsync(requestBody: new CreateAiAgent(name: agentName, accessState: "enabled") { Ask = new AiStudioAgentAsk(accessState: "enabled", description: "desc1") });
-```
+  ```swift Swift v10
+  try await client.aiStudio.createAiAgent(requestBody: CreateAiAgent(name: agentName, accessState: "enabled", ask: AiStudioAgentAsk(accessState: "enabled", description: "desc1")))
+  ```
 
-```swift Swift v10
-try await client.aiStudio.createAiAgent(requestBody: CreateAiAgent(name: agentName, accessState: "enabled", ask: AiStudioAgentAsk(accessState: "enabled", description: "desc1")))
-```
-
-```java Java v10
-client.getAiStudio().createAiAgent(new CreateAiAgent.Builder(agentName, "enabled").ask(new AiStudioAgentAsk("enabled", "desc1")).build())
-```
-
+  ```java Java v10
+  client.getAiStudio().createAiAgent(new CreateAiAgent.Builder(agentName, "enabled").ask(new AiStudioAgentAsk("enabled", "desc1")).build())
+  ```
 </CodeGroup>
 
 ### パラメータ
@@ -90,18 +73,18 @@ client.getAiStudio().createAiAgent(new CreateAiAgent.Builder(agentName, "enabled
 
 {/* alex enable */}
 
-[agents]: /ja/guides/box-ai/ai-agents/index
+[agents]: /guides/box-ai/ai-agents/index
 
-[prereq]: /ja/guides/ai-studio/getting-started-ai-studio
+[prereq]: /guides/ai-studio/getting-started-ai-studio
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "開発者トークン", href: "/ja/guides/authentication/tokens/developer-tokens", badge: "ガイド" },
-    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "ガイド" },
-    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "ガイド" },
-    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "ガイド" }
-  ]}
+  { label: "Developer Tokens", href: "/guides/authentication/tokens/developer-tokens", badge: "GUIDE" },
+  { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+  { label: "Override AI model configuration", href: "/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+  { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+  { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+  { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" }
+]}
 />

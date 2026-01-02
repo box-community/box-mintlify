@@ -1,28 +1,17 @@
 ---
-title: "AIエージェントのデフォルト構成を取得する"
 rank: 2
 related_endpoints:
-  - get_ai_agent_default
-  - post_ai_text_gen
-  - post_ai_ask
+  0: get_ai_agent_default
+  1: post_ai_text_gen
+  2: post_ai_ask
 related_guides:
-  - box-ai/ai-tutorials/prerequisites
-  - box-ai/ai-tutorials/ask-questions
-  - box-ai/ai-tutorials/generate-text
-  - box-ai/ai-tutorials/extract-metadata
-  - box-ai/ai-tutorials/extract-metadata-structured
-category_id: box-ai
-subcategory_id: box-ai/ai-agents
-is_index: false
-id: box-ai/ai-agents/get-agent-default-config
-type: guide
-total_steps: 3
-sibling_id: box-ai/ai-agents
-parent_id: box-ai/ai-agents
-next_page_id: box-ai/ai-agents/ai-agent-overrides
-previous_page_id: box-ai/ai-agents
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/ai-agents/get-agent-default-config.md
+  0: box-ai/ai-tutorials/prerequisites
+  1: box-ai/ai-tutorials/ask-questions
+  2: box-ai/ai-tutorials/generate-text
+  3: box-ai/ai-tutorials/extract-metadata
+  4: box-ai/ai-tutorials/extract-metadata-structured
+title: AIエージェントのデフォルト構成を取得する
+
 fullyTranslated: true
 ---
 
@@ -37,80 +26,78 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 アプリを承認するための開発者トークンを生成済みであることを確認します。詳細については、[Box AIの使い方][prereq]を参照してください。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L GET "https://api.box.com/2.0/ai_agent_default?mode=text_gen" \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>'
+  ```
 
-```sh cURL
-curl -L GET "https://api.box.com/2.0/ai_agent_default?mode=text_gen" \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>'
-```
+  ```typescript Node/TypeScript v10
+  await client.ai.getAiAgentDefaultConfig({
+    mode: 'ask' as GetAiAgentDefaultConfigQueryParamsModeField,
+    language: 'en-US',
+  } satisfies GetAiAgentDefaultConfigQueryParams);
+  ```
 
-```typescript Node/TypeScript v10
-await client.ai.getAiAgentDefaultConfig({
-  mode: 'ask' as GetAiAgentDefaultConfigQueryParamsModeField,
-  language: 'en-US',
-} satisfies GetAiAgentDefaultConfigQueryParams);
-```
+  ```python Python v10
+  client.ai.get_ai_agent_default_config(GetAiAgentDefaultConfigMode.ASK, language="en-US")
+  ```
 
-```python Python v10
-client.ai.get_ai_agent_default_config(GetAiAgentDefaultConfigMode.ASK, language="en-US")
-```
+  ```cs .NET v10
+  await client.Ai.GetAiAgentDefaultConfigAsync(queryParams: new GetAiAgentDefaultConfigQueryParams(mode: GetAiAgentDefaultConfigQueryParamsModeField.Ask) { Language = "en-US" });
+  ```
 
-```cs .NET v10
-await client.Ai.GetAiAgentDefaultConfigAsync(queryParams: new GetAiAgentDefaultConfigQueryParams(mode: GetAiAgentDefaultConfigQueryParamsModeField.Ask) { Language = "en-US" });
-```
+  ```swift Swift v10
+  try await client.ai.getAiAgentDefaultConfig(queryParams: GetAiAgentDefaultConfigQueryParams(mode: GetAiAgentDefaultConfigQueryParamsModeField.ask, language: "en-US"))
+  ```
 
-```swift Swift v10
-try await client.ai.getAiAgentDefaultConfig(queryParams: GetAiAgentDefaultConfigQueryParams(mode: GetAiAgentDefaultConfigQueryParamsModeField.ask, language: "en-US"))
-```
+  ```java Java v10
+  client.getAi().getAiAgentDefaultConfig(new GetAiAgentDefaultConfigQueryParams.Builder(GetAiAgentDefaultConfigQueryParamsModeField.ASK).language("en-US").build())
+  ```
 
-```java Java v10
-client.getAi().getAiAgentDefaultConfig(new GetAiAgentDefaultConfigQueryParams.Builder(GetAiAgentDefaultConfigQueryParamsModeField.ASK).language("en-US").build())
-```
+  ```java Java v5
+  BoxAIAgentConfig config = BoxAI.getAiAgentDefaultConfig(
+      api,
+      BoxAIAgent.Mode.ASK,
+      "en",
+      "openai__gpt_3_5_turbo"
+  );
+  ```
 
-```java Java v5
-BoxAIAgentConfig config = BoxAI.getAiAgentDefaultConfig(
-    api,
-    BoxAIAgent.Mode.ASK,
-    "en",
-    "openai__gpt_3_5_turbo"
-);
-```
+  ```python Python v4
+  config = client.get_ai_agent_default_config(
+      mode='text_gen',
+      language='en',
+      model='openai__gpt_3_5_turbo'
+  )
+  print(config)
+  ```
 
-```python Python v4
-config = client.get_ai_agent_default_config(
-    mode='text_gen',
-    language='en',
-    model='openai__gpt_3_5_turbo'
-)
-print(config)
-```
-
-```javascript Node v4
-client.ai.getAiAgentDefaultConfig({
-    mode: 'ask',
-    language: 'en',
-    model:'openai__gpt_3_5_turbo'
-}).then(response => {
-    /* response -> {
-        "type": "ai_agent_ask",
-        "basic_text": {
-            "llm_endpoint_params": {
-            "type": "openai_params",
-            "frequency_penalty": 1.5,
-            "presence_penalty": 1.5,
-            "stop": "<|im_end|>",
-            "temperature": 0,
-            "top_p": 1
-            },
-            "model": "openai__gpt_3_5_turbo",
-            "num_tokens_for_completion": 8400,
-            "prompt_template": "It is `{current_date}`, and I have $8000 and want to spend a week in the Azores. What should I see?",
-            "system_message": "You are a helpful travel assistant specialized in budget travel"
-        },
-        ...
-    } */
-});
-```
-
+  ```javascript Node v4
+  client.ai.getAiAgentDefaultConfig({
+      mode: 'ask',
+      language: 'en',
+      model:'openai__gpt_3_5_turbo'
+  }).then(response => {
+      /* response -> {
+          "type": "ai_agent_ask",
+          "basic_text": {
+              "llm_endpoint_params": {
+              "type": "openai_params",
+              "frequency_penalty": 1.5,
+              "presence_penalty": 1.5,
+              "stop": "<|im_end|>",
+              "temperature": 0,
+              "top_p": 1
+              },
+              "model": "openai__gpt_3_5_turbo",
+              "num_tokens_for_completion": 8400,
+              "prompt_template": "It is `{current_date}`, and I have $8000 and want to spend a week in the Azores. What should I see?",
+              "system_message": "You are a helpful travel assistant specialized in budget travel"
+          },
+          ...
+      } */
+  });
+  ```
 </CodeGroup>
 
 ### パラメータ
@@ -128,238 +115,227 @@ client.ai.getAiAgentDefaultConfig({
 コールに対するレスポンスは、選択した`mode`パラメータ値によって異なる場合があります。
 
 <Tabs>
+  <Tab title="質問">
+    `mode`パラメータを`ask`に設定すると、レスポンスは次のようになります。
 
-<Tab title="質問">
+    ```sh
+    {
+         "type": "ai_agent_ask",
+         "basic_text": {
+              "model": "azure__openai__gpt_4o_mini",
+              "system_message": "",
+              "prompt_template": "prompt_template": "{user_question}Write it in an informal way.{content}"
+            },
+              "num_tokens_for_completion": 6000,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "frequency_penalty": 0,
+                   "presence_penalty": 1.5,
+                   "stop": "<|im_end|>",
+                   "type": "openai_params"
+              }
+         },
+         "long_text": {
+              "model": "azure__openai__gpt_4o_mini",
+              "system_message": "",
+              "prompt_template": "prompt_template": "{user_question}Write it in an informal way.{content}"
+            },
+              "num_tokens_for_completion": 6000,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "frequency_penalty": 0,
+                   "presence_penalty": 1.5,
+                   "stop": "<|im_end|>",
+                   "type": "openai_params"
+              },
+              "embeddings": {
+                   "model": "azure__openai__text_embedding_ada_002",
+                   "strategy": {
+                        "id": "basic",
+                        "num_tokens_per_chunk": 64
+                   }
+              }
+         },
+         "basic_text_multi": {
+              "model": "azure__openai__gpt_4o_mini",
+              "system_message": "",
+              "prompt_template": "Current date: {current_date}\n\nTEXT FROM DOCUMENTS STARTS\n{content}\nTEXT FROM DOCUMENTS ENDS\n\nHere is how I need help from you: {user_question}\n.",
+              "num_tokens_for_completion": 6000,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "frequency_penalty": 0,
+                   "presence_penalty": 1.5,
+                   "stop": "<|im_end|>",
+                   "type": "openai_params"
+              }
+         },
+         "long_text_multi": {
+              "model": "azure__openai__gpt_4o_mini",
+              "system_message": "Role and Goal: You are an assistant designed to analyze and answer a question based on provided snippets from multiple documents, which can include business-oriented documents like docs, presentations, PDFs, etc. The assistant will respond concisely, using only the information from the provided documents.\n\nConstraints: The assistant should avoid engaging in chatty or extensive conversational interactions and focus on providing direct answers. It should also avoid making assumptions or inferences not supported by the provided document snippets.\n\nGuidelines: When answering, the assistant should consider the file's name and path to assess relevance to the question. In cases of conflicting information from multiple documents, it should list the different answers with citations. For summarization or comparison tasks, it should concisely answer with the key points. It should also consider the current date to be the date given.\n\nPersonalization: The assistant's tone should be formal and to-the-point, suitable for handling business-related documents and queries.\n",
+              "prompt_template": "Current date: {current_date}\n\nTEXT FROM DOCUMENTS STARTS\n{content}\nTEXT FROM DOCUMENTS ENDS\n\nHere is how I need help from you: {user_question}\n.",
+              "num_tokens_for_completion": 6000,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "frequency_penalty": 0,
+                   "presence_penalty": 1.5,
+                   "stop": "<|im_end|>",
+                   "type": "openai_params"
+              },
+              "embeddings": {
+                   "model": "azure__openai__text_embedding_ada_002",
+                   "strategy": {
+                        "id": "basic",
+                        "num_tokens_per_chunk": 64
+                   }
+              }
+         }
+    }
+    ```
+  </Tab>
 
-`mode`パラメータを`ask`に設定すると、レスポンスは次のようになります。
+  <Tab title="テキスト生成">
+    `mode`パラメータを`text_gen`に設定すると、レスポンスは次のようになります。
 
-```sh
-{
-     "type": "ai_agent_ask",
-     "basic_text": {
-          "model": "azure__openai__gpt_4o_mini",
-          "system_message": "",
-          "prompt_template": "prompt_template": "{user_question}Write it in an informal way.{content}"
-        },
-          "num_tokens_for_completion": 6000,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "frequency_penalty": 0,
-               "presence_penalty": 1.5,
-               "stop": "<|im_end|>",
-               "type": "openai_params"
-          }
-     },
-     "long_text": {
-          "model": "azure__openai__gpt_4o_mini",
-          "system_message": "",
-          "prompt_template": "prompt_template": "{user_question}Write it in an informal way.{content}"
-        },
-          "num_tokens_for_completion": 6000,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "frequency_penalty": 0,
-               "presence_penalty": 1.5,
-               "stop": "<|im_end|>",
-               "type": "openai_params"
-          },
-          "embeddings": {
-               "model": "azure__openai__text_embedding_ada_002",
-               "strategy": {
-                    "id": "basic",
-                    "num_tokens_per_chunk": 64
-               }
-          }
-     },
-     "basic_text_multi": {
-          "model": "azure__openai__gpt_4o_mini",
-          "system_message": "",
-          "prompt_template": "Current date: {current_date}\n\nTEXT FROM DOCUMENTS STARTS\n{content}\nTEXT FROM DOCUMENTS ENDS\n\nHere is how I need help from you: {user_question}\n.",
-          "num_tokens_for_completion": 6000,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "frequency_penalty": 0,
-               "presence_penalty": 1.5,
-               "stop": "<|im_end|>",
-               "type": "openai_params"
-          }
-     },
-     "long_text_multi": {
-          "model": "azure__openai__gpt_4o_mini",
-          "system_message": "Role and Goal: You are an assistant designed to analyze and answer a question based on provided snippets from multiple documents, which can include business-oriented documents like docs, presentations, PDFs, etc. The assistant will respond concisely, using only the information from the provided documents.\n\nConstraints: The assistant should avoid engaging in chatty or extensive conversational interactions and focus on providing direct answers. It should also avoid making assumptions or inferences not supported by the provided document snippets.\n\nGuidelines: When answering, the assistant should consider the file's name and path to assess relevance to the question. In cases of conflicting information from multiple documents, it should list the different answers with citations. For summarization or comparison tasks, it should concisely answer with the key points. It should also consider the current date to be the date given.\n\nPersonalization: The assistant's tone should be formal and to-the-point, suitable for handling business-related documents and queries.\n",
-          "prompt_template": "Current date: {current_date}\n\nTEXT FROM DOCUMENTS STARTS\n{content}\nTEXT FROM DOCUMENTS ENDS\n\nHere is how I need help from you: {user_question}\n.",
-          "num_tokens_for_completion": 6000,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "frequency_penalty": 0,
-               "presence_penalty": 1.5,
-               "stop": "<|im_end|>",
-               "type": "openai_params"
-          },
-          "embeddings": {
-               "model": "azure__openai__text_embedding_ada_002",
-               "strategy": {
-                    "id": "basic",
-                    "num_tokens_per_chunk": 64
-               }
-          }
-     }
-}
+    ``````sh
+    {
+         "type": "ai_agent_text_gen",
+         "basic_gen": {
+              "model": "azure__openai__gpt_4o_mini",
+              "system_message": "\nIf you need to know today's date to respond, it is {current_date}.\nThe user is working in a collaborative document creation editor called Box Notes.\nAssume that you are helping a business user create documents or to help the user revise existing text.\nYou can help the user in creating templates to be reused or update existing documents, you can respond with text that the user can use to place in the document that the user is editing.\nIf the user simply asks to \"improve\" the text, then simplify the language and remove jargon, unless the user specifies otherwise.\nDo not open with a preamble to the response, just respond.\n",
+              "prompt_template": "{user_question}",
+              "num_tokens_for_completion": 12000,
+              "llm_endpoint_params": {
+                   "temperature": 0.1,
+                   "top_p": 1,
+                   "frequency_penalty": 0.75,
+                   "presence_penalty": 0.75,
+                   "stop": "<|im_end|>",
+                   "type": "openai_params"
+              },
+              "embeddings": {
+                   "model": "azure__openai__text_embedding_ada_002",
+                   "strategy": {
+                        "id": "basic",
+                        "num_tokens_per_chunk": 64
+                   }
+              },
+              "content_template": "`````{content}`````"
+         }
+    }
+    ``````
+  </Tab>
 
-```
+  <Tab title="抽出">
+    `mode`パラメータを`extract`に設定すると、レスポンスは次のようになります。
 
-</Tab>
+    `````sh
+    {
+         "type": "ai_agent_extract",
+         "basic_text": {
+              "model": "google__gemini_1_5_flash_001",
+              "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"displayName\": \"key display name\", \"type\": \"string\", \"description\": \"key description\"}]}. Leverage key description and key display name to identify where the key and value pairs are in the document. In certain cases, key description can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
+              "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
+              "num_tokens_for_completion": 4096,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "top_k": null,
+                   "type": "google_params"
+              }
+         },
+         "long_text": {
+              "model": "google__gemini_1_5_flash_001",
+              "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"displayName\": \"key display name\", \"type\": \"string\", \"description\": \"key description\"}]}. Leverage key description and key display name to identify where the key and value pairs are in the document. In certain cases, key description can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
+              "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
+              "num_tokens_for_completion": 4096,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "top_k": null,
+                   "type": "google_params"
+              },
+              "embeddings": {
+                   "model": "azure__openai__text_embedding_ada_002",
+                   "strategy": {
+                        "id": "basic",
+                        "num_tokens_per_chunk": 64
+                   }
+              }
+         }
+    }
+    `````
+  </Tab>
 
-<Tab title="テキスト生成">
+  <Tab title="抽出 (構造化)">
+    `mode`パラメータを`extract_structured`に設定すると、レスポンスは次のようになります。
 
-`mode`パラメータを`text_gen`に設定すると、レスポンスは次のようになります。
-
-``````sh
-{
-     "type": "ai_agent_text_gen",
-     "basic_gen": {
-          "model": "azure__openai__gpt_4o_mini",
-          "system_message": "\nIf you need to know today's date to respond, it is {current_date}.\nThe user is working in a collaborative document creation editor called Box Notes.\nAssume that you are helping a business user create documents or to help the user revise existing text.\nYou can help the user in creating templates to be reused or update existing documents, you can respond with text that the user can use to place in the document that the user is editing.\nIf the user simply asks to \"improve\" the text, then simplify the language and remove jargon, unless the user specifies otherwise.\nDo not open with a preamble to the response, just respond.\n",
-          "prompt_template": "{user_question}",
-          "num_tokens_for_completion": 12000,
-          "llm_endpoint_params": {
-               "temperature": 0.1,
-               "top_p": 1,
-               "frequency_penalty": 0.75,
-               "presence_penalty": 0.75,
-               "stop": "<|im_end|>",
-               "type": "openai_params"
-          },
-          "embeddings": {
-               "model": "azure__openai__text_embedding_ada_002",
-               "strategy": {
-                    "id": "basic",
-                    "num_tokens_per_chunk": 64
-               }
-          },
-          "content_template": "`````{content}`````"
-     }
-}
-
-``````
-
-</Tab>
-
-<Tab title="抽出">
-
-`mode`パラメータを`extract`に設定すると、レスポンスは次のようになります。
-
-`````sh
-{
-     "type": "ai_agent_extract",
-     "basic_text": {
-          "model": "google__gemini_1_5_flash_001",
-          "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"displayName\": \"key display name\", \"type\": \"string\", \"description\": \"key description\"}]}. Leverage key description and key display name to identify where the key and value pairs are in the document. In certain cases, key description can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
-          "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
-          "num_tokens_for_completion": 4096,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "top_k": null,
-               "type": "google_params"
-          }
-     },
-     "long_text": {
-          "model": "google__gemini_1_5_flash_001",
-          "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"displayName\": \"key display name\", \"type\": \"string\", \"description\": \"key description\"}]}. Leverage key description and key display name to identify where the key and value pairs are in the document. In certain cases, key description can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
-          "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
-          "num_tokens_for_completion": 4096,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "top_k": null,
-               "type": "google_params"
-          },
-          "embeddings": {
-               "model": "azure__openai__text_embedding_ada_002",
-               "strategy": {
-                    "id": "basic",
-                    "num_tokens_per_chunk": 64
-               }
-          }
-     }
-}
-`````
-
-</Tab>
-
-<Tab title="抽出 (構造化)">
-
-`mode`パラメータを`extract_structured`に設定すると、レスポンスは次のようになります。
-
-`````sh
-{
-     "type": "ai_agent_extract_structured",
-     "basic_text": {
-          "model": "google__gemini_1_5_flash_001",
-          "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"prompt\": \"prompt to extract the value\", \"type\": \"date\"}]}. Leverage prompt for each key to identify where the key and value pairs are in the document. In certain cases, prompt can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
-          "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
-          "num_tokens_for_completion": 4096,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "top_k": null,
-               "type": "google_params"
-          }
-       },
-     "long_text": {
-          "model": "google__gemini_1_5_flash_001",
-          "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"prompt\": \"prompt to extract the value\", \"type\": \"date\"}]}. Leverage prompt for each key to identify where the key and value pairs are in the document. In certain cases, prompt can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
-          "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
-          "num_tokens_for_completion": 4096,
-          "llm_endpoint_params": {
-               "temperature": 0,
-               "top_p": 1,
-               "top_k": null,
-               "type": "google_params"
-             },
-          "embeddings": {
-               "model": "google__textembedding_gecko_003",
-               "strategy": {
-                    "id": "basic",
-                    "num_tokens_per_chunk": 64
-               }
-          }
-     }
-}
-`````
-
-</Tab>
-
+    `````sh
+    {
+         "type": "ai_agent_extract_structured",
+         "basic_text": {
+              "model": "google__gemini_1_5_flash_001",
+              "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"prompt\": \"prompt to extract the value\", \"type\": \"date\"}]}. Leverage prompt for each key to identify where the key and value pairs are in the document. In certain cases, prompt can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
+              "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
+              "num_tokens_for_completion": 4096,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "top_k": null,
+                   "type": "google_params"
+              }
+           },
+         "long_text": {
+              "model": "google__gemini_1_5_flash_001",
+              "system_message": "Respond only in valid json. You are extracting metadata that is name, value pairs from a document. Only output the metadata in valid json form, as {\"name1\":\"value1\",\"name2\":\"value2\"} and nothing else. You will be given the document data and the schema for the metadata, that defines the name, description and type of each of the fields you will be extracting. Schema is of the form {\"fields\": [{\"key\": \"key_name\", \"prompt\": \"prompt to extract the value\", \"type\": \"date\"}]}. Leverage prompt for each key to identify where the key and value pairs are in the document. In certain cases, prompt can also indicate the instructions to perform on the document to obtain the value. Prompt will be in the form of Schema is ``schema`` \n document is ````document````",
+              "prompt_template": "If you need to know today's date to respond, it is {current_date}. Schema is ``{user_question}`` \n document is ````{content}````",
+              "num_tokens_for_completion": 4096,
+              "llm_endpoint_params": {
+                   "temperature": 0,
+                   "top_p": 1,
+                   "top_k": null,
+                   "type": "google_params"
+                 },
+              "embeddings": {
+                   "model": "google__textembedding_gecko_003",
+                   "strategy": {
+                        "id": "basic",
+                        "num_tokens_per_chunk": 64
+                   }
+              }
+         }
+    }
+    `````
+  </Tab>
 </Tabs>
 
-[prereq]: /ja/guides/box-ai/ai-tutorials/prerequisites
+[prereq]: /guides/box-ai/ai-tutorials/prerequisites
 
-[models]: /ja/guides/box-ai/ai-models
+[models]: /guides/box-ai/ai-models
 
-[ai-agent-config]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
+[ai-agent-config]: /guides/box-ai/ai-agents/ai-agent-overrides
 
-[override-tutorials]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
+[override-tutorials]: /guides/box-ai/ai-agents/ai-agent-overrides
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
-    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
-    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
-  ]}
+  { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+  { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+  { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "ガイド" },
-    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "ガイド" },
-    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+  { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+  { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+  { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+  { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" }
+]}
 />

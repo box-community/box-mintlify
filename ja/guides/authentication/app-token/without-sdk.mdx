@@ -1,48 +1,35 @@
 ---
-title: "SDKを使用しないアプリトークン"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_authorize
+  0: get_authorize
 related_guides:
-  - authentication/tokens/downscope
+  0: authentication/tokens/downscope
+related_resources: {}
 required_guides:
-  - authentication/select
-  - authentication/app-token/app-token-setup
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: authentication/app-token
-is_index: false
-id: authentication/app-token/without-sdk
-type: guide
-total_steps: 5
-sibling_id: authentication/app-token
-parent_id: authentication/app-token
-next_page_id: authentication/app-token/app-token-setup
-previous_page_id: authentication/app-token/with-sdk
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/app-token/without-sdk.md
+  0: authentication/select
+  1: authentication/app-token/app-token-setup
+title: SDKを使用しないアプリトークン
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "アプリトークン認証を使用した設定", href: "/ja/guides/authentication/app-token/app-token-setup", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "Setup with App Token Auth", href: "/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+]}
 />
+
 Box公式SDKのいずれも使用できるようになっていない場合や選択した言語のSDKがない場合は、SDKがなくてもBox APIを使用できます。
 
 アプリトークン認証は、Box APIを直接操作するよう設計されており、ユーザーがアプリケーションを承認するためにBoxを介してリダイレクトする必要はありません。ただし、この認証はアプリケーションのデータのみに制限されています。
 
 <Note>
-
-JWTを使用した認証方法は、もともとアプリケーションのサービスアカウントに関連付けられています。このトークンを使用して実行されるAPIコールはどれも、このアプリケーションから実行されているように見えますが、明示的なアクセス権がなければ他のユーザーのファイルやフォルダにはアクセスできません。
-
+  JWTを使用した認証方法は、もともとアプリケーションのサービスアカウントに関連付けられています。このトークンを使用して実行されるAPIコールはどれも、このアプリケーションから実行されているように見えますが、明示的なアクセス権がなければ他のユーザーのファイルやフォルダにはアクセスできません。
 </Note>
 
 ## 前提条件
@@ -60,18 +47,18 @@ JWTを使用した認証方法は、もともとアプリケーションのサ�
 ```sh
 curl https://api.box.com/2.0/users/me \
     -H "authorization: Bearer EGmDmRVfhfHsqesn5yVYHAqUkD0dyDfk"
-
 ```
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
-  ]}
+  { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "トークンのダウンスコープ", href: "/ja/guides/authentication/tokens/downscope", badge: "ガイド" }
-  ]}
+  { label: "Downscope a Token", href: "/guides/authentication/tokens/downscope", badge: "GUIDE" }
+]}
 />

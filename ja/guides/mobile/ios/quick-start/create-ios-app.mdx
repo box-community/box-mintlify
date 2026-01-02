@@ -1,31 +1,23 @@
 ---
-title: "iOSアプリの作成"
-sidebarTitle: 1. iOSアプリの作成
-type: quick-start
 hide_in_page_nav: true
-category_id: mobile
-subcategory_id: mobile/ios
-is_index: false
-id: mobile/ios/quick-start/create-ios-app
-rank: 1
-total_steps: 5
-sibling_id: mobile/ios/quick-start
-parent_id: mobile/ios/quick-start
-next_page_id: mobile/ios/quick-start/install-ios-sdk
-previous_page_id: mobile/ios/quick-start
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/mobile/ios/quick-start/1-create-ios-app.md
+sidebarTitle: 1. Create an iOS App
+title: iOSアプリの作成
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/mobile/ios/quick-start/create-ios-app",
-                          "ja/guides/mobile/ios/quick-start/install-ios-sdk",
-                          "ja/guides/mobile/ios/quick-start/configure-box-app",
-                          "ja/guides/mobile/ios/quick-start/make-api-call",
-                          "ja/guides/mobile/ios/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/mobile/ios/quick-start/create-ios-app",
+                        "guides/mobile/ios/quick-start/install-ios-sdk",
+                        "guides/mobile/ios/quick-start/configure-box-app",
+                        "guides/mobile/ios/quick-start/make-api-call",
+                        "guides/mobile/ios/quick-start/next-steps"
+                      ]}
+/>
 
 Box iOS SDKをインストールする前に、依存関係を追加できるiOSアプリケーションを用意しておく必要があります。ここでは、新しい空のアプリケーションを作成します。
 
@@ -35,18 +27,18 @@ Box iOS SDKをインストールする前に、依存関係を追加できるiOS
 
 今回Xcodeでのアプリケーションの作成が初めてである場合も、すでにアプリケーション開発の経験がある場合も、Box iOS SDKと新しい空のアプリケーションの統合から開始します。
 
+{/* <Choice> */}
+
 1. Xcodeを起動します。
 2. 上部のメニューから、\[**File (ファイル)**] -> \[**New (新規)**] -> \[**Project... (プロジェクト...)**] を選択します。
 3. \[**Single View App (単一ビューアプリ)**] のオプションを選択します。
    <Frame center>
-   ![iOSアプリケーションの種類の選択](./create-app-type.png)
+     ![iOSアプリケーションの種類の選択](./create-app-type.png)
    </Frame>
-
 4. `Product Name`、`Organization Identifier`、`Organization Name`など、アプリケーションの設定情報を入力します。
    <Frame center>
-   ![iOSアプリケーションの設定](./create-app-config.png)
+     ![iOSアプリケーションの設定](./create-app-config.png)
    </Frame>
-
 5. アプリケーション用のローカルの保存場所を選択し、\[**Create (作成)**] をクリックします。
 
 {/* </Choice> */}
@@ -55,8 +47,4 @@ Box iOS SDKをインストールする前に、依存関係を追加できるiOS
 
 * Xcodeで新しい空のiOSアプリケーションを作成しました。
 
-<Next>
-
-空のiOSアプリケーションを作成しました
-
-</Next>
+<Next>空のiOSアプリケーションを作成しました</Next>

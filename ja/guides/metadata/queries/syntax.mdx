@@ -1,22 +1,11 @@
 ---
-title: "クエリ構文"
-related_endpoints: []
-required_guides: []
-category_id: metadata
-subcategory_id: metadata/5-queries
-is_index: false
-id: metadata/queries/syntax
-rank: 2
-type: guide
-total_steps: 7
-sibling_id: metadata/queries
-parent_id: metadata/queries
-next_page_id: metadata/queries/item-fields
-previous_page_id: metadata/queries/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/5-queries/2-syntax.md
+related_endpoints: {}
+required_guides: {}
+title: クエリ構文
+
 fullyTranslated: true
 ---
+
 メタデータクエリAPIのクエリ構文はSQLデータベースのクエリ構文と似ています。契約金額が100ドルを超える契約メタデータテンプレートに一致するすべてのファイルとフォルダに対してクエリを実行するには、以下のメタデータクエリを作成します。
 
 ```json
@@ -32,7 +21,6 @@ fullyTranslated: true
   ],
   "ancestor_folder_id": "5555"
 }
-
 ```
 
 この場合、`from`値はメタデータテンプレートの`scope`と`templateKey`を表し、`ancestor_folder_id`はサブフォルダを含む検索範囲となるフォルダIDを表します。
@@ -67,7 +55,6 @@ fullyTranslated: true
   },
   ...
 }
-
 ```
 
 ### 論理演算子
@@ -81,8 +68,8 @@ fullyTranslated: true
 | `AND`         | `AND`で区切られたすべての条件が`TRUE`の場合に一致となります。                                                                                                                                            |
 | `OR`          | `OR`で区切られた条件のいずれかが`TRUE`の場合に一致となります。                                                                                                                                            |
 | `NOT`         | 先行する条件が`TRUE`**でない**場合に一致となります。                                                                                                                                                 |
-| `LIKE`        | テンプレートフィールドの値がパターンと一致する場合に一致となります。文字列値のみに対応します。詳細については、[パターン一致](#パターン一致)を参照してください。その他の制限については以下を参照してください。                                                             |
-| `NOT LIKE`    | テンプレートフィールドの値がパターンと一致**しない**場合に一致となります。文字列値のみに対応します。詳細については、[パターン一致](#パターン一致)を参照してください。その他の制限については以下を参照してください。                                                        |
+| `LIKE`        | テンプレートフィールドの値がパターンと一致する場合に一致となります。文字列値のみに対応します。詳細については、[パターン一致](#pattern-matching)を参照してください。その他の制限については以下を参照してください。                                                             |
+| `NOT LIKE`    | テンプレートフィールドの値がパターンと一致**しない**場合に一致となります。文字列値のみに対応します。詳細については、[パターン一致](#pattern-matching)を参照してください。その他の制限については以下を参照してください。                                                        |
 | `ILIKE`       | `LIKE`と同じですが、大文字と小文字が区別されません。その他の制限については以下を参照してください。                                                                                                                            |
 | `NOT ILIKE`   | `NOT LIKE`と同じですが、大文字と小文字が区別されません。その他の制限については以下を参照してください。                                                                                                                        |
 | `IN`          | テンプレートフィールドの値が指定されたリストの任意の値と等しい場合に一致となります。`amount IN (:arg1, :arg2, :arg3)`などの各リスト項目には、明示的に定義された`query_params`引数を使用します。仕様では、IN演算子はメタデータクエリの複数選択フィールドでサポートされていないため、400エラーが返されます。 |
@@ -97,9 +84,7 @@ fullyTranslated: true
 {/* i18n-disable localize-links */}
 
 <Note>
-
-`ILIKE`演算子を使用した場合を除き、`string`または`enum`フィールドでの一致は、どれも大文字小文字が区別されます。
-
+  `ILIKE`演算子を使用した場合を除き、`string`または`enum`フィールドでの一致は、どれも大文字小文字が区別されます。
 </Note>
 
 ### 比較演算子
@@ -116,9 +101,7 @@ fullyTranslated: true
 | `<>` | テンプレートフィールドの値が、指定した値と**等しくない**ことを表します。 |
 
 <Warning>
-
-ビット単位演算子および算術演算子は、メタデータクエリAPIではサポートされていません。
-
+  ビット単位演算子および算術演算子は、メタデータクエリAPIではサポートされていません。
 </Warning>
 
 ### パターン一致
@@ -141,11 +124,8 @@ fullyTranslated: true
   },
   ...
 }
-
 ```
 
 <Note>
-
-`%`または`_`文字を、その文字として照合する必要がある場合は、エスケープするためにバックスラッシュ文字`\`を使用できます。たとえば、`20\%`の場合は、リテラル値`20%`が一致します。
-
+  `%`または`_`文字を、その文字として照合する必要がある場合は、エスケープするためにバックスラッシュ文字`\`を使用できます。たとえば、`20\%`の場合は、リテラル値`20%`が一致します。
 </Note>

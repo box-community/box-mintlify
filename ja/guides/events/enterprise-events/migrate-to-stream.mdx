@@ -1,25 +1,14 @@
 ---
-title: "履歴からストリームへの移行"
+alias_paths: {}
 rank: 3
 related_endpoints:
-  - get_events
-  - options_events
+  0: get_events
+  1: options_events
 related_guides:
-  - events/enterprise-events/for-enterprise
-required_guides: []
-alias_paths: []
-category_id: events
-subcategory_id: events/enterprise-events
-is_index: false
-id: events/enterprise-events/migrate-to-stream
-type: guide
-total_steps: 2
-sibling_id: events/enterprise-events
-parent_id: events/enterprise-events
-next_page_id: ''
-previous_page_id: events/enterprise-events/for-enterprise
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/enterprise-events/migrate-to-stream.md
+  0: events/enterprise-events/for-enterprise
+required_guides: {}
+title: 履歴からストリームへの移行
+
 fullyTranslated: true
 ---
 
@@ -57,35 +46,31 @@ Boxでは、`admin_logs`を使用してライブイベントを登録してい�
 ```sh
 curl https://api.box.com/2.0/events?stream_type=admin_logs&stream_position=1632893855 \
     -H "authorization: Bearer <ACCESS_TOKEN>"
-
 ```
 
 ### 2. `admin_logs_streaming`を使用して重複する既存のリクエストを開始します
 
 * 2週間前から開始し、埋め戻しする:
 
-```sh
-    curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_position=0 \
-        -H "authorization: Bearer <ACCESS_TOKEN>"
-
-```
+  ```sh
+  curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_position=0 \
+      -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
 または
 
 * 今すぐ開始し、並行して実行する:
 
-```sh
-    curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_position=now \
-        -H "authorization: Bearer <ACCESS_TOKEN>"
-
-```
+  ```sh
+  curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_position=now \
+      -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
 ### 3. これまでの結果のページネーションを行い、`admin_logs`イベントとの重複を排除します
 
 ```sh
 curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_position=1632893855 \
     -H "authorization: Bearer <ACCESS_TOKEN>"
-
 ```
 
 ### 4. 十分と思われるまで重複を継続します
@@ -93,23 +78,22 @@ curl https://api.box.com/2.0/events?stream_type=admin_logs_streaming&stream_posi
 ### 5. 古い`admin_logs`リクエストを無効にします
 
 <Frame center shadow border>
-
-![ストリームの移行フロー](/images/guides/events/enterprise-events/migrate_to_stream.png)
-
+  ![ストリームの移行フロー](/images/guides/events/enterprise-events/migrate_to_stream.png)
 </Frame>
 
-[events-api]: /ja/reference/events
+[events-api]: /reference/events
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
-    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
-  ]}
+  { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+  { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "ガイド" }
-  ]}
+  { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" }
+]}
 />

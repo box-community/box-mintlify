@@ -1,26 +1,15 @@
 ---
-title: "リーガルホールドポリシーの取得"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_legal_hold_policies_id
+  0: get_legal_hold_policies_id
 related_guides:
-  - legal-holds/list
+  0: legal-holds/list
 related_resources:
-  - legal_hold_policy
-required_guides: []
-alias_paths: []
-category_id: legal-holds
-subcategory_id: null
-is_index: false
-id: legal-holds/get
-type: guide
-total_steps: 2
-sibling_id: legal-holds
-parent_id: legal-holds
-next_page_id: legal-holds
-previous_page_id: legal-holds/list
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/legal-holds/get.md
+  0: legal_hold_policy
+required_guides: {}
+title: リーガルホールドポリシーの取得
+
 fullyTranslated: true
 ---
 
@@ -29,89 +18,88 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 会社内に作成された特定のリーガルホールドポリシーの情報を取得するには、ポリシーの`id`を指定して[`GET /legal_hold_policies/:id`][legal_hold] APIエンドポイントを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/legal_hold_policies/324432" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/legal_hold_policies/324432" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.legalHoldPolicies.getLegalHoldPolicyById(legalHoldPolicyId);
+  ```
 
-```typescript Node/TypeScript v10
-await client.legalHoldPolicies.getLegalHoldPolicyById(legalHoldPolicyId);
-```
+  ```python Python v10
+  client.legal_hold_policies.get_legal_hold_policy_by_id(legal_hold_policy_id)
+  ```
 
-```python Python v10
-client.legal_hold_policies.get_legal_hold_policy_by_id(legal_hold_policy_id)
-```
+  ```cs .NET v10
+  await client.LegalHoldPolicies.GetLegalHoldPolicyByIdAsync(legalHoldPolicyId: legalHoldPolicyId);
+  ```
 
-```cs .NET v10
-await client.LegalHoldPolicies.GetLegalHoldPolicyByIdAsync(legalHoldPolicyId: legalHoldPolicyId);
-```
+  ```swift Swift v10
+  try await client.legalHoldPolicies.getLegalHoldPolicyById(legalHoldPolicyId: legalHoldPolicyId)
+  ```
 
-```swift Swift v10
-try await client.legalHoldPolicies.getLegalHoldPolicyById(legalHoldPolicyId: legalHoldPolicyId)
-```
+  ```java Java v10
+  client.getLegalHoldPolicies().getLegalHoldPolicyById(legalHoldPolicyId)
+  ```
 
-```java Java v10
-client.getLegalHoldPolicies().getLegalHoldPolicyById(legalHoldPolicyId)
-```
+  ```java Java v5
+  BoxLegalHoldPolicy policy = new BoxLegalHoldPolicy(api, id);
+  BoxLegalHoldPolicy.Info policyInfo = policy.getInfo();
+  ```
 
-```java Java v5
-BoxLegalHoldPolicy policy = new BoxLegalHoldPolicy(api, id);
-BoxLegalHoldPolicy.Info policyInfo = policy.getInfo();
-```
+  ```python Python v4
+  legal_hold_policy = client.legal_hold_policy(policy_id='12345').get()
+  print(f'The "{legal_hold_policy.policy_name}" policy is {legal_hold_policy.status}')
+  ```
 
-```python Python v4
-legal_hold_policy = client.legal_hold_policy(policy_id='12345').get()
-print(f'The "{legal_hold_policy.policy_name}" policy is {legal_hold_policy.status}')
-```
+  ```cs .NET v6
+  BoxLegalHoldPolicy policy = await client.LegalHoldPoliciesManager.GetLegalHoldPolicyAsync("11111");
+  ```
 
-```cs .NET v6
-BoxLegalHoldPolicy policy = await client.LegalHoldPoliciesManager.GetLegalHoldPolicyAsync("11111");
-```
-
-```javascript Node v4
-client.legalHoldPolicies.get('11111')
-	.then(policy => {
-		/* policy -> {
-			type: 'legal_hold_policy',
-			id: '11111',
-			policy_name: 'IRS Audit',
-			description: '',
-			status: 'active',
-			assignment_counts: { user: 1, folder: 0, file: 0, file_version: 0 },
-			created_by: 
-			{ type: 'user',
-				id: '22222',
-				name: 'Example User',
-				login: 'user@example.com' },
-			created_at: '2016-05-18T10:28:45-07:00',
-			modified_at: '2016-05-18T11:25:59-07:00',
-			deleted_at: null,
-			filter_started_at: '2016-05-17T01:00:00-07:00',
-			filter_ended_at: '2016-05-21T01:00:00-07:00' }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  client.legalHoldPolicies.get('11111')
+  	.then(policy => {
+  		/* policy -> {
+  			type: 'legal_hold_policy',
+  			id: '11111',
+  			policy_name: 'IRS Audit',
+  			description: '',
+  			status: 'active',
+  			assignment_counts: { user: 1, folder: 0, file: 0, file_version: 0 },
+  			created_by: 
+  			{ type: 'user',
+  				id: '22222',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			created_at: '2016-05-18T10:28:45-07:00',
+  			modified_at: '2016-05-18T11:25:59-07:00',
+  			deleted_at: null,
+  			filter_started_at: '2016-05-17T01:00:00-07:00',
+  			filter_ended_at: '2016-05-21T01:00:00-07:00' }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 ## 必須のスコープ
 
 リーガルホールドAPIのいずれかを使用する前に、アプリケーションでは適切なスコープを有効にしておく必要があります。詳細については、[必須のスコープ][scopes]を参照してください。
 
-[legal_hold]: /ja/reference/get-legal-hold-policies-id
+[legal_hold]: /reference/get-legal-hold-policies-id
 
-[scopes]: /ja/guides/legal-holds#required-scopes
+[scopes]: /guides/legal-holds#required-scopes
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get legal hold policy", href: "/reference/get-legal-hold-policies-id", badge: "GET" }
-  ]}
+  { label: "Get legal hold policy", href: "/reference/get-legal-hold-policies-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "すべてのリーガルホールドポリシーのリストの取得", href: "/ja/guides/legal-holds/list", badge: "ガイド" }
-  ]}
+  { label: "List All Legal Hold Policies", href: "/guides/legal-holds/list", badge: "GUIDE" }
+]}
 />

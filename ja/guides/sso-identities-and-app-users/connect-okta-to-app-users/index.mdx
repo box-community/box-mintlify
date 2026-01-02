@@ -1,31 +1,19 @@
 ---
-title: "ウェブアプリ: Box App UserへのOkta IDの関連付け"
-rank: 0
-type: quick-start
-hide_step_number: true
 hide_in_page_nav: true
-category_id: sso-identities-and-app-users
-subcategory_id: sso-identities-and-app-users/connect-okta-to-app-users
-is_index: true
-id: sso-identities-and-app-users/connect-okta-to-app-users
-total_steps: 6
-sibling_id: sso-identities-and-app-users
-parent_id: sso-identities-and-app-users
-next_page_id: >-
-  sso-identities-and-app-users/connect-okta-to-app-users/scaffold-application-code
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/connect-okta-to-app-users/0-index.md
+hide_step_number: true
+rank: 0
+title: "ウェブアプリ: Box App UserへのOkta IDの関連付け"
+type: quick-start
+
 fullyTranslated: true
 ---
+
 [Okta][okta]は、企業に広く採用されているアクセス管理およびIDプラットフォームです。資格情報一式と1つの安全なダッシュボードを使用して複数のアプリケーションを管理および認証するための統合された方法を提供しています。
 
 カスタムBoxアプリケーションに接続している場合、[Okta API][okta-dev]を使用して、そのBoxアプリケーション内でユーザーの本人確認を行うためのシングルサインオンメカニズムを提供できます。これにより、統合IDシステム (Okta) とBox APIの間のエクスペリエンスが統一されます。
 
 <Frame noborder center shadow>
-
-![Oktaのダッシュボード](./img/okta-dashboard.png)
-
+  ![Oktaのダッシュボード](./img/okta-dashboard.png)
 </Frame>
 
 ## 概要
@@ -46,29 +34,21 @@ fullyTranslated: true
 その後このユーザーでログインを試みると、`Hello {{USERNAME}}`というメッセージがブラウザに出力されるようになります。
 
 <Warning>
-
-このガイドを簡略化するため、ここでは、ウェブアプリケーションのユーザーインターフェースは作成しません。代わりに、出力はアプリケーションコンソール/ターミナルを通じて表示されるほか、ブラウザで直接テキスト出力として表示されます。
-
+  このガイドを簡略化するため、ここでは、ウェブアプリケーションのユーザーインターフェースは作成しません。代わりに、出力はアプリケーションコンソール/ターミナルを通じて表示されるほか、ブラウザで直接テキスト出力として表示されます。
 </Warning>
-
-<Next>
-
-開始する準備ができました
-
-</Next>
 
 [okta]: https://www.okta.com/
 
 [okta-dev]: https://developer.okta.com/
 
-[step1]: /ja/guides/sso-identities-and-app-users/connect-okta-to-app-users/scaffold-application-code
+[step1]: /guides/sso-identities-and-app-users/connect-okta-to-app-users/scaffold-application-code
 
-[step2]: /ja/guides/sso-identities-and-app-users/connect-okta-to-app-users/configure-okta
+[step2]: /guides/sso-identities-and-app-users/connect-okta-to-app-users/configure-okta
 
-[step3]: /ja/guides/sso-identities-and-app-users/connect-okta-to-app-users/configure-box
+[step3]: /guides/sso-identities-and-app-users/connect-okta-to-app-users/configure-box
 
-[step4]: /ja/guides/sso-identities-and-app-users/connect-okta-to-app-users/logging-into-app
+[step4]: /guides/sso-identities-and-app-users/connect-okta-to-app-users/logging-into-app
 
-[step5]: /ja/guides/sso-identities-and-app-users/connect-okta-to-app-users/find-or-create-box-users
+[step5]: /guides/sso-identities-and-app-users/connect-okta-to-app-users/find-or-create-box-users
 
-[step6]: /ja/guides/sso-identities-and-app-users/connect-okta-to-app-users/run-the-app
+[step6]: /guides/sso-identities-and-app-users/connect-okta-to-app-users/run-the-app

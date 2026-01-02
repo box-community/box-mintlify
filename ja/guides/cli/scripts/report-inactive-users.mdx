@@ -1,50 +1,37 @@
 ---
-title: "非アクティブなユーザーのレポート"
 rank: 4
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/oauth2
-  - cli/scripts/provision-users-folders
-  - cli/scripts/deprovision-users
-  - cli/scripts/user-zones-mass-update
+  0: authentication/oauth2
+  1: cli/scripts/provision-users-folders
+  2: cli/scripts/deprovision-users
+  3: cli/scripts/user-zones-mass-update
 related_pages:
-  - sdks-and-tools
+  0: sdks-and-tools
+related_resources: {}
 required_guides:
-  - authentication/oauth2/oauth2-setup
-related_resources: []
-category_id: cli
-subcategory_id: cli/scripts
-is_index: false
-id: cli/scripts/report-inactive-users
-type: guide
-total_steps: 7
-sibling_id: cli/scripts
-parent_id: cli/scripts
-next_page_id: cli/scripts/manage-groups-collaborations
-previous_page_id: cli/scripts/user-zones-mass-update
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/cli/scripts/report-inactive-users.md
+  0: authentication/oauth2/oauth2-setup
+title: 非アクティブなユーザーのレポート
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+]}
 />
+
 このスクリプトは、一定の日数の間非アクティブであったユーザーのリストをCSVファイルで生成します。スクリプトによって以下の手順が実行されます。
 
 1. `user`ロールを持つユーザーを探します。
 
-   <Note>
-
-   このスクリプトでは、他のロール (`AppUser`など) は考慮していません。
-
-   </Note>
+   <message>
+     このスクリプトでは、他のロール (`AppUser`など) は考慮していません。
+   </message>
 
 2. [Box Events][boxevents]を使用して、そのユーザーが一定の日数の間に操作を行ったかどうかを確認します。デフォルトのイベントタイプのリストは、`LOGIN`、`UPLOAD`、`COPY`、`MOVE`、`PREVIEW`、`DOWNLOAD`、`EDIT`、`DELETE`、`UNDELETE`、`LOCK`、`UNLOCK`、`NEW_USER`です。このリストはスクリプトの設定で変更できます。
 
@@ -62,7 +49,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ```bash
 pwsh
-
 ```
 
 どのディレクトリでこのコマンドを実行するかに応じて、出力が異なる場合があります。以下に例を示します。
@@ -75,14 +61,11 @@ https://aka.ms/powershell
 Type 'help' to get help.
 
 PS /Users/user/repos/boxcli/examples>
-
 ```
 
-<Note>
-
-問題が発生する場合は、[.NET Core](https://dotnet.microsoft.com/download)と[PowerShell][pwsh]の両方をインストールしたかどうか確認してください。
-
-</Note>
+<message>
+  問題が発生する場合は、[.NET Core](https://dotnet.microsoft.com/download)と[PowerShell][pwsh]の両方をインストールしたかどうか確認してください。
+</message>
 
 ### Box CLI
 
@@ -92,32 +75,28 @@ PS /Users/user/repos/boxcli/examples>
 
 1. `boxcli` GitHubリポジトリを複製してこの例のフォルダにcdコマンドで移動するか、[`examples`][examples]ディレクトリからファイルをダウンロードします。
 
-```bash
-    git clone https://github.com/box/boxcli.git
-    cd boxcli/examples/Inactive\ Users\ Report/
-
-```
+   ```bash
+   git clone https://github.com/box/boxcli.git
+   cd boxcli/examples/Inactive\ Users\ Report/
+   ```
 
 2. スクリプトでUser Eventをスキャンする日数を設定します。この値を指定しなかった場合やデフォルト設定のままにした場合は、スクリプトによって入力するよう求められます。
 
-```bash
-    $daysInactive = "10"
-
-```
+   ```bash
+   $daysInactive = "10"
+   ```
 
 3. (省略可) レポート出力ファイル名を変更するには、`ReportOutputFile`パラメータを定義します。
 
-```bash
-    $ReportOutputFile = $ReportName + ".csv"
-
-```
+   ```bash
+   $ReportOutputFile = $ReportName + ".csv"
+   ```
 
 4. (省略可) イベントタイプを変更するには、`eventType`パラメータのリストを定義します。
 
-```bash
-    $eventType = "LOGIN,UPLOAD,COPY,MOVE"
-
-```
+   ```bash
+   $eventType = "LOGIN,UPLOAD,COPY,MOVE"
+   ```
 
 ## スクリプトの実行
 
@@ -125,14 +104,12 @@ PowerShellコマンドを実行します。
 
 ```bash
 pwsh
-
 ```
 
 スクリプトを実行します。
 
 ```bash
 ./Inactive_Users_Report.ps1
-
 ```
 
 スクリプトの実行が完了すると、以下のような出力が表示されます。
@@ -145,7 +122,6 @@ Enterprise has: 0 App user, 6 regular users. With 1 admin role, 5 user roles.
 Need to check 5 users (regular user, with user role) for inactive.
 Found 5 users inactive for more than 3 days.
 Report is available at InactiveUsers.csv
-
 ```
 
 ## ログ
@@ -159,24 +135,24 @@ Report is available at InactiveUsers.csv
 
 [pwsh]: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2
 
-[quickstart]: /ja/guides/cli/quick-start/create-oauth-app
+[quickstart]: /guides/cli/quick-start/create-oauth-app
 
-[boxevents]: /ja/reference/resources/event
+[boxevents]: /reference/resources/event
 
-[deprovisionscript]: /ja/guides/cli/scripts/deprovision-users
+[deprovisionscript]: /guides/cli/scripts/deprovision-users
 
 [console]: https://app.box.com/developers/console
 
-[auth]: /ja/guides/authentication/oauth2/oauth2-setup
+[auth]: /guides/authentication/oauth2/oauth2-setup
 
 [examples]: https://github.com/box/boxcli/tree/main/examples/Inactive%20Users%20Report
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" },
-    { label: "ユーザーとフォルダのプロビジョニング", href: "/ja/guides/cli/scripts/provision-users-folders", badge: "ガイド" },
-    { label: "ユーザーのプロビジョニング解除とフォルダのアーカイブ", href: "/ja/guides/cli/scripts/deprovision-users", badge: "ガイド" },
-    { label: "ユーザーのゾーンの更新", href: "/ja/guides/cli/scripts/user-zones-mass-update", badge: "ガイド" }
-  ]}
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+  { label: "Provision users and folders", href: "/guides/cli/scripts/provision-users-folders", badge: "GUIDE" },
+  { label: "Deprovision users and archive folders", href: "/guides/cli/scripts/deprovision-users", badge: "GUIDE" },
+  { label: "Update user zones", href: "/guides/cli/scripts/user-zones-mass-update", badge: "GUIDE" }
+]}
 />

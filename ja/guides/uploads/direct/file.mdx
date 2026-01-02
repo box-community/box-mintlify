@@ -1,206 +1,190 @@
 ---
-title: "新しいファイルのアップロード"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - options_files_content
-  - post_files_content
-related_guides: []
-related_pages: []
+  0: options_files_content
+  1: post_files_content
+related_guides: {}
+related_pages: {}
+related_resources: {}
 required_guides:
-  - uploads/check
-related_resources: []
-alias_paths: []
-category_id: uploads
-subcategory_id: uploads/direct
-is_index: false
-id: uploads/direct/file
-type: guide
-total_steps: 2
-sibling_id: uploads/direct
-parent_id: uploads/direct
-next_page_id: uploads/direct/file-version
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/direct/file.md
+  0: uploads/check
+title: 新しいファイルのアップロード
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "事前チェック", href: "/ja/guides/uploads/check", badge: "ガイド" }
-  ]}
+  { label: "Preflight Check", href: "/guides/uploads/check", badge: "GUIDE" }
+]}
 />
+
 直接アップロードによってBoxにファイルをアップロードするには、ファイルのコンテンツ、目的のファイル名、フォルダIDを使用して、[`POST /files/content`][upload] APIにAPIコールを実行します。
 
 <Tip>
-
-アーカイブフォルダにファイルをアップロードするには、最初に、開発者コンソールで[グローバルコンテンツマネージャ][GCM] (GCM) スコープを有効にする必要があります。
-
+  アーカイブフォルダにファイルをアップロードするには、最初に、開発者コンソールで[グローバルコンテンツマネージャ][GCM] (GCM) スコープを有効にする必要があります。
 </Tip>
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://upload.box.com/api/2.0/files/content" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: multipart/form-data" \
+       -F attributes='{"name":"Contract.pdf", "parent":{"id":"11446498"}}' \
+       -F file=@<FILE_NAME>
+  ```
 
-```sh cURL
-curl -i -X POST "https://upload.box.com/api/2.0/files/content" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: multipart/form-data" \
-     -F attributes='{"name":"Contract.pdf", "parent":{"id":"11446498"}}' \
-     -F file=@<FILE_NAME>
-```
+  ```typescript Node/TypeScript v10
+  const fs = require('fs');
 
-```typescript Node/TypeScript v10
-const fs = require('fs');
+  const attrs = { name: 'filename.txt', parent: { id: '0' } };
+  const body = {
+    attributes: attrs,
+    file: fs.createReadStream('filename.txt'),
+  };
+  const files = await client.uploads.uploadFile(body);
+  const file = files.entries[0];
+  console.log(`File uploaded with id ${file.id}, name ${file.name}`);
+  ```
 
-const attrs = { name: 'filename.txt', parent: { id: '0' } };
-const body = {
-  attributes: attrs,
-  file: fs.createReadStream('filename.txt'),
-};
-const files = await client.uploads.uploadFile(body);
-const file = files.entries[0];
-console.log(`File uploaded with id ${file.id}, name ${file.name}`);
-```
+  ```python Python v10
+  client.uploads.upload_file(
+      UploadFileAttributes(
+          name=new_file_name, parent=UploadFileAttributesParentField(id="0")
+      ),
+      file_content_stream,
+  )
+  ```
 
-```python Python v10
-client.uploads.upload_file(
-    UploadFileAttributes(
-        name=new_file_name, parent=UploadFileAttributesParentField(id="0")
-    ),
-    file_content_stream,
-)
-```
+  ```cs .NET v10
+  await client.Uploads.UploadFileAsync(requestBody: new UploadFileRequestBody(attributes: new UploadFileRequestBodyAttributesField(name: newFileName, parent: new UploadFileRequestBodyAttributesParentField(id: "0")), file: fileContentStream));
+  ```
 
-```cs .NET v10
-await client.Uploads.UploadFileAsync(requestBody: new UploadFileRequestBody(attributes: new UploadFileRequestBodyAttributesField(name: newFileName, parent: new UploadFileRequestBodyAttributesParentField(id: "0")), file: fileContentStream));
-```
+  ```swift Swift v10
+  // Create InputStream for a file based on URL
+  guard let fileStream = InputStream(url: URL(string: "<URL_TO_YOUR_FILE>")!) else {
+      fatalError("Could not read a file")
+  }
 
-```swift Swift v10
-// Create InputStream for a file based on URL
-guard let fileStream = InputStream(url: URL(string: "<URL_TO_YOUR_FILE>")!) else {
-    fatalError("Could not read a file")
-}
+  // Create a request body with the required parameters
+  let requestBody = UploadFileRequestBodyArg(
+      attributes: UploadFileRequestBodyArgAttributesField(
+          name: "filename.txt",
+          parent: UploadFileRequestBodyArgAttributesFieldParentField(id: "0")
+      ),
+      file: fileStream
+  )
 
-// Create a request body with the required parameters
-let requestBody = UploadFileRequestBodyArg(
-    attributes: UploadFileRequestBodyArgAttributesField(
-        name: "filename.txt",
-        parent: UploadFileRequestBodyArgAttributesFieldParentField(id: "0")
-    ),
-    file: fileStream
-)
+  // Call uploadFile method
+  let files = try await client.uploads.uploadFile(requestBody: requestBody)
 
-// Call uploadFile method
-let files = try await client.uploads.uploadFile(requestBody: requestBody)
+  // Print some data from the reponse
+  if let file = files.entries?[0] {
+      print("File uploaded with id \(file.id), name \(file.name!)")
+  }
+  ```
 
-// Print some data from the reponse
-if let file = files.entries?[0] {
-    print("File uploaded with id \(file.id), name \(file.name!)")
-}
-```
+  ```java Java v10
+  client.getUploads().uploadFile(new UploadFileRequestBody(new UploadFileRequestBodyAttributesField(newFileName, new UploadFileRequestBodyAttributesParentField("0")), fileContentStream))
+  ```
 
-```java Java v10
-client.getUploads().uploadFile(new UploadFileRequestBody(new UploadFileRequestBodyAttributesField(newFileName, new UploadFileRequestBodyAttributesParentField("0")), fileContentStream))
-```
+  ```java Java v5
+  BoxFolder rootFolder = BoxFolder.getRootFolder(api);
+  FileInputStream stream = new FileInputStream("My File.txt");
+  BoxFile.Info newFileInfo = rootFolder.uploadFile(stream, "My File.txt");
+  stream.close();
+  ```
 
-```java Java v5
-BoxFolder rootFolder = BoxFolder.getRootFolder(api);
-FileInputStream stream = new FileInputStream("My File.txt");
-BoxFile.Info newFileInfo = rootFolder.uploadFile(stream, "My File.txt");
-stream.close();
-```
+  ```python Python v4
+  folder_id = '22222'
+  new_file = client.folder(folder_id).upload('/home/me/document.pdf')
+  print(f'File "{new_file.name}" uploaded to Box with file ID {new_file.id}')
+  ```
 
-```python Python v4
-folder_id = '22222'
-new_file = client.folder(folder_id).upload('/home/me/document.pdf')
-print(f'File "{new_file.name}" uploaded to Box with file ID {new_file.id}')
-```
+  ```cs .NET v6
+  using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+  {
+      BoxFileRequest requestParams = new BoxFileRequest()
+      {
+          Name = uploadFileName,
+          Parent = new BoxRequestEntity() { Id = "0" }
+      };
 
-```cs .NET v6
-using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
-{
-    BoxFileRequest requestParams = new BoxFileRequest()
-    {
-        Name = uploadFileName,
-        Parent = new BoxRequestEntity() { Id = "0" }
-    };
+      BoxFile file = await client.FilesManager.UploadAsync(requestParams, fileStream);
+  }
+  ```
 
-    BoxFile file = await client.FilesManager.UploadAsync(requestParams, fileStream);
-}
-```
-
-```javascript Node v4
-var fs = require('fs');
-var stream = fs.createReadStream('/path/to/My File.pdf');
-var folderID = '0'
-client.files.uploadFile(folderID, 'My File.pdf', stream)
-	.then(file => {
-		/* file -> {
-			total_count: 1,
-			entries: 
-			[ { type: 'file',
-				id: '11111',
-				file_version: 
-					{ type: 'file_version',
-					id: '22222',
-					sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' },
-				sequence_id: '0',
-				etag: '0',
-				sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33',
-				name: 'My File.pdf',
-				description: '',
-				size: 68431,
-				path_collection: 
-					{ total_count: 1,
-					entries: 
-					[ { type: 'folder',
-						id: '0',
-						sequence_id: null,
-						etag: null,
-						name: 'All Files' } ] },
-				created_at: '2017-05-16T15:18:02-07:00',
-				modified_at: '2017-05-16T15:18:02-07:00',
-				trashed_at: null,
-				purged_at: null,
-				content_created_at: '2017-05-16T15:18:02-07:00',
-				content_modified_at: '2017-05-16T15:18:02-07:00',
-				created_by: 
-					{ type: 'user',
-					id: '33333',
-					name: 'Test User',
-					login: 'test@example.com' },
-				modified_by: 
-					{ type: 'user',
-					id: '33333',
-					name: 'Test User',
-					login: 'test@example.com' },
-				owned_by: 
-					{ type: 'user',
-					id: '33333',
-					name: 'Test User',
-					login: 'test@example.com' },
-				shared_link: null,
-				parent: 
-					{ type: 'folder',
-					id: '0',
-					sequence_id: null,
-					etag: null,
-					name: 'All Files' }
-				item_status: 'active' } ] }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  var fs = require('fs');
+  var stream = fs.createReadStream('/path/to/My File.pdf');
+  var folderID = '0'
+  client.files.uploadFile(folderID, 'My File.pdf', stream)
+  	.then(file => {
+  		/* file -> {
+  			total_count: 1,
+  			entries: 
+  			[ { type: 'file',
+  				id: '11111',
+  				file_version: 
+  					{ type: 'file_version',
+  					id: '22222',
+  					sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' },
+  				sequence_id: '0',
+  				etag: '0',
+  				sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33',
+  				name: 'My File.pdf',
+  				description: '',
+  				size: 68431,
+  				path_collection: 
+  					{ total_count: 1,
+  					entries: 
+  					[ { type: 'folder',
+  						id: '0',
+  						sequence_id: null,
+  						etag: null,
+  						name: 'All Files' } ] },
+  				created_at: '2017-05-16T15:18:02-07:00',
+  				modified_at: '2017-05-16T15:18:02-07:00',
+  				trashed_at: null,
+  				purged_at: null,
+  				content_created_at: '2017-05-16T15:18:02-07:00',
+  				content_modified_at: '2017-05-16T15:18:02-07:00',
+  				created_by: 
+  					{ type: 'user',
+  					id: '33333',
+  					name: 'Test User',
+  					login: 'test@example.com' },
+  				modified_by: 
+  					{ type: 'user',
+  					id: '33333',
+  					name: 'Test User',
+  					login: 'test@example.com' },
+  				owned_by: 
+  					{ type: 'user',
+  					id: '33333',
+  					name: 'Test User',
+  					login: 'test@example.com' },
+  				shared_link: null,
+  				parent: 
+  					{ type: 'folder',
+  					id: '0',
+  					sequence_id: null,
+  					etag: null,
+  					name: 'All Files' }
+  				item_status: 'active' } ] }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 <Info>
-**事前チェック**
+  **事前チェック**
 
-アップロードしたファイルが拒否されることによる時間や帯域幅の無駄を防ぐため、ファイルをアップロードする前に[事前チェック][preflight]を実行することをお勧めします。
-
+  アップロードしたファイルが拒否されることによる時間や帯域幅の無駄を防ぐため、ファイルをアップロードする前に[事前チェック][preflight]を実行することをお勧めします。
 </Info>
 
 ## リクエスト形式
@@ -217,6 +201,7 @@ Host: upload.box.com
 Authorization: Bearer [ACCESS_TOKEN]
 content-length: 343
 content-type: multipart/form-data; boundary=------------------------9fd09388d840fef1
+
 --------------------------9fd09388d840fef1
 content-disposition: form-data; name="attributes"
 
@@ -226,14 +211,12 @@ content-disposition: form-data; name="file"; filename="test.txt"
 content-type: text/plain
 
 Test file text.
---------------------------9fd09388d840fef1--
 
+--------------------------9fd09388d840fef1--
 ```
 
 <Warning>
-
-マルチパート本文の`attributes` JSON部分は、マルチパートフォームデータの`file` 部分の前に置く必要があります。この順番を間違えると、APIがHTTP `400`ステータスコードとエラーコード`metadata_after_file_contents`を返します。
-
+  マルチパート本文の`attributes` JSON部分は、マルチパートフォームデータの`file` 部分の前に置く必要があります。この順番を間違えると、APIがHTTP `400`ステータスコードとエラーコード`metadata_after_file_contents`を返します。
 </Warning>
 
 ## オプション
@@ -246,11 +229,11 @@ Test file text.
 
 アップロードの上限は、認証済みユーザーのアカウントの種類によって決まります。詳細については、このトピックに関する[Boxコミュニティの記事][fsizes]を参照してください。
 
-[preflight]: /ja/guides/uploads/check
+[preflight]: /guides/uploads/check
 
-[chunked]: /ja/guides/uploads/chunked
+[chunked]: /guides/uploads/chunked
 
-[upload]: /ja/reference/post_files_content
+[upload]: /reference/post_files_content
 
 {/* i18n-enable localize-links */}
 
@@ -258,12 +241,12 @@ Test file text.
 
 {/* i18n-disable localize-links */}
 
-[GCM]: /ja/guides/api-calls/permissions-and-errors/scopes
+[GCM]: /guides/api-calls/permissions-and-errors/scopes
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
-    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" }
-  ]}
+  { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
+  { label: "Upload file", href: "/reference/post-files-content", badge: "POST" }
+]}
 />

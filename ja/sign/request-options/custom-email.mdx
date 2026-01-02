@@ -1,20 +1,9 @@
 ---
 centered: true
 rank: 6
-category_id: sign
-subcategory_id: sign/30-request-options
-is_index: false
-id: sign/request-options/custom-email
-type: page
-total_steps: 7
-sibling_id: sign/request-options
-parent_id: sign/request-options
-next_page_id: sign/request-options/in-person
-previous_page_id: sign/request-options/request-expiration
-source_url: >-
-https: //github.com/box/developer.box.com/blob/main/content/pages/sign/30-request-options/60-custom-email.md
-fullyTranslated: true
 title: カスタムメールと通知
+
+fullyTranslated: true
 ---
 
 ## メールの件名と本文
@@ -36,78 +25,70 @@ Box内で管理されているテンプレートを使用する場合、件名�
 これらのタグにカスタムスタイルを適用することはできません。
 
 <Info>
-
-テキストとHTMLの比率が大きすぎると、メールがスパムフィルタに入ったり、切り取られたりする可能性があることにご注意ください。
-
+  テキストとHTMLの比率が大きすぎると、メールがスパムフィルタに入ったり、切り取られたりする可能性があることにご注意ください。
 </Info>
 
 例:
 
 <CodeGroup>
+  ```sh cURL
+  curl --location 'https://api.box.com/2.0/sign_requests' \
+      --header 'Content-Type: application/json' \
+      --header 'Authorization: Bearer ej...3t' \
+      --data-raw '{
+        "email_subject": "All we need is your signature to get started",
+        "parent_folder": {
+          "id": "234102987614",
+          "type": "folder"
+        },
+        "source_files": [
+          {
+            "id": "1358047520478",
+            "type": "file"
+          }
+        ],
+        "signers": [
+          {
+            "email": "signer@example.com",
+            "role": "signer"
+          }
+        ]
+      }'
+  ```
 
-```sh cURL
-curl --location 'https://api.box.com/2.0/sign_requests' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer ej...3t' \
-    --data-raw '{
-      "email_subject": "All we need is your signature to get started",
-      "parent_folder": {
-        "id": "234102987614",
-        "type": "folder"
-      },
-      "source_files": [
-        {
-          "id": "1358047520478",
-          "type": "file"
-        }
-      ],
-      "signers": [
-        {
-          "email": "signer@example.com",
-          "role": "signer"
-        }
-      ]
-    }'
+  ```python Python Gen SDK
+  def sign_doc_single_more_options(
+      client: Client,
+      ...
 
-```
+      email_subject: str = None,
+      email_message: str = None,
+  ) -> SignRequest:
+      ...
 
+      # sign document
+      sign_request = client.sign_requests.create_sign_request(
+          ...
 
+          email_subject=email_subject,
+          email_message=email_message,
+      )
 
-```python Pythonの次世代SDK
-def sign_doc_single_more_options(
-    client: Client,
-    ...
+      return sign_request
 
-    email_subject: str = None,
-    email_message: str = None,
-) -> SignRequest:
-    ...
+  def main():
+      ...
 
-    # sign document
-    sign_request = client.sign_requests.create_sign_request(
-        ...
-
-        email_subject=email_subject,
-        email_message=email_message,
-    )
-
-    return sign_request
-
-def main():
-    ...
-
-    # Sign with custom email subject
-    sign_custom_email_subject = sign_doc_single_more_options(
-        client,
-        SIMPLE_PDF,
-        SIGN_DOCS_FOLDER,
-        SIGNER_A,
-        prep_needed=False,
-        email_subject="All we need is your signature to get started",
-    )
-
-```
-
+      # Sign with custom email subject
+      sign_custom_email_subject = sign_doc_single_more_options(
+          client,
+          SIMPLE_PDF,
+          SIGN_DOCS_FOLDER,
+          SIGNER_A,
+          prep_needed=False,
+          email_subject="All we need is your signature to get started",
+      )
+  ```
 </CodeGroup>
 
 ## 手動による通知
@@ -125,122 +106,110 @@ def main():
 たとえば、次のリクエストを確認してください。
 
 <CodeGroup>
+  ```bash
+      --header 'Content-Type: application/json' \
+      --header 'Authorization: Bearer fN...dD' \
+      --data-raw '{
+        "is_document_preparation_needed": false,
+        "parent_folder": {
+          "id": "234102987614",
+          "type": "folder"
+        },
+        "source_files": [
+          {
+            "id": "1355143830404",
+            "type": "file"
+          }
+        ],
+        "signers": [
+          {
+            "email": "signer@example.com",
+            "embed_url_external_user_id": "1234",
+            "role": "signer"
+          }
+        ]
+      }'
+  ```
 
-```sh cURL
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer fN...dD' \
---data-raw '{
-  "is_document_preparation_needed": false,
-  "parent_folder": {
-    "id": "234102987614",
-    "type": "folder"
-  },
-  "source_files": [
-    {
-      "id": "1355143830404",
-      "type": "file"
-    }
-  ],
-  "signers": [
-    {
-      "email": "signer@example.com",
-      "embed_url_external_user_id": "1234",
-      "role": "signer"
-    }
-  ]
-}'
+  ```python Python Gen SDK
+  def sign_doc_embed_url(
+      client: Client,
+      document_id: str,
+      destination_folder_id: str,
+      signer_email: str,
+      signer_embed_url_id: str,
+  ) -> SignRequest:
+      # Sign request params
+      source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
+      destination_folder = FolderMini(
+          id=destination_folder_id, type=FolderBaseTypeField.FOLDER
+      )
 
-```
+      signer = SignRequestCreateSigner(
+          email=signer_email,
+          embed_url_external_user_id=signer_embed_url_id,
+      )
 
+      # sign document
+      sign_request = client.sign_requests.create_sign_request(
+          signers=[signer],
+          parent_folder=destination_folder,
+          source_files=[source_file],
+      )
 
+      return sign_request
 
-```python Pythonの次世代SDK
-def sign_doc_embed_url(
-    client: Client,
-    document_id: str,
-    destination_folder_id: str,
-    signer_email: str,
-    signer_embed_url_id: str,
-) -> SignRequest:
-    # Sign request params
-    source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
-    destination_folder = FolderMini(
-        id=destination_folder_id, type=FolderBaseTypeField.FOLDER
-    )
-
-    signer = SignRequestCreateSigner(
-        email=signer_email,
-        embed_url_external_user_id=signer_embed_url_id,
-    )
-
-    # sign document
-    sign_request = client.sign_requests.create_sign_request(
-        signers=[signer],
-        parent_folder=destination_folder,
-        source_files=[source_file],
-    )
-
-    return sign_request
-
-def main():
-    """Simple script to demonstrate how to use the Box SDK"""
-    conf = ConfigOAuth()
-    client = get_client_oauth(conf)
-    # Sign with phone verification
-    sign_with_embed_url = sign_doc_embed_url(
-        client,
-        SIMPLE_PDF,
-        SIGN_DOCS_FOLDER,
-        SIGNER_A,
-        SIGNER_A_EXTERNAL_ID,
-    )
-    check_sign_request(sign_with_embed_url)
-
-```
-
+  def main():
+      """Simple script to demonstrate how to use the Box SDK"""
+      conf = ConfigOAuth()
+      client = get_client_oauth(conf)
+      # Sign with phone verification
+      sign_with_embed_url = sign_doc_embed_url(
+          client,
+          SIMPLE_PDF,
+          SIGN_DOCS_FOLDER,
+          SIGNER_A,
+          SIGNER_A_EXTERNAL_ID,
+      )
+      check_sign_request(sign_with_embed_url)
+  ```
 </CodeGroup>
 
 結果は次のとおりです (簡略化されています)。
 
 <CodeGroup>
+  ```json
+  {
+    "is_document_preparation_needed": false,
+    "signers": [
+      {
+        "email": "sender@example.com",
+        "role": "final_copy_reader",
+      },
+      {
+        "email": "signer@example.com",
+        "role": "signer",
+        "embed_url_external_user_id": "1234",
+        "embed_url": "https://app.box.com/sign/document/22a990ce-4e24-463b-b2f4-124820fe161a/9331fe9ac85650d61645d4b0fd30fe3e0ebee7921720ab6ecca587654d3cd875/",
+        "iframeable_embed_url": "https://app.box.com/embed/sign/document/22a990ce-4e24-463b-b2f4-124820fe161a/9331fe9ac85650d61645d4b0fd30fe3e0ebee7921720ab6ecca587654d3cd875/"
+      }
+    ],
+    "id": "22a990ce-4e24-463b-b2f4-124820fe161a",
+  }
+  ```
 
-```json cURL
-{
-  "is_document_preparation_needed": false,
-  "signers": [
-    {
-      "email": "sender@example.com",
-      "role": "final_copy_reader",
-    },
-    {
-      "email": "signer@example.com",
-      "role": "signer",
-      "embed_url_external_user_id": "1234",
-      "embed_url": "https://app.box.com/sign/document/22a990ce-4e24-463b-b2f4-124820fe161a/9331fe9ac85650d61645d4b0fd30fe3e0ebee7921720ab6ecca587654d3cd875/",
-      "iframeable_embed_url": "https://app.box.com/embed/sign/document/22a990ce-4e24-463b-b2f4-124820fe161a/9331fe9ac85650d61645d4b0fd30fe3e0ebee7921720ab6ecca587654d3cd875/"
-    }
-  ],
-  "id": "22a990ce-4e24-463b-b2f4-124820fe161a",
-}
-
-```
-
-
-
-```YAML Pythonの次世代SDK
-Simple sign request: 22a990ce-4e24-463b-b2f4-124820fe161a-defddc79c946
-  Status: created
-  Signers: 2
-    final_copy_reader: sender@example.com
-    signer: signer@example.com
-    embed_url: https://app.box.com/sign/document/...
-    iframeable_embed_url: https://app.box.com/embed/sign/document/...
-  Prepare url: None
-
-```
-
+  ```yaml
+  Simple sign request: 22a990ce-4e24-463b-b2f4-124820fe161a-defddc79c946
+    Status: created
+    Signers: 2
+      final_copy_reader: sender@example.com
+      signer: signer@example.com
+      embed_url: https://app.box.com/sign/document/...
+      iframeable_embed_url: https://app.box.com/embed/sign/document/...
+    Prepare url: None
+  ```
 </CodeGroup>
 
 これで、埋め込みURLを取得して、独自の通知プロセスを使用したり、自分のアプリ内に署名クライアントを埋め込んだりできるようになりました。
 
-[embed]: /ja/guides/box-sign/embedded-sign-client
+[embed]: /guides/box-sign/embedded-sign-client

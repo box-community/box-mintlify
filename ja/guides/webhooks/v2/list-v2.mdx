@@ -1,27 +1,16 @@
 ---
-title: "ユーザーのWebhookのリストを取得"
+alias_paths:
+  0: /webhooks/manage/list-all
 rank: 1
 related_endpoints:
-  - get_webhooks
+  0: get_webhooks
 related_guides:
-  - webhooks/v2/create-v2
+  0: webhooks/v2/create-v2
 related_resources:
-  - webhook
-required_guides: []
-alias_paths:
-  - /webhooks/manage/list-all
-category_id: webhooks
-subcategory_id: webhooks/v2
-is_index: false
-id: webhooks/v2/list-v2
-type: guide
-total_steps: 6
-sibling_id: webhooks/v2
-parent_id: webhooks/v2
-next_page_id: webhooks/v2/create-v2
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/list-v2.md
+  0: webhook
+required_guides: {}
+title: ユーザーのWebhookのリストを取得
+
 fullyTranslated: true
 ---
 
@@ -30,72 +19,68 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 認証済みユーザーのすべてのWebhookを取得するには、[すべてのWebhookのリストを取得][1]エンドポイントを使用します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/webhooks" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/webhooks" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.webhooks.getWebhooks();
+  ```
 
-```typescript Node/TypeScript v10
-await client.webhooks.getWebhooks();
-```
+  ```python Python v10
+  client.webhooks.get_webhooks()
+  ```
 
-```python Python v10
-client.webhooks.get_webhooks()
-```
+  ```cs .NET v10
+  await client.Webhooks.GetWebhooksAsync();
+  ```
 
-```cs .NET v10
-await client.Webhooks.GetWebhooksAsync();
-```
+  ```swift Swift v10
+  try await client.webhooks.getWebhooks()
+  ```
 
-```swift Swift v10
-try await client.webhooks.getWebhooks()
-```
+  ```java Java v10
+  client.getWebhooks().getWebhooks()
+  ```
 
-```java Java v10
-client.getWebhooks().getWebhooks()
-```
+  ```java Java v5
+  Iterable<BoxWebHook.Info> webhooks = BoxWebHook.all(api);
+  for (BoxWebHook.Info webhookInfo: webhooks) {
+      // Do something with the webhook.
+  }
+  ```
 
-```java Java v5
-Iterable<BoxWebHook.Info> webhooks = BoxWebHook.all(api);
-for (BoxWebHook.Info webhookInfo: webhooks) {
-    // Do something with the webhook.
-}
-```
+  ```python Python v4
+  webhooks = client.get_webhooks()
+  for webhook in webhooks:
+      print(f'The webhook ID is {webhook.id} and the address is {webhook.address}')
+  ```
 
-```python Python v4
-webhooks = client.get_webhooks()
-for webhook in webhooks:
-    print(f'The webhook ID is {webhook.id} and the address is {webhook.address}')
-```
+  ```cs .NET v6
+  BoxCollectionMarkerBased<BoxWebhook> webhooks = await client.WebhooksManager.GetWebhooksAsync();
+  ```
 
-```cs .NET v6
-BoxCollectionMarkerBased<BoxWebhook> webhooks = await client.WebhooksManager.GetWebhooksAsync();
-```
-
-```javascript Node v4
-client.webhooks.getAll()
-	.then(webhooks => {
-		/* webhooks -> {
-			next_marker: 'ZmlQZS0xLTE%3D',
-			entries: 
-			[ { id: '1234',
-				type: 'webhook',
-				target: { id: '22222', type: 'folder' } },
-				{ id: '5678',
-				type: 'webhook',
-				target: { id: '11111', type: 'file' } } ],
-			limit: 2 }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  client.webhooks.getAll()
+  	.then(webhooks => {
+  		/* webhooks -> {
+  			next_marker: 'ZmlQZS0xLTE%3D',
+  			entries: 
+  			[ { id: '1234',
+  				type: 'webhook',
+  				target: { id: '22222', type: 'folder' } },
+  				{ id: '5678',
+  				type: 'webhook',
+  				target: { id: '11111', type: 'file' } } ],
+  			limit: 2 }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 <Warning>
-
-このエンドポイントを使用するには、アプリケーションの \[**Webhookを管理する**] スコープが有効になっている必要があります。
-
+  このエンドポイントを使用するには、アプリケーションの \[**Webhookを管理する**] スコープが有効になっている必要があります。
 </Warning>
 
 このAPIコールは、認証済みユーザーのWebhookのみをリストし、会社内の他のユーザーのWebhookはリストしません。
@@ -105,12 +90,13 @@ client.webhooks.getAll()
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" }
-  ]}
+  { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" }
-  ]}
+  { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" }
+]}
 />

@@ -1,115 +1,73 @@
 ---
-title: "Slack統合マッピングの更新"
+alias_paths: {}
 rank: 5
-related_endpoints:
-  - put_integration_mappings_slack_id
-related_guides:
-  - integration-mappings/slack-mappings/create-mapping
-  - integration-mappings/slack-mappings/list-mappings
-  - integration-mappings/slack-mappings/delete-mapping
-required_guides:
-  - integration-mappings/slack-mappings/setup
-related_resources: []
-alias_paths: []
-category_id: integration-mappings
-subcategory_id: integration-mappings/slack-mappings
-is_index: false
-id: integration-mappings/slack-mappings/update-mapping
-type: guide
-total_steps: 6
-sibling_id: integration-mappings/slack-mappings
-parent_id: integration-mappings/slack-mappings
-next_page_id: integration-mappings/slack-mappings/delete-mapping
-previous_page_id: integration-mappings/slack-mappings/create-mapping
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/integration-mappings/slack-mappings/update-mapping.md
+related_endpoints: ""
+related_guides: ""
+related_resources: {}
+required_guides: ""
+title: Slack統合マッピングの更新
+
 fullyTranslated: true
 ---
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Slack統合マッピングの設定", href: "/ja/guides/integration-mappings/slack-mappings/setup", badge: "ガイド" }
-  ]}
-/>
 `PUT integration_mappings/slack/:integration_mapping_id`呼び出しを使用して、既存のマッピングまたはターゲットのBoxフォルダを更新します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -X -L PUT "https://api.box.com/2.0/integration_mappings/slack/512521" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"  \
+       -H 'content-type: application/json'  \
+       -d'{
+           "options": {
+              "is_access_management_disabled": true
+          }
+      }'
+  ```
 
-```sh cURL
-curl -X -L PUT "https://api.box.com/2.0/integration_mappings/slack/512521" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"  \
-     -H 'content-type: application/json'  \
-     -d'{
-         "options": {
-            "is_access_management_disabled": true
-        }
-    }'
-```
+  ```typescript Node/TypeScript v10
+  await userClient.integrationMappings.updateSlackIntegrationMappingById(
+    slackIntegrationMapping.id,
+    {
+      requestBody: {
+        boxItem: new IntegrationMappingBoxItemSlack({ id: folder.id }),
+      } satisfies UpdateSlackIntegrationMappingByIdRequestBody,
+    } satisfies UpdateSlackIntegrationMappingByIdOptionalsInput,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await userClient.integrationMappings.updateSlackIntegrationMappingById(
-  slackIntegrationMapping.id,
-  {
-    requestBody: {
-      boxItem: new IntegrationMappingBoxItemSlack({ id: folder.id }),
-    } satisfies UpdateSlackIntegrationMappingByIdRequestBody,
-  } satisfies UpdateSlackIntegrationMappingByIdOptionalsInput,
-);
-```
+  ```python Python v10
+  user_client.integration_mappings.update_slack_integration_mapping_by_id(
+      slack_integration_mapping.id, box_item=IntegrationMappingBoxItemSlack(id=folder.id)
+  )
+  ```
 
-```python Python v10
-user_client.integration_mappings.update_slack_integration_mapping_by_id(
-    slack_integration_mapping.id, box_item=IntegrationMappingBoxItemSlack(id=folder.id)
-)
-```
+  ```cs .NET v10
+  await userClient.IntegrationMappings.UpdateSlackIntegrationMappingByIdAsync(integrationMappingId: slackIntegrationMapping.Id, requestBody: new UpdateSlackIntegrationMappingByIdRequestBody() { BoxItem = new IntegrationMappingBoxItemSlack(id: folder.Id) });
+  ```
 
-```cs .NET v10
-await userClient.IntegrationMappings.UpdateSlackIntegrationMappingByIdAsync(integrationMappingId: slackIntegrationMapping.Id, requestBody: new UpdateSlackIntegrationMappingByIdRequestBody() { BoxItem = new IntegrationMappingBoxItemSlack(id: folder.Id) });
-```
+  ```swift Swift v10
+  try await userClient.integrationMappings.updateSlackIntegrationMappingById(integrationMappingId: slackIntegrationMapping.id, requestBody: UpdateSlackIntegrationMappingByIdRequestBody(boxItem: IntegrationMappingBoxItemSlack(id: folder.id)))
+  ```
 
-```swift Swift v10
-try await userClient.integrationMappings.updateSlackIntegrationMappingById(integrationMappingId: slackIntegrationMapping.id, requestBody: UpdateSlackIntegrationMappingByIdRequestBody(boxItem: IntegrationMappingBoxItemSlack(id: folder.id)))
-```
+  ```java Java v10
+  userClient.getIntegrationMappings().updateSlackIntegrationMappingById(slackIntegrationMapping.getId(), new UpdateSlackIntegrationMappingByIdRequestBody.Builder().boxItem(new IntegrationMappingBoxItemSlack(folder.getId())).build())
+  ```
 
-```java Java v10
-userClient.getIntegrationMappings().updateSlackIntegrationMappingById(slackIntegrationMapping.getId(), new UpdateSlackIntegrationMappingByIdRequestBody.Builder().boxItem(new IntegrationMappingBoxItemSlack(folder.getId())).build())
-```
+  ```javascript Node v4
+  const mapping = await client.integrationMappings.updateSlackIntegrationMapping({
+  	box_item: {
+  		id: '12345',
+  		type: 'folder'
+  	},
+  	options: {
+  		is_access_management_disabled: true
+  	}
+  }, {
+  	integration_mapping_id: integrationMappingId
+  });
 
-```javascript Node v4
-const mapping = await client.integrationMappings.updateSlackIntegrationMapping({
-	box_item: {
-		id: '12345',
-		type: 'folder'
-	},
-	options: {
-		is_access_management_disabled: true
-	}
-}, {
-	integration_mapping_id: integrationMappingId
-});
-
-console.log(
-    `Slack integration mapping with id ${mapping.id} was updated`
-);
-```
-
+  console.log(
+      `Slack integration mapping with id ${mapping.id} was updated`
+  );
+  ```
 </CodeGroup>
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Update Slack integration mapping", href: "/reference/put-integration-mappings-slack-id", badge: "PUT" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "Slack統合マッピングの作成", href: "/ja/guides/integration-mappings/slack-mappings/create-mapping", badge: "ガイド" },
-    { label: "Slack統合マッピングのリスト取得", href: "/ja/guides/integration-mappings/slack-mappings/list-mappings", badge: "ガイド" },
-    { label: "Slack統合マッピングの削除", href: "/ja/guides/integration-mappings/slack-mappings/delete-mapping", badge: "ガイド" }
-  ]}
-/>

@@ -1,50 +1,37 @@
 ---
-title: "ユーザーのゾーンの更新"
 rank: 3
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/jwt
-  - cli/scripts/provision-users-folders
-  - cli/scripts/deprovision-users
+  0: authentication/jwt
+  1: cli/scripts/provision-users-folders
+  2: cli/scripts/deprovision-users
 related_pages:
-  - sdks-and-tools
+  0: sdks-and-tools
+related_resources: {}
 required_guides:
-  - authentication/jwt/jwt-setup
-related_resources: []
-category_id: cli
-subcategory_id: cli/scripts
-is_index: false
-id: cli/scripts/user-zones-mass-update
-type: guide
-total_steps: 7
-sibling_id: cli/scripts
-parent_id: cli/scripts
-next_page_id: cli/scripts/report-inactive-users
-previous_page_id: cli/scripts/provision-users-folders
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/cli/scripts/user-zones-mass-update.md
+  0: authentication/jwt/jwt-setup
+title: ユーザーのゾーンの更新
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "ガイド" }
-  ]}
+  { label: "Setup with JWT", href: "/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+]}
 />
+
 この[スクリプト][script]は、マルチゾーンのBoxテナント内の特定のデータ保管場所のゾーンにユーザーをプロビジョニングします。スクリプトによって以下の手順が実行されます。
 
 1. 管理者または共同管理者のログインメールアドレスを使用して、関連付けられた企業とその企業に割り当てられているゾーンポリシーを検索します。割り当てられているゾーンポリシーは、特に指定がない限り、すべてのユーザーが継承します。これは、**デフォルトゾーン**とも呼ばれることもあります。
 2. ユーザーのメールアドレスとゾーンマッピングが含まれる入力`.csv`ファイルに基づいて、ゾーン割り当てを行います。
 
-<Note>
-
-通常、このスクリプトはユーザーのゾーンを初めてプロビジョニングするときに1回使用します。ただし、ゾーンの割り当てを更新するために、以降の実行でも使用できます。
-
-</Note>
+<message>
+  通常、このスクリプトはユーザーのゾーンを初めてプロビジョニングするときに1回使用します。ただし、ゾーンの割り当てを更新するために、以降の実行でも使用できます。
+</message>
 
 ゾーンの割り当てに管理コンソールを使用する場合は、[こちらのガイド][zonesguide]を参照してください。Box Zonesの詳細については、[公式ウェブサイト][zonespage]を参照してください。
 
@@ -60,7 +47,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ```bash
 pwsh
-
 ```
 
 どのディレクトリでこのコマンドを実行するかに応じて、出力が異なる場合があります。以下に例を示します。
@@ -73,14 +59,11 @@ https://aka.ms/powershell
 Type 'help' to get help.
 
 PS /Users/user/repos/boxcli/examples>
-
 ```
 
-<Note>
-
-問題が発生する場合は、[.NET Core](https://dotnet.microsoft.com/download)と[PowerShell][pwsh]の両方をインストールしたかどうか確認してください。
-
-</Note>
+<message>
+  問題が発生する場合は、[.NET Core](https://dotnet.microsoft.com/download)と[PowerShell][pwsh]の両方をインストールしたかどうか確認してください。
+</message>
 
 ### JWT認証を使用するアプリケーションの設定
 
@@ -107,26 +90,23 @@ Boxの管理者または共同管理者に`Manage Users`以上の権限がある
 * **Email**列には、Boxユーザーのプライマリメールアドレスを含めます。
 * **Region**列には、スクリプトでユーザーを割り当てるゾーンのユーザーフレンドリ名 (ユーザーが理解しやすい名前) を含めます。この名前は、ゾーンの定義に使用する[ZonesTable][zonestable]というハッシュテーブルで指定します。キーはゾーンのユーザーフレンドリ名であり、対応する値はゾーンのグローバルIDです。
 
-```bash
-    $ZonesTable = @{
-        US = "100001"             #US
-        GermanyIreland = "100002" #Germany/Ireland with in region uploads/downloads/previews
-        Australia = "100003"      #Australia
-        Japan = "100004"          #Japan with in region uploads/downloads/previews
-        Canada = "100005"         #Canada
-        JapanSingapore = "100007" #Japan/Singapore with in region uploads/downloads/previews
-        UKGermany = "100008"      #UK/Germany
-        UK = "100009"             #UK with in region uploads/downloads/previews
-        France = "100012"         #France
-    }
+  ```bash
+  $ZonesTable = @{
+      US = "100001"             #US
+      GermanyIreland = "100002" #Germany/Ireland with in region uploads/downloads/previews
+      Australia = "100003"      #Australia
+      Japan = "100004"          #Japan with in region uploads/downloads/previews
+      Canada = "100005"         #Canada
+      JapanSingapore = "100007" #Japan/Singapore with in region uploads/downloads/previews
+      UKGermany = "100008"      #UK/Germany
+      UK = "100009"             #UK with in region uploads/downloads/previews
+      France = "100012"         #France
+  }
+  ```
 
-```
-
-<Note>
-
-特定の企業で有効なゾーンに対応するIDを入手するには、Box Consultingまたはカスタマーサクセスマネージャまでお問い合わせください。
-
-</Note>
+<message>
+  特定の企業で有効なゾーンに対応するIDを入手するには、Box Consultingまたはカスタマーサクセスマネージャまでお問い合わせください。
+</message>
 
 このスクリプトには、以下のようなメールアドレスとゾーン名が含まれているサンプル入力`.csv`ファイルが用意されています。
 
@@ -142,14 +122,12 @@ Boxの管理者または共同管理者に`Manage Users`以上の権限がある
 
 ```bash
 $UserZonesUpdatePath = "./your_file_name.csv"
-
 ```
 
 `adminEmail`を、このスクリプトでゾーンの割り当てに使用するアカウントの管理者または`co-admin`のログインメールアドレスに更新します。この値を指定しない場合、スクリプト実行時に指定するよう求められます。
 
 ```bash
 $adminEmail = "john@box.com"
-
 ```
 
 ## スクリプトの実行
@@ -158,14 +136,12 @@ PowerShellコマンドを実行します。
 
 ```bash
 pwsh
-
 ```
 
 スクリプトを実行します。
 
 ```bash
 ./Mass_Update_User_Zones.ps1
-
 ```
 
 ### オプションのフラグ
@@ -174,7 +150,6 @@ pwsh
 
 ```bash
 ./Mass_Update_User_Zones.ps1 -DryRun
-
 ```
 
 ## ログ
@@ -192,7 +167,7 @@ pwsh
 
 [zonestable]: https://github.com/box/boxcli/blob/main/examples/Mass%20Update%20User%20Zones/Mass_Update_User_Zones.ps1#L23
 
-[jwtapp]: /ja/guides/cli/cli-docs/jwt-cli
+[jwtapp]: /guides/cli/cli-docs/jwt-cli
 
 [scripts]: https://github.com/box/boxcli/tree/main/examples
 
@@ -203,8 +178,8 @@ pwsh
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "ユーザーとフォルダのプロビジョニング", href: "/ja/guides/cli/scripts/provision-users-folders", badge: "ガイド" },
-    { label: "ユーザーのプロビジョニング解除とフォルダのアーカイブ", href: "/ja/guides/cli/scripts/deprovision-users", badge: "ガイド" }
-  ]}
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "Provision users and folders", href: "/guides/cli/scripts/provision-users-folders", badge: "GUIDE" },
+  { label: "Deprovision users and archive folders", href: "/guides/cli/scripts/deprovision-users", badge: "GUIDE" }
+]}
 />

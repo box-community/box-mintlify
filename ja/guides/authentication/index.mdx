@@ -1,28 +1,21 @@
 ---
-title: "認証"
-rank: 20
 alias_paths:
-  - /docs/application-setup
-  - /docs/authentication
-category_id: authentication
-subcategory_id: null
-is_index: true
-id: authentication
-type: guide
-total_steps: 3
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: authentication/sso
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/index.md
+  0: /docs/application-setup
+  1: /docs/authentication
+rank: 20
+sidebarTitle: Overview
+title: 認証
+
 fullyTranslated: true
 ---
+
 Box APIを使用する認証では、ユーザーの本人確認にアクセストークンを使用します。アクセストークンの取得方法は、ユーザーの承認に使用した方法によって異なります。アプリケーションで利用できる承認の種類は、ユースケースのほか、開発者コンソールで作成されたアプリケーションの種類に応じて異なります。
 
 <Frame border width="600" center>
-  ![Authentication methods](/images/guides/applications/app-types/authentication-methods.png)
+  ![認証方法](/images/guides/applications/app-types/authentication-methods.png)
 </Frame>
+
+<Card href="/guides/authentication/select" arrow title="承認の種類の選択方法を確認する" />
 
 ## 認証のアクセストークン
 
@@ -31,19 +24,22 @@ Box APIを使用する認証では、ユーザーの本人確認にアクセス�
 ```sh
 curl https://api.box.com/2.0/users/me \
     -H "authorization: Bearer EGmDmRVfhfHsqesn5yVYHAqUkD0dyDfk"
-
 ```
 
-<Card href="/ja/guides/authentication/tokens" title="アクセストークンの詳細を確認する"/>
+<Card href="/guides/authentication/tokens" arrow title="アクセストークンの詳細を確認する" />
 
-[oauth2]: /ja/guides/authentication/oauth2
+[oauth2]: /guides/authentication/oauth2
 
-[jwt]: /ja/guides/authentication/jwt
+[jwt]: /guides/authentication/jwt
 
-[apptoken]: /ja/guides/authentication/app-token
+[apptoken]: /guides/authentication/app-token
 
-[devtoken]: /ja/guides/authentication/tokens/developer-tokens
+[devtoken]: /guides/authentication/tokens/developer-tokens
 
-[custom-app]: /ja/guides/applications/app-types/platform-apps
+[custom-app]: /guides/applications/app-types/platform-apps
 
-[ccg]: /ja/guides/authentication/client-credentials
+[custom-skill]: /guides/applications/app-types/custom-skills
+
+[la]: /guides/applications/app-types/select/#limited-access-app
+
+[ccg]: /guides/authentication/client-credentials

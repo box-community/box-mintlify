@@ -1,26 +1,17 @@
 ---
-title: "イベント"
+alias_paths: ""
 rank: 120
-alias_paths: []
-category_id: events
-subcategory_id: null
-is_index: true
-id: events
-type: guide
-total_steps: 0
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/index.md
+sidebarTitle: Overview
+title: イベント
+
 fullyTranslated: true
 ---
+
 アプリケーションはイベントフィードを使用して、Enterprise内の任意のユーザー (複数可) またはサービスが実行する操作をすべて登録できます。
 
 ## User EventとEnterprise Event
 
-[`GET /events`](/ja/reference/get-events) APIを使用すると、`stream_type`に応じて、Enterprise全体または特定のユーザーのライブイベントにサブスクライブするか、Enterprise全体のイベントの履歴を照会することができます。
+[`GET /events`](/reference/get-events) APIを使用すると、`stream_type`に応じて、Enterprise全体または特定のユーザーのライブイベントにサブスクライブするか、Enterprise全体のイベントの履歴を照会することができます。
 
 ### User Event
 
@@ -28,7 +19,7 @@ User Eventは、現在認証されているユーザーに関連する、低レ�
 
 このフィードでは、すべての結果を迅速に返すことを重視しています。つまり、Boxでは、イベントが複数回または時系列に関係なく返される可能性があります。重複するイベントは、イベントIDによって識別できます。
 
-Enterprise Event Streamとは異なり、User Event Streamは、特定のイベントのフィルタをサポートしません。User Eventの3つのstream_typeで返されるUser Eventデータセットのサブセットは、目的に応じて若干異なります。
+Enterprise Event Streamとは異なり、User Event Streamは、特定のイベントのフィルタをサポートしません。User Eventの3つのstream\_typeで返されるUser Eventデータセットのサブセットは、目的に応じて若干異なります。
 
 | ストリームタイプ  |                                                |
 | --------- | ---------------------------------------------- |

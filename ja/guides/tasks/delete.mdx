@@ -1,93 +1,82 @@
 ---
-title: "タスクの削除"
 related_endpoints:
-  - delete_tasks_id
+  0: delete_tasks_id
 related_guides:
-  - tasks/create
-  - tasks/get
-  - tasks/update
+  0: tasks/create
+  1: tasks/get
+  2: tasks/update
 related_resources:
-  - file
-  - task
-category_id: tasks
-subcategory_id: null
-is_index: false
-id: tasks/delete
-rank: 5
-type: guide
-total_steps: 5
-sibling_id: tasks
-parent_id: tasks
-next_page_id: tasks
-previous_page_id: tasks/update
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/5-delete.md
+  0: file
+  1: task
+title: タスクの削除
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-タスクを削除するには、タスクの`id`を指定して[`DELETE /tasks/:task_id`](/ja/reference/delete-tasks-id) APIを呼び出します。
+タスクを削除するには、タスクの`id`を指定して[`DELETE /tasks/:task_id`](/reference/delete-tasks-id) APIを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/tasks/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/tasks/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.tasks.deleteTaskById(task.id!);
-```
+  ```typescript Node/TypeScript v10
+  await client.tasks.deleteTaskById(task.id!);
+  ```
 
-```python Python v10
-client.tasks.delete_task_by_id(task.id)
-```
+  ```python Python v10
+  client.tasks.delete_task_by_id(task.id)
+  ```
 
-```csharp .NET v10
-await client.Tasks.DeleteTaskByIdAsync(taskId: NullableUtils.Unwrap(task.Id));
-```
+  ```csharp .NET v10
+  await client.Tasks.DeleteTaskByIdAsync(taskId: NullableUtils.Unwrap(task.Id));
+  ```
 
-```swift Swift v10
-try await client.tasks.deleteTaskById(taskId: task.id!)
-```
+  ```swift Swift v10
+  try await client.tasks.deleteTaskById(taskId: task.id!)
+  ```
 
-```java Java v10
-client.getTasks().deleteTaskById(task.getId())
-```
+  ```java Java v10
+  client.getTasks().deleteTaskById(task.getId())
+  ```
 
-```java Java v5
-BoxTask task = new BoxTask(api, "id");
-task.delete();
-```
+  ```java Java v5
+  BoxTask task = new BoxTask(api, "id");
+  task.delete();
+  ```
 
-```py Python v4
-client.client.task('12345').delete()
-print('The task was successfully delete!')
-```
+  ```py Python v4
+  client.client.task('12345').delete()
+  print('The task was successfully delete!')
+  ```
 
-```csharp .NET v6
-await client.TasksManager.DeleteTaskAsync("11111");
-```
+  ```csharp .NET v6
+  await client.TasksManager.DeleteTaskAsync("11111");
+  ```
 
-```js Node v4
-client.tasks.delete('11111')
- .then(() => {
-  // deletion succeeded — no value returned
- });
-```
+  ```js Node v4
+  client.tasks.delete('11111')
+   .then(() => {
+    // deletion succeeded — no value returned
+   });
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Remove task", href: "/reference/delete-tasks-id", badge: "DELETE" }
-  ]}
+  { label: "Remove task", href: "/reference/delete-tasks-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "タスクの作成", href: "/ja/guides/tasks/create", badge: "ガイド" },
-    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "ガイド" },
-    { label: "既存のタスクの変更", href: "/ja/guides/tasks/update", badge: "ガイド" }
-  ]}
+  { label: "Create a task", href: "/guides/tasks/create", badge: "GUIDE" },
+  { label: "Get information about a task", href: "/guides/tasks/get", badge: "GUIDE" },
+  { label: "Make changes to an existing task", href: "/guides/tasks/update", badge: "GUIDE" }
+]}
 />

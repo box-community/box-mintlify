@@ -1,28 +1,17 @@
 ---
-title: "統合"
-rank: 1
-related_endpoints: []
-related_guides:
-  - authentication/oauth2/oauth2-setup
-  - authentication/oauth2
-required_guides: []
-related_resources: []
 alias_paths:
-  - /docs/publishing-your-application
-  - /guides/applications/app-gallery
-  - /guides/applications/app-gallery/
-category_id: applications
-subcategory_id: applications/integrations
-is_index: true
-id: applications/integrations
-type: guide
-total_steps: 0
-sibling_id: applications
-parent_id: applications
-next_page_id: ''
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/applications/integrations/index.md
+  0: /docs/publishing-your-application
+  1: /guides/applications/app-gallery
+  2: /guides/applications/app-gallery/
+rank: 1
+related_endpoints: {}
+related_guides:
+  0: authentication/oauth2/oauth2-setup
+  1: authentication/oauth2
+related_resources: {}
+required_guides: {}
+title: 統合
+
 fullyTranslated: true
 ---
 
@@ -31,7 +20,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 [Box統合][app-center]は、BoxユーザーがBoxと組み合わせて使用できるアプリケーションについて最初に確認できる場所です。アプリケーションが他の企業で使用できる場合は、**統合**にサービスを登録すると、新しいユーザーを見つけるのに役立ちます。統合では、ユーザーが見つけやすいように、アプリが \[おすすめ]、\[人気]、\[新着] セクションに分類されています。
 
 <Frame>
-![統合](/images/guides/applications/integrations/box-integrations.png)
+  ![統合](/images/guides/applications/integrations/box-integrations.png)
 </Frame>
 
 ## Platformアプリの開発またはBoxパートナーへの参加
@@ -56,14 +45,16 @@ Box統合でPlatformアプリを公開するには、以下の手順に従いま
 
 2. 上部のメニューで \[**公開**] タブを選択します。
 
-   ![アプリケーションの \[公開\] タブ](/images/guides/applications/integrations/publishing-app.png)
+   <Frame>
+     ![アプリケーションの \[公開\] タブ](/images/guides/applications/integrations/publishing-app.png)
+   </Frame>
 
 3. 送信チェックリストをひととおり読み、アプリがすべての要件を満たしているかどうかを確認するチェックボックスをオンにします。
 
 4. フォームで以下の項目を指定します。
 
    * アプリが該当するカテゴリ
-   * 簡単な説明と詳しい説明 
+   * 簡単な説明と詳しい説明
    * スクリーンショットとアプリアイコン
    * ユーザーをサポートするために使用される補足情報
 
@@ -75,7 +66,7 @@ Box統合でPlatformアプリを公開するには、以下の手順に従いま
 
 承認されて公開されたPlatformアプリは、同じコントロールパネルから公開を取り消すことができます。
 
-1. **開発者コンソール**に移動して、Platformアプリを選択します。 
+1. **開発者コンソール**に移動して、Platformアプリを選択します。
 2. \[**公開**] タブを選択します。
 3. アプリの公開を取り消すことができます。
 
@@ -88,7 +79,7 @@ Box統合でPlatformアプリを公開するには、以下の手順に従いま
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" },
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" }
-  ]}
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" }
+]}
 />

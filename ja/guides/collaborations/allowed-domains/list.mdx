@@ -1,28 +1,17 @@
 ---
-title: "コラボレーションが許可されているドメインのリストの取得"
+alias_paths:
+  0: /guides/collaboration-whitelists/list-whitelists
 rank: 2
 related_endpoints:
-  - get_collaboration_whitelist_entries
+  0: get_collaboration_whitelist_entries
 related_guides:
-  - collaborations
-  - collaborations/allowed-domains/delete
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths:
-  - /guides/collaboration-whitelists/list-whitelists
-category_id: collaborations
-subcategory_id: collaborations/allowed-domains
-is_index: false
-id: collaborations/allowed-domains/list
-type: guide
-total_steps: 3
-sibling_id: collaborations/allowed-domains
-parent_id: collaborations/allowed-domains
-next_page_id: collaborations/allowed-domains/delete
-previous_page_id: collaborations/allowed-domains/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/allowed-domains/list.md
+  0: collaborations
+  1: collaborations/allowed-domains/delete
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: コラボレーションが許可されているドメインのリストの取得
+
 fullyTranslated: true
 ---
 
@@ -33,53 +22,52 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 リクエストに必須のパラメータはありませんが、オプションで`limit`および`market`パラメータを設定すると、結果セット全体を制限してページ単位で表示できます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/collaboration_whitelist_entries" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/collaboration_whitelist_entries" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.collaborationAllowlistEntries.getCollaborationWhitelistEntries();
+  ```
 
-```typescript Node/TypeScript v10
-await client.collaborationAllowlistEntries.getCollaborationWhitelistEntries();
-```
+  ```python Python v10
+  client.collaboration_allowlist_entries.get_collaboration_whitelist_entries()
+  ```
 
-```python Python v10
-client.collaboration_allowlist_entries.get_collaboration_whitelist_entries()
-```
+  ```cs .NET v10
+  await client.CollaborationAllowlistEntries.GetCollaborationWhitelistEntriesAsync();
+  ```
 
-```cs .NET v10
-await client.CollaborationAllowlistEntries.GetCollaborationWhitelistEntriesAsync();
-```
+  ```swift Swift v10
+  try await client.collaborationAllowlistEntries.getCollaborationWhitelistEntries()
+  ```
 
-```swift Swift v10
-try await client.collaborationAllowlistEntries.getCollaborationWhitelistEntries()
-```
+  ```java Java v10
+  client.getCollaborationAllowlistEntries().getCollaborationWhitelistEntries()
+  ```
 
-```java Java v10
-client.getCollaborationAllowlistEntries().getCollaborationWhitelistEntries()
-```
+  ```cs .NET v6
+  BoxCollectionMarkerBased<BoxCollaborationWhitelistEntry> whitelistedDomains = await client.CollaborationWhitelistManager
+      .GetAllCollaborationWhitelistEntriesAsync();
+  ```
 
-```cs .NET v6
-BoxCollectionMarkerBased<BoxCollaborationWhitelistEntry> whitelistedDomains = await client.CollaborationWhitelistManager
-    .GetAllCollaborationWhitelistEntriesAsync();
-```
-
-```javascript Node v4
-client.collaborationAllowlist.getAllAllowlistedDomains(callback);
-```
-
+  ```javascript Node v4
+  client.collaborationAllowlist.getAllAllowlistedDomains(callback);
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List allowed collaboration domains", href: "/reference/get-collaboration-whitelist-entries", badge: "GET" }
-  ]}
+  { label: "List allowed collaboration domains", href: "/reference/get-collaboration-whitelist-entries", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "コラボレーション", href: "/ja/guides/collaborations/index", badge: "ガイド" },
-    { label: "以前コラボレーションが許可されたドメインの削除", href: "/ja/guides/collaborations/allowed-domains/delete", badge: "ガイド" }
-  ]}
+  { label: "Collaborations", href: "/guides/collaborations/index", badge: "GUIDE" },
+  { label: "Remove a previously allowed domain for collaboration", href: "/guides/collaborations/allowed-domains/delete", badge: "GUIDE" }
+]}
 />

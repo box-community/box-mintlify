@@ -1,26 +1,15 @@
 ---
-title: "フォルダの移動"
+alias_paths: {}
 rank: 4
 related_endpoints:
-  - put_folders_id
+  0: put_folders_id
 related_guides:
-  - folders/single/create
-  - folders/single/update
-  - folders/single/delete
-required_guides: []
-alias_paths: []
-category_id: folders
-subcategory_id: folders/single
-is_index: false
-id: folders/single/move
-type: guide
-total_steps: 10
-sibling_id: folders/single
-parent_id: folders/single
-next_page_id: folders/single/copy
-previous_page_id: folders/single/rename
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/move.md
+  0: folders/single/create
+  1: folders/single/update
+  2: folders/single/delete
+required_guides: {}
+title: フォルダの移動
+
 fullyTranslated: true
 ---
 
@@ -28,9 +17,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 フォルダを移動するには、その親フォルダのIDを更新します。
 
-{/* <Samples id="put_folders_id" variant="move">
-
-</Samples> */}
+{/* <Samples id='put_folders_id' variant='move' /> */}
 
 ## 操作の詳細
 
@@ -42,23 +29,22 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ## 非公開フォルダへのサブフォルダの移動
 
-コラボレーションサブフォルダを非公開サブフォルダに移動しようとすると、[`cannot_make_collaborated_subfolder_private`](/ja/guides/api-calls/permissions-and-errors/common-errors#400-bad-request)エラーが発生します。そのような場合は、次のようにリクエストに`owned_by.id`パラメータを設定し、そのフォルダが属しているユーザーのIDを指定します。
+コラボレーションサブフォルダを非公開サブフォルダに移動しようとすると、[`cannot_make_collaborated_subfolder_private`](/guides/api-calls/permissions-and-errors/common-errors#400-bad-request)エラーが発生します。そのような場合は、次のようにリクエストに`owned_by.id`パラメータを設定し、そのフォルダが属しているユーザーのIDを指定します。
 
-{/* <Samples id="put_folders_id" variant="move_private">
-
-</Samples> */}
+{/* <Samples id='put_folders_id' variant='move_private' /> */}
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
-  ]}
+  { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "ガイド" },
-    { label: "フォルダの更新", href: "/ja/guides/folders/single/update", badge: "ガイド" },
-    { label: "フォルダの削除", href: "/ja/guides/folders/single/delete", badge: "ガイド" }
-  ]}
+  { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" },
+  { label: "Update Folder", href: "/guides/folders/single/update", badge: "GUIDE" },
+  { label: "Delete Folder", href: "/guides/folders/single/delete", badge: "GUIDE" }
+]}
 />

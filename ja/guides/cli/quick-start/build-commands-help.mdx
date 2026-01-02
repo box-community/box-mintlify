@@ -1,84 +1,62 @@
 ---
-title: "コマンドの作成とヘルプ機能"
-sidebarTitle: 3. コマンドの作成とヘルプ機能
-type: quick-start
 hide_in_page_nav: true
-category_id: cli
-subcategory_id: cli/quick-start
-is_index: false
-id: cli/quick-start/build-commands-help
-rank: 3
-total_steps: 6
-sibling_id: cli/quick-start
-parent_id: cli/quick-start
-next_page_id: cli/quick-start/options-and-bulk-commands
-previous_page_id: cli/quick-start/install-and-configure
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/cli/quick-start/3-build-commands-help.md
+sidebarTitle: 3. Building Commands and Help Feature
+title: コマンドの作成とヘルプ機能
+type: quick-start
+
 fullyTranslated: true
 ---
 
-import { YouTube } from "/snippets/youtube.jsx";
+import {YouTube} from "/snippets/youtube.jsx";
+import {ResetButton} from "/snippets/reset-button.jsx";
 
-import { ProgressBar } from "/snippets/progress-bar.jsx";
-
-import { ResetButton } from "/snippets/reset-button.jsx";
+import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 <ProgressBar
   pages={[
-    "ja/guides/cli/quick-start/create-oauth-app",
-    "ja/guides/cli/quick-start/install-and-configure",
-    "ja/guides/cli/quick-start/build-commands-help",
-    "ja/guides/cli/quick-start/options-and-bulk-commands",
-    "ja/guides/cli/quick-start/powershell-script-templates",
-    "ja/guides/cli/quick-start/next-steps",
-  ]}
+                        "guides/cli/quick-start/create-oauth-app",
+                        "guides/cli/quick-start/install-and-configure",
+                        "guides/cli/quick-start/build-commands-help",
+                        "guides/cli/quick-start/options-and-bulk-commands",
+                        "guides/cli/quick-start/powershell-script-templates",
+                        "guides/cli/quick-start/next-steps"
+                      ]}
 />
 
-CLI コマンドの全一覧と使用方法に関する情報については、[GitHub リポジトリ][github]を参照してください。
+CLIコマンドの全一覧と使用方法に関する情報については、[GitHubリポジトリ][github]を参照してください。
 
 <Warning>
-
-一部のコマンドは、サービスアカウントと管理者しか使用できません。必要なスコープでユーザーが承認されていない場合、または別のユーザーのデフォルトのトークンを取得するよう CLI を構成した場合は、呼び出しが失敗する可能性があります。詳細なエラーログを確認するには、コマンドに`-v`または`--verbose`を追加してください。
-
+  一部のコマンドは、サービスアカウントと管理者しか使用できません。必要なスコープでユーザーが承認されていない場合、または別のユーザーのデフォルトのトークンを取得するようCLIを構成した場合は、呼び出しが失敗する可能性があります。詳細なエラーログを確認するには、コマンドに`-v`または`--verbose`を追加してください。
 </Warning>
 
 必要なエンドポイント用のコマンドが表示されない場合は、[カスタムリクエスト][custom]を作成できます。
 
 <Tip>
-
-help コマンドで提供されない情報を確認するには、リファレンスドキュメントと併せてリポジトリのドキュメントを使用してください。このような情報には、制限事項、トークンの権限の要件、フィールドなどがあります。
-
+  helpコマンドで提供されない情報を確認するには、リファレンスドキュメントと併せてリポジトリのドキュメントを使用してください。このような情報には、制限事項、トークンの権限の要件、フィールドなどがあります。
 </Tip>
 
 <YouTube id="66wlIyS07Aw" />
 
 ## はじめに: ブラウザのストレージをリセットする
 
-Box API 資格情報を CLI にインポートしたので、これらの資格情報をブラウザのストレージから削除することをお勧めします。
+Box API資格情報をCLIにインポートしたので、これらの資格情報をブラウザのストレージから削除することをお勧めします。
 
 <ResetButton id="cli,credentials,observable_events">
-
-資格情報をクリア
-
+  資格情報をクリア
 </ResetButton>
 
 <Warning>
-
-API 資格情報をブラウザのストレージから削除すると、**クライアント ID**または**クライアントシークレット**を他のスクリプトで読み取ることができなくなります。
-
+  API資格情報をブラウザのストレージから削除すると、**クライアントID**または**クライアントシークレット**を他のスクリプトで読み取ることができなくなります。
 </Warning>
 
-## help を使用したフォルダの作成
+## helpを使用したフォルダの作成
 
 {/* alex ignore executing */}
 
-どの CLI コマンドも`box`で始まります。任意のコマンドにオプション`--help`を追加すると、そのコマンドを作成するためのヘルプが表示されます。たとえば、`box --help`を実行すると、使用可能なすべてのオブジェクトコマンドのリストが表示されます。オプションの詳細については、[手順 4][four]で説明します。
+どのCLIコマンドも`box`で始まります。任意のコマンドにオプション`--help`を追加すると、そのコマンドを作成するためのヘルプが表示されます。たとえば、`box --help`を実行すると、使用可能なすべてのオブジェクトコマンドのリストが表示されます。オプションの詳細については、[手順4][four]で説明します。
 
 <Frame center>
-
-![ヘルプ](/images/guides/cli/help.png)
-
+  ![ヘルプ](/images/guides/cli/help.png)
 </Frame>
 
 {/* alex ignore execute */}
@@ -86,48 +64,37 @@ API 資格情報をブラウザのストレージから削除すると、**ク�
 次に、例として、フォルダオブジェクトを使用してコマンド`box folders --help`を実行します。その結果、このオブジェクトに実行できるすべての操作のリストが表示されます。
 
 <Frame center>
-
-![ヘルプ](/images/guides/cli/folders-help.png)
-
+  ![ヘルプ](/images/guides/cli/folders-help.png)
 </Frame>
 
 フォルダの作成に必要な引数を調べるためのコマンド: `box folders:create --help`
 
 <Frame center>
-
-![ヘルプ](/images/guides/cli/folders-create-help.png)
-
+  ![ヘルプ](/images/guides/cli/folders-create-help.png)
 </Frame>
 
 {/* alex ignore execute */}
 
-コマンド`box folders:create 0 "My CLI Folder"`を実行し、レスポンスで返されたフォルダ ID を書き留めておきます。
+コマンド`box folders:create 0 "My CLI Folder"`を実行し、レスポンスで返されたフォルダIDを書き留めておきます。
 
 <Tip>
-
-フォルダツリーのルートレベルである \[すべてのファイル] ページは、常にフォルダ ID 0 で表されます。
-
+  フォルダツリーのルートレベルである \[すべてのファイル] ページは、常にフォルダID 0で表されます。
 </Tip>
 
-**自分の**Box アカウントにログインします。このフォルダが自分のフォルダツリーに表示されているでしょうか?
+**自分の**Boxアカウントにログインします。このフォルダが自分のフォルダツリーに表示されているでしょうか?
 
 <Warning>
-
-JWT 認証を使用した Box CLI を設定すると、Box アカウントにこのフォルダが表示されなくなります。このフォルダは、アプリケーションの承認後に作成されたアプリケーションのサービスアカウントに存在します。
-
+  JWT認証を使用したBox CLIを設定すると、Boxアカウントにこのフォルダが表示されなくなります。このフォルダは、アプリケーションの承認後に作成されたアプリケーションのサービスアカウントに存在します。
 </Warning>
 
 ## まとめ
 
-- **ヘルプ**機能を使用してフォルダを作成しました
-
-<Next>
-
-最初のフォルダを作成しました
-
-</Next>
+* **ヘルプ**機能を使用してフォルダを作成しました
 
 [github]: https://github.com/box/boxcli#command-topics-1
+
 [custom]: https://github.com/box/boxcli/blob/master/docs/request.md
-[sa]: /ja/platform/user-types/#service-account
-[four]: /ja/guides/cli/quick-start/options-and-bulk-commands/#options
+
+[sa]: /platform/user-types/#service-account
+
+[four]: /guides/cli/quick-start/options-and-bulk-commands/#options

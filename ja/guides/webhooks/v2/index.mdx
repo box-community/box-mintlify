@@ -1,48 +1,37 @@
 ---
-title: "V2 Webhook"
+alias_paths:
+  0: /webhooks/handle/retries
+  1: /webhooks/handle/payload
 rank: 2
 related_endpoints:
-  - post_webhooks
+  0: post_webhooks
 related_guides:
-  - webhooks/v2/create-v2
-  - webhooks/v2/signatures-v2
+  0: webhooks/v2/create-v2
+  1: webhooks/v2/signatures-v2
 required_guides:
-  - webhooks/v2/create-v2
-  - webhooks/v2/signatures-v2
-alias_paths:
-  - /webhooks/handle/retries
-  - /webhooks/handle/payload
-category_id: webhooks
-subcategory_id: webhooks/v2
-is_index: true
-id: webhooks/v2
-type: guide
-total_steps: 6
-sibling_id: webhooks
-parent_id: webhooks
-next_page_id: webhooks/v2/update-v2
-previous_page_id: webhooks/v2/list-v2
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/index.md
+  0: webhooks/v2/create-v2
+  1: webhooks/v2/signatures-v2
+title: V2 Webhook
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" },
-    { label: "署名の検証", href: "/ja/guides/webhooks/v2/signatures-v2", badge: "ガイド" }
-  ]}
+  { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+  { label: "Signature Verification", href: "/guides/webhooks/v2/signatures-v2", badge: "GUIDE" }
+]}
 />
+
 ## フロー
 
 <Frame center width="400" shadow border>
-<div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
-![Webhookフロー](/images/guides/webhooks/webhook.png)
-</div>
+  <div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
+    ![Webhookフロー](/images/guides/webhooks/webhook.png)
+  </div>
 </Frame>
 
 イベントによってファイルまたはフォルダのWebhookがトリガーされると、Webhookの作成時に指定した`address`に対してHTTP呼び出しが実行されます。この呼び出しのペイロードには、いくつかのリクエストヘッダーとJSON本文が含まれます。
@@ -70,19 +59,14 @@ BOX-SIGNATURE-SECONDARY:  1UbiiKS7/2o5vNIlyMh7e5QGCHq8lflWFgEF+YWBugI=
 BOX-SIGNATURE-VERSION:    1
 BOX-SIGNATURE-ALGORITHM:  HmacSHA256
 USER-AGENT:               Box-WH-Client/0.1
-
 ```
 
 <Note>
-
-Webhookペイロードの[設定][setup_sigs]と[署名の検証][verify_sigs]を行うことをお勧めします。
-
+  Webhookペイロードの[設定][setup_sigs]と[署名の検証][verify_sigs]を行うことをお勧めします。
 </Note>
 
 <Warning>
-
-HTTPヘッダー名では大文字と小文字が区別されません。クライアントでは、すべてのヘッダーの名前を標準化された小文字または大文字の形式に変換してから、ヘッダーの値を確認する必要があります。
-
+  HTTPヘッダー名では大文字と小文字が区別されません。クライアントでは、すべてのヘッダーの名前を標準化された小文字または大文字の形式に変換してから、ヘッダーの値を確認する必要があります。
 </Warning>
 
 ## ペイロード本文
@@ -200,7 +184,6 @@ Webhookペイロードの本文は、Webhookをトリガーしたファイルま
   },
   "additional_info": []
 }
-
 ```
 
 ## 再試行
@@ -210,25 +193,24 @@ Webhookペイロードの本文は、Webhookをトリガーしたファイルま
 Boxがペイロードを送信してから30秒以内に、`200`から`299`の範囲のHTTPステータスコードを含むレスポンスが表示されない場合、Webhookペイロードの配信は失敗します。
 
 <Note>
-
-Boxは2時間でWebhook配信を最大12回再試行します。この回数と期間は今後変更される可能性があります。
-
+  Boxは2時間でWebhook配信を最大12回再試行します。この回数と期間は今後変更される可能性があります。
 </Note>
 
-[setup_sigs]: /ja/guides/webhooks/v2/signatures-v2
+[setup_sigs]: /guides/webhooks/v2/signatures-v2
 
-[verify_sigs]: /ja/guides/webhooks/v2/signatures-v2
+[verify_sigs]: /guides/webhooks/v2/signatures-v2
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
-  ]}
+  { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" },
-    { label: "署名の検証", href: "/ja/guides/webhooks/v2/signatures-v2", badge: "ガイド" }
-  ]}
+  { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+  { label: "Signature Verification", href: "/guides/webhooks/v2/signatures-v2", badge: "GUIDE" }
+]}
 />

@@ -1,24 +1,13 @@
 ---
-title: "Box Signのリクエストの作成"
 rank: 1
 related_endpoints:
-  - post-sign-requests
+  0: post-sign-requests
 related_guides:
-  - box-sign/resend-sign-request
-  - box-sign/cancel-sign-request
-  - box-sign/sign-templates
-category_id: box-sign
-subcategory_id: null
-is_index: false
-id: box-sign/create-sign-request
-type: guide
-total_steps: 7
-sibling_id: box-sign
-parent_id: box-sign
-next_page_id: box-sign/resend-sign-request
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-sign/create-sign-request.md
+  0: box-sign/resend-sign-request
+  1: box-sign/cancel-sign-request
+  2: box-sign/sign-templates
+title: Box Signのリクエストの作成
+
 fullyTranslated: true
 ---
 
@@ -27,214 +16,210 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 [Box Signのリクエストを作成する][create]には、少なくとも、署名が必要なファイル、署名済みドキュメント/[署名ログ][log]の保存先フォルダ、署名者が必要です。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/sign_requests" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -d '{
+         "signers": [
+            {
+              "role": "signer",
+              "email": "example_email@box.com"
+            }
+          ],
+         "source_files": [
+            {
+              "type": "file",
+              "id": "123456789"
+            }
+         ],
+         "parent_folder":
+            {
+              "type": "folder",
+              "id": "0987654321"
+            }
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/sign_requests" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -d '{
-       "signers": [
-          {
-            "role": "signer",
-            "email": "example_email@box.com"
-          }
-        ],
-       "source_files": [
-          {
-            "type": "file",
-            "id": "123456789"
-          }
-       ],
-       "parent_folder":
-          {
-            "type": "folder",
-            "id": "0987654321"
-          }
-     }'
-```
-
-```typescript Node/TypeScript v10
-await client.signRequests.createSignRequest({
-  signers: [
-    {
-      email: signerEmail,
-      suppressNotifications: true,
-      declinedRedirectUrl: 'https://www.box.com',
-      embedUrlExternalUserId: '123',
-      isInPerson: false,
-      loginRequired: false,
-      password: 'password',
-      role: 'signer' as SignRequestCreateSignerRoleField,
-    } satisfies SignRequestCreateSigner,
-  ],
-  areRemindersEnabled: true,
-  areTextSignaturesEnabled: true,
-  daysValid: 30,
-  declinedRedirectUrl: 'https://www.box.com',
-  emailMessage: 'Please sign this document',
-  emailSubject: 'Sign this document',
-  externalId: '123',
-  externalSystemName: 'BoxSignIntegration',
-  isDocumentPreparationNeeded: false,
-  name: 'Sign Request',
-  parentFolder: new FolderMini({ id: destinationFolder.id }),
-  redirectUrl: 'https://www.box.com',
-  prefillTags: [
-    {
-      dateValue: dateFromString('2035-01-01'),
-      documentTagId: '0',
-    } satisfies SignRequestPrefillTag,
-  ],
-  sourceFiles: [new FileBase({ id: fileToSign.id })],
-} satisfies SignRequestCreateRequest);
-```
-
-```python Python v10
-client.sign_requests.create_sign_request(
-    [
-        SignRequestCreateSigner(
-            email=signer_email,
-            suppress_notifications=True,
-            declined_redirect_url="https://www.box.com",
-            embed_url_external_user_id="123",
-            is_in_person=False,
-            login_required=False,
-            password="password",
-            role=SignRequestCreateSignerRoleField.SIGNER,
-        )
+  ```typescript Node/TypeScript v10
+  await client.signRequests.createSignRequest({
+    signers: [
+      {
+        email: signerEmail,
+        suppressNotifications: true,
+        declinedRedirectUrl: 'https://www.box.com',
+        embedUrlExternalUserId: '123',
+        isInPerson: false,
+        loginRequired: false,
+        password: 'password',
+        role: 'signer' as SignRequestCreateSignerRoleField,
+      } satisfies SignRequestCreateSigner,
     ],
-    source_files=[FileBase(id=file_to_sign.id)],
-    parent_folder=FolderMini(id=destination_folder.id),
-    is_document_preparation_needed=False,
-    redirect_url="https://www.box.com",
-    declined_redirect_url="https://www.box.com",
-    are_text_signatures_enabled=True,
-    email_subject="Sign this document",
-    email_message="Please sign this document",
-    are_reminders_enabled=True,
-    name="Sign Request",
-    prefill_tags=[
-        SignRequestPrefillTag(
-            date_value=date_from_string("2035-01-01"), document_tag_id="0"
-        )
+    areRemindersEnabled: true,
+    areTextSignaturesEnabled: true,
+    daysValid: 30,
+    declinedRedirectUrl: 'https://www.box.com',
+    emailMessage: 'Please sign this document',
+    emailSubject: 'Sign this document',
+    externalId: '123',
+    externalSystemName: 'BoxSignIntegration',
+    isDocumentPreparationNeeded: false,
+    name: 'Sign Request',
+    parentFolder: new FolderMini({ id: destinationFolder.id }),
+    redirectUrl: 'https://www.box.com',
+    prefillTags: [
+      {
+        dateValue: dateFromString('2035-01-01'),
+        documentTagId: '0',
+      } satisfies SignRequestPrefillTag,
     ],
-    days_valid=30,
-    external_id="123",
-    external_system_name="BoxSignIntegration",
-)
-```
+    sourceFiles: [new FileBase({ id: fileToSign.id })],
+  } satisfies SignRequestCreateRequest);
+  ```
 
-```cs .NET v10
-await client.SignRequests.CreateSignRequestAsync(requestBody: new SignRequestCreateRequest(signers: Array.AsReadOnly(new [] {new SignRequestCreateSigner() { Email = signerEmail, SuppressNotifications = true, DeclinedRedirectUrl = "https://www.box.com", EmbedUrlExternalUserId = "123", IsInPerson = false, LoginRequired = false, Password = "password", Role = SignRequestCreateSignerRoleField.Signer }}), areRemindersEnabled: true, areTextSignaturesEnabled: true, daysValid: 30, declinedRedirectUrl: "https://www.box.com", emailMessage: "Please sign this document", emailSubject: "Sign this document", externalId: "123", externalSystemName: "BoxSignIntegration", isDocumentPreparationNeeded: false, name: "Sign Request", parentFolder: new FolderMini(id: destinationFolder.Id), redirectUrl: "https://www.box.com", prefillTags: Array.AsReadOnly(new [] {new SignRequestPrefillTag() { DateValue = Utils.DateFromString(date: "2035-01-01"), DocumentTagId = "0" }}), sourceFiles: Array.AsReadOnly(new [] {new FileBase(id: fileToSign.Id)})));
-```
+  ```python Python v10
+  client.sign_requests.create_sign_request(
+      [
+          SignRequestCreateSigner(
+              email=signer_email,
+              suppress_notifications=True,
+              declined_redirect_url="https://www.box.com",
+              embed_url_external_user_id="123",
+              is_in_person=False,
+              login_required=False,
+              password="password",
+              role=SignRequestCreateSignerRoleField.SIGNER,
+          )
+      ],
+      source_files=[FileBase(id=file_to_sign.id)],
+      parent_folder=FolderMini(id=destination_folder.id),
+      is_document_preparation_needed=False,
+      redirect_url="https://www.box.com",
+      declined_redirect_url="https://www.box.com",
+      are_text_signatures_enabled=True,
+      email_subject="Sign this document",
+      email_message="Please sign this document",
+      are_reminders_enabled=True,
+      name="Sign Request",
+      prefill_tags=[
+          SignRequestPrefillTag(
+              date_value=date_from_string("2035-01-01"), document_tag_id="0"
+          )
+      ],
+      days_valid=30,
+      external_id="123",
+      external_system_name="BoxSignIntegration",
+  )
+  ```
 
-```swift Swift v10
-try await client.signRequests.createSignRequest(requestBody: SignRequestCreateRequest(signers: [SignRequestCreateSigner(email: signerEmail, suppressNotifications: true, declinedRedirectUrl: "https://www.box.com", embedUrlExternalUserId: "123", isInPerson: false, loginRequired: false, password: "password", role: SignRequestCreateSignerRoleField.signer)], areRemindersEnabled: true, areTextSignaturesEnabled: true, daysValid: Int64(30), declinedRedirectUrl: "https://www.box.com", emailMessage: "Please sign this document", emailSubject: "Sign this document", externalId: "123", externalSystemName: "BoxSignIntegration", isDocumentPreparationNeeded: false, name: "Sign Request", parentFolder: FolderMini(id: destinationFolder.id), redirectUrl: "https://www.box.com", prefillTags: [SignRequestPrefillTag(dateValue: try Utils.Dates.dateFromString(date: "2035-01-01"), documentTagId: "0")], sourceFiles: [FileBase(id: fileToSign.id)]))
-```
+  ```cs .NET v10
+  await client.SignRequests.CreateSignRequestAsync(requestBody: new SignRequestCreateRequest(signers: Array.AsReadOnly(new [] {new SignRequestCreateSigner() { Email = signerEmail, SuppressNotifications = true, DeclinedRedirectUrl = "https://www.box.com", EmbedUrlExternalUserId = "123", IsInPerson = false, LoginRequired = false, Password = "password", Role = SignRequestCreateSignerRoleField.Signer }}), areRemindersEnabled: true, areTextSignaturesEnabled: true, daysValid: 30, declinedRedirectUrl: "https://www.box.com", emailMessage: "Please sign this document", emailSubject: "Sign this document", externalId: "123", externalSystemName: "BoxSignIntegration", isDocumentPreparationNeeded: false, name: "Sign Request", parentFolder: new FolderMini(id: destinationFolder.Id), redirectUrl: "https://www.box.com", prefillTags: Array.AsReadOnly(new [] {new SignRequestPrefillTag() { DateValue = Utils.DateFromString(date: "2035-01-01"), DocumentTagId = "0" }}), sourceFiles: Array.AsReadOnly(new [] {new FileBase(id: fileToSign.Id)})));
+  ```
 
-```java Java v10
-client.getSignRequests().createSignRequest(new SignRequestCreateRequest.Builder(Arrays.asList(new SignRequestCreateSigner.Builder().email(signerEmail).role(SignRequestCreateSignerRoleField.SIGNER).isInPerson(false).embedUrlExternalUserId("123").declinedRedirectUrl("https://www.box.com").loginRequired(false).password("password").suppressNotifications(true).build())).sourceFiles(Arrays.asList(new FileBase(fileToSign.getId()))).parentFolder(new FolderMini(destinationFolder.getId())).isDocumentPreparationNeeded(false).redirectUrl("https://www.box.com").declinedRedirectUrl("https://www.box.com").areTextSignaturesEnabled(true).emailSubject("Sign this document").emailMessage("Please sign this document").areRemindersEnabled(true).name("Sign Request").prefillTags(Arrays.asList(new SignRequestPrefillTag.Builder().documentTagId("0").dateValue(dateFromString("2035-01-01")).build())).daysValid(30L).externalId("123").externalSystemName("BoxSignIntegration").build())
-```
+  ```swift Swift v10
+  try await client.signRequests.createSignRequest(requestBody: SignRequestCreateRequest(signers: [SignRequestCreateSigner(email: signerEmail, suppressNotifications: true, declinedRedirectUrl: "https://www.box.com", embedUrlExternalUserId: "123", isInPerson: false, loginRequired: false, password: "password", role: SignRequestCreateSignerRoleField.signer)], areRemindersEnabled: true, areTextSignaturesEnabled: true, daysValid: Int64(30), declinedRedirectUrl: "https://www.box.com", emailMessage: "Please sign this document", emailSubject: "Sign this document", externalId: "123", externalSystemName: "BoxSignIntegration", isDocumentPreparationNeeded: false, name: "Sign Request", parentFolder: FolderMini(id: destinationFolder.id), redirectUrl: "https://www.box.com", prefillTags: [SignRequestPrefillTag(dateValue: try Utils.Dates.dateFromString(date: "2035-01-01"), documentTagId: "0")], sourceFiles: [FileBase(id: fileToSign.id)]))
+  ```
 
-```java Java v5
-List<BoxSignRequestFile> files = new ArrayList<BoxSignRequestFile>();
-BoxSignRequestFile file = new BoxSignRequestFile("12345");
-files.add(file);
-        
-// you can also use specific version of the file
-BoxFile file = new BoxFile(api, "12345");
-List<BoxFileVersion> versions = file.getVersions();
-BoxFileVersion firstVersion = versions.get(0);
-BoxSignRequestFile file = new BoxSignRequestFile(firstVersion.getFileID(), firstVersion.getVersionID());
+  ```java Java v10
+  client.getSignRequests().createSignRequest(new SignRequestCreateRequest.Builder(Arrays.asList(new SignRequestCreateSigner.Builder().email(signerEmail).role(SignRequestCreateSignerRoleField.SIGNER).isInPerson(false).embedUrlExternalUserId("123").declinedRedirectUrl("https://www.box.com").loginRequired(false).password("password").suppressNotifications(true).build())).sourceFiles(Arrays.asList(new FileBase(fileToSign.getId()))).parentFolder(new FolderMini(destinationFolder.getId())).isDocumentPreparationNeeded(false).redirectUrl("https://www.box.com").declinedRedirectUrl("https://www.box.com").areTextSignaturesEnabled(true).emailSubject("Sign this document").emailMessage("Please sign this document").areRemindersEnabled(true).name("Sign Request").prefillTags(Arrays.asList(new SignRequestPrefillTag.Builder().documentTagId("0").dateValue(dateFromString("2035-01-01")).build())).daysValid(30L).externalId("123").externalSystemName("BoxSignIntegration").build())
+  ```
 
-List<BoxSignRequestSigner> signers = new ArrayList<BoxSignRequestSigner>();
-BoxSignRequestSigner newSigner = new BoxSignRequestSigner("signer@mail.com");
-signers.add(newSigner);
+  ```java Java v5
+  List<BoxSignRequestFile> files = new ArrayList<BoxSignRequestFile>();
+  BoxSignRequestFile file = new BoxSignRequestFile("12345");
+  files.add(file);
+          
+  // you can also use specific version of the file
+  BoxFile file = new BoxFile(api, "12345");
+  List<BoxFileVersion> versions = file.getVersions();
+  BoxFileVersion firstVersion = versions.get(0);
+  BoxSignRequestFile file = new BoxSignRequestFile(firstVersion.getFileID(), firstVersion.getVersionID());
 
-String destinationParentFolderId = "55555";
+  List<BoxSignRequestSigner> signers = new ArrayList<BoxSignRequestSigner>();
+  BoxSignRequestSigner newSigner = new BoxSignRequestSigner("signer@mail.com");
+  signers.add(newSigner);
 
-BoxSignRequest.Info signRequestInfo = BoxSignRequest.createSignRequest(api, files,
-        signers, destinationParentFolderId);
-```
+  String destinationParentFolderId = "55555";
 
-```python Python v4
-source_file = {
-    'id': '12345',
-    'type': 'file'
-}
-files = [source_file]
+  BoxSignRequest.Info signRequestInfo = BoxSignRequest.createSignRequest(api, files,
+          signers, destinationParentFolderId);
+  ```
 
-signer = {
-    'name': 'John Doe',
-    'email': 'signer@mail.com'
-}
-signers = [signer]
-parent_folder_id = '123456789'
+  ```python Python v4
+  source_file = {
+      'id': '12345',
+      'type': 'file'
+  }
+  files = [source_file]
 
-new_sign_request = client.create_sign_request_v2(signers, files=files, parent_folder_id=parent_folder_id)
-print(f'(Sign Request ID: {new_sign_request.id})')
-```
+  signer = {
+      'name': 'John Doe',
+      'email': 'signer@mail.com'
+  }
+  signers = [signer]
+  parent_folder_id = '123456789'
 
-```cs .NET v6
-var sourceFiles = new List<BoxSignRequestCreateSourceFile>
-{
-    new BoxSignRequestCreateSourceFile()
-    {
-        Id = "12345"
-    }
-};
+  new_sign_request = client.create_sign_request_v2(signers, files=files, parent_folder_id=parent_folder_id)
+  print(f'(Sign Request ID: {new_sign_request.id})')
+  ```
 
-var signers = new List<BoxSignRequestSignerCreate>
-{
-    new BoxSignRequestSignerCreate()
-    {
-        Email = "example@gmail.com"
-    }
-};
+  ```cs .NET v6
+  var sourceFiles = new List<BoxSignRequestCreateSourceFile>
+  {
+      new BoxSignRequestCreateSourceFile()
+      {
+          Id = "12345"
+      }
+  };
 
-var parentFolder = new BoxRequestEntity()
-{
-    Id = "12345",
-    Type = BoxType.folder
-};
+  var signers = new List<BoxSignRequestSignerCreate>
+  {
+      new BoxSignRequestSignerCreate()
+      {
+          Email = "example@gmail.com"
+      }
+  };
 
-var request = new BoxSignRequestCreateRequest
-{
-    SourceFiles = sourceFiles,
-    Signers = signers,
-    ParentFolder = parentFolder
-};
+  var parentFolder = new BoxRequestEntity()
+  {
+      Id = "12345",
+      Type = BoxType.folder
+  };
 
-BoxSignRequest signRequest = await client.SignRequestsManager.CreateSignRequestAsync(request);
-```
+  var request = new BoxSignRequestCreateRequest
+  {
+      SourceFiles = sourceFiles,
+      Signers = signers,
+      ParentFolder = parentFolder
+  };
 
-```javascript Node v4
-const signRequest = await client.signRequests.create({
-	signers: [
-		{
-			role: 'signer',
-			email: 'user@example.com',
-		},
-	],
-	source_files: [
-		{
-			type: 'file',
-			id: '12345',
-		},
-	],
-	parent_folder: {
-		type: 'folder',
-		id: '1234567',
-	},
-});
-console.log(`Created a new sign request id ${signRequest.id}`);
-```
+  BoxSignRequest signRequest = await client.SignRequestsManager.CreateSignRequestAsync(request);
+  ```
 
+  ```javascript Node v4
+  const signRequest = await client.signRequests.create({
+  	signers: [
+  		{
+  			role: 'signer',
+  			email: 'user@example.com',
+  		},
+  	],
+  	source_files: [
+  		{
+  			type: 'file',
+  			id: '12345',
+  		},
+  	],
+  	parent_folder: {
+  		type: 'folder',
+  		id: '1234567',
+  	},
+  });
+  console.log(`Created a new sign request id ${signRequest.id}`);
+  ```
 </CodeGroup>
 
 <Warning>
-
-公開APIを使用したCFR Part 11の署名リクエストの作成はサポートされていません。詳細については、[21 CFR Part 11コンプライアンスのサポート][CFR]を参照してください。
-
+  公開APIを使用したCFR Part 11の署名リクエストの作成はサポートされていません。詳細については、[21 CFR Part 11コンプライアンスのサポート][CFR]を参照してください。
 </Warning>
 
 ## ドキュメントの準備
@@ -246,15 +231,13 @@ Box Signのリクエストを送信する前にドキュメントを準備する
 ドキュメントのタグの詳細については、[サポート記事][tags]を参照してください。
 
 <Warning>
-
-Boxウェブアプリを使用してテンプレートに作成された事前入力タグには、APIからアクセスできません。
-
+  Boxウェブアプリを使用してテンプレートに作成された事前入力タグには、APIからアクセスできません。
 </Warning>
 
 <Frame border center shadow>
-<div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
-![準備のオプション](/images/guides/box-sign/prepare.png)
-</div>
+  <div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
+    ![準備のオプション](/images/guides/box-sign/prepare.png)
+  </div>
 </Frame>
 
 ## ファイル
@@ -262,9 +245,7 @@ Boxウェブアプリを使用してテンプレートに作成された事前�
 Box Signの各リクエストは、署名が必要なファイルから始まります。そのファイルがまだBoxに存在しない場合は、リクエストを作成する前に、別のAPIコールでファイルを[アップロードする][upload]必要があります。1つのリクエストで複数のファイルに署名できます。リクエストに含まれる最初のファイルのファイルIDを`source_files`本文パラメータで指定します。
 
 <Warning>
-
-リクエスト送信者は、Box内のファイルに対してダウンロード権限を持っている必要があります。この要件を満たしているかどうかを確認するには、[コラボレーションレベル][collab]を確認します。
-
+  リクエスト送信者は、Box内のファイルに対してダウンロード権限を持っている必要があります。この要件を満たしているかどうかを確認するには、[コラボレーションレベル][collab]を確認します。
 </Warning>
 
 サポートされているファイルタイプは以下のとおりです。
@@ -293,9 +274,7 @@ Box Signの各リクエストは、署名が必要なファイルから始まり
 必要に応じて、署名者は、リクエストに署名する前にBoxにログインできます。その場合は、署名者の`login_required`パラメータを`true`に設定します。署名者が既存のアカウントを所有していない場合は、無料Boxアカウントを作成するオプションもあります。
 
 <Warning>
-
-Box Signは、リクエストで指定された署名者のメールアドレスに署名用メールを送信しようとするだけです。Boxユーザーの場合、指定しない限り、メールエイリアスは含まれません。指定された署名者のメールアドレスすべてが有効であることを再確認してください。
-
+  Box Signは、リクエストで指定された署名者のメールアドレスに署名用メールを送信しようとするだけです。Boxユーザーの場合、指定しない限り、メールエイリアスは含まれません。指定された署名者のメールアドレスすべてが有効であることを再確認してください。
 </Warning>
 
 ### 入力
@@ -311,9 +290,7 @@ Box Signは、リクエストで指定された署名者のメールアドレス
 `redirect_url`および`declined_redirect_url`で指定したURLにより、署名するか署名リクエストを拒否した署名者をカスタムランディングページにリダイレクトすることができます。たとえば、アプリケーションをBox Signと統合した場合は、署名者をアプリケーションにリダイレクトすることもカスタムランディングページにリダイレクトすることもできます。リダイレクトURLは、すべての署名者を対象にグローバルに設定することも、特定の署名者のみを対象に設定することもできます。つまり、Box Signでは、選択した署名者に特定のURLを使用し、残りの署名者にグローバルな設定を使用します。リダイレクトURLを設定しなかった場合、Box Signでは署名者がデフォルトのページにリダイレクトされます。
 
 <Warning>
-
-デフォルトのページには「すべての関係者がドキュメントでの作業を完了すると、期限が設定された最終版へのリンクがメールで届きます。また、Boxアカウントをお持ちの場合は、アカウントにコピーが保存されます。」と表示されます。署名者を別のページにリダイレクトする場合、この情報は署名者に表示されなくなります。
-
+  デフォルトのページには「すべての関係者がドキュメントでの作業を完了すると、期限が設定された最終版へのリンクがメールで届きます。また、Boxアカウントをお持ちの場合は、アカウントにコピーが保存されます。」と表示されます。署名者を別のページにリダイレクトする場合、この情報は署名者に表示されなくなります。
 </Warning>
 
 ## 複数の署名者と署名の順序
@@ -325,9 +302,9 @@ Box Signは、リクエストで指定された署名者のメールアドレス
 いずれかの署名者が拒否した場合、残りの署名者にBox Signのリクエストメールが送信されません。リクエスト全体が拒否されます。
 
 <Frame border center shadow>
-<div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
-![複数の署名者のフロー](/images/guides/box-sign/multiple_signer_flow.png)
-</div>
+  <div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
+    ![複数の署名者のフロー](/images/guides/box-sign/multiple_signer_flow.png)
+  </div>
 </Frame>
 
 ## リクエストのステータス
@@ -350,20 +327,20 @@ Box Signは、リクエストで指定された署名者のメールアドレス
 エラーステータスになった場合、再試行するには、新しい署名リクエストを作成する必要があります。
 
 <Frame border center shadow>
-<div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
-![ステータスの図](/images/guides/box-sign/status.png)
-</div>
+  <div className="w-full h-full bg-[#FFFFFF] p-2 rounded flex items-center justify-center">
+    ![ステータスの図](/images/guides/box-sign/status.png)
+  </div>
 </Frame>
 
-[upload]: /ja/reference/post-files-content
+[upload]: /reference/post-files-content
 
-[documents]: /ja/guides/representations/supported-file-types/#documents
+[documents]: /guides/representations/supported-file-types/#documents
 
-[presentations]: /ja/guides/representations/supported-file-types/#presentations
+[presentations]: /guides/representations/supported-file-types/#presentations
 
-[uploads]: /ja/guides/uploads/direct
+[uploads]: /guides/uploads/direct
 
-[create]: /ja/reference/post-sign-requests
+[create]: /reference/post-sign-requests
 
 {/* i18n-enable localize-links */}
 
@@ -377,31 +354,32 @@ Box Signは、リクエストで指定された署名者のメールアドレス
 
 {/* i18n-disable localize-links */}
 
-[embed]: /ja/guides/embed/box-embed
+[embed]: /guides/embed/box-embed
 
-[embedguide]: /ja/guides/embed/box-embed#programmatically
+[embedguide]: /guides/embed/box-embed#programmatically
 
-[signrequest]: /ja/reference/post-sign-requests
+[signrequest]: /reference/post-sign-requests
 
-[externalid]: /ja/reference/post-sign-requests#param-signers-embed_url_external_user_id
+[externalid]: /reference/post-sign-requests#param-signers-embed_url_external_user_id
 
-[cloudgame]: /ja/guides/embed/box-embed#cloud-game
+[cloudgame]: /guides/embed/box-embed#cloud-game
 
-[templates]: /ja/guides/box-sign/sign-templates
+[templates]: /guides/box-sign/sign-templates
 
 [CFR]: https://support.box.com/hc/en-us/articles/24169443030163
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create Box Sign request", href: "/reference/post-sign-requests", badge: "POST" }
-  ]}
+  { label: "Create Box Sign request", href: "/reference/post-sign-requests", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box Signのリクエストの再送信", href: "/ja/guides/box-sign/resend-sign-request", badge: "ガイド" },
-    { label: "Box Signのリクエストのキャンセル", href: "/ja/guides/box-sign/cancel-sign-request", badge: "ガイド" },
-    { label: "Signテンプレートを使用した署名リクエストの作成", href: "/ja/guides/box-sign/sign-templates", badge: "ガイド" }
-  ]}
+  { label: "Resend Box Sign Request", href: "/guides/box-sign/resend-sign-request", badge: "GUIDE" },
+  { label: "Cancel Box Sign Request", href: "/guides/box-sign/cancel-sign-request", badge: "GUIDE" },
+  { label: "Create Sign Request with Sign Template", href: "/guides/box-sign/sign-templates", badge: "GUIDE" }
+]}
 />

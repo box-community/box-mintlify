@@ -1,45 +1,33 @@
 ---
-title: "目的のレプリゼンテーションのリクエスト"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_files_id
+  0: get_files_id
 related_guides:
-  - representations/download-a-representation
-  - representations/supported-file-types
+  0: representations/download-a-representation
+  1: representations/supported-file-types
 required_guides:
-  - representations/list-all-representations
-alias_paths: []
-category_id: representations
-subcategory_id: null
-is_index: false
-id: representations/request-a-representation
-type: guide
-total_steps: 8
-sibling_id: representations
-parent_id: representations
-next_page_id: representations/download-a-representation
-previous_page_id: representations/list-all-representations
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/representations/request-a-representation.md
+  0: representations/list-all-representations
+title: 目的のレプリゼンテーションのリクエスト
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "ファイルのすべてのレプリゼンテーションのリストの取得", href: "/ja/guides/representations/list-all-representations", badge: "ガイド" }
-  ]}
+  { label: "List All Representations for File", href: "/guides/representations/list-all-representations", badge: "GUIDE" }
+]}
 />
+
 特定のレプリゼンテーションを選択するには、必要なレプリゼンテーション形式を定義する[`x-rep-hints`][x-rep-hints]ヘッダーを使用して[`GET /files/:id`][get_files_id]エンドポイントを呼び出します。
 
 ```sh
 curl https://api.box.com/2.0/files/123?fields=representations \
     -H "x-rep-hints: [pdf]" \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ## 複数のサイズ
@@ -50,7 +38,6 @@ curl https://api.box.com/2.0/files/123?fields=representations \
 curl https://api.box.com/2.0/files/123?fields=representations \
     -H "x-rep-hints: [jpg?dimensions=94x94]" \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ## 複数のレプリゼンテーション
@@ -61,7 +48,6 @@ curl https://api.box.com/2.0/files/123?fields=representations \
 curl https://api.box.com/2.0/files/123?fields=representations \
     -H "x-rep-hints: [pdf][jpg?dimensions=94x94]" \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ## APIレスポンス
@@ -91,13 +77,10 @@ curl https://api.box.com/2.0/files/123?fields=representations \
   },
   "type": "file"
 }
-
 ```
 
 <Note>
-
-このレスポンスの`url_template`は、**不明瞭な**URLです。このURL形式は、時間が経つと変わる可能性があるため、`{+asset_path}`変数の有無を除き、この形式についてさまざまな憶測を立てないようにしてください。
-
+  このレスポンスの`url_template`は、**不明瞭な**URLです。このURL形式は、時間が経つと変わる可能性があるため、`{+asset_path}`変数の有無を除き、この形式についてさまざまな憶測を立てないようにしてください。
 </Note>
 
 [get_files_id]: endpoint://get-files-id
@@ -107,13 +90,14 @@ curl https://api.box.com/2.0/files/123?fields=representations \
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルレプリゼンテーションのダウンロード", href: "/ja/guides/representations/download-a-representation", badge: "ガイド" },
-    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "ガイド" }
-  ]}
+  { label: "Download File Representation", href: "/guides/representations/download-a-representation", badge: "GUIDE" },
+  { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+]}
 />

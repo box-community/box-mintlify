@@ -1,38 +1,27 @@
 ---
-title: "専用スコープ"
-rank: 15
-related_endpoints: []
-related_guides:
-  - embed/ui-elements
-required_guides:
-  - embed/ui-elements/installation
-related_resources: []
 alias_paths:
-  - /docs/special-scopes-for-box-ui-elements
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/scopes
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/viewers-and-events
-previous_page_id: embed/ui-elements/access
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/scopes.md
+  0: /docs/special-scopes-for-box-ui-elements
+rank: 15
+related_endpoints: {}
+related_guides:
+  0: embed/ui-elements
+related_resources: {}
+required_guides:
+  0: embed/ui-elements/installation
+title: 専用スコープ
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
+
 Box UI Elementsを使用する際に、開発者の多くが、Boxが定義した[アクセスレベル][acl]とは異なる独自の権限モデルを実装できることに関心を示します。
 
 [ダウンスコープ][downscoping] (トークン交換とも呼ばれます) とは、開発者がアクセストークンに対する権限をより詳細に制限できるBoxのメカニズムです。このメカニズムを使用することで、開発者はBox Platform上に独自の権限モデルを構築できます。
@@ -72,11 +61,11 @@ Box UI Elementは、これらのスコープによって適用される権限を
 
 {/* i18n-disable localize-links */}
 
-[downscoping]: /ja/guides/authentication/tokens/downscope
+[downscoping]: /guides/authentication/tokens/downscope
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

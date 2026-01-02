@@ -1,96 +1,81 @@
 ---
-title: "トークンの取り消し"
+alias_paths: ""
 rank: 7
 related_endpoints:
-  - post_oauth2_revoke
-related_resources: []
-related_guides: []
+  0: post_oauth2_revoke
+related_guides: {}
+related_resources: {}
 required_guides:
-  - authentication/tokens
-alias_paths:
-  - /guides/authentication/access-tokens/revoke
-category_id: authentication
-subcategory_id: authentication/tokens
-is_index: false
-id: authentication/tokens/revoke
-type: guide
-total_steps: 8
-sibling_id: authentication/tokens
-parent_id: authentication/tokens
-next_page_id: authentication/tokens/downscope
-previous_page_id: authentication/tokens/access-tokens
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/revoke.md
+  0: authentication/tokens
+title: トークンの取り消し
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "トークン", href: "/ja/guides/authentication/tokens/index", badge: "ガイド" }
-  ]}
+  { label: "Tokens", href: "/guides/authentication/tokens/index", badge: "GUIDE" }
+]}
 />
+
 アクセストークンまたは更新トークンを[`POST
 /oauth2/revoke`](endpoint://post-oauth2-revoke)エンドポイントに送信することにより、アクセストークンをいつでも取り消すことができます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/oauth2/revoke" \
+       -H "content-type: application/x-www-form-urlencoded" \
+       -d "client_id=[CLIENT_ID]" \
+       -d "client_secret=[CLIENT_SECRET]" \
+       -d "token=[ACCESS_TOKEN]"
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/oauth2/revoke" \
-     -H "content-type: application/x-www-form-urlencoded" \
-     -d "client_id=[CLIENT_ID]" \
-     -d "client_secret=[CLIENT_SECRET]" \
-     -d "token=[ACCESS_TOKEN]"
-```
+  ```typescript Node/TypeScript v10
+  await auth.revokeTokens();
+  // client's tokens have been revoked
+  ```
 
-```typescript Node/TypeScript v10
-await auth.revokeTokens();
-// client's tokens have been revoked
-```
+  ```python Python v10
+  client.auth.revoke_token()
+  ```
 
-```python Python v10
-client.auth.revoke_token()
-```
+  ```cs .NET v10
+  await auth.RevokeTokenAsync();
+  ```
 
-```cs .NET v10
-await auth.RevokeTokenAsync();
-```
+  ```swift Swift v10
+  try await auth.revokeToken()
+  ```
 
-```swift Swift v10
-try await auth.revokeToken()
-```
+  ```java Java v10
+  auth.revokeToken();
+  // client's tokens have been revoked
+  ```
 
-```java Java v10
-auth.revokeToken();
-// client's tokens have been revoked
-```
+  ```python Python v4
+  oauth.revoke()
+  ```
 
-```python Python v4
-oauth.revoke()
-```
-
-```javascript Node v4
-client.revokeTokens("<TOKEN>")
-	.then(() => {
-		// the client's access token have been revoked
-	});
-```
-
+  ```javascript Node v4
+  client.revokeTokens("<TOKEN>")
+  	.then(() => {
+  		// the client's access token have been revoked
+  	});
+  ```
 </CodeGroup>
 
 <Info>
-**SDKでの使用方法**
+  **SDKでの使用方法**
 
-すべてのBox SDKでは、クライアントに関連付けられた現在のアクセストークンを手動で取り消すことがサポートされています。特定のトークンを取り消すには、最初にそのトークンで新しいSDKを初期化してから、関連する取り消しメソッドを呼び出します。
-
+  すべてのBox SDKでは、クライアントに関連付けられた現在のアクセストークンを手動で取り消すことがサポートされています。特定のトークンを取り消すには、最初にそのトークンで新しいSDKを初期化してから、関連する取り消しメソッドを呼び出します。
 </Info>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Revoke access token", href: "/reference/post-oauth2-revoke", badge: "POST" }
-  ]}
+  { label: "Revoke access token", href: "/reference/post-oauth2-revoke", badge: "POST" }
+]}
 />

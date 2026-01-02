@@ -1,120 +1,106 @@
 ---
-title: "コレクション内の項目のリストの取得"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_collections_id_items
+  0: get_collections_id_items
 related_guides:
-  - api-calls/pagination/offset-based
-required_guides: []
+  0: api-calls/pagination/offset-based
 related_resources:
-  - file
-  - folder
-  - web_link
-alias_paths: []
-category_id: collections
-subcategory_id: null
-is_index: false
-id: collections/list-items
-type: guide
-total_steps: 4
-sibling_id: collections
-parent_id: collections
-next_page_id: collections/add
-previous_page_id: collections/list
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collections/list-items.md
+  0: file
+  1: folder
+  2: web_link
+required_guides: {}
+title: コレクション内の項目のリストの取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 フォルダ内のすべてのファイル、フォルダ、およびウェブリンクのリストを取得するには、[`GET
-/collections/:id/items`](/ja/reference/get-collections-id-items) APIを呼び出します。
+/collections/:id/items`](/reference/get-collections-id-items) APIを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/collections/926489/items" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/collections/926489/items" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.collections.getCollectionItems(favouriteCollection.id!);
+  ```
 
-```typescript Node/TypeScript v10
-await client.collections.getCollectionItems(favouriteCollection.id!);
-```
+  ```python Python v10
+  client.collections.get_collection_items(favourite_collection.id)
+  ```
 
-```python Python v10
-client.collections.get_collection_items(favourite_collection.id)
-```
+  ```cs .NET v10
+  await client.Collections.GetCollectionItemsAsync(collectionId: NullableUtils.Unwrap(favouriteCollection.Id));
+  ```
 
-```cs .NET v10
-await client.Collections.GetCollectionItemsAsync(collectionId: NullableUtils.Unwrap(favouriteCollection.Id));
-```
+  ```swift Swift v10
+  try await client.collections.getCollectionItems(collectionId: favouriteCollection.id!)
+  ```
 
-```swift Swift v10
-try await client.collections.getCollectionItems(collectionId: favouriteCollection.id!)
-```
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, "id");
+  for (BoxItem.Info itemInfo : folder) {
+      if (itemInfo instanceof BoxFile.Info) {
+          BoxFile.Info fileInfo = (BoxFile.Info) itemInfo;
+          // Do something with the file.
+      } else if (itemInfo instanceof BoxFolder.Info) {
+          BoxFolder.Info folderInfo = (BoxFolder.Info) itemInfo;
+          // Do something with the folder.
+      }
+  }
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, "id");
-for (BoxItem.Info itemInfo : folder) {
-    if (itemInfo instanceof BoxFile.Info) {
-        BoxFile.Info fileInfo = (BoxFile.Info) itemInfo;
-        // Do something with the file.
-    } else if (itemInfo instanceof BoxFolder.Info) {
-        BoxFolder.Info folderInfo = (BoxFolder.Info) itemInfo;
-        // Do something with the folder.
-    }
-}
-```
+  ```python Python v4
+  items = client.collection(collection_id='12345').get_items()
+  for item in items:
+      print(f'{item.type.capitalize()} "{item.name}" is in the collection')
+  ```
 
-```python Python v4
-items = client.collection(collection_id='12345').get_items()
-for item in items:
-    print(f'{item.type.capitalize()} "{item.name}" is in the collection')
-```
+  ```cs .NET v6
+  BoxCollection<BoxItem> items = await client.CollectionsManager.GetCollectionItemsAsync(id: "11111");
+  ```
 
-```cs .NET v6
-BoxCollection<BoxItem> items = await client.CollectionsManager.GetCollectionItemsAsync(id: "11111");
-```
-
-```javascript Node v4
-client.collections.getItems('81934', {fields: 'name', limit: 2})
-	.then(items => {
-		/* items -> { total_count: 24,
-			entries: 
-			[ { type: 'folder',
-				id: '192429928',
-				sequence_id: '1',
-				etag: '1',
-				name: 'Stephen Curry Three Pointers' },
-				{ type: 'file',
-				id: '818853862',
-				sequence_id: '0',
-				etag: '0',
-				name: 'Warriors.jpg' } ],
-			offset: 0,
-			limit: 2 }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  client.collections.getItems('81934', {fields: 'name', limit: 2})
+  	.then(items => {
+  		/* items -> { total_count: 24,
+  			entries: 
+  			[ { type: 'folder',
+  				id: '192429928',
+  				sequence_id: '1',
+  				etag: '1',
+  				name: 'Stephen Curry Three Pointers' },
+  				{ type: 'file',
+  				id: '818853862',
+  				sequence_id: '0',
+  				etag: '0',
+  				name: 'Warriors.jpg' } ],
+  			offset: 0,
+  			limit: 2 }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 <Warning>
-
-APIを介して使用できるコレクションは「お気に入り」コレクションのみです。このコレクションのIDは[ユーザーごとに異なります](/ja/guides/collections/list)。
-
+  APIを介して使用できるコレクションは「お気に入り」コレクションのみです。このコレクションのIDは[ユーザーごとに異なります](/guides/collections/list)。
 </Warning>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List collection items", href: "/reference/get-collections-id-items", badge: "GET" }
-  ]}
+  { label: "List collection items", href: "/reference/get-collections-id-items", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "オフセットベースのページネーション", href: "/ja/guides/api-calls/pagination/offset-based", badge: "ガイド" }
-  ]}
+  { label: "Offset-based Pagination", href: "/guides/api-calls/pagination/offset-based", badge: "GUIDE" }
+]}
 />

@@ -1,35 +1,23 @@
 ---
-title: "App Diagnosticsレポート"
+alias_paths: {}
 rank: 5
-related_endpoints: []
-related_guides: []
-required_guides: []
-alias_paths: []
-category_id: api-calls
-subcategory_id: api-calls/permissions-and-errors
-is_index: false
-id: api-calls/permissions-and-errors/app-diagnostics-report
-type: guide
-total_steps: 6
-sibling_id: api-calls/permissions-and-errors
-parent_id: api-calls/permissions-and-errors
-next_page_id: api-calls/permissions-and-errors/versioning-errors
-previous_page_id: api-calls/permissions-and-errors/expiration
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/permissions-and-errors/app-diagnostics-report.md
+related_endpoints: {}
+related_guides: {}
+required_guides: {}
+title: App Diagnosticsレポート
+
 fullyTranslated: true
 ---
+
 App Diagnosticsレポートでは、指定した期間に特定のアプリケーションで実行された各APIコールの詳細を示したスプレッドシートが表示されます。このレポートでは、`API Request ID`を確認できます。これは、トラブルシューティングのためにBoxサポートに提出することができます。
 
 <Warning>
+  このレポートには、以下の項目は含まれません。
 
-このレポートには、以下の項目は含まれません。
+  * 過去48時間以内に実行されたAPIコール
+  * 承認およびトークンに関するAPIコール
 
-* 過去48時間以内に実行されたAPIコール
-* 承認およびトークンに関するAPIコール
-
-Boxでは、上記の項目を追加し、それによって、レポートが将来的にリアルタイムのトラブルシューティングに適したものになるよう取り組んでいます。
-
+  Boxでは、上記の項目を追加し、それによって、レポートが将来的にリアルタイムのトラブルシューティングに適したものになるよう取り組んでいます。
 </Warning>
 
 ## 1. \[**App Diagnostics**] タブをクリックする
@@ -37,9 +25,7 @@ Boxでは、上記の項目を追加し、それによって、レポートが�
 App Diagnosticsレポートを実行するには、[開発者コンソール][console]でアプリケーションの構成セクションの上部にある \[**App Diagnostics**] オプションをクリックします。
 
 <Frame center shadow>
-
-![新しいメニューオプション](/images/guides/api-calls/permissions-and-errors/New-Menu-Option.png)
-
+  ![新しいメニューオプション](/images/guides/api-calls/permissions-and-errors/New-Menu-Option.png)
 </Frame>
 
 ## 2. \[**App Diagnosticsレポートを実行**] をクリックしてレポートを構成する
@@ -47,9 +33,7 @@ App Diagnosticsレポートを実行するには、[開発者コンソール][co
 \[**App Diagnosticsレポートを実行**] をクリックすると、レポートのフィルタおよびパラメータを選択するためのポップアップが表示されます。
 
 <Frame center shadow>
-
-![\[App Diagnostics\] メニュー](/images/guides/api-calls/permissions-and-errors/Menu-Option-Screen.png)
-
+  ![\[App Diagnostics\] メニュー](/images/guides/api-calls/permissions-and-errors/Menu-Option-Screen.png)
 </Frame>
 
 ## 3. レポートのパラメータを選択して \[**実行**] をクリックする
@@ -57,9 +41,7 @@ App Diagnosticsレポートを実行するには、[開発者コンソール][co
 現在から48時間前を基準に過去2週間以内の日付を選択できます。レポートは、合計24時間までを対象に実行できます。\[**実行**] をクリックすると、レポートが生成されます。
 
 <Frame center shadow>
-
-![レポートのオプション](/images/guides/api-calls/permissions-and-errors/Report-Option-Screen.png)
-
+  ![レポートのオプション](/images/guides/api-calls/permissions-and-errors/Report-Option-Screen.png)
 </Frame>
 
 ## 4. Box Reportsフォルダにアクセスする
@@ -67,9 +49,7 @@ App Diagnosticsレポートを実行するには、[開発者コンソール][co
 \[[すべてのファイル][allfiles]] に移動し、Box Reportsフォルダを見つけます。今回初めてレポートを実行する場合は、このフォルダが自動的に生成されます。管理者の場合、これは、[管理コンソールのレポート][reports]にアクセスした場合と同じフォルダです。このフォルダを開きます。
 
 <Frame center shadow>
-
-![Box Reportsフォルダ](/images/guides/api-calls/permissions-and-errors/Box-Report-Folder.png)
-
+  ![Box Reportsフォルダ](/images/guides/api-calls/permissions-and-errors/Box-Report-Folder.png)
 </Frame>
 
 ## 5. 最新のPlatform App Diagnosticsレポートフォルダを探して開く
@@ -77,9 +57,7 @@ App Diagnosticsレポートを実行するには、[開発者コンソール][co
 実行したレポートはすべて、Box Reportsフォルダに表示されます。最新のPlatform App Diagnostics実行のフォルダを探して開きます。
 
 <Frame center shadow>
-
-![Box Reportsフォルダの内容](/images/guides/api-calls/permissions-and-errors/Box-Report-Folder-Contents.png)
-
+  ![Box Reportsフォルダの内容](/images/guides/api-calls/permissions-and-errors/Box-Report-Folder-Contents.png)
 </Frame>
 
 ## 6. ステータスを確認する
@@ -87,9 +65,7 @@ App Diagnosticsレポートを実行するには、[開発者コンソール][co
 レポートが完了するまで時間がかかります。ステータスは、フォルダの上部にあるボックスで確認できます。
 
 <Frame center shadow>
-
-![ステータスの画面](/images/guides/api-calls/permissions-and-errors/App-Diagnostics-Status.png)
-
+  ![ステータスの画面](/images/guides/api-calls/permissions-and-errors/App-Diagnostics-Status.png)
 </Frame>
 
 ## 7. レポートが完了する
@@ -97,9 +73,7 @@ App Diagnosticsレポートを実行するには、[開発者コンソール][co
 完了すると、ステータスが変更され、フォルダ内に`.csv`ファイルが表示されます。
 
 <Frame center shadow>
-
-![診断レポート](/images/guides/api-calls/permissions-and-errors/Diagnostics-Report.png)
-
+  ![診断レポート](/images/guides/api-calls/permissions-and-errors/Diagnostics-Report.png)
 </Frame>
 
 ## 8. レポートを開く
@@ -107,9 +81,7 @@ App Diagnosticsレポートを実行するには、[開発者コンソール][co
 ファイルは、ウェブブラウザで開くことも、ローカルで表示するためにダウンロードすることもできます。[Boxサポート][support]によるサポートが必要な場合は、ダウンロードしたコピーを添付するか共有リンクを使用して、チケットとともにレポートを送信することができます。
 
 <Frame center shadow>
-
-![レポートの詳細](/images/guides/api-calls/permissions-and-errors/Report-Details.png)
-
+  ![レポートの詳細](/images/guides/api-calls/permissions-and-errors/Report-Details.png)
 </Frame>
 
 このレポートには列が9個あります。

@@ -1,49 +1,38 @@
 ---
-title: "コンテンツエクスプローラ - メタデータビューv1"
+alias_paths:
+  0: /docs/box-content-explorer
+  1: /docs/content-explorer
 rank: 5
 related_endpoints:
-  - get-metadata-templates-id
+  0: get-metadata-templates-id
 related_guides:
-  - embed/ui-elements
+  0: embed/ui-elements
+related_resources: {}
 required_guides:
-  - embed/ui-elements/installation
-related_resources: []
-alias_paths:
-  - /docs/box-content-explorer
-  - /docs/content-explorer
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/explorer-metadata-v1
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/open-with
-previous_page_id: embed/ui-elements/explorer-metadata-v2
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/explorer-metadata-v1.md
+  0: embed/ui-elements/installation
+title: コンテンツエクスプローラ - メタデータビューv1
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
+
 <Note>
-
-コンテンツエクスプローラのメタデータビューの`v1`は公式サポートが終了しました。`v1`は`24.0.0`パッケージで引き続き利用できますが、バグ修正や新機能は提供されなくなります。最新の機能が提供されるようにするには、移行ガイドに従い、コンテンツエクスプローラの`v2`のメタデータビューに切り替えてください。
-
+  コンテンツエクスプローラのメタデータビューの`v1`は公式サポートが終了しました。`v1`は`24.0.0`パッケージで引き続き利用できますが、バグ修正や新機能は提供されなくなります。最新の機能が提供されるようにするには、移行ガイドに従い、コンテンツエクスプローラの`v2`のメタデータビューに切り替えてください。
 </Note>
 
 コンテンツエクスプローラを使用すると、メタデータに基づいてファイルおよびフォルダを表示できます。メタデータビューでは、[メタデータテンプレート][template]と[メタデータクエリ][metadata-query]を使用して、表示するデータを探します。
 
-<Frame>![メタデータビュー](/images/guides/embed/ui-elements/explorer-view.png)</Frame>
+<Frame>
+  ![メタデータビュー](/images/guides/embed/ui-elements/explorer-view.png)
+</Frame>
 
 ## 前提条件
 
@@ -54,8 +43,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ## アプリの作成と構成
 
 1. [Boxアプリを作成します][box-app]。
-2. \[CORSドメイン] にローカルでの開発用のアドレスを追加します。 
-    <Frame>![CORSドメイン](/images/guides/embed/ui-elements/box-app-cors.png)</Frame>
+2. \[CORSドメイン] にローカルでの開発用のアドレスを追加します。 ![CORSドメイン](/images/guides/embed/ui-elements/box-app-cors.png)
 3. [開発者トークン][token]を生成します。
 
 ## メタデータテンプレートの作成
@@ -66,9 +54,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 2. すでに作成済みのテンプレートをBoxフォルダに適用します。必ずカスケードポリシーを有効にするようにしてください。詳細な手順については、[テンプレートのカスタマイズと適用の手順][apply-templates]を参照してください。
 
 <Note>
-
-メタデータテンプレートは、ファイルにも適用できます。
-
+  メタデータテンプレートは、ファイルにも適用できます。
 </Note>
 
 ### 表示名と主なパラメータ
@@ -83,23 +69,24 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 次に、コンテンツエクスプローラに渡される必須のプロパティを入力します。作業を簡単にするために、基本的なReactアプリに基づいた[サンプルプロジェクト][metadata-project]を使用して、メタデータビューを起動できます。
 
 1. メタデータのサンプルプロジェクトを複製します。
+
 2. [`App.js`][appjs]内のプレースホルダを実際の値で更新します。
 
-| パラメータ                    | 説明                                                                                                                                                                                                                                                    |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DEVELOPER_TOKEN`        | 開発者コンソールで生成された[開発者トークン][token]。                                                                                                                                                                                                                       |
-| `ENTERPRISE_ID`          | Boxアプリケーションの \[**一般設定**] タブからコピーしたEnterprise ID。                                                                                                                                                                                                      |
-| `METADATA_TEMPLATE_NAME` | 作成済みのメタデータテンプレートの`templateKey`。**注**: 適切な名前を指定済みであることを確認するには、[メタデータAPI][get-template]を使用して名前を取得するか、管理コンソールでURLから名前をコピーします。<Frame>![管理コンソールにおけるメタデータ名](/images/guides/embed/ui-elements/metadata-template-name.png)</Frame> UIでテンプレート名を変更しても、変更されるのは表示名のみです。コンポーネントで使用する名前は、常に最初に指定した名前になります。 |
-| `METADATA_SOURCE`        | [メタデータ][source]のソース。これは、スコープ、Enterprise ID、メタデータキーを組み合わせた文字列です。                                                                                                                                                                                       |
-| `ROOTFOLDER_ID`          | メタデータクエリを適用してフィルタがかけられたファイルを表示するBoxフォルダのID。                                                                                                                                                                                                           |
+   | パラメータ                    | 説明                                                                                                                                                                                                                                                                            |
+   | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `DEVELOPER_TOKEN`        | 開発者コンソールで生成された[開発者トークン][token]。                                                                                                                                                                                                                                               |
+   | `ENTERPRISE_ID`          | Boxアプリケーションの \[**一般設定**] タブからコピーしたEnterprise ID。                                                                                                                                                                                                                              |
+   | `METADATA_TEMPLATE_NAME` | 作成済みのメタデータテンプレートの`templateKey`。**注**: 適切な名前を指定済みであることを確認するには、[メタデータAPI][get-template]を使用して名前を取得するか、管理コンソールでURLから名前をコピーします。![管理コンソールにおけるメタデータ名](/images/guides/embed/ui-elements/metadata-template-name.png) UIでテンプレート名を変更しても、変更されるのは表示名のみです。コンポーネントで使用する名前は、常に最初に指定した名前になります。 |
+   | `METADATA_SOURCE`        | [メタデータ][source]のソース。これは、スコープ、Enterprise ID、メタデータキーを組み合わせた文字列です。                                                                                                                                                                                                               |
+   | `ROOTFOLDER_ID`          | メタデータクエリを適用してフィルタがかけられたファイルを表示するBoxフォルダのID。                                                                                                                                                                                                                                   |
 
-`defaultView`、`fieldsToShow`、`metadataQuery`の各パラメータは、すでにサンプルプロジェクトで定義されています。これらのパラメータの例は、サンプルプロジェクトで確認できます。
+   `defaultView`、`fieldsToShow`、`metadataQuery`の各パラメータは、すでにサンプルプロジェクトで定義されています。これらのパラメータの例は、サンプルプロジェクトで確認できます。
 
-| パラメータ           | 説明                                                                                                     |
-| --------------- | ------------------------------------------------------------------------------------------------------ |
-| `defaultView`   | メタデータビューを描画するための必須プロパティ。指定されていない場合は、通常のファイルビューが表示されます。                                                 |
-| `fieldsToShow`  | コンテンツエクスプローラに表示する特定のメタデータ列を追加または非表示にします。                                                               |
-| `metadataQuery` | ファイルやフォルダに設定されているメタデータを検索してそのファイルやフォルダを探す方法を指定します。メタデータクエリの詳細については、[こちらのガイド][metadata-query]を参照してください。 |
+   | パラメータ           | 説明                                                                                                     |
+   | --------------- | ------------------------------------------------------------------------------------------------------ |
+   | `defaultView`   | メタデータビューを描画するための必須プロパティ。指定されていない場合は、通常のファイルビューが表示されます。                                                 |
+   | `fieldsToShow`  | コンテンツエクスプローラに表示する特定のメタデータ列を追加または非表示にします。                                                               |
+   | `metadataQuery` | ファイルやフォルダに設定されているメタデータを検索してそのファイルやフォルダを探す方法を指定します。メタデータクエリの詳細については、[こちらのガイド][metadata-query]を参照してください。 |
 
 3. コンテンツエクスプローラコンポーネントに必須パラメータを渡します。
 
@@ -184,54 +171,53 @@ export default App;
 キーは、表示名に基づいています。
 
 <Note>
-
-**ヒント**: 詳細なフローについては、[メタデータビューに関するブログ記事][blogpost]を参照してください。
-
+  **ヒント**: 詳細なフローについては、[メタデータビューに関するブログ記事][blogpost]を参照してください。
 </Note>
 
-[terminology]: /ja/guides/metadata/#metadata-terminology
+[terminology]: /guides/metadata/#metadata-terminology
 
-[template]: /ja/reference/resources/get-metadata-templates-id
+[template]: /reference/resources/get-metadata-templates-id
 
-[explorer]: /ja/guides/embed/ui-elements/explorer
+[explorer]: /guides/embed/ui-elements/explorer
 
 [blogpost]: https://medium.com/box-developer-blog/metadata-view-in-box-content-explorer-4978e47e97e9
 
-[creating-templates-api]: /ja/guides/metadata/templates/create
+[creating-templates-api]: /guides/metadata/templates/create
 
 [creating-templates-ui]: https://support.box.com/hc/en-us/articles/360044194033-Customizing-Metadata-Templates
 
 [appjs]: https://github.com/box-community/content-explorer-metadata/blob/main/src/App.js
 
-[box-app]: /ja/guides/applications/app-types
+[box-app]: /guides/applications/app-types
 
-[token]: /ja/guides/authentication/tokens/developer-tokens
+[token]: /guides/authentication/tokens/developer-tokens
 
 [apply-templates]: https://support.box.com/hc/en-us/articles/360044196173-Using-Metadata
 
 [metadata-project]: https://github.com/box-community/content-explorer-metadata/tree/main
 
-[get-template]: /ja/reference/metadata/templates/get/#get-a-metadata-template-by-name
+[get-template]: /reference/metadata/templates/get/#get-a-metadata-template-by-name
 
-[metadata-query]: /ja/guides/metadata/queries
+[metadata-query]: /guides/metadata/queries
 
-[get-id]: /ja/reference/get-metadata-templates-id-id-schema/
+[get-id]: /reference/get-metadata-templates-id-id-schema/
 
-[field-key]: /ja/reference/post-metadata-templates-schema/#param-fields-key
+[field-key]: /reference/post-metadata-templates-schema/#param-fields-key
 
-[display-name]: /ja/reference/post-metadata-templates-schema/#param-fields-displayName
+[display-name]: /reference/post-metadata-templates-schema/#param-fields-displayName
 
-[source]: /ja/guides/metadata/scopes
+[source]: /guides/metadata/scopes
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get metadata template by ID", href: "/reference/get-metadata-templates-id", badge: "GET" }
-  ]}
+  { label: "Get metadata template by ID", href: "/reference/get-metadata-templates-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

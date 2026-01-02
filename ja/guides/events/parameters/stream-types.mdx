@@ -1,28 +1,17 @@
 ---
-title: "ストリームタイプ"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_events
-  - options_events
+  0: get_events
+  1: options_events
 related_guides:
-  - events/enterprise-events/for-enterprise
-  - events/user-events/for-user
-  - events/user-events/polling
-  - events/parameters/pagination
-required_guides: []
-alias_paths: []
-category_id: events
-subcategory_id: events/parameters
-is_index: false
-id: events/parameters/stream-types
-type: guide
-total_steps: 2
-sibling_id: events/parameters
-parent_id: events/parameters
-next_page_id: events/parameters
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/parameters/stream-types.md
+  0: events/enterprise-events/for-enterprise
+  1: events/user-events/for-user
+  2: events/user-events/polling
+  3: events/parameters/pagination
+required_guides: {}
+title: ストリームタイプ
+
 fullyTranslated: true
 ---
 
@@ -39,16 +28,17 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
-    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
-  ]}
+  { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+  { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "ガイド" },
-    { label: "User Eventの取得", href: "/ja/guides/events/user-events/for-user", badge: "ガイド" },
-    { label: "Long pollingイベント", href: "/ja/guides/events/user-events/polling", badge: "ガイド" },
-    { label: "ストリーム位置のページネーション", href: "/ja/guides/events/parameters/pagination", badge: "ガイド" }
-  ]}
+  { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" },
+  { label: "Get User Events", href: "/guides/events/user-events/for-user", badge: "GUIDE" },
+  { label: "Long-Poll Events", href: "/guides/events/user-events/polling", badge: "GUIDE" },
+  { label: "Stream Position Pagination", href: "/guides/events/parameters/pagination", badge: "GUIDE" }
+]}
 />

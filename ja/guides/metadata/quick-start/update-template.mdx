@@ -1,130 +1,111 @@
 ---
-title: "メタデータテンプレートの更新"
-sidebarTitle: 5. メタデータテンプレートの更新
-type: quick-start
 hide_in_page_nav: true
 related_endpoints:
-  - put_metadata_templates_id_id_schema
+  0: put_metadata_templates_id_id_schema
 related_guides:
-  - metadata/templates/create
-  - metadata/templates/update
-category_id: metadata
-subcategory_id: metadata/1-quick-start
-is_index: false
-id: metadata/quick-start/update-template
-rank: 5
-total_steps: 7
-sibling_id: metadata/quick-start
-parent_id: metadata/quick-start
-next_page_id: metadata/quick-start/create-query
-previous_page_id: metadata/quick-start/update-instance
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/1-quick-start/5-update-template.md
+  0: metadata/templates/create
+  1: metadata/templates/update
+sidebarTitle: 5. Update a metadata template
+title: メタデータテンプレートの更新
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-<ProgressBar pages={[
-                          "ja/guides/metadata/quick-start/list-all",
-                          "ja/guides/metadata/quick-start/create-template",
-                          "ja/guides/metadata/quick-start/create-instance",
-                          "ja/guides/metadata/quick-start/update-instance",
-                          "ja/guides/metadata/quick-start/update-template",
-                          "ja/guides/metadata/quick-start/create-query",
-                          "ja/guides/metadata/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/metadata/quick-start/list-all",
+                        "guides/metadata/quick-start/create-template",
+                        "guides/metadata/quick-start/create-instance",
+                        "guides/metadata/quick-start/update-instance",
+                        "guides/metadata/quick-start/update-template",
+                        "guides/metadata/quick-start/create-query",
+                        "guides/metadata/quick-start/next-steps"
+                      ]}
+/>
 
 既存のメタデータテンプレートの更新方法を見てみましょう。
 
 メタデータテンプレートの更新は、テンプレート自体を直接変更するのではなく、**操作**を利用して実行されます。この方法では、ファイルおよびフォルダにすでに適用されている既存のメタデータインスタンスを更新できます。
 
-<Card href="/ja/guides/metadata/templates/update" title="テンプレートの更新の詳細を確認する"/>
+<Card href="/guides/metadata/templates/update" arrow title="テンプレートの更新の詳細を確認する" />
 
 この場合は、`Name`フィールドが少しあいまいであることを認識しているため、`customerInfo`テンプレートの`Name`フィールドを`Company Name`に変更したいとしましょう。`editField`操作を使用することで、テンプレートと、ファイルまたはフォルダに適用されている可能性のあるテンプレートのすべてのインスタンスのフィールドの`displayName`および`key`を変更できます。
 
 <CodeGroup>
-
-
-```curl cURL
-curl -X PUT https://api.box.com/2.0/metadata_templates/enterprise/blueprintTemplate/schema \
-    -H "authorization: Bearer <ACCESS_TOKEN>" \
-    -H "content-type: application/json" \
-    -d '[
-      {
-        "op": "editField",
-        "fieldKey": "name",
-        "data": {
-          "key": "company_name",
-          "displayName": "Company Name"
+  ```sh cURL
+  curl -X PUT https://api.box.com/2.0/metadata_templates/enterprise/blueprintTemplate/schema \
+      -H "authorization: Bearer <ACCESS_TOKEN>" \
+      -H "content-type: application/json" \
+      -d '[
+        {
+          "op": "editField",
+          "fieldKey": "name",
+          "data": {
+            "key": "company_name",
+            "displayName": "Company Name"
+          }
         }
-      }
-    ]'
+      ]'
+  ```
 
-```
-
-
-```csharp .NET
-var updates = new List<BoxMetadataTemplateUpdate>()
-{
-  new BoxMetadataTemplateUpdate()
+  ```csharp .NET
+  var updates = new List<BoxMetadataTemplateUpdate>()
   {
-      Op = MetadataTemplateUpdateOp.editField,
-      FieldKey = "name",
-      Data = new {
-          key = "company_name",
-          displayName = "Company Name"
-      }
-  }
-};
-BoxMetadataTemplate updatedTemplate = await client.MetadataManager
-    .UpdateMetadataTemplate(updates, "enterprise", "customerData");
-
-```
-
-
-```java Java
-List<MetadataTemplate.FieldOperation> updates = new ArrayList<MetadataTemplate.FieldOperation>();
-
-String editField = "{\"op\":\"editField\",\"fieldKey\":\"name\",\"data\":{\"key\":\"company_name\",\"displayName\":\"Company Name\"}}";
-updates.add(new MetadataTemplate.FieldOperation(editField));
-
-MetadataTemplate.updateMetadataTemplate(api, "enterprise", "customerData", updates);
-
-```
-
-```python Python
-template = client.metadata_template('enterprise', 'customerData')
-updates = template.start_update()
-updates.edit_field('name', key='company_name', display_name="Company Name")
-template.update_info(updates)
-
-```
-
-```js Node
-var operations = [
+    new BoxMetadataTemplateUpdate()
     {
-        op: 'editField',
-        fieldKey: 'name',
-        data: {
-            key: 'company_name',
-            displayName: "Company Name"
+        Op = MetadataTemplateUpdateOp.editField,
+        FieldKey = "name",
+        Data = new {
+            key = "company_name",
+            displayName = "Company Name"
         }
     }
-];
+  };
+  BoxMetadataTemplate updatedTemplate = await client.MetadataManager
+      .UpdateMetadataTemplate(updates, "enterprise", "customerData");
+  ```
 
-client.metadata.updateTemplate(
-    'enterprise',
-    'customerData',
-    operations
-).then(template => {
-    //..
-});
+  ```java Java
+  List<MetadataTemplate.FieldOperation> updates = new ArrayList<MetadataTemplate.FieldOperation>();
 
-```
+  String editField = "{\"op\":\"editField\",\"fieldKey\":\"name\",\"data\":{\"key\":\"company_name\",\"displayName\":\"Company Name\"}}";
+  updates.add(new MetadataTemplate.FieldOperation(editField));
 
+  MetadataTemplate.updateMetadataTemplate(api, "enterprise", "customerData", updates);
+  ```
 
+  ```python Python
+  template = client.metadata_template('enterprise', 'customerData')
+  updates = template.start_update()
+  updates.edit_field('name', key='company_name', display_name="Company Name")
+  template.update_info(updates)
+  ```
+
+  ```js Node
+  var operations = [
+      {
+          op: 'editField',
+          fieldKey: 'name',
+          data: {
+              key: 'company_name',
+              displayName: "Company Name"
+          }
+      }
+  ];
+
+  client.metadata.updateTemplate(
+      'enterprise',
+      'customerData',
+      operations
+  ).then(template => {
+      //..
+  });
+  ```
 </CodeGroup>
 
 このAPIにより、更新されたメタデータテンプレートが返されます。
@@ -167,7 +148,6 @@ client.metadata.updateTemplate(
     }
   ]
 }
-
 ```
 
 操作によってテンプレートを更新した場合は、テンプレートのインスタンスもすべて自動的に更新されるという利点があります。この場合、前の手順で作成したインスタンスは次のようになります。
@@ -186,25 +166,21 @@ client.metadata.updateTemplate(
   "$version": 1,
   "$canEdit": true
 }
-
 ```
 
-<Next>
-
-メタデータテンプレートを更新しました
-
-</Next>
+<Next>メタデータテンプレートを更新しました</Next>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
-  ]}
+  { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "ガイド" },
-    { label: "メタデータテンプレートの更新", href: "/ja/guides/metadata/templates/update", badge: "ガイド" }
-  ]}
+  { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" },
+  { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+]}
 />

@@ -1,118 +1,101 @@
 ---
-title: "ファイルへのメタデータの適用"
-sidebarTitle: 3. ファイルへのメタデータの適用
-type: quick-start
 hide_in_page_nav: true
 related_endpoints:
-  - post_files_id_metadata_id_id
-  - post_folders_id_metadata_id_id
+  0: post_files_id_metadata_id_id
+  1: post_folders_id_metadata_id_id
 related_guides:
-  - metadata/templates
-  - metadata/instances/create
-category_id: metadata
-subcategory_id: metadata/1-quick-start
-is_index: false
-id: metadata/quick-start/create-instance
-rank: 3
-total_steps: 7
-sibling_id: metadata/quick-start
-parent_id: metadata/quick-start
-next_page_id: metadata/quick-start/update-instance
-previous_page_id: metadata/quick-start/create-template
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/1-quick-start/3-create-instance.md
+  0: metadata/templates
+  1: metadata/instances/create
+sidebarTitle: 3. Apply metadata to a file
+title: ファイルへのメタデータの適用
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-<ProgressBar pages={[
-                          "ja/guides/metadata/quick-start/list-all",
-                          "ja/guides/metadata/quick-start/create-template",
-                          "ja/guides/metadata/quick-start/create-instance",
-                          "ja/guides/metadata/quick-start/update-instance",
-                          "ja/guides/metadata/quick-start/update-template",
-                          "ja/guides/metadata/quick-start/create-query",
-                          "ja/guides/metadata/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/metadata/quick-start/list-all",
+                        "guides/metadata/quick-start/create-template",
+                        "guides/metadata/quick-start/create-instance",
+                        "guides/metadata/quick-start/update-instance",
+                        "guides/metadata/quick-start/update-template",
+                        "guides/metadata/quick-start/create-query",
+                        "guides/metadata/quick-start/next-steps"
+                      ]}
+/>
 
 新しい`customerData`テンプレートが完成したら、このテンプレートをファイルまたはフォルダに適用できます。このテンプレートを適用するには、テンプレートの`scope`と`templateKey`のほか、テンプレートの適用先となる項目のIDが必要になります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -X POST https://api.box.com/2.0/files/12345/metadata/enterprise/customerInfo \
+      -H "authorization: Bearer <ACCESS_TOKEN>" \
+      -H "content-type: application/json" \
+      -d '{
+        "name": "Box, Inc",
+        "industry": "Technology",
+        "tav": 1000000
+      }'
+  ```
 
-```curl cURL
-curl -X POST https://api.box.com/2.0/files/12345/metadata/enterprise/customerInfo \
-    -H "authorization: Bearer <ACCESS_TOKEN>" \
-    -H "content-type: application/json" \
-    -d '{
-      "name": "Box, Inc",
-      "industry": "Technology",
-      "tav": 1000000
-    }'
+  ```csharp .NET
+  var metadataValues = new Dictionary<string, object>()
+  {
+      { "name", "Box, Inc" },
+      { "industry", "Technology" },
+      { "tav", 100000 }
+  };
 
-```
-```csharp .NET
-var metadataValues = new Dictionary<string, object>()
-{
-    { "name", "Box, Inc" },
-    { "industry", "Technology" },
-    { "tav", 100000 }
-};
+  Dictionary<string, object> metadata = await client.MetadataManager
+      .CreateFileMetadataAsync(fileId: "12345", metadataValues, "enterprise", "customerInfo");
+  ```
 
-Dictionary<string, object> metadata = await client.MetadataManager
-    .CreateFileMetadataAsync(fileId: "12345", metadataValues, "enterprise", "customerInfo");
+  ```java Java
+  BoxFile file = new BoxFile(api, "12345");
 
-```
+  file.createMetadata(
+      "customerInfo",
+      "enterprise",
+      new Metadata()
+          .add("name", "Box, Inc")
+          .add("industry", "Technology")
+          .add("tav", 100000)
+  );
+  ```
 
+  ```python Python
+  metadata = {
+      'name': 'Box, Inc',
+      'industry': 'Technology',
+      'tav': 1000000
+  }
 
-```java Java
-BoxFile file = new BoxFile(api, "12345");
+  client.file(file_id='11111').metadata(scope='enterprise', template='customerInfo').set(metadata)
+  ```
 
-file.createMetadata(
-    "customerInfo",
-    "enterprise",
-    new Metadata()
-        .add("name", "Box, Inc")
-        .add("industry", "Technology")
-        .add("tav", 100000)
-);
-
-```
-
-```python Python
-metadata = {
-    'name': 'Box, Inc',
-    'industry': 'Technology',
-    'tav': 1000000
-}
-
-client.file(file_id='11111').metadata(scope='enterprise', template='customerInfo').set(metadata)
-
-```
-
-```js Node
-client.files.addMetadata(
-    '12345',
-    client.metadata.scopes.ENTERPRISE,
-    "customerInfo",
-    {
-        name: "Box, Inc",
-        industry: "Technology",
-        tav: 1000000
-    }
-).then(metadata => {
-    // ...
-});
-
-```
-
+  ```js Node
+  client.files.addMetadata(
+      '12345',
+      client.metadata.scopes.ENTERPRISE,
+      "customerInfo",
+      {
+          name: "Box, Inc",
+          industry: "Technology",
+          tav: 1000000
+      }
+  ).then(metadata => {
+      // ...
+  });
+  ```
 </CodeGroup>
 
 <Warning>
-
-この例の`industry`フィールドは`enum`フィールドであるため、値にはこのフィールドで使用できるオプションのいずれかを指定する必要があります。それ以外の値を指定するとエラーが発生します。
-
+  この例の`industry`フィールドは`enum`フィールドであるため、値にはこのフィールドで使用できるオプションのいずれかを指定する必要があります。それ以外の値を指定するとエラーが発生します。
 </Warning>
 
 このAPIにより、新しく作成されたメタデータインスタンスが返されます。
@@ -131,26 +114,22 @@ client.files.addMetadata(
   "$version": 1,
   "$canEdit": true
 }
-
 ```
 
-<Next>
-
-ファイルにメタデータを適用しました
-
-</Next>
+<Next>ファイルにメタデータを適用しました</Next>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create metadata instance on file", href: "/reference/post-files-id-metadata-id-id", badge: "POST" },
-    { label: "Create metadata instance on folder", href: "/reference/post-folders-id-metadata-id-id", badge: "POST" }
-  ]}
+  { label: "Create metadata instance on file", href: "/reference/post-files-id-metadata-id-id", badge: "POST" },
+  { label: "Create metadata instance on folder", href: "/reference/post-folders-id-metadata-id-id", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレート", href: "/ja/guides/metadata/templates/index", badge: "ガイド" },
-    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "ガイド" }
-  ]}
+  { label: "Metadata templates", href: "/guides/metadata/templates/index", badge: "GUIDE" },
+  { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" }
+]}
 />

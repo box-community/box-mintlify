@@ -1,24 +1,13 @@
 ---
-title: Box Embed
-rank: 2
-related_endpoints: []
-related_guides: []
-required_guides: []
-related_resources: []
 alias_paths:
-  - /docs/box-embed
-category_id: embed
-subcategory_id: null
-is_index: false
-id: embed/box-embed
-type: guide
-total_steps: 1
-sibling_id: embed
-parent_id: embed
-next_page_id: embed
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/box-embed.md
+  0: /docs/box-embed
+rank: 2
+related_endpoints: {}
+related_guides: {}
+related_resources: {}
+required_guides: {}
+title: Box Embed
+
 fullyTranslated: true
 ---
 
@@ -37,20 +26,18 @@ BoxウェブアプリからBox埋め込みウィジェットのコードを取�
 
 ### ファイルとフォルダ
 
-1. 選択したファイルまたはフォルダに移動します。 
-2. そのフォルダの横にある省略記号をクリックします。 
+1. 選択したファイルまたはフォルダに移動します。
+2. そのフォルダの横にある省略記号をクリックします。
 3. \[**その他の操作**] > \[**埋め込みウィジェット**] に移動します。
 
 ### Hub
 
 1. 選択したHubに移動します。
-2. 右上にある省略記号メニューをクリックします。 
+2. 右上にある省略記号メニューをクリックします。
 3. \[**Hubを埋め込む**] をクリックします。
 
 <Note>
-
-HubからAIチャットインターフェースのみを埋め込むことも可能です。ユーザーは、ナビゲーション機能やファイル閲覧機能を使用せずに、質問して、Hubのファイルに基づいたAIによる回答を取得することができます。詳細については、[Box HubsのAIチャットの埋め込み][6]セクションを参照してください。
-
+  HubからAIチャットインターフェースのみを埋め込むことも可能です。ユーザーは、ナビゲーション機能やファイル閲覧機能を使用せずに、質問して、Hubのファイルに基づいたAIによる回答を取得することができます。詳細については、[Box HubsのAIチャットの埋め込み][6]セクションを参照してください。
 </Note>
 
 ### メモ
@@ -66,9 +53,7 @@ HubからAIチャットインターフェースのみを埋め込むことも可
 3. \[**埋め込む**] をクリックします。
 
 <Frame>
-
-![Box Embed](./box-embed-new.png)
-
+  ![Box Embed](./box-embed-new.png)
 </Frame>
 
 次の手順では、埋め込み可能な要素のパラメータを構成します。
@@ -83,9 +68,7 @@ HubからAIチャットインターフェースのみを埋め込むことも可
 | アプリ         | ウィジェットのサイズ                                                            |
 
 <Frame>
-
-![Box Embedの構成](./embed-configuration.png)
-
+  ![Box Embedの構成](./embed-configuration.png)
 </Frame>
 
 埋め込みウィジェットのカスタマイズが完了したら、埋め込みコードをコピーして自分のサイトまたはウェブアプリに貼り付けます。
@@ -106,7 +89,6 @@ Box Embedをさらにカスタマイズする場合は、プログラムを使�
   webkitallowfullscreen
   msallowfullscreen>
 </iframe>
-
 ```
 
 ### ブラウザの権限
@@ -116,9 +98,7 @@ Google Chrome 142以上およびMicrosoft Edge 143以上では、`allow`属性�
 この属性がないと、埋め込まれたBoxコンテンツは、Box Tools、デバイストラスト、またはクリップボードのコピーボタンで機能しない可能性があります。
 
 <Note>
-
-埋め込みウィジェットのリンク生成ウィンドウでは、生成されたコードに自動的にこのパラメータが含まれます。
-
+  埋め込みウィジェットのリンク生成ウィンドウでは、生成されたコードに自動的にこのパラメータが含まれます。
 </Note>
 
 ### 共有リンクの値の検索
@@ -126,9 +106,7 @@ Google Chrome 142以上およびMicrosoft Edge 143以上では、`allow`属性�
 プログラムを使用して埋め込み`iframe`を構築するには、まず、共有リンクの値を生成または検索します。この値を検索する1つの方法として、Boxウェブアプリを使用します。
 
 <Frame>
-
-![Boxの共有](./embed-share.png)
-
+  ![Boxの共有](./embed-share.png)
 </Frame>
 
 また、[`PUT /files/:file_id`][3]または[`PUT /files/:file_id`][4]を使用して、APIで共有リンクを作成する方法もあります。
@@ -138,7 +116,6 @@ Google Chrome 142以上およびMicrosoft Edge 143以上では、`allow`属性�
 ```curl
 curl https://api.box.com/2.0/folders/12345?fields=shared_link \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -148,7 +125,6 @@ curl https://api.box.com/2.0/folders/12345?fields=shared_link \
   "vanity_url": null,
   ...
 }
-
 ```
 
 ページをルートフォルダ/\[すべてのファイル] ページに設定することもできます。URLを共有リンク`<iframe src=“https://app.box.com/embed/folder/0”….></iframe>`ではなく`/folder/0`に設定してください。
@@ -169,9 +145,7 @@ curl https://api.box.com/2.0/folders/12345?fields=shared_link \
 | `uxLite`                 | クラウド (雲) ゲームを使用せず、制限付きコンテンツプレビュー (Preview Light) を表示します。共有ファイルおよびBox Notesのみに有効です。   |
 
 <Note>
-
-Box Notesで`uxLite`を使用すると、`hideNavigationControls`の設定に関わらず、ナビゲーションコントロールは表示されません。
-
+  Box Notesで`uxLite`を使用すると、`hideNavigationControls`の設定に関わらず、ナビゲーションコントロールは表示されません。
 </Note>
 
 Boxが提供するアプリのURLにあるカスタム検索パラメータはすべて、埋め込みウィジェットウィンドウとコンテンツプレビューに渡されます。
@@ -216,9 +190,7 @@ AIチャットモードに埋め込まれたHubにアクセスするには、以
 6. 埋め込みコードをコピーします。
 
 <Note>
-
-Box HubsのAIチャットの埋め込みで問題が発生した場合は、上記の手順1～6を繰り返すことで、埋め込みコードを再生成し、スクリプトの最新バージョンを取得してください。
-
+  Box HubsのAIチャットの埋め込みで問題が発生した場合は、上記の手順1～6を繰り返すことで、埋め込みコードを再生成し、スクリプトの最新バージョンを取得してください。
 </Note>
 
 ### チャットボタン
@@ -248,17 +220,14 @@ Box HubsのAIチャットの埋め込みで問題が発生した場合は、上�
   data-shared-link="abcdefghijklmnopqrst123" 
   data-button-text="Ask our HR chatbot">
 </script>
-
 ```
 
 ### チャットウィジェット
 
 **チャットウィジェット**モードでは、ページ読み込み時に、AIチャットウィジェットが直接埋め込まれます。これは、`iframe`として生成され、チャットインターフェース全体をすぐに表示します。
 
-<Frame shadow>
-
-![Chat widget mode](./chat-widget.png)
-
+<Frame>
+  ![チャットウィジェットモード](./chat-widget.png)
 </Frame>
 
 #### チャットウィジェットのパラメータ
@@ -285,7 +254,6 @@ Box HubsのAIチャットの埋め込みで問題が発生した場合は、上�
   webkitallowfullscreen 
   msallowfullscreen>
 </iframe>
-
 ```
 
 #### 閉じるボタンの使用
@@ -314,13 +282,12 @@ window.addEventListener('message', (event) => {
         closeChat();
     }
 });
-
 ```
 
 ##### イベントのリファレンス
 
-| プロパティ             | 値                     | 説明                                                              |
-| ----------------- | --------------------- | --------------------------------------------------------------- |
+| プロパティ             | 値                     | 説明                                     |
+| ----------------- | --------------------- | -------------------------------------- |
 | `event.data.type` | `"BOX_AI_CHAT_CLOSE"` | ユーザーがチャットのiframeで閉じるボタンをクリックしたことを示します。 |
 
 ## 有効期限付き埋め込みリンク
@@ -330,7 +297,6 @@ window.addEventListener('message', (event) => {
 ```curl
 curl https://api.box.com/2.0/files/12345?fields=expiring_embed_link \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -366,7 +332,6 @@ curl https://api.box.com/2.0/files/12345?fields=expiring_embed_link \
   "id": "12345",
   "type": "file"
 }
-
 ```
 
 `url`属性を`<iframe>`内で使用すると、自動で期限切れになるBox Embedインターフェースを埋め込むことができます。
@@ -381,7 +346,6 @@ curl https://api.box.com/2.0/files/12345?fields=expiring_embed_link \
   webkitallowfullscreen
   msallowfullscreen
 />
-
 ```
 
 ### パラメータ
@@ -390,7 +354,6 @@ UIをカスタマイズするために、このURLにさらにパラメータを
 
 ```sh
 https://app.box.com/preview/expiring_embed/[HASH]?[parameterName]=true
-
 ```
 
 |                   |                                                                                                                                                                                                     |
@@ -403,9 +366,7 @@ https://app.box.com/preview/expiring_embed/[HASH]?[parameterName]=true
 クラウド (雲) ゲームとは、[クリックジャッキング][cloud-game]を防ぐために作成されたウィジェットです。これは、パートナー統合ではない埋め込みサイトに表示されます。クラウド (雲) ゲームでは、ユーザーは、操作の許可を得るためにクラウド (雲) を適切な場所にドラッグする必要があります。このゲームでは、クラウド (雲) の位置とそのドラッグ先がランダムに生成されるため、クリックジャッキングが難しくなります。
 
 <Frame>
-
-![Box Embed](./cloud-game.png)
-
+  ![Box Embed](./cloud-game.png)
 </Frame>
 
 `postMessage()`は、埋め込みと`showCloudGame`両方のステータスを取得するためにiframeで使用されます。埋め込まれている場合、`document.hasStorageAccess()`は、BoxからCookieにアクセスできるかどうかを示します。アクセスでき、ユーザーがログイン済みの場合、クラウド (雲) ゲームが表示されます。`showCloudGame`のステータスが`false`の場合、ユーザーはログインページに誘導されます。
@@ -436,10 +397,10 @@ Box Embedは、モバイルブラウザ向けには最適化されていない�
 
 [cloud-game]: https://support.box.com/hc/ja/articles/360043691034-Boxはどのようにしてクリックジャッキングを防止していますか
 
-[6]: /ja/guides/embed/box-embed/#box-hubs-ai-chat-embedding
+[6]: ja/guides/embed/box-embed/#box-hubsのaiチャットの埋め込み
 
-[7]: /ja/guides/embed/box-embed/#chat-button
+[7]: ja/guides/embed/box-embed#チャットボタン
 
-[8]: /ja/guides/embed/box-embed/#chat-widget
+[8]: ja/guides/embed/box-embed#チャットウィジェット
 
-[9]: /ja/guides/embed/box-embed/#using-the-close-button
+[9]: ja/guides/embed/box-embed/#閉じるボタンの使用

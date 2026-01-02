@@ -1,130 +1,98 @@
 ---
-title: "保留中のコラボレーションの取得"
 rank: 4
-related_endpoints:
-  - get_collaborations
-related_guides:
-  - collaborations/share-content
-required_guides: []
+related_endpoints: ""
+related_guides: ""
 related_resources:
-  - collaboration
-  - user
-category_id: collaborations
-subcategory_id: null
-is_index: false
-id: collaborations/pending
-type: guide
-total_steps: 3
-sibling_id: collaborations
-parent_id: collaborations
-next_page_id: collaborations
-previous_page_id: collaborations/groups
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/pending.md
+  0: collaboration
+  1: user
+required_guides: {}
+title: 保留中のコラボレーションの取得
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ユーザーの保留中のコラボレーションを取得するには、`status`に`pending`を指定して`GET /collaborations` APIを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/collaborations?status=pending" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/collaborations?status=pending" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.listCollaborations.getCollaborations({
+    status: 'pending' as GetCollaborationsQueryParamsStatusField,
+  } satisfies GetCollaborationsQueryParams);
+  ```
 
-```typescript Node/TypeScript v10
-await client.listCollaborations.getCollaborations({
-  status: 'pending' as GetCollaborationsQueryParamsStatusField,
-} satisfies GetCollaborationsQueryParams);
-```
+  ```python Python v10
+  client.list_collaborations.get_collaborations(GetCollaborationsStatus.PENDING)
+  ```
 
-```python Python v10
-client.list_collaborations.get_collaborations(GetCollaborationsStatus.PENDING)
-```
+  ```cs .NET v10
+  await client.ListCollaborations.GetCollaborationsAsync(queryParams: new GetCollaborationsQueryParams(status: GetCollaborationsQueryParamsStatusField.Pending));
+  ```
 
-```cs .NET v10
-await client.ListCollaborations.GetCollaborationsAsync(queryParams: new GetCollaborationsQueryParams(status: GetCollaborationsQueryParamsStatusField.Pending));
-```
+  ```swift Swift v10
+  try await client.listCollaborations.getCollaborations(queryParams: GetCollaborationsQueryParams(status: GetCollaborationsQueryParamsStatusField.pending))
+  ```
 
-```swift Swift v10
-try await client.listCollaborations.getCollaborations(queryParams: GetCollaborationsQueryParams(status: GetCollaborationsQueryParamsStatusField.pending))
-```
+  ```java Java v10
+  client.getListCollaborations().getCollaborations(new GetCollaborationsQueryParams(GetCollaborationsQueryParamsStatusField.PENDING))
+  ```
 
-```java Java v10
-client.getListCollaborations().getCollaborations(new GetCollaborationsQueryParams(GetCollaborationsQueryParamsStatusField.PENDING))
-```
+  ```java Java v5
+  Collection<BoxCollaboration.Info> pendingCollaborations =
+      BoxCollaboration.getPendingCollaborations(api);
+  ```
 
-```java Java v5
-Collection<BoxCollaboration.Info> pendingCollaborations =
-    BoxCollaboration.getPendingCollaborations(api);
-```
+  ```python Python v4
+  pending_collaborations = client.get_pending_collaborations()
+  for pending_collaboration in pending_collaborations:
+      print(f'Collaboration {pending_collaboration.id} is pending')
+  ```
 
-```python Python v4
-pending_collaborations = client.get_pending_collaborations()
-for pending_collaboration in pending_collaborations:
-    print(f'Collaboration {pending_collaboration.id} is pending')
-```
+  ```cs .NET v6
+  BoxCollection<BoxCollaboration> pendingCollabs = await CollaborationsManager
+      .GetPendingCollaborationAsync();
+  ```
 
-```cs .NET v6
-BoxCollection<BoxCollaboration> pendingCollabs = await CollaborationsManager
-    .GetPendingCollaborationAsync();
-```
-
-```javascript Node v4
-client.collaborations.getPending()
-	.then(collaborations => {
-		/* collaborations -> {
-			total_count: 1,
-			entries: [
-				{
-					type: 'collaboration',
-					id: '11111',
-					created_by: {
-						type: 'user',
-						id: '22222',
-						name: 'Example User',
-						login: 'user@example.com'
-					},
-					created_at: '2011-11-29T12:56:35-08:00',
-					modified_at: '2012-09-11T15:12:32-07:00',
-					expires_at: null,
-					status: 'pending',
-					accessible_by: {
-						type: 'user',
-						id: '33333',
-						name: 'Collaborator User',
-						login: 'collaborator@example.com'
-					},
-					role: 'editor',
-					acknowledged_at: '2011-11-29T12:59:40-08:00',
-					item: null
-				}
-			]
-		}
-		*/
-	});
-```
-
+  ```javascript Node v4
+  client.collaborations.getPending()
+  	.then(collaborations => {
+  		/* collaborations -> {
+  			total_count: 1,
+  			entries: [
+  				{
+  					type: 'collaboration',
+  					id: '11111',
+  					created_by: {
+  						type: 'user',
+  						id: '22222',
+  						name: 'Example User',
+  						login: 'user@example.com'
+  					},
+  					created_at: '2011-11-29T12:56:35-08:00',
+  					modified_at: '2012-09-11T15:12:32-07:00',
+  					expires_at: null,
+  					status: 'pending',
+  					accessible_by: {
+  						type: 'user',
+  						id: '33333',
+  						name: 'Collaborator User',
+  						login: 'collaborator@example.com'
+  					},
+  					role: 'editor',
+  					acknowledged_at: '2011-11-29T12:59:40-08:00',
+  					item: null
+  				}
+  			]
+  		}
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 <Warning>
-
-これにより、ユーザーの保留中のコラボレーションを表示する現在のリストのみが返されます。このAPIでは、ユーザーのすべてのコラボレーションを返すことは許可されていません。
-
+  これにより、ユーザーの保留中のコラボレーションを表示する現在のリストのみが返されます。このAPIでは、ユーザーのすべてのコラボレーションを返すことは許可されていません。
 </Warning>
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "List pending collaborations", href: "/reference/get-collaborations", badge: "GET" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "ユーザーとのコンテンツの共有", href: "/ja/guides/collaborations/share-content", badge: "ガイド" }
-  ]}
-/>

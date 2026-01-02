@@ -1,31 +1,21 @@
 ---
-title: "メタデータフィールド"
-category_id: metadata
-subcategory_id: metadata/3-fields
-is_index: true
-id: metadata/fields
-rank: 3
-type: guide
-total_steps: 5
-sibling_id: metadata
-parent_id: metadata
-next_page_id: metadata/fields/enum
-previous_page_id: metadata/fields/float
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/3-fields/0-index.md
+sidebarTitle: Overview
+title: メタデータフィールド
+
 fullyTranslated: true
 ---
+
 [メタデータテンプレートフィールド][r_field]には、メタデータテンプレート内の特定のデータが記載されています。たとえば、請求書のIDを`invoiceData`テンプレートの`id`フィールドとして表すことができます。
 
 すべてのメタデータテンプレートには`field`オブジェクトのリストが含まれており、各フィールドは次のいずれかのタイプになります。
 
-|                                                   |                        |
-| ------------------------------------------------- | ---------------------- |
-| [`string`](/ja/guides/metadata/fields/string)            | テキストフィールド              |
-| [`float`](/ja/guides/metadata/fields/float)              | 数値入力フィールド              |
-| [`date`](/ja/guides/metadata/fields/date)                | 日付選択フィールド              |
-| [`enum`](/ja/guides/metadata/fields/enum)                | 1つの値を選択するためのドロップダウンリスト |
-| [`multiSelect`](/ja/guides/metadata/fields/multi-select) | 複数の値を選択するためのドロップダウンリスト |
+|                                                       |                        |
+| ----------------------------------------------------- | ---------------------- |
+| [`string`](/guides/metadata/fields/string)            | テキストフィールド              |
+| [`float`](/guides/metadata/fields/float)              | 数値入力フィールド              |
+| [`date`](/guides/metadata/fields/date)                | 日付選択フィールド              |
+| [`enum`](/guides/metadata/fields/enum)                | 1つの値を選択するためのドロップダウンリスト |
+| [`multiSelect`](/guides/metadata/fields/multi-select) | 複数の値を選択するためのドロップダウンリスト |
 
 ## 基本的なフィールドタイプ
 
@@ -35,4 +25,4 @@ fullyTranslated: true
 
 さらに、メタデータテンプレートでは、ドロップダウンリストを表す2つのフィールドタイプをサポートしています。`enum`フィールドは、ユーザーが選択できるあらかじめ定義された項目のリストを表すのに対し、`multiSelect`フィールドは、ユーザーが複数の値を選択できる項目のリストを表します。
 
-[r_field]: /ja/reference/resources/metadata-template/#param-fields
+[r_field]: /reference/resources/metadata-template/#param-fields

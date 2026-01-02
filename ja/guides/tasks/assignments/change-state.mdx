@@ -1,132 +1,120 @@
 ---
-title: "タスク割り当て状態の変更"
 related_endpoints:
-  - put_task_assignments_id
+  0: put_task_assignments_id
 related_guides:
-  - tasks/assignments/assign
-  - tasks/assignments/unassign
-category_id: tasks
-subcategory_id: tasks/assignments
-is_index: false
-id: tasks/assignments/change-state
-rank: 6
-type: guide
-total_steps: 6
-sibling_id: tasks/assignments
-parent_id: tasks/assignments
-next_page_id: ''
-previous_page_id: tasks/assignments/list
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/6-change-state.md
+  0: tasks/assignments/assign
+  1: tasks/assignments/unassign
+title: タスク割り当て状態の変更
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-タスク割り当ての状態を更新するには、[`PUT /tasks/:task_id/assignments`](/ja/reference/put-task-assignments-id) APIを呼び出し、`completed`、`incomplete`、`approved`、`rejected`などの`resolution_state`を含めます。
+タスク割り当ての状態を更新するには、[`PUT /tasks/:task_id/assignments`](/reference/put-task-assignments-id) APIを呼び出し、`completed`、`incomplete`、`approved`、`rejected`などの`resolution_state`を含めます。
 
 <CodeGroup>
-```sh cURL
-curl -i -X PUT "https://api.box.com/2.0/task_assignments/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "message": "New message",
-       "resolution_state": "completed"
-     }'
-```
+  ```sh cURL
+  curl -i -X PUT "https://api.box.com/2.0/task_assignments/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "message": "New message",
+         "resolution_state": "completed"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.taskAssignments.updateTaskAssignmentById(taskAssignment.id!, {
-  requestBody: {
-    message: 'updated message',
-    resolutionState:
-      'approved' as UpdateTaskAssignmentByIdRequestBodyResolutionStateField,
-  } satisfies UpdateTaskAssignmentByIdRequestBody,
-} satisfies UpdateTaskAssignmentByIdOptionalsInput);
-```
+  ```typescript Node/TypeScript v10
+  await client.taskAssignments.updateTaskAssignmentById(taskAssignment.id!, {
+    requestBody: {
+      message: 'updated message',
+      resolutionState:
+        'approved' as UpdateTaskAssignmentByIdRequestBodyResolutionStateField,
+    } satisfies UpdateTaskAssignmentByIdRequestBody,
+  } satisfies UpdateTaskAssignmentByIdOptionalsInput);
+  ```
 
-```python Python v10
-client.task_assignments.update_task_assignment_by_id(
-    task_assignment.id,
-    message="updated message",
-    resolution_state=UpdateTaskAssignmentByIdResolutionState.APPROVED,
-)
-```
+  ```python Python v10
+  client.task_assignments.update_task_assignment_by_id(
+      task_assignment.id,
+      message="updated message",
+      resolution_state=UpdateTaskAssignmentByIdResolutionState.APPROVED,
+  )
+  ```
 
-```csharp .NET v10
-await client.TaskAssignments.UpdateTaskAssignmentByIdAsync(taskAssignmentId: NullableUtils.Unwrap(taskAssignment.Id), requestBody: new UpdateTaskAssignmentByIdRequestBody() { Message = "updated message", ResolutionState = UpdateTaskAssignmentByIdRequestBodyResolutionStateField.Approved });
-```
+  ```csharp .NET v10
+  await client.TaskAssignments.UpdateTaskAssignmentByIdAsync(taskAssignmentId: NullableUtils.Unwrap(taskAssignment.Id), requestBody: new UpdateTaskAssignmentByIdRequestBody() { Message = "updated message", ResolutionState = UpdateTaskAssignmentByIdRequestBodyResolutionStateField.Approved });
+  ```
 
-```swift Swift v10
-try await client.taskAssignments.updateTaskAssignmentById(taskAssignmentId: taskAssignment.id!, requestBody: UpdateTaskAssignmentByIdRequestBody(message: "updated message", resolutionState: UpdateTaskAssignmentByIdRequestBodyResolutionStateField.approved))
-```
+  ```swift Swift v10
+  try await client.taskAssignments.updateTaskAssignmentById(taskAssignmentId: taskAssignment.id!, requestBody: UpdateTaskAssignmentByIdRequestBody(message: "updated message", resolutionState: UpdateTaskAssignmentByIdRequestBodyResolutionStateField.approved))
+  ```
 
-```java Java v10
-client.getTaskAssignments().updateTaskAssignmentById(taskAssignment.getId(), new UpdateTaskAssignmentByIdRequestBody.Builder().message("updated message").resolutionState(UpdateTaskAssignmentByIdRequestBodyResolutionStateField.APPROVED).build())
-```
+  ```java Java v10
+  client.getTaskAssignments().updateTaskAssignmentById(taskAssignment.getId(), new UpdateTaskAssignmentByIdRequestBody.Builder().message("updated message").resolutionState(UpdateTaskAssignmentByIdRequestBodyResolutionStateField.APPROVED).build())
+  ```
 
-```java Java v5
-String assignmentID = "12345";
-BoxTaskAssignment taskAssignment = new BoxTaskAssignment(api, assignmentID);
-BoxTaskAssignment.Info info = taskAssignment.getInfo();
-info.setResolutionState(BoxTaskAssignment.ResolutionState.APPROVED);
-taskAssignment.updateInfo(info);
-```
+  ```java Java v5
+  String assignmentID = "12345";
+  BoxTaskAssignment taskAssignment = new BoxTaskAssignment(api, assignmentID);
+  BoxTaskAssignment.Info info = taskAssignment.getInfo();
+  info.setResolutionState(BoxTaskAssignment.ResolutionState.APPROVED);
+  taskAssignment.updateInfo(info);
+  ```
 
-```py Python v4
-from boxsdk.object.task_assignment import ResolutionState
-updated_task = {'resolution_state': ResolutionState.APPROVED}
-updated_assignment = client.task_assignment(assignment_id='12345').update_info(data=updated_task)
-print(f'Assignment ID is {updated_assignment.id} and resolution state is {updated_assignment.resolution_state}')
-```
+  ```py Python v4
+  from boxsdk.object.task_assignment import ResolutionState
+  updated_task = {'resolution_state': ResolutionState.APPROVED}
+  updated_assignment = client.task_assignment(assignment_id='12345').update_info(data=updated_task)
+  print(f'Assignment ID is {updated_assignment.id} and resolution state is {updated_assignment.resolution_state}')
+  ```
 
-```csharp .NET v6
-var requestParams = new BoxTaskAssignmentUpdateRequest()
-{
-    Id = "12345",
-    ResolutionState = ResolutionStateType.approved
-};
-BoxTaskAssignment updatedAssignment = await client.TasksManager.UpdateTaskAssignmentAsync(requestParams);
-```
+  ```csharp .NET v6
+  var requestParams = new BoxTaskAssignmentUpdateRequest()
+  {
+      Id = "12345",
+      ResolutionState = ResolutionStateType.approved
+  };
+  BoxTaskAssignment updatedAssignment = await client.TasksManager.UpdateTaskAssignmentAsync(requestParams);
+  ```
 
-```js Node v4
-// Complete a task
-client.tasks.updateAssignment(
- '12345',
- {
-  message: 'Done!',
-  resolution_state: client.tasks.resolutionStates.COMPLETE
- })
- .then(assignment => {
-  /* assignment -> {
-   type: 'task_assignment',
-   id: '12345',
-   item: 
-   { type: 'file',
-    id: '33333',
-    sequence_id: '0',
-    etag: '0',
-    sha1: '7840095ee096ee8297676a138d4e316eabb3ec96',
-    name: 'script.js' },
-   assigned_to: 
-   { type: 'user',
-    id: '22222',
-    name: 'Sample Assignee',
-    login: 'assignee@exmaple.com' },
-   message: 'Done!',
-   completed_at: null,
-   assigned_at: '2013-05-10T11:43:41-07:00',
-   reminded_at: null,
-   resolution_state: 'complete',
-   assigned_by: 
-   { type: 'user',
-    id: '33333',
-    name: 'Example User',
-    login: 'user@example.com' } }
-  */
- });
-```
+  ```js Node v4
+  // Complete a task
+  client.tasks.updateAssignment(
+   '12345',
+   {
+    message: 'Done!',
+    resolution_state: client.tasks.resolutionStates.COMPLETE
+   })
+   .then(assignment => {
+    /* assignment -> {
+     type: 'task_assignment',
+     id: '12345',
+     item: 
+     { type: 'file',
+      id: '33333',
+      sequence_id: '0',
+      etag: '0',
+      sha1: '7840095ee096ee8297676a138d4e316eabb3ec96',
+      name: 'script.js' },
+     assigned_to: 
+     { type: 'user',
+      id: '22222',
+      name: 'Sample Assignee',
+      login: 'assignee@exmaple.com' },
+     message: 'Done!',
+     completed_at: null,
+     assigned_at: '2013-05-10T11:43:41-07:00',
+     reminded_at: null,
+     resolution_state: 'complete',
+     assigned_by: 
+     { type: 'user',
+      id: '33333',
+      name: 'Example User',
+      login: 'user@example.com' } }
+    */
+   });
+  ```
 </CodeGroup>
 
 ## 解決状態
@@ -147,13 +135,14 @@ Boxは現在、`action`値によって定義される、`review`と`complete`と
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update task assignment", href: "/reference/put-task-assignments-id", badge: "PUT" }
-  ]}
+  { label: "Update task assignment", href: "/reference/put-task-assignments-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "ガイド" },
-    { label: "タスク割り当ての解除", href: "/ja/guides/tasks/assignments/unassign", badge: "ガイド" }
-  ]}
+  { label: "Assign a task to a user", href: "/guides/tasks/assignments/assign", badge: "GUIDE" },
+  { label: "Unassign a task", href: "/guides/tasks/assignments/unassign", badge: "GUIDE" }
+]}
 />

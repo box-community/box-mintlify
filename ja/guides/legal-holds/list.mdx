@@ -1,26 +1,15 @@
 ---
-title: "すべてのリーガルホールドポリシーのリストの取得"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - get_legal_hold_policies
+  0: get_legal_hold_policies
 related_guides:
-  - legal-holds/get
+  0: legal-holds/get
 related_resources:
-  - legal_hold_policies
-required_guides: []
-alias_paths: []
-category_id: legal-holds
-subcategory_id: null
-is_index: false
-id: legal-holds/list
-type: guide
-total_steps: 2
-sibling_id: legal-holds
-parent_id: legal-holds
-next_page_id: legal-holds/get
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/legal-holds/list.md
+  0: legal_hold_policies
+required_guides: {}
+title: すべてのリーガルホールドポリシーのリストの取得
+
 fullyTranslated: true
 ---
 
@@ -29,67 +18,65 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 会社内に作成されたすべてのリーガルホールドポリシーのリストを取得するには、[`GET /legal_hold_policies`][legal_holds] APIエンドポイントを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/legal_hold_policies" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/legal_hold_policies" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.legalHoldPolicies.getLegalHoldPolicies();
+  ```
 
-```typescript Node/TypeScript v10
-await client.legalHoldPolicies.getLegalHoldPolicies();
-```
+  ```python Python v10
+  client.legal_hold_policies.get_legal_hold_policies()
+  ```
 
-```python Python v10
-client.legal_hold_policies.get_legal_hold_policies()
-```
+  ```cs .NET v10
+  await client.LegalHoldPolicies.GetLegalHoldPoliciesAsync();
+  ```
 
-```cs .NET v10
-await client.LegalHoldPolicies.GetLegalHoldPoliciesAsync();
-```
+  ```swift Swift v10
+  try await client.legalHoldPolicies.getLegalHoldPolicies()
+  ```
 
-```swift Swift v10
-try await client.legalHoldPolicies.getLegalHoldPolicies()
-```
+  ```java Java v10
+  client.getLegalHoldPolicies().getLegalHoldPolicies()
+  ```
 
-```java Java v10
-client.getLegalHoldPolicies().getLegalHoldPolicies()
-```
+  ```java Java v5
+  Iterable<BoxLegalHoldPolicy.Info> policies = BoxLegalHoldPolicy.getAll(api);
+  for (BoxLegalHoldPolicy.Info policyInfo : policies) {
+      // Do something with the legal hold policy.
+  }
+  ```
 
-```java Java v5
-Iterable<BoxLegalHoldPolicy.Info> policies = BoxLegalHoldPolicy.getAll(api);
-for (BoxLegalHoldPolicy.Info policyInfo : policies) {
-    // Do something with the legal hold policy.
-}
-```
+  ```python Python v4
+  policies = client.get_legal_hold_policies()
+  for policy in policies:
+      print(f'Legal Hold Policy "{policy.name}" has ID {policy.id}')
+  ```
 
-```python Python v4
-policies = client.get_legal_hold_policies()
-for policy in policies:
-    print(f'Legal Hold Policy "{policy.name}" has ID {policy.id}')
-```
+  ```cs .NET v6
+  BoxCollectionMarkerBased<BoxLegalHoldPolicy> policies = await client.LegalHoldPoliciesManager
+      .GetListLegalHoldPoliciesAsync();
+  ```
 
-```cs .NET v6
-BoxCollectionMarkerBased<BoxLegalHoldPolicy> policies = await client.LegalHoldPoliciesManager
-    .GetListLegalHoldPoliciesAsync();
-```
-
-```javascript Node v4
-client.legalHoldPolicies.getAll({policy_name: 'Important'})
-	.then(policies => {
-		/* policies -> {
-			entries: 
-			[ { type: 'legal_hold_policy',
-				id: '11111',
-				policy_name: 'Important Policy 1' },
-				{ type: 'legal_hold_policy',
-				id: '22222',
-				policy_name: 'Important Policy 2' } ],
-			limit: 100,
-			order: [ { by: 'policy_name', direction: 'ASC' } ] }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  client.legalHoldPolicies.getAll({policy_name: 'Important'})
+  	.then(policies => {
+  		/* policies -> {
+  			entries: 
+  			[ { type: 'legal_hold_policy',
+  				id: '11111',
+  				policy_name: 'Important Policy 1' },
+  				{ type: 'legal_hold_policy',
+  				id: '22222',
+  				policy_name: 'Important Policy 2' } ],
+  			limit: 100,
+  			order: [ { by: 'policy_name', direction: 'ASC' } ] }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 ## 必須のスコープ
@@ -100,19 +87,20 @@ client.legalHoldPolicies.getAll({policy_name: 'Important'})
 
 {/* i18n-disable localize-links */}
 
-[legal_holds]: /ja/reference/get-legal-hold-policies
+[legal_holds]: /reference/get-legal-hold-policies
 
-[scopes]: /ja/guides/legal-holds#required-scopes
+[scopes]: /guides/legal-holds#required-scopes
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List all legal hold policies", href: "/reference/get-legal-hold-policies", badge: "GET" }
-  ]}
+  { label: "List all legal hold policies", href: "/reference/get-legal-hold-policies", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "リーガルホールドポリシーの取得", href: "/ja/guides/legal-holds/get", badge: "ガイド" }
-  ]}
+  { label: "Get Legal Hold Policy", href: "/guides/legal-holds/get", badge: "GUIDE" }
+]}
 />

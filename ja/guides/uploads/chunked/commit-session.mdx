@@ -1,42 +1,29 @@
 ---
-title: "アップロードセッションのコミット"
+alias_paths: {}
 rank: 5
 related_endpoints:
-  - post_files_upload_sessions_id_commit
-related_guides: []
-related_pages: []
-required_guides:
-  - uploads/chunked/create-session
-  - uploads/chunked/upload-part
+  0: post_files_upload_sessions_id_commit
+related_guides: {}
+related_pages: {}
 related_resources:
-  - upload_session
-  - upload_part
-alias_paths: []
-category_id: uploads
-subcategory_id: uploads/chunked
-is_index: false
-id: uploads/chunked/commit-session
-type: guide
-total_steps: 5
-sibling_id: uploads/chunked
-parent_id: uploads/chunked
-next_page_id: uploads/chunked/folder
-previous_page_id: uploads/chunked/upload-part
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/commit-session.md
+  0: upload_session
+  1: upload_part
+required_guides:
+  0: uploads/chunked/create-session
+  1: uploads/chunked/upload-part
+title: アップロードセッションのコミット
+
 fullyTranslated: true
 ---
 
-
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "アップロードセッションの作成", href: "/ja/guides/uploads/chunked/create-session", badge: "ガイド" },
-    { label: "パーツのアップロード", href: "/ja/guides/uploads/chunked/upload-part", badge: "ガイド" }
-  ]}
+  { label: "Create Upload Session", href: "/guides/uploads/chunked/create-session", badge: "GUIDE" },
+  { label: "Upload Part", href: "/guides/uploads/chunked/upload-part", badge: "GUIDE" }
+]}
 />
 
 分割アップロードの最後の手順はセッションのコミットです。
@@ -44,100 +31,96 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルアップロードセッションをコミットするには、コミットするアップロード済みパーツのリストを指定して[`POST /files/upload_sessions/:id/commit`][e_commit]を呼び出します。
 
 <CodeGroup>
-
-```sh cURL
-curl -i -X POST "https://upload.box.com/2.0/files/upload_sessions/F971964745A5CD0C001BBE4E58196BFD/commit" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "digest: sha=fpRyg5eVQletdZqEKaFlqwBXJzM=" \
-     -H "content-type: application/json" \
-     -d '{
-       "parts": [
-         {
-           "part_id": "BFDF5379",
-           "offset": 0,
-           "size": 8388608,
-	     "sha1": "134b65991ed521fcfe4724b7d814ab8ded5185dc"
-         },
-		     {
-           "part_id": "E8A3ED8E",
-           "offset": 8388608,
-           "size": 1611392,
-	     "sha1": "234b65934ed521fcfe3424b7d814ab8ded5185dc"
+  ```sh cURL
+  curl -i -X POST "https://upload.box.com/2.0/files/upload_sessions/F971964745A5CD0C001BBE4E58196BFD/commit" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "digest: sha=fpRyg5eVQletdZqEKaFlqwBXJzM=" \
+       -H "content-type: application/json" \
+       -d '{
+         "parts": [
+           {
+             "part_id": "BFDF5379",
+             "offset": 0,
+             "size": 8388608,
+  	     "sha1": "134b65991ed521fcfe4724b7d814ab8ded5185dc"
+           },
+  		     {
+             "part_id": "E8A3ED8E",
+             "offset": 8388608,
+             "size": 1611392,
+  	     "sha1": "234b65934ed521fcfe3424b7d814ab8ded5185dc"
+           }
+         ],
+         "attributes": {
+           "content_modified_at": "2017-04-08T00:58:08Z"
          }
-       ],
-       "attributes": {
-         "content_modified_at": "2017-04-08T00:58:08Z"
-       }
-     }'
-```
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.chunkedUploads.createFileUploadSessionCommit(
-  uploadSessionId,
-  { parts: parts } satisfies CreateFileUploadSessionCommitRequestBody,
-  { digest: digest } satisfies CreateFileUploadSessionCommitHeadersInput,
-);
-```
+  ```typescript Node/TypeScript v10
+  await client.chunkedUploads.createFileUploadSessionCommit(
+    uploadSessionId,
+    { parts: parts } satisfies CreateFileUploadSessionCommitRequestBody,
+    { digest: digest } satisfies CreateFileUploadSessionCommitHeadersInput,
+  );
+  ```
 
-```python Python v10
-client.chunked_uploads.create_file_upload_session_commit(
-    upload_session_id, parts, digest
-)
-```
+  ```python Python v10
+  client.chunked_uploads.create_file_upload_session_commit(
+      upload_session_id, parts, digest
+  )
+  ```
 
-```cs .NET v10
-await client.ChunkedUploads.CreateFileUploadSessionCommitAsync(uploadSessionId: uploadSessionId, requestBody: new CreateFileUploadSessionCommitRequestBody(parts: parts), headers: new CreateFileUploadSessionCommitHeaders(digest: digest));
-```
+  ```cs .NET v10
+  await client.ChunkedUploads.CreateFileUploadSessionCommitAsync(uploadSessionId: uploadSessionId, requestBody: new CreateFileUploadSessionCommitRequestBody(parts: parts), headers: new CreateFileUploadSessionCommitHeaders(digest: digest));
+  ```
 
-```swift Swift v10
-try await client.chunkedUploads.createFileUploadSessionCommit(uploadSessionId: uploadSessionId, requestBody: CreateFileUploadSessionCommitRequestBody(parts: parts), headers: CreateFileUploadSessionCommitHeaders(digest: digest))
-```
+  ```swift Swift v10
+  try await client.chunkedUploads.createFileUploadSessionCommit(uploadSessionId: uploadSessionId, requestBody: CreateFileUploadSessionCommitRequestBody(parts: parts), headers: CreateFileUploadSessionCommitHeaders(digest: digest))
+  ```
 
-```java Java v10
-client.getChunkedUploads().createFileUploadSessionCommit(uploadSessionId, new CreateFileUploadSessionCommitRequestBody(parts), new CreateFileUploadSessionCommitHeaders(digest))
-```
+  ```java Java v10
+  client.getChunkedUploads().createFileUploadSessionCommit(uploadSessionId, new CreateFileUploadSessionCommitRequestBody(parts), new CreateFileUploadSessionCommitHeaders(digest))
+  ```
 
-```java Java v5
-//Creates the file hash
-byte[] digestBytes = digest.digest();
-//Base64 encoding of the hash
-String digestStr = Base64.encode(digestBytes);
+  ```java Java v5
+  //Creates the file hash
+  byte[] digestBytes = digest.digest();
+  //Base64 encoding of the hash
+  String digestStr = Base64.encode(digestBytes);
 
-//Commit the upload session. If there is a failure, abort the commit.
-BoxFile.Info fileInfo = session.commit(digestStr, parts, null, null, null);
-```
+  //Commit the upload session. If there is a failure, abort the commit.
+  BoxFile.Info fileInfo = session.commit(digestStr, parts, null, null, null);
+  ```
 
-```python Python v4
-import hashlib
+  ```python Python v4
+  import hashlib
 
-sha1 = hashlib.sha1()
-# sha1 should have been updated with all the bytes of the file
+  sha1 = hashlib.sha1()
+  # sha1 should have been updated with all the bytes of the file
 
-file_atributes = {
-    'description': 'A file uploaded via Chunked Upload',
-}
+  file_atributes = {
+      'description': 'A file uploaded via Chunked Upload',
+  }
 
-upload_session = client.upload_session('11493C07ED3EABB6E59874D3A1EF3581')
-uploaded_file = upload_session.commit(sha1.digest(), file_atributes=file_atributes)
-print(f'Successfully uploaded file {uploaded_file.id} with description {uploaded_file.description}')
-```
+  upload_session = client.upload_session('11493C07ED3EABB6E59874D3A1EF3581')
+  uploaded_file = upload_session.commit(sha1.digest(), file_atributes=file_atributes)
+  print(f'Successfully uploaded file {uploaded_file.id} with description {uploaded_file.description}')
+  ```
 
-```javascript Node v4
-// Finalize upload session 93D9A837B45F
-client.files.commitUploadSession(
-	'93D9A837B45F',
-	fileHash.digest('base64'),
-	{description: 'A file I uploaded in chunks!'},
-	callback
-);
-```
-
+  ```javascript Node v4
+  // Finalize upload session 93D9A837B45F
+  client.files.commitUploadSession(
+  	'93D9A837B45F',
+  	fileHash.digest('base64'),
+  	{description: 'A file I uploaded in chunks!'},
+  	callback
+  );
+  ```
 </CodeGroup>
 
 <Info>
-
-加えて、ファイルの`attributes`を`parts`とともに渡すことで、ファイルに情報を追加できます。詳細については、[`POST /files/content`][e_file] APIを参照してください。
-
+  加えて、ファイルの`attributes`を`parts`とともに渡すことで、ファイルに情報を追加できます。詳細については、[`POST /files/content`][e_file] APIを参照してください。
 </Info>
 
 ## レスポンス
@@ -146,15 +129,15 @@ client.files.commitUploadSession(
 
 場合によっては、パーツの作成がまだ準備できておらず、代わりに`202 Accepted`ステータスコードが返されることがあります。この場合、アプリケーションは`retry-after`ヘッダーを確認し、指定された秒数後にコミットを再試行する必要があります。
 
-[e_commit]: /ja/reference/post_files_upload_sessions_id_commit
+[e_commit]: /reference/post_files_upload_sessions_id_commit
 
-[e_file]: /ja/reference/post_files_content
+[e_file]: /reference/post_files_content
 
-[r_file]: /ja/reference/resources/file
+[r_file]: /reference/resources/file
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Commit upload session", href: "/reference/post-files-upload-sessions-id-commit", badge: "POST" }
-  ]}
+  { label: "Commit upload session", href: "/reference/post-files-upload-sessions-id-commit", badge: "POST" }
+]}
 />

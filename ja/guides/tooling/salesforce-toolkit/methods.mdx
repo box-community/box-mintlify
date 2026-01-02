@@ -1,24 +1,13 @@
 ---
-title: "メソッドと操作"
+alias_paths: {}
 rank: 1
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - tooling/sdks/salesforce
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: tooling
-subcategory_id: tooling/salesforce-toolkit
-is_index: false
-id: tooling/salesforce-toolkit/methods
-type: guide
-total_steps: 5
-sibling_id: tooling/salesforce-toolkit
-parent_id: tooling/salesforce-toolkit
-next_page_id: tooling/salesforce-toolkit/samples
-previous_page_id: tooling/salesforce-toolkit
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tooling/salesforce-toolkit/methods.md
+  0: tooling/sdks/salesforce
+related_resources: {}
+required_guides: {}
+title: メソッドと操作
+
 fullyTranslated: true
 ---
 
@@ -81,9 +70,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 このメソッドは`box.Toolkit()`メソッドのデストラクタとして扱います。
 
 <Warning>
-
-このメソッドは重要です。すべてのフォルダ/コラボレーション操作が完了した後、毎回、例外なくこのメソッドを呼び出す必要があります。
-
+  このメソッドは重要です。すべてのフォルダ/コラボレーション操作が完了した後、毎回、例外なくこのメソッドを呼び出す必要があります。
 </Warning>
 
 Salesforceではデータベースの更新/挿入/削除の後の呼び出しは許可されないため、Toolkitクラスではすべての呼び出し操作が完了した後で挿入するオブジェクトのコレクションが保持されます。このメソッドを呼び出さない場合、このようなオブジェクトがデータベースから消去され、ユーザー/レコード/フォルダの関連付けを追跡するテーブルの同期も失われて、高度なデバッグによる修正が必要になります。
@@ -131,11 +118,9 @@ Box for Salesforce Developer Toolkitは、パラメータとして[HttpRequest][
 ### `createFileFromAttachment`
 
 <Note>
+  バージョン3.46以降で使用可能です。
 
-バージョン3.46以降で使用可能です。
-
-Salesforceの文字列長の上限は600万文字です。base64エンコード/デコードプロセスでは文字列が膨張するため、有効なファイルサイズの上限は、同期Apexの場合は4.3MB、非同期Apexの場合は8.6MBとなっています。
-
+  Salesforceの文字列長の上限は600万文字です。base64エンコード/デコードプロセスでは文字列が膨張するため、有効なファイルサイズの上限は、同期Apexの場合は4.3MB、非同期Apexの場合は8.6MBとなっています。
 </Note>
 
 | パラメータ              | 型            | 説明                                                                                                                           |
@@ -319,9 +304,7 @@ Salesforceの文字列長の上限は600万文字です。base64エンコード/
 ## コラボレーションメソッド
 
 <Warning>
-
-Box for Salesforce Developer Toolkitによって作成されたコラボレーションは、コラボレータにコラボレーションメールを送信しません。Box for Salesforce統合に使用されるサービスアカウントのみがコラボレーションメールを受け取ります。
-
+  Box for Salesforce Developer Toolkitによって作成されたコラボレーションは、コラボレータにコラボレーションメールを送信しません。Box for Salesforce統合に使用されるサービスアカウントのみがコラボレーションメールを受け取ります。
 </Warning>
 
 ### `createCollaboration`
@@ -391,9 +374,7 @@ Box for Salesforce Developer Toolkitによって作成されたコラボレー�
 ## メタデータ
 
 <Info>
-
-すべてのメソッドに対する詳細なエラーレスポンスについては、`toolkit.mostRecentError`の値を確認してください。
-
+  すべてのメソッドに対する詳細なエラーレスポンスについては、`toolkit.mostRecentError`の値を確認してください。
 </Info>
 
 ### `getBoxMetadataByFolderId`
@@ -421,7 +402,7 @@ Box for Salesforce Developer Toolkitによって作成されたコラボレー�
 | パラメータ           | 型                    | 説明                                                                                                                                                                                   |
 | --------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `folderId`      | `string`             | メタデータを作成するBoxフォルダのID。                                                                                                                                                                |
-| `scope`         | `string`             | メタデータテンプレートのスコープ。値は [`global`、`enterprise`][`global`, `enterprise`] のいずれかです。                                                                                                         |
+| `scope`         | `string`             | メタデータテンプレートのスコープ。値は \[`global`, `enterprise`] のいずれかです。                                                                                                                               |
 | `template_key`  | `string`             | メタデータテンプレートの名前。                                                                                                                                                                      |
 | `keyValuePairs` | `List<KeyValuePair>` | このクラスはマップとして機能します。Boxメタデータに送信する属性のキー/値ペアをリストとして指定します。キー/値のマッピングは[API][2]と同じパターンに従います。数値型`'3000'`および`'Customer;Order'`などの複数選択値は、コードサンプルに見られる通常のメタデータ値と同様に、`value`フィールドで文字列入力として表されます。 |
 
@@ -440,7 +421,7 @@ Box for Salesforce Developer Toolkitによって作成されたコラボレー�
 | パラメータ          | 型                            | 説明                                                                                                                                                          |
 | -------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `folderId`     | `string`                     | メタデータを更新するBoxフォルダのID。                                                                                                                                       |
-| `scope`        | `string`                     | メタデータテンプレートのスコープ。値は[`global`、`enterprise`][`global`, `enterprise`]のいずれかです。                                                                                  |
+| `scope`        | `string`                     | メタデータテンプレートのスコープ。値は \[`global`, `enterprise`] のいずれかです。                                                                                                      |
 | `template_key` | `string`                     | メタデータテンプレートの名前。                                                                                                                                             |
 | `mdUpdates`    | `List<FolderMetadataUpdate>` | メタデータの更新。操作、パス、および値を指定します。メタデータの更新レコードは、[API][3]と同じパターンに従います。数値型 (`3000`) および`Customer;Order`などの複数選択値は、コードサンプルにおける通常のメタデータ値と同様に、`value`フィールドで文字列入力として表されます。 |
 
@@ -456,11 +437,11 @@ Box for Salesforce Developer Toolkitによって作成されたコラボレー�
 
 このメソッドでは、[フォルダからメタデータインスタンスを削除][4]エンドポイントを呼び出します。
 
-| パラメータ          | 型        | 説明                                                                         |
-| -------------- | -------- | -------------------------------------------------------------------------- |
-| `folderId`     | `string` | メタデータを更新するBoxフォルダのID。                                                      |
-| `scope`        | `string` | メタデータテンプレートのスコープ。値は[`global`、`enterprise`][`global`, `enterprise`]のいずれかです。 |
-| `template_key` | `string` | メタデータテンプレートの名前。                                                            |
+| パラメータ          | 型        | 説明                                                     |
+| -------------- | -------- | ------------------------------------------------------ |
+| `folderId`     | `string` | メタデータを更新するBoxフォルダのID。                                  |
+| `scope`        | `string` | メタデータテンプレートのスコープ。値は \[`global`, `enterprise`] のいずれかです。 |
+| `template_key` | `string` | メタデータテンプレートの名前。                                        |
 
 戻り値:
 
@@ -506,11 +487,11 @@ Box for Salesforce Developer Toolkitによって作成されたコラボレー�
 
 このメソッドでは、BoxフォルダID、スコープ、テンプレートキーを指定し、[メタデータカスケードポリシーを投稿][7]エンドポイントを呼び出すことで、カスケードポリシーを作成します。
 
-| パラメータ          | 型        | 説明                                                                              |
-| -------------- | -------- | ------------------------------------------------------------------------------- |
-| `folderId`     | `string` | メタデータカスケードポリシーを作成するBoxフォルダのID。                                                  |
-| `scope`        | `string` | メタデータカスケードポリシーのスコープ。値は [`global`、`enterprise`][`global`, `enterprise`] のいずれかです。 |
-| `template_key` | `string` | テンプレートキーの名前。                                                                    |
+| パラメータ          | 型        | 説明                                                        |
+| -------------- | -------- | --------------------------------------------------------- |
+| `folderId`     | `string` | メタデータカスケードポリシーを作成するBoxフォルダのID。                            |
+| `scope`        | `string` | メタデータカスケードポリシーのスコープ。値は \[`global`, `enterprise`] のいずれかです。 |
+| `template_key` | `string` | テンプレートキーの名前。                                              |
 
 戻り値:
 
@@ -567,9 +548,7 @@ Box for Salesforce Developer Toolkitによって作成されたコラボレー�
 このツールキットのメソッドでは、[統合マッピングを取得][9]エンドポイントを呼び出してマッピングを作成します。
 
 <Note>
-
-Slackチャンネルにマッピングする場合、はデフォルト`FALSE`でに設定`access_management_disabled`されます。これにより、Slackチャンネルのメンバーリストに含まれていないコラボレータは自動的に削除されます。組織がBoxでの共有をどのように設定しているかに応じて、`TRUE`メソッドを使用して`setSlackChannelAccessManagementDisabled`を`access_ management_disabled`に設定するか、[グループ][12]を使用することをお勧めします。これにより、Slackの設定に関係なく、どのユーザーも削除されなくなります。ファイルがSlackチャンネルにアップロードされると、コラボレーションはSlackに追加されるかSlackから削除されます。
-
+  Slackチャンネルにマッピングする場合、はデフォルト`FALSE`でに設定`access_management_disabled`されます。これにより、Slackチャンネルのメンバーリストに含まれていないコラボレータは自動的に削除されます。組織がBoxでの共有をどのように設定しているかに応じて、`TRUE`メソッドを使用して`setSlackChannelAccessManagementDisabled`を`access_ management_disabled`に設定するか、[グループ][12]を使用することをお勧めします。これにより、Slackの設定に関係なく、どのユーザーも削除されなくなります。ファイルがSlackチャンネルにアップロードされると、コラボレーションはSlackに追加されるかSlackから削除されます。
 </Note>
 
 | パラメータ         | 型                    | 説明                             |
@@ -606,9 +585,7 @@ Slackチャンネルにマッピングする場合、はデフォルト`FALSE`�
 このメソッド/呼び出し可能なアクションは、Box for Salesforceパッケージの`Create Box Folder/Slack Channel Mapping`で提供されるフローテンプレートで使用されています。
 
 <Note>
-
- Slackチャンネルにマッピングする場合、はデフォルト`FALSE`でに設定`access_management_disabled`されます。これにより、Slackチャンネルのメンバーリストに含まれていないコラボレータは自動的に削除されます。組織がBoxでの共有をどのように設定しているかに応じて、`TRUE`メソッドを使用して`setSlackChannelAccessManagementDisabled`を`access_ management_disabled`に設定するか、[グループ][12]を使用することをお勧めします。これにより、Slackの設定に関係なく、どのユーザーも削除されなくなります。ファイルがSlackチャンネルにアップロードされると、コラボレーションはSlackに追加されるかSlackから削除されます。
-
+  Slackチャンネルにマッピングする場合、はデフォルト`FALSE`でに設定`access_management_disabled`されます。これにより、Slackチャンネルのメンバーリストに含まれていないコラボレータは自動的に削除されます。組織がBoxでの共有をどのように設定しているかに応じて、`TRUE`メソッドを使用して`setSlackChannelAccessManagementDisabled`を`access_ management_disabled`に設定するか、[グループ][12]を使用することをお勧めします。これにより、Slackの設定に関係なく、どのユーザーも削除されなくなります。ファイルがSlackチャンネルにアップロードされると、コラボレーションはSlackに追加されるかSlackから削除されます。
 </Note>
 
 | パラメータ                   | 型      | 説明                                                                                            |
@@ -681,9 +658,9 @@ Slackチャンネルにマッピングする場合、はデフォルト`FALSE`�
 
 このメソッドでは、[すべてのHubを取得][13]エンドポイントを呼び出して、すべてのHubのリストを取得します。
 
-| **パラメータ**    | **型**     | **説明**                         |
-| ------------ | --------- | ------------------------------ |
-| `limitCount` | `integer` | 省略可 - 返されるHubの最大数。             |
+| **パラメータ**    | **型**     | **説明**                            |
+| ------------ | --------- | --------------------------------- |
+| `limitCount` | `integer` | 省略可 - 返されるHubの最大数。                |
 | `marker`     | `string`  | 省略可 - 追加の結果を取得する場合のページネーションのマーカー。 |
 
 **戻り値:**
@@ -862,55 +839,55 @@ Slackチャンネルにマッピングする場合、はデフォルト`FALSE`�
   * Hubへのアクセス権限がない
   * APIリクエストが失敗した
 
-[1]: /ja/reference/get-folders-id-metadata-id-id
+[1]: /reference/get-folders-id-metadata-id-id
 
-[2]: /ja/reference/post-folders-id-metadata-id-id
+[2]: /reference/post-folders-id-metadata-id-id
 
-[3]: /ja/reference/put-folders-id-metadata-id-id
+[3]: /reference/put-folders-id-metadata-id-id
 
-[4]: /ja/reference/delete-folders-id-metadata-id-id
+[4]: /reference/delete-folders-id-metadata-id-id
 
-[5]: /ja/reference/get-metadata-cascade-policies-id
+[5]: /reference/get-metadata-cascade-policies-id
 
-[6]: /ja/reference/get-metadata-cascade-policies
+[6]: /reference/get-metadata-cascade-policies
 
-[7]: /ja/reference/post-metadata-cascade-policies
+[7]: /reference/post-metadata-cascade-policies
 
-[8]: /ja/reference/delete-metadata-cascade-policies-id
+[8]: /reference/delete-metadata-cascade-policies-id
 
-[9]: /ja/reference/get-integration-mappings-slack
+[9]: /reference/get-integration-mappings-slack
 
-[10]: /ja/reference/delete-integration-mappings-slack-id
+[10]: /reference/delete-integration-mappings-slack-id
 
-[11]: /ja/reference/put-integration-mappings-slack-id
+[11]: /reference/put-integration-mappings-slack-id
 
 [12]: https://support.box.com/hc/articles/360043694554-Creating-and-Managing-Groups
 
-[13]: /ja/reference/get-hubs
+[13]: /reference/get-hubs
 
-[14]: /ja/reference/get-enterprise-hubs
+[14]: /reference/get-enterprise-hubs
 
-[15]: /ja/reference/post-sign-requests
+[15]: /reference/post-sign-requests
 
-[16]: /ja/reference/get-hubs-id
+[16]: /reference/get-hubs-id
 
-[17]: /ja/reference/post-hubs
+[17]: /reference/post-hubs
 
-[18]: /ja/reference/put-hubs-id
+[18]: /reference/put-hubs-id
 
-[19]: /ja/reference/post-hubs-id-copy
+[19]: /reference/post-hubs-id-copy
 
-[20]: /ja/reference/post-hub-collaborations
+[20]: /reference/post-hub-collaborations
 
-[21]: /ja/reference/get-hub-collaborations
+[21]: /reference/get-hub-collaborations
 
-[22]: /ja/reference/put-hub-collaborations-id
+[22]: /reference/put-hub-collaborations-id
 
-[23]: /ja/reference/post-hubs-id-manage-items
+[23]: /reference/post-hubs-id-manage-items
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Salesforce SDKのインストール", href: "/ja/guides/tooling/sdks/salesforce", badge: "ガイド" }
-  ]}
+  { label: "Install Salesforce SDK", href: "/guides/tooling/sdks/salesforce", badge: "GUIDE" }
+]}
 />

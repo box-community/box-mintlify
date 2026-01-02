@@ -1,29 +1,18 @@
 ---
-title: "ドメインへのコラボレーションの許可"
+alias_paths:
+  0: /guides/collaboration-whitelists/create-whitelist
 rank: 1
 related_endpoints:
-  - post_collaboration_whitelist_entries
+  0: post_collaboration_whitelist_entries
 related_guides:
-  - collaborations
-  - collaborations/allowed-domains/list
-  - collaborations/allowed-domains/delete
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths:
-  - /guides/collaboration-whitelists/create-whitelist
-category_id: collaborations
-subcategory_id: collaborations/allowed-domains
-is_index: false
-id: collaborations/allowed-domains/create
-type: guide
-total_steps: 3
-sibling_id: collaborations/allowed-domains
-parent_id: collaborations/allowed-domains
-next_page_id: collaborations/allowed-domains/list
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/allowed-domains/create.md
+  0: collaborations
+  1: collaborations/allowed-domains/list
+  2: collaborations/allowed-domains/delete
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: ドメインへのコラボレーションの許可
+
 fullyTranslated: true
 ---
 
@@ -32,57 +21,55 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 一般にコラボレーションの作成を制限している企業は、企業で作成されている可能性のあるコラボレーションのリストに`example.com`などのドメインを追加できます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/collaboration_whitelist_entries" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "domain": "example.com",
+         "direction": "inboud"
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/collaboration_whitelist_entries" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "domain": "example.com",
-       "direction": "inboud"
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry({
+    direction:
+      'inbound' as CreateCollaborationWhitelistEntryRequestBodyDirectionField,
+    domain: domain,
+  } satisfies CreateCollaborationWhitelistEntryRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry({
-  direction:
-    'inbound' as CreateCollaborationWhitelistEntryRequestBodyDirectionField,
-  domain: domain,
-} satisfies CreateCollaborationWhitelistEntryRequestBody);
-```
+  ```python Python v10
+  client.collaboration_allowlist_entries.create_collaboration_whitelist_entry(
+      domain, CreateCollaborationWhitelistEntryDirection.INBOUND
+  )
+  ```
 
-```python Python v10
-client.collaboration_allowlist_entries.create_collaboration_whitelist_entry(
-    domain, CreateCollaborationWhitelistEntryDirection.INBOUND
-)
-```
+  ```cs .NET v10
+  await client.CollaborationAllowlistEntries.CreateCollaborationWhitelistEntryAsync(requestBody: new CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.Inbound, domain: domain));
+  ```
 
-```cs .NET v10
-await client.CollaborationAllowlistEntries.CreateCollaborationWhitelistEntryAsync(requestBody: new CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.Inbound, domain: domain));
-```
+  ```swift Swift v10
+  try await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry(requestBody: CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.inbound, domain: domain))
+  ```
 
-```swift Swift v10
-try await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry(requestBody: CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.inbound, domain: domain))
-```
+  ```java Java v10
+  client.getCollaborationAllowlistEntries().createCollaborationWhitelistEntry(new CreateCollaborationWhitelistEntryRequestBody(domain, CreateCollaborationWhitelistEntryRequestBodyDirectionField.INBOUND))
+  ```
 
-```java Java v10
-client.getCollaborationAllowlistEntries().createCollaborationWhitelistEntry(new CreateCollaborationWhitelistEntryRequestBody(domain, CreateCollaborationWhitelistEntryRequestBodyDirectionField.INBOUND))
-```
+  ```cs .NET v6
+  BoxCollaborationWhitelistEntry entry = await client.CollaborationWhitelistManager.AddCollaborationWhitelistEntryAsync(
+      "example.com",
+      "both"
+  );
+  ```
 
-```cs .NET v6
-BoxCollaborationWhitelistEntry entry = await client.CollaborationWhitelistManager.AddCollaborationWhitelistEntryAsync(
-    "example.com",
-    "both"
-);
-```
-
-```javascript Node v4
-client.collaborationAllowlist.addDomain('test.com', client.collaborationAllowlist.directions.INBOUND, callback);
-```
-
+  ```javascript Node v4
+  client.collaborationAllowlist.addDomain('test.com', client.collaborationAllowlist.directions.INBOUND, callback);
+  ```
 </CodeGroup>
 
-この[エンドポイント](/ja/reference/post-collaboration-whitelist-entries)には、コラボレーションを許可する`domain`と、以下のように設定できる`direction`が必要です。
+この[エンドポイント](/reference/post-collaboration-whitelist-entries)には、コラボレーションを許可する`domain`と、以下のように設定できる`direction`が必要です。
 
 * `inbound`: 外部ユーザーが企業のコンテンツでコラボレーションできるかどうか。
 * `outbound`: 企業の管理対象ユーザーが外部の企業で所有されているコンテンツでコラボレーションできるかどうか。
@@ -91,67 +78,66 @@ client.collaborationAllowlist.addDomain('test.com', client.collaborationAllowlis
 新しく許可されたドメインを設定する場合はbothパラメータを指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/collaboration_whitelist_entries" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "domain": "example.com",
+         "direction": "inboud"
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/collaboration_whitelist_entries" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "domain": "example.com",
-       "direction": "inboud"
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry({
+    direction:
+      'inbound' as CreateCollaborationWhitelistEntryRequestBodyDirectionField,
+    domain: domain,
+  } satisfies CreateCollaborationWhitelistEntryRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry({
-  direction:
-    'inbound' as CreateCollaborationWhitelistEntryRequestBodyDirectionField,
-  domain: domain,
-} satisfies CreateCollaborationWhitelistEntryRequestBody);
-```
+  ```python Python v10
+  client.collaboration_allowlist_entries.create_collaboration_whitelist_entry(
+      domain, CreateCollaborationWhitelistEntryDirection.INBOUND
+  )
+  ```
 
-```python Python v10
-client.collaboration_allowlist_entries.create_collaboration_whitelist_entry(
-    domain, CreateCollaborationWhitelistEntryDirection.INBOUND
-)
-```
+  ```cs .NET v10
+  await client.CollaborationAllowlistEntries.CreateCollaborationWhitelistEntryAsync(requestBody: new CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.Inbound, domain: domain));
+  ```
 
-```cs .NET v10
-await client.CollaborationAllowlistEntries.CreateCollaborationWhitelistEntryAsync(requestBody: new CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.Inbound, domain: domain));
-```
+  ```swift Swift v10
+  try await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry(requestBody: CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.inbound, domain: domain))
+  ```
 
-```swift Swift v10
-try await client.collaborationAllowlistEntries.createCollaborationWhitelistEntry(requestBody: CreateCollaborationWhitelistEntryRequestBody(direction: CreateCollaborationWhitelistEntryRequestBodyDirectionField.inbound, domain: domain))
-```
+  ```java Java v10
+  client.getCollaborationAllowlistEntries().createCollaborationWhitelistEntry(new CreateCollaborationWhitelistEntryRequestBody(domain, CreateCollaborationWhitelistEntryRequestBodyDirectionField.INBOUND))
+  ```
 
-```java Java v10
-client.getCollaborationAllowlistEntries().createCollaborationWhitelistEntry(new CreateCollaborationWhitelistEntryRequestBody(domain, CreateCollaborationWhitelistEntryRequestBodyDirectionField.INBOUND))
-```
+  ```cs .NET v6
+  BoxCollaborationWhitelistEntry entry = await client.CollaborationWhitelistManager.AddCollaborationWhitelistEntryAsync(
+      "example.com",
+      "both"
+  );
+  ```
 
-```cs .NET v6
-BoxCollaborationWhitelistEntry entry = await client.CollaborationWhitelistManager.AddCollaborationWhitelistEntryAsync(
-    "example.com",
-    "both"
-);
-```
-
-```javascript Node v4
-client.collaborationAllowlist.addDomain('test.com', client.collaborationAllowlist.directions.INBOUND, callback);
-```
-
+  ```javascript Node v4
+  client.collaborationAllowlist.addDomain('test.com', client.collaborationAllowlist.directions.INBOUND, callback);
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Add domain to list of allowed collaboration domains", href: "/reference/post-collaboration-whitelist-entries", badge: "POST" }
-  ]}
+  { label: "Add domain to list of allowed collaboration domains", href: "/reference/post-collaboration-whitelist-entries", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "コラボレーション", href: "/ja/guides/collaborations/index", badge: "ガイド" },
-    { label: "コラボレーションが許可されているドメインのリストの取得", href: "/ja/guides/collaborations/allowed-domains/list", badge: "ガイド" },
-    { label: "以前コラボレーションが許可されたドメインの削除", href: "/ja/guides/collaborations/allowed-domains/delete", badge: "ガイド" }
-  ]}
+  { label: "Collaborations", href: "/guides/collaborations/index", badge: "GUIDE" },
+  { label: "List allowed domains for collaboration", href: "/guides/collaborations/allowed-domains/list", badge: "GUIDE" },
+  { label: "Remove a previously allowed domain for collaboration", href: "/guides/collaborations/allowed-domains/delete", badge: "GUIDE" }
+]}
 />

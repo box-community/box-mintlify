@@ -1,35 +1,15 @@
 ---
-title: "Teams統合マッピング"
+alias_paths: {}
 rank: 1
-related_endpoints:
-  - delete_teams_integration_mappings_id
-  - get_integration_mappings_teams
-  - post_integration_mappings_teams
-  - put_integration_mappings_teams_id
-related_guides:
-  - integration-mappings/teams-mappings/list-mappings
-  - integration-mappings/teams-mappings/create-mappings
-  - integration-mappings/teams-mappings/update-mappings
-  - integration-mappings/teams-mappings/delete-mappings
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: integration-mappings
-subcategory_id: integration-mappings/teams-mappings
-is_index: true
-id: integration-mappings/teams-mappings
-type: guide
-total_steps: 4
-sibling_id: integration-mappings
-parent_id: integration-mappings
-next_page_id: integration-mappings/teams-mappings/list-mappings
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/integration-mappings/teams-mappings/index.md
+related_endpoints: ""
+related_guides: ""
+related_resources: {}
+required_guides: {}
+sidebarTitle: Overview
+title: Teams統合マッピング
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 [Teams][2]統合マッピングAPIの使用を開始する前に、以下の手順を実行してください。
 
@@ -50,41 +30,20 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ```bash
 Authorization: Bearer {developer_token}
-
 ```
 
 <Info>
-
-開発者トークンの有効期限は60分です。その時間が経過した後は、再度生成する必要があります。
-
+  開発者トークンの有効期限は60分です。その時間が経過した後は、再度生成する必要があります。
 </Info>
 
 [1]: https://support.box.com/hc/en-us/articles/360050737154-Assigning-a-Default-Box-Folder-to-a-Teams-Channel-or-Chat
 
 [2]: https://support.box.com/hc/en-us/articles/360044667034-Introducing-Box-for-Microsoft-Teams
 
-[3]: /ja/guides/authentication/oauth2/oauth2-setup
+[3]: /guides/authentication/oauth2/oauth2-setup
 
 [4]: https://app.box.com/developers/console
 
-[5]: /ja/guides/applications/app-types/platform-apps
+[5]: /guides/applications/app-types/platform-apps
 
-[6]: /ja/guides/authentication/tokens/developer-tokens
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "List Teams integration mappings", href: "/reference/get-integration-mappings-teams", badge: "GET" },
-    { label: "Create Teams integration mapping", href: "/reference/post-integration-mappings-teams", badge: "POST" },
-    { label: "Update Teams integration mapping", href: "/reference/put-integration-mappings-teams-id", badge: "PUT" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "Teams統合マッピングのリスト取得", href: "/ja/guides/integration-mappings/teams-mappings/list-mappings", badge: "ガイド" },
-    { label: "Teams統合マッピングの作成", href: "/ja/guides/integration-mappings/teams-mappings/create-mappings", badge: "ガイド" },
-    { label: "Teams統合マッピングの更新", href: "/ja/guides/integration-mappings/teams-mappings/update-mappings", badge: "ガイド" },
-    { label: "Teams統合マッピングの削除", href: "/ja/guides/integration-mappings/teams-mappings/delete-mappings", badge: "ガイド" }
-  ]}
-/>
+[6]: /guides/authentication/tokens/developer-tokens

@@ -1,28 +1,16 @@
 ---
-title: "項目のすべてのメタデータのリストの取得"
-related_resources:
-  - metadata
-  - metadata_template
 related_endpoints:
-  - get_files_id_metadata
-  - get_folders_id_metadata
+  0: get_files_id_metadata
+  1: get_folders_id_metadata
 related_guides:
-  - metadata/instances/get
-  - metadata/instances/create
-  - metadata/instances/update
-category_id: metadata
-subcategory_id: metadata/4-instances
-is_index: false
-id: metadata/instances/list
-rank: 1
-type: guide
-total_steps: 5
-sibling_id: metadata/instances
-parent_id: metadata/instances
-next_page_id: metadata/instances/get
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/1-list.md
+  0: metadata/instances/get
+  1: metadata/instances/create
+  2: metadata/instances/update
+related_resources:
+  0: metadata
+  1: metadata_template
+title: 項目のすべてのメタデータのリストの取得
+
 fullyTranslated: true
 ---
 
@@ -35,92 +23,90 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルのすべてのメタデータインスタンスのリストを取得するには、[`GET /files/:file_id/metadata`][get_metadata_file] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/files/12345/metadata" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/files/12345/metadata" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.fileMetadata.getFileMetadata(file.id);
-```
+  ```typescript Node/TypeScript v10
+  await client.fileMetadata.getFileMetadata(file.id);
+  ```
 
-```python Python v10
-client.file_metadata.get_file_metadata(file.id)
-```
+  ```python Python v10
+  client.file_metadata.get_file_metadata(file.id)
+  ```
 
-```csharp .NET v10
-await client.FileMetadata.GetFileMetadataAsync(fileId: file.Id);
-```
+  ```csharp .NET v10
+  await client.FileMetadata.GetFileMetadataAsync(fileId: file.Id);
+  ```
 
-```swift Swift v10
-try await client.fileMetadata.getFileMetadata(fileId: file.id)
-```
+  ```swift Swift v10
+  try await client.fileMetadata.getFileMetadata(fileId: file.id)
+  ```
 
-```java Java v10
-client.getFileMetadata().getFileMetadata(file.getId())
-```
+  ```java Java v10
+  client.getFileMetadata().getFileMetadata(file.getId())
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-Iterable<Metadata> metadataList = file.getAllMetadata();
-for (Metadata metadata : metadataList) {
-    // Do something with the metadata.
-}
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  Iterable<Metadata> metadataList = file.getAllMetadata();
+  for (Metadata metadata : metadataList) {
+      // Do something with the metadata.
+  }
+  ```
 
-```py Python v4
-file_metadata = client.file(file_id='11111').get_all_metadata()
-for instance in file_metadata:
-    if 'foo' in instance:
-        print(f'Metadata instance {instance["id"]} has value "{instance["foo"]}" for foo')
-```
+  ```py Python v4
+  file_metadata = client.file(file_id='11111').get_all_metadata()
+  for instance in file_metadata:
+      if 'foo' in instance:
+          print(f'Metadata instance {instance["id"]} has value "{instance["foo"]}" for foo')
+  ```
 
-```csharp .NET v6
-BoxMetadataTemplateCollection<Dictionary<string, object>> metadataInstances = await client.MetadataManager
-    .GetAllFileMetadataTemplatesAsync(fileId: "11111");
-```
+  ```csharp .NET v6
+  BoxMetadataTemplateCollection<Dictionary<string, object>> metadataInstances = await client.MetadataManager
+      .GetAllFileMetadataTemplatesAsync(fileId: "11111");
+  ```
 
-```js Node v4
-client.files.getAllMetadata('11111')
- .then(metadata => {
-  /* metadata -> {
-   entries: 
-   [ { currentDocumentStage: 'Init',
-    '$type': 'documentFlow-452b4c9d-c3ad-4ac7-b1ad-9d5192f2fc5f',
-    '$parent': 'file_11111',
-    '$id': '50ba0dba-0f89-4395-b867-3e057c1f6ed9',
-    '$version': 4,
-    '$typeVersion': 2,
-    needsApprovalFrom: 'Smith',
-    '$template': 'documentFlow',
-    '$scope': 'enterprise_12345' },
-    { '$type': 'productInfo-9d7b6993-b09e-4e52-b197-e42f0ea995b9',
-    '$parent': 'file_11111',
-    '$id': '15d1014a-06c2-47ad-9916-014eab456194',
-    '$version': 2,
-    '$typeVersion': 1,
-    skuNumber: 45334223,
-    description: 'Watch',
-    '$template': 'productInfo',
-    '$scope': 'enterprise_12345' },
-    { Popularity: '25',
-    '$type': 'properties',
-    '$parent': 'file_11111',
-    '$id': 'b6f36cbc-fc7a-4eda-8889-130f350cc057',
-    '$version': 0,
-    '$typeVersion': 2,
-    '$template': 'properties',
-    '$scope': 'global' } ],
-   limit: 100 }
-  */
- });
-```
+  ```js Node v4
+  client.files.getAllMetadata('11111')
+   .then(metadata => {
+    /* metadata -> {
+     entries: 
+     [ { currentDocumentStage: 'Init',
+      '$type': 'documentFlow-452b4c9d-c3ad-4ac7-b1ad-9d5192f2fc5f',
+      '$parent': 'file_11111',
+      '$id': '50ba0dba-0f89-4395-b867-3e057c1f6ed9',
+      '$version': 4,
+      '$typeVersion': 2,
+      needsApprovalFrom: 'Smith',
+      '$template': 'documentFlow',
+      '$scope': 'enterprise_12345' },
+      { '$type': 'productInfo-9d7b6993-b09e-4e52-b197-e42f0ea995b9',
+      '$parent': 'file_11111',
+      '$id': '15d1014a-06c2-47ad-9916-014eab456194',
+      '$version': 2,
+      '$typeVersion': 1,
+      skuNumber: 45334223,
+      description: 'Watch',
+      '$template': 'productInfo',
+      '$scope': 'enterprise_12345' },
+      { Popularity: '25',
+      '$type': 'properties',
+      '$parent': 'file_11111',
+      '$id': 'b6f36cbc-fc7a-4eda-8889-130f350cc057',
+      '$version': 0,
+      '$typeVersion': 2,
+      '$template': 'properties',
+      '$scope': 'global' } ],
+     limit: 100 }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Warning>
-
-このAPIはページングをサポートしておらず、常にこのファイルのすべてのメタデータインスタンスを返します。
-
+  このAPIはページングをサポートしておらず、常にこのファイルのすべてのメタデータインスタンスを返します。
 </Warning>
 
 ## フォルダのメタデータのリストを取得
@@ -128,116 +114,116 @@ client.files.getAllMetadata('11111')
 任意のフォルダ (ルートフォルダを除く) のすべてのメタデータインスタンスのリストを取得するには、[`GET /folders/:file_id/metadata`][get_metadata_file] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/folders/4353455/metadata" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/folders/4353455/metadata" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderMetadata.getFolderMetadata(folder.id);
-```
+  ```typescript Node/TypeScript v10
+  await client.folderMetadata.getFolderMetadata(folder.id);
+  ```
 
-```python Python v10
-client.folder_metadata.get_folder_metadata(folder.id)
-```
+  ```python Python v10
+  client.folder_metadata.get_folder_metadata(folder.id)
+  ```
 
-```csharp .NET v10
-await client.FolderMetadata.GetFolderMetadataAsync(folderId: folder.Id);
-```
+  ```csharp .NET v10
+  await client.FolderMetadata.GetFolderMetadataAsync(folderId: folder.Id);
+  ```
 
-```swift Swift v10
-try await client.folderMetadata.getFolderMetadata(folderId: folder.id)
-```
+  ```swift Swift v10
+  try await client.folderMetadata.getFolderMetadata(folderId: folder.id)
+  ```
 
-```java Java v10
-client.getFolderMetadata().getFolderMetadata(folder.getId())
-```
+  ```java Java v10
+  client.getFolderMetadata().getFolderMetadata(folder.getId())
+  ```
 
-```java Java v5
-BoxFolder file = new BoxFolder(api, "id");
-Iterable<Metadata> metadataList = folder.getAllMetadata();
-for (Metadata metadata : metadataList) {
-    // Do something with the metadata.
-}
-```
+  ```java Java v5
+  BoxFolder file = new BoxFolder(api, "id");
+  Iterable<Metadata> metadataList = folder.getAllMetadata();
+  for (Metadata metadata : metadataList) {
+      // Do something with the metadata.
+  }
+  ```
 
-```py Python v4
-folder_metadata = client.folder(folder_id='22222').get_all_metadata()
-for instance in folder_metadata:
-    if 'foo' in instance:
-        print(f'Metadata instance {instance["id"]} has value "{instance["foo"]}" for foo')
-```
+  ```py Python v4
+  folder_metadata = client.folder(folder_id='22222').get_all_metadata()
+  for instance in folder_metadata:
+      if 'foo' in instance:
+          print(f'Metadata instance {instance["id"]} has value "{instance["foo"]}" for foo')
+  ```
 
-```csharp .NET v6
-BoxMetadataTemplateCollection<Dictionary<string, object>> metadataInstances = await client.MetadataManager
-    .GetAllFolderMetadataTemplatesAsync(folderId: "11111");
-```
+  ```csharp .NET v6
+  BoxMetadataTemplateCollection<Dictionary<string, object>> metadataInstances = await client.MetadataManager
+      .GetAllFolderMetadataTemplatesAsync(folderId: "11111");
+  ```
 
-```js Node v4
-client.folders.getAllMetadata('11111')
- .then(metadata => {
-  /* metadata -> {
-   entries: 
-   [ { currentDocumentStage: 'Init',
-    '$type': 'documentFlow-452b4c9d-c3ad-4ac7-b1ad-9d5192f2fc5f',
-    '$parent': 'folder_11111',
-    '$id': '50ba0dba-0f89-4395-b867-3e057c1f6ed9',
-    '$version': 4,
-    '$typeVersion': 2,
-    needsApprovalFrom: 'Smith',
-    '$template': 'documentFlow',
-    '$scope': 'enterprise_12345' },
-    { '$type': 'productInfo-9d7b6993-b09e-4e52-b197-e42f0ea995b9',
-    '$parent': 'folder_11111',
-    '$id': '15d1014a-06c2-47ad-9916-014eab456194',
-    '$version': 2,
-    '$typeVersion': 1,
-    skuNumber: 45334223,
-    description: 'Watch',
-    '$template': 'productInfo',
-    '$scope': 'enterprise_12345' },
-    { Popularity: '25',
-    '$type': 'properties',
-    '$parent': 'folder_11111',
-    '$id': 'b6f36cbc-fc7a-4eda-8889-130f350cc057',
-    '$version': 0,
-    '$typeVersion': 2,
-    '$template': 'properties',
-    '$scope': 'global' } ],
-   limit: 100 }
-  */
- });
-```
+  ```js Node v4
+  client.folders.getAllMetadata('11111')
+   .then(metadata => {
+    /* metadata -> {
+     entries: 
+     [ { currentDocumentStage: 'Init',
+      '$type': 'documentFlow-452b4c9d-c3ad-4ac7-b1ad-9d5192f2fc5f',
+      '$parent': 'folder_11111',
+      '$id': '50ba0dba-0f89-4395-b867-3e057c1f6ed9',
+      '$version': 4,
+      '$typeVersion': 2,
+      needsApprovalFrom: 'Smith',
+      '$template': 'documentFlow',
+      '$scope': 'enterprise_12345' },
+      { '$type': 'productInfo-9d7b6993-b09e-4e52-b197-e42f0ea995b9',
+      '$parent': 'folder_11111',
+      '$id': '15d1014a-06c2-47ad-9916-014eab456194',
+      '$version': 2,
+      '$typeVersion': 1,
+      skuNumber: 45334223,
+      description: 'Watch',
+      '$template': 'productInfo',
+      '$scope': 'enterprise_12345' },
+      { Popularity: '25',
+      '$type': 'properties',
+      '$parent': 'folder_11111',
+      '$id': 'b6f36cbc-fc7a-4eda-8889-130f350cc057',
+      '$version': 0,
+      '$typeVersion': 2,
+      '$template': 'properties',
+      '$scope': 'global' } ],
+     limit: 100 }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Warning>
-
-このAPIはページングをサポートしておらず、常にこのファイルのすべてのメタデータインスタンスを返します。このAPIは、IDが`0`のルートフォルダには使用できません。
-
+  このAPIはページングをサポートしておらず、常にこのファイルのすべてのメタデータインスタンスを返します。このAPIは、IDが`0`のルートフォルダには使用できません。
 </Warning>
 
-[get_metadata_file]: /ja/reference/get_files_id_metadata
+[get_metadata_file]: /reference/get_files_id_metadata
 
-[get_metadata_folder]: /ja/reference/get_folders_id_metadata
+[get_metadata_folder]: /reference/get_folders_id_metadata
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List metadata instances on file", href: "/reference/get-files-id-metadata", badge: "GET" },
-    { label: "List metadata instances on folder", href: "/reference/get-folders-id-metadata", badge: "GET" }
-  ]}
+  { label: "List metadata instances on file", href: "/reference/get-files-id-metadata", badge: "GET" },
+  { label: "List metadata instances on folder", href: "/reference/get-folders-id-metadata", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "項目のメタデータの取得", href: "/ja/guides/metadata/instances/get", badge: "ガイド" },
-    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "ガイド" },
-    { label: "項目のメタデータの更新", href: "/ja/guides/metadata/instances/update", badge: "ガイド" }
-  ]}
+  { label: "Get metadata on item", href: "/guides/metadata/instances/get", badge: "GUIDE" },
+  { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+  { label: "Update metadata on an item", href: "/guides/metadata/instances/update", badge: "GUIDE" }
+]}
 />
+
 <RelatedLinks
-  title="RELATED RESOURCES"
+  title="関連するリソース"
   items={[
-    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "ガイド" }
-  ]}
+  { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+]}
 />

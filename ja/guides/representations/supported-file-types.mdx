@@ -1,26 +1,15 @@
 ---
-title: "サポートされているファイルの種類"
+alias_paths: {}
 rank: 8
 related_endpoints:
-  - get_files_id
+  0: get_files_id
 related_guides:
-  - representations/pdf
-  - representations/thumbnail-representation
-  - representations/text
-required_guides: []
-alias_paths: []
-category_id: representations
-subcategory_id: null
-is_index: false
-id: representations/supported-file-types
-type: guide
-total_steps: 8
-sibling_id: representations
-parent_id: representations
-next_page_id: representations
-previous_page_id: representations/text
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/representations/supported-file-types.md
+  0: representations/pdf
+  1: representations/thumbnail-representation
+  2: representations/text
+required_guides: {}
+title: サポートされているファイルの種類
+
 fullyTranslated: true
 ---
 
@@ -234,14 +223,15 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "PDFレプリゼンテーションの取得", href: "/ja/guides/representations/pdf", badge: "ガイド" },
-    { label: "サムネイルレプリゼンテーションの取得", href: "/ja/guides/representations/thumbnail-representation", badge: "ガイド" },
-    { label: "テキストレプリゼンテーションの取得", href: "/ja/guides/representations/text", badge: "ガイド" }
-  ]}
+  { label: "Get PDF Representation", href: "/guides/representations/pdf", badge: "GUIDE" },
+  { label: "Get Thumbnail Representation", href: "/guides/representations/thumbnail-representation", badge: "GUIDE" },
+  { label: "Get Text Representation", href: "/guides/representations/text", badge: "GUIDE" }
+]}
 />

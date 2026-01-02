@@ -1,23 +1,12 @@
 ---
-title: "設定"
+alias_paths:
+  0: /docs/getting-started-box-view
 rank: 1
 related_guides:
-  - embed/box-view/upload-file
-required_guides: []
-alias_paths:
-  - /docs/getting-started-box-view
-category_id: embed
-subcategory_id: embed/box-view
-is_index: false
-id: embed/box-view/setup
-type: guide
-total_steps: 5
-sibling_id: embed/box-view
-parent_id: embed/box-view
-next_page_id: embed/box-view/create-preview
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/box-view/setup.md
+  0: embed/box-view/upload-file
+required_guides: {}
+title: 設定
+
 fullyTranslated: true
 ---
 
@@ -31,12 +20,10 @@ Box Viewでは、**アプリトークン認証**と呼ばれる認証メカニ�
 
 最初の手順として、アプリケーションを作成し、管理者からアプリケーションの承認を受けて、BoxにAPIリクエストの発行を開始します。
 
-<Card href="/ja/guides/authentication/app-token/app-token-setup" title="アプリトークンアプリのセットアップと承認"/>
+<Card href="/guides/authentication/app-token/app-token-setup" arrow title="アプリトークンアプリのセットアップと承認" />
 
 <Warning>
-
-アプリトークンアプリは、Box管理者による承認が必要です。承認されない場合は、APIリクエストの送信時に権限エラーが発生します。アプリ承認を受けるには、[このガイド](/ja/guides/authorization/platform-app-approval)に従ってください。
-
+  アプリトークンアプリは、Box管理者による承認が必要です。承認されない場合は、APIリクエストの送信時に権限エラーが発生します。アプリ承認を受けるには、[このガイド](/guides/authorization/platform-app-approval)に従ってください。
 </Warning>
 
 ## アクセストークンの生成
@@ -44,31 +31,23 @@ Box Viewでは、**アプリトークン認証**と呼ばれる認証メカニ�
 アプリケーションが読み込まれた状態で、左側のナビゲーションメニューで \[**構成**] オプションをクリックします。アプリケーションの \[構成] ページは次のようになります。
 
 <Frame border>
-
-![画像](/images/guides/embed/box-view/app_token_config.png)
-
+  ![画像](/images/guides/embed/box-view/app_token_config.png)
 </Frame>
 
 \[**プライマリアクセストークン**] セクション内の \[**キーを生成**] ボタンをクリックします。
 
 <Frame border>
-
-![画像](/images/guides/embed/box-view/app_token_generate_key.png)
-
+  ![画像](/images/guides/embed/box-view/app_token_generate_key.png)
 </Frame>
 
 <Note>
-
-Developerアカウント用の2要素認証設定がない場合は、アプリトークンを正常に生成できるよう事前に2要素認証の設定が求められます。プロンプトの指示に従って2要素認証を設定してください。
-
+  Developerアカウント用の2要素認証設定がない場合は、アプリトークンを正常に生成できるよう事前に2要素認証の設定が求められます。プロンプトの指示に従って2要素認証を設定してください。
 </Note>
 
 トークンの有効期限に30日、60日、または有効期限なしを選択します。
 
 <Frame border width="600" shadow center>
-
-![画像](/images/guides/embed/box-view/app_token_expiry.png)
-
+  ![画像](/images/guides/embed/box-view/app_token_expiry.png)
 </Frame>
 
 アプリトークンが生成されたら、コピーして安全に保存します。アプリトークンは、ページが再読み込みされると表示されなくなります。これは、Boxでは実際のトークンではなくトークンの一方向のハッシュが保存されているため、元のトークンを再取得できないからです。
@@ -76,6 +55,6 @@ Developerアカウント用の2要素認証設定がない場合は、アプリ�
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルのアップロード", href: "/ja/guides/embed/box-view/upload-file", badge: "ガイド" }
-  ]}
+  { label: "Upload Files", href: "/guides/embed/box-view/upload-file", badge: "GUIDE" }
+]}
 />

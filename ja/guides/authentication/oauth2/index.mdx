@@ -1,47 +1,35 @@
 ---
-title: "OAuth 2.0認証"
-rank: 2
-related_endpoints: []
-related_guides:
-  - applications/app-types/select
-  - ../pages/platform/user-types
-required_guides:
-  - authentication/select
-related_resources: []
 alias_paths:
-  - /docs/authenticate-with-oauth-2
-category_id: authentication
-subcategory_id: authentication/oauth2
-is_index: true
-id: authentication/oauth2
-type: guide
-total_steps: 4
-sibling_id: authentication
-parent_id: authentication
-next_page_id: authentication/oauth2/as-user
-previous_page_id: authentication/oauth2/with-sdk
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/oauth2/index.md
+  0: /docs/authenticate-with-oauth-2
+rank: 2
+related_endpoints: {}
+related_guides:
+  0: applications/app-types/select
+  1: ../pages/platform/user-types
+related_resources: {}
+required_guides:
+  0: authentication/select
+sidebarTitle: Overview
+title: OAuth 2.0認証
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+]}
 />
+
 クライアント側OAuth 2.0は、Box APIに対してユーザーを認証する最も簡単な方法の1つです。これは、ユーザーがアプリケーションから他のアプリケーションにある自分のデータにアクセスできるようにすることを目的とした[オープンスタンダード](https://oauth.net/2/)です。
 
 Twitter、Facebook、またはGoogleを使用してウェブサイトにログインしたことがあれば、OAuth 2.0を使用したことがあると考えられます。
 
 <Frame border>
-
-![OAuth 2.0フロー](./oauth2-flow.png)
-
+  ![OAuth 2.0フロー](./oauth2-flow.png)
 </Frame>
 
 Boxでのクライアント側認証にも同様のフローがあります。このフローでは、ユーザーは、アプリケーションからBoxウェブアプリにリダイレクトされて、ログインするように求められ、アプリケーションに対してユーザーのデータへのアクセス権限を付与します。
@@ -57,6 +45,6 @@ Boxでのクライアント側認証にも同様のフローがあります。�
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "ガイド" }
-  ]}
+  { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" }
+]}
 />

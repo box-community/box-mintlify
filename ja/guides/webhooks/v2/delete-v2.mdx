@@ -1,41 +1,30 @@
 ---
-title: "Webhookの削除"
+alias_paths:
+  0: /webhooks/manage/delete
 rank: 4
 related_endpoints:
-  - delete_webhooks_id
+  0: delete_webhooks_id
 related_guides:
-  - webhooks/v2/create-v2
-  - webhooks/v2/list-v2
+  0: webhooks/v2/create-v2
+  1: webhooks/v2/list-v2
 required_guides:
-  - webhooks/v2/create-v2
-  - webhooks/v2/list-v2
-alias_paths:
-  - /webhooks/manage/delete
-category_id: webhooks
-subcategory_id: webhooks/v2
-is_index: false
-id: webhooks/v2/delete-v2
-type: guide
-total_steps: 6
-sibling_id: webhooks/v2
-parent_id: webhooks/v2
-next_page_id: webhooks/v2/signatures-v2
-previous_page_id: webhooks/v2/update-v2
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/delete-v2.md
+  0: webhooks/v2/create-v2
+  1: webhooks/v2/list-v2
+title: Webhookの削除
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" },
-    { label: "ユーザーのWebhookのリストを取得", href: "/ja/guides/webhooks/v2/list-v2", badge: "ガイド" }
-  ]}
+  { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+  { label: "List Webhooks for a User", href: "/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+]}
 />
+
 Webhookは、[開発者コンソール][console]またはAPIを使用して削除できます。
 
 ## 開発者コンソール
@@ -52,48 +41,46 @@ Webhookを削除するには、以下の手順に従います。
 ファイルやフォルダからWebhookを削除するには、WebhookのIDを指定して[Webhookを削除][delete]エンドポイントを使用する必要があります。この値は、[すべてのWebhookのリストを取得][list]エンドポイントを使用して取得できます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/webhooks/3321123" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/webhooks/3321123" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.webhooks.deleteWebhookById(webhook.id!);
+  ```
 
-```typescript Node/TypeScript v10
-await client.webhooks.deleteWebhookById(webhook.id!);
-```
+  ```python Python v10
+  client.webhooks.delete_webhook_by_id(webhook.id)
+  ```
 
-```python Python v10
-client.webhooks.delete_webhook_by_id(webhook.id)
-```
+  ```csharp .NET v10
+  await client.Webhooks.DeleteWebhookByIdAsync(webhookId: NullableUtils.Unwrap(webhook.Id));
+  ```
 
-```cs .NET v10
-await client.Webhooks.DeleteWebhookByIdAsync(webhookId: NullableUtils.Unwrap(webhook.Id));
-```
+  ```swift Swift v10
+  try await client.webhooks.deleteWebhookById(webhookId: webhook.id!)
+  ```
 
-```swift Swift v10
-try await client.webhooks.deleteWebhookById(webhookId: webhook.id!)
-```
+  ```java Java v10
+  client.getWebhooks().deleteWebhookById(webhook.getId())
+  ```
 
-```java Java v10
-client.getWebhooks().deleteWebhookById(webhook.getId())
-```
+  ```py Python v4
+  client.webhook(webhook_id='12345').delete()
+  print('The webhook was successfully deleted!')
+  ```
 
-```python Python v4
-client.webhook(webhook_id='12345').delete()
-print('The webhook was successfully deleted!')
-```
+  ```csharp .NET v6
+  await client.WebhooksManager.DeleteWebhookAsync("11111");
+  ```
 
-```cs .NET v6
-await client.WebhooksManager.DeleteWebhookAsync("11111");
-```
-
-```javascript Node v4
-client.webhooks.delete('1234')
-	.then(() => {
-		// deletion succeeded — no value returned
-	});
-```
-
+  ```js Node v4
+  client.webhooks.delete('1234')
+   .then(() => {
+    // deletion succeeded — no value returned
+   });
+  ```
 </CodeGroup>
 
 ## Webhookの自動削除
@@ -106,9 +93,11 @@ Webhookは以下の理由で削除される可能性があります。
 * Webhookに関連付けられているアクティブなアクセストークンをすべて削除すると、そのWebhookが自動的に削除されます。これには、開発者トークンとパスワードが含まれます。
 * 最後に成功した通知が設定したURLに配信されてから30日が経過し、最後に通知の配信が成功した日からユーザーが最後にイベントをトリガーした日までの期間が14日を超えた場合。
 
-    ユーザーがファイルをダウンロードするシナリオを見てみましょう。この操作により、Webhookがトリガーされ、設定したURLを使用して共有リンクを削除します。次の図では、このシナリオを表し、Webhookが削除されるタイミングを示しています。
+  ユーザーがファイルをダウンロードするシナリオを見てみましょう。この操作により、Webhookがトリガーされ、設定したURLを使用して共有リンクを削除します。次の図では、このシナリオを表し、Webhookが削除されるタイミングを示しています。
 
-    <Frame>![Webhookの削除](/images/guides/webhooks/delete_webhooks.png)</Frame>
+  <Frame>
+    ![Webhookの削除](/images/guides/webhooks/delete_webhooks.png)
+  </Frame>
 
   * **ユーザーイベントトリガー**: ユーザーがイベント (例: ファイルのダウンロード) を開始したタイミング。
   * **通知トリガー**: ファイルがダウンロードされたことを示す通知がWebhookに送信されたタイミング。
@@ -120,25 +109,25 @@ Webhookは以下の理由で削除される可能性があります。
 "additional_info": {
   "reason": "auto_cleanup"
 }
-
 ```
 
-[delete]: /ja/reference/delete-webhooks-id
+[delete]: /reference/delete-webhooks-id
 
-[list]: /ja/reference/get-webhooks
+[list]: /reference/get-webhooks
 
 [console]: https://app.box.com/developers/console
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Remove webhook", href: "/reference/delete-webhooks-id", badge: "DELETE" }
-  ]}
+  { label: "Remove webhook", href: "/reference/delete-webhooks-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" },
-    { label: "ユーザーのWebhookのリストを取得", href: "/ja/guides/webhooks/v2/list-v2", badge: "ガイド" }
-  ]}
+  { label: "Create Webhooks", href: "/guides/webhooks/v2/create-v2", badge: "GUIDE" },
+  { label: "List Webhooks for a User", href: "/guides/webhooks/v2/list-v2", badge: "GUIDE" }
+]}
 />

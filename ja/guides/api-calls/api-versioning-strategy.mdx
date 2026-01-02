@@ -1,51 +1,35 @@
 ---
-title: "APIのバージョン戦略"
 rank: 9
-related_endpoints: []
-related_guides: []
-required_guides: []
-category_id: api-calls
-subcategory_id: null
-is_index: false
-id: api-calls/api-versioning-strategy
-type: guide
-total_steps: 9
-sibling_id: api-calls
-parent_id: api-calls
-next_page_id: api-calls
-previous_page_id: api-calls/language-codes
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/api-versioning-strategy.md
+related_endpoints: {}
+related_guides: {}
+required_guides: {}
+title: APIのバージョン戦略
+
 fullyTranslated: true
 ---
+
 Boxでは、特定のAPIエンドポイントに対してバージョン管理機能を提供しています。このバージョン管理システムにより、Boxがエンドポイントのバージョンを新しく導入した場合でも、既存のエンドポイントのバージョンに対してシームレスな機能が保証されます。
 
 APIのバージョン管理により、Boxは、自社のプラットフォームを継続的に強化できると同時に、機能の更新や廃止のための信頼できる手段をサードパーティの開発者に提供することもできます。
 
 <Tip>
-
-今後予定されているAPIの変更について常に最新情報を把握できるように、[変更ログ](https://developer.box.com/changelog)を注視し、開発者コンソールの \[アプリ情報] セクションで最新のメールアドレスを指定しておいてください。
-
+  今後予定されているAPIの変更について常に最新情報を把握できるように、[変更ログ](https://developer.box.com/changelog)を注視し、開発者コンソールの \[アプリ情報] セクションで最新のメールアドレスを指定しておいてください。
 </Tip>
 
 <Note>
+  2024年に、BoxではAPIの年ベースのバージョン管理を導入しました。
 
-2024年に、BoxではAPIの年ベースのバージョン管理を導入しました。
+  2024年の年末に利用できたすべてのエンドポイントには、バージョン`2024.0`が割り当てられました。
 
-2024年の年末に利用できたすべてのエンドポイントには、バージョン`2024.0`が割り当てられました。
+  **APIユーザーが引き続きBox APIを使用するために必要な操作はありません。**
 
-**APIユーザーが引き続きBox APIを使用するために必要な操作はありません。**
-
-バージョンを指定してAPIコールを行うには、値`2024.0`を設定した`box-version`ヘッダーをリクエストに含めてください。
-
+  バージョンを指定してAPIコールを行うには、値`2024.0`を設定した`box-version`ヘッダーをリクエストに含めてください。
 </Note>
 
 ## Box APIのバージョン管理の仕組み
 
 <Note>
-
-Box APIは、`header`でのバージョン管理をサポートしています。どのバージョンを使用するかを決定するには、APIリファレンスとそこに記載されているサンプルリクエストを参照してください。
-
+  Box APIは、`header`でのバージョン管理をサポートしています。どのバージョンを使用するかを決定するには、APIリファレンスとそこに記載されているサンプルリクエストを参照してください。
 </Note>
 
 ### `header`におけるバージョン管理
@@ -56,10 +40,9 @@ Box APIでは、有効なバージョン名を含む`box-version`ヘッダーを
 curl --location 'https://api.box.com/2.0/sign_requests' \
      --header 'box-version: 2025.0' \
      --header 'Authorization: Bearer …
-
 ```
 
-指定したバージョンが正しく、エンドポイントでサポートされている場合、レスポンスがクライアントに送信されます。エンドポイントが複数のバージョンで使用可能な場合、レスポンスには`box-version`ヘッダーが含まれ、リクエストの処理に使用されるバージョンを示します。2024年以降に導入されたエンドポイントは、バージョンが正しくない場合にエラーコード`400`を返すことがあります。バージョン管理のエラーの詳細については、[こちら](/ja/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
+指定したバージョンが正しく、エンドポイントでサポートされている場合、レスポンスがクライアントに送信されます。エンドポイントが複数のバージョンで使用可能な場合、レスポンスには`box-version`ヘッダーが含まれ、リクエストの処理に使用されるバージョンを示します。2024年以降に導入されたエンドポイントは、バージョンが正しくない場合にエラーコード`400`を返すことがあります。バージョン管理のエラーの詳細については、[こちら](/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
 
 リクエストにバージョンが含まれていない場合、APIはデフォルトで、最初のBox APIバージョン`2024.0` (年ベースのバージョン管理が導入される前のエンドポイントのバージョン) になります。ただし、非推奨の変更を適用する際にこの動作を利用することはお勧めしません。一貫性を確保するために、リクエストごとに必ずAPIバージョンを指定してください。アプリケーションにバージョンを認識させることで、アプリケーションを特定の機能セットに固定し、サポートされている期間中は一貫した動作が保証されます。
 
@@ -89,25 +72,27 @@ Boxは、1年に**1回**、APIエンドポイントに新しく重大な変更�
 
 安定した各バージョンは最低12か月間サポートされます。つまり、新しいバージョンがリリースされると、以前のバージョンは非推奨となり、使用することはできますが、新機能が追加されなくなります。また、12か月経たずに新しいバージョンがリリースされることはありません。
 
-アプリを更新して最新の安定したAPIバージョンにリクエストを実行することを強くお勧めします。ただし、アプリで使用している安定したバージョンがサポートされなくなると、HTTPエラーコード`400 - Bad Request`を含むレスポンスが返されます。詳細については、[バージョン管理のエラー](/ja/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
+アプリを更新して最新の安定したAPIバージョンにリクエストを実行することを強くお勧めします。ただし、アプリで使用している安定したバージョンがサポートされなくなると、HTTPエラーコード`400 - Bad Request`を含むレスポンスが返されます。詳細については、[バージョン管理のエラー](/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
 
 ### エンドポイントのバージョン管理に関する表示
 
 APIの現在の状態が常にわかるようにし、バージョン管理されているAPIリファレンスが読みやすくなるよう、影響を受けるエンドポイントには`x-stability-level`タグまたは`deprecated`属性に基づいた長円形アイコンが表示されます。
 
-<Frame>![APIリファレンスのエンドポイントで使用されている、ベータを示す長円形アイコンの例](/images/guides/api-calls/api-versioning-pills.png)</Frame>
+<Frame>
+  ![APIリファレンスのエンドポイントで使用されている、ベータを示す長円形アイコンの例](/images/guides/api-calls/api-versioning-pills.png)
+</Frame>
 
 | スキーマ要素                                                 | 長円形アイコンの名前 | 説明                                                                                                                        |
 | ------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `x-stability-level: beta`                              | ベータ        | **ベータ**と表示されているエンドポイントは、BoxのMain Beta Agreementに従い提供されているため、利用可能な機能が変更される可能性があります。ベータ版のエンドポイントが安定すると、**ベータ**という表示が削除されます。 |
 | `x-stability-level: stable`、または`x-stability-level`タグなし | 最新バージョン    | **最新バージョン**とは、エンドポイントの最新の安定したバージョンを示します。                                                                                  |
-| `deprecated: true`                                     | 廃止         | エンドポイントは非推奨です。つまり、このエンドポイントは引き続き使用できますが、新機能が追加されなくなります。このようなエンドポイントには、`deprecated`属性を`true`に設定した状態で注釈が付けられています。           |
+| `deprecated: true`                                     | 非推奨        | エンドポイントは非推奨です。つまり、このエンドポイントは引き続き使用できますが、新機能が追加されなくなります。このようなエンドポイントには、`deprecated`属性を`true`に設定した状態で注釈が付けられています。           |
 
 ## バージョン管理のエラー
 
 呼び出しなど、バージョン管理されているAPIのアクションを利用する際、ヘッダーに誤ったAPIバージョンや非推奨のバージョンが指定されていると、エラーが発生する可能性があります。
 
-発生する可能性があるエラーの詳細については、[バージョン管理のエラー](/ja/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
+発生する可能性があるエラーの詳細については、[バージョン管理のエラー](/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
 
 ## Box SDKのバージョン管理の仕組み
 
@@ -121,59 +106,56 @@ Box SDKは、**すべてのバージョンに対応**というSDKのアプロー
 
 1. 初期状態 (使用できるバージョンは1つのみ)。
 
-```js
-    class FilesManager {
-        async updateFileById(
-            fileId: string,
-            requestBody: UpdateFileByIdRequestBody,
-            queryParams: UpdateFileByIdQueryParams,
-            headers: UpdateFileByIdHeaders
-        ): Promise < FileFull > {}
-    }
-
-```
+   ```js
+   class FilesManager {
+       async updateFileById(
+           fileId: string,
+           requestBody: UpdateFileByIdRequestBody,
+           queryParams: UpdateFileByIdQueryParams,
+           headers: UpdateFileByIdHeaders
+       ): Promise < FileFull > {}
+   }
+   ```
 
 2. エンドポイントの新しい`v2025_0`バージョンが導入されます (以前のバージョンは非推奨になります)。
 
    SDKでは、エンドポイントの新しいバージョンごとに新しいメソッドが導入されます。これらのメソッドは古いメソッドと同じマネージャに保存されますが、その名前と対応するクラスの末尾にはバージョン番号が追加されます。古いメソッドは非推奨となり、最小限のメンテナンスが行われる日付が通知されます。これは、エンドポイントの公式サポートが終了した状態と見なされる日付です。
 
-```js
-    class FilesManager {
-        /**
-         * @deprecated This endpoint will be EOL'ed after 05-2026.
-            */
-        async updateFileById(
-            fileId: string,
-            requestBody: UpdateFileByIdRequestBody,
-            queryParams: UpdateFileByIdQueryParams,
-            headers: UpdateFileByIdHeaders
-        ): Promise<FileFull> {}
+   ```js
+   class FilesManager {
+       /**
+        * @deprecated This endpoint will be EOL'ed after 05-2026.
+           */
+       async updateFileById(
+           fileId: string,
+           requestBody: UpdateFileByIdRequestBody,
+           queryParams: UpdateFileByIdQueryParams,
+           headers: UpdateFileByIdHeaders
+       ): Promise<FileFull> {}
 
-        async updateFileById_2025_0(
-            fileId: string,
-            requestBody: UpdateFileByIdRequestBody_2025_0,
-            queryParams: UpdateFileByIdQueryParams_2025_0,
-            headers: UpdateFileByIdHeaders_2025_0
-        ): Promise<FileFull_2025_0> {}
-    }
-
-```
+       async updateFileById_2025_0(
+           fileId: string,
+           requestBody: UpdateFileByIdRequestBody_2025_0,
+           queryParams: UpdateFileByIdQueryParams_2025_0,
+           headers: UpdateFileByIdHeaders_2025_0
+       ): Promise<FileFull_2025_0> {}
+   }
+   ```
 
 3. APIエンドポイントが公式サポート終了 (EOL) としてマークされます。
 
    SDKは、公式サポート終了 (EOL) のエンドポイントの削除を伴う重大な変更をリリースします。SDKの新しいメジャーバージョンを何度もリリースするのを避けるために、すべてのエンドポイントの公式サポート終了日を四半期ごとに特定の日にまとめるのが理想的です。
 
-```js
-    class FilesManager {
-        async updateFileById_2025_0(
-            fileId: string,
-            requestBody: UpdateFileByIdRequestBody_2025_0,
-            queryParams: UpdateFileByIdQueryParams_2025_0,
-            headers: UpdateFileByIdHeaders_2025_0
-        ): Promise < FileFull_2025_0 > {}
-    }
-
-```
+   ```js
+   class FilesManager {
+       async updateFileById_2025_0(
+           fileId: string,
+           requestBody: UpdateFileByIdRequestBody_2025_0,
+           queryParams: UpdateFileByIdQueryParams_2025_0,
+           headers: UpdateFileByIdHeaders_2025_0
+       ): Promise < FileFull_2025_0 > {}
+   }
+   ```
 
 ## 重大な変更と重大ではない変更
 
@@ -199,14 +181,12 @@ Box APIにおける重大な変更は、バージョン管理されたリリー�
 | 列挙へのメンバーの追加                                                                                        | はい    |
 
 <Tip>
-
-[oasdiff](https://github.com/Tufin/oasdiff/blob/main/BREAKING-CHANGES-EXAMPLES.md)ツールを使用すると、重大と思われる変更の大半を検出できます。
-
+  [oasdiff](https://github.com/Tufin/oasdiff/blob/main/BREAKING-CHANGES-EXAMPLES.md)ツールを使用すると、重大と思われる変更の大半を検出できます。
 </Tip>
 
 ## AIエージェントの構成のバージョン管理
 
-[AIエージェント](/ja/guides/box-ai/ai-agents)のバージョン管理により、開発者はモデルのバージョン管理をより詳細に制御できるようになり、レスポンスの一貫性が確保されます。詳細については、[AIエージェントの構成のバージョン管理ガイド](/ja/guides/box-ai/ai-agents/ai-agent-versioning)を参照してください。
+[AIエージェント](/guides/box-ai/ai-agents)のバージョン管理により、開発者はモデルのバージョン管理をより詳細に制御できるようになり、レスポンスの一貫性が確保されます。詳細については、[AIエージェントの構成のバージョン管理ガイド](/guides/box-ai/ai-agents/ai-agent-versioning)を参照してください。
 
 ## サポートポリシーと非推奨情報
 
@@ -220,8 +200,7 @@ APIが非推奨としてマークされている場合は、できるだけ早�
 
 ```sh
 Deprecation: date="Fri, 11 Nov 2026 23:59:59 GMT"
-Box-API-Deprecated-Reason: /ja/reference/deprecated
-
+Box-API-Deprecated-Reason: /reference/deprecated
 ```
 
 この日付は、いつこのバージョンが非推奨としてマークされたかをクライアントに示しています。
@@ -233,23 +212,24 @@ Box-API-Deprecated-Reason: /ja/reference/deprecated
 * バージョン`2024.0`のエンドポイントは、`box-version`ヘッダーでバージョンを指定しなくても呼び出し可能です。バージョンが指定されておらず、呼び出したエンドポイントの`2024.0`バージョンが存在しない場合、レスポンスではHTTPエラーコード`400 - Bad Request`が返されます。
 * `box-version`バージョンヘッダーが指定されていても、リクエストされたバージョンが存在しない場合、レスポンスではHTTPエラーコード`400 - Bad Request`が返されます。
 
-詳細については、[バージョン管理のエラー](/ja/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
+詳細については、[バージョン管理のエラー](/guides/api-calls/permissions-and-errors/versioning-errors)を参照してください。
 
 APIに含まれるリソースまたはリソースのプロパティが非推奨になると、その変更は以下の1つ以上の方法で伝えられます。
 
 * 非推奨の動作を伴う呼び出しにより、レスポンスヘッダー`Box-API-Deprecated-Reason`と、詳細を確認するためのリンクが返されます。
 
-```sh
-    box-version: 2025.0
-    Deprecation: version="version", date="date"
-    Box-API-Deprecated-Reason: /ja/reference/deprecated
-
-```
+  ```sh
+  box-version: 2025.0
+  Deprecation: version="version", date="date"
+  Box-API-Deprecated-Reason: /reference/deprecated
+  ```
 
 * 非推奨に関するお知らせが開発者向け変更ログに掲載されます。
+
 * 影響を受けるリソースと必要な対応を特定できるように、APIリファレンスが更新されます。影響を受けるエンドポイントには**非推奨**の長円形アイコンが表示されます。
+
 * アプリに影響する後方互換性のない変更が差し迫っている場合は、その非推奨についてアプリの連絡先メールアドレスに問い合わせることがあります。
 
 ## その他のリソース
 
-* [APIリファレンス](/ja/reference)
+* [APIリファレンス](/reference)

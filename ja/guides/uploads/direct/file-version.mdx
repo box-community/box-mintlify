@@ -1,166 +1,152 @@
 ---
-title: "ファイルバージョンのアップロード"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - options_files_id_content
-  - post_files_id_content
-related_guides: []
-related_pages: []
+  0: options_files_id_content
+  1: post_files_id_content
+related_guides: {}
+related_pages: {}
+related_resources: {}
 required_guides:
-  - uploads/check
-related_resources: []
-alias_paths: []
-category_id: uploads
-subcategory_id: uploads/direct
-is_index: false
-id: uploads/direct/file-version
-type: guide
-total_steps: 2
-sibling_id: uploads/direct
-parent_id: uploads/direct
-next_page_id: ''
-previous_page_id: uploads/direct/file
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/direct/file-version.md
+  0: uploads/check
+title: ファイルバージョンのアップロード
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "事前チェック", href: "/ja/guides/uploads/check", badge: "ガイド" }
-  ]}
+  { label: "Preflight Check", href: "/guides/uploads/check", badge: "GUIDE" }
+]}
 />
+
 直接アップロードによってBoxにファイルの新しいバージョンをアップロードするには、ファイルのコンテンツ、目的のファイル名、フォルダIDを使用して、[`POST /files/:id/content`][upload] APIにAPIコールを実行します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://upload.box.com/api/2.0/files/12345/content" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: multipart/form-data" \
+       -F attributes='{"name":"Contract.pdf", "parent":{"id":"11446498"}}' \
+       -F file=@<FILE_NAME>
+  ```
 
-```sh cURL
-curl -i -X POST "https://upload.box.com/api/2.0/files/12345/content" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: multipart/form-data" \
-     -F attributes='{"name":"Contract.pdf", "parent":{"id":"11446498"}}' \
-     -F file=@<FILE_NAME>
-```
+  ```typescript Node/TypeScript v10
+  await client.uploads.uploadFileVersion(file.id, {
+    attributes: {
+      name: file.name!,
+    } satisfies UploadFileVersionRequestBodyAttributesField,
+    file: generateByteStream(20),
+  } satisfies UploadFileVersionRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.uploads.uploadFileVersion(file.id, {
-  attributes: {
-    name: file.name!,
-  } satisfies UploadFileVersionRequestBodyAttributesField,
-  file: generateByteStream(20),
-} satisfies UploadFileVersionRequestBody);
-```
+  ```python Python v10
+  client.uploads.upload_file_version(
+      uploaded_file.id,
+      UploadFileVersionAttributes(name=new_file_version_name),
+      new_file_content_stream,
+  )
+  ```
 
-```python Python v10
-client.uploads.upload_file_version(
-    uploaded_file.id,
-    UploadFileVersionAttributes(name=new_file_version_name),
-    new_file_content_stream,
-)
-```
+  ```cs .NET v10
+  await client.Uploads.UploadFileVersionAsync(fileId: uploadedFile.Id, requestBody: new UploadFileVersionRequestBody(attributes: new UploadFileVersionRequestBodyAttributesField(name: newFileVersionName), file: newFileContentStream));
+  ```
 
-```cs .NET v10
-await client.Uploads.UploadFileVersionAsync(fileId: uploadedFile.Id, requestBody: new UploadFileVersionRequestBody(attributes: new UploadFileVersionRequestBodyAttributesField(name: newFileVersionName), file: newFileContentStream));
-```
+  ```java Java v10
+  client.getUploads().uploadFileVersion(uploadedFile.getId(), new UploadFileVersionRequestBody(new UploadFileVersionRequestBodyAttributesField(newFileVersionName), newFileContentStream))
+  ```
 
-```java Java v10
-client.getUploads().uploadFileVersion(uploadedFile.getId(), new UploadFileVersionRequestBody(new UploadFileVersionRequestBodyAttributesField(newFileVersionName), newFileContentStream))
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  FileInputStream stream = new FileInputStream("My File.txt");
+  file.uploadNewVersion(stream);
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-FileInputStream stream = new FileInputStream("My File.txt");
-file.uploadNewVersion(stream);
-```
+  ```python Python v4
+  file_id = '11111'
+  file_path = '/path/to/file.pdf'
 
-```python Python v4
-file_id = '11111'
-file_path = '/path/to/file.pdf'
+  updated_file = client.file(file_id).update_contents(file_path)
+  print(f'File "{updated_file.name}" has been updated')
+  ```
 
-updated_file = client.file(file_id).update_contents(file_path)
-print(f'File "{updated_file.name}" has been updated')
-```
+  ```cs .NET v6
+  using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+  {
+      BoxFile file = await client.FilesManager
+          .UploadNewVersionAsync("File v2.pdf", "11111", fileStream);
+  }
+  ```
 
-```cs .NET v6
-using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
-{
-    BoxFile file = await client.FilesManager
-        .UploadNewVersionAsync("File v2.pdf", "11111", fileStream);
-}
-```
-
-```javascript Node v4
-var fs = require('fs');
-var stream = fs.createReadStream('/path/to/file.pdf');
-client.files.uploadNewFileVersion('11111', stream)
-	.then(file => {
-        /* file -> {
-            total_count: 1,
-            entries: 
-            [ { type: 'file',
-                id: '11111',
-                file_version: 
-                    { type: 'file_version',
-                    id: '22222',
-                    sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' },
-                sequence_id: '0',
-                etag: '0',
-                sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33',
-                name: 'My File.pdf',
-                description: '',
-                size: 68431,
-                path_collection: 
-                    { total_count: 1,
-                    entries: 
-                    [ { type: 'folder',
-                        id: '0',
-                        sequence_id: null,
-                        etag: null,
-                        name: 'All Files' } ] },
-                created_at: '2017-05-16T15:18:02-07:00',
-                modified_at: '2017-05-16T15:18:02-07:00',
-                trashed_at: null,
-                purged_at: null,
-                content_created_at: '2017-05-16T15:18:02-07:00',
-                content_modified_at: '2017-05-16T15:18:02-07:00',
-                created_by: 
-                    { type: 'user',
-                    id: '33333',
-                    name: 'Test User',
-                    login: 'test@example.com' },
-                modified_by: 
-                    { type: 'user',
-                    id: '33333',
-                    name: 'Test User',
-                    login: 'test@example.com' },
-                owned_by: 
-                    { type: 'user',
-                    id: '33333',
-                    name: 'Test User',
-                    login: 'test@example.com' },
-                shared_link: null,
-                parent: 
-                    { type: 'folder',
-                    id: '0',
-                    sequence_id: null,
-                    etag: null,
-                    name: 'All Files' }
-                item_status: 'active' } ] }
-        */
-    })
-```
-
+  ```javascript Node v4
+  var fs = require('fs');
+  var stream = fs.createReadStream('/path/to/file.pdf');
+  client.files.uploadNewFileVersion('11111', stream)
+  	.then(file => {
+          /* file -> {
+              total_count: 1,
+              entries: 
+              [ { type: 'file',
+                  id: '11111',
+                  file_version: 
+                      { type: 'file_version',
+                      id: '22222',
+                      sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' },
+                  sequence_id: '0',
+                  etag: '0',
+                  sha1: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33',
+                  name: 'My File.pdf',
+                  description: '',
+                  size: 68431,
+                  path_collection: 
+                      { total_count: 1,
+                      entries: 
+                      [ { type: 'folder',
+                          id: '0',
+                          sequence_id: null,
+                          etag: null,
+                          name: 'All Files' } ] },
+                  created_at: '2017-05-16T15:18:02-07:00',
+                  modified_at: '2017-05-16T15:18:02-07:00',
+                  trashed_at: null,
+                  purged_at: null,
+                  content_created_at: '2017-05-16T15:18:02-07:00',
+                  content_modified_at: '2017-05-16T15:18:02-07:00',
+                  created_by: 
+                      { type: 'user',
+                      id: '33333',
+                      name: 'Test User',
+                      login: 'test@example.com' },
+                  modified_by: 
+                      { type: 'user',
+                      id: '33333',
+                      name: 'Test User',
+                      login: 'test@example.com' },
+                  owned_by: 
+                      { type: 'user',
+                      id: '33333',
+                      name: 'Test User',
+                      login: 'test@example.com' },
+                  shared_link: null,
+                  parent: 
+                      { type: 'folder',
+                      id: '0',
+                      sequence_id: null,
+                      etag: null,
+                      name: 'All Files' }
+                  item_status: 'active' } ] }
+          */
+      })
+  ```
 </CodeGroup>
 
 <Info>
-**事前チェック**
+  **事前チェック**
 
-アップロードしたファイルが拒否されることによる時間や帯域幅の無駄を防ぐため、ファイルをアップロードする前に[事前チェック][preflight]を実行することをお勧めします。
-
+  アップロードしたファイルが拒否されることによる時間や帯域幅の無駄を防ぐため、ファイルをアップロードする前に[事前チェック][preflight]を実行することをお勧めします。
 </Info>
 
 ## リクエスト形式
@@ -177,6 +163,7 @@ Host: upload.box.com
 Authorization: Bearer [ACCESS_TOKEN]
 content-length: 343
 content-type: multipart/form-data; boundary=------------------------9fd09388d840fef1
+
 --------------------------9fd09388d840fef1
 content-disposition: form-data; name="attributes"
 
@@ -186,14 +173,12 @@ content-disposition: form-data; name="file"; filename="test.txt"
 content-type: text/plain
 
 Test file text.
---------------------------9fd09388d840fef1--
 
+--------------------------9fd09388d840fef1--
 ```
 
 <Warning>
-
-マルチパート本文の`attributes` JSON部分は、マルチパートフォームデータの`file` 部分の前に置く必要があります。この順番を間違えると、APIがHTTP `400`ステータスコードとエラーコード`metadata_after_file_contents`を返します。
-
+  マルチパート本文の`attributes` JSON部分は、マルチパートフォームデータの`file` 部分の前に置く必要があります。この順番を間違えると、APIがHTTP `400`ステータスコードとエラーコード`metadata_after_file_contents`を返します。
 </Warning>
 
 ## オプション
@@ -208,13 +193,13 @@ Test file text.
 
 アップロードの上限は、認証済みユーザーのアカウントの種類によって決まります。詳細については、このトピックに関する[Boxコミュニティの記事][fsizes]を参照してください。
 
-[preflight]: /ja/guides/uploads/check
+[preflight]: /guides/uploads/check
 
-[chunked]: /ja/guides/uploads/chunked
+[chunked]: /guides/uploads/chunked
 
-[upload]: /ja/reference/post_files_id_content
+[upload]: /reference/post_files_id_content
 
-[consistency]: /ja/guides/api-calls/ensure-consistency
+[consistency]: /guides/api-calls/ensure-consistency
 
 {/* i18n-enable localize-links */}
 
@@ -225,6 +210,6 @@ Test file text.
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
-  ]}
+  { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
+]}
 />

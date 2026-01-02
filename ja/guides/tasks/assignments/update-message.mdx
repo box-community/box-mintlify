@@ -1,46 +1,33 @@
 ---
-title: "割り当てのメッセージの変更"
 related_endpoints:
-  - put_task_assignments_id
+  0: put_task_assignments_id
 related_guides:
-  - tasks/assignments/assign
-  - tasks/assignments/unassign
-  - tasks/assignments/change-state
-category_id: tasks
-subcategory_id: tasks/assignments
-is_index: false
-id: tasks/assignments/update-message
-rank: 3
-type: guide
-total_steps: 6
-sibling_id: tasks/assignments
-parent_id: tasks/assignments
-next_page_id: tasks/assignments/get
-previous_page_id: tasks/assignments/unassign
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/3-update-message.md
+  0: tasks/assignments/assign
+  1: tasks/assignments/unassign
+  2: tasks/assignments/change-state
+title: 割り当てのメッセージの変更
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-タスク割り当てのメッセージを更新するには、[`PUT /tasks/:task_id/assignments`](/ja/reference/put-task-assignments-id) APIを呼び出し、タスク割り当ての新しい`message`を含めます。
+タスク割り当てのメッセージを更新するには、[`PUT /tasks/:task_id/assignments`](/reference/put-task-assignments-id) APIを呼び出し、タスク割り当ての新しい`message`を含めます。
 
-{/* <Samples id="put_task_assignments_id" variant="message">
-
-</Samples> */}
+{/* <Samples id='put_task_assignments_id' variant='message' /> */}
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update task assignment", href: "/reference/put-task-assignments-id", badge: "PUT" }
-  ]}
+  { label: "Update task assignment", href: "/reference/put-task-assignments-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "ガイド" },
-    { label: "タスク割り当ての解除", href: "/ja/guides/tasks/assignments/unassign", badge: "ガイド" },
-    { label: "タスク割り当て状態の変更", href: "/ja/guides/tasks/assignments/change-state", badge: "ガイド" }
-  ]}
+  { label: "Assign a task to a user", href: "/guides/tasks/assignments/assign", badge: "GUIDE" },
+  { label: "Unassign a task", href: "/guides/tasks/assignments/unassign", badge: "GUIDE" },
+  { label: "Change task assignment state", href: "/guides/tasks/assignments/change-state", badge: "GUIDE" }
+]}
 />

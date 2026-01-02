@@ -1,38 +1,26 @@
 ---
-title: "Box SDK"
-rank: 40
-related_endpoints: []
-related_guides: []
-required_guides: []
-related_resources: []
 alias_paths:
-  - /docs/install-the-sdk
-  - /docs/open-source-projects
-  - /docs/community-supported-projects
-category_id: tooling
-subcategory_id: tooling/sdks
-is_index: true
-id: tooling/sdks
-type: guide
-total_steps: 11
-sibling_id: tooling
-parent_id: tooling
-next_page_id: ''
-previous_page_id: tooling/sdks/java-gen
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tooling/sdks/index.md
+  0: /docs/install-the-sdk
+  1: /docs/open-source-projects
+  2: /docs/community-supported-projects
+rank: 40
+related_endpoints: {}
+related_guides: {}
+related_resources: {}
+required_guides: {}
+title: Box SDK
+
 fullyTranslated: true
 ---
+
 Boxには、アプリケーションの作成に使用できる一連のSDKが用意されています。
 
 <Note>
+  下の表には、SDKが、プロジェクトがメンテナンスされるかどうかとAPIパリティが備わっているかどうかを示す追加情報とともに記載されています。
 
-下の表には、SDKが、プロジェクトがメンテナンスされるかどうかとAPIパリティが備わっているかどうかを示す追加情報とともに記載されています。
+  **メンテナンス**: Boxでは、完全にメンテナンスされるプロジェクトを積極的に開発しています。このようなプロジェクトには最新のセキュリティ更新プログラムや新機能が提供されます。このようなプロジェクトのサポートについては、GitHubまたは[Developer Forum][forum]を参照してください。
 
-**メンテナンス**: Boxでは、完全にメンテナンスされるプロジェクトを積極的に開発しています。このようなプロジェクトには最新のセキュリティ更新プログラムや新機能が提供されます。このようなプロジェクトのサポートについては、GitHubまたは[Developer Forum][forum]を参照してください。
-
-**APIパリティ**: 完全なAPIパリティを持つプロジェクトは、Box Platformで利用可能になった時点で、すべてのプラットフォーム機能が積極的に更新されます。部分的なAPIパリティを持つプロジェクトには一部の機能が欠けていますが、Boxではそのようなプロジェクトを完全なパリティに移行する取り組みを進めています。
-
+  **APIパリティ**: 完全なAPIパリティを持つプロジェクトは、Box Platformで利用可能になった時点で、すべてのプラットフォーム機能が積極的に更新されます。部分的なAPIパリティを持つプロジェクトには一部の機能が欠けていますが、Boxではそのようなプロジェクトを完全なパリティに移行する取り組みを進めています。
 </Note>
 
 次の表に、アプリケーションの作成時に使用できるBox SDKを示します。最新のAPIサポートや機能には、次世代のSDKを使用してください。
@@ -47,27 +35,23 @@ Boxには、アプリケーションの作成に使用できる一連のSDKが�
 | [Android Content SDK][androidsdk] | いいえ       | Full    |
 
 <Warning>
+  日本時間2023年6月1日をもって、Android SDKのサポートは終了しました。既存のAndroid SDKアプリケーションは影響なく引き続きご利用いただけますが、新機能、更新、バグ修正は提供されなくなります。
 
-日本時間2023年6月1日をもって、Android SDKのサポートは終了しました。既存のAndroid SDKアプリケーションは影響なく引き続きご利用いただけますが、新機能、更新、バグ修正は提供されなくなります。
-
-最新のAndroid機能を引き続き利用するには、Java SDKを使用してAndroid版アプリを作成してください。詳細については、[こちら][android-docs]のドキュメントを参照してください。
-
+  最新のAndroid機能を引き続き利用するには、Java SDKを使用してAndroid版アプリを作成してください。詳細については、[こちら][android-docs]のドキュメントを参照してください。
 </Warning>
 
 ## 次世代のSDK
 
 <Warning>
+  日本時間2025年9月18日をもって、Boxの次世代SDKは、個別のアーティファクトとしてサポートされなくなりました。
 
-日本時間2025年9月18日をもって、Boxの次世代SDKは、個別のアーティファクトとしてサポートされなくなりました。
+  既存のコードは、変更しなくても引き続き動作します。Boxの次世代SDKをベースにしたアプリケーションは影響なく引き続きご利用いただけますが、新機能、更新、バグ修正は提供されなくなります。
 
-既存のコードは、変更しなくても引き続き動作します。Boxの次世代SDKをベースにしたアプリケーションは影響なく引き続きご利用いただけますが、新機能、更新、バグ修正は提供されなくなります。
+  Boxでは、業界のベストプラクティスに従って、プログラミング言語ごとにBoxの次世代SDKとBoxコアSDKを1つのパッケージに統合します。これにより、移行作業がさらに容易になり、手動で管理されていたBoxコアSDKを引き続き使用している既存のアプリケーションに新機能をシームレスに追加できるようになります。
 
-Boxでは、業界のベストプラクティスに従って、プログラミング言語ごとにBoxの次世代SDKとBoxコアSDKを1つのパッケージに統合します。これにより、移行作業がさらに容易になり、手動で管理されていたBoxコアSDKを引き続き使用している既存のアプリケーションに新機能をシームレスに追加できるようになります。
+  **新機能や更新を含む、今後の開発はすべて、BoxコアSDKを通じて提供されます。スタンドアロンの生成されたアーティファクトは、BoxコアSDKのバージョン`v10`で導入されました。**
 
-**新機能や更新を含む、今後の開発はすべて、BoxコアSDKを通じて提供されます。スタンドアロンの生成されたアーティファクトは、BoxコアSDKのバージョン`v10`で導入されました。**
-
-詳細については、[SDKのバージョン戦略に関するドキュメント][versioning]を参照してください。
-
+  詳細については、[SDKのバージョン戦略に関するドキュメント][versioning]を参照してください。
 </Warning>
 
 `v10`のPython SDK、Box TypeScript SDK、Box .NET SDK、Box Java SDK、Box Swift SDKは、開発者エクスペリエンスを向上させ、Boxコンテンツクラウドとの統合を効率化することを目的としています。

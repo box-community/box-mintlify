@@ -1,25 +1,13 @@
 ---
-title: "メタデータカスケードポリシーの取得"
 related_endpoints:
-  - get_metadata_cascade_policies_id
+  0: get_metadata_cascade_policies_id
 related_guides:
-  - metadata/cascades/list
-  - metadata/cascades/create
+  0: metadata/cascades/list
+  1: metadata/cascades/create
 related_resources:
-  - metadata_cascade_policy
-category_id: metadata
-subcategory_id: metadata/6-cascades
-is_index: false
-id: metadata/cascades/get
-rank: 2
-type: guide
-total_steps: 5
-sibling_id: metadata/cascades
-parent_id: metadata/cascades
-next_page_id: metadata/cascades/create
-previous_page_id: metadata/cascades/list
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/2-get.md
+  0: metadata_cascade_policy
+title: メタデータカスケードポリシーの取得
+
 fullyTranslated: true
 ---
 
@@ -28,92 +16,91 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 メタデータカスケードポリシーに関する情報を取得するには、ポリシーの`id`を指定して[`GET /metadata_cascade_policies/:id`][e_get] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/metadata_cascade_policies/324324" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/metadata_cascade_policies/324324" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataCascadePolicies.getMetadataCascadePolicyById(
-  cascadePolicyId,
-);
-```
+  ```typescript Node/TypeScript v10
+  await client.metadataCascadePolicies.getMetadataCascadePolicyById(
+    cascadePolicyId,
+  );
+  ```
 
-```python Python v10
-client.metadata_cascade_policies.get_metadata_cascade_policy_by_id(cascade_policy_id)
-```
+  ```python Python v10
+  client.metadata_cascade_policies.get_metadata_cascade_policy_by_id(cascade_policy_id)
+  ```
 
-```csharp .NET v10
-await client.MetadataCascadePolicies.GetMetadataCascadePolicyByIdAsync(metadataCascadePolicyId: cascadePolicyId);
-```
+  ```csharp .NET v10
+  await client.MetadataCascadePolicies.GetMetadataCascadePolicyByIdAsync(metadataCascadePolicyId: cascadePolicyId);
+  ```
 
-```swift Swift v10
-try await client.metadataCascadePolicies.getMetadataCascadePolicyById(metadataCascadePolicyId: cascadePolicyId)
-```
+  ```swift Swift v10
+  try await client.metadataCascadePolicies.getMetadataCascadePolicyById(metadataCascadePolicyId: cascadePolicyId)
+  ```
 
-```java Java v10
-client.getMetadataCascadePolicies().getMetadataCascadePolicyById(cascadePolicyId)
-```
+  ```java Java v10
+  client.getMetadataCascadePolicies().getMetadataCascadePolicyById(cascadePolicyId)
+  ```
 
-```java Java v5
-String cascadePolicyID = "1234";
-BoxMetadataCascadePolicy metadataCascadePolicy = new BoxMetadataCascadePolicy(api, cascadePolicyID);
-BoxMetadataCascadePolicy.Info metadataCascadePolicyInfo = metadataCascadePolicy.getInfo();
-```
+  ```java Java v5
+  String cascadePolicyID = "1234";
+  BoxMetadataCascadePolicy metadataCascadePolicy = new BoxMetadataCascadePolicy(api, cascadePolicyID);
+  BoxMetadataCascadePolicy.Info metadataCascadePolicyInfo = metadataCascadePolicy.getInfo();
+  ```
 
-```py Python v4
-cascade_policy = client.metadata_cascade_policy('84113349-794d-445c-b93c-d8481b223434').get()
-print(f'Cascade policy applies to a template owned by enterprise {cascade_policy.owner_enterprise.id}')
-```
+  ```py Python v4
+  cascade_policy = client.metadata_cascade_policy('84113349-794d-445c-b93c-d8481b223434').get()
+  print(f'Cascade policy applies to a template owned by enterprise {cascade_policy.owner_enterprise.id}')
+  ```
 
-```csharp .NET v6
-BoxMetadataCascadePolicy retrievedCascadePolicy = await client.MetadataCascadePolicyManager
-    .GetCascadePolicyAsync("12345", IEnumerable<string> fields = null);
-```
+  ```csharp .NET v6
+  BoxMetadataCascadePolicy retrievedCascadePolicy = await client.MetadataCascadePolicyManager
+      .GetCascadePolicyAsync("12345", IEnumerable<string> fields = null);
+  ```
 
-```js Node v4
-var policyID = '84113349-794d-445c-b93c-d8481b223434';
-client.metadata.getCascadePolicy(policyID)
- .then(cascadePolicy => {
-  /* cascadePolicy -> {
-   id: '84113349-794d-445c-b93c-d8481b223434',
-   type: 'metadata_cascade_policy',
-   owner_enterprise: {
-    type: 'enterprise',
-    id: '11111'
-   },
-   parent: {
-    type: 'folder',
-    id: '22222'
-   },
-   scope: 'enterprise_11111',
-   templateKey: 'testTemplate'
-  }
-  */
- });
-```
+  ```js Node v4
+  var policyID = '84113349-794d-445c-b93c-d8481b223434';
+  client.metadata.getCascadePolicy(policyID)
+   .then(cascadePolicy => {
+    /* cascadePolicy -> {
+     id: '84113349-794d-445c-b93c-d8481b223434',
+     type: 'metadata_cascade_policy',
+     owner_enterprise: {
+      type: 'enterprise',
+      id: '11111'
+     },
+     parent: {
+      type: 'folder',
+      id: '22222'
+     },
+     scope: 'enterprise_11111',
+     templateKey: 'testTemplate'
+    }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-ポリシーの`id`を取得するには、フォルダに対する[すべてのポリシーのリストを取得][g_list_policies]します。
-
+  ポリシーの`id`を取得するには、フォルダに対する[すべてのポリシーのリストを取得][g_list_policies]します。
 </Info>
 
-[e_get]: /ja/reference/get_metadata_cascade_policies_id
+[e_get]: /reference/get_metadata_cascade_policies_id
 
-[g_list_policies]: /ja/guides/metadata/cascades/list
+[g_list_policies]: /guides/metadata/cascades/list
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get metadata cascade policy", href: "/reference/get-metadata-cascade-policies-id", badge: "GET" }
-  ]}
+  { label: "Get metadata cascade policy", href: "/reference/get-metadata-cascade-policies-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータカスケードポリシーのリストの取得", href: "/ja/guides/metadata/cascades/list", badge: "ガイド" },
-    { label: "メタデータカスケードポリシーの作成", href: "/ja/guides/metadata/cascades/create", badge: "ガイド" }
-  ]}
+  { label: "List metadata cascade policies", href: "/guides/metadata/cascades/list", badge: "GUIDE" },
+  { label: "Create a metadata cascade policy", href: "/guides/metadata/cascades/create", badge: "GUIDE" }
+]}
 />

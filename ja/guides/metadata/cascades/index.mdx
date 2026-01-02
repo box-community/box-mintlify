@@ -1,20 +1,10 @@
 ---
-title: "メタデータカスケードポリシー"
-category_id: metadata
-subcategory_id: metadata/6-cascades
-is_index: true
-id: metadata/cascades
-rank: 6
-type: guide
-total_steps: 5
-sibling_id: metadata
-parent_id: metadata
-next_page_id: ''
-previous_page_id: metadata/cascades/delete
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/0-index.md
+sidebarTitle: Overview
+title: メタデータカスケードポリシー
+
 fullyTranslated: true
 ---
+
 メタデータカスケードポリシーは、フォルダに適用された[メタデータインスタンス][instance]をそのフォルダ内の項目にどのように適用するかを記述したものです。たとえば、ユーザーがプロジェクトフォルダに同じ`invoiceData`メタデータテンプレートを割り当てると、そのプロジェクトフォルダ内のすべてのファイルとフォルダに自動的に適用することができます。
 
 各ポリシーで指定するメタデータテンプレートインスタンスとフォルダはそれぞれ1つだけです。
@@ -29,4 +19,4 @@ fullyTranslated: true
 
 ファイルのアップロードからメタデータの適用まで、若干の遅延が生じます。この遅延の程度はフォルダ内の項目の数によって大きく変わります。メタデータカスケード操作は非同期で実行され、現時点では、すべてのメタデータがいつすべてのファイルにカスケードされたかを確認する方法はありません。
 
-[instance]: /ja/guides/metadata/instances
+[instance]: /guides/metadata/instances

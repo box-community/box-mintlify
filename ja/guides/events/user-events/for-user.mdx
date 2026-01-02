@@ -1,95 +1,80 @@
 ---
-title: "User Eventの取得"
+alias_paths:
+  0: /guides/events/for-user
+  1: /guides/events/for-user/
 rank: 1
 related_endpoints:
-  - get_events
-  - options_events
+  0: get_events
+  1: options_events
 related_guides:
-  - events/enterprise-events/for-enterprise
-  - events/user-events/polling
-  - events/parameters/pagination
-required_guides: []
-alias_paths:
-  - /guides/events/for-user
-  - /guides/events/for-user/
-category_id: events
-subcategory_id: events/user-events
-is_index: false
-id: events/user-events/for-user
-type: guide
-total_steps: 2
-sibling_id: events/user-events
-parent_id: events/user-events
-next_page_id: events/user-events/polling
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/user-events/for-user.md
+  0: events/enterprise-events/for-enterprise
+  1: events/user-events/polling
+  2: events/parameters/pagination
+required_guides: {}
+title: User Eventの取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-User Eventを取得するには、任意のユーザーとして認証し、[`GET /events`](/ja/reference/get-events) APIを呼び出します。
+User Eventを取得するには、任意のユーザーとして認証し、[`GET /events`](/reference/get-events) APIを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/events" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/events" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.events.getEvents();
+  ```
 
-```typescript Node/TypeScript v10
-await client.events.getEvents();
-```
+  ```python Python v10
+  client.events.get_events()
+  ```
 
-```python Python v10
-client.events.get_events()
-```
+  ```csharp .NET v10
+  await client.Events.GetEventsAsync();
+  ```
 
-```cs .NET v10
-await client.Events.GetEventsAsync();
-```
+  ```swift Swift v10
+  try await client.events.getEvents()
+  ```
 
-```swift Swift v10
-try await client.events.getEvents()
-```
+  ```java Java v10
+  client.getEvents().getEvents()
+  ```
 
-```java Java v10
-client.getEvents().getEvents()
-```
+  ```java Java v5
+  EventStream stream = new EventStream(api);
+  stream.addListener(new EventListener() {
+    public void onEvent(BoxEvent event) {
+        // Handle the event.
+      }
+  });
+  stream.start();
+  ```
 
-```java Java v5
-EventStream stream = new EventStream(api);
-stream.addListener(new EventListener() {
-  public void onEvent(BoxEvent event) {
-      // Handle the event.
-    }
-});
-stream.start();
-```
+  ```py Python v4
+  stream_position = 0
+  events = client.events().get_events(stream_position=stream_position)
+  stream_position = events['next_stream_position']
+  for event in events['entries']:
+      print(f'Got {event.event_type} event that occurred at {event.created_at}')
+  ```
 
-```python Python v4
-stream_position = 0
-events = client.events().get_events(stream_position=stream_position)
-stream_position = events['next_stream_position']
-for event in events['entries']:
-    print(f'Got {event.event_type} event that occurred at {event.created_at}')
-```
+  ```csharp .NET v6
+  BoxEventCollection<BoxEnterpriseEvent> events = await client.EventsManager.UserEventsAsync();
+  ```
 
-```cs .NET v6
-BoxEventCollection<BoxEnterpriseEvent> events = await client.EventsManager.UserEventsAsync();
-```
-
-```javascript Node v4
-client.events.get({stream_position: '1408838928446360'}, callback);
-```
-
+  ```js Node v4
+  client.events.get({stream_position: '1408838928446360'}, callback);
+  ```
 </CodeGroup>
 
 <Info>
-
-返されるイベントは、APIの作成に使用したアクセストークンを所有するユーザーのみを対象とします。別のユーザーのイベントフィードを取得するには、`as-user`ヘッダーか、そのユーザーの実際のアクセストークンを使用します。
-
+  返されるイベントは、APIの作成に使用したアクセストークンを所有するユーザーのみを対象とします。別のユーザーのイベントフィードを取得するには、`as-user`ヘッダーか、そのユーザーの実際のアクセストークンを使用します。
 </Info>
 
 ## ストリームタイプ
@@ -177,20 +162,21 @@ User Event Streamでは、[`OPTIONS /events` APIを介して][longpoll]Long poll
 | `ITEM_DOWNLOAD`                                                                                             | 項目がダウンロードされると、コンテンツ所有者だけが通知を受信します。コラボレータには通知されません。                                                      |
 | `ITEM_PREVIEW`                                                                                              | 項目がプレビューされると、コンテンツ所有者だけが通知を受信します。コラボレータには通知されません。                                                       |
 
-[longpoll]: /ja/guides/events/user-events/polling
+[longpoll]: /guides/events/user-events/polling
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
-    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
-  ]}
+  { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+  { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "ガイド" },
-    { label: "Long pollingイベント", href: "/ja/guides/events/user-events/polling", badge: "ガイド" },
-    { label: "ストリーム位置のページネーション", href: "/ja/guides/events/parameters/pagination", badge: "ガイド" }
-  ]}
+  { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" },
+  { label: "Long-Poll Events", href: "/guides/events/user-events/polling", badge: "GUIDE" },
+  { label: "Stream Position Pagination", href: "/guides/events/parameters/pagination", badge: "GUIDE" }
+]}
 />

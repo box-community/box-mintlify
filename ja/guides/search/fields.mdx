@@ -1,95 +1,61 @@
 ---
-title: "追加フィールドのリクエスト"
-related_endpoints:
-  - get_search
-required_guides: []
-category_id: search
-subcategory_id: null
-is_index: false
-id: search/fields
-rank: 9
-type: guide
-total_steps: 9
-sibling_id: search
-parent_id: search
-next_page_id: search
-previous_page_id: search/shared-links
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/search/9-fields.md
+related_endpoints: ""
+required_guides: {}
+title: 追加フィールドのリクエスト
+
 fullyTranslated: true
 ---
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-デフォルトでは、検索APIによって**標準**形式の[ファイル](/ja/reference/resources/file)、[フォルダ](/ja/reference/resources/folder)、または[ウェブリンク](/ja/reference/resources/web-link)が返されます。これらの各リソースでは、`fields`クエリパラメータを使用してリクエストできる追加のフィールドがサポートされています。
+デフォルトでは、検索APIによって**標準**形式の[ファイル](/reference/resources/file)、[フォルダ](/reference/resources/folder)、または[ウェブリンク](/reference/resources/web-link)が返されます。これらの各リソースでは、`fields`クエリパラメータを使用してリクエストできる追加のフィールドがサポートされています。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/search?query=sales&fields=name,tags" \
+      -H "Authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```curl cURL
-curl -i -X GET "https://api.box.com/2.0/search?query=sales&fields=name,tags" \
-    -H "Authorization: Bearer <ACCESS_TOKEN>"
+  ```java Java
+  long offsetValue = 0;
+  long limitValue = 10;
 
-```
+  BoxSearch boxSearch = new BoxSearch(api);
+  BoxSearchParameters searchParams = new BoxSearchParameters();
+  searchParams.setQuery("sales");
 
-```java Java
-long offsetValue = 0;
-long limitValue = 10;
+  final List<String> fields = new ArrayList<String>();
+  fields.add("name");
+  fields.add("tags");
+  searchParams.setFields(fields)
 
-BoxSearch boxSearch = new BoxSearch(api);
-BoxSearchParameters searchParams = new BoxSearchParameters();
-searchParams.setQuery("sales");
+  PartialCollection<BoxItem.Info> searchResults = boxSearch.searchRange(offsetValue, limitValue, searchParams);
+  ```
 
-final List<String> fields = new ArrayList<String>();
-fields.add("name");
-fields.add("tags");
-searchParams.setFields(fields)
+  ```csharp .NET
+  IEnumerable<string> fields = new List<string>() { "name", "tags"};
+  BoxCollection<BoxItem> results = await client.SearchManager
+      .QueryAsync("sales", fields: fields);
+  ```
 
-PartialCollection<BoxItem.Info> searchResults = boxSearch.searchRange(offsetValue, limitValue, searchParams);
+  ```python Python
+  client.search().query("sales", metadata_filters=metadata_search_filters, fields=["name", "tags"])
+  ```
 
-```
-
-
-```csharp .NET
-IEnumerable<string> fields = new List<string>() { "name", "tags"};
-BoxCollection<BoxItem> results = await client.SearchManager
-    .QueryAsync("sales", fields: fields);
-
-```
-
-
-```python Python
-client.search().query("sales", metadata_filters=metadata_search_filters, fields=["name", "tags"])
-
-```
-
-```js Node
-client.search.query(
-    'sales',
-    {
-        fields: "name,tags"
-    })
-    .then(results => {
-        // ...
-    });
-
-```
+  ```js Node
+  client.search.query(
+      'sales',
+      {
+          fields: "name,tags"
+      })
+      .then(results => {
+          // ...
+      });
+  ```
 </CodeGroup>
 
 <Info>
-
-これらのフィールドの詳細については、[ファイル (詳細)](/ja/reference/resources/file--full)、[フォルダ (詳細)](/ja/reference/resources/folder--full)、および[ウェブリンク (詳細)](/ja/reference/resources/web-link) のリソースを確認してください。
-
+  これらのフィールドの詳細については、[ファイル (詳細)](/reference/resources/file--full)、[フォルダ (詳細)](/reference/resources/folder--full)、および[ウェブリンク (詳細)](/reference/resources/web-link) のリソースを確認してください。
 </Info>
 
 <Warning>
-
-`fields`パラメータを使用して、項目の追加情報をクエリで照会すると、これらのフィールドといくつかの**基本**フィールド (`id`、`type`、`name`など) のみが返されます。レスポンスに最初から含まれていたフィールドは、明示的にリクエストする必要があります。
-
+  `fields`パラメータを使用して、項目の追加情報をクエリで照会すると、これらのフィールドといくつかの**基本**フィールド (`id`、`type`、`name`など) のみが返されます。レスポンスに最初から含まれていたフィールドは、明示的にリクエストする必要があります。
 </Warning>
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
-  ]}
-/>

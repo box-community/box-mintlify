@@ -1,77 +1,68 @@
 ---
-title: "JWT認証"
-rank: 3
-related_endpoints: []
-related_guides:
-  - applications/app-types/select
-  - ../pages/platform/user-types
-  - authentication/select
-required_guides:
-  - authentication/select
-related_resources: []
 alias_paths:
-  - /docs/authenticate-with-jwt
-category_id: authentication
-subcategory_id: authentication/jwt
-is_index: true
-id: authentication/jwt
-type: guide
-total_steps: 5
-sibling_id: authentication
-parent_id: authentication
-next_page_id: authentication/jwt/user-access-tokens
-previous_page_id: authentication/jwt/without-sdk
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/jwt/index.md
+  0: /docs/authenticate-with-jwt
+rank: 3
+related_endpoints: ""
+related_guides:
+  0: applications/app-types/select
+  1: ../pages/platform/user-types
+  2: authentication/select
+related_resources: ""
+required_guides:
+  0: authentication/select
+sidebarTitle: Overview
+title: JWT認証
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+]}
 />
-JSON ウェブトークン (JWT) を使用するサーバー側の認証は、Box API で認証するための最も一般的な方法です。JWT は、効果的にサーバー間認証を実現するよう設計された[オープンスタンダード](https://jwt.io/)です。
+
+JSONウェブトークン (JWT) を使用するサーバー側の認証は、Box APIで認証するための最も一般的な方法です。JWTは、効果的にサーバー間認証を実現するよう設計された[オープンスタンダード](https://jwt.io/)です。
 
 <Frame border>
-
-![JWTフロー](./jwt-flow.png)
-
+  ![JWTフロー](./jwt-flow.png)
 </Frame>
 
-JWT を使用するサーバー側認証は、[アプリの種類][app-type]が Platform アプリケーションの場合のみ使用できます。この認証方法ではエンドユーザーによる操作が必要ありません。また、適切な権限が付与されていれば、この認証方法を使用して、社内の任意のユーザーの代理で操作することができます。
+JWTを使用するサーバー側認証は、[アプリの種類][app-type]がPlatformアプリケーションの場合のみ使用できます。この認証方法ではエンドユーザーによる操作が必要ありません。また、適切な権限が付与されていれば、この認証方法を使用して、社内の任意のユーザーの代理で操作することができます。
 
-アプリケーションの権限を確認する方法は 2 つあります。
+アプリケーションの権限を確認する方法は2つあります。
 
-- 公開キーと秘密キーのペアを使用する
-- クライアント ID とクライアントシークレット ([クライアント資格情報許可][cca]) を使用する
+* 公開キーと秘密キーのペアを使用する
+* クライアントIDとクライアントシークレット ([クライアント資格情報許可][cca]) を使用する
 
-これらのオプションの詳細については、[SDK を使用しない JWT][jwtnosdk]の使用に関するガイドを参照してください。
+これらのオプションの詳細については、[SDKを使用しないJWT][jwtnosdk]の使用に関するガイドを参照してください。
 
-Box 管理コンソールで JWT アプリケーションを承認すると、[サービスアカウント][sa]が自動的に生成され、認証時に使用されるデフォルトのアクセストークンになります。これは、管理者に似たユーザーであり、JWT を利用するアプリケーションを使用する前に Box 管理者による明示的な承認が必要となる理由です。
+Box管理コンソールでJWTアプリケーションを承認すると、[サービスアカウント][sa]が自動的に生成され、認証時に使用されるデフォルトのアクセストークンになります。これは、管理者に似たユーザーであり、JWTを利用するアプリケーションを使用する前にBox管理者による明示的な承認が必要となる理由です。
 
-## JWT を使用する場合
+## JWTを使用する場合
 
-JWT を使用するサーバー側認証は、以下に当てはまるアプリに最適な認証方法です。
+JWTを使用するサーバー側認証は、以下に当てはまるアプリに最適な認証方法です。
 
-- Box アカウントを持たないユーザーを使用する
-- 独自の ID システムを使用する
-- ユーザーに Box を使用していることを認識させたくない
-- アプリケーションの Box アカウントにデータを保存し、ユーザーの Box アカウントには保存しない
+* Boxアカウントを持たないユーザーを使用する
+* 独自のIDシステムを使用する
+* ユーザーにBoxを使用していることを認識させたくない
+* アプリケーションのBoxアカウントにデータを保存し、ユーザーのBoxアカウントには保存しない
 
-[app-type]: /ja/guides/applications/app-types/select
-[sa]: /ja/platform/user-types/#service-account
-[jwtnosdk]: /ja/guides/authentication/jwt/without-sdk
-[cca]: /ja/guides/authentication/client-credentials
+[app-type]: /guides/applications/app-types/select
+
+[sa]: /platform/user-types/#service-account
+
+[jwtnosdk]: /guides/authentication/jwt/without-sdk
+
+[cca]: /guides/authentication/client-credentials
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "ガイド" },
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" }
-  ]}
+  { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+]}
 />

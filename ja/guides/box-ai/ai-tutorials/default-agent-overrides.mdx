@@ -1,31 +1,20 @@
 ---
-title: "AIモデルの構成の上書き"
+alias_paths:
+  0: guides/box-ai/ai-agent-overrides
 rank: 4
 related_endpoints:
-  - get_ai_agent_default
-  - post_ai_text_gen
-  - post_ai_ask
+  0: get_ai_agent_default
+  1: post_ai_text_gen
+  2: post_ai_ask
 related_guides:
-  - box-ai/ai-tutorials/prerequisites
-  - box-ai/ai-tutorials/ask-questions
-  - box-ai/ai-tutorials/generate-text
-  - box-ai/ai-tutorials/extract-metadata
-  - box-ai/ai-tutorials/extract-metadata-structured
-  - box-ai/ai-agents/ai-agent-overrides
-alias_paths:
-  - guides/box-ai/ai-agent-overrides
-category_id: box-ai
-subcategory_id: box-ai/ai-tutorials
-is_index: false
-id: box-ai/ai-tutorials/default-agent-overrides
-type: guide
-total_steps: 6
-sibling_id: box-ai/ai-tutorials
-parent_id: box-ai/ai-tutorials
-next_page_id: box-ai/ai-tutorials/extract-metadata
-previous_page_id: box-ai/ai-tutorials/generate-text
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/ai-tutorials/default-agent-overrides.md
+  0: box-ai/ai-tutorials/prerequisites
+  1: box-ai/ai-tutorials/ask-questions
+  2: box-ai/ai-tutorials/generate-text
+  3: box-ai/ai-tutorials/extract-metadata
+  4: box-ai/ai-tutorials/extract-metadata-structured
+  5: box-ai/ai-agents/ai-agent-overrides
+title: AIモデルの構成の上書き
+
 fullyTranslated: true
 ---
 
@@ -53,7 +42,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
           }
        ]
      }'
-
 ```
 
 次のようなレスポンスが返されます。
@@ -64,7 +52,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
     "created_at": "2024-10-08T00:29:07.283-07:00",
     "completion_reason": "done"
 }
-
 ```
 
 結果をさらに改善するには、`prompt_template`パラメータを使用して、Box AIに対する指示をさらに追加できます。この例では、レスポンスの語調を変更しましょう。
@@ -87,7 +74,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
       }
     }
 }
-
 ```
 
 レスポンスは若干砕けた表現になります。
@@ -98,7 +84,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/ask" \
     "created_at": "2024-10-08T00:38:01.767-07:00",
     "completion_reason": "done"
 }
-
 ```
 
 ## AIモデルの上書き (テキスト生成)
@@ -120,7 +105,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/text_gen" \
                }
           ]
      }
-
 ```
 
 レスポンスは次のようになります。
@@ -131,7 +115,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/text_gen" \
     "created_at": "2024-10-08T01:19:06.22-07:00",
     "completion_reason": "done"
 }
-
 ```
 
 `ai_agent`構成を使用してモデルを変更しましょう。
@@ -166,7 +149,6 @@ curl -i -L POST "https://api.box.com/2.0/ai/text_gen" \
     "created_at": "2024-10-08T01:28:36.777-07:00",
     "completion_reason": "done"
 }
-
 ```
 
 ご覧のとおり、ある程度異なったレスポンスになったことがわかります。モデルの切り替えにより、Box AIに対する操作を最適化し、ニーズに最適なモデルを選択できます。
@@ -188,7 +170,6 @@ curl -i -L 'https://api.box.com/2.0/ai/extract' \
           }
         ]
       }'
-
 ```
 
 レスポンスは一連のメタデータになります。
@@ -199,7 +180,6 @@ curl -i -L 'https://api.box.com/2.0/ai/extract' \
     "created_at": "2024-10-08T01:53:14.993-07:00",
     "completion_reason": "done"
 }
-
 ```
 
 モデルを最新のOpenAIオプションに変更しましょう。
@@ -223,7 +203,6 @@ curl -i -L 'https://api.box.com/2.0/ai/extract' \
             }
          }
       }'
-
 ```
 
 このモデルを使用すると、結果として、レスポンスにはさらに多くのメタデータエントリが列挙されます。
@@ -234,29 +213,29 @@ curl -i -L 'https://api.box.com/2.0/ai/extract' \
     "created_at": "2024-10-08T01:54:28.099-07:00",
     "completion_reason": "done"
 }
-
 ```
 
-[agent-overrides]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
+[agent-overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
 
-[prereq]: /ja/guides/box-ai/ai-tutorials/prerequisites
+[prereq]: /guides/box-ai/ai-tutorials/prerequisites
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
-    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
-    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
-  ]}
+  { label: "Get AI agent default configuration", href: "/reference/get-ai-agent-default", badge: "GET" },
+  { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+  { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "ガイド" },
-    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "ガイド" },
-    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "ガイド" },
-    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-agents/ai-agent-overrides", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+  { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+  { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+  { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" },
+  { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+  { label: "Override AI model configuration", href: "/guides/box-ai/ai-agents/ai-agent-overrides", badge: "GUIDE" }
+]}
 />

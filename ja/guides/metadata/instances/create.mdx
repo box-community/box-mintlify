@@ -1,54 +1,38 @@
 ---
-title: "項目へのメタデータの適用"
 related_endpoints:
-  - post_files_id_metadata_id_id
-  - post_folders_id_metadata_id_id
-related_resources:
-  - metadata
-  - metadata_template
-required_guides:
-  - metadata/templates/list
+  0: post_files_id_metadata_id_id
+  1: post_folders_id_metadata_id_id
 related_guides:
-  - metadata/instances/list
-  - metadata/instances/update
-  - metadata/scopes
-category_id: metadata
-subcategory_id: metadata/4-instances
-is_index: false
-id: metadata/instances/create
-rank: 3
-type: guide
-total_steps: 5
-sibling_id: metadata/instances
-parent_id: metadata/instances
-next_page_id: metadata/instances
-previous_page_id: metadata/instances/get
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/3-create.md
+  0: metadata/instances/list
+  1: metadata/instances/update
+  2: metadata/scopes
+related_resources:
+  0: metadata
+  1: metadata_template
+required_guides:
+  0: metadata/templates/list
+title: 項目へのメタデータの適用
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "ガイド" }
-  ]}
+  { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" }
+]}
 />
+
 メタデータテンプレートは、項目の`id`、テンプレートの`templateKey`と`scope`、およびテンプレート内の各フィールドの値のセットを使用してファイルまたはフォルダに適用できます。
 
 <Info>
-
-メタデータの[スコープ][scopes]には、`global` (すべての会社が利用できるテンプレートの場合)、`enterprise` (現在の会社が利用できるテンプレートの場合)、または`enterprise_:id` (IDがスコープ名の`:id`である会社に属するテンプレートの場合) のいずれかを指定できます。
-
+  メタデータの[スコープ][scopes]には、`global` (すべての会社が利用できるテンプレートの場合)、`enterprise` (現在の会社が利用できるテンプレートの場合)、または`enterprise_:id` (IDがスコープ名の`:id`である会社に属するテンプレートの場合) のいずれかを指定できます。
 </Info>
 
 <Warning>
-
-特定のファイルまたはフォルダには最大100個のテンプレートを割り当てることができます。
-
+  特定のファイルまたはフォルダには最大100個のテンプレートを割り当てることができます。
 </Warning>
 
 ## ファイルへのメタデータの適用
@@ -56,134 +40,130 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 メタデータテンプレートのインスタンスをファイルに適用するには、ファイルの`file_id`、テンプレートの`scope`と`templateKey`、および必要に応じてテンプレート内の各[フィールド][fields]の値のセットを指定して[`POST /files/:file_id/metadata/:scope/:templateKey`][e_on_file] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "audience": "internal",
-       "documentType": "Q1 plans",
-       "competitiveDocument": "no",
-       "status": "active",
-       "author": "Jones",
-       "currentState": "proposal"
-     }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "audience": "internal",
+         "documentType": "Q1 plans",
+         "competitiveDocument": "no",
+         "status": "active",
+         "author": "Jones",
+         "currentState": "proposal"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.fileMetadata.createFileMetadataById(
-  file.id,
-  'enterprise' as CreateFileMetadataByIdScope,
-  templateKey,
-  {
-    ['name']: 'John',
-    ['age']: 23,
-    ['birthDate']: '2001-01-03T02:20:50.520Z',
-    ['countryCode']: 'US',
-    ['sports']: ['basketball', 'tennis'],
-  },
-);
-```
-
-```python Python v10
-client.file_metadata.create_file_metadata_by_id(
+  ```typescript Node/TypeScript v10
+  await client.fileMetadata.createFileMetadataById(
     file.id,
-    CreateFileMetadataByIdScope.ENTERPRISE,
-    template_key,
+    'enterprise' as CreateFileMetadataByIdScope,
+    templateKey,
     {
-        "name": "John",
-        "age": 23,
-        "birthDate": "2001-01-03T02:20:50.520Z",
-        "countryCode": "US",
-        "sports": ["basketball", "tennis"],
+      ['name']: 'John',
+      ['age']: 23,
+      ['birthDate']: '2001-01-03T02:20:50.520Z',
+      ['countryCode']: 'US',
+      ['sports']: ['basketball', 'tennis'],
     },
-)
-```
+  );
+  ```
 
-```csharp .NET v10
-await client.FileMetadata.CreateFileMetadataByIdAsync(fileId: file.Id, scope: CreateFileMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: new Dictionary<string, object>() { { "name", "John" }, { "age", 23 }, { "birthDate", "2001-01-03T02:20:50.520Z" }, { "countryCode", "US" }, { "sports", Array.AsReadOnly(new [] {"basketball","tennis"}) } });
-```
+  ```python Python v10
+  client.file_metadata.create_file_metadata_by_id(
+      file.id,
+      CreateFileMetadataByIdScope.ENTERPRISE,
+      template_key,
+      {
+          "name": "John",
+          "age": 23,
+          "birthDate": "2001-01-03T02:20:50.520Z",
+          "countryCode": "US",
+          "sports": ["basketball", "tennis"],
+      },
+  )
+  ```
 
-```swift Swift v10
-try await client.fileMetadata.createFileMetadataById(fileId: file.id, scope: CreateFileMetadataByIdScope.global, templateKey: "properties", requestBody: ["abc": "xyz"])
-```
+  ```csharp .NET v10
+  await client.FileMetadata.CreateFileMetadataByIdAsync(fileId: file.Id, scope: CreateFileMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: new Dictionary<string, object>() { { "name", "John" }, { "age", 23 }, { "birthDate", "2001-01-03T02:20:50.520Z" }, { "countryCode", "US" }, { "sports", Array.AsReadOnly(new [] {"basketball","tennis"}) } });
+  ```
 
-```java Java v10
-client.getFileMetadata().createFileMetadataById(file.getId(), CreateFileMetadataByIdScope.ENTERPRISE, templateKey, mapOf(entryOf("name", "John"), entryOf("age", 23), entryOf("birthDate", "2001-01-03T02:20:50.520Z"), entryOf("countryCode", "US"), entryOf("sports", Arrays.asList("basketball", "tennis"))))
-```
+  ```swift Swift v10
+  try await client.fileMetadata.createFileMetadataById(fileId: file.id, scope: CreateFileMetadataByIdScope.global, templateKey: "properties", requestBody: ["abc": "xyz"])
+  ```
 
-```java Java v5
-// Add property "foo" with value "bar" to the default metadata properties
-BoxFile file = new BoxFile(api, "id");
-file.createMetadata(new Metadata().add("/foo", "bar"));
-```
+  ```java Java v10
+  client.getFileMetadata().createFileMetadataById(file.getId(), CreateFileMetadataByIdScope.ENTERPRISE, templateKey, mapOf(entryOf("name", "John"), entryOf("age", 23), entryOf("birthDate", "2001-01-03T02:20:50.520Z"), entryOf("countryCode", "US"), entryOf("sports", Arrays.asList("basketball", "tennis"))))
+  ```
 
-```py Python v4
-metadata = {
-    'foo': 'bar',
-    'baz': 'quux',
-}
+  ```java Java v5
+  // Add property "foo" with value "bar" to the default metadata properties
+  BoxFile file = new BoxFile(api, "id");
+  file.createMetadata(new Metadata().add("/foo", "bar"));
+  ```
 
-applied_metadata = client.file(file_id='11111').metadata().create(metadata)
-print(f'Applied metadata in instance ID {applied_metadata["$id"]}')
-```
+  ```py Python v4
+  metadata = {
+      'foo': 'bar',
+      'baz': 'quux',
+  }
 
-```csharp .NET v6
-var metadataValues = new Dictionary<string, object>()
-{
-    { "audience", "internal" },
-    { "documentType", "Q1 plans" },
-    { "competitiveDocument", "no" },
-    { "status", "active" },
-    { "author": "M. Jones" },
-    { "currentState": "proposal" }
-};
-Dictionary<string, object> metadata = await client.MetadataManager
-    .CreateFileMetadataAsync(fileId: "11111", metadataValues, "enterprise", "marketingCollateral");
-```
+  applied_metadata = client.file(file_id='11111').metadata().create(metadata)
+  print(f'Applied metadata in instance ID {applied_metadata["$id"]}')
+  ```
 
-```js Node v4
-var metadataValues = {
- audience: "internal",
- documentType: "Q1 plans",
- competitiveDocument: "no",
- status: "active",
- author: "Jones",
- currentState: "proposal"
-};
-client.files.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", metadataValues)
- .then(metadata => {
-  /* metadata -> {
-   audience: 'internal',
-   documentType: 'Q1 plans',
-   competitiveDocument: 'no',
-   status: 'active',
-   author: 'Jones',
-   currentState: 'proposal',
-   '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
-   '$parent': 'file_11111',
-   '$id': '2094c584-68e1-475c-a581-534a4609594e',
-   '$version': 0,
-   '$typeVersion': 0,
-   '$template': 'marketingCollateral',
-   '$scope': 'enterprise_12345' }
-  */
- });
-```
+  ```csharp .NET v6
+  var metadataValues = new Dictionary<string, object>()
+  {
+      { "audience", "internal" },
+      { "documentType", "Q1 plans" },
+      { "competitiveDocument", "no" },
+      { "status", "active" },
+      { "author": "M. Jones" },
+      { "currentState": "proposal" }
+  };
+  Dictionary<string, object> metadata = await client.MetadataManager
+      .CreateFileMetadataAsync(fileId: "11111", metadataValues, "enterprise", "marketingCollateral");
+  ```
+
+  ```js Node v4
+  var metadataValues = {
+   audience: "internal",
+   documentType: "Q1 plans",
+   competitiveDocument: "no",
+   status: "active",
+   author: "Jones",
+   currentState: "proposal"
+  };
+  client.files.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", metadataValues)
+   .then(metadata => {
+    /* metadata -> {
+     audience: 'internal',
+     documentType: 'Q1 plans',
+     competitiveDocument: 'no',
+     status: 'active',
+     author: 'Jones',
+     currentState: 'proposal',
+     '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
+     '$parent': 'file_11111',
+     '$id': '2094c584-68e1-475c-a581-534a4609594e',
+     '$version': 0,
+     '$typeVersion': 0,
+     '$template': 'marketingCollateral',
+     '$scope': 'enterprise_12345' }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[ファイルのすべてのインスタンスのリストを取得][g_list_instances_item]します。
-
+  テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[ファイルのすべてのインスタンスのリストを取得][g_list_instances_item]します。
 </Info>
 
 <Warning>
+  ## タプルがすでに存在することを示すエラー
 
-## タプルがすでに存在することを示すエラー
-
-指定されたメタデータテンプレートでこのファイルにすでにメタデータが適用されている場合、エラーコード`tuple_already_exists`でエラーが返されます。この場合は、インスタンスを[代わりに更新する](/ja/guides/metadata/instances/update)必要があります。
-
+  指定されたメタデータテンプレートでこのファイルにすでにメタデータが適用されている場合、エラーコード`tuple_already_exists`でエラーが返されます。この場合は、インスタンスを[代わりに更新する](/guides/metadata/instances/update)必要があります。
 </Warning>
 
 ## フォルダにメタデータを適用
@@ -191,133 +171,129 @@ client.files.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingC
 メタデータテンプレートのインスタンスをフォルダに適用するには、フォルダの`folder_id`、テンプレートの`scope`と`templateKey`、および必要に応じてテンプレート内の各[フィールド][fields]の値のセットを指定して[`POST /folders/:folder_id/metadata/:scope/:templateKey`][e_on_folder] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "audience": "internal",
-       "documentType": "Q1 plans",
-       "competitiveDocument": "no",
-       "status": "active",
-       "author": "Jones",
-       "currentState": "proposal"
-     }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "audience": "internal",
+         "documentType": "Q1 plans",
+         "competitiveDocument": "no",
+         "status": "active",
+         "author": "Jones",
+         "currentState": "proposal"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderMetadata.createFolderMetadataById(
-  folder.id,
-  'enterprise' as CreateFolderMetadataByIdScope,
-  templateKey,
-  {
-    ['name']: 'John',
-    ['age']: 23,
-    ['birthDate']: '2001-01-03T02:20:50.520Z',
-    ['countryCode']: 'US',
-    ['sports']: ['basketball', 'tennis'],
-  },
-);
-```
-
-```python Python v10
-client.folder_metadata.create_folder_metadata_by_id(
+  ```typescript Node/TypeScript v10
+  await client.folderMetadata.createFolderMetadataById(
     folder.id,
-    CreateFolderMetadataByIdScope.ENTERPRISE,
-    template_key,
+    'enterprise' as CreateFolderMetadataByIdScope,
+    templateKey,
     {
-        "name": "John",
-        "age": 23,
-        "birthDate": "2001-01-03T02:20:50.520Z",
-        "countryCode": "US",
-        "sports": ["basketball", "tennis"],
+      ['name']: 'John',
+      ['age']: 23,
+      ['birthDate']: '2001-01-03T02:20:50.520Z',
+      ['countryCode']: 'US',
+      ['sports']: ['basketball', 'tennis'],
     },
-)
-```
+  );
+  ```
 
-```csharp .NET v10
-await client.FolderMetadata.CreateFolderMetadataByIdAsync(folderId: folder.Id, scope: CreateFolderMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: new Dictionary<string, object>() { { "name", "John" }, { "age", 23 }, { "birthDate", "2001-01-03T02:20:50.520Z" }, { "countryCode", "US" }, { "sports", Array.AsReadOnly(new [] {"basketball","tennis"}) } });
-```
+  ```python Python v10
+  client.folder_metadata.create_folder_metadata_by_id(
+      folder.id,
+      CreateFolderMetadataByIdScope.ENTERPRISE,
+      template_key,
+      {
+          "name": "John",
+          "age": 23,
+          "birthDate": "2001-01-03T02:20:50.520Z",
+          "countryCode": "US",
+          "sports": ["basketball", "tennis"],
+      },
+  )
+  ```
 
-```swift Swift v10
-try await client.folderMetadata.createFolderMetadataById(folderId: folder.id, scope: CreateFolderMetadataByIdScope.global, templateKey: "properties", requestBody: ["abc": "xyz"])
-```
+  ```csharp .NET v10
+  await client.FolderMetadata.CreateFolderMetadataByIdAsync(folderId: folder.Id, scope: CreateFolderMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: new Dictionary<string, object>() { { "name", "John" }, { "age", 23 }, { "birthDate", "2001-01-03T02:20:50.520Z" }, { "countryCode", "US" }, { "sports", Array.AsReadOnly(new [] {"basketball","tennis"}) } });
+  ```
 
-```java Java v10
-client.getFolderMetadata().createFolderMetadataById(folder.getId(), CreateFolderMetadataByIdScope.ENTERPRISE, templateKey, mapOf(entryOf("name", "John"), entryOf("age", 23), entryOf("birthDate", "2001-01-03T02:20:50.520Z"), entryOf("countryCode", "US"), entryOf("sports", Arrays.asList("basketball", "tennis"))))
-```
+  ```swift Swift v10
+  try await client.folderMetadata.createFolderMetadataById(folderId: folder.id, scope: CreateFolderMetadataByIdScope.global, templateKey: "properties", requestBody: ["abc": "xyz"])
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, "id");
-folder.createMetadata(new Metadata().add("/foo", "bar"));
-```
+  ```java Java v10
+  client.getFolderMetadata().createFolderMetadataById(folder.getId(), CreateFolderMetadataByIdScope.ENTERPRISE, templateKey, mapOf(entryOf("name", "John"), entryOf("age", 23), entryOf("birthDate", "2001-01-03T02:20:50.520Z"), entryOf("countryCode", "US"), entryOf("sports", Arrays.asList("basketball", "tennis"))))
+  ```
 
-```py Python v4
-metadata = {
-    'foo': 'bar',
-    'baz': 'quux',
-}
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, "id");
+  folder.createMetadata(new Metadata().add("/foo", "bar"));
+  ```
 
-applied_metadata = client.folder(folder_id='22222').metadata().create(metadata)
-print(f'Applied metadata in instance ID {applied_metadata["$id"]}')
-```
+  ```py Python v4
+  metadata = {
+      'foo': 'bar',
+      'baz': 'quux',
+  }
 
-```csharp .NET v6
-var metadataValues = new Dictionary<string, object>()
-{
-    { "audience", "internal" },
-    { "documentType", "Q1 plans" },
-    { "competitiveDocument", "no" },
-    { "status", "active" },
-    { "author": "M. Jones" },
-    { "currentState": "proposal" }
-};
-Dictionary<string, object> metadata = await client.MetadataManager
-    .CreateFolderMetadataAsync(folderId: "11111", metadataValues, "enterprise", "marketingCollateral");
-```
+  applied_metadata = client.folder(folder_id='22222').metadata().create(metadata)
+  print(f'Applied metadata in instance ID {applied_metadata["$id"]}')
+  ```
 
-```js Node v4
-var metadataValues = {
- audience: "internal",
- documentType: "Q1 plans",
- competitiveDocument: "no",
- status: "active",
- author: "Jones",
- currentState: "proposal"
-};
-client.folders.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", metadataValues)
- .then(metadata => {
-  /* metadata -> {
-   audience: 'internal',
-   documentType: 'Q1 plans',
-   competitiveDocument: 'no',
-   status: 'active',
-   author: 'Jones',
-   currentState: 'proposal',
-   '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
-   '$parent': 'folder_11111',
-   '$id': '2094c584-68e1-475c-a581-534a4609594e',
-   '$version': 0,
-   '$typeVersion': 0,
-   '$template': 'marketingCollateral',
-   '$scope': 'enterprise_12345' }
-  */
- });
-```
+  ```csharp .NET v6
+  var metadataValues = new Dictionary<string, object>()
+  {
+      { "audience", "internal" },
+      { "documentType", "Q1 plans" },
+      { "competitiveDocument", "no" },
+      { "status", "active" },
+      { "author": "M. Jones" },
+      { "currentState": "proposal" }
+  };
+  Dictionary<string, object> metadata = await client.MetadataManager
+      .CreateFolderMetadataAsync(folderId: "11111", metadataValues, "enterprise", "marketingCollateral");
+  ```
+
+  ```js Node v4
+  var metadataValues = {
+   audience: "internal",
+   documentType: "Q1 plans",
+   competitiveDocument: "no",
+   status: "active",
+   author: "Jones",
+   currentState: "proposal"
+  };
+  client.folders.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", metadataValues)
+   .then(metadata => {
+    /* metadata -> {
+     audience: 'internal',
+     documentType: 'Q1 plans',
+     competitiveDocument: 'no',
+     status: 'active',
+     author: 'Jones',
+     currentState: 'proposal',
+     '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
+     '$parent': 'folder_11111',
+     '$id': '2094c584-68e1-475c-a581-534a4609594e',
+     '$version': 0,
+     '$typeVersion': 0,
+     '$template': 'marketingCollateral',
+     '$scope': 'enterprise_12345' }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[フォルダのすべてのインスタンスのリストを取得][g_list_instances_item]します。
-
+  テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[フォルダのすべてのインスタンスのリストを取得][g_list_instances_item]します。
 </Info>
 
 <Warning>
+  **タプルがすでに存在することを示すエラー**
 
-## タプルがすでに存在することを示すエラー
-
-指定されたメタデータテンプレートでこのフォルダにすでにメタデータが適用されている場合、エラーコード`tuple_already_exists`でエラーが返されます。この場合は、インスタンスを[代わりに更新する](/ja/guides/metadata/instances/update)必要があります。
-
+  指定されたメタデータテンプレートでこのフォルダにすでにメタデータが適用されている場合、エラーコード`tuple_already_exists`でエラーが返されます。この場合は、インスタンスを[代わりに更新する](/guides/metadata/instances/update)必要があります。
 </Warning>
 
 ## リクエスト本文
@@ -366,7 +342,6 @@ client.folders.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketin
     }
   ]
 }
-
 ```
 
 このテンプレートには、2つの[テンプレートフィールド][fields]として`name`と`category`があります。`name`フィールドは通常のテキストフィールドで、`category`は列挙型フィールドです。
@@ -380,53 +355,50 @@ client.folders.addMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketin
   "name": "Model 3",
   "category": "SUVs"
 }
-
 ```
 
 <Note>
-
-キー`properties`を使用してスコープが`global`に設定されたテンプレートは例外で、テンプレートに任意のデータを割り当てることができます。このテンプレートを使用すると、一連のキー/値ペアをテンプレートに割り当てることができます。
-
+  キー`properties`を使用してスコープが`global`に設定されたテンプレートは例外で、テンプレートに任意のデータを割り当てることができます。このテンプレートを使用すると、一連のキー/値ペアをテンプレートに割り当てることができます。
 </Note>
 
 <Warning>
-
-この例の`category`フィールドは`enum`フィールドで、このフィールドで使用できるオプションのいずれかを指定する必要があります。
-
+  この例の`category`フィールドは`enum`フィールドで、このフィールドで使用できるオプションのいずれかを指定する必要があります。
 </Warning>
 
-[fields]: /ja/guides/metadata/fields
+[fields]: /guides/metadata/fields
 
-[scopes]: /ja/guides/metadata/scopes
+[scopes]: /guides/metadata/scopes
 
-[e_on_file]: /ja/reference/post_files_id_metadata_id_id
+[e_on_file]: /reference/post_files_id_metadata_id_id
 
-[e_on_folder]: /ja/reference/post-folders_id_metadata_id_id
+[e_on_folder]: /reference/post-folders_id_metadata_id_id
 
-[g_list_templates]: /ja/guides/metadata/templates/list
+[g_list_templates]: /guides/metadata/templates/list
 
-[g_list_instances_item]: /ja/guides/metadata/instances/list
+[g_list_instances_item]: /guides/metadata/instances/list
 
-[g_get_metadata_template]: /ja/guides/metadata/templates/get
+[g_get_metadata_template]: /guides/metadata/templates/get
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create metadata instance on file", href: "/reference/post-files-id-metadata-id-id", badge: "POST" },
-    { label: "Create metadata instance on folder", href: "/reference/post-folders-id-metadata-id-id", badge: "POST" }
-  ]}
+  { label: "Create metadata instance on file", href: "/reference/post-files-id-metadata-id-id", badge: "POST" },
+  { label: "Create metadata instance on folder", href: "/reference/post-folders-id-metadata-id-id", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "ガイド" },
-    { label: "項目のメタデータの更新", href: "/ja/guides/metadata/instances/update", badge: "ガイド" },
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" }
-  ]}
+  { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+  { label: "Update metadata on an item", href: "/guides/metadata/instances/update", badge: "GUIDE" },
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+]}
 />
+
 <RelatedLinks
-  title="RELATED RESOURCES"
+  title="関連するリソース"
   items={[
-    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "ガイド" }
-  ]}
+  { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+]}
 />

@@ -1,28 +1,17 @@
 ---
-title: "ファイルからメタデータを抽出する (自由形式)"
+alias_paths:
+  0: guides/box-ai/extract-metadata
 rank: 8
 related_endpoints:
-  - post-ai-extract-structured
+  0: post-ai-extract-structured
 related_guides:
-  - box-ai/ai-tutorials/prerequisites
-  - box-ai/ai-tutorials/default-agent-overrides
-  - box-ai/ai-tutorials/generate-text
-  - box-ai/ai-tutorials/ask-questions
-  - box-ai/ai-tutorials/extract-metadata-structured
-alias_paths:
-  - guides/box-ai/extract-metadata
-category_id: box-ai
-subcategory_id: box-ai/ai-tutorials
-is_index: false
-id: box-ai/ai-tutorials/extract-metadata
-type: guide
-total_steps: 6
-sibling_id: box-ai/ai-tutorials
-parent_id: box-ai/ai-tutorials
-next_page_id: box-ai/ai-tutorials/extract-metadata-structured
-previous_page_id: box-ai/ai-tutorials/default-agent-overrides
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/ai-tutorials/extract-metadata.md
+  0: box-ai/ai-tutorials/prerequisites
+  1: box-ai/ai-tutorials/default-agent-overrides
+  2: box-ai/ai-tutorials/generate-text
+  3: box-ai/ai-tutorials/ask-questions
+  4: box-ai/ai-tutorials/extract-metadata-structured
+title: ファイルからメタデータを抽出する (自由形式)
+
 fullyTranslated: true
 ---
 
@@ -31,7 +20,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box AI APIを使用すると、ドキュメントを照会し、指定したプロンプトに基づいてメタデータを抽出できます。**自由形式**とは、JSONやXMLなどの形式の文字列化バージョン、またはプレーンテキストをプロンプトに含めることができるという意味です。
 
 <Note>
-**メタデータを抽出 (自由形式)** エンドポイントはOCRをサポートしていません。英語以外の言語の画像ファイル (TIFF、PNG、JPEG) またはドキュメントからメタデータを抽出するには、[メタデータを抽出 (構造化)][structured-endpoint] エンドポイントを使用してください。
+  **メタデータを抽出 (自由形式)** エンドポイントはOCRをサポートしていません。英語以外の言語の画像ファイル (TIFF、PNG、JPEG) またはドキュメントからメタデータを抽出するには、[メタデータを抽出 (構造化)][structured-endpoint] エンドポイントを使用してください。
 </Note>
 
 ## 開始する前に
@@ -43,68 +32,66 @@ Platformアプリを作成して認証するには、[Box AIの使い方][prereq
 リクエストを送信するには、`POST /2.0/ai/extract`エンドポイントを使用します。
 
 <CodeGroup>
-
-```sh cURL
-curl -i -L 'https://api.box.com/2.0/ai/extract' \
-     -H 'content-type: application/json' \
-     -H 'authorization: Bearer <ACCESS_TOKEN>' \
-     -d '{
-        "prompt": "Extract data related to contract conditions",
-        "items": [
-              {
-                  "type": "file",
-                  "id": "1497741268097"
-              }
-        ],
-        "ai_agent": {
-          "type": "ai_agent_extract",
-          "long_text": {
-            "model": "azure__openai__gpt_4o_mini",
-            "prompt_template": "It is `{current_date}`, and I have $8000 and want to spend a week in the Azores. What should I see?",
-          },
-          "basic_text": {
-            "model": "azure__openai__gpt_4o_mini",
+  ```sh cURL
+  curl -i -L 'https://api.box.com/2.0/ai/extract' \
+       -H 'content-type: application/json' \
+       -H 'authorization: Bearer <ACCESS_TOKEN>' \
+       -d '{
+          "prompt": "Extract data related to contract conditions",
+          "items": [
+                {
+                    "type": "file",
+                    "id": "1497741268097"
+                }
+          ],
+          "ai_agent": {
+            "type": "ai_agent_extract",
+            "long_text": {
+              "model": "azure__openai__gpt_4o_mini",
+              "prompt_template": "It is `{current_date}`, and I have $8000 and want to spend a week in the Azores. What should I see?",
+            },
+            "basic_text": {
+              "model": "azure__openai__gpt_4o_mini",
+            }
           }
-        }
-      }'
-```
+        }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.ai.createAiExtract({
-  prompt: 'firstName, lastName, location, yearOfBirth, company',
-  items: [new AiItemBase({ id: file.id })],
-  aiAgent: agentIgnoringOverridingEmbeddingsModel,
-} satisfies AiExtract);
-```
+  ```typescript Node/TypeScript v10
+  await client.ai.createAiExtract({
+    prompt: 'firstName, lastName, location, yearOfBirth, company',
+    items: [new AiItemBase({ id: file.id })],
+    aiAgent: agentIgnoringOverridingEmbeddingsModel,
+  } satisfies AiExtract);
+  ```
 
-```python Python v10
-client.ai.create_ai_extract(
-    "firstName, lastName, location, yearOfBirth, company",
-    [AiItemBase(id=file.id)],
-    ai_agent=agent_ignoring_overriding_embeddings_model,
-)
-```
+  ```python Python v10
+  client.ai.create_ai_extract(
+      "firstName, lastName, location, yearOfBirth, company",
+      [AiItemBase(id=file.id)],
+      ai_agent=agent_ignoring_overriding_embeddings_model,
+  )
+  ```
 
-```cs .NET v10
-await client.Ai.CreateAiExtractAsync(requestBody: new AiExtract(prompt: "firstName, lastName, location, yearOfBirth, company", items: Array.AsReadOnly(new [] {new AiItemBase(id: file.Id)})));
-```
+  ```cs .NET v10
+  await client.Ai.CreateAiExtractAsync(requestBody: new AiExtract(prompt: "firstName, lastName, location, yearOfBirth, company", items: Array.AsReadOnly(new [] {new AiItemBase(id: file.Id)})));
+  ```
 
-```swift Swift v10
-try await client.ai.createAiExtract(requestBody: AiExtract(prompt: "firstName, lastName, location, yearOfBirth, company", items: [AiItemBase(id: file.id)]))
-```
+  ```swift Swift v10
+  try await client.ai.createAiExtract(requestBody: AiExtract(prompt: "firstName, lastName, location, yearOfBirth, company", items: [AiItemBase(id: file.id)]))
+  ```
 
-```java Java v10
-client.getAi().createAiExtract(new AiExtract.Builder("firstName, lastName, location, yearOfBirth, company", Arrays.asList(new AiItemBase(file.getId()))).aiAgent(agentIgnoringOverridingEmbeddingsModel).build())
-```
+  ```java Java v10
+  client.getAi().createAiExtract(new AiExtract.Builder("firstName, lastName, location, yearOfBirth, company", Arrays.asList(new AiItemBase(file.getId()))).aiAgent(agentIgnoringOverridingEmbeddingsModel).build())
+  ```
 
-```java Java v5
-BoxAIResponse response = BoxAI.extractMetadataFreeform(
-    api,
-    "firstName, lastName, location, yearOfBirth, company",
-    Collections.singletonList(new BoxAIItem("123456", BoxAIItem.Type.FILE))
-);
-```
-
+  ```java Java v5
+  BoxAIResponse response = BoxAI.extractMetadataFreeform(
+      api,
+      "firstName, lastName, location, yearOfBirth, company",
+      Collections.singletonList(new BoxAIItem("123456", BoxAIItem.Type.FILE))
+  );
+  ```
 </CodeGroup>
 
 ### パラメータ
@@ -112,9 +99,7 @@ BoxAIResponse response = BoxAI.extractMetadataFreeform(
 コールを実行するには、以下のパラメータを渡す必要があります。必須のパラメータは**太字**で示されています。
 
 <Note>
-
-`items`配列に含めることができる要素は1つだけです。
-
+  `items`配列に含めることができる要素は1つだけです。
 </Note>
 
 | パラメータ            | 説明                                                                                                                                                                                                                                                                                                                                                                                        | 例                               |
@@ -157,7 +142,6 @@ curl --location 'https://api.box.com/2.0/ai/extract' \
         }
     ]
 }'
-
 ```
 
 その場合、レスポンスは、テキストに含まれているキーワードに基づいて作成されます。
@@ -168,7 +152,6 @@ curl --location 'https://api.box.com/2.0/ai/extract' \
     "created_at": "2024-05-31T10:30:51.223-07:00",
     "completion_reason": "done"
 }
-
 ```
 
 #### 特定の用語を使用する
@@ -188,7 +171,6 @@ curl --location 'https://api.box.com/2.0/ai/extract' \
         }
     ]
 }'
-
 ```
 
 このアプローチを使用すると、以下のように、リクエストで指定した用語のリストとその値が返されます。
@@ -199,7 +181,6 @@ curl --location 'https://api.box.com/2.0/ai/extract' \
     "created_at": "2024-05-31T10:28:51.906-07:00",
     "completion_reason": "done"
 }
-
 ```
 
 #### キー/値ペアを使用する
@@ -219,7 +200,6 @@ curl --location 'https://api.box.com/2.0/ai/extract' \
         }
     ]
 }'
-
 ```
 
 レスポンスには、以下のように、ファイル内に存在する`fields`とその値が含まれます。
@@ -230,33 +210,34 @@ curl --location 'https://api.box.com/2.0/ai/extract' \
     "created_at": "2024-05-31T10:15:38.17-07:00",
     "completion_reason": "done"
 }
-
 ```
 
-[prereq]: /ja/guides/box-ai/ai-tutorials/prerequisites
+[prereq]: /guides/box-ai/ai-tutorials/prerequisites
 
-[agent]: /ja/reference/get_ai_agent_default
+[agent]: /reference/get_ai_agent_default
 
-[model-param]: /ja/reference/resources/ai_agent_text_gen#param_basic_gen_model
+[model-param]: /reference/resources/ai_agent_text_gen#param_basic_gen_model
 
-[prompt-param]: /ja/reference/resources/ai_agent_text_gen#param_basic_gen_prompt_template
+[prompt-param]: /reference/resources/ai_agent_text_gen#param_basic_gen_prompt_template
 
-[overrides]: /ja/guides/box-ai/ai-agents/ai-agent-overrides
-[structured-endpoint]: /ja/guides/box-ai/ai-tutorials/extract-metadata-structured
+[overrides]: /guides/box-ai/ai-agents/ai-agent-overrides
+
+[structured-endpoint]: /guides/box-ai/ai-tutorials/extract-metadata-structured
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Extract metadata (structured)", href: "/reference/post-ai-extract-structured", badge: "POST" }
-  ]}
+  { label: "Extract metadata (structured)", href: "/reference/post-ai-extract-structured", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "ガイド" },
-    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "ガイド" },
-    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "ガイド" },
-    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+  { label: "Override AI model configuration", href: "/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "GUIDE" },
+  { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+  { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+  { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" }
+]}
 />

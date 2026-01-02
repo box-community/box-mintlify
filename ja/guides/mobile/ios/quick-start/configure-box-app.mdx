@@ -1,20 +1,9 @@
 ---
-title: "Box Platformアプリの設定"
-sideabrTitle: 3. Box Platformアプリの設定
-type: quick-start
 hide_in_page_nav: true
-category_id: mobile
-subcategory_id: mobile/ios
-is_index: false
-id: mobile/ios/quick-start/configure-box-app
-rank: 3
-total_steps: 5
-sibling_id: mobile/ios/quick-start
-parent_id: mobile/ios/quick-start
-next_page_id: mobile/ios/quick-start/make-api-call
-previous_page_id: mobile/ios/quick-start/install-ios-sdk
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/mobile/ios/quick-start/3-configure-box-app.md
+sidebarTitle: 3. Configure a Box Platform App
+title: Box Platformアプリの設定
+type: quick-start
+
 fullyTranslated: true
 ---
 
@@ -22,13 +11,15 @@ import { Choose, Choice, Grid, Trigger, Observe, ChoiceDebug } from '/snippets/c
 
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/mobile/ios/quick-start/create-ios-app",
-                          "ja/guides/mobile/ios/quick-start/install-ios-sdk",
-                          "ja/guides/mobile/ios/quick-start/configure-box-app",
-                          "ja/guides/mobile/ios/quick-start/make-api-call",
-                          "ja/guides/mobile/ios/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/mobile/ios/quick-start/create-ios-app",
+                        "guides/mobile/ios/quick-start/install-ios-sdk",
+                        "guides/mobile/ios/quick-start/configure-box-app",
+                        "guides/mobile/ios/quick-start/make-api-call",
+                        "guides/mobile/ios/quick-start/next-steps"
+                      ]}
+/>
 
 **Box iOS SDK**を使用してBox APIに対する認証済みAPIコールを開始するには、**アクセストークン**が必要になります。有効なトークンを生成するには、新しい**Box Platformアプリ**を生成し、有効期間が短い開発者トークンを手動で生成するのが最も簡単な方法です。
 
@@ -37,47 +28,37 @@ import { ProgressBar } from '/snippets/progress-bar.jsx';
 ## Boxアプリのセットアップ
 
 <Grid columns="2">
+  <Choose option="ios.app_type" value="create_new" color="blue">
+    # 新しいBoxアプリを作成する
 
-<Choose option="ios.app_type" value="create_new" color="blue">
+    開発者トークンの生成に使用する新しいBox JWTアプリケーションを作成して構成します。
+  </Choose>
 
-# 新しいBoxアプリを作成する
+  <Choose option="ios.app_type" value="use_own" color="blue">
+    # 既存のアプリを使用する
 
-開発者トークンの生成に使用する新しいBox JWTアプリケーションを作成して構成します。
-
-</Choose>
-
-<Choose option="ios.app_type" value="use_own" color="blue">
-
-# 既存のアプリを使用する
-
-Box開発者コンソールから既存のBox JWTアプリケーションのいずれかを使用します。
-
-</Choose>
-
+    Box開発者コンソールから既存のBox JWTアプリケーションのいずれかを使用します。
+  </Choose>
 </Grid>
 
 <Choice option="ios.app_type" value="create_new" color="blue">
+  # 新しいBoxアプリを作成する
 
-# 新しいBoxアプリを作成する
+  開発者トークンの生成に使用できる新しいBoxアプリケーションを作成するには、以下の手順に従います。
 
-開発者トークンの生成に使用できる新しいBoxアプリケーションを作成するには、以下の手順に従います。
-
-1. \[[開発者コンソール][devconsole]] > \[**Platformアプリ**] に移動します。
-2. \[**Platformアプリの作成**] を選択します。
-3. 作成するアプリケーションの種類として \[**Platformアプリ**] を選択し、\[**次へ**] をクリックします。
-4. \[**アプリ名**] に加え、必要に応じてアプリの \[**説明**] および \[**目的**] を入力し、\[**次へ**] で確定します。
-5. 認証方法として \[**ユーザー認証 (OAuth 2.0)**] を選択し、\[**アプリの作成**] をクリックします。
-6. 必要に応じて、同じ画面の \[**アプリケーションスコープ**] セクションまでスクロールし、このアプリケーションに対して有効にする必要がある追加の権限を選択します。
-7. ページ上部にある \[**変更を保存**] ボタンをクリックします。
-
+  1. \[[開発者コンソール][devconsole]] > \[**Platformアプリ**] に移動します。
+  2. \[**Platformアプリの作成**] を選択します。
+  3. 作成するアプリケーションの種類として \[**Platformアプリ**] を選択し、\[**次へ**] をクリックします。
+  4. \[**アプリ名**] に加え、必要に応じてアプリの \[**説明**] および \[**目的**] を入力し、\[**次へ**] で確定します。
+  5. 認証方法として \[**ユーザー認証 (OAuth 2.0)**] を選択し、\[**アプリの作成**] をクリックします。
+  6. 必要に応じて、同じ画面の \[**アプリケーションスコープ**] セクションまでスクロールし、このアプリケーションに対して有効にする必要がある追加の権限を選択します。
+  7. ページ上部にある \[**変更を保存**] ボタンをクリックします。
 </Choice>
 
 <Choice option="ios.app_type" value="use_own" color="blue">
+  # 既存のJWT Boxアプリケーションを使用する
 
-# 既存のJWT Boxアプリケーションを使用する
-
-[開発者コンソール][devconsole]に、使用したい既存のJWTベースのBoxアプリケーションがある場合は、以下の手順に従います。
-
+  [開発者コンソール][devconsole]に、使用したい既存のJWTベースのBoxアプリケーションがある場合は、以下の手順に従います。
 </Choice>
 
 ## 開発者トークンの生成
@@ -96,13 +77,7 @@ Box開発者コンソールから既存のBox JWTアプリケーションのい�
 * 開発者トークンを生成してコピーしました。
 
 <Observe option="ios.app_type" value="use_own,create_new_">
-
-<Next>
-
-開発者トークンを用意できました
-
-</Next>
-
+  <Next>開発者トークンを用意できました</Next>
 </Observe>
 
 [devconsole]: https://cloud.app.box.com/developers/console

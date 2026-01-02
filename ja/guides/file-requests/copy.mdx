@@ -1,58 +1,45 @@
 ---
-title: "ファイルリクエストのコピー"
 related_endpoints:
-  - post_file_requests_id_copy
-related_guides: []
-required_guides:
-  - file-requests/template
+  0: post_file_requests_id_copy
+related_guides: {}
 related_resources:
-  - file_request
-category_id: file-requests
-subcategory_id: null
-is_index: false
-id: file-requests/copy
-rank: 2
-type: guide
-total_steps: 5
-sibling_id: file-requests
-parent_id: file-requests
-next_page_id: file-requests/get
-previous_page_id: file-requests/template
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/2-copy.md
+  0: file_request
+required_guides:
+  0: file-requests/template
+title: ファイルリクエストのコピー
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "テンプレートのファイルリクエストの作成", href: "/ja/guides/file-requests/template", badge: "ガイド" }
-  ]}
+  { label: "Create a template File Request", href: "/guides/file-requests/template", badge: "GUIDE" }
+]}
 />
-既存の[テンプレート](/ja/guides/file-requests/template)ファイルリクエストのコピーを作成するために必要なのは、その一意のIDと、新しいファイルリクエストの適用先となるフォルダのIDだけです。
+
+既存の[テンプレート](/guides/file-requests/template)ファイルリクエストのコピーを作成するために必要なのは、その一意のIDと、新しいファイルリクエストの適用先となるフォルダのIDだけです。
 
 <CodeGroup>
-  ```csharp cURL
-  curl -i -X POST "https://api.box.com/2.0/users" \
-    curl -i -X POST "https://api.box.com/2.0/file_requests/42037322/copy" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -d '{
-       "title": "Please upload required documents",
-       "description": "Please upload required documents",
-       "status": "active",
-       "is_email_required": true,
-       "is_description_required": false,
-       "folder": {
-         "id": "2233212",
-         "type": "folder"
-       }
-     }'
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/file_requests/42037322/copy" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -d '{
+         "title": "Please upload required documents",
+         "description": "Please upload required documents",
+         "status": "active",
+         "is_email_required": true,
+         "is_description_required": false,
+         "folder": {
+           "id": "2233212",
+           "type": "folder"
+         }
+       }'
   ```
 
-  ```typescript Node/TypScript v10
+  ```typescript Node/TypeScript v10
   await client.fileRequests.createFileRequestCopy(fileRequestId, {
     folder: {
       id: fileRequest.folder.id,
@@ -63,11 +50,11 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
   ```python Python v10
   client.file_requests.create_file_request_copy(
-    file_request_id,
-    CreateFileRequestCopyFolder(
-        id=file_request.folder.id, type=CreateFileRequestCopyFolderTypeField.FOLDER
-    ),
-)
+      file_request_id,
+      CreateFileRequestCopyFolder(
+          id=file_request.folder.id, type=CreateFileRequestCopyFolderTypeField.FOLDER
+      ),
+  )
   ```
 
   ```csharp .NET v10
@@ -91,7 +78,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
   fileRequestInfo = fileRequest.copyInfo(fileRequestInfo, "folderId");
   ```
 
-  ```python Python v4
+  ```py Python v4
   file_request = client.file_request(file_request_id='123456')
   folder = client.folder(folder_id='123456789')
   new_file_request = file_request.copy(folder=folder, title="Copied file request")
@@ -99,41 +86,39 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
   ```csharp .NET v6
   var destinationFolder = new BoxRequestEntity
-{
-    Id = "123456",
-    Type = BoxType.folder
-};
+  {
+      Id = "123456",
+      Type = BoxType.folder
+  };
 
-var copyRequest = new BoxFileRequestCopyRequest
-{
-    Description = "New file request description",
-    Folder = destinationFolder
-};
+  var copyRequest = new BoxFileRequestCopyRequest
+  {
+      Description = "New file request description",
+      Folder = destinationFolder
+  };
 
-BoxFileRequestObject fileRequest = await client.FileRequestsManager.CopyFileRequestAsync("12345", copyRequest);
+  BoxFileRequestObject fileRequest = await client.FileRequestsManager.CopyFileRequestAsync("12345", copyRequest);
   ```
 
-  ```typescript Node v4
+  ```js Node v4
   client.fileRequests.copy(fileRequestId, {
-  folder: {
-    id: '157979815648',
-    type: 'folder'
-  }
-}).then((r: FileRequest) => {
-  // do something with the copied file request 
-  console.log(r)
-});
+    folder: {
+      id: '157979815648',
+      type: 'folder'
+    }
+  }).then((r: FileRequest) => {
+    // do something with the copied file request 
+    console.log(r)
+  });
   ```
 </CodeGroup>
 
 <Note>
+  フォルダやファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。
 
-フォルダやファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。
+  フォルダIDは、フォルダにアクセスしたときにURLの末尾にある番号です。たとえば、`app.box.com/folder/123`というURLの場合、フォルダのIDは`123`です。
 
-フォルダIDは、フォルダにアクセスしたときにURLの末尾にある番号です。たとえば、`app.box.com/folder/123`というURLの場合、フォルダのIDは`123`です。
-
-ファイルリクエストについては、ファイルリクエストテンプレートの設定に関する[ガイド](/ja/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
-
+  ファイルリクエストについては、ファイルリクエストテンプレートの設定に関する[ガイド](/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
 </Note>
 
 ## コピー時にファイルリクエストを更新する
@@ -153,18 +138,15 @@ curl -i -X POST "https://api.box.com/2.0/file_requests/2342235/copy" \
         "id": "342323423"
       }
     }'
-
 ```
 
 <Note>
-
-テンプレート作成時に更新できるさまざまなフィールドの詳細については、[`POST /file-requests/:id/copy`](/ja/reference/post-file-requests-id-copy) APIのリファレンスドキュメントを参照してください。
-
+  テンプレート作成時に更新できるさまざまなフィールドの詳細については、[`POST /file-requests/:id/copy`](/reference/post-file-requests-id-copy) APIのリファレンスドキュメントを参照してください。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
-  ]}
+  { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
+]}
 />

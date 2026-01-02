@@ -1,32 +1,24 @@
 ---
-title: "ボットのテスト"
-sidebarTitle: 6. ボットのテスト
-type: quick-start
 hide_in_page_nav: true
-category_id: collaborations
-subcategory_id: collaborations/connect-slack-to-group-collabs
-is_index: false
-id: collaborations/connect-slack-to-group-collabs/test-bot
-rank: 6
-total_steps: 6
-sibling_id: collaborations/connect-slack-to-group-collabs
-parent_id: collaborations/connect-slack-to-group-collabs
-next_page_id: ''
-previous_page_id: collaborations/connect-slack-to-group-collabs/connect-box-functions
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/connect-slack-to-group-collabs/6-test-bot.md
+sidebarTitle: 6. Test the bot
+title: ボットのテスト
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/configure-slack",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/configure-box",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/scaffold-application-code",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/handle-slack-events",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/connect-box-functions",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/test-bot"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/collaborations/connect-slack-to-group-collabs/configure-slack",
+                        "guides/collaborations/connect-slack-to-group-collabs/configure-box",
+                        "guides/collaborations/connect-slack-to-group-collabs/scaffold-application-code",
+                        "guides/collaborations/connect-slack-to-group-collabs/handle-slack-events",
+                        "guides/collaborations/connect-slack-to-group-collabs/connect-box-functions",
+                        "guides/collaborations/connect-slack-to-group-collabs/test-bot"
+                      ]}
+/>
 
 この最後のセクションでは、Slackボットのさまざまな機能をテストします。
 
@@ -35,9 +27,7 @@ import { ProgressBar } from '/snippets/progress-bar.jsx';
 * **コンテンツ追加関数**: ユーザーが有効な`/boxadd`スラッシュコマンドを入力すると、新しいコラボレーションによってそのコンテンツがグループと共有される必要があります。
 
 <Note>
-
-上記の内容がまだできていない場合は、これまでに作成したすべてのコードが、一般公開されているアプリケーションとして展開されていることを確認します。
-
+  上記の内容がまだできていない場合は、これまでに作成したすべてのコードが、一般公開されているアプリケーションとして展開されていることを確認します。
 </Note>
 
 ## グループの作成のテスト
@@ -54,9 +44,7 @@ Slack UIまたは`/invite @bot_app_name`コマンドを使用して、任意のS
 追加後、Boxにグループが作成され、メンバーが追加されていることを確認します。Box Enterprise管理者アカウントで、管理コンソールの \[**[ユーザーとグループ][box-users-groups]**] セクションに移動します。成功した場合、表示されるグループには、グループ名としてランダムな英数字の文字列が使用されます。これはSlackのチャンネルIDで、グループ名に反映されています。
 
 <Frame noborder center shadow>
-
-![Boxグループの表示](./img/slack_6_groups.png)
-
+  ![Boxグループの表示](./img/slack_6_groups.png)
 </Frame>
 
 \[**メンバー**] 列には、グループ作成時に社内で検出されてグループに追加された、一致するメールアドレスを持つBoxユーザーの数も表示されます。
@@ -64,9 +52,7 @@ Slack UIまたは`/invite @bot_app_name`コマンドを使用して、任意のS
 グループとメンバーが表示されていれば、この手順は成功です。
 
 <Note>
-
-グループに追加したメンバーが表示されず、ボットアプリケーションからエラーが返されない場合、最も可能性が高い原因として、メールアドレスの不一致が考えられます。Slackのアカウントで使用されているメールアドレスが、Box Enterpriseのユーザーで使用されているメールアドレスと一致することを確認してください。
-
+  グループに追加したメンバーが表示されず、ボットアプリケーションからエラーが返されない場合、最も可能性が高い原因として、メールアドレスの不一致が考えられます。Slackのアカウントで使用されているメールアドレスが、Box Enterpriseのユーザーで使用されているメールアドレスと一致することを確認してください。
 </Note>
 
 ## User Event関数のテスト
@@ -86,17 +72,13 @@ Box管理コンソールの \[ユーザーとグループ] セクションを更
 ボットを招待したSlackチャンネルで、ファイルやフォルダをグループと共有するためのスラッシュコマンドを`/boxadd [file/folder] [ID of file/folder]`形式 (`/boxadd folder 324554221`など) で入力します。
 
 <Note>
-
-指定されるファイルまたはフォルダIDは、ファイルまたはフォルダを共有するユーザーのBoxアカウント内のコンテンツである必要があります。
-
+  指定されるファイルまたはフォルダIDは、ファイルまたはフォルダを共有するユーザーのBoxアカウント内のコンテンツである必要があります。
 </Note>
 
 Boxアカウント内のファイルまたはフォルダのIDを調べるには、[Boxサイト][box]内でファイルまたはフォルダを読み込み、URLを確認します。IDはURLの最後の文字列で、多くの場合、`/file/`または`/folder/`を含むセクションの直後に表示されます。
 
 <Frame noborder center shadow>
-
-![ファイルIDまたはフォルダIDの取得](./img/slack_6_file_id.png)
-
+  ![ファイルIDまたはフォルダIDの取得](./img/slack_6_file_id.png)
 </Frame>
 
 コマンドを入力したら、SlackチャンネルとBoxグループ内で別のユーザーの[Boxサイト][box]アカウントに移動します。共有したコンテンツがそのアカウントで使用できるようになっているはずです。
@@ -111,17 +93,17 @@ Boxアカウント内のファイルまたはフォルダのIDを調べるには
 * [リテンションポリシーを作成][next-steps-retention-policy]し、グループと共有されたコンテンツに[割り当てる][next-steps-policy-assign]ことで、共有コンテンツの寿命とガバナンスを制御できるようにします。
 * チャンネル内のユーザーが、グループと共有されている[ファイルにコメント][next-steps-comment]できるように新しいスラッシュコマンドを追加します。
 
-[step1]: /ja/guides/collaborations/connect-slack-to-group-collabs/configure-slack
+[step1]: /guides/collaborations/connect-slack-to-group-collabs/configure-slack
 
 [box-users-groups]: https://app.box.com/master/groups
 
-[next-steps-shared-link]: /ja/guides/shared-links/create-or-update
+[next-steps-shared-link]: /guides/shared-links/create-or-update
 
-[next-steps-retention-policy]: /ja/reference/post-retention-policies
+[next-steps-retention-policy]: /reference/post-retention-policies
 
-[next-steps-policy-assign]: /ja/reference/post-retention-policy-assignments
+[next-steps-policy-assign]: /reference/post-retention-policy-assignments
 
-[next-steps-comment]: /ja/reference/post-comments
+[next-steps-comment]: /reference/post-comments
 
 {/* i18n-enable localize-links */}
 

@@ -1,48 +1,34 @@
 ---
-title: "項目からのメタデータの削除"
 related_endpoints:
-  - delete_files_id_metadata_id_id
-  - delete_folders_id_metadata_id_id
-related_resources:
-  - metadata
-  - metadata_template
-required_guides:
-  - metadata/instances/list
+  0: delete_files_id_metadata_id_id
+  1: delete_folders_id_metadata_id_id
 related_guides:
-  - metadata/instances/list
-  - metadata/instances/create
-  - metadata/scopes
-category_id: metadata
-subcategory_id: metadata/4-instances
-is_index: false
-id: metadata/instances/delete
-rank: 5
-type: guide
-total_steps: 5
-sibling_id: metadata/instances
-parent_id: metadata/instances
-next_page_id: ''
-previous_page_id: metadata/instances
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/5-delete.md
+  0: metadata/instances/list
+  1: metadata/instances/create
+  2: metadata/scopes
+related_resources:
+  0: metadata
+  1: metadata_template
+required_guides:
+  0: metadata/instances/list
+title: 項目からのメタデータの削除
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "ガイド" }
-  ]}
+  { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" }
+]}
 />
+
 ファイルまたはフォルダに割り当てられたメタデータテンプレートのインスタンスを削除するには、項目の`id`に加え、テンプレートの`templateKey`と`scope`を使用します。
 
 <Info>
-
-メタデータの[スコープ][scopes]には、`global` (すべての会社が利用できるテンプレートの場合)、`enterprise` (現在の会社が利用できるテンプレートの場合)、または`enterprise_:id` (IDがスコープ名の`:id`である会社に属するテンプレートの場合) のいずれかを指定できます。
-
+  メタデータの[スコープ][scopes]には、`global` (すべての会社が利用できるテンプレートの場合)、`enterprise` (現在の会社が利用できるテンプレートの場合)、または`enterprise_:id` (IDがスコープ名の`:id`である会社に属するテンプレートの場合) のいずれかを指定できます。
 </Info>
 
 ## ファイルからメタデータを削除する
@@ -50,56 +36,56 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルからメタデータテンプレートのインスタンスを削除するには、[`DELETE /files/:file_id/metadata/:templateKey/schema`][e_on_file] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.fileMetadata.deleteFileMetadataById(
-  file.id,
-  'enterprise' as DeleteFileMetadataByIdScope,
-  templateKey,
-);
-```
+  ```typescript Node/TypeScript v10
+  await client.fileMetadata.deleteFileMetadataById(
+    file.id,
+    'enterprise' as DeleteFileMetadataByIdScope,
+    templateKey,
+  );
+  ```
 
-```python Python v10
-client.file_metadata.delete_file_metadata_by_id(
-    file.id, DeleteFileMetadataByIdScope.ENTERPRISE, template_key
-)
-```
+  ```python Python v10
+  client.file_metadata.delete_file_metadata_by_id(
+      file.id, DeleteFileMetadataByIdScope.ENTERPRISE, template_key
+  )
+  ```
 
-```csharp .NET v10
-await client.FileMetadata.DeleteFileMetadataByIdAsync(fileId: file.Id, scope: DeleteFileMetadataByIdScope.Enterprise, templateKey: templateKey);
-```
+  ```csharp .NET v10
+  await client.FileMetadata.DeleteFileMetadataByIdAsync(fileId: file.Id, scope: DeleteFileMetadataByIdScope.Enterprise, templateKey: templateKey);
+  ```
 
-```swift Swift v10
-try await client.fileMetadata.deleteFileMetadataById(fileId: file.id, scope: DeleteFileMetadataByIdScope.global, templateKey: "properties")
-```
+  ```swift Swift v10
+  try await client.fileMetadata.deleteFileMetadataById(fileId: file.id, scope: DeleteFileMetadataByIdScope.global, templateKey: "properties")
+  ```
 
-```java Java v10
-client.getFileMetadata().deleteFileMetadataById(file.getId(), DeleteFileMetadataByIdScope.ENTERPRISE, templateKey)
-```
+  ```java Java v10
+  client.getFileMetadata().deleteFileMetadataById(file.getId(), DeleteFileMetadataByIdScope.ENTERPRISE, templateKey)
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-file.deleteMetadata("myMetadataTemplate");
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  file.deleteMetadata("myMetadataTemplate");
+  ```
 
-```py Python v4
-client.file(file_id='11111').metadata(scope='enterprise', template='myMetadata').delete()
-```
+  ```py Python v4
+  client.file(file_id='11111').metadata(scope='enterprise', template='myMetadata').delete()
+  ```
 
-```csharp .NET v6
-await client.MetadataManager.DeleteFileMetadataAsync("11111", "enterprise", "marketingCollateral");
-```
+  ```csharp .NET v6
+  await client.MetadataManager.DeleteFileMetadataAsync("11111", "enterprise", "marketingCollateral");
+  ```
 
-```js Node v4
-client.files.deleteMetadata('67890', client.metadata.scopes.GLOBAL, client.metadata.templates.PROPERTIES)
- .then(() => {
-  // removal succeeded — no value returned
- });;
-```
+  ```js Node v4
+  client.files.deleteMetadata('67890', client.metadata.scopes.GLOBAL, client.metadata.templates.PROPERTIES)
+   .then(() => {
+    // removal succeeded — no value returned
+   });;
+  ```
 </CodeGroup>
 
 ファイルからインスタンスが正常に削除されている場合、このAPIは、レスポンスの本文がない`204 No Content` APIレスポンスを返します。
@@ -109,84 +95,86 @@ client.files.deleteMetadata('67890', client.metadata.scopes.GLOBAL, client.metad
 メタデータテンプレートのインスタンスを削除するには、[`DELETE /folders/:folder_id/metadata/:templateKey/schema`][e_on_folder] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderMetadata.deleteFolderMetadataById(
-  folder.id,
-  'enterprise' as DeleteFolderMetadataByIdScope,
-  templateKey,
-);
-```
+  ```typescript Node/TypeScript v10
+  await client.folderMetadata.deleteFolderMetadataById(
+    folder.id,
+    'enterprise' as DeleteFolderMetadataByIdScope,
+    templateKey,
+  );
+  ```
 
-```python Python v10
-client.folder_metadata.delete_folder_metadata_by_id(
-    folder.id, DeleteFolderMetadataByIdScope.ENTERPRISE, template_key
-)
-```
+  ```python Python v10
+  client.folder_metadata.delete_folder_metadata_by_id(
+      folder.id, DeleteFolderMetadataByIdScope.ENTERPRISE, template_key
+  )
+  ```
 
-```csharp .NET v10
-await client.FolderMetadata.DeleteFolderMetadataByIdAsync(folderId: folder.Id, scope: DeleteFolderMetadataByIdScope.Enterprise, templateKey: templateKey);
-```
+  ```csharp .NET v10
+  await client.FolderMetadata.DeleteFolderMetadataByIdAsync(folderId: folder.Id, scope: DeleteFolderMetadataByIdScope.Enterprise, templateKey: templateKey);
+  ```
 
-```swift Swift v10
-try await client.folderMetadata.deleteFolderMetadataById(folderId: folder.id, scope: DeleteFolderMetadataByIdScope.global, templateKey: "properties")
-```
+  ```swift Swift v10
+  try await client.folderMetadata.deleteFolderMetadataById(folderId: folder.id, scope: DeleteFolderMetadataByIdScope.global, templateKey: "properties")
+  ```
 
-```java Java v10
-client.getFolderMetadata().deleteFolderMetadataById(folder.getId(), DeleteFolderMetadataByIdScope.ENTERPRISE, templateKey)
-```
+  ```java Java v10
+  client.getFolderMetadata().deleteFolderMetadataById(folder.getId(), DeleteFolderMetadataByIdScope.ENTERPRISE, templateKey)
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, "id");
-folder.deleteMetadata("myMetadataTemplate");
-```
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, "id");
+  folder.deleteMetadata("myMetadataTemplate");
+  ```
 
-```py Python v4
-client.folder(folder_id='11111').metadata(scope='enterprise', template='myMetadata').delete()
-```
+  ```py Python v4
+  client.folder(folder_id='11111').metadata(scope='enterprise', template='myMetadata').delete()
+  ```
 
-```csharp .NET v6
-await client.MetadataManager.DeleteFolderMetadataAsync("11111", "enterprise", "marketingCollateral");
-```
+  ```csharp .NET v6
+  await client.MetadataManager.DeleteFolderMetadataAsync("11111", "enterprise", "marketingCollateral");
+  ```
 
-```js Node v4
-client.folders.deleteMetadata('67890', client.metadata.scopes.GLOBAL, client.metadata.templates.PROPERTIES)
- .then(() => {
-  // removal succeeded — no value returned
- });
-```
+  ```js Node v4
+  client.folders.deleteMetadata('67890', client.metadata.scopes.GLOBAL, client.metadata.templates.PROPERTIES)
+   .then(() => {
+    // removal succeeded — no value returned
+   });
+  ```
 </CodeGroup>
 
 フォルダからインスタンスが正常に削除されている場合、このAPIは、レスポンスの本文がない`204 No Content` APIレスポンスを返します。
 
-[e_on_file]: /ja/reference/delete_files_id_metadata_id_id
+[e_on_file]: /reference/delete_files_id_metadata_id_id
 
-[e_on_folder]: /ja/reference/delete_folders_id_metadata_id_id
+[e_on_folder]: /reference/delete_folders_id_metadata_id_id
 
-[scopes]: /ja/guides/metadata/scopes
+[scopes]: /guides/metadata/scopes
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Remove metadata instance from file", href: "/reference/delete-files-id-metadata-id-id", badge: "DELETE" },
-    { label: "Remove metadata instance from folder", href: "/reference/delete-folders-id-metadata-id-id", badge: "DELETE" }
-  ]}
+  { label: "Remove metadata instance from file", href: "/reference/delete-files-id-metadata-id-id", badge: "DELETE" },
+  { label: "Remove metadata instance from folder", href: "/reference/delete-folders-id-metadata-id-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "ガイド" },
-    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "ガイド" },
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" }
-  ]}
+  { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+  { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+]}
 />
+
 <RelatedLinks
-  title="RELATED RESOURCES"
+  title="関連するリソース"
   items={[
-    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "ガイド" }
-  ]}
+  { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+]}
 />

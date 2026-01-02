@@ -1,38 +1,26 @@
 ---
-title: "コンテンツプレビュー"
-rank: 8
-related_endpoints: []
-related_guides:
-  - embed/ui-elements
-required_guides:
-  - embed/ui-elements/installation
-related_resources: []
 alias_paths:
-  - /docs/box-content-preview
-  - /docs/content-preview
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/preview
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/sidebar
-previous_page_id: embed/ui-elements/open-with
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/preview.md
+  0: /docs/box-content-preview
+  1: /docs/content-preview
+rank: 8
+related_endpoints: {}
+related_guides:
+  0: embed/ui-elements
+related_resources: {}
+required_guides:
+  0: embed/ui-elements/installation
+title: コンテンツプレビュー
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
 
 Box Content Preview UI Elementを使用すると、開発者は、Boxファイルの高品質でインタラクティブなプレビューをデスクトップアプリやモバイルウェブアプリに埋め込むことができます。
@@ -76,31 +64,27 @@ var ContentPreview = require("./ContentPreview").default;
 
 ## インストール
 
-NPMまたはBox CDN経由でBox UI Elementsをインストールする方法は、[こちら](/ja/guides/embed/ui-elements/installation)を参照してください。
+NPMまたはBox CDN経由でBox UI Elementsをインストールする方法は、[こちら](/guides/embed/ui-elements/installation)を参照してください。
 
 ## 認証
 
 UI Elementは認証に依存しない方法で設計されているため、Boxの管理対象ユーザーとBox以外のユーザー (App User) のどちらでも機能します。その理由は、UI Elementは認証に[トークン][token]のみを想定していて、Boxにはトークンの生成方法としてOAuthとJWTの2つがあるからです。
 
-<Card href="/ja/guides/authentication/select" title="認証方法の選択について確認する"/>
+<Card href="/guides/authentication/select" arrow title="認証方法の選択について確認する" />
 
 ## サポートされているファイルの種類
 
 Box Content Previewでは、ドキュメントと画像のほとんどの形式、HD動画、3Dモデル、360度画像、360度動画など、120以上のファイルタイプがサポートされています。サポートされているファイルの種類については、[こちら][filetypes]で確認できます。
 
 <Warning>
-
-サポートされているファイルの種類に他のオブジェクト (`DWG`ファイルなど) への参照が含まれている場合、Boxプレビューではこれらの参照がサポートされていないことに注意してください。サポートされていない参照を含むDWGファイルを表示しているすべてのエンドユーザーには、別の手順でワークフローを完了するよう促す通知が表示されます。
-
+  サポートされているファイルの種類に他のオブジェクト (`DWG`ファイルなど) への参照が含まれている場合、Boxプレビューではこれらの参照がサポートされていないことに注意してください。サポートされていない参照を含むDWGファイルを表示しているすべてのエンドユーザーには、別の手順でワークフローを完了するよう促す通知が表示されます。
 </Warning>
 
 ## デモ
 
 ナビゲーション用の矢印を使用すると、さまざまなファイルタイプをプレビューできます。
 
-<iframe width="100%" height="560" scrolling="no" frameborder="no" title="Box Content Previewのデモ" src="//codepen.io/box-platform/embed/rmZdjm/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" allowtransparency allowfullscreen style={{width: "100%"}}>
-
-</iframe>
+<iframe width="100%" height="560" scrolling="no" frameborder="no" title="Box Content Previewのデモ" src="//codepen.io/box-platform/embed/rmZdjm/?height=560&theme-id=27216&default-tab=result&embed-version=2&editable=true" allowtransparency="true" allowfullscreen="true" style={{width: "100%"}} />
 
 ## API
 
@@ -174,7 +158,6 @@ preview.removeListener(eventName, listener);
  * @return {void}
  */
 preview.removeAllListeners();
-
 ```
 
 ### パラメータ
@@ -217,7 +200,6 @@ var mapTokenGenerator = function () {
     file_2345: "some_token_bcde",
   });
 };
-
 ```
 
 ## イベント
@@ -238,40 +220,38 @@ preview.show(...);
 
 // Remove listener when needed
 preview.removeListener(EVENTNAME, listener);
-
 ```
 
 `EVENTNAME`には、以下のいずれかを指定できます。
 
 * `viewer`イベントは、ビューアーインスタンスが最初に使用可能になったときにトリガーされます。これは、`load`イベントにも含まれているプロパティと同じオブジェクトです。プレビューでは、`load`の前にこのイベントがトリガーされるため、クライアントは、`load`イベントがトリガーされる前にそのリスナーをアタッチできます。
+
 * `load`イベントは、`show()`が呼び出されたときかプレビュー間の移動が発生したときに、プレビューが読み込まれるたびにトリガーされます。イベントデータには以下の内容が含まれます。
 
-```js
+  ```js
   error: 'message', // Error message if any error occurred while loading
   viewer: {...},    // Instance of the current viewer object if no error occurred
   metrics: {...},   // Performance metrics
   file: {...}       // Box file object with properties defined in file.js
-
-```
+  ```
 
 * `navigate`イベントは、移動が発生したときにトリガーされます。イベントには移動先のファイルのファイルIDが含まれており、このイベントは`load`の前にトリガーされます。
+
 * `notification`イベントは、プレビューラッパーまたはいずれかのビューアーで警告や致命的ではないエラーなどの通知を表示する場合にトリガーされます。イベントデータには以下の内容が含まれます。
 
-```js
+  ```js
   message: 'message', // Message to show
   type: 'warning'    // 'warning', 'notice', or 'error'
-
-```
+  ```
 
 * `viewerevent`: ビューアーごとに、一連の独自のイベントがトリガーされます。たとえば、画像ビューアーでは`rotate`や`resize`などがトリガーされるのに対し、別のビューアーでは別の一連のイベントがトリガーされる場合があります。プレビューラッパーは、以下を含むイベントデータとともに、プレビューレベルでイベントを再発行します。
 
-```js
+  ```js
   event: EVENTNAME,         // Event name
   data: DATA,               // Event data object
   viewerName: VIEWERNAME,   // Name of the viewer. See VIEWERNAME above
   fileId: fileId            // The file ID
-
-```
+  ```
 
 ### イベントの使用例
 
@@ -311,7 +291,6 @@ preview.addListener("rotate", (data) => {
   } else {
   }
 });
-
 ```
 
 ## 注釈
@@ -323,22 +302,18 @@ V4の注釈をプレビューに追加するには、以下の手順に従いま
 1. `npm i box-annotations@latest`を実行し、[Boxの注釈][annotations]をインストールします。
 
 <Warning>
-
-Boxの注釈のバージョンは、メジャーバージョン4以上である必要があります。
-
+  Boxの注釈のバージョンは、メジャーバージョン4以上である必要があります。
 </Warning>
 
 2. `npm i box-ui-elements@16.0.0`を実行し、注釈に関連した変更を含む[BUIE][buie]バージョンをインストールします。
 
 <Warning>
-
-Box UI Elementsは、V4の注釈が十分に機能している、使用可能な最小バージョンである必要があります。
-
+  Box UI Elementsは、V4の注釈が十分に機能している、使用可能な最小バージョンである必要があります。
 </Warning>
 
 3. 次のように、コンテンツプレビューとBoxの注釈をアプリケーションにインポートします。
 
-```js
+   ```js
    import boxAnnotations from "https://cdn.skypack.dev/box-annotations@latest";
 
    var file_id = "YOUR FILE ID";
@@ -379,14 +354,11 @@ Box UI Elementsは、V4の注釈が十分に機能している、使用可能な
 
    /* Show previewer */
    contentPreviewer.show(file_id, accessToken, options);
-
-```
+   ```
 
 <Warning>
-
-プロパティ`features: { activityFeed: { annotations: { enabled: true  } } } }
-`は、今後変更される可能性があります。
-
+  プロパティ`features: { activityFeed: { annotations: { enabled: true  } } } }
+  `は、今後変更される可能性があります。
 </Warning>
 
 ```html
@@ -404,21 +376,22 @@ Box UI Elementsは、V4の注釈が十分に機能している、使用可能な
 <div class="previewer"></div>
 
 <script type="module" src="./script.js"></script>
-
 ```
 
 ## Box AI for UI Elements
 
-Box AI for UI Elementsは、追加機能によってコンテンツプレビューUI Elementを強化するため、開発者はPlatformアプリにBox Q&A AI機能を追加できるようになります。Box AIの機能で強化されたプレビューUI Elementでは、以下の機能を提供します。
+Box AI for UI Elementsは、追加機能によってコンテンツプレビューUI Elementを強化するため、開発者はPlatformアプリにBox Q\&A AI機能を追加できるようになります。Box AIの機能で強化されたプレビューUI Elementでは、以下の機能を提供します。
 
-* Q&Aとドキュメントの要約。
+* Q\&Aとドキュメントの要約。
 * Box AIとの会話をリセットする \[**会話をクリア**] ボタン。
 * 回答の下に表示される引用情報 (回答に含まれる場合)。
 * 箇条書きや表などのマークダウン形式の応答のリクエストを可能にする、書式設定サポート。
 * 可能な限り最適な応答を得られるように以前のコンテキストの参照を可能にする、質問履歴。質問履歴は現在のセッションの間のみ保持されます。
 * 会話をサポートするために、デフォルトでチャットの先頭に表示される質問の候補。
 
-<Frame>![Box AIのオプションが有効になっているBox UI Element](/images/guides/embed/ui-elements/box-ai-ui-element.jpg)</Frame>
+<Frame>
+  ![Box AIのオプションが有効になっているBox UI Element](/images/guides/embed/ui-elements/box-ai-ui-element.jpg)
+</Frame>
 
 ### Box AI for UI Elementsの有効化
 
@@ -434,10 +407,9 @@ Box AI for UI Elementsは、追加機能によってコンテンツプレビュ�
 
    そのためには、次のコマンドを実行します。
 
-```sh
+   ```sh
    npx install-peerdeps box-ui-elements@^22.0.0
-
-```
+   ```
 
 ### JavaScriptの使用
 
@@ -472,7 +444,6 @@ preview.show(<FILE_ID>, <TOKEN>, {
     }
     hasHeader: true,
 });
-
 ```
 
 ### Reactコンポーネントの使用
@@ -483,9 +454,7 @@ ReactコンポーネントのヘッダーにBox AI要素を追加することも
 * `contentAnswersProps`プロパティ。デフォルトで`show`、`isCitationsEnabled`、`isMarkdownEnabled`、`isResetChatEnabled`、`suggestedQuestions`の各フィールドが含まれています。
 
 <Note>
-
-`suggestedQuestions`を適切にローカライズするには、プロンプトが翻訳されていることを確認してください。省略可能な`label`プロパティはスクリーンリーダー用であるのに対し、`prompt`プロパティはAIウィンドウでユーザーに表示されるテキストです。
-
+  `suggestedQuestions`を適切にローカライズするには、プロンプトが翻訳されていることを確認してください。省略可能な`label`プロパティはスクリーンリーダー用であるのに対し、`prompt`プロパティはAIウィンドウでユーザーに表示されるテキストです。
 </Note>
 
 ```js
@@ -527,12 +496,11 @@ export default () => {
       </IntlProvider>
   );
 };
-
 ```
 
 今回のリリースで提供されるコンテンツプレビュー用のイベントリスナー (`onAsk`、`onClearConversations`、`onRequestClose`) を使用して、さらにアプリをカスタマイズできます。
 
-##  スコープ 
+## &#x20;スコープ&#x20;
 
 アプリケーションで、エンドユーザーがコンテンツプレビュー機能のサブセットのみにアクセスできるようにする必要がある場合は、[ダウンスコープ][downscope]を使用して、アクセストークンを適切にダウンスコープして必要な権限のセットを含むトークンを生成し、コンテンツプレビューを初期化するエンドユーザークライアントに安全に渡すことができます。
 
@@ -554,10 +522,7 @@ export default () => {
 | `annotation_view_self` | ユーザーに自分の注釈のみの表示を許可します。                                                                                                                                                                        |
 
 <Info>
-**スコープを使用してハイライトによる注釈を有効にする**
-
-ハイライト注釈は`annotation_edit`および`annotation_view_all`スコープに含まれていません。ハイライトを有効にするには、ダウンスコープされたアクセストークンに`item_download`スコープを含める必要があります。
-
+  **スコープを使用してハイライトによる注釈を有効にする** ハイライト注釈は`annotation_edit`および`annotation_view_all`スコープに含まれていません。ハイライトを有効にするには、ダウンスコープされたアクセストークンに`item_download`スコープを含める必要があります。
 </Info>
 
 ### サンプルのシナリオ
@@ -577,25 +542,25 @@ export default () => {
 
 {/* i18n-disable localize-links */}
 
-[downscope]: /ja/guides/authentication/tokens/downscope
+[downscope]: /guides/authentication/tokens/downscope
 
-[scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
+[scopes]: /guides/api-calls/permissions-and-errors/scopes
 
 [annotations]: https://github.com/box/box-annotations
 
 [buie]: https://github.com/box/box-ui-elements/releases/tag/v16.0.0
 
-[annotationsguide]: /ja/guides/embed/ui-elements/annotations.md
+[annotationsguide]: /guides/embed/ui-elements/annotations.md
 
 [previewlib]: https://github.com/box/box-content-preview
 
-[expiredembed]: /ja/reference/resources/file--full/#param-expiring_embed_link
+[expiredembed]: /reference/resources/file--full/#param-expiring_embed_link
 
-[token]: /ja/guides/authentication/tokens/developer-tokens
+[token]: /guides/authentication/tokens/developer-tokens
 
 [aipackage]: https://www.npmjs.com/package/box-ui-elements/v/22.0.0
 
-[installation]: /ja/guides/embed/ui-elements/installation
+[installation]: /guides/embed/ui-elements/installation
 
 [blueprint-web]: https://www.npmjs.com/package/@box/blueprint-web
 
@@ -606,6 +571,6 @@ export default () => {
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

@@ -1,295 +1,281 @@
 ---
-title: "項目のメタデータの更新"
 related_endpoints:
-  - put_files_id_metadata_id_id
-  - put_folders_id_metadata_id_id
-related_guides: []
+  0: put_files_id_metadata_id_id
+  1: put_folders_id_metadata_id_id
+related_guides: {}
 related_resources:
-  - metadata
-  - metadata_template
+  0: metadata
+  1: metadata_template
 required_guides:
-  - metadata/instances/list
-  - metadata/instances/create
-  - metadata/templates/list
-category_id: metadata
-subcategory_id: metadata/4-instances
-is_index: false
-id: metadata/instances/update
-rank: 4
-type: guide
-total_steps: 5
-sibling_id: metadata/instances
-parent_id: metadata/instances
-next_page_id: metadata/instances/delete
-previous_page_id: metadata/instances/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/4-instances/4-update.md
+  0: metadata/instances/list
+  1: metadata/instances/create
+  2: metadata/templates/list
+title: 項目のメタデータの更新
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "項目のすべてのメタデータのリストの取得", href: "/ja/guides/metadata/instances/list", badge: "ガイド" },
-    { label: "項目へのメタデータの適用", href: "/ja/guides/metadata/instances/create", badge: "ガイド" },
-    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "ガイド" }
-  ]}
+  { label: "List all metadata on an item", href: "/guides/metadata/instances/list", badge: "GUIDE" },
+  { label: "Apply metadata to an item", href: "/guides/metadata/instances/create", badge: "GUIDE" },
+  { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" }
+]}
 />
+
 ファイルまたはフォルダに適用されたメタデータを更新するには、項目の`id`、テンプレートの`templateKey`と`scope`に加え、テンプレートインスタンスのデータを操作するための一連のJSON操作を使用します。
 
-## ファイルのメタデータの更新 
+## ファイルのメタデータの更新&#x20;
 
 ファイルのメタデータを更新するには、ファイルの`file_id`、テンプレートの`scope`と`templateKey`、およびテンプレートインスタンスのデータを操作するための一連のJSON操作を指定して[`PUT /files/:file_id/metadata/:scope/:templateKey`][e_on_file] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X PUT "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json-patch+json" \
-     -d '[
-        {
-          "op": "test",
-          "path": "/competitiveDocument",
-          "value": "no"
-        },
-        {
-          "op": "remove",
-          "path": "/competitiveDocument"
-        },
-        {
-          "op": "test",
-          "path": "/status",
-          "value": "active"
-        },
-        {
-          "op": "replace",
-          "path": "/status",
-          "value": "inactive"
-        },
-        {
-          "op": "test",
-          "path": "/author",
-          "value": "Jones"
-        },
-        {
-          "op": "copy",
-          "from": "/author",
-          "path": "/editor"
-        },
-        {
-          "op": "test",
-          "path": "/currentState",
-          "value": "proposal"
-        },
-        {
-          "op": "move",
-          "from": "/currentState",
-          "path": "/previousState"
-        },
-        {
-          "op": "add",
-          "path": "/currentState",
-          "value": "reviewed"
-        }
-      ]'
-```
+  ```sh cURL
+  curl -i -X PUT "https://api.box.com/2.0/files/12345/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json-patch+json" \
+       -d '[
+          {
+            "op": "test",
+            "path": "/competitiveDocument",
+            "value": "no"
+          },
+          {
+            "op": "remove",
+            "path": "/competitiveDocument"
+          },
+          {
+            "op": "test",
+            "path": "/status",
+            "value": "active"
+          },
+          {
+            "op": "replace",
+            "path": "/status",
+            "value": "inactive"
+          },
+          {
+            "op": "test",
+            "path": "/author",
+            "value": "Jones"
+          },
+          {
+            "op": "copy",
+            "from": "/author",
+            "path": "/editor"
+          },
+          {
+            "op": "test",
+            "path": "/currentState",
+            "value": "proposal"
+          },
+          {
+            "op": "move",
+            "from": "/currentState",
+            "path": "/previousState"
+          },
+          {
+            "op": "add",
+            "path": "/currentState",
+            "value": "reviewed"
+          }
+        ]'
+  ```
 
-```typescript Node/TypeScript v10
-await client.fileMetadata.updateFileMetadataById(
-  file.id,
-  'enterprise' as UpdateFileMetadataByIdScope,
-  templateKey,
-  [
-    {
-      op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
-      path: '/name',
-      value: 'Jack',
-    } satisfies UpdateFileMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
-      path: '/age',
-      value: 24,
-    } satisfies UpdateFileMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
-      path: '/birthDate',
-      value: '2000-01-03T02:20:50.520Z',
-    } satisfies UpdateFileMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
-      path: '/countryCode',
-      value: 'CA',
-    } satisfies UpdateFileMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
-      path: '/sports',
-      value: ['football'],
-    } satisfies UpdateFileMetadataByIdRequestBody,
-  ],
-);
-```
-
-```python Python v10
-client.file_metadata.update_file_metadata_by_id(
+  ```typescript Node/TypeScript v10
+  await client.fileMetadata.updateFileMetadataById(
     file.id,
-    UpdateFileMetadataByIdScope.ENTERPRISE,
-    template_key,
+    'enterprise' as UpdateFileMetadataByIdScope,
+    templateKey,
     [
-        UpdateFileMetadataByIdRequestBody(
-            op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
-            path="/name",
-            value="Jack",
-        ),
-        UpdateFileMetadataByIdRequestBody(
-            op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE, path="/age", value=24
-        ),
-        UpdateFileMetadataByIdRequestBody(
-            op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
-            path="/birthDate",
-            value="2000-01-03T02:20:50.520Z",
-        ),
-        UpdateFileMetadataByIdRequestBody(
-            op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
-            path="/countryCode",
-            value="CA",
-        ),
-        UpdateFileMetadataByIdRequestBody(
-            op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
-            path="/sports",
-            value=["football"],
-        ),
+      {
+        op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
+        path: '/name',
+        value: 'Jack',
+      } satisfies UpdateFileMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
+        path: '/age',
+        value: 24,
+      } satisfies UpdateFileMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
+        path: '/birthDate',
+        value: '2000-01-03T02:20:50.520Z',
+      } satisfies UpdateFileMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
+        path: '/countryCode',
+        value: 'CA',
+      } satisfies UpdateFileMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFileMetadataByIdRequestBodyOpField,
+        path: '/sports',
+        value: ['football'],
+      } satisfies UpdateFileMetadataByIdRequestBody,
     ],
-)
-```
+  );
+  ```
 
-```csharp .NET v10
-await client.FileMetadata.UpdateFileMetadataByIdAsync(fileId: file.Id, scope: UpdateFileMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: Array.AsReadOnly(new [] {new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/name", Value = "Jack" },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/age", Value = 24 },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/birthDate", Value = "2000-01-03T02:20:50.520Z" },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/countryCode", Value = "CA" },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/sports", Value = Array.AsReadOnly(new [] {"football"}) }}));
-```
+  ```python Python v10
+  client.file_metadata.update_file_metadata_by_id(
+      file.id,
+      UpdateFileMetadataByIdScope.ENTERPRISE,
+      template_key,
+      [
+          UpdateFileMetadataByIdRequestBody(
+              op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
+              path="/name",
+              value="Jack",
+          ),
+          UpdateFileMetadataByIdRequestBody(
+              op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE, path="/age", value=24
+          ),
+          UpdateFileMetadataByIdRequestBody(
+              op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
+              path="/birthDate",
+              value="2000-01-03T02:20:50.520Z",
+          ),
+          UpdateFileMetadataByIdRequestBody(
+              op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
+              path="/countryCode",
+              value="CA",
+          ),
+          UpdateFileMetadataByIdRequestBody(
+              op=UpdateFileMetadataByIdRequestBodyOpField.REPLACE,
+              path="/sports",
+              value=["football"],
+          ),
+      ],
+  )
+  ```
 
-```java Java v10
-client.getFileMetadata().updateFileMetadataById(file.getId(), UpdateFileMetadataByIdScope.ENTERPRISE, templateKey, Arrays.asList(new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/name").value("Jack").build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/age").value(24L).build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/birthDate").value("2000-01-03T02:20:50.520Z").build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/countryCode").value("CA").build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/sports").value(Arrays.asList("football")).build()))
-```
+  ```csharp .NET v10
+  await client.FileMetadata.UpdateFileMetadataByIdAsync(fileId: file.Id, scope: UpdateFileMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: Array.AsReadOnly(new [] {new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/name", Value = "Jack" },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/age", Value = 24 },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/birthDate", Value = "2000-01-03T02:20:50.520Z" },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/countryCode", Value = "CA" },new UpdateFileMetadataByIdRequestBody() { Op = UpdateFileMetadataByIdRequestBodyOpField.Replace, Path = "/sports", Value = Array.AsReadOnly(new [] {"football"}) }}));
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-file.updateMetadata(new Metadata("templateScope", "templateKey").add("/foo", "bar"));
-```
+  ```java Java v10
+  client.getFileMetadata().updateFileMetadataById(file.getId(), UpdateFileMetadataByIdScope.ENTERPRISE, templateKey, Arrays.asList(new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/name").value("Jack").build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/age").value(24L).build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/birthDate").value("2000-01-03T02:20:50.520Z").build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/countryCode").value("CA").build(), new UpdateFileMetadataByIdRequestBody.Builder().op(UpdateFileMetadataByIdRequestBodyOpField.REPLACE).path("/sports").value(Arrays.asList("football")).build()))
+  ```
 
-```py Python v4
-file_obj = client.file(file_id='11111')
-file_metadata = file_obj.metadata(scope='enterprise', template='myMetadata')
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  file.updateMetadata(new Metadata("templateScope", "templateKey").add("/foo", "bar"));
+  ```
 
-updates = file_metadata.start_update()
-updates.add('/foo', 'bar')
-updates.update('/baz', 'murp', old_value='quux')  # Ensure the old value was "quux" before updating to "murp"
+  ```py Python v4
+  file_obj = client.file(file_id='11111')
+  file_metadata = file_obj.metadata(scope='enterprise', template='myMetadata')
 
-updated_metadata = file_metadata.update(updates)
-print('Updated metadata on file!')
-print(f'foo is now {updated_metadata["foo"]} and baz is now {updated_metadata["baz"]}')
-```
+  updates = file_metadata.start_update()
+  updates.add('/foo', 'bar')
+  updates.update('/baz', 'murp', old_value='quux')  # Ensure the old value was "quux" before updating to "murp"
 
-```csharp .NET v6
-var updates = new List<BoxMetadataUpdate>()
-{
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/competitiveDocument",
-        Value = "no"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.remove,
-        Path = "/competitiveDocument"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/status",
-        Value = "active"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.replace,
-        Path = "/competitiveDocument",
-        Value = "inactive"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/author",
-        Value = "Jones"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.copy,
-        From="/author",
-        Path = "/editor"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/currentState",
-        Value = "proposal"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.move,
-        From = "/currentState",
-        Path = "/previousState"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.add,
-        Path = "/currentState",
-        Value = "reviewed"
-    }
-};
-Dictionary<string, object> updatedMetadata = await client.MetadataManager
-    .UpdateFileMetadataAsync("11111", updates, "enterprise", "marketingCollateral");
-```
+  updated_metadata = file_metadata.update(updates)
+  print('Updated metadata on file!')
+  print(f'foo is now {updated_metadata["foo"]} and baz is now {updated_metadata["baz"]}')
+  ```
 
-```js Node v4
-var updates = [
- { op: 'test', path: '/competitiveDocument', value: 'no' },
- { op: 'remove', path: '/competitiveDocument' },
- { op: 'test', path: '/status', value: 'active' },
- { op: 'replace', path: '/status', value: 'inactive' },
- { op: 'test', path: '/author', value: 'Jones' },
- { op: 'copy', from: '/author', path: '/editor' },
- { op: 'test', path: '/currentState', value: 'proposal' },
- { op: 'move', from: '/currentState', path: '/previousState' },
- { op: 'add', path: '/currentState', value: 'reviewed' }
-];
-client.files.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", updates)
- .then(metadata => {
-  /* metadata -> {
-   audience: 'internal',
-   documentType: 'Q1 plans',
-   status: 'inactive',
-   author: 'Jones',
-   '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
-   '$parent': 'file_11111',
-   '$id': '2094c584-68e1-475c-a581-534a4609594e',
-   '$version': 1,
-   '$typeVersion': 0,
-   editor: 'Jones',
-   previousState: 'proposal',
-   currentState: 'reviewed',
-   '$template': 'marketingCollateral',
-   '$scope': 'enterprise_12345' }
-  */
- });
-```
+  ```csharp .NET v6
+  var updates = new List<BoxMetadataUpdate>()
+  {
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/competitiveDocument",
+          Value = "no"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.remove,
+          Path = "/competitiveDocument"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/status",
+          Value = "active"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.replace,
+          Path = "/competitiveDocument",
+          Value = "inactive"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/author",
+          Value = "Jones"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.copy,
+          From="/author",
+          Path = "/editor"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/currentState",
+          Value = "proposal"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.move,
+          From = "/currentState",
+          Path = "/previousState"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.add,
+          Path = "/currentState",
+          Value = "reviewed"
+      }
+  };
+  Dictionary<string, object> updatedMetadata = await client.MetadataManager
+      .UpdateFileMetadataAsync("11111", updates, "enterprise", "marketingCollateral");
+  ```
+
+  ```js Node v4
+  var updates = [
+   { op: 'test', path: '/competitiveDocument', value: 'no' },
+   { op: 'remove', path: '/competitiveDocument' },
+   { op: 'test', path: '/status', value: 'active' },
+   { op: 'replace', path: '/status', value: 'inactive' },
+   { op: 'test', path: '/author', value: 'Jones' },
+   { op: 'copy', from: '/author', path: '/editor' },
+   { op: 'test', path: '/currentState', value: 'proposal' },
+   { op: 'move', from: '/currentState', path: '/previousState' },
+   { op: 'add', path: '/currentState', value: 'reviewed' }
+  ];
+  client.files.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", updates)
+   .then(metadata => {
+    /* metadata -> {
+     audience: 'internal',
+     documentType: 'Q1 plans',
+     status: 'inactive',
+     author: 'Jones',
+     '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
+     '$parent': 'file_11111',
+     '$id': '2094c584-68e1-475c-a581-534a4609594e',
+     '$version': 1,
+     '$typeVersion': 0,
+     editor: 'Jones',
+     previousState: 'proposal',
+     currentState: 'reviewed',
+     '$template': 'marketingCollateral',
+     '$scope': 'enterprise_12345' }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-認証済みユーザーがファイルのメタデータに対する変更を書き込めるようにするには、ファイルへの書き込みアクセス権限が必要です。
-
+  認証済みユーザーがファイルのメタデータに対する変更を書き込めるようにするには、ファイルへの書き込みアクセス権限が必要です。
 </Info>
 
 ## フォルダのメタデータを更新
@@ -297,251 +283,249 @@ client.files.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketi
 フォルダのメタデータを更新するには、フォルダの`folder_id`、テンプレートの`scope`と`templateKey`、およびテンプレートインスタンスのデータを操作するための一連のJSON操作を指定して[`PUT /folders/:folder_id/metadata/:scope/:templateKey`][e_on_folder] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X PUT "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json-patch+json" \
-     -d '[
-        {
-          "op": "test",
-          "path": "/competitiveDocument",
-          "value": "no"
-        },
-        {
-          "op": "remove",
-          "path": "/competitiveDocument"
-        },
-        {
-          "op": "test",
-          "path": "/status",
-          "value": "active"
-        },
-        {
-          "op": "replace",
-          "path": "/status",
-          "value": "inactive"
-        },
-        {
-          "op": "test",
-          "path": "/author",
-          "value": "Jones"
-        },
-        {
-          "op": "copy",
-          "from": "/author",
-          "path": "/editor"
-        },
-        {
-          "op": "test",
-          "path": "/currentState",
-          "value": "proposal"
-        },
-        {
-          "op": "move",
-          "from": "/currentState",
-          "path": "/previousState"
-        },
-        {
-          "op": "add",
-          "path": "/currentState",
-          "value": "reviewed"
-        }
-      ]'
-```
+  ```sh cURL
+  curl -i -X PUT "https://api.box.com/2.0/folders/4353455/metadata/enterprise_27335/blueprintTemplate" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json-patch+json" \
+       -d '[
+          {
+            "op": "test",
+            "path": "/competitiveDocument",
+            "value": "no"
+          },
+          {
+            "op": "remove",
+            "path": "/competitiveDocument"
+          },
+          {
+            "op": "test",
+            "path": "/status",
+            "value": "active"
+          },
+          {
+            "op": "replace",
+            "path": "/status",
+            "value": "inactive"
+          },
+          {
+            "op": "test",
+            "path": "/author",
+            "value": "Jones"
+          },
+          {
+            "op": "copy",
+            "from": "/author",
+            "path": "/editor"
+          },
+          {
+            "op": "test",
+            "path": "/currentState",
+            "value": "proposal"
+          },
+          {
+            "op": "move",
+            "from": "/currentState",
+            "path": "/previousState"
+          },
+          {
+            "op": "add",
+            "path": "/currentState",
+            "value": "reviewed"
+          }
+        ]'
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderMetadata.updateFolderMetadataById(
-  folder.id,
-  'enterprise' as UpdateFolderMetadataByIdScope,
-  templateKey,
-  [
-    {
-      op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
-      path: '/name',
-      value: 'Jack',
-    } satisfies UpdateFolderMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
-      path: '/age',
-      value: 24,
-    } satisfies UpdateFolderMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
-      path: '/birthDate',
-      value: '2000-01-03T02:20:50.520Z',
-    } satisfies UpdateFolderMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
-      path: '/countryCode',
-      value: 'CA',
-    } satisfies UpdateFolderMetadataByIdRequestBody,
-    {
-      op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
-      path: '/sports',
-      value: ['football'],
-    } satisfies UpdateFolderMetadataByIdRequestBody,
-  ],
-);
-```
-
-```python Python v10
-client.folder_metadata.update_folder_metadata_by_id(
+  ```typescript Node/TypeScript v10
+  await client.folderMetadata.updateFolderMetadataById(
     folder.id,
-    UpdateFolderMetadataByIdScope.ENTERPRISE,
-    template_key,
+    'enterprise' as UpdateFolderMetadataByIdScope,
+    templateKey,
     [
-        UpdateFolderMetadataByIdRequestBody(
-            op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
-            path="/name",
-            value="Jack",
-        ),
-        UpdateFolderMetadataByIdRequestBody(
-            op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE, path="/age", value=24
-        ),
-        UpdateFolderMetadataByIdRequestBody(
-            op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
-            path="/birthDate",
-            value="2000-01-03T02:20:50.520Z",
-        ),
-        UpdateFolderMetadataByIdRequestBody(
-            op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
-            path="/countryCode",
-            value="CA",
-        ),
-        UpdateFolderMetadataByIdRequestBody(
-            op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
-            path="/sports",
-            value=["football"],
-        ),
+      {
+        op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
+        path: '/name',
+        value: 'Jack',
+      } satisfies UpdateFolderMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
+        path: '/age',
+        value: 24,
+      } satisfies UpdateFolderMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
+        path: '/birthDate',
+        value: '2000-01-03T02:20:50.520Z',
+      } satisfies UpdateFolderMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
+        path: '/countryCode',
+        value: 'CA',
+      } satisfies UpdateFolderMetadataByIdRequestBody,
+      {
+        op: 'replace' as UpdateFolderMetadataByIdRequestBodyOpField,
+        path: '/sports',
+        value: ['football'],
+      } satisfies UpdateFolderMetadataByIdRequestBody,
     ],
-)
-```
+  );
+  ```
 
-```csharp .NET v10
-await client.FolderMetadata.UpdateFolderMetadataByIdAsync(folderId: folder.Id, scope: UpdateFolderMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: Array.AsReadOnly(new [] {new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/name", Value = "Jack" },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/age", Value = 24 },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/birthDate", Value = "2000-01-03T02:20:50.520Z" },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/countryCode", Value = "CA" },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/sports", Value = Array.AsReadOnly(new [] {"football"}) }}));
-```
+  ```python Python v10
+  client.folder_metadata.update_folder_metadata_by_id(
+      folder.id,
+      UpdateFolderMetadataByIdScope.ENTERPRISE,
+      template_key,
+      [
+          UpdateFolderMetadataByIdRequestBody(
+              op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
+              path="/name",
+              value="Jack",
+          ),
+          UpdateFolderMetadataByIdRequestBody(
+              op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE, path="/age", value=24
+          ),
+          UpdateFolderMetadataByIdRequestBody(
+              op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
+              path="/birthDate",
+              value="2000-01-03T02:20:50.520Z",
+          ),
+          UpdateFolderMetadataByIdRequestBody(
+              op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
+              path="/countryCode",
+              value="CA",
+          ),
+          UpdateFolderMetadataByIdRequestBody(
+              op=UpdateFolderMetadataByIdRequestBodyOpField.REPLACE,
+              path="/sports",
+              value=["football"],
+          ),
+      ],
+  )
+  ```
 
-```java Java v10
-client.getFolderMetadata().updateFolderMetadataById(folder.getId(), UpdateFolderMetadataByIdScope.ENTERPRISE, templateKey, Arrays.asList(new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/name").value("Jack").build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/age").value(24L).build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/birthDate").value("2000-01-03T02:20:50.520Z").build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/countryCode").value("CA").build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/sports").value(Arrays.asList("football")).build()))
-```
+  ```csharp .NET v10
+  await client.FolderMetadata.UpdateFolderMetadataByIdAsync(folderId: folder.Id, scope: UpdateFolderMetadataByIdScope.Enterprise, templateKey: templateKey, requestBody: Array.AsReadOnly(new [] {new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/name", Value = "Jack" },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/age", Value = 24 },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/birthDate", Value = "2000-01-03T02:20:50.520Z" },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/countryCode", Value = "CA" },new UpdateFolderMetadataByIdRequestBody() { Op = UpdateFolderMetadataByIdRequestBodyOpField.Replace, Path = "/sports", Value = Array.AsReadOnly(new [] {"football"}) }}));
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, "id");
-folder.updateMetadata(new Metadata().add("/foo", "bar"));
-```
+  ```java Java v10
+  client.getFolderMetadata().updateFolderMetadataById(folder.getId(), UpdateFolderMetadataByIdScope.ENTERPRISE, templateKey, Arrays.asList(new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/name").value("Jack").build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/age").value(24L).build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/birthDate").value("2000-01-03T02:20:50.520Z").build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/countryCode").value("CA").build(), new UpdateFolderMetadataByIdRequestBody.Builder().op(UpdateFolderMetadataByIdRequestBodyOpField.REPLACE).path("/sports").value(Arrays.asList("football")).build()))
+  ```
 
-```py Python v4
-folder = client.folder(folder_id='22222')
-folder_metadata = folder.metadata(scope='enterprise', template='myMetadata')
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, "id");
+  folder.updateMetadata(new Metadata().add("/foo", "bar"));
+  ```
 
-updates = folder_metadata.start_update()
-updates.add('/foo', 'bar')
-updates.update('/baz', 'murp', old_value='quux')  # Ensure the old value was "quux" before updating to "murp"
+  ```py Python v4
+  folder = client.folder(folder_id='22222')
+  folder_metadata = folder.metadata(scope='enterprise', template='myMetadata')
 
-updated_metadata = folder_metadata.update(updates)
-print('Updated metadata on folder!')
-print(f'foo is now {updated_metadata["foo"]} and baz is now {updated_metadata["baz"]}')
-```
+  updates = folder_metadata.start_update()
+  updates.add('/foo', 'bar')
+  updates.update('/baz', 'murp', old_value='quux')  # Ensure the old value was "quux" before updating to "murp"
 
-```csharp .NET v6
-var updates = new List<BoxMetadataUpdate>()
-{
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/competitiveDocument",
-        Value = "no"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.remove,
-        Path = "/competitiveDocument"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/status",
-        Value = "active"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.replace,
-        Path = "/competitiveDocument",
-        Value = "inactive"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/author",
-        Value = "Jones"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.copy,
-        From="/author",
-        Path = "/editor"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.test,
-        Path = "/currentState",
-        Value = "proposal"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.move,
-        From = "/currentState",
-        Path = "/previousState"
-    },
-    new BoxMetadataUpdate()
-    {
-        Op = MetadataUpdateOp.add,
-        Path = "/currentState",
-        Value = "reviewed"
-    }
-};
-Dictionary<string, object> updatedMetadata = await client.MetadataManager
-    .UpdateFolderMetadataAsync("11111", updates, "enterprise", "marketingCollateral");
-```
+  updated_metadata = folder_metadata.update(updates)
+  print('Updated metadata on folder!')
+  print(f'foo is now {updated_metadata["foo"]} and baz is now {updated_metadata["baz"]}')
+  ```
 
-```js Node v4
-var updates = [
- { op: 'test', path: '/competitiveDocument', value: 'no' },
- { op: 'remove', path: '/competitiveDocument' },
- { op: 'test', path: '/status', value: 'active' },
- { op: 'replace', path: '/status', value: 'inactive' },
- { op: 'test', path: '/author', value: 'Jones' },
- { op: 'copy', from: '/author', path: '/editor' },
- { op: 'test', path: '/currentState', value: 'proposal' },
- { op: 'move', from: '/currentState', path: '/previousState' },
- { op: 'add', path: '/currentState', value: 'reviewed' }
-];
-client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", updates)
- .then(metadata => {
-  /* metadata -> {
-   audience: 'internal',
-   documentType: 'Q1 plans',
-   status: 'inactive',
-   author: 'Jones',
-   '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
-   '$parent': 'folder_11111',
-   '$id': '2094c584-68e1-475c-a581-534a4609594e',
-   '$version': 1,
-   '$typeVersion': 0,
-   editor: 'Jones',
-   previousState: 'proposal',
-   currentState: 'reviewed',
-   '$template': 'marketingCollateral',
-   '$scope': 'enterprise_12345' }
-  */
- });
-```
+  ```csharp .NET v6
+  var updates = new List<BoxMetadataUpdate>()
+  {
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/competitiveDocument",
+          Value = "no"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.remove,
+          Path = "/competitiveDocument"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/status",
+          Value = "active"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.replace,
+          Path = "/competitiveDocument",
+          Value = "inactive"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/author",
+          Value = "Jones"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.copy,
+          From="/author",
+          Path = "/editor"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.test,
+          Path = "/currentState",
+          Value = "proposal"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.move,
+          From = "/currentState",
+          Path = "/previousState"
+      },
+      new BoxMetadataUpdate()
+      {
+          Op = MetadataUpdateOp.add,
+          Path = "/currentState",
+          Value = "reviewed"
+      }
+  };
+  Dictionary<string, object> updatedMetadata = await client.MetadataManager
+      .UpdateFolderMetadataAsync("11111", updates, "enterprise", "marketingCollateral");
+  ```
+
+  ```js Node v4
+  var updates = [
+   { op: 'test', path: '/competitiveDocument', value: 'no' },
+   { op: 'remove', path: '/competitiveDocument' },
+   { op: 'test', path: '/status', value: 'active' },
+   { op: 'replace', path: '/status', value: 'inactive' },
+   { op: 'test', path: '/author', value: 'Jones' },
+   { op: 'copy', from: '/author', path: '/editor' },
+   { op: 'test', path: '/currentState', value: 'proposal' },
+   { op: 'move', from: '/currentState', path: '/previousState' },
+   { op: 'add', path: '/currentState', value: 'reviewed' }
+  ];
+  client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marketingCollateral", updates)
+   .then(metadata => {
+    /* metadata -> {
+     audience: 'internal',
+     documentType: 'Q1 plans',
+     status: 'inactive',
+     author: 'Jones',
+     '$type': 'marketingCollateral-d086c908-2498-4d3e-8a1f-01e82bfc2abe',
+     '$parent': 'folder_11111',
+     '$id': '2094c584-68e1-475c-a581-534a4609594e',
+     '$version': 1,
+     '$typeVersion': 0,
+     editor: 'Jones',
+     previousState: 'proposal',
+     currentState: 'reviewed',
+     '$template': 'marketingCollateral',
+     '$scope': 'enterprise_12345' }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-認証済みユーザーがファイルのメタデータに対する変更を書き込めるようにするには、ファイルへの書き込みアクセス権限が必要です。
-
+  認証済みユーザーがファイルのメタデータに対する変更を書き込めるようにするには、ファイルへの書き込みアクセス権限が必要です。
 </Info>
 
 ## JSON操作
@@ -561,15 +545,12 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
   { "op": "move", "from": "/currentState", "path": "/previousState" },
   { "op": "add", "path": "/currentState", "value": "reviewed" }
 ]
-
 ```
 
 <Warning>
+  メタデータを編集する際には、メタデータテンプレートのスキーマに準拠した値のみを使用できます。更新は完全に適用されるか、まったく適用されないかのどちらかです。更新操作の適用中にエラーが発生した場合、メタデータインスタンスは変更されません。
 
-メタデータを編集する際には、メタデータテンプレートのスキーマに準拠した値のみを使用できます。更新は完全に適用されるか、まったく適用されないかのどちらかです。更新操作の適用中にエラーが発生した場合、メタデータインスタンスは変更されません。
-
-テンプレートインスタンスを更新できるのは、テンプレートがすでにファイルまたはフォルダに割り当てられている場合のみです。
-
+  テンプレートインスタンスを更新できるのは、テンプレートがすでにファイルまたはフォルダに割り当てられている場合のみです。
 </Warning>
 
 ### 新しい値の追加
@@ -584,7 +565,6 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
     "value": "Model 3"
   }
 ]
-
 ```
 
 これにより、値が`Model 3`の`name`フィールドが追加されます。この操作の前は、テンプレートの`name`フィールドに値がありませんでした。
@@ -603,13 +583,10 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
   "$scope": "enterprise_1234567",
   "$canEdit": true
 }
-
 ```
 
 <Warning>
-
-`enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
-
+  `enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
 </Warning>
 
 ### 値の置き換え
@@ -624,7 +601,6 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
     "value": "Model 4"
   }
 ]
-
 ```
 
 これにより、`name`フィールドの値`Model 3`が新しい値`Model
@@ -644,13 +620,10 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
   "$scope": "enterprise_1234567",
   "$canEdit": true
 }
-
 ```
 
 <Warning>
-
-`enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
-
+  `enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
 </Warning>
 
 ### 値のコピー
@@ -665,7 +638,6 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
     "path": "/displayName"
   }
 ]
-
 ```
 
 これにより、`name`フィールドの値と一致する値が設定された`displayName`フィールドが追加されます。この操作の前は、テンプレートの`displayName`フィールドに値がありませんでした。
@@ -684,13 +656,10 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
   "$scope": "enterprise_1234567",
   "$canEdit": true
 }
-
 ```
 
 <Warning>
-
-`enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
-
+  `enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
 </Warning>
 
 ### 値の移動
@@ -705,7 +674,6 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
     "path": "/displayName"
   }
 ]
-
 ```
 
 これにより、`name`フィールドの値と一致する値が設定された`displayName`フィールドが追加されます。この操作の前は、テンプレートの`displayName`フィールドに値がありませんでした。この操作の後、`name`フィールドはすでに存在しません。
@@ -724,13 +692,10 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
   "$scope": "enterprise_1234567",
   "$canEdit": true
 }
-
 ```
 
 <Warning>
-
-`enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
-
+  `enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
 </Warning>
 
 ### 値の削除
@@ -744,7 +709,6 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
     "path": "/name"
   }
 ]
-
 ```
 
 これにより、`name`フィールドがメタデータインスタンスから完全に削除されます。
@@ -762,13 +726,10 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
   "$scope": "enterprise_1234567",
   "$canEdit": true
 }
-
 ```
 
 <Warning>
-
-`enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
-
+  `enum`および`multiSelect`フィールドの場合、この新しい値には、そのフィールドに有効なオプションのいずれかを指定する必要があります。
 </Warning>
 
 ### 値のテスト
@@ -783,7 +744,6 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
     "value": "Model 4"
   }
 ]
-
 ```
 
 テストに失敗すると、APIはいずれの操作も実行せず、次のエラーとともにHTTPステータス`409 Conflict`を返します。
@@ -794,14 +754,13 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
   "code": "failed_json_patch_application",
   "request_id": "bzxgr1gbcq5h67pj"
 }
-
 ```
 
 この操作の主な目的は、何らかの操作が実行される前に、メタデータインスタンスの値が予想どおりであることを確認することです。Box APIでは、変更がすべて実行されるかまったく実行されないかのいずれかであるため、テストの失敗は、変換が適用される前にすべての値が予想どおりかどうかを確認するのに非常に役立ちます。
 
-[e_on_file]: /ja/reference/put_files_id_metadata_id_id
+[e_on_file]: /reference/put_files_id_metadata_id_id
 
-[e_on_folder]: /ja/reference/put_folders_id_metadata_id_id
+[e_on_folder]: /reference/put_folders_id_metadata_id_id
 
 [jsonpatch]: https://tools.ietf.org/html/rfc6902
 
@@ -810,13 +769,14 @@ client.folders.updateMetadata('11111', client.metadata.scopes.ENTERPRISE, "marke
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
-    { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
-  ]}
+  { label: "Update metadata instance on file", href: "/reference/put-files-id-metadata-id-id", badge: "PUT" },
+  { label: "Update metadata instance on folder", href: "/reference/put-folders-id-metadata-id-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
-  title="RELATED RESOURCES"
+  title="関連するリソース"
   items={[
-    { label: "メタデータ", href: "/ja/guides/metadata/index", badge: "ガイド" }
-  ]}
+  { label: "Metadata", href: "/guides/metadata/index", badge: "GUIDE" }
+]}
 />

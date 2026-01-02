@@ -1,25 +1,14 @@
 ---
-title: "Box Doc Genジョブ"
 rank: 5
 related_endpoints:
-  - get_docgen_jobs_v2025.0
-  - get_docgen_batch_jobs_id_v2025.0
-  - get_docgen_jobs_id_v2025.0
+  0: get_docgen_jobs_v2025.0
+  1: get_docgen_batch_jobs_id_v2025.0
+  2: get_docgen_jobs_id_v2025.0
 related_guides:
-  - docgen/docgen-getting-started
-  - docgen/generate-document
-category_id: docgen
-subcategory_id: null
-is_index: false
-id: docgen/docgen-jobs
-type: guide
-total_steps: 5
-sibling_id: docgen
-parent_id: docgen
-next_page_id: ''
-previous_page_id: docgen/docgen-templates
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/docgen/docgen-jobs.md
+  0: docgen/docgen-getting-started
+  1: docgen/generate-document
+title: Box Doc Genジョブ
+
 fullyTranslated: true
 ---
 
@@ -28,123 +17,121 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box Doc Genジョブは、ドキュメントを生成するリクエストを行うと実行されます。`POST`リクエスト内の`document_generation_data`パラメータは、ドキュメントを生成するためのBox Doc Genジョブの実行を表すエントリの配列です。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L 'https://api.box.com/2.0/docgen_batches' \
+       -H 'box-version: 2025.0' \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>' \
+       -D '{
+          "file": {
+              "id": "12345678",
+              "type": "file"
+          },
+          "input_source": "api",
+          "destination_folder": {
+              "id": "12345678",
+              "type": "folder"
+          },
+          "output_type": "docx",
+          "document_generation_data": [
+              {
+                  "generated_file_name": "Image test",
+                  "user_input": {
+                      "order": {
+                          "id": "12305",
+                          "date": "18-08-2023",
+                          "country": "US",
+                          "expiryDate": "18-08-2024",
+                          "currency": "$",
+                          "amount": 5060.5,
+                          "taxRate": 10,
+                          "requester": "John",
+                          "approver": "Smith",
+                          "department": "Procurement",
+                          "paymentTerms": "30 days",
+                          "deliveryTerms": "30 days",
+                          "deliveryDate": "18-09-2023",
+                          "vendor": {
+                              "company": "Example company",
+                              "address": {
+                                  "street": "Example street",
+                                  "city": "Example city",
+                                  "zip": "EX-456"
+                              }
+                          },
+                          "products": [
+                              {
+                                  "id": 1,
+                                  "name": "A4 Papers",
+                                  "type": "non-fragile",
+                                  "quantity": 100,
+                                  "price": 29,
+                                  "amount": 2900
+                              },
+                              {
+                                  "id": 2,
+                                  "name": "Ink  Cartridge",
+                                  "type": "non-fragile",
+                                  "quantity": 40,
+                                  "price": 39,
+                                  "amount": 1560
+                              },
+                              {
+                                  "id": 3,
+                                  "name": "Adhesive tape",
+                                  "type": "non-fragile",
+                                  "quantity": 20,
+                                  "price": 30,
+                                  "amount": 600.5
+                              }
+                          ]
+                      }
+                  }
+              }
+          ]`
+  ```
 
-```sh cURL
-curl -L 'https://api.box.com/2.0/docgen_batches' \
-     -H 'box-version: 2025.0' \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>' \
-     -D '{
-        "file": {
-            "id": "12345678",
-            "type": "file"
-        },
-        "input_source": "api",
-        "destination_folder": {
-            "id": "12345678",
-            "type": "folder"
-        },
-        "output_type": "docx",
-        "document_generation_data": [
-            {
-                "generated_file_name": "Image test",
-                "user_input": {
-                    "order": {
-                        "id": "12305",
-                        "date": "18-08-2023",
-                        "country": "US",
-                        "expiryDate": "18-08-2024",
-                        "currency": "$",
-                        "amount": 5060.5,
-                        "taxRate": 10,
-                        "requester": "John",
-                        "approver": "Smith",
-                        "department": "Procurement",
-                        "paymentTerms": "30 days",
-                        "deliveryTerms": "30 days",
-                        "deliveryDate": "18-09-2023",
-                        "vendor": {
-                            "company": "Example company",
-                            "address": {
-                                "street": "Example street",
-                                "city": "Example city",
-                                "zip": "EX-456"
-                            }
-                        },
-                        "products": [
-                            {
-                                "id": 1,
-                                "name": "A4 Papers",
-                                "type": "non-fragile",
-                                "quantity": 100,
-                                "price": 29,
-                                "amount": 2900
-                            },
-                            {
-                                "id": 2,
-                                "name": "Ink  Cartridge",
-                                "type": "non-fragile",
-                                "quantity": 40,
-                                "price": 39,
-                                "amount": 1560
-                            },
-                            {
-                                "id": 3,
-                                "name": "Adhesive tape",
-                                "type": "non-fragile",
-                                "quantity": 20,
-                                "price": 30,
-                                "amount": 600.5
-                            }
-                        ]
-                    }
-                }
-            }
-        ]`
-```
-
-```typescript Node/TypeScript v10
-await client.docgen.createDocgenBatchV2025R0({
-  file: new FileReferenceV2025R0({ id: uploadedFile.id }),
-  inputSource: 'api',
-  destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField({
-    id: folder.id,
-  }),
-  outputType: 'pdf',
-  documentGenerationData: [
-    {
-      generatedFileName: 'test',
-      userInput: { ['abc']: 'xyz' },
-    } satisfies DocGenDocumentGenerationDataV2025R0,
-  ],
-} satisfies DocGenBatchCreateRequestV2025R0);
-```
-
-```python Python v10
-client.docgen.create_docgen_batch_v2025_r0(
-    FileReferenceV2025R0(id=uploaded_file.id),
-    "api",
-    CreateDocgenBatchV2025R0DestinationFolder(id=folder.id),
-    "pdf",
-    [
-        DocGenDocumentGenerationDataV2025R0(
-            generated_file_name="test", user_input={"abc": "xyz"}
-        )
+  ```typescript Node/TypeScript v10
+  await client.docgen.createDocgenBatchV2025R0({
+    file: new FileReferenceV2025R0({ id: uploadedFile.id }),
+    inputSource: 'api',
+    destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField({
+      id: folder.id,
+    }),
+    outputType: 'pdf',
+    documentGenerationData: [
+      {
+        generatedFileName: 'test',
+        userInput: { ['abc']: 'xyz' },
+      } satisfies DocGenDocumentGenerationDataV2025R0,
     ],
-)
-```
+  } satisfies DocGenBatchCreateRequestV2025R0);
+  ```
 
-```cs .NET v10
-await client.Docgen.CreateDocgenBatchV2025R0Async(requestBody: new DocGenBatchCreateRequestV2025R0(file: new FileReferenceV2025R0(id: uploadedFile.Id), inputSource: "api", destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.Id), outputType: "pdf", documentGenerationData: Array.AsReadOnly(new [] {new DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: new Dictionary<string, object>() { { "abc", "xyz" } })})));
-```
+  ```python Python v10
+  client.docgen.create_docgen_batch_v2025_r0(
+      FileReferenceV2025R0(id=uploaded_file.id),
+      "api",
+      CreateDocgenBatchV2025R0DestinationFolder(id=folder.id),
+      "pdf",
+      [
+          DocGenDocumentGenerationDataV2025R0(
+              generated_file_name="test", user_input={"abc": "xyz"}
+          )
+      ],
+  )
+  ```
 
-```swift Swift v10
-try await client.docgen.createDocgenBatchV2025R0(requestBody: DocGenBatchCreateRequestV2025R0(file: FileReferenceV2025R0(id: uploadedFile.id), inputSource: "api", destinationFolder: DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.id), outputType: "pdf", documentGenerationData: [DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: ["abc": "xyz"])]))
-```
+  ```cs .NET v10
+  await client.Docgen.CreateDocgenBatchV2025R0Async(requestBody: new DocGenBatchCreateRequestV2025R0(file: new FileReferenceV2025R0(id: uploadedFile.Id), inputSource: "api", destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.Id), outputType: "pdf", documentGenerationData: Array.AsReadOnly(new [] {new DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: new Dictionary<string, object>() { { "abc", "xyz" } })})));
+  ```
 
-```java Java v10
-client.getDocgen().createDocgenBatchV2025R0(new DocGenBatchCreateRequestV2025R0(new FileReferenceV2025R0(uploadedFile.getId()), "api", new DocGenBatchCreateRequestV2025R0DestinationFolderField(folder.getId()), "pdf", Arrays.asList(new DocGenDocumentGenerationDataV2025R0("test", mapOf(entryOf("abc", "xyz"))))))
-```
+  ```swift Swift v10
+  try await client.docgen.createDocgenBatchV2025R0(requestBody: DocGenBatchCreateRequestV2025R0(file: FileReferenceV2025R0(id: uploadedFile.id), inputSource: "api", destinationFolder: DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.id), outputType: "pdf", documentGenerationData: [DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: ["abc": "xyz"])]))
+  ```
 
+  ```java Java v10
+  client.getDocgen().createDocgenBatchV2025R0(new DocGenBatchCreateRequestV2025R0(new FileReferenceV2025R0(uploadedFile.getId()), "api", new DocGenBatchCreateRequestV2025R0DestinationFolderField(folder.getId()), "pdf", Arrays.asList(new DocGenDocumentGenerationDataV2025R0("test", mapOf(entryOf("abc", "xyz"))))))
+  ```
 </CodeGroup>
 
 Box Doc Gen APIを使用すると、Box Doc Genジョブに関する情報を取得できます。
@@ -158,35 +145,33 @@ Box Doc Gen APIの使用を開始する前に、[Box Doc Genの使い方][docgen
 実行されたすべてのBox Doc Genジョブのリストを取得するには、`GET /2.0/docgen_jobs`エンドポイントを使用します。追加のパラメータを指定する必要はありません。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/docgen_jobs" \
+       -H 'box-version: 2025.0' \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/docgen_jobs" \
-     -H 'box-version: 2025.0' \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.docgen.getDocgenJobsV2025R0({
+    limit: 10000,
+  } satisfies GetDocgenJobsV2025R0QueryParams);
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgen.getDocgenJobsV2025R0({
-  limit: 10000,
-} satisfies GetDocgenJobsV2025R0QueryParams);
-```
+  ```python Python v10
+  client.docgen.get_docgen_jobs_v2025_r0(limit=10000)
+  ```
 
-```python Python v10
-client.docgen.get_docgen_jobs_v2025_r0(limit=10000)
-```
+  ```cs .NET v10
+  await client.Docgen.GetDocgenJobsV2025R0Async(queryParams: new GetDocgenJobsV2025R0QueryParams() { Limit = 10000 });
+  ```
 
-```cs .NET v10
-await client.Docgen.GetDocgenJobsV2025R0Async(queryParams: new GetDocgenJobsV2025R0QueryParams() { Limit = 10000 });
-```
+  ```swift Swift v10
+  try await client.docgen.getDocgenJobsV2025R0(queryParams: GetDocgenJobsV2025R0QueryParams(limit: Int64(10000)))
+  ```
 
-```swift Swift v10
-try await client.docgen.getDocgenJobsV2025R0(queryParams: GetDocgenJobsV2025R0QueryParams(limit: Int64(10000)))
-```
-
-```java Java v10
-client.getDocgen().getDocgenJobsV2025R0(new GetDocgenJobsV2025R0QueryParams.Builder().limit(10000L).build())
-```
-
+  ```java Java v10
+  client.getDocgen().getDocgenJobsV2025R0(new GetDocgenJobsV2025R0QueryParams.Builder().limit(10000L).build())
+  ```
 </CodeGroup>
 
 ## IDを指定してBox Doc Genジョブを取得
@@ -194,33 +179,31 @@ client.getDocgen().getDocgenJobsV2025R0(new GetDocgenJobsV2025R0QueryParams.Buil
 特定のBox Doc Genジョブを取得するには、`GET /2.0/docgen_jobs_id`エンドポイントを使用して、`job_id`を指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/docgen_jobs/12345" \
+       -H 'box-version: 2025.0' \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/docgen_jobs/12345" \
-     -H 'box-version: 2025.0' \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.docgen.getDocgenJobByIdV2025R0(docgenJobItemFromList.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgen.getDocgenJobByIdV2025R0(docgenJobItemFromList.id);
-```
+  ```python Python v10
+  client.docgen.get_docgen_job_by_id_v2025_r0(docgen_job_item_from_list.id)
+  ```
 
-```python Python v10
-client.docgen.get_docgen_job_by_id_v2025_r0(docgen_job_item_from_list.id)
-```
+  ```cs .NET v10
+  await client.Docgen.GetDocgenJobByIdV2025R0Async(jobId: docgenJobItemFromList.Id);
+  ```
 
-```cs .NET v10
-await client.Docgen.GetDocgenJobByIdV2025R0Async(jobId: docgenJobItemFromList.Id);
-```
+  ```swift Swift v10
+  try await client.docgen.getDocgenJobByIdV2025R0(jobId: docgenJobItemFromList.id)
+  ```
 
-```swift Swift v10
-try await client.docgen.getDocgenJobByIdV2025R0(jobId: docgenJobItemFromList.id)
-```
-
-```java Java v10
-client.getDocgen().getDocgenJobByIdV2025R0(docgenJobItemFromList.getId())
-```
-
+  ```java Java v10
+  client.getDocgen().getDocgenJobByIdV2025R0(docgenJobItemFromList.getId())
+  ```
 </CodeGroup>
 
 ## 特定のIDを使用してバッチ内のGet Box Doc Genジョブを取得
@@ -228,41 +211,39 @@ client.getDocgen().getDocgenJobByIdV2025R0(docgenJobItemFromList.getId())
 単一のリクエストで複数のドキュメントを生成できます。このような場合、個別の生成ジョブが各ドキュメントに対して実行され、これらすべてのジョブが1つの「バッチ」(つまり、1つのリクエスト) に含まれます。1つのリクエスト内で実行されたすべてのジョブを取得するには、`GET /2.0/docgen_batch_jobs_id`エンドポイントを使用し、`batch_id`を指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/docgen_jobs/12345" \
+       -H 'box-version: 2025.0' \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/docgen_jobs/12345" \
-     -H 'box-version: 2025.0' \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.docgen.getDocgenJobByIdV2025R0(docgenJobItemFromList.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgen.getDocgenJobByIdV2025R0(docgenJobItemFromList.id);
-```
+  ```python Python v10
+  client.docgen.get_docgen_job_by_id_v2025_r0(docgen_job_item_from_list.id)
+  ```
 
-```python Python v10
-client.docgen.get_docgen_job_by_id_v2025_r0(docgen_job_item_from_list.id)
-```
+  ```cs .NET v10
+  await client.Docgen.GetDocgenJobByIdV2025R0Async(jobId: docgenJobItemFromList.Id);
+  ```
 
-```cs .NET v10
-await client.Docgen.GetDocgenJobByIdV2025R0Async(jobId: docgenJobItemFromList.Id);
-```
+  ```swift Swift v10
+  try await client.docgen.getDocgenJobByIdV2025R0(jobId: docgenJobItemFromList.id)
+  ```
 
-```swift Swift v10
-try await client.docgen.getDocgenJobByIdV2025R0(jobId: docgenJobItemFromList.id)
-```
-
-```java Java v10
-client.getDocgen().getDocgenJobByIdV2025R0(docgenJobItemFromList.getId())
-```
-
+  ```java Java v10
+  client.getDocgen().getDocgenJobByIdV2025R0(docgenJobItemFromList.getId())
+  ```
 </CodeGroup>
 
-[docgen-prerequisites]: /ja/guides/docgen/docgen-getting-started
+[docgen-prerequisites]: /guides/docgen/docgen-getting-started
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "ガイド" },
-    { label: "ドキュメントの生成", href: "/ja/guides/docgen/generate-document", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+  { label: "Generate documents", href: "/guides/docgen/generate-document", badge: "GUIDE" }
+]}
 />

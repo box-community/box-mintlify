@@ -1,21 +1,12 @@
 ---
-title: "直接アップロード"
+alias_paths: ""
 rank: 1
-alias_paths: []
-category_id: uploads
-subcategory_id: uploads/direct
-is_index: true
-id: uploads/direct
-type: guide
-total_steps: 2
-sibling_id: uploads
-parent_id: uploads
-next_page_id: uploads/direct/file-version
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/direct/index.md
+sidebarTitle: Overview
+title: 直接アップロード
+
 fullyTranslated: true
 ---
+
 Boxにファイルをアップロードする最も簡単な方法は、直接アップロードを使用することです。直接アップロードにより、アプリケーションは1つのリクエストでファイルをアップロードできます。ファイルサイズが50 MBを超える場合は、[分割アップロードエンドポイント][cu]を使用することをお勧めします。
 
 Boxにアップロードできるファイルサイズの上限は、アカウントの種類によって異なります。詳細については、[価格比較ページ][pcp]を参照してください。
@@ -38,6 +29,6 @@ Boxにアップロードできるファイルサイズの上限は、アカウ�
 
 Boxへのアップロードは、通常のAPIコールとは異なるドメイン (`upload.box.com`) を介して行われます。独自のアップロードコードを記述する際は、この点に注意する必要があります。すべてのBox公式SDKでは、各APIコールに適切なドメインが選択されます。
 
-[cu]: /ja/guides/uploads/chunked
+[cu]: /guides/uploads/chunked
 
 [pcp]: https://www.box.com/pricing

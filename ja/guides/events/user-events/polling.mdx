@@ -1,85 +1,70 @@
 ---
-title: "Long pollingイベント"
+alias_paths:
+  0: /guides/events/polling
+  1: /guides/events/polling/
 rank: 4
 related_endpoints:
-  - get_events
-  - options_events
+  0: get_events
+  1: options_events
 related_guides:
-  - events/enterprise-events/for-enterprise
-  - events/user-events/for-user
-required_guides: []
-alias_paths:
-  - /guides/events/polling
-  - /guides/events/polling/
-category_id: events
-subcategory_id: events/user-events
-is_index: false
-id: events/user-events/polling
-type: guide
-total_steps: 2
-sibling_id: events/user-events
-parent_id: events/user-events
-next_page_id: ''
-previous_page_id: events/user-events/for-user
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/user-events/polling.md
+  0: events/enterprise-events/for-enterprise
+  1: events/user-events/for-user
+required_guides: {}
+title: Long pollingイベント
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-Boxアカウントでアクティビティのリアルタイム通知を取得するために、[`OPTIONS /events`](/ja/reference/options-events) APIのLong polling機能を使用できます。
+Boxアカウントでアクティビティのリアルタイム通知を取得するために、[`OPTIONS /events`](/reference/options-events) APIのLong polling機能を使用できます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X OPTIONS "https://api.box.com/2.0/events" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X OPTIONS "https://api.box.com/2.0/events" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.events.getEventsWithLongPolling();
+  ```
 
-```typescript Node/TypeScript v10
-await client.events.getEventsWithLongPolling();
-```
+  ```python Python v10
+  client.events.get_events_with_long_polling()
+  ```
 
-```python Python v10
-client.events.get_events_with_long_polling()
-```
+  ```cs .NET v10
+  await client.Events.GetEventsWithLongPollingAsync();
+  ```
 
-```cs .NET v10
-await client.Events.GetEventsWithLongPollingAsync();
-```
+  ```swift Swift v10
+  try await client.events.getEventsWithLongPolling()
+  ```
 
-```swift Swift v10
-try await client.events.getEventsWithLongPolling()
-```
+  ```java Java v10
+  client.getEvents().getEventsWithLongPolling()
+  ```
 
-```java Java v10
-client.getEvents().getEventsWithLongPolling()
-```
+  ```python Python v4
+  events = client.events().generate_events_with_long_polling()
+  for event in events:
+      print(f'Got {event.event_type} event')
+  ```
 
-```python Python v4
-events = client.events().generate_events_with_long_polling()
-for event in events:
-    print(f'Got {event.event_type} event')
-```
-
-```javascript Node v4
-client.events.getEventStream(function(err, stream) {
-  if (err) {
-    // handle error
-  }
-  stream.on('data', function(event) {
-    // handle the event
+  ```javascript Node v4
+  client.events.getEventStream(function(err, stream) {
+    if (err) {
+      // handle error
+    }
+    stream.on('data', function(event) {
+      // handle the event
+    });
   });
-});
-```
-
+  ```
 </CodeGroup>
 
 <Warning>
-
-Long pollingはUser Eventにのみ使用できます。Enterprise EventではLong pollingがサポートされません。
-
+  Long pollingはUser Eventにのみ使用できます。Enterprise EventではLong pollingがサポートされません。
 </Warning>
 
 ## Long polling
@@ -87,19 +72,16 @@ Long pollingはUser Eventにのみ使用できます。Enterprise EventではLon
 Long pollingでは、HTTPリクエストを開き、サーバーがレスポンスを送信するまでそのリクエストを開いたままにして、そのプロセスを何度も繰り返して更新されたレスポンスを受信します。
 
 <Info>
-
-SDKには、新しいイベントに対するLong pollingにより、イベントフィードをイベントストリームに変換するためのサポートが組み込まれています。
-
+  SDKには、新しいイベントに対するLong pollingにより、イベントフィードをイベントストリームに変換するためのサポートが組み込まれています。
 </Info>
 
 ### Long polling URL
 
-Long pollingを使用するには、まず、リクエストを[`OPTIONS /events`](/ja/reference/options-events) APIに送信し、Long polling URLを取得します。
+Long pollingを使用するには、まず、リクエストを[`OPTIONS /events`](/reference/options-events) APIに送信し、Long polling URLを取得します。
 
 ```sh
 curl -X OPTIONS https://api.box.com/2.0/events \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -115,7 +97,6 @@ curl -X OPTIONS https://api.box.com/2.0/events \
     }
   ]
 }
-
 ```
 
 ### リアルタイムサーバー
@@ -139,14 +120,15 @@ curl -X OPTIONS https://api.box.com/2.0/events \
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
-    { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
-  ]}
+  { label: "List user and enterprise events", href: "/reference/get-events", badge: "GET" },
+  { label: "Get events long poll endpoint", href: "/reference/options-events", badge: "OPTIONS" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Enterprise Eventの取得", href: "/ja/guides/events/enterprise-events/for-enterprise", badge: "ガイド" },
-    { label: "User Eventの取得", href: "/ja/guides/events/user-events/for-user", badge: "ガイド" }
-  ]}
+  { label: "Get Enterprise Events", href: "/guides/events/enterprise-events/for-enterprise", badge: "GUIDE" },
+  { label: "Get User Events", href: "/guides/events/user-events/for-user", badge: "GUIDE" }
+]}
 />

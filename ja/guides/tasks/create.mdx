@@ -1,24 +1,12 @@
 ---
-title: "タスクの作成"
 related_endpoints:
-  - post_tasks
+  0: post_tasks
 related_guides:
-  - tasks/for-file
-  - tasks/get
-  - tasks/update
-category_id: tasks
-subcategory_id: null
-is_index: false
-id: tasks/create
-rank: 1
-type: guide
-total_steps: 5
-sibling_id: tasks
-parent_id: tasks
-next_page_id: tasks/get
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/1-create.md
+  0: tasks/for-file
+  1: tasks/get
+  2: tasks/update
+title: タスクの作成
+
 fullyTranslated: true
 ---
 
@@ -27,111 +15,111 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 タスクを作成するには、タスクの`action`と、タスクの追加先となるファイルを表す`item`を指定して[`POST /tasks`][post_tasks] APIを呼び出す必要があります。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/tasks" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "item": {
-         "id": "11446498",
-         "type": "file"
-       },
-       "action": "review"
-     }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/tasks" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "item": {
+           "id": "11446498",
+           "type": "file"
+         },
+         "action": "review"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.tasks.createTask({
-  item: {
-    type: 'file' as CreateTaskRequestBodyItemTypeField,
-    id: file.id,
-  } satisfies CreateTaskRequestBodyItemField,
-  message: 'test message',
-  dueAt: dateTime,
-  action: 'review' as CreateTaskRequestBodyActionField,
-  completionRule: 'all_assignees' as CreateTaskRequestBodyCompletionRuleField,
-} satisfies CreateTaskRequestBody);
-```
+  ```typescript Node/TypeScript v10
+  await client.tasks.createTask({
+    item: {
+      type: 'file' as CreateTaskRequestBodyItemTypeField,
+      id: file.id,
+    } satisfies CreateTaskRequestBodyItemField,
+    message: 'test message',
+    dueAt: dateTime,
+    action: 'review' as CreateTaskRequestBodyActionField,
+    completionRule: 'all_assignees' as CreateTaskRequestBodyCompletionRuleField,
+  } satisfies CreateTaskRequestBody);
+  ```
 
-```python Python v10
-client.tasks.create_task(
-    CreateTaskItem(type=CreateTaskItemTypeField.FILE, id=file.id),
-    action=CreateTaskAction.REVIEW,
-    message="test message",
-    due_at=date_time,
-    completion_rule=CreateTaskCompletionRule.ALL_ASSIGNEES,
-)
-```
+  ```python Python v10
+  client.tasks.create_task(
+      CreateTaskItem(type=CreateTaskItemTypeField.FILE, id=file.id),
+      action=CreateTaskAction.REVIEW,
+      message="test message",
+      due_at=date_time,
+      completion_rule=CreateTaskCompletionRule.ALL_ASSIGNEES,
+  )
+  ```
 
-```csharp .NET v10
-await client.Tasks.CreateTaskAsync(requestBody: new CreateTaskRequestBody(item: new CreateTaskRequestBodyItemField() { Type = CreateTaskRequestBodyItemTypeField.File, Id = file.Id }) { Message = "test message", DueAt = dateTime, Action = CreateTaskRequestBodyActionField.Review, CompletionRule = CreateTaskRequestBodyCompletionRuleField.AllAssignees });
-```
+  ```csharp .NET v10
+  await client.Tasks.CreateTaskAsync(requestBody: new CreateTaskRequestBody(item: new CreateTaskRequestBodyItemField() { Type = CreateTaskRequestBodyItemTypeField.File, Id = file.Id }) { Message = "test message", DueAt = dateTime, Action = CreateTaskRequestBodyActionField.Review, CompletionRule = CreateTaskRequestBodyCompletionRuleField.AllAssignees });
+  ```
 
-```swift Swift v10
-try await client.tasks.createTask(requestBody: CreateTaskRequestBody(item: CreateTaskRequestBodyItemField(type: CreateTaskRequestBodyItemTypeField.file, id: file.id), message: "test message", dueAt: dateTime, action: CreateTaskRequestBodyActionField.review, completionRule: CreateTaskRequestBodyCompletionRuleField.allAssignees))
-```
+  ```swift Swift v10
+  try await client.tasks.createTask(requestBody: CreateTaskRequestBody(item: CreateTaskRequestBodyItemField(type: CreateTaskRequestBodyItemTypeField.file, id: file.id), message: "test message", dueAt: dateTime, action: CreateTaskRequestBodyActionField.review, completionRule: CreateTaskRequestBodyCompletionRuleField.allAssignees))
+  ```
 
-```java Java v10
-client.getTasks().createTask(new CreateTaskRequestBody.Builder(new CreateTaskRequestBodyItemField.Builder().id(file.getId()).type(CreateTaskRequestBodyItemTypeField.FILE).build()).action(CreateTaskRequestBodyActionField.REVIEW).message("test message").dueAt(dateTime).completionRule(CreateTaskRequestBodyCompletionRuleField.ALL_ASSIGNEES).build())
-```
+  ```java Java v10
+  client.getTasks().createTask(new CreateTaskRequestBody.Builder(new CreateTaskRequestBodyItemField.Builder().id(file.getId()).type(CreateTaskRequestBodyItemTypeField.FILE).build()).action(CreateTaskRequestBodyActionField.REVIEW).message("test message").dueAt(dateTime).completionRule(CreateTaskRequestBodyCompletionRuleField.ALL_ASSIGNEES).build())
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-Date dueAt = new Date();
-file.addTask(BoxTask.Action.REVIEW, "Please review this file.", dueAt);
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  Date dueAt = new Date();
+  file.addTask(BoxTask.Action.REVIEW, "Please review this file.", dueAt);
+  ```
 
-```py Python v4
-message = 'Please review this'
-due_at = "2014-04-03T11:09:43-07:00"
-task = client.file(file_id='11111').create_task(message, due_at)
-print(f'Task message is {task.message} and it is due at {task.due_at}')
-```
+  ```py Python v4
+  message = 'Please review this'
+  due_at = "2014-04-03T11:09:43-07:00"
+  task = client.file(file_id='11111').create_task(message, due_at)
+  print(f'Task message is {task.message} and it is due at {task.due_at}')
+  ```
 
-```csharp .NET v6
-var taskParams = new BoxTaskCreateRequest()
-{
-    Item = new BoxRequestEntity()
-    {
-        Type = BoxType.file,
-        Id = "11111"
-    },
-    Message = "Please review!"
-};
-BoxTask task = await client.TasksManager.CreateTaskAsync(taskParams);
-```
+  ```csharp .NET v6
+  var taskParams = new BoxTaskCreateRequest()
+  {
+      Item = new BoxRequestEntity()
+      {
+          Type = BoxType.file,
+          Id = "11111"
+      },
+      Message = "Please review!"
+  };
+  BoxTask task = await client.TasksManager.CreateTaskAsync(taskParams);
+  ```
 
-```js Node v4
-var options = {
- message: 'Please review for publication!',
- due_at: '2014-04-03T11:09:43-07:00'
-};
-client.tasks.create('22222', options)
- .then(task => {
-  /* task -> {
-   type: 'task',
-   id: '11111',
-   item: 
-   { type: 'file',
-    id: '22222',
-    sequence_id: '0',
-    etag: '0',
-    sha1: '0bbd79a105c504f99573e3799756debba4c760cd',
-    name: 'box-logo.png' },
-   due_at: '2014-04-03T11:09:43-07:00',
-   action: 'review',
+  ```js Node v4
+  var options = {
    message: 'Please review for publication!',
-   task_assignment_collection: { total_count: 0, entries: [] },
-   is_completed: false,
-   created_by: 
-   { type: 'user',
-    id: '33333',
-    name: 'Example User',
-    login: 'user@example.com' },
-   created_at: '2013-04-03T11:12:54-07:00' }
-  */
- });
-```
+   due_at: '2014-04-03T11:09:43-07:00'
+  };
+  client.tasks.create('22222', options)
+   .then(task => {
+    /* task -> {
+     type: 'task',
+     id: '11111',
+     item: 
+     { type: 'file',
+      id: '22222',
+      sequence_id: '0',
+      etag: '0',
+      sha1: '0bbd79a105c504f99573e3799756debba4c760cd',
+      name: 'box-logo.png' },
+     due_at: '2014-04-03T11:09:43-07:00',
+     action: 'review',
+     message: 'Please review for publication!',
+     task_assignment_collection: { total_count: 0, entries: [] },
+     is_completed: false,
+     created_by: 
+     { type: 'user',
+      id: '33333',
+      name: 'Example User',
+      login: 'user@example.com' },
+     created_at: '2013-04-03T11:12:54-07:00' }
+    */
+   });
+  ```
 </CodeGroup>
 
 ## タスクのアクション
@@ -153,19 +141,20 @@ Boxは現在、`action`値によって定義される、`review`と`complete`と
 
 ファイルに関連するタスクは、そのファイルの複数のコラボレータに割り当てることができます。また、タスクの`completion_rule`を使用すると、タスクを完了する必要があるのはタスクが割り当てられているすべてのユーザー (`all_assignees`) か1人の担当者のみ (`any_assignee`) かを定義できます。
 
-[post_tasks]: /ja/reference/post_tasks
+[post_tasks]: /reference/post_tasks
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create task", href: "/reference/post-tasks", badge: "POST" }
-  ]}
+  { label: "Create task", href: "/reference/post-tasks", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルのすべてのタスクのリストの取得", href: "/ja/guides/tasks/for-file", badge: "ガイド" },
-    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "ガイド" },
-    { label: "既存のタスクの変更", href: "/ja/guides/tasks/update", badge: "ガイド" }
-  ]}
+  { label: "Lists all tasks for a file", href: "/guides/tasks/for-file", badge: "GUIDE" },
+  { label: "Get information about a task", href: "/guides/tasks/get", badge: "GUIDE" },
+  { label: "Make changes to an existing task", href: "/guides/tasks/update", badge: "GUIDE" }
+]}
 />
