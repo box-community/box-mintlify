@@ -1,30 +1,16 @@
 ---
-title: "分類"
 rank: 7
 related_endpoints:
-  - post_metadata_templates_schema#classifications
-  - >-
-    put_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema#add
-  - >-
-    put_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema#update
-  - >-
-    put_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema#delete
-  - post_files_id_metadata_enterprise_securityClassification-6VMVochwUWo
-  - post_folders_id_metadata_enterprise_securityClassification-6VMVochwUWo
+  0: post_metadata_templates_schema#classifications
+  1: put_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema#add
+  2: put_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema#update
+  3: put_metadata_templates_enterprise_securityClassification-6VMVochwUWo_schema#delete
+  4: post_files_id_metadata_enterprise_securityClassification-6VMVochwUWo
+  5: post_folders_id_metadata_enterprise_securityClassification-6VMVochwUWo
 related_resources:
-  - classification
-category_id: metadata
-subcategory_id: null
-is_index: false
-id: metadata/classifications
-type: guide
-total_steps: 2
-sibling_id: metadata
-parent_id: metadata
-next_page_id: metadata
-previous_page_id: metadata/scopes
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/classifications.md
+  0: classification
+title: 分類
+
 fullyTranslated: true
 ---
 
@@ -35,12 +21,10 @@ Boxを使用すると、ユーザーおよびアプリケーションは、セ�
 分類APIを使用すると、新しい分類ラベルを作成したり、分類をファイルやフォルダに割り当てたりすることができます。
 
 <Frame border center>
-
-![文字列フィールド](./classification-example.png)
-
+  ![文字列フィールド](./classification-example.png)
 </Frame>
 
-分類では、[メタデータAPI](/ja/guides/metadata)を使用して、分類ラベルを作成したり、分類をファイルやフォルダに割り当てたりします。メタデータテンプレートとメタデータインスタンスの詳細については、[メタデータ](/ja/guides/metadata)に関するガイドを参照してください。
+分類では、[メタデータAPI](/guides/metadata)を使用して、分類ラベルを作成したり、分類をファイルやフォルダに割り当てたりします。メタデータテンプレートとメタデータインスタンスの詳細については、[メタデータ](/guides/metadata)に関するガイドを参照してください。
 
 ## 分類とメタデータ
 
@@ -52,7 +36,7 @@ Boxを使用すると、ユーザーおよびアプリケーションは、セ�
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Add classification to file", href: "/reference/post-files-id-metadata-enterprise-securityClassification-6VMVochwUWo", badge: "POST" },
-    { label: "Add classification to folder", href: "/reference/post-folders-id-metadata-enterprise-securityClassification-6VMVochwUWo", badge: "POST" }
-  ]}
+  { label: "Add classification to file", href: "/reference/post-files-id-metadata-enterprise-securityClassification-6VMVochwUWo", badge: "POST" },
+  { label: "Add classification to folder", href: "/reference/post-folders-id-metadata-enterprise-securityClassification-6VMVochwUWo", badge: "POST" }
+]}
 />

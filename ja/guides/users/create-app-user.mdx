@@ -1,35 +1,24 @@
 ---
-title: "App Userの作成"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - post_users
+  0: post_users
 related_guides:
-  - users/create-managed-user
-  - users/deprovision
-  - users/deprovision/transfer-folders
-related_pages: []
-required_guides: []
+  0: users/create-managed-user
+  1: users/deprovision
+  2: users/deprovision/transfer-folders
+related_pages: {}
 related_resources:
-  - user
-alias_paths: []
-category_id: users
-subcategory_id: null
-is_index: false
-id: users/create-app-user
-type: guide
-total_steps: 4
-sibling_id: users
-parent_id: users
-next_page_id: users/delete-user
-previous_page_id: users/create-managed-user
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/users/create-app-user.md
+  0: user
+required_guides: {}
+title: App Userの作成
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-App Userは、[JWT認証](/ja/guides/authentication/jwt/jwt-setup)を使用しているアプリによってのみ作成されるプログラム上のユーザーアカウントです。ユーザーがログインするためのBoxアカウントを持っていなくても、ユーザー、グループ、またはプロセスをアプリケーションの背後で表せるようにすることを目的としています。
+App Userは、[JWT認証](/guides/authentication/jwt/jwt-setup)を使用しているアプリによってのみ作成されるプログラム上のユーザーアカウントです。ユーザーがログインするためのBoxアカウントを持っていなくても、ユーザー、グループ、またはプロセスをアプリケーションの背後で表せるようにすることを目的としています。
 
 App Userは、BoxアプリケーションがAPIを介してのみアクセスでき、`box.com`に直接ログインするための資格情報を持っていません。
 
@@ -46,33 +35,29 @@ App Userは、BoxアプリケーションがAPIを介してのみアクセスで
 新しいApp Userを生成するには、最低でもApp Userの名前が必要になります。
 
 <CodeGroup>
+  ```java Java v5
+  BoxUser.Info createdUserInfo = BoxUser.createAppUser(api, "A User");
+  ```
 
-```java Java v5
-BoxUser.Info createdUserInfo = BoxUser.createAppUser(api, "A User");
-```
+  ```python Python v4
+  new_app_user = client.create_user('App User 123', login=None)
+  ```
 
-```python Python v4
-new_app_user = client.create_user('App User 123', login=None)
-```
-
-```cs .NET v6
-var userParams = new BoxUserRequest()
-{
-    Name = "App User 12",
-    ExternalAppUserId = "external-id",
-    IsPlatformAccessOnly = true
-};
-BoxUser newUser = await client.UsersManager.CreateEnterpriseUserAsync(userParams);
-```
-
+  ```cs .NET v6
+  var userParams = new BoxUserRequest()
+  {
+      Name = "App User 12",
+      ExternalAppUserId = "external-id",
+      IsPlatformAccessOnly = true
+  };
+  BoxUser newUser = await client.UsersManager.CreateEnterpriseUserAsync(userParams);
+  ```
 </CodeGroup>
 
 App Userの作成時に設定できるすべての使用可能なオプションパラメータを確認するには、[ユーザーを作成](endpoint://post-users)エンドポイントを参照してください。
 
 <Note>
-
-新しく作成したアカウントを変更できるようにするには、受信した確認メールにあるリンクをクリックする必要があります。
-
+  新しく作成したアカウントを変更できるようにするには、受信した確認メールにあるリンクをクリックする必要があります。
 </Note>
 
 App Userが作成されると、ユーザーオブジェクトが返されます。ユーザーオブジェクト内には、App UserのIDがあります。これは、ユーザーを変更するAPIリクエストを実行するために今後使用される可能性があります。
@@ -80,14 +65,15 @@ App Userが作成されると、ユーザーオブジェクトが返されます
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create user", href: "/reference/post-users", badge: "POST" }
-  ]}
+  { label: "Create user", href: "/reference/post-users", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "管理対象ユーザーの作成", href: "/ja/guides/users/create-managed-user", badge: "ガイド" },
-    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "ガイド" },
-    { label: "ファイルとフォルダの転送", href: "/ja/guides/users/deprovision/transfer-folders", badge: "ガイド" }
-  ]}
+  { label: "Create Managed User", href: "/guides/users/create-managed-user", badge: "GUIDE" },
+  { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" },
+  { label: "Transfer Files & Folders", href: "/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+]}
 />

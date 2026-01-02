@@ -1,44 +1,31 @@
 ---
-title: "Box Editのカスタムドメイン"
-rank: 17
-related_endpoints: []
-related_guides:
-  - embed/ui-elements
-required_guides:
-  - embed/ui-elements/installation
-related_resources: []
 alias_paths:
-  - /docs/setting-up-box-tools-to-work-with-custom-domains
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/custom-domains
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: ''
-previous_page_id: embed/ui-elements/viewers-and-events
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/custom-domains.md
+  0: /docs/setting-up-box-tools-to-work-with-custom-domains
+rank: 17
+related_endpoints: {}
+related_guides:
+  0: embed/ui-elements
+related_resources: {}
+required_guides:
+  0: embed/ui-elements/installation
+title: Box Editのカスタムドメイン
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
+
 サードパーティ製ウェブアプリとBox Toolsを統合するには、アプリケーションのURLを明示的に追加する必要があります。Windowsでは、そのためにレジストリキーを追加します。macOSでは、ターミナルコマンドをいくつか実行してドメインの追加と削除を実行する必要があります。
 
 <Info>
-
-セーフリストへのドメインの追加機能は、**Box Toolsバージョン4.5.0**で追加されました。
-
+  セーフリストへのドメインの追加機能は、**Box Toolsバージョン4.5.0**で追加されました。
 </Info>
 
 ## セーフリストへの追加 (Windowsの場合)
@@ -50,28 +37,21 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 テキストエディタで`Add_OpenWith_WhiteListed_Domain.reg`を開きます。
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-1.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-1.png)
 </Frame>
 
 <Info>
-
-エントリを追加する際は、改行して追加します。
-
+  エントリを追加する際は、改行して追加します。
 </Info>
 
 ファイルを閉じて (変更を保存して)、管理者権限でコマンドプロンプトを開き、.regファイルに移動して次のコマンドを入力します。
 
 ```sh
 reg import "Add_OpenWith_WhiteListed_Domain.reg"
-
 ```
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-3.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-3.png)
 </Frame>
 
 ### マシンごとの設定
@@ -84,28 +64,21 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 プレースホルダのドメインを、許可したいドメインに置き換えます。
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-4.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-4.png)
 </Frame>
 
 <Info>
-
-エントリを追加する際は、改行して追加します。
-
+  エントリを追加する際は、改行して追加します。
 </Info>
 
 ファイルを閉じて (変更を保存して)、管理者権限でコマンドプロンプトを開き、.regファイルに移動して次のコマンドを入力します。
 
 ```sh
 reg import "Add_OpenWith_WhiteListed_Domain.reg"
-
 ```
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-6.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-6.png)
 </Frame>
 
 以下のいずれかの方法を使用して、Windowsサービスである**Box Local Com Service** (`Box Edit.exe`) を再起動します。
@@ -118,9 +91,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 * `net start "Box Local Com Service"`
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-7.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-7.png)
 </Frame>
 
 #### UIを使用する場合
@@ -128,17 +99,13 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 `Windows + R`を押して、`services.msc`を入力します。
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-8.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-8.png)
 </Frame>
 
 システムトレイで`Box Edit`を見つけて`Box Edit.exe`を再起動します。
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-9.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-9.png)
 </Frame>
 
 右クリックして \[**終了**] を選択します。
@@ -146,9 +113,7 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 `%programfiles%\Box\Box Edit`を開いて、`Box Edit.exe`を実行します。
 
 <Frame border>
-
-![Box Tools](/images/guides/embed/ui-elements/box-tools-10.png)
-
+  ![Box Tools](/images/guides/embed/ui-elements/box-tools-10.png)
 </Frame>
 
 ### 削除
@@ -166,35 +131,30 @@ reg import "Add_OpenWith_WhiteListed_Domain.reg"
 
 ```sh
 chmod u+rx OpenWith.sh
-
 ```
 
 ドメインを**追加**するには、ターミナルで次のコマンドを実行します。
 
 ```sh
 ./OpenWith.sh -a domain1 domain2 ...
-
 ```
 
 ドメインを**削除**するには、ターミナルで次のコマンドを実行します。
 
 ```sh
 ./OpenWith.sh -r domain1 domain2 ...
-
 ```
 
 ドメインを**すべてクリア**するには、ターミナルで次のコマンドを実行します。
 
 ```sh
 ./OpenWith.sh -c
-
 ```
 
 すべてのドメインの**リストを取得**するには、ターミナルで次のコマンドを実行します。
 
 ```sh
 ./OpenWith.sh -l
-
 ```
 
 ### メモ
@@ -210,6 +170,6 @@ Box Toolsをアンインストールすると、すべてのドメインが削�
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

@@ -1,0 +1,190 @@
+---
+description: Learn how to use Box AI to automatically extract data from documents with natural language prompts using the Box Python SDK.
+sidebarTitle: Box AI - Freeform extraction
+title: Natural language extraction with Box AI in Python
+
+fullyTranslated: true
+---
+
+[Box AI](/ai-dev-zone) exposes intelligent extraction capabilities that enable developers to automatically extract key-value pairs from documents through a single API call. This powerful feature transforms unstructured document content into actionable metadata without manual data entry, streamlining document processing workflows for invoices, forms, contracts, and other business documents.
+
+This quick start demonstrates how to configure the Box Python SDK and use Box AI to extract data from a W-2 stored in Box.
+
+<Steps>
+  <Step title="Boxアプリケーションを作成して構成する">
+    任意のBox Platform統合では、最初のステップとして、Boxアプリケーションを作成して構成します。
+
+    1. [Box開発者コンソール](https://app.box.com/developers/console)に移動します。
+    2. このクイックスタートでは、アプリケーションの種類として`Client Credentials Grant`を使用してアプリを作成します。
+    3. アプリが作成されたら、以下のスコープを有効にします。
+       * `Read all files and folders stored in Box`
+       * `Write all files and folders stored in Box`
+       * `Manage AI`
+
+    Boxアプリケーションの新規作成の詳細については、[最初のアプリケーションの作成](/guides/getting-started/first-application#create-your-first-application)を参照してください。
+  </Step>
+
+  <Step title="テストファイルをアップロードする">
+    After preparing the template, select a file to test. For this quick start, use this [sample W-2](/static/quickstarts/extract/files/freeform-extract-file.pdf).
+
+    1. テスト用ドキュメントをダウンロードして、Boxアカウントにドラッグアンドドロップします。
+    2. ファイルIDを確認するには、Boxでファイルを開いてURLを調べます。パスの最後の部分がファイルIDです。たとえば、次のようなURLがあるとします: `https://app.box.com/file/2064123286902`
+
+       この場合、ファイルIDは`2064123286902`です。
+  </Step>
+
+  <Step title="環境を設定する">
+    抽出を実行するために、開発環境を設定します。このクイックスタートでは、PythonとBox Python SDKバージョン10を使用します。お使いのマシンにPython 3.11以上がインストールされていることを確認してください。
+
+    1. プロジェクト用に新しいディレクトリを作成し、そのディレクトリに移動します。
+    2. 仮想環境を作成します。
+       ```bash
+       python3 -m venv .venv
+       source .venv/bin/activate
+       ```
+    3. Box Python SDKをインストールします。
+       ```bash
+       pip install "boxsdk~=10"
+       ```
+    4. `.env`ファイルから環境変数を読み込むために`python-dotenv`パッケージをインストールします。
+       ```bash
+       pip install python-dotenv
+       ```
+    5. プロジェクトディレクトリのルートに`.env`ファイルを作成し、以下の環境変数を追加します。その際、プレースホルダの値を実際のBoxアプリの資格情報と前の手順で確認したIDに置き換えます。
+       ```bash
+        BOX_DEVELOPER_TOKEN=your_box_developer_token
+
+        BOX_METADATA_TEMPLATE_KEY=your_metadata_template_key
+        BOX_FILE_ID=your_box_file_id
+       ```
+
+    To get your developer token, go to the Box Developer Console, open your app, and navigate to the **Configuration** tab.
+
+    6. \[**開発者トークンを生成**] をクリックして新しいトークンを作成します。
+
+    <Tip>
+      簡略化するために、このクイックスタートでは、有効期間の短い開発者トークンを使用します。実稼働環境では、開発者トークンではなく、お使いのアプリに設定された方法 (クライアント資格情報許可など) で認証する必要があります。
+    </Tip>
+  </Step>
+
+  <Step title="Create the freeform-extract.py file">
+    開発環境の準備ができました。Box AIを使用してドキュメントからデータを抽出するPythonスクリプトを作成できます。
+
+    1. プロジェクトディレクトリのルートに`freeform-extract.py`という名前の新しいファイルを作成し、以下のコードを追加します。
+
+       ```python
+       import os
+
+       from dotenv import load_dotenv
+
+       from box_sdk_gen import (
+           AiItemBase,
+           BoxClient,
+           BoxDeveloperTokenAuth
+       )
+
+       # Set up environment variables
+       load_dotenv()
+
+       developer_token = os.getenv("BOX_DEVELOPER_TOKEN")
+       file_id = os.getenv("BOX_FILE_ID")
+
+       def get_box_client(token: str) -> BoxClient:
+           
+           if not developer_token:
+               raise ValueError("BOX_DEVELOPER_TOKEN is not set in environment variables.")
+           
+           auth = BoxDeveloperTokenAuth(token=token)
+           client = BoxClient(auth=auth)
+
+           return client
+
+       def main():
+           client = get_box_client(token=developer_token)
+
+           # Get the current user and print the ID to validate the client is working
+           me = client.users.get_user_me()
+           print(f"My user ID is {me.id}")
+
+       if __name__ == "__main__":
+           main()
+       ```
+
+       このコードは、環境変数を`.env`ファイルから読み込み、Box SDKクライアントを初期化し、現在のユーザーのIDを出力して、クライアントが正しく動作していることを確認します。
+
+    2. ターミナルで次のコマンドを使用してスクリプトを実行します。
+
+       ```bash
+       python freeform-extract.py
+       ```
+
+       Box SDKクライアントが正しく設定されると、コンソールにはユーザーIDが表示されます。次に例を示します。
+
+       ```bash
+       My user ID is 123456789
+       ```
+  </Step>
+
+  <Step title="データを抽出する">
+    Box SDKクライアントが動作を開始したら、Box AIを使用してドキュメントからデータを抽出するためのコードを追加できます。
+
+    1. `get_box_client`関数と`main`関数の間に次の関数を追加します。
+
+       ```python
+       def extract_metadata(client: BoxClient, file_id: str) -> str:
+
+           prompt = """
+           firstName, lastName, wages, federalTaxWithheld, 
+           socialSecurityWages, socialSecurityTaxWithheld, 
+           medicareWagesAndTips, medicareTaxWithheld, 
+           stateWages, stateTaxWithheld, 
+           localWagesAndTips, localTaxWithheld
+           """
+
+           metadata = client.ai.create_ai_extract(
+               prompt,
+               [AiItemBase(id=file_id)]
+           )
+           
+           return metadata.to_dict()['answer']
+       ```
+
+       This function uses the Box AI `create_ai_extract` method to extract metadata from the specified file. Your BoxClient and the file ID are sent to the function, which returns the extracted metadata as a dictionary.
+
+    2. `main`関数でメタデータを抽出する関数呼び出しを追加します。新しい`main`関数に次のロジックが含まれていることを確認します。
+
+       ```python
+       def main():
+           client = get_box_client(token=developer_token)
+
+           me = client.users.get_user_me()
+           print(f"My user ID is {me.id}")
+
+           metadata = extract_metadata(client=client, file_id=file_id)
+
+           print(f"\n\nExtracted Metadata: {metadata}")
+       ```
+
+       SDKはBox AIへのAPIコールを処理し、抽出されたメタデータを[`AiExtractResponse`](/reference/resources/ai-extract-response)オブジェクトとして返します。このクイックスタートでは、このコードによって、このオブジェクトがディクショナリに変換され、抽出されたキー/値ペアを含む`answer`フィールドが返されます。
+
+    3. ターミナルで次のコマンドを実行して、抽出されたメタデータをコンソールに出力し、抽出が成功したかどうかを確認します。
+
+       ```bash
+       python freeform-extract.py
+       ```
+
+       If the extraction was successful, the console displays your user ID followed by the extracted metadata from the W-2.
+
+       ```bash
+       My user ID is 123456789
+
+       Extracted Metadata: {"firstName": "Wayne", "lastName": "Gatsby", "wages": "355000", "federalTaxWithheld": "125600", "socialSecurityWages": "355000", "socialSecurityTaxWithheld": "12300", "medicareWagesAndTips": "355000", "medicareTaxWithheld": "13200", "stateWages": "355,000", "stateTaxWithheld": "15000", "localWagesAndTips": "355000", "localTaxWithheld": "8000"}
+       ```
+  </Step>
+</Steps>
+
+## リソース
+
+* [最終的なコード](https://github.com/box-community/box-quickstarts/tree/main/box-ai-freeform-extract-quickstart)
+* [Extract Freeform Metadata API Reference](/reference/post-ai-extract)
+* [Box Python SDK](https://github.com/box/box-python-sdk/tree/main)

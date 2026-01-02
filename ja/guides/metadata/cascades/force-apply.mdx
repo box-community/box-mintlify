@@ -1,26 +1,14 @@
 ---
-title: "フォルダ内のすべての項目に対するメタデータの強制適用"
 related_endpoints:
-  - post_metadata_cascade_policies_id_apply
+  0: post_metadata_cascade_policies_id_apply
 related_guides:
-  - metadata/cascades/list
-  - metadata/cascades/force-apply
-  - metadata/cascades/delete
+  0: metadata/cascades/list
+  1: metadata/cascades/force-apply
+  2: metadata/cascades/delete
 related_resources:
-  - metadata_cascade_policy
-category_id: metadata
-subcategory_id: metadata/6-cascades
-is_index: false
-id: metadata/cascades/force-apply
-rank: 4
-type: guide
-total_steps: 5
-sibling_id: metadata/cascades
-parent_id: metadata/cascades
-next_page_id: metadata/cascades/delete
-previous_page_id: metadata/cascades/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/4-force-apply.md
+  0: metadata_cascade_policy
+title: フォルダ内のすべての項目に対するメタデータの強制適用
+
 fullyTranslated: true
 ---
 
@@ -29,83 +17,79 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 メタデータカスケードポリシーがすでにフォルダに存在する場合は、メタデータカスケードポリシーの`id`を指定して[`POST /metadata_cascade_policies/:id/apply`][e_post] APIエンドポイントを呼び出すことで、フォルダ内のすべての項目にメタデータインスタンスを強制的に適用できます。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/metadata_cascade_policies/21312/apply" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "conflict_resolution": "overwrite"
-     }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/metadata_cascade_policies/21312/apply" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "conflict_resolution": "overwrite"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataCascadePolicies.applyMetadataCascadePolicy(
-  cascadePolicyId,
-  {
-    conflictResolution:
-      'overwrite' as ApplyMetadataCascadePolicyRequestBodyConflictResolutionField,
-  } satisfies ApplyMetadataCascadePolicyRequestBody,
-);
-```
+  ```typescript Node/TypeScript v10
+  await client.metadataCascadePolicies.applyMetadataCascadePolicy(
+    cascadePolicyId,
+    {
+      conflictResolution:
+        'overwrite' as ApplyMetadataCascadePolicyRequestBodyConflictResolutionField,
+    } satisfies ApplyMetadataCascadePolicyRequestBody,
+  );
+  ```
 
-```python Python v10
-client.metadata_cascade_policies.apply_metadata_cascade_policy(
-    cascade_policy_id, ApplyMetadataCascadePolicyConflictResolution.OVERWRITE
-)
-```
+  ```python Python v10
+  client.metadata_cascade_policies.apply_metadata_cascade_policy(
+      cascade_policy_id, ApplyMetadataCascadePolicyConflictResolution.OVERWRITE
+  )
+  ```
 
-```csharp .NET v10
-await client.MetadataCascadePolicies.ApplyMetadataCascadePolicyAsync(metadataCascadePolicyId: cascadePolicyId, requestBody: new ApplyMetadataCascadePolicyRequestBody(conflictResolution: ApplyMetadataCascadePolicyRequestBodyConflictResolutionField.Overwrite));
-```
+  ```csharp .NET v10
+  await client.MetadataCascadePolicies.ApplyMetadataCascadePolicyAsync(metadataCascadePolicyId: cascadePolicyId, requestBody: new ApplyMetadataCascadePolicyRequestBody(conflictResolution: ApplyMetadataCascadePolicyRequestBodyConflictResolutionField.Overwrite));
+  ```
 
-```swift Swift v10
-try await client.metadataCascadePolicies.applyMetadataCascadePolicy(metadataCascadePolicyId: cascadePolicyId, requestBody: ApplyMetadataCascadePolicyRequestBody(conflictResolution: ApplyMetadataCascadePolicyRequestBodyConflictResolutionField.overwrite))
-```
+  ```swift Swift v10
+  try await client.metadataCascadePolicies.applyMetadataCascadePolicy(metadataCascadePolicyId: cascadePolicyId, requestBody: ApplyMetadataCascadePolicyRequestBody(conflictResolution: ApplyMetadataCascadePolicyRequestBodyConflictResolutionField.overwrite))
+  ```
 
-```java Java v10
-client.getMetadataCascadePolicies().applyMetadataCascadePolicy(cascadePolicyId, new ApplyMetadataCascadePolicyRequestBody(ApplyMetadataCascadePolicyRequestBodyConflictResolutionField.OVERWRITE))
-```
+  ```java Java v10
+  client.getMetadataCascadePolicies().applyMetadataCascadePolicy(cascadePolicyId, new ApplyMetadataCascadePolicyRequestBody(ApplyMetadataCascadePolicyRequestBodyConflictResolutionField.OVERWRITE))
+  ```
 
-```java Java v5
-String cascadePolicyID = "e4392a41-7de5-4232-bdf7-15e0d6bba067";
-BoxMetadataCascadePolicy policy = new BoxMetadataCascadePolicy(api, cascadePolicyID);
-policy.forceApply("none");
-```
+  ```java Java v5
+  String cascadePolicyID = "e4392a41-7de5-4232-bdf7-15e0d6bba067";
+  BoxMetadataCascadePolicy policy = new BoxMetadataCascadePolicy(api, cascadePolicyID);
+  policy.forceApply("none");
+  ```
 
-```py Python v4
-from boxsdk.object.metadata_cascade_policy import CascadePolicyConflictResolution
+  ```py Python v4
+  from boxsdk.object.metadata_cascade_policy import CascadePolicyConflictResolution
 
-cascade_policy = client.metadata_cascade_policy(policy_id='84113349-794d-445c-b93c-d8481b223434')
-cascade_policy.force_apply(CascadePolicyConflictResolution.PRESERVE_EXISTING)
-print('Cascade policy was force applied!')
-```
+  cascade_policy = client.metadata_cascade_policy(policy_id='84113349-794d-445c-b93c-d8481b223434')
+  cascade_policy.force_apply(CascadePolicyConflictResolution.PRESERVE_EXISTING)
+  print('Cascade policy was force applied!')
+  ```
 
-```csharp .NET v6
-string policyId = "11111";
-string conflictResolution = Constants.ConflictResolution.Overwrite
-BoxMetadataCascadePolicy newCascadePolicy = client.MetadataCascadePolicyManager
-    .ForceApplyCascadePolicyAsync(policyId, conflictResolution);
-```
+  ```csharp .NET v6
+  string policyId = "11111";
+  string conflictResolution = Constants.ConflictResolution.Overwrite
+  BoxMetadataCascadePolicy newCascadePolicy = client.MetadataCascadePolicyManager
+      .ForceApplyCascadePolicyAsync(policyId, conflictResolution);
+  ```
 
-```js Node v4
-var policyID = '84113349-794d-445c-b93c-d8481b223434';
-client.metadata.forceApplyCascadePolicy(policyID, client.metadata.cascadeResolution.PRESERVE_EXISTING)
- .then(() => {
-  // application started — no value returned
- });
-```
+  ```js Node v4
+  var policyID = '84113349-794d-445c-b93c-d8481b223434';
+  client.metadata.forceApplyCascadePolicy(policyID, client.metadata.cascadeResolution.PRESERVE_EXISTING)
+   .then(() => {
+    // application started — no value returned
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-ポリシーの`id`を取得するには、フォルダに対する[すべてのポリシーのリストを取得][g_list_policies]します。
-
+  ポリシーの`id`を取得するには、フォルダに対する[すべてのポリシーのリストを取得][g_list_policies]します。
 </Info>
 
 <Warning>
-
-メタデータカスケード操作は非同期的に開始されます。このAPIコールは、カスケード操作が完了する前に直ちに復帰し、`202 Accepted` HTTPステータスコードを返します。現時点では、この操作がいつ終了したのかを確認する方法はありません。
-
+  メタデータカスケード操作は非同期的に開始されます。このAPIコールは、カスケード操作が完了する前に直ちに復帰し、`202 Accepted` HTTPステータスコードを返します。現時点では、この操作がいつ終了したのかを確認する方法はありません。
 </Warning>
 
 ## 競合解決
@@ -114,21 +98,22 @@ client.metadata.forceApplyCascadePolicy(policyID, client.metadata.cascadeResolut
 
 `conflict_resolution`に値を設定していない場合、デフォルトでは、このAPIによってすべての項目の既存の値が保持されます。値を`overwrite`に設定すると、カスケードポリシーに適用されているテンプレートの値が強制的に適用され、既存の値は上書きされます。
 
-[e_post]: /ja/reference/post_metadata_cascade_policies_id_apply
+[e_post]: /reference/post_metadata_cascade_policies_id_apply
 
-[g_list_policies]: /ja/guides/metadata/cascades/list
+[g_list_policies]: /guides/metadata/cascades/list
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Force-apply metadata cascade policy to folder", href: "/reference/post-metadata-cascade-policies-id-apply", badge: "POST" }
-  ]}
+  { label: "Force-apply metadata cascade policy to folder", href: "/reference/post-metadata-cascade-policies-id-apply", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータカスケードポリシーのリストの取得", href: "/ja/guides/metadata/cascades/list", badge: "ガイド" },
-    { label: "フォルダ内のすべての項目に対するメタデータの強制適用", href: "/ja/guides/metadata/cascades/force-apply", badge: "ガイド" },
-    { label: "メタデータカスケードポリシーの削除", href: "/ja/guides/metadata/cascades/delete", badge: "ガイド" }
-  ]}
+  { label: "List metadata cascade policies", href: "/guides/metadata/cascades/list", badge: "GUIDE" },
+  { label: "Force-apply metadata to all items in a folder", href: "/guides/metadata/cascades/force-apply", badge: "GUIDE" },
+  { label: "Delete a metadata cascade policy", href: "/guides/metadata/cascades/delete", badge: "GUIDE" }
+]}
 />

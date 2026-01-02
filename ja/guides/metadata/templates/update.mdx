@@ -1,192 +1,179 @@
 ---
-title: "メタデータテンプレートの更新"
 related_endpoints:
-  - put_metadata_templates_id_id_schema
+  0: put_metadata_templates_id_id_schema
 related_guides:
-  - metadata/templates/create
-required_guides:
-  - metadata/scopes
-  - metadata/templates/create
+  0: metadata/templates/create
 related_resources:
-  - metadata_template
-category_id: metadata
-subcategory_id: metadata/2-templates
-is_index: false
-id: metadata/templates/update
-rank: 5
-type: guide
-total_steps: 5
-sibling_id: metadata/templates
-parent_id: metadata/templates
-next_page_id: metadata/templates/delete
-previous_page_id: metadata/templates/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/2-templates/5-update.md
+  0: metadata_template
+required_guides:
+  0: metadata/scopes
+  1: metadata/templates/create
+title: メタデータテンプレートの更新
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" },
-    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "ガイド" }
-  ]}
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+  { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" }
+]}
 />
+
 メタデータテンプレートを更新するには、操作の配列を[`PUT /metadata_templates/:scope/:templateKey/schema`][endpoint] APIに渡します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X PUT "https://api.box.com/2.0/metadata_templates/enterprise/blueprintTemplate/schema" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json-patch+json" \
-     -d '[
-       {
-         "op": "editField",
-         "fieldKey": "category",
-         "data": {
-           "displayName": "Customer Group"
+  ```sh cURL
+  curl -i -X PUT "https://api.box.com/2.0/metadata_templates/enterprise/blueprintTemplate/schema" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json-patch+json" \
+       -d '[
+         {
+           "op": "editField",
+           "fieldKey": "category",
+           "data": {
+             "displayName": "Customer Group"
+           }
          }
-       }
-     ]'
-```
+       ]'
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataTemplates.updateMetadataTemplate(
-  'enterprise' as UpdateMetadataTemplateScope,
-  templateKey,
-  [
-    {
-      op: 'addField' as UpdateMetadataTemplateRequestBodyOpField,
-      fieldKey: 'newfieldname',
-      data: { ['type']: 'string', ['displayName']: 'newFieldName' },
-    } satisfies UpdateMetadataTemplateRequestBody,
-  ],
-);
-```
-
-```python Python v10
-client.metadata_templates.update_metadata_template(
-    UpdateMetadataTemplateScope.ENTERPRISE,
-    template_key,
+  ```typescript Node/TypeScript v10
+  await client.metadataTemplates.updateMetadataTemplate(
+    'enterprise' as UpdateMetadataTemplateScope,
+    templateKey,
     [
-        UpdateMetadataTemplateRequestBody(
-            op=UpdateMetadataTemplateRequestBodyOpField.ADDFIELD,
-            field_key="newfieldname",
-            data={"type": "string", "displayName": "newFieldName"},
-        )
+      {
+        op: 'addField' as UpdateMetadataTemplateRequestBodyOpField,
+        fieldKey: 'newfieldname',
+        data: { ['type']: 'string', ['displayName']: 'newFieldName' },
+      } satisfies UpdateMetadataTemplateRequestBody,
     ],
-)
-```
+  );
+  ```
 
-```csharp .NET v10
-await client.MetadataTemplates.UpdateMetadataTemplateAsync(scope: UpdateMetadataTemplateScope.Enterprise, templateKey: templateKey, requestBody: Array.AsReadOnly(new [] {new UpdateMetadataTemplateRequestBody(op: UpdateMetadataTemplateRequestBodyOpField.AddField) { FieldKey = "newfieldname", Data = new Dictionary<string, object>() { { "type", "string" }, { "displayName", "newFieldName" } } }}));
-```
+  ```python Python v10
+  client.metadata_templates.update_metadata_template(
+      UpdateMetadataTemplateScope.ENTERPRISE,
+      template_key,
+      [
+          UpdateMetadataTemplateRequestBody(
+              op=UpdateMetadataTemplateRequestBodyOpField.ADDFIELD,
+              field_key="newfieldname",
+              data={"type": "string", "displayName": "newFieldName"},
+          )
+      ],
+  )
+  ```
 
-```swift Swift v10
-try await client.metadataTemplates.updateMetadataTemplate(scope: UpdateMetadataTemplateScope.enterprise, templateKey: templateKey, requestBody: [UpdateMetadataTemplateRequestBody(op: UpdateMetadataTemplateRequestBodyOpField.addField, fieldKey: "newfieldname", data: ["type": "string", "displayName": "newFieldName"])])
-```
+  ```csharp .NET v10
+  await client.MetadataTemplates.UpdateMetadataTemplateAsync(scope: UpdateMetadataTemplateScope.Enterprise, templateKey: templateKey, requestBody: Array.AsReadOnly(new [] {new UpdateMetadataTemplateRequestBody(op: UpdateMetadataTemplateRequestBodyOpField.AddField) { FieldKey = "newfieldname", Data = new Dictionary<string, object>() { { "type", "string" }, { "displayName", "newFieldName" } } }}));
+  ```
 
-```java Java v10
-client.getMetadataTemplates().updateMetadataTemplate(UpdateMetadataTemplateScope.ENTERPRISE, templateKey, Arrays.asList(new UpdateMetadataTemplateRequestBody.Builder(UpdateMetadataTemplateRequestBodyOpField.ADDFIELD).data(mapOf(entryOf("type", "string"), entryOf("displayName", "newFieldName"))).fieldKey("newfieldname").build()))
-```
+  ```swift Swift v10
+  try await client.metadataTemplates.updateMetadataTemplate(scope: UpdateMetadataTemplateScope.enterprise, templateKey: templateKey, requestBody: [UpdateMetadataTemplateRequestBody(op: UpdateMetadataTemplateRequestBodyOpField.addField, fieldKey: "newfieldname", data: ["type": "string", "displayName": "newFieldName"])])
+  ```
 
-```java Java v5
-List<MetadataTemplate.FieldOperation> updates = new ArrayList<MetadataTemplate.FieldOperation>();
+  ```java Java v10
+  client.getMetadataTemplates().updateMetadataTemplate(UpdateMetadataTemplateScope.ENTERPRISE, templateKey, Arrays.asList(new UpdateMetadataTemplateRequestBody.Builder(UpdateMetadataTemplateRequestBodyOpField.ADDFIELD).data(mapOf(entryOf("type", "string"), entryOf("displayName", "newFieldName"))).fieldKey("newfieldname").build()))
+  ```
 
-String addCategoryFieldJSON = "{\"op\":\"addField\","\"data\":{"
-    + "\"displayName\":\"Category\",\"key\":\"category\",\"hidden\":false,\"type\":\"string\"}}";
-updates.add(new MetadataTemplate.FieldOperation(addCategoryFieldJSON));
+  ```java Java v5
+  List<MetadataTemplate.FieldOperation> updates = new ArrayList<MetadataTemplate.FieldOperation>();
 
-String changeTemplateNameJSON = "{\"op\":\"editTemplate\",\"data\":{"
-    + "\"displayName\":\"My Metadata\"}}";
-updates.add(new MetadataTemplate.FieldOperation(changeTemplateNameJSON));
+  String addCategoryFieldJSON = "{\"op\":\"addField\","\"data\":{"
+      + "\"displayName\":\"Category\",\"key\":\"category\",\"hidden\":false,\"type\":\"string\"}}";
+  updates.add(new MetadataTemplate.FieldOperation(addCategoryFieldJSON));
 
-MetadataTemplate.updateMetadataTemplate(api, "enterprise", "myData", updates);
-```
+  String changeTemplateNameJSON = "{\"op\":\"editTemplate\",\"data\":{"
+      + "\"displayName\":\"My Metadata\"}}";
+  updates.add(new MetadataTemplate.FieldOperation(changeTemplateNameJSON));
 
-```py Python v4
-template = client.metadata_template('enterprise', 'employeeRecord')
-updates = template.start_update()
-updates.add_enum_option('state', 'WI')
-updates.edit_template({'hidden': False})
-updates.edit_template({'copyInstanceOnItemCopy': False})
-updated_template = template.update_info(updates=updates)
-```
+  MetadataTemplate.updateMetadataTemplate(api, "enterprise", "myData", updates);
+  ```
 
-```csharp .NET v6
-var updates = new List<BoxMetadataTemplateUpdate>()
-{
-    new BoxMetadataTemplateUpdate()
-    {
-        Op = MetadataTemplateUpdateOp.addEnumOption,
-        FieldKey = "fy",
-        Data = new {
-            key = "FY20"
-        }
-    },
-    new BoxMetadataTemplateUpdate()
-    {
-        Op = MetadataTemplateUpdateOp.editTemplate,
-        Data = new {
-            hidden = false
-        }
-    }
-};
-BoxMetadataTemplate updatedTemplate = await client.MetadataManager
-    .UpdateMetadataTemplate(updates, "enterprise", "marketingCollateral");
-```
+  ```py Python v4
+  template = client.metadata_template('enterprise', 'employeeRecord')
+  updates = template.start_update()
+  updates.add_enum_option('state', 'WI')
+  updates.edit_template({'hidden': False})
+  updates.edit_template({'copyInstanceOnItemCopy': False})
+  updated_template = template.update_info(updates=updates)
+  ```
 
-```js Node v4
-// Add a new option to the Fiscal Year field, and un-hide the template
-var operations = [
- {
-  op: 'addEnumOption',
-  fieldKey: 'fy',
-  data: { key: 'FY20' }
- },
- {
-  op: 'editTemplate',
-  data: { hidden: false }
- }
-];
-client.metadata.updateTemplate('enterprise', 'vcontract', operations)
- .then(template => {
-  /* template -> {
-   templateKey: 'vcontract',
-   scope: 'enterprise_12345',
-   displayName: 'Vendor Contract',
-   hidden: false,
-   fields: 
-   [ { type: 'date',
-    key: 'signed',
-    displayName: 'Date Signed',
-    hidden: false },
-    { type: 'string',
-    key: 'vendor',
-    displayName: 'Vendor',
-    hidden: false },
-    { type: 'enum',
-    key: 'fy',
-    displayName: 'Fiscal Year',
-    options: 
-     [ { key: 'FY17' },
-     { key: 'FY18' },
-     { key: 'FY19' },
-     { key: 'FY20' } ],
-    hidden: false } ] }
-  */
- });
-```
+  ```csharp .NET v6
+  var updates = new List<BoxMetadataTemplateUpdate>()
+  {
+      new BoxMetadataTemplateUpdate()
+      {
+          Op = MetadataTemplateUpdateOp.addEnumOption,
+          FieldKey = "fy",
+          Data = new {
+              key = "FY20"
+          }
+      },
+      new BoxMetadataTemplateUpdate()
+      {
+          Op = MetadataTemplateUpdateOp.editTemplate,
+          Data = new {
+              hidden = false
+          }
+      }
+  };
+  BoxMetadataTemplate updatedTemplate = await client.MetadataManager
+      .UpdateMetadataTemplate(updates, "enterprise", "marketingCollateral");
+  ```
+
+  ```js Node v4
+  // Add a new option to the Fiscal Year field, and un-hide the template
+  var operations = [
+   {
+    op: 'addEnumOption',
+    fieldKey: 'fy',
+    data: { key: 'FY20' }
+   },
+   {
+    op: 'editTemplate',
+    data: { hidden: false }
+   }
+  ];
+  client.metadata.updateTemplate('enterprise', 'vcontract', operations)
+   .then(template => {
+    /* template -> {
+     templateKey: 'vcontract',
+     scope: 'enterprise_12345',
+     displayName: 'Vendor Contract',
+     hidden: false,
+     fields: 
+     [ { type: 'date',
+      key: 'signed',
+      displayName: 'Date Signed',
+      hidden: false },
+      { type: 'string',
+      key: 'vendor',
+      displayName: 'Vendor',
+      hidden: false },
+      { type: 'enum',
+      key: 'fy',
+      displayName: 'Fiscal Year',
+      options: 
+       [ { key: 'FY17' },
+       { key: 'FY18' },
+       { key: 'FY19' },
+       { key: 'FY20' } ],
+      hidden: false } ] }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Warning>
-**管理者権限が必須**
+  **管理者権限が必須**
 
-メタデータテンプレートの更新は、管理者権限を持つユーザーに制限されています。つまり、管理者、または管理者から**会社のメタデータテンプレートを作成、編集する**権限が付与されている共同管理者だけがウェブアプリまたはAPIを使用してテンプレートを管理できます。
-
+  メタデータテンプレートの更新は、管理者権限を持つユーザーに制限されています。つまり、管理者、または管理者から**会社のメタデータテンプレートを作成、編集する**権限が付与されている共同管理者だけがウェブアプリまたはAPIを使用してテンプレートを管理できます。
 </Warning>
 
 ## 操作
@@ -215,15 +202,12 @@ client.metadata.updateTemplate('enterprise', 'vcontract', operations)
     }
   }
 ]
-
 ```
 
 これにより、新しい表示名がClientになるようにテンプレートが更新されます。
 
 <Warning>
-
-これは、このテンプレートの既存のインスタンスに影響します。
-
+  これは、このテンプレートの既存のインスタンスに影響します。
 </Warning>
 
 ### テンプレートへのフィールドの追加
@@ -246,15 +230,12 @@ client.metadata.updateTemplate('enterprise', 'vcontract', operations)
     }
   }
 ]
-
 ```
 
 これにより、`displayName`および`key`が**category**に指定されている、非表示ではない新しい文字列フィールドが追加されます。
 
 <Warning>
-
-これは、このテンプレートの既存のインスタンスに影響します。
-
+  これは、このテンプレートの既存のインスタンスに影響します。
 </Warning>
 
 ### フィールドの並べ替え
@@ -270,15 +251,12 @@ client.metadata.updateTemplate('enterprise', 'vcontract', operations)
   "op": "reorderFields",
   "fieldKeys": ["field2", "field1", "field3"]
 }
-
 ```
 
 これにより、テンプレートのフィールドは、最初に`field2`、その後`field1`、`field3`が続くように並べ替えられます。
 
 <Warning>
-
-これは、このテンプレートの既存のインスタンスに影響します。フィールドは並べ替えられますが、フィールドの値はそのまま変わりません。
-
+  これは、このテンプレートの既存のインスタンスに影響します。フィールドは並べ替えられますが、フィールドの値はそのまま変わりません。
 </Warning>
 
 ## フィールドの操作
@@ -304,15 +282,12 @@ client.metadata.updateTemplate('enterprise', 'vcontract', operations)
     "displayName": "Customer Group"
   }
 }
-
 ```
 
 これにより、新しい表示名が**Customer Group**になるようにフィールド`category`が更新されます。このキーが変更された場合、指定されたフィールドの既存の値は新しいキーに移行されます。検索インデックスは更新されますが、更新にかかる時間は、この変更の対象となるファイルの数によって異なります。
 
 <Warning>
-
-これは、このテンプレートの既存のインスタンスに影響する可能性があります。
-
+  これは、このテンプレートの既存のインスタンスに影響する可能性があります。
 </Warning>
 
 ### フィールドの削除
@@ -328,43 +303,41 @@ client.metadata.updateTemplate('enterprise', 'vcontract', operations)
   "op": "removeField",
   "fieldKey": "brand"
 }
-
 ```
 
 これにより、フィールド`brand`は、テンプレートに加えて、テンプレートのすべてのインスタンスから削除されます。検索インデックスは更新されますが、更新にかかる時間は、この変更の対象となるファイルの数によって異なります。
 
 <Warning>
-
-これは、このテンプレートの既存のインスタンスに影響します。
-
+  これは、このテンプレートの既存のインスタンスに影響します。
 </Warning>
 
 ## フィールドオプションの操作
 
-[`enum`](/ja/guides/metadata/fields/enum)および[`multiSelect`](/ja/guides/metadata/fields/multi-select)メタデータフィールドタイプはどちらも、フィールドのオプションを変更するための追加操作をサポートしています。
+[`enum`](/guides/metadata/fields/enum)および[`multiSelect`](/guides/metadata/fields/multi-select)メタデータフィールドタイプはどちらも、フィールドのオプションを変更するための追加操作をサポートしています。
 
-| 操作                                                                              |                                 |
-| ------------------------------------------------------------------------------- | ------------------------------- |
-| [`addEnumOption`](/ja/guides/metadata/fields/enum#add-an-option)                       | `enum`フィールドにオプションを追加します         |
-| [`editEnumOption`](/ja/guides/metadata/fields/enum#edit-an-option)                     | `enum`フィールドのオプションを編集します         |
-| [`reorderEnumOptions`](/ja/guides/metadata/fields/enum#reorder-options)                | `enum`フィールドのオプションを並べ替えます        |
-| [`removeEnumOption`](/ja/guides/metadata/fields/enum#remove-an-option)                 | `enum`フィールドのオプションを削除します         |
-| [`addMultiSelectOption`](/ja/guides/metadata/fields/multi-select#add-an-option)        | `multiSelect`フィールドにオプションを追加します  |
-| [`editMultiSelectOption`](/ja/guides/metadata/fields/multi-select#edit-an-option)      | `multiSelect`フィールドのオプションを編集します  |
-| [`reorderMultiSelectOptions`](/ja/guides/metadata/fields/multi-select#reorder-options) | `multiSelect`フィールドのオプションを並べ替えます |
-| [`removeMultiSelectOption`](/ja/guides/metadata/fields/multi-select#remove-an-option)  | `multiSelect`フィールドのオプションを削除します  |
+| 操作                                                                                  |                                 |
+| ----------------------------------------------------------------------------------- | ------------------------------- |
+| [`addEnumOption`](/guides/metadata/fields/enum#add-an-option)                       | `enum`フィールドにオプションを追加します         |
+| [`editEnumOption`](/guides/metadata/fields/enum#edit-an-option)                     | `enum`フィールドのオプションを編集します         |
+| [`reorderEnumOptions`](/guides/metadata/fields/enum#reorder-options)                | `enum`フィールドのオプションを並べ替えます        |
+| [`removeEnumOption`](/guides/metadata/fields/enum#remove-an-option)                 | `enum`フィールドのオプションを削除します         |
+| [`addMultiSelectOption`](/guides/metadata/fields/multi-select#add-an-option)        | `multiSelect`フィールドにオプションを追加します  |
+| [`editMultiSelectOption`](/guides/metadata/fields/multi-select#edit-an-option)      | `multiSelect`フィールドのオプションを編集します  |
+| [`reorderMultiSelectOptions`](/guides/metadata/fields/multi-select#reorder-options) | `multiSelect`フィールドのオプションを並べ替えます |
+| [`removeMultiSelectOption`](/guides/metadata/fields/multi-select#remove-an-option)  | `multiSelect`フィールドのオプションを削除します  |
 
-[endpoint]: /ja/reference/put_metadata_templates_id_id_schema
+[endpoint]: /reference/put_metadata_templates_id_id_schema
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
-  ]}
+  { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "ガイド" }
-  ]}
+  { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" }
+]}
 />

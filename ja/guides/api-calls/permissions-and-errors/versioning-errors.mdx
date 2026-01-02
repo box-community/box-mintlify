@@ -1,23 +1,13 @@
 ---
-title: "バージョン管理のエラー"
 rank: 100
-related_endpoints: []
-related_guides: []
-required_guides: []
-category_id: api-calls
-subcategory_id: api-calls/permissions-and-errors
-is_index: false
-id: api-calls/permissions-and-errors/versioning-errors
-type: guide
-total_steps: 6
-sibling_id: api-calls/permissions-and-errors
-parent_id: api-calls/permissions-and-errors
-next_page_id: ''
-previous_page_id: api-calls/permissions-and-errors/app-diagnostics-report
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/permissions-and-errors/versioning-errors.md
+related_endpoints: {}
+related_guides: {}
+required_guides: {}
+title: バージョン管理のエラー
+
 fullyTranslated: true
 ---
+
 Boxでは、特定のAPIエンドポイントに対してバージョン管理機能を提供しています。このバージョン管理システムにより、Boxがエンドポイントのバージョンを新しく導入した場合でも、既存のエンドポイントのバージョンに対してシームレスな機能が保証されます。
 
 APIのバージョン管理により、Boxは、自社のプラットフォームを継続的に強化できると同時に、機能の更新や廃止のための信頼できる手段をサードパーティの開発者に提供することもできます。
@@ -53,7 +43,6 @@ APIの変更について常に最新情報を把握できるように、[変更�
   "message": "Invalid API version specified in 'box-version' header. Supported API versions: [2024.0].",
   "request_id": "abcdef123456"
 }
-
 ```
 
 ## URLでの正しくないAPIバージョンの呼び出し
@@ -66,12 +55,11 @@ Boxで非推奨としてマークされたAPIバージョンを使用した場�
 
 ```sh
 Deprecation: date="Fri, 11 Nov 2026 23:59:59 GMT"
-Box-API-Deprecated-Reason: /ja/reference/deprecated
-
+Box-API-Deprecated-Reason: /reference/deprecated
 ```
 
 APIレスポンスを監視して`Deprecation`ヘッダーが存在するかどうかを確認し、その結果に応じて新しいAPIバージョンへの移行を計画する必要があります。
 
 ## 存在しないバージョンの呼び出し
 
-公式サポートが終了した古いAPIバージョン (`2025.0`など) を使用しようとすると、レスポンスでは`HTTP error code 404 - Not Found`が返されます。詳細については、[URLでの正しくないAPIバージョンの呼び出し](#urlでの正しくないapiバージョンの呼び出し)を参照してください。
+公式サポートが終了した古いAPIバージョン (`2025.0`など) を使用しようとすると、レスポンスでは`HTTP error code 404 - Not Found`が返されます。詳細については、[URLでの正しくないAPIバージョンの呼び出し](#calling-an-incorrect-api-version-in-the-url)を参照してください。

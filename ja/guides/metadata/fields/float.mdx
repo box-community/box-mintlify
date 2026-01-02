@@ -1,26 +1,14 @@
 ---
-title: "浮動小数点メタデータフィールド"
 related_endpoints:
-  - post_metadata_templates
-  - put_metadata_templates_id_id_schema
+  0: post_metadata_templates
+  1: put_metadata_templates_id_id_schema
 related_guides:
-  - metadata/templates/create
-  - metadata/templates/update
+  0: metadata/templates/create
+  1: metadata/templates/update
 related_resources:
-  - metadata_template
-category_id: metadata
-subcategory_id: metadata/3-fields
-is_index: false
-id: metadata/fields/float
-rank: 2
-type: guide
-total_steps: 5
-sibling_id: metadata/fields
-parent_id: metadata/fields
-next_page_id: metadata/fields
-previous_page_id: metadata/fields/string
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/3-fields/2-float.md
+  0: metadata_template
+title: 浮動小数点メタデータフィールド
+
 fullyTranslated: true
 ---
 
@@ -29,9 +17,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 `float`タイプのメタデータフィールドは、数値入力のみが可能な標準のテキストフィールドとしてユーザーに表示されます。
 
 <Frame border center shadow width="400">
-
-![文字列フィールド](./metadata-field-float.png)
-
+  ![文字列フィールド](./metadata-field-float.png)
 </Frame>
 
 ## 浮動小数点フィールドの作成
@@ -54,7 +40,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
     }
   ]
 }
-
 ```
 
 必要に応じて、UIでユーザーに表示される`description`を指定できます。また、このフィールドを`hidden`に設定して、ウェブアプリとモバイルアプリでユーザーに表示されないようにすることもできます。
@@ -78,29 +63,27 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
     }
   }
 ]
-
 ```
 
 <Warning>
-
-これは、このテンプレートの既存のインスタンスに影響します。
-
+  これは、このテンプレートの既存のインスタンスに影響します。
 </Warning>
 
-[g_create_template]: /ja/guides/metadata/templates/create
+[g_create_template]: /guides/metadata/templates/create
 
-[g_update_template]: /ja/guides/metadata/templates/update
+[g_update_template]: /guides/metadata/templates/update
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
-  ]}
+  { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "ガイド" },
-    { label: "メタデータテンプレートの更新", href: "/ja/guides/metadata/templates/update", badge: "ガイド" }
-  ]}
+  { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" },
+  { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+]}
 />

@@ -1,96 +1,90 @@
 ---
-title: "Box APIとSSO"
+alias_paths: {}
 rank: 8
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/oauth2
-  - authentication/jwt
-  - authentication/app-token
-  - applications/app-types/platform-apps
-  - applications/app-types/custom-skills
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: null
-is_index: false
-id: authentication/sso
-type: guide
-total_steps: 3
-sibling_id: authentication
-parent_id: authentication
-next_page_id: authentication
-previous_page_id: authentication/best-practices
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/sso.md
+  0: authentication/oauth2
+  1: authentication/jwt
+  2: authentication/app-token
+  3: applications/app-types/platform-apps
+  4: applications/app-types/custom-skills
+related_resources: {}
+required_guides: {}
+title: Box APIとSSO
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-多くの Box Enterprise では、**シングルサインオン** (SSO) を使用して、Box にログインしている[管理対象ユーザー][mu]を認証します。Box Platform に作成されたアプリケーションと SSO プロバイダの対話方法は、作成されるアプリケーションの種類によって異なります。
+多くのBox Enterpriseでは、**シングルサインオン** (SSO) を使用して、Boxにログインしている[管理対象ユーザー][mu]を認証します。Box Platformに作成されたアプリケーションとSSOプロバイダの対話方法は、作成されるアプリケーションの種類によって異なります。
 
-## クライアント側認証を使用する Platform アプリ
+## クライアント側認証を使用するPlatformアプリ
 
-[OAuth 2.0][oauth2]を使用するよう構成された[Platform アプリ][platform_app]でユーザーが認証されると、Box は、企業で SSO を使用するよう構成されているかどうかを検出します。SSO を使用するよう構成されている場合、ユーザーはブラウザにリダイレクトされ、企業の構成済みの SSO ログイン画面が表示されます。
+[OAuth 2.0][oauth2]を使用するよう構成された[Platformアプリ][platform_app]でユーザーが認証されると、Boxは、企業でSSOを使用するよう構成されているかどうかを検出します。SSOを使用するよう構成されている場合、ユーザーはブラウザにリダイレクトされ、企業の構成済みのSSOログイン画面が表示されます。
 
-### SSO の有効化と SSO 必須モード
+### SSOの有効化とSSO必須モード
 
-企業は、**SSO 必須モード**と**SSO の有効化**の 2 つの方法のいずれかで、SSO を構成できます。
+企業は、**SSO必須モード**と**SSOの有効化**の2つの方法のいずれかで、SSOを構成できます。
 
-SSO が有効化されていても必須ではない場合、管理対象ユーザーは次のいずれかを選択できます。
+SSOが有効化されていても必須ではない場合、管理対象ユーザーは次のいずれかを選択できます。
 
 * Boxのユーザー名とパスワードを使用してログインする
 * SSOプロバイダを使用してログインする
 
-SSO が有効化され、必須になっている場合、すべての管理対象ユーザーは、企業の構成済み SSO プロバイダでログインするよう強制されます。この場合、ログインを試みるユーザーは、SAML を介して渡されるメールアドレスと一致する Box アカウントを持っているだけでなく、SSO 側で構成されている必要があります。
+SSOが有効化され、必須になっている場合、すべての管理対象ユーザーは、企業の構成済みSSOプロバイダでログインするよう強制されます。この場合、ログインを試みるユーザーは、SAMLを介して渡されるメールアドレスと一致するBoxアカウントを持っているだけでなく、SSO側で構成されている必要があります。
 
 <Warning>
-
-SSO が必須モードに設定されている企業では、SSO からユーザーを除外することはできません。これは、プラットフォームのユースケースのみで使用されている場合でも当てはまります。
-
+  SSOが必須モードに設定されている企業では、SSOからユーザーを除外することはできません。これは、プラットフォームのユースケースのみで使用されている場合でも当てはまります。
 </Warning>
 
-## サーバー側認証を使用する Platform アプリ
+## サーバー側認証を使用するPlatformアプリ
 
-[JWT][jwt]または[クライアント資格情報許可][ccg]を使用する[Platform アプリ][platform_app]および[アプリトークン][app_token]認証を使用する[アクセス制限付きアプリ][la-app]では、Box での認証に SSO は使用されません。
+[JWT][jwt]または[クライアント資格情報許可][ccg]を使用する[Platformアプリ][platform_app]および[アプリトークン][app_token]認証を使用する[アクセス制限付きアプリ][la-app]では、Boxでの認証にSSOは使用されません。
 
-サーバー側認証を使用する Platform アプリは、Box との通信にサーバー間の API コールのみを使用します。このシナリオでのエンドユーザーの認証方法は、Box ではなくアプリケーションが決定します。
+サーバー側認証を使用するPlatformアプリは、Boxとの通信にサーバー間のAPIコールのみを使用します。このシナリオでのエンドユーザーの認証方法は、Boxではなくアプリケーションが決定します。
 
-つまり、アプリケーションによるエンドユーザーの認証はそのアプリケーションによって決まりますが、アプリケーションによる Box の承認とはまったく異なります。
+つまり、アプリケーションによるエンドユーザーの認証はそのアプリケーションによって決まりますが、アプリケーションによるBoxの承認とはまったく異なります。
 
-これらのユースケースでは、アプリケーションは通常の管理対象ユーザーとしてではなく、サービスアカウントまたは App User として認証します。このようなユーザータイプには、デフォルトでは管理対象ユーザーのデータへのアクセス権限がありません。これらのアプリケーションから他の管理対象ユーザーのデータにアクセスできるようにするには、明示的な[管理者の承認][admin-approval]が必要です。
+これらのユースケースでは、アプリケーションは通常の管理対象ユーザーとしてではなく、サービスアカウントまたはApp Userとして認証します。このようなユーザータイプには、デフォルトでは管理対象ユーザーのデータへのアクセス権限がありません。これらのアプリケーションから他の管理対象ユーザーのデータにアクセスできるようにするには、明示的な[管理者の承認][admin-approval]が必要です。
 
 ## カスタムスキル
 
 [カスタムスキル][custom_skills]は、独自の方法で認証されます。この方法では、スキルイベントごとに固有のアクセストークンセットがアプリケーションに提供されます。
 
-この場合、アプリケーションはユーザーと直接やり取りしないため、SSO は関与しません。
+この場合、アプリケーションはユーザーと直接やり取りしないため、SSOは関与しません。
 
 <Info>
-
-Skills を使用した場合でも、スキルイベントをトリガーする可能性があるフォルダにファイルをアップロードするユーザーは、ウェブアプリまたはモバイルアプリにログインする必要があります。このログインでは、必要に応じて SSO の使用が求められます。
-
+  Skillsを使用した場合でも、スキルイベントをトリガーする可能性があるフォルダにファイルをアップロードするユーザーは、ウェブアプリまたはモバイルアプリにログインする必要があります。このログインでは、必要に応じてSSOの使用が求められます。
 </Info>
 
-[mu]: /ja/platform/user-types/#managed-users
-[admin-approval]: /ja/guides/authorization/platform-app-approval
-[jwt]: /ja/guides/authentication/jwt
-[oauth2]: /ja/guides/authentication/oauth2
-[ccg]: /ja/guides//authentication/client-credentials
-[la-app]: /ja/guides/applications/web-app-integrations
-[app_token]: /ja/guides/authentication/app-token
-[platform_app]: /ja/guides/applications/app-types/platform-apps
-[custom_skills]: /ja/guides/applications/app-types/custom-skills
-[jwt]: /ja/guides/authentication/jwt/jwt-setup
+[mu]: /platform/user-types/#managed-users
+
+[admin-approval]: /guides/authorization/platform-app-approval
+
+[jwt]: /guides/authentication/jwt
+
+[oauth2]: /guides/authentication/oauth2
+
+[ccg]: /guides/authentication/client-credentials
+
+[la-app]: /guides/applications/web-app-integrations
+
+[app_token]: /guides/authentication/app-token
+
+[platform_app]: /guides/applications/app-types/platform-apps
+
+[custom_skills]: /guides/applications/app-types/custom-skills
+
+[jwt]: /guides/authentication/jwt/jwt-setup
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" },
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "アプリトークン認証", href: "/ja/guides/authentication/app-token/index", badge: "ガイド" },
-    { label: "Platformアプリ", href: "/ja/guides/applications/app-types/platform-apps", badge: "ガイド" },
-    { label: "カスタムスキル", href: "/ja/guides/applications/app-types/custom-skills", badge: "ガイド" }
-  ]}
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "App Token Auth", href: "/guides/authentication/app-token/index", badge: "GUIDE" },
+  { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" },
+  { label: "Custom Skill", href: "/guides/applications/app-types/custom-skills", badge: "GUIDE" }
+]}
 />

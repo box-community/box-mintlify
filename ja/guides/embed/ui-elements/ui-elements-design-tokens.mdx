@@ -1,37 +1,26 @@
 ---
-title: "UI Elementsのデザイントークン"
 rank: 13
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - embed/ui-elements
-  - embed/ui-elements/theming-styling
+  0: embed/ui-elements
+  1: embed/ui-elements/theming-styling
+related_resources: {}
 required_guides:
-  - embed/ui-elements/installation
-related_resources: []
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/ui-elements-design-tokens
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/access
-previous_page_id: embed/ui-elements/logo
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/ui-elements-design-tokens.md
+  0: embed/ui-elements/installation
+title: UI Elementsのデザイントークン
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
+
 [テーマとスタイルの設定][ts]のために使用できるすべてのデザイントークンを表に示します。実装のためのわかりやすい指針となる、デフォルト値と説明も記載されています。
 
 ## トークンの構造
@@ -51,7 +40,6 @@ const theme = {
         "body-default-bold-line-height": "20px",
     }
 };
-
 ```
 
 入れ子構造:
@@ -71,7 +59,6 @@ const theme = {
         }
     }
 };
-
 ```
 
 {/* alex ignore */}
@@ -79,9 +66,7 @@ const theme = {
 ## 境界線の色
 
 <Note>
-
-16進カラー、RGB、特定のブラウザに依存しないカラー名など、任意のCSSカラー値を渡すことができます。
-
+  16進カラー、RGB、特定のブラウザに依存しないカラー名など、任意のCSSカラー値を渡すことができます。
 </Note>
 
 | トークン                                    | デフォルト値    | 説明                                    |
@@ -118,9 +103,7 @@ const theme = {
 {/* alex ignore */}
 
 <Note>
-
-ボタンやドロップダウンなどのインタラクティブなアイコンのスタイルのみを設定できます。
-
+  ボタンやドロップダウンなどのインタラクティブなアイコンのスタイルのみを設定できます。
 </Note>
 
 | トークン                    | デフォルト値    | 説明                      |
@@ -215,9 +198,7 @@ const theme = {
 ## タイポグラフィのトークン
 
 <Note>
-
-表内のコメントは、ルートフォントサイズの16ピクセルに基づいて計算されたピクセル数を示しています。
-
+  表内のコメントは、ルートフォントサイズの16ピクセルに基づいて計算されたピクセル数を示しています。
 </Note>
 
 | トークン                                    | デフォルト値                               | 説明                       |
@@ -322,9 +303,7 @@ const theme = {
 ## 間隔、サイズ、形状のトークン
 
 <Note>
-
-表内のコメントは、ルートフォントサイズの16ピクセルに基づいて計算されたピクセル数を示しています。
-
+  表内のコメントは、ルートフォントサイズの16ピクセルに基づいて計算されたピクセル数を示しています。
 </Note>
 
 | トークン           | デフォルト値                                     | 説明                  |
@@ -385,12 +364,12 @@ const theme = {
 | `space-18`     | `4.5rem`                                   | 間隔指定 (72ピクセルに相当)。   |
 | `space-20`     | `5rem`                                     | 間隔指定 (80ピクセルに相当)。   |
 
-[ts]: /ja/guides/embed/ui-elements/theming-styling
+[ts]: /guides/embed/ui-elements/theming-styling
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" },
-    { label: "Box UI Elementsのテーマとスタイルの設定", href: "/ja/guides/embed/ui-elements/theming-styling", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" },
+  { label: "Theming & styling for Box UI Elements", href: "/guides/embed/ui-elements/theming-styling", badge: "GUIDE" }
+]}
 />

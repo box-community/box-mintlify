@@ -1,26 +1,16 @@
 ---
-title: "FedRAMP"
-rank: 1
-related_endpoints: []
-related_guides: []
-required_guides: []
-related_resources: []
 alias_paths:
-  - /guides/security/fedramp-high/
-category_id: security
-subcategory_id: null
-is_index: false
-id: security/fedramp
-type: guide
-total_steps: 3
-sibling_id: security
-parent_id: security
-next_page_id: security/device-pinners
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/security/fedramp.md
+  0: /guides/security/fedramp-high/
+rank: 1
+related_endpoints: {}
+related_guides: {}
+related_resources: {}
+required_guides: {}
+title: FedRAMP
+
 fullyTranslated: true
 ---
+
 ## 概要
 
 FedRAMPとは、連邦政府機関が政府または行政機関の安全性/機密性が高まりつつあるデータにクラウドプロバイダを使用できるようにする認証プログラムです。
@@ -49,94 +39,91 @@ FedRAMPに準拠するには、APIエントリポイントに以下のURLを使�
 | dl.boxcloud.com           |
 | realtime.services.box.net |
 
-{/* ## API Restrictions  The following API entry points are not yet available for usage under FedRAMP High configuration. */}
+{/* ## API Restrictions
 
-{/* |API Entry point | |----------------| |/sign_requests| |/sign_requests/{sign_request_id}| |/sign_requests/{sign_request_id}/cancel| |/sign_requests/{sign_request_id}/resend| */}
+  The following API entry points are not yet available for usage under FedRAMP
+  High configuration. */}
 
-{/* ## Code Samples  Code samples allow you to bring in SDK, CLI, and cURL code samples. The ID needs to be an endpoint ID.  <Samples id='get_files_id' >
+{/* |API Entry point |
+  |----------------|
+  |/sign_requests|
+  |/sign_requests/{sign_request_id}|
+  |/sign_requests/{sign_request_id}/cancel|
+  |/sign_requests/{sign_request_id}/resend| */}
 
-</Samples>
+{/* ## Code Samples
 
-Make sure to close the HTML tag, either directly or like this.
+  Code samples allow you to bring in SDK, CLI, and cURL code samples. The ID
+  needs to be an endpoint ID.
 
-<Samples id='get_files_id'>
+  <Samples id='get_files_id' />
 
-</Samples>
+  Make sure to close the HTML tag, either directly or like this.
 
-## Messages
+  <Samples id='get_files_id'></Samples>
 
-Messages are used to mark a text visually as being notable, a warning, or a sign
-of danger.
+  ## Messages
 
-<Note>
+  Messages are used to mark a text visually as being notable, a warning, or a sign
+  of danger.
 
-A simple note
+  <Note>
+  A simple note
+  </Note>
 
-</Note>
+  <Warning>
+  A warning note
+  </Warning>
 
-<Warning>
+  <Danger>
+  A danger note
+  </Danger>
 
-A warning note
+  Messages support a small size, and the content can include more Markdown text.
 
-</Warning>
+  <Info>
+  **A title**
 
-<Danger>
+  A danger note with a markdown title and body.
+  </Info>
 
-A danger note
+  ## Tabs
 
-</Danger>
+  Not all code samples exist in the SDKs/CLI. You can add new code samples
+  for each language as follows.
 
-Messages support a small size, and the content can include more Markdown text.
+  <Tabs>
+  <Tab title='Node'>
 
-<Info>
-**A title**
+  ```js
+  console.log('!')
+  ```
 
-A danger note with a markdown title and body.
+  </Tab>
+  <Tab title='.NET'>
 
-</Info>
+  ```csharp
+  // some .NET code
+  ```
 
-## Tabs
+  </Tab>
+  </Tabs>
 
-Not all code samples exist in the SDKs/CLI. You can add new code samples
-for each language as follows.
+  ## Links
 
-<Tabs>
+  We recommend using referenced links.
 
-<Tab title='Node'>
+  This would [look like this][1].
 
-```js
-console.log('!')
+  At the end of the document, define the link.
 
-```
+  [1]: https://box.com
 
-</Tab>
+  We provide ways to link to guides, endpoints,
+  and resources without hard-coding the locale.
 
-<Tab title='.NET'>
+  [Get a file by ID][endpoint://get-files-id]
 
-```csharp
-// some .NET code
-
-```
-
-</Tab>
-
-</Tabs>
-
-## Links
-
-We recommend using referenced links.
-
-This would [look like this][1].
-
-At the end of the document, define the link.
-
-[1]: https://box.com
-
-We provide ways to link to guides, endpoints,
-and resources without hard-coding the locale.
-
-[Get a file by ID][endpoint://get-files-id]
-
-[File resource][/ja/reference/resources/file] */}
+  [File resource][/reference/resources/file] */}
 
 [FedRAMPCert]: https://marketplace.fedramp.gov/products/F1212191840A

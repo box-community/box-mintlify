@@ -1,20 +1,8 @@
 ---
-title: "ページ割りと並べ替え"
-related_endpoints: []
-required_guides: []
-category_id: metadata
-subcategory_id: metadata/5-queries
-is_index: false
-id: metadata/queries/pagination
-rank: 6
-type: guide
-total_steps: 7
-sibling_id: metadata/queries
-parent_id: metadata/queries
-next_page_id: metadata/queries/comparison
-previous_page_id: metadata/queries
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/5-queries/6-pagination.md
+related_endpoints: {}
+required_guides: {}
+title: ページ割りと並べ替え
+
 fullyTranslated: true
 ---
 
@@ -34,7 +22,6 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
       "ancestor_folder_id": "5555",
       "limit": 100
     }'
-
 ```
 
 `limit`の最大値は100です。返される結果ページ数を増やすには、各ページで`next_marker`値を返します。
@@ -44,7 +31,6 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
   "entries": [...],
   "next_marker": "AAAAAmVYB1FWec8GH6yWu2nwmanfMh07IyYInaa7DZDYjgO1H4KoLW29vPlLY173OKsci6h6xGh61gG73gnaxoS+o0BbI1/h6le6cikjlupVhASwJ2Cj0tOD9wlnrUMHHw3/ISf+uuACzrOMhN6d5fYrbidPzS6MdhJOejuYlvsg4tcBYzjauP3+VU51p77HFAIuObnJT0ff"
 }
-
 ```
 
 この`next_marker`を使用すると、結果の次のページについて新しいリクエストを作成できます。
@@ -60,19 +46,14 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
       "limit": 100,
       "marker": "AAAAAmVYB1FWec8GH6yWu2nwmanfMh07IyYInaa7DZDYjgO1H4KoLW29vPlLY173OKsci6h6xGh61gG73gnaxoS+o0BbI1/h6le6cikjlupVhASwJ2Cj0tOD9wlnrUMHHw3/ISf+uuACzrOMhN6d5fYrbidPzS6MdhJOejuYlvsg4tcBYzjauP3+VU51p77HFAIuObnJT0ff"
     }'
-
 ```
 
 <Note>
-
-レスポンスに次のマーカーが含まれていない場合は、これ以上一致する結果がないことを意味します。
-
+  レスポンスに次のマーカーが含まれていない場合は、これ以上一致する結果がないことを意味します。
 </Note>
 
 <Warning>
-
-`next_marker`を使用するには、結果の次のページにまったく同じクエリを使用することが重要です。`query`、`query_params`などのパラメーターが変更されると、APIはエラーを返します。
-
+  `next_marker`を使用するには、結果の次のページにまったく同じクエリを使用することが重要です。`query`、`query_params`などのパラメーターが変更されると、APIはエラーを返します。
 </Warning>
 
 ## 並べ替え
@@ -92,13 +73,10 @@ curl -X POST https://api.box.com/2.0/metadata_queries/execute_read \
     "direction": "desc"
   }
 ]
-
 ```
 
 <Warning>
-
-並べ替えの方向は、指定したすべてのキーで同じにする必要があります。つまり、各`field_key`の`direction`は同じにする必要があります。
-
+  並べ替えの方向は、指定したすべてのキーで同じにする必要があります。つまり、各`field_key`の`direction`は同じにする必要があります。
 </Warning>
 
-[metadata-fields]: /ja/guides/metadata/fields
+[metadata-fields]: /guides/metadata/fields

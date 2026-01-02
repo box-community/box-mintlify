@@ -1,201 +1,185 @@
 ---
-title: "カスタムメタデータテンプレートの作成"
-sidebarTitle: 2. カスタムメタデータテンプレートの作成
-type: quick-start
 hide_in_page_nav: true
-related_guides:
-  - metadata/scopes
-  - metadata/templates/create
 related_endpoints:
-  - post_metadata_templates_schema
-category_id: metadata
-subcategory_id: metadata/1-quick-start
-is_index: false
-id: metadata/quick-start/create-template
-rank: 2
-total_steps: 7
-sibling_id: metadata/quick-start
-parent_id: metadata/quick-start
-next_page_id: metadata/quick-start/create-instance
-previous_page_id: metadata/quick-start
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/1-quick-start/2-create-template.md
+  0: post_metadata_templates_schema
+related_guides:
+  0: metadata/scopes
+  1: metadata/templates/create
+sidebarTitle: 2. Create a custom metadata template
+title: カスタムメタデータテンプレートの作成
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-<ProgressBar pages={[
-                          "ja/guides/metadata/quick-start/list-all",
-                          "ja/guides/metadata/quick-start/create-template",
-                          "ja/guides/metadata/quick-start/create-instance",
-                          "ja/guides/metadata/quick-start/update-instance",
-                          "ja/guides/metadata/quick-start/update-template",
-                          "ja/guides/metadata/quick-start/create-query",
-                          "ja/guides/metadata/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/metadata/quick-start/list-all",
+                        "guides/metadata/quick-start/create-template",
+                        "guides/metadata/quick-start/create-instance",
+                        "guides/metadata/quick-start/update-instance",
+                        "guides/metadata/quick-start/update-template",
+                        "guides/metadata/quick-start/create-query",
+                        "guides/metadata/quick-start/next-steps"
+                      ]}
+/>
 
-会社用のカスタムメタデータテンプレートを作成するには、[直接BoxのAPI](/ja/reference/post-metadata-templates-schema)を使用するかBox SDKのいずれかを使用して新しいテンプレートを作成します。
+会社用のカスタムメタデータテンプレートを作成するには、[直接BoxのAPI](/reference/post-metadata-templates-schema)を使用するかBox SDKのいずれかを使用して新しいテンプレートを作成します。
 
 この`customerInfo`テンプレートでは、3つのフィールドを持つテンプレートを作成します。1つ目のフィールドは顧客の`name`を保持するテキストフィールド、2つ目のフィールドは顧客の業種`industry`に使用できる値のドロップダウンリスト、3つ目のフィールドは年間契約額の合計 (`tav`) を表します。
 
-<Card href="/ja/guides/metadata/fields" title="各種フィールドタイプについて確認する"/>
+<Card href="/guides/metadata/fields" arrow title="各種フィールドタイプについて確認する" />
 
 このテンプレートを作成するには、フィールドの構成と各フィールドの表示名を渡す必要があります。
 
 <CodeGroup>
-
-```curl cURL
-curl -X POST https://api.box.com/2.0/metadata_templates/schema \
-    -H "authorization: Bearer <ACCESS_TOKEN>" \
-    -H "content-type: application/json" \
-    -d '{
-      "scope": "enterprise",
-      "displayName": "Customer Info",
-      "fields": [
-        {
-          "type": "string",
-          "displayName": "Name"
-        },
-        {
-          "type": "enum",
-          "displayName": "Industry",
-          "options": [
-            {"key": "Technology"},
-            {"key": "Healthcare"},
-            {"key": "Legal"}
-          ]
-        },
-        {
-          "type": "float",
-          "displayName": "Total account value",
-          "key": "tav"
-        }
-      ]
-    }'
-
-```
-
-```csharp .NET
-var templateParams = new BoxMetadataTemplate()
-{
-  DisplayName = "Customer Info",
-  Scope = "enterprise",
-  Fields = new List<BoxMetadataTemplateField>()
-  {
-    new BoxMetadataTemplateField()
-    {
-      Type = "string",
-      DisplayName = "Name"
-    },
-    new BoxMetadataTemplateField()
-    {
-      Type = "enum",
-      DisplayName = "Industry",
-      Options = new List<BoxMetadataTemplateFieldOption>()
-      {
-        new BoxMetadataTemplateFieldOption() { Key = "Technology" },
-        new BoxMetadataTemplateFieldOption() { Key = "Healthcare" },
-        new BoxMetadataTemplateFieldOption() { Key = "Legal" }
-      }
-    },
-    new BoxMetadataTemplateField()
-    {
-      Type = "float",
-      DisplayName = "Total account value",
-      Key="tav"
-    },
-  }
-};
-BoxMetadataTemplate template = await  client.MetadataManager.CreateMetadataTemplate(templateParams);
-
-```
-
-```java Java
-MetadataTemplate.Field name = new MetadataTemplate.Field();
-name.setType("string");
-name.setDisplayName("Name");
-
-MetadataTemplate.Field industry = new MetadataTemplate.Field();
-industry.setType("enum");
-industry.setDisplayName("Industry");
-
-MetadataTemplate.Option technology = new MetadataTemplate.Option();
-technology.setKey("Technology");
-
-MetadataTemplate.Option healthcare = new MetadataTemplate.Option();
-healthcare.setKey("Healthcare");
-
-MetadataTemplate.Option legal = new MetadataTemplate.Option();
-legal.setKey("Legal");
-
-List<MetadataTemplate.Option> options = new ArrayList<MetadataTemplate.Option>();
-options.add(technology);
-options.add(healthcare);
-options.add(legal);
-
-MetadataTemplate.Field tav = new MetadataTemplate.Field();
-tav.setType("float");
-tav.setDisplayName("Total account value");
-tav.setKey("tav");
-
-List<MetadataTemplate.Field> fields = new ArrayList<MetadataTemplate.Field>();
-fields.add(name);
-fields.add(industry);
-fields.add(tav);
-
-MetadataTemplate template = MetadataTemplate.createMetadataTemplate(api, "enterprise", "customerInfo", "Customer Info", false, fields);
-
-```
-
-```python Python
-from boxsdk.object.metadata_template import MetadataField, MetadataFieldType
-
-fields = [
-    MetadataField(MetadataFieldType.STRING, 'Name')
-    MetadataField(MetadataFieldType.ENUM, 'Industry', options=['Technology', 'Healthcare', 'Legal'])
-]
-template = client.create_metadata_template('Customer Info', fields)
-
-```
-
-```js Node
-client.metadata.createTemplate(
-    'Customer Info',
-    [
-        {
-            type: 'string',
-            displayName: 'Name'
-        },
-        {
-            type: 'enum',
-            displayName: 'Industry',
-            options: [
-                {key: 'Technology'},
-                {key: 'Healthcare'},
-                {key: 'Legal'}
+  ```sh cURL
+  curl -X POST https://api.box.com/2.0/metadata_templates/schema \
+      -H "authorization: Bearer <ACCESS_TOKEN>" \
+      -H "content-type: application/json" \
+      -d '{
+        "scope": "enterprise",
+        "displayName": "Customer Info",
+        "fields": [
+          {
+            "type": "string",
+            "displayName": "Name"
+          },
+          {
+            "type": "enum",
+            "displayName": "Industry",
+            "options": [
+              {"key": "Technology"},
+              {"key": "Healthcare"},
+              {"key": "Legal"}
             ]
-        },
+          },
+          {
+            "type": "float",
+            "displayName": "Total account value",
+            "key": "tav"
+          }
+        ]
+      }'
+  ```
+
+  ```csharp .NET
+  var templateParams = new BoxMetadataTemplate()
+  {
+    DisplayName = "Customer Info",
+    Scope = "enterprise",
+    Fields = new List<BoxMetadataTemplateField>()
+    {
+      new BoxMetadataTemplateField()
+      {
+        Type = "string",
+        DisplayName = "Name"
+      },
+      new BoxMetadataTemplateField()
+      {
+        Type = "enum",
+        DisplayName = "Industry",
+        Options = new List<BoxMetadataTemplateFieldOption>()
         {
-            type: 'float',
-            displayName: 'Total account value',
-            key: 'tav'
+          new BoxMetadataTemplateFieldOption() { Key = "Technology" },
+          new BoxMetadataTemplateFieldOption() { Key = "Healthcare" },
+          new BoxMetadataTemplateFieldOption() { Key = "Legal" }
         }
-    ]
-).then(template => {
-    // ...
-});
+      },
+      new BoxMetadataTemplateField()
+      {
+        Type = "float",
+        DisplayName = "Total account value",
+        Key="tav"
+      },
+    }
+  };
+  BoxMetadataTemplate template = await  client.MetadataManager.CreateMetadataTemplate(templateParams);
+  ```
 
-```
+  ```java Java
+  MetadataTemplate.Field name = new MetadataTemplate.Field();
+  name.setType("string");
+  name.setDisplayName("Name");
 
+  MetadataTemplate.Field industry = new MetadataTemplate.Field();
+  industry.setType("enum");
+  industry.setDisplayName("Industry");
+
+  MetadataTemplate.Option technology = new MetadataTemplate.Option();
+  technology.setKey("Technology");
+
+  MetadataTemplate.Option healthcare = new MetadataTemplate.Option();
+  healthcare.setKey("Healthcare");
+
+  MetadataTemplate.Option legal = new MetadataTemplate.Option();
+  legal.setKey("Legal");
+
+  List<MetadataTemplate.Option> options = new ArrayList<MetadataTemplate.Option>();
+  options.add(technology);
+  options.add(healthcare);
+  options.add(legal);
+
+  MetadataTemplate.Field tav = new MetadataTemplate.Field();
+  tav.setType("float");
+  tav.setDisplayName("Total account value");
+  tav.setKey("tav");
+
+  List<MetadataTemplate.Field> fields = new ArrayList<MetadataTemplate.Field>();
+  fields.add(name);
+  fields.add(industry);
+  fields.add(tav);
+
+  MetadataTemplate template = MetadataTemplate.createMetadataTemplate(api, "enterprise", "customerInfo", "Customer Info", false, fields);
+  ```
+
+  ```python Python
+  from boxsdk.object.metadata_template import MetadataField, MetadataFieldType
+
+  fields = [
+      MetadataField(MetadataFieldType.STRING, 'Name')
+      MetadataField(MetadataFieldType.ENUM, 'Industry', options=['Technology', 'Healthcare', 'Legal'])
+  ]
+  template = client.create_metadata_template('Customer Info', fields)
+  ```
+
+  ```js Node
+  client.metadata.createTemplate(
+      'Customer Info',
+      [
+          {
+              type: 'string',
+              displayName: 'Name'
+          },
+          {
+              type: 'enum',
+              displayName: 'Industry',
+              options: [
+                  {key: 'Technology'},
+                  {key: 'Healthcare'},
+                  {key: 'Legal'}
+              ]
+          },
+          {
+              type: 'float',
+              displayName: 'Total account value',
+              key: 'tav'
+          }
+      ]
+  ).then(template => {
+      // ...
+  });
+  ```
 </CodeGroup>
 
 <Warning>
-**管理者権限が必須**
+  **管理者権限が必須**
 
-メタデータテンプレートの作成は、管理者権限を持つユーザーに制限されています。つまり、管理者、または管理者から**会社のメタデータテンプレートを作成、編集する**権限が付与されている共同管理者だけがウェブアプリまたはAPIを使用してテンプレートを管理できます。
-
+  メタデータテンプレートの作成は、管理者権限を持つユーザーに制限されています。つまり、管理者、または管理者から**会社のメタデータテンプレートを作成、編集する**権限が付与されている共同管理者だけがウェブアプリまたはAPIを使用してテンプレートを管理できます。
 </Warning>
 
 このAPIにより、新しく作成されたメタデータテンプレートが返されます。
@@ -238,32 +222,27 @@ client.metadata.createTemplate(
     }
   ]
 }
-
 ```
 
 <Note>
-**テンプレートキー**
+  **テンプレートキー**
 
-テンプレートキーは、明示的に設定しませんでしたが、`displayName`値から自動的に派生します。この場合、`templateKey`は`customerInfo`になります。
-
+  テンプレートキーは、明示的に設定しませんでしたが、`displayName`値から自動的に派生します。この場合、`templateKey`は`customerInfo`になります。
 </Note>
 
-<Next>
-
-カスタムテンプレートを作成しました
-
-</Next>
+<Next>カスタムテンプレートを作成しました</Next>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create metadata template", href: "/reference/post-metadata-templates-schema", badge: "POST" }
-  ]}
+  { label: "Create metadata template", href: "/reference/post-metadata-templates-schema", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" },
-    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "ガイド" }
-  ]}
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+  { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" }
+]}
 />

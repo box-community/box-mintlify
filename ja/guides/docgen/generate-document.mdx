@@ -1,24 +1,13 @@
 ---
-title: "ドキュメントの生成"
 rank: 3
-related_guides:
-  - docgen/docgen-getting-started
-  - docgen/mark-template
 related_endpoints:
-  - post_docgen_batches_v2025.0
-  - post_docgen_templates_v2025.0
-category_id: docgen
-subcategory_id: null
-is_index: false
-id: docgen/generate-document
-type: guide
-total_steps: 5
-sibling_id: docgen
-parent_id: docgen
-next_page_id: docgen/docgen-templates
-previous_page_id: docgen/mark-template
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/docgen/generate-document.md
+  0: post_docgen_batches_v2025.0
+  1: post_docgen_templates_v2025.0
+related_guides:
+  0: docgen/docgen-getting-started
+  1: docgen/mark-template
+title: ドキュメントの生成
+
 fullyTranslated: true
 ---
 
@@ -38,17 +27,17 @@ Box Doc Gen APIの使用を開始する前に、[Box Doc Genの使い方][docgen
 
 コールを実行するには、以下のパラメータを渡す必要があります。必須のパラメータは**太字**で示されています。
 
-| パラメータ                                              | 説明                                                               | 例                                                            |
-| -------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------ |
-| **`file.id`**                                      | Box Doc Genテンプレートとして設定するファイルのID。                                 | `12345678`                                                   |
-| **`file.type`**                                    | 指定した入力データの種類。値は常に**`file`**になります。                                | `file`                                                       |
-| `file_version`                                     | テンプレートのファイルバージョン。                                                | `12345`                                                      |
-| **`input_source`**                                 | 生成されるドキュメントの入力ソース。この値は、APIベースのすべてのドキュメント生成リクエストで`api`にする必要があります。 | `api`                                                        |
-| **`output_type`**                                  | 出力ファイルの種類。                                                       | `docx`, `pdf`                                                |
-| **`destination_folder.id`**                        | 生成されたドキュメントが保存されるフォルダのID。                                        | `12345678`                                                   |
-| **`destination_folder.type`**                      | 保存先の項目の種類。生成されたファイルはフォルダに保存されるため、値は常に**`folder`**になります。          | `file`                                                       |
-| **`document_generation_data.generated_file_name`** | 生成されるファイルの名前。                                                    | `New_Template`                                               |
-| **`document_generation_data.user_input`**          | ドキュメントの生成に使用するJSONデータ。                                           | `{"id": 2, "name": "Ink  Cartridge", "type": "non-fragile"}` |
+| パラメータ                                              | 説明                                                                    | 例                                                            |
+| -------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------ |
+| **`file.id`**                                      | Box Doc Genテンプレートとして設定するファイルのID。                                      | `12345678`                                                   |
+| **`file.type`**                                    | 指定した入力データの種類。値は常&#x306B;**`file`**&#x306B;なります。                       | `file`                                                       |
+| `file_version`                                     | テンプレートのファイルバージョン。                                                     | `12345`                                                      |
+| **`input_source`**                                 | 生成されるドキュメントの入力ソース。この値は、APIベースのすべてのドキュメント生成リクエストで`api`にする必要があります。      | `api`                                                        |
+| **`output_type`**                                  | 出力ファイルの種類。                                                            | `docx`, `pdf`                                                |
+| **`destination_folder.id`**                        | 生成されたドキュメントが保存されるフォルダのID。                                             | `12345678`                                                   |
+| **`destination_folder.type`**                      | 保存先の項目の種類。生成されたファイルはフォルダに保存されるため、値は常&#x306B;**`folder`**&#x306B;なります。 | `file`                                                       |
+| **`document_generation_data.generated_file_name`** | 生成されるファイルの名前。                                                         | `New_Template`                                               |
+| **`document_generation_data.user_input`**          | ドキュメントの生成に使用するJSONデータ。                                                | `{"id": 2, "name": "Ink  Cartridge", "type": "non-fragile"}` |
 
 ## ユースケース
 
@@ -57,135 +46,133 @@ Box Doc GenテンプレートとJSONデータを準備できたら、Box Doc Gen
 コールのサンプルは次のようになります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L 'https://api.box.com/2.0/docgen_batches' \
+       -H 'box-version: 2025.0' \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>' \
+       -D '{
+          "file": {
+              "id": "12345678",
+              "type": "file"
+          },
+          "input_source": "api",
+          "destination_folder": {
+              "id": "12345678",
+              "type": "folder"
+          },
+          "output_type": "docx",
+          "document_generation_data": [
+              {
+                  "generated_file_name": "Image test",
+                  "user_input": {
+                      "order": {
+                          "id": "12305",
+                          "date": "18-08-2023",
+                          "country": "US",
+                          "expiryDate": "18-08-2024",
+                          "currency": "$",
+                          "amount": 5060.5,
+                          "taxRate": 10,
+                          "requester": "John",
+                          "approver": "Smith",
+                          "department": "Procurement",
+                          "paymentTerms": "30 days",
+                          "deliveryTerms": "30 days",
+                          "deliveryDate": "18-09-2023",
+                          "vendor": {
+                              "company": "Example company",
+                              "address": {
+                                  "street": "Example street",
+                                  "city": "Example city",
+                                  "zip": "EX-456"
+                              }
+                          },
+                          "products": [
+                              {
+                                  "id": 1,
+                                  "name": "A4 Papers",
+                                  "type": "non-fragile",
+                                  "quantity": 100,
+                                  "price": 29,
+                                  "amount": 2900
+                              },
+                              {
+                                  "id": 2,
+                                  "name": "Ink  Cartridge",
+                                  "type": "non-fragile",
+                                  "quantity": 40,
+                                  "price": 39,
+                                  "amount": 1560
+                              },
+                              {
+                                  "id": 3,
+                                  "name": "Adhesive tape",
+                                  "type": "non-fragile",
+                                  "quantity": 20,
+                                  "price": 30,
+                                  "amount": 600.5
+                              }
+                          ]
+                      }
+                  }
+              }
+          ]`
+  ```
 
-```sh cURL
-curl -L 'https://api.box.com/2.0/docgen_batches' \
-     -H 'box-version: 2025.0' \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>' \
-     -D '{
-        "file": {
-            "id": "12345678",
-            "type": "file"
-        },
-        "input_source": "api",
-        "destination_folder": {
-            "id": "12345678",
-            "type": "folder"
-        },
-        "output_type": "docx",
-        "document_generation_data": [
-            {
-                "generated_file_name": "Image test",
-                "user_input": {
-                    "order": {
-                        "id": "12305",
-                        "date": "18-08-2023",
-                        "country": "US",
-                        "expiryDate": "18-08-2024",
-                        "currency": "$",
-                        "amount": 5060.5,
-                        "taxRate": 10,
-                        "requester": "John",
-                        "approver": "Smith",
-                        "department": "Procurement",
-                        "paymentTerms": "30 days",
-                        "deliveryTerms": "30 days",
-                        "deliveryDate": "18-09-2023",
-                        "vendor": {
-                            "company": "Example company",
-                            "address": {
-                                "street": "Example street",
-                                "city": "Example city",
-                                "zip": "EX-456"
-                            }
-                        },
-                        "products": [
-                            {
-                                "id": 1,
-                                "name": "A4 Papers",
-                                "type": "non-fragile",
-                                "quantity": 100,
-                                "price": 29,
-                                "amount": 2900
-                            },
-                            {
-                                "id": 2,
-                                "name": "Ink  Cartridge",
-                                "type": "non-fragile",
-                                "quantity": 40,
-                                "price": 39,
-                                "amount": 1560
-                            },
-                            {
-                                "id": 3,
-                                "name": "Adhesive tape",
-                                "type": "non-fragile",
-                                "quantity": 20,
-                                "price": 30,
-                                "amount": 600.5
-                            }
-                        ]
-                    }
-                }
-            }
-        ]`
-```
-
-```typescript Node/TypeScript v10
-await client.docgen.createDocgenBatchV2025R0({
-  file: new FileReferenceV2025R0({ id: uploadedFile.id }),
-  inputSource: 'api',
-  destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField({
-    id: folder.id,
-  }),
-  outputType: 'pdf',
-  documentGenerationData: [
-    {
-      generatedFileName: 'test',
-      userInput: { ['abc']: 'xyz' },
-    } satisfies DocGenDocumentGenerationDataV2025R0,
-  ],
-} satisfies DocGenBatchCreateRequestV2025R0);
-```
-
-```python Python v10
-client.docgen.create_docgen_batch_v2025_r0(
-    FileReferenceV2025R0(id=uploaded_file.id),
-    "api",
-    CreateDocgenBatchV2025R0DestinationFolder(id=folder.id),
-    "pdf",
-    [
-        DocGenDocumentGenerationDataV2025R0(
-            generated_file_name="test", user_input={"abc": "xyz"}
-        )
+  ```typescript Node/TypeScript v10
+  await client.docgen.createDocgenBatchV2025R0({
+    file: new FileReferenceV2025R0({ id: uploadedFile.id }),
+    inputSource: 'api',
+    destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField({
+      id: folder.id,
+    }),
+    outputType: 'pdf',
+    documentGenerationData: [
+      {
+        generatedFileName: 'test',
+        userInput: { ['abc']: 'xyz' },
+      } satisfies DocGenDocumentGenerationDataV2025R0,
     ],
-)
-```
+  } satisfies DocGenBatchCreateRequestV2025R0);
+  ```
 
-```cs .NET v10
-await client.Docgen.CreateDocgenBatchV2025R0Async(requestBody: new DocGenBatchCreateRequestV2025R0(file: new FileReferenceV2025R0(id: uploadedFile.Id), inputSource: "api", destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.Id), outputType: "pdf", documentGenerationData: Array.AsReadOnly(new [] {new DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: new Dictionary<string, object>() { { "abc", "xyz" } })})));
-```
+  ```python Python v10
+  client.docgen.create_docgen_batch_v2025_r0(
+      FileReferenceV2025R0(id=uploaded_file.id),
+      "api",
+      CreateDocgenBatchV2025R0DestinationFolder(id=folder.id),
+      "pdf",
+      [
+          DocGenDocumentGenerationDataV2025R0(
+              generated_file_name="test", user_input={"abc": "xyz"}
+          )
+      ],
+  )
+  ```
 
-```swift Swift v10
-try await client.docgen.createDocgenBatchV2025R0(requestBody: DocGenBatchCreateRequestV2025R0(file: FileReferenceV2025R0(id: uploadedFile.id), inputSource: "api", destinationFolder: DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.id), outputType: "pdf", documentGenerationData: [DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: ["abc": "xyz"])]))
-```
+  ```cs .NET v10
+  await client.Docgen.CreateDocgenBatchV2025R0Async(requestBody: new DocGenBatchCreateRequestV2025R0(file: new FileReferenceV2025R0(id: uploadedFile.Id), inputSource: "api", destinationFolder: new DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.Id), outputType: "pdf", documentGenerationData: Array.AsReadOnly(new [] {new DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: new Dictionary<string, object>() { { "abc", "xyz" } })})));
+  ```
 
-```java Java v10
-client.getDocgen().createDocgenBatchV2025R0(new DocGenBatchCreateRequestV2025R0(new FileReferenceV2025R0(uploadedFile.getId()), "api", new DocGenBatchCreateRequestV2025R0DestinationFolderField(folder.getId()), "pdf", Arrays.asList(new DocGenDocumentGenerationDataV2025R0("test", mapOf(entryOf("abc", "xyz"))))))
-```
+  ```swift Swift v10
+  try await client.docgen.createDocgenBatchV2025R0(requestBody: DocGenBatchCreateRequestV2025R0(file: FileReferenceV2025R0(id: uploadedFile.id), inputSource: "api", destinationFolder: DocGenBatchCreateRequestV2025R0DestinationFolderField(id: folder.id), outputType: "pdf", documentGenerationData: [DocGenDocumentGenerationDataV2025R0(generatedFileName: "test", userInput: ["abc": "xyz"])]))
+  ```
 
+  ```java Java v10
+  client.getDocgen().createDocgenBatchV2025R0(new DocGenBatchCreateRequestV2025R0(new FileReferenceV2025R0(uploadedFile.getId()), "api", new DocGenBatchCreateRequestV2025R0DestinationFolderField(folder.getId()), "pdf", Arrays.asList(new DocGenDocumentGenerationDataV2025R0("test", mapOf(entryOf("abc", "xyz"))))))
+  ```
 </CodeGroup>
 
 リクエストが処理されている間、`document_generation_data`配列の各エントリは個別のドキュメント生成ジョブとして処理され、そのジョブは、Box Doc Genによってドキュメント生成キューに追加されます。
 
 生成されたドキュメントは、指定したフォルダに保存されます。
 
-[docgen-prerequisites]: /ja/guides/docgen/docgen-getting-started
+[docgen-prerequisites]: /guides/docgen/docgen-getting-started
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "ガイド" },
-    { label: "ファイルをBox Doc Genテンプレートとして設定", href: "/ja/guides/docgen/mark-template", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+  { label: "Mark file as Box Doc Gen template", href: "/guides/docgen/mark-template", badge: "GUIDE" }
+]}
 />

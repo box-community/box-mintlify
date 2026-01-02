@@ -1,95 +1,81 @@
 ---
-title: "ファイルリクエストの削除"
 related_endpoints:
-  - delete_file_requests_id
-related_guides: []
-required_guides:
-  - file-requests/copy
-  - file-requests/get
+  0: delete_file_requests_id
+related_guides: {}
 related_resources:
-  - file_request
-category_id: file-requests
-subcategory_id: null
-is_index: false
-id: file-requests/delete
-rank: 5
-type: guide
-total_steps: 5
-sibling_id: file-requests
-parent_id: file-requests
-next_page_id: file-requests
-previous_page_id: file-requests/update
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/5-delete.md
+  0: file_request
+required_guides:
+  0: file-requests/copy
+  1: file-requests/get
+title: ファイルリクエストの削除
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "ガイド" },
-    { label: "ファイルリクエストに関する情報の取得", href: "/ja/guides/file-requests/get", badge: "ガイド" }
-  ]}
+  { label: "Copy a File Request", href: "/guides/file-requests/copy", badge: "GUIDE" },
+  { label: "Get information for a File Request", href: "/guides/file-requests/get", badge: "GUIDE" }
+]}
 />
+
 ファイルリクエストを削除するのに必要なのは、その一意のIDだけです。
 
 <CodeGroup>
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/file_requests/42037322" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/file_requests/42037322" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.fileRequests.deleteFileRequestById(updatedFileRequest.id);
-```
+  ```typescript Node/TypeScript v10
+  await client.fileRequests.deleteFileRequestById(updatedFileRequest.id);
+  ```
 
-```python Python v10
-client.file_requests.delete_file_request_by_id(updated_file_request.id)
-```
+  ```python Python v10
+  client.file_requests.delete_file_request_by_id(updated_file_request.id)
+  ```
 
-```csharp .NET v10
-await client.FileRequests.DeleteFileRequestByIdAsync(fileRequestId: updatedFileRequest.Id);
-```
+  ```csharp .NET v10
+  await client.FileRequests.DeleteFileRequestByIdAsync(fileRequestId: updatedFileRequest.Id);
+  ```
 
-```swift Swift v10
-try await client.fileRequests.deleteFileRequestById(fileRequestId: updatedFileRequest.id)
-```
+  ```swift Swift v10
+  try await client.fileRequests.deleteFileRequestById(fileRequestId: updatedFileRequest.id)
+  ```
 
-```java Java v10
-client.getFileRequests().deleteFileRequestById(updatedFileRequest.getId())
-```
+  ```java Java v10
+  client.getFileRequests().deleteFileRequestById(updatedFileRequest.getId())
+  ```
 
-```java Java v5
-BoxFileRequest fileRequest = new BoxFileRequest(api, "id");
-fileRequest.delete();
-```
+  ```java Java v5
+  BoxFileRequest fileRequest = new BoxFileRequest(api, "id");
+  fileRequest.delete();
+  ```
 
-```py Python v4
-file_request = client.file_request(file_request_id='123456')
-file_request.delete()
-```
+  ```py Python v4
+  file_request = client.file_request(file_request_id='123456')
+  file_request.delete()
+  ```
 
-```csharp .NET v6
-bool isSuccess = await client.FileRequestsManager.DeleteFileRequestAsync("12345");
-```
+  ```csharp .NET v6
+  bool isSuccess = await client.FileRequestsManager.DeleteFileRequestAsync("12345");
+  ```
 
-```js Node v4
-client.fileRequests.delete('2484517969').then(() => console.log('Removed file request'));
-```
+  ```js Node v4
+  client.fileRequests.delete('2484517969').then(() => console.log('Removed file request'));
+  ```
 </CodeGroup>
 
 <Note>
-
-ファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。ファイルリクエストテンプレートの設定に関する[ガイド](/ja/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
-
+  ファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。ファイルリクエストテンプレートの設定に関する[ガイド](/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
-  ]}
+  { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
+]}
 />

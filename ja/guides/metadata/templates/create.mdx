@@ -1,332 +1,319 @@
 ---
-title: "メタデータテンプレートの作成"
 related_endpoints:
-  - post_metadata_templates_schema
+  0: post_metadata_templates_schema
 related_guides:
-  - metadata/scopes
-  - metadata/templates/list
-  - metadata/templates/update
-required_guides:
-  - metadata/scopes
+  0: metadata/scopes
+  1: metadata/templates/list
+  2: metadata/templates/update
 related_resources:
-  - metadata_templates
-category_id: metadata
-subcategory_id: metadata/2-templates
-is_index: false
-id: metadata/templates/create
-rank: 4
-type: guide
-total_steps: 5
-sibling_id: metadata/templates
-parent_id: metadata/templates
-next_page_id: metadata/templates/update
-previous_page_id: metadata/templates/get
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/2-templates/4-create.md
+  0: metadata_templates
+required_guides:
+  0: metadata/scopes
+title: メタデータテンプレートの作成
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" }
-  ]}
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+]}
 />
-メタデータテンプレートを作成するには、`scope`、`displayName`、および必要に応じて一連の`fields`を[`POST /metadata_templates/schema`][e_create_template] API に渡します。
+
+メタデータテンプレートを作成するには、`scope`、`displayName`、および必要に応じて一連の`fields`を[`POST /metadata_templates/schema`][e_create_template] APIに渡します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/metadata_templates/schema" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-      "scope": "enterprise",
-      "displayName": "Customer",
-      "fields": [
-        {
-          "type": "string",
-          "key": "name",
-          "displayName": "Name",
-          "description": "The customer name",
-          "hidden": false
-        },
-        {
-          "type": "date",
-          "key": "last_contacted_at",
-          "displayName": "Last Contacted At",
-          "description": "When this customer was last contacted at",
-          "hidden": false
-        },
-        {
-          "type": "enum",
-          "key": "industry",
-          "displayName": "Industry",
-          "options": [
-            {"key": "Technology"},
-            {"key": "Healthcare"},
-            {"key": "Legal"}
-          ]
-        },
-        {
-          "type": "multiSelect",
-          "key": "role",
-          "displayName": "Contact Role",
-          "options": [
-            {"key": "Developer"},
-            {"key": "Business Owner"},
-            {"key": "Marketing"},
-            {"key": "Legal"},
-            {"key": "Sales"}
-          ]
-        }
-      ]
-    }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/metadata_templates/schema" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+        "scope": "enterprise",
+        "displayName": "Customer",
+        "fields": [
+          {
+            "type": "string",
+            "key": "name",
+            "displayName": "Name",
+            "description": "The customer name",
+            "hidden": false
+          },
+          {
+            "type": "date",
+            "key": "last_contacted_at",
+            "displayName": "Last Contacted At",
+            "description": "When this customer was last contacted at",
+            "hidden": false
+          },
+          {
+            "type": "enum",
+            "key": "industry",
+            "displayName": "Industry",
+            "options": [
+              {"key": "Technology"},
+              {"key": "Healthcare"},
+              {"key": "Legal"}
+            ]
+          },
+          {
+            "type": "multiSelect",
+            "key": "role",
+            "displayName": "Contact Role",
+            "options": [
+              {"key": "Developer"},
+              {"key": "Business Owner"},
+              {"key": "Marketing"},
+              {"key": "Legal"},
+              {"key": "Sales"}
+            ]
+          }
+        ]
+      }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataTemplates.createMetadataTemplate({
-  scope: "enterprise",
-  displayName: templateKey,
-  templateKey: templateKey,
-  fields: [
-    {
-      type: "string" as CreateMetadataTemplateRequestBodyFieldsTypeField,
-      key: "testName",
-      displayName: "testName",
-    } satisfies CreateMetadataTemplateRequestBodyFieldsField,
-    {
-      type: "float" as CreateMetadataTemplateRequestBodyFieldsTypeField,
-      key: "age",
-      displayName: "age",
-    } satisfies CreateMetadataTemplateRequestBodyFieldsField,
-    {
-      type: "date" as CreateMetadataTemplateRequestBodyFieldsTypeField,
-      key: "birthDate",
-      displayName: "birthDate",
-    } satisfies CreateMetadataTemplateRequestBodyFieldsField,
-    {
-      type: "enum" as CreateMetadataTemplateRequestBodyFieldsTypeField,
-      key: "countryCode",
-      displayName: "countryCode",
-      options: [
-        {
-          key: "US",
-        } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
-        {
-          key: "CA",
-        } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
-      ],
-    } satisfies CreateMetadataTemplateRequestBodyFieldsField,
-    {
-      type: "multiSelect" as CreateMetadataTemplateRequestBodyFieldsTypeField,
-      key: "sports",
-      displayName: "sports",
-      options: [
-        {
-          key: "basketball",
-        } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
-        {
-          key: "football",
-        } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
-        {
-          key: "tennis",
-        } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
-      ],
-    } satisfies CreateMetadataTemplateRequestBodyFieldsField,
-  ],
-} satisfies CreateMetadataTemplateRequestBody);
-```
-
-```python Python v10
-client.metadata_templates.create_metadata_template(
-    "enterprise",
-    template_key,
-    template_key=template_key,
-    fields=[
-        CreateMetadataTemplateFields(
-            type=CreateMetadataTemplateFieldsTypeField.STRING,
-            key="testName",
-            display_name="testName",
-        ),
-        CreateMetadataTemplateFields(
-            type=CreateMetadataTemplateFieldsTypeField.FLOAT,
-            key="age",
-            display_name="age",
-        ),
-        CreateMetadataTemplateFields(
-            type=CreateMetadataTemplateFieldsTypeField.DATE,
-            key="birthDate",
-            display_name="birthDate",
-        ),
-        CreateMetadataTemplateFields(
-            type=CreateMetadataTemplateFieldsTypeField.ENUM,
-            key="countryCode",
-            display_name="countryCode",
-            options=[
-                CreateMetadataTemplateFieldsOptionsField(key="US"),
-                CreateMetadataTemplateFieldsOptionsField(key="CA"),
-            ],
-        ),
-        CreateMetadataTemplateFields(
-            type=CreateMetadataTemplateFieldsTypeField.MULTISELECT,
-            key="sports",
-            display_name="sports",
-            options=[
-                CreateMetadataTemplateFieldsOptionsField(key="basketball"),
-                CreateMetadataTemplateFieldsOptionsField(key="football"),
-                CreateMetadataTemplateFieldsOptionsField(key="tennis"),
-            ],
-        ),
+  ```typescript Node/TypeScript v10
+  await client.metadataTemplates.createMetadataTemplate({
+    scope: 'enterprise',
+    displayName: templateKey,
+    templateKey: templateKey,
+    fields: [
+      {
+        type: 'string' as CreateMetadataTemplateRequestBodyFieldsTypeField,
+        key: 'testName',
+        displayName: 'testName',
+      } satisfies CreateMetadataTemplateRequestBodyFieldsField,
+      {
+        type: 'float' as CreateMetadataTemplateRequestBodyFieldsTypeField,
+        key: 'age',
+        displayName: 'age',
+      } satisfies CreateMetadataTemplateRequestBodyFieldsField,
+      {
+        type: 'date' as CreateMetadataTemplateRequestBodyFieldsTypeField,
+        key: 'birthDate',
+        displayName: 'birthDate',
+      } satisfies CreateMetadataTemplateRequestBodyFieldsField,
+      {
+        type: 'enum' as CreateMetadataTemplateRequestBodyFieldsTypeField,
+        key: 'countryCode',
+        displayName: 'countryCode',
+        options: [
+          {
+            key: 'US',
+          } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
+          {
+            key: 'CA',
+          } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
+        ],
+      } satisfies CreateMetadataTemplateRequestBodyFieldsField,
+      {
+        type: 'multiSelect' as CreateMetadataTemplateRequestBodyFieldsTypeField,
+        key: 'sports',
+        displayName: 'sports',
+        options: [
+          {
+            key: 'basketball',
+          } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
+          {
+            key: 'football',
+          } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
+          {
+            key: 'tennis',
+          } satisfies CreateMetadataTemplateRequestBodyFieldsOptionsField,
+        ],
+      } satisfies CreateMetadataTemplateRequestBodyFieldsField,
     ],
-)
-```
+  } satisfies CreateMetadataTemplateRequestBody);
+  ```
 
-```csharp .NET v10
-await client.MetadataTemplates.CreateMetadataTemplateAsync(requestBody: new CreateMetadataTemplateRequestBody(scope: "enterprise", displayName: templateKey) { TemplateKey = templateKey, Fields = Array.AsReadOnly(new [] {new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.String, key: "testName", displayName: "testName"),new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.Float, key: "age", displayName: "age"),new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.Date, key: "birthDate", displayName: "birthDate"),new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.Enum, key: "countryCode", displayName: "countryCode") { Options = Array.AsReadOnly(new [] {new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "US"),new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "CA")}) },new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.MultiSelect, key: "sports", displayName: "sports") { Options = Array.AsReadOnly(new [] {new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "basketball"),new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "football"),new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "tennis")}) }}) });
-```
-
-```swift Swift v10
-try await client.metadataTemplates.createMetadataTemplate(requestBody: CreateMetadataTemplateRequestBody(scope: "enterprise", displayName: templateKey, templateKey: templateKey, fields: [CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.string, key: "testName", displayName: "testName"), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.float, key: "age", displayName: "age"), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.date, key: "birthDate", displayName: "birthDate"), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.enum_, key: "countryCode", displayName: "countryCode", options: [CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "US"), CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "CA")]), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.multiSelect, key: "sports", displayName: "sports", options: [CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "basketball"), CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "football"), CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "tennis")])]))
-```
-
-```java Java v10
-client.getMetadataTemplates().createMetadataTemplate(new CreateMetadataTemplateRequestBody.Builder("enterprise", templateKey).templateKey(templateKey).fields(Arrays.asList(new CreateMetadataTemplateRequestBodyFieldsField(CreateMetadataTemplateRequestBodyFieldsTypeField.STRING, "testName", "testName"), new CreateMetadataTemplateRequestBodyFieldsField(CreateMetadataTemplateRequestBodyFieldsTypeField.FLOAT, "age", "age"), new CreateMetadataTemplateRequestBodyFieldsField(CreateMetadataTemplateRequestBodyFieldsTypeField.DATE, "birthDate", "birthDate"), new CreateMetadataTemplateRequestBodyFieldsField.Builder(CreateMetadataTemplateRequestBodyFieldsTypeField.ENUM, "countryCode", "countryCode").options(Arrays.asList(new CreateMetadataTemplateRequestBodyFieldsOptionsField("US"), new CreateMetadataTemplateRequestBodyFieldsOptionsField("CA"))).build(), new CreateMetadataTemplateRequestBodyFieldsField.Builder(CreateMetadataTemplateRequestBodyFieldsTypeField.MULTISELECT, "sports", "sports").options(Arrays.asList(new CreateMetadataTemplateRequestBodyFieldsOptionsField("basketball"), new CreateMetadataTemplateRequestBodyFieldsOptionsField("football"), new CreateMetadataTemplateRequestBodyFieldsOptionsField("tennis"))).build())).build())
-```
-
-```java Java v5
-MetadataTemplate.Field metadataField = new MetadataTemplate.Field();
-metadataField.setType("string");
-metadataField.setKey("text");
-metadataField.setDisplayName("Text");
-
-List<MetadataTemplate.Field> fields = new ArrayList<MetadataTemplate.Field>();
-fields.add(metadataField);
-
-MetadataTemplate template = MetadataTemplate.createMetadataTemplate(api, "enterprise", "CustomField", "Custom Field", false, fields);
-
-final JsonObject jsonObject = new JsonObject();
-jsonObject.add("text", "This is a test text");
-
-Metadata metadata = new Metadata(jsonObject);
-boxFile.createMetadata("CustomField", metadata);
-```
-
-```py Python v4
-from boxsdk.object.metadata_template import MetadataField, MetadataFieldType
-
-fields = [
-    MetadataField(MetadataFieldType.STRING, 'Name'),
-    MetadataField(MetadataFieldType.DATE, 'Birthday', 'bday'),
-    MetadataField(MetadataFieldType.ENUM, 'State', options=['CA', 'TX', 'NY'])
-]
-template = client.create_metadata_template('Employee Record', fields, hidden=True)
-print(f'Metadata template ID {template.scope}/{template.templateKey} created!')
-```
-
-```csharp .NET v6
-var templateParams = new BoxMetadataTemplate()
-{
-    TemplateKey = "marketingCollateral",
-    DisplayName = "Marketing Collateral",
-    Scope = "enterprise",
-    Fields = new List<BoxMetadataTemplateField>()
-    {
-        new BoxMetadataTemplateField()
-        {
-            Type = "enum",
-            Key = "audience",
-            DisplayName = "Audience",
-            Options = new List<BoxMetadataTemplateFieldOption>()
-            {
-                new BoxMetadataTemplateFieldOption() { Key = "internal" },
-                new BoxMetadataTemplateFieldOption() { Key = "external" }
-            }
-        },
-        new BoxMetadataTemplateField()
-        {
-            Type = "string",
-            Key = "author",
-            DisplayName = "Author"
-        }
-    }
-};
-BoxMetadataTemplate template = await client.MetadataManager.CreateMetadataTemplate(templateParams);
-```
-
-```js Node v4
-// Create a new template, but hide it for now until it's ready for use
-client.metadata
-  .createTemplate(
-    "Vendor Contract",
-    [
-      {
-        type: "date",
-        key: "signed",
-        displayName: "Date Signed",
-      },
-      {
-        type: "string",
-        key: "vendor",
-        displayName: "Vendor",
-      },
-      {
-        type: "enum",
-        key: "fy",
-        displayName: "Fiscal Year",
-        options: [{ key: "FY17" }, { key: "FY18" }, { key: "FY19" }],
-      },
-    ],
-    {
-      hidden: true,
-      templateKey: "vcontract",
-      copyInstanceOnItemCopy: false,
-    }
+  ```python Python v10
+  client.metadata_templates.create_metadata_template(
+      "enterprise",
+      template_key,
+      template_key=template_key,
+      fields=[
+          CreateMetadataTemplateFields(
+              type=CreateMetadataTemplateFieldsTypeField.STRING,
+              key="testName",
+              display_name="testName",
+          ),
+          CreateMetadataTemplateFields(
+              type=CreateMetadataTemplateFieldsTypeField.FLOAT,
+              key="age",
+              display_name="age",
+          ),
+          CreateMetadataTemplateFields(
+              type=CreateMetadataTemplateFieldsTypeField.DATE,
+              key="birthDate",
+              display_name="birthDate",
+          ),
+          CreateMetadataTemplateFields(
+              type=CreateMetadataTemplateFieldsTypeField.ENUM,
+              key="countryCode",
+              display_name="countryCode",
+              options=[
+                  CreateMetadataTemplateFieldsOptionsField(key="US"),
+                  CreateMetadataTemplateFieldsOptionsField(key="CA"),
+              ],
+          ),
+          CreateMetadataTemplateFields(
+              type=CreateMetadataTemplateFieldsTypeField.MULTISELECT,
+              key="sports",
+              display_name="sports",
+              options=[
+                  CreateMetadataTemplateFieldsOptionsField(key="basketball"),
+                  CreateMetadataTemplateFieldsOptionsField(key="football"),
+                  CreateMetadataTemplateFieldsOptionsField(key="tennis"),
+              ],
+          ),
+      ],
   )
-  .then((template) => {
-    /* template -> {
-   id: '17f2d715-6acb-45f2-b96a-28b15efc9faa',
-   templateKey: 'vcontract',
-   scope: 'enterprise_12345',
-   displayName: 'Vendor Contract',
-   hidden: true,
-   copyInstanceOnItemCopy: false,
-   fields: 
-   [ { type: 'date',
-    key: 'signed',
-    displayName: 'Date Signed',
-    hidden: false },
-    { type: 'string',
-    key: 'vendor',
-    displayName: 'Vendor',
-    hidden: false },
-    { type: 'enum',
-    key: 'fy',
-    displayName: 'Fiscal Year',
-    options: 
-     [ { key: 'FY17' },
-     { key: 'FY18' },
-     { key: 'FY19' } ],
-    hidden: false } ] }
-  */
-  });
-```
+  ```
 
+  ```csharp .NET v10
+  await client.MetadataTemplates.CreateMetadataTemplateAsync(requestBody: new CreateMetadataTemplateRequestBody(scope: "enterprise", displayName: templateKey) { TemplateKey = templateKey, Fields = Array.AsReadOnly(new [] {new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.String, key: "testName", displayName: "testName"),new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.Float, key: "age", displayName: "age"),new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.Date, key: "birthDate", displayName: "birthDate"),new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.Enum, key: "countryCode", displayName: "countryCode") { Options = Array.AsReadOnly(new [] {new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "US"),new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "CA")}) },new CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.MultiSelect, key: "sports", displayName: "sports") { Options = Array.AsReadOnly(new [] {new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "basketball"),new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "football"),new CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "tennis")}) }}) });
+  ```
+
+  ```swift Swift v10
+  try await client.metadataTemplates.createMetadataTemplate(requestBody: CreateMetadataTemplateRequestBody(scope: "enterprise", displayName: templateKey, templateKey: templateKey, fields: [CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.string, key: "testName", displayName: "testName"), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.float, key: "age", displayName: "age"), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.date, key: "birthDate", displayName: "birthDate"), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.enum_, key: "countryCode", displayName: "countryCode", options: [CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "US"), CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "CA")]), CreateMetadataTemplateRequestBodyFieldsField(type: CreateMetadataTemplateRequestBodyFieldsTypeField.multiSelect, key: "sports", displayName: "sports", options: [CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "basketball"), CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "football"), CreateMetadataTemplateRequestBodyFieldsOptionsField(key: "tennis")])]))
+  ```
+
+  ```java Java v10
+  client.getMetadataTemplates().createMetadataTemplate(new CreateMetadataTemplateRequestBody.Builder("enterprise", templateKey).templateKey(templateKey).fields(Arrays.asList(new CreateMetadataTemplateRequestBodyFieldsField(CreateMetadataTemplateRequestBodyFieldsTypeField.STRING, "testName", "testName"), new CreateMetadataTemplateRequestBodyFieldsField(CreateMetadataTemplateRequestBodyFieldsTypeField.FLOAT, "age", "age"), new CreateMetadataTemplateRequestBodyFieldsField(CreateMetadataTemplateRequestBodyFieldsTypeField.DATE, "birthDate", "birthDate"), new CreateMetadataTemplateRequestBodyFieldsField.Builder(CreateMetadataTemplateRequestBodyFieldsTypeField.ENUM, "countryCode", "countryCode").options(Arrays.asList(new CreateMetadataTemplateRequestBodyFieldsOptionsField("US"), new CreateMetadataTemplateRequestBodyFieldsOptionsField("CA"))).build(), new CreateMetadataTemplateRequestBodyFieldsField.Builder(CreateMetadataTemplateRequestBodyFieldsTypeField.MULTISELECT, "sports", "sports").options(Arrays.asList(new CreateMetadataTemplateRequestBodyFieldsOptionsField("basketball"), new CreateMetadataTemplateRequestBodyFieldsOptionsField("football"), new CreateMetadataTemplateRequestBodyFieldsOptionsField("tennis"))).build())).build())
+  ```
+
+  ```java Java v5
+  MetadataTemplate.Field metadataField = new MetadataTemplate.Field();
+  metadataField.setType("string");
+  metadataField.setKey("text");
+  metadataField.setDisplayName("Text");
+
+  List<MetadataTemplate.Field> fields = new ArrayList<MetadataTemplate.Field>();
+  fields.add(metadataField);
+
+  MetadataTemplate template = MetadataTemplate.createMetadataTemplate(api, "enterprise", "CustomField", "Custom Field", false, fields);
+
+  final JsonObject jsonObject = new JsonObject();
+  jsonObject.add("text", "This is a test text");
+
+  Metadata metadata = new Metadata(jsonObject);
+  boxFile.createMetadata("CustomField", metadata);
+  ```
+
+  ```py Python v4
+  from boxsdk.object.metadata_template import MetadataField, MetadataFieldType
+
+  fields = [
+      MetadataField(MetadataFieldType.STRING, 'Name'),
+      MetadataField(MetadataFieldType.DATE, 'Birthday', 'bday'),
+      MetadataField(MetadataFieldType.ENUM, 'State', options=['CA', 'TX', 'NY'])
+  ]
+  template = client.create_metadata_template('Employee Record', fields, hidden=True)
+  print(f'Metadata template ID {template.scope}/{template.templateKey} created!')
+  ```
+
+  ```csharp .NET v6
+  var templateParams = new BoxMetadataTemplate()
+  {
+      TemplateKey = "marketingCollateral",
+      DisplayName = "Marketing Collateral",
+      Scope = "enterprise",
+      Fields = new List<BoxMetadataTemplateField>()
+      {
+          new BoxMetadataTemplateField()
+          {
+              Type = "enum",
+              Key = "audience",
+              DisplayName = "Audience",
+              Options = new List<BoxMetadataTemplateFieldOption>()
+              {
+                  new BoxMetadataTemplateFieldOption() { Key = "internal" },
+                  new BoxMetadataTemplateFieldOption() { Key = "external" }
+              }
+          },
+          new BoxMetadataTemplateField()
+          {
+              Type = "string",
+              Key = "author",
+              DisplayName = "Author"
+          }
+      }
+  };
+  BoxMetadataTemplate template = await client.MetadataManager.CreateMetadataTemplate(templateParams);
+  ```
+
+  ```js Node v4
+  // Create a new template, but hide it for now until it's ready for use
+  client.metadata.createTemplate(
+    'Vendor Contract',
+    [
+     {
+      type: 'date',
+      key: 'signed',
+      displayName: 'Date Signed'
+     },
+     {
+      type: 'string',
+      key: 'vendor',
+      displayName: 'Vendor'
+     },
+     {
+      type: 'enum',
+      key: 'fy',
+      displayName: 'Fiscal Year',
+      options: [
+       {key: 'FY17'},
+       {key: 'FY18'},
+       {key: 'FY19'}
+      ]
+     }
+    ],
+    {
+     hidden: true,
+     templateKey: 'vcontract',
+     copyInstanceOnItemCopy: false
+    }
+   )
+   .then(template => {
+    /* template -> {
+     id: '17f2d715-6acb-45f2-b96a-28b15efc9faa',
+     templateKey: 'vcontract',
+     scope: 'enterprise_12345',
+     displayName: 'Vendor Contract',
+     hidden: true,
+     copyInstanceOnItemCopy: false,
+     fields: 
+     [ { type: 'date',
+      key: 'signed',
+      displayName: 'Date Signed',
+      hidden: false },
+      { type: 'string',
+      key: 'vendor',
+      displayName: 'Vendor',
+      hidden: false },
+      { type: 'enum',
+      key: 'fy',
+      displayName: 'Fiscal Year',
+      options: 
+       [ { key: 'FY17' },
+       { key: 'FY18' },
+       { key: 'FY19' } ],
+      hidden: false } ] }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Note>
-
-メタデータテンプレートは、`enterprise`スコープのみに作成できます。`global`スコープの場合はテンプレートを作成できません。
-
+  メタデータテンプレートは、`enterprise`スコープのみに作成できます。`global`スコープの場合はテンプレートを作成できません。
 </Note>
 
 <Warning>
-**管理者権限が必須**
+  **管理者権限が必須**
 
-メタデータテンプレートの作成は、管理者権限を持つユーザーに制限されています。つまり、管理者、または管理者から**会社のメタデータテンプレートを作成、編集する**権限が付与されている共同管理者だけがウェブアプリまたは API を使用してテンプレートを管理できます。
-
+  メタデータテンプレートの作成は、管理者権限を持つユーザーに制限されています。つまり、管理者、または管理者から**会社のメタデータテンプレートを作成、編集する**権限が付与されている共同管理者だけがウェブアプリまたはAPIを使用してテンプレートを管理できます。
 </Warning>
 
 ## テンプレートフィールド
@@ -349,7 +336,7 @@ client.metadata
 }
 ```
 
-`enum`および`multiSelect`フィールドタイプは、ユーザーが項目のリストからそれぞれ 1 つまたは複数のオプションを選択できるドロップダウンリストを表します。
+`enum`および`multiSelect`フィールドタイプは、ユーザーが項目のリストからそれぞれ1つまたは複数のオプションを選択できるドロップダウンリストを表します。
 
 ```json
 {
@@ -360,13 +347,17 @@ client.metadata
       "type": "enum",
       "key": "industry",
       "displayName": "Industry",
-      "options": [{ "key": "Technology" }, { "key": "Healthcare" }, { "key": "Legal" }]
+      "options": [
+        {"key": "Technology"},
+        {"key": "Healthcare"},
+        {"key": "Legal"}
+      ]
     }
   ]
 }
 ```
 
-<Card href="/ja/guides/metadata/fields" title="メタデータテンプレートフィールドの詳細を確認する" />
+<Card href="/guides/metadata/fields" arrow title="メタデータテンプレートフィールドの詳細を確認する" />
 
 ## テンプレートキー
 
@@ -374,22 +365,24 @@ client.metadata
 
 たとえば、`Test Name (with-special_) Characters`という名前のメタデータテンプレートの`templateKey`は`testNameWithspecialCharacters`になります。
 
-その後、このテンプレートキーは、テンプレートの情報を取得したり、項目にテンプレートを割り当てたりするための API リクエストを実行するときに使用されます。
+その後、このテンプレートキーは、テンプレートの情報を取得したり、項目にテンプレートを割り当てたりするためのAPIリクエストを実行するときに使用されます。
 
-[user-types]: /ja/platform/user-types
-[e_create_template]: /ja/reference/post_metadata_templates_schema
+[user-types]: /platform/user-types
+
+[e_create_template]: /reference/post_metadata_templates_schema
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create metadata template", href: "/reference/post-metadata-templates-schema", badge: "POST" }
-  ]}
+  { label: "Create metadata template", href: "/reference/post-metadata-templates-schema", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" },
-    { label: "すべてのメタデータテンプレートのリストの取得", href: "/ja/guides/metadata/templates/list", badge: "ガイド" },
-    { label: "メタデータテンプレートの更新", href: "/ja/guides/metadata/templates/update", badge: "ガイド" }
-  ]}
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" },
+  { label: "List all metadata templates", href: "/guides/metadata/templates/list", badge: "GUIDE" },
+  { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+]}
 />

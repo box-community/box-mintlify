@@ -1,87 +1,69 @@
 ---
-title: "クライアント資格情報許可"
+alias_paths:
+  0: /docs/construct-jwt-claim-manually
+  1: /guides/authentication/jwt/without-sdk/#client-credentials-grant
 rank: 4
 related_endpoints:
-  - get_authorize
+  0: get_authorize
 related_guides:
-  - applications/app-types/select
-  - authentication/best-practices/
+  0: applications/app-types/select
+  1: authentication/best-practices/
+related_resources: ""
 required_guides:
-  - authentication/select
-related_resources: []
-alias_paths:
-  - /docs/construct-jwt-claim-manually
-  - /guides/authentication/jwt/without-sdk/#client-credentials-grant
-category_id: authentication
-subcategory_id: authentication/client-credentials
-is_index: true
-id: authentication/client-credentials
-type: guide
-total_steps: 1
-sibling_id: authentication
-parent_id: authentication
-next_page_id: ""
-previous_page_id: authentication/client-credentials/client-credentials-setup
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/client-credentials/index.md
+  0: authentication/select
+sidebarTitle: Overview
+title: クライアント資格情報許可
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+]}
 />
-サーバー認証を利用し、クライアント ID とクライアントシークレットを使用してアプリケーションの ID を確認する場合は、以下の手順に従います。
+
+サーバー認証を利用し、クライアントIDとクライアントシークレットを使用してアプリケーションのIDを確認する場合は、以下の手順に従います。
 
 ## 前提条件
 
-- Box[開発者コンソール][devconsole]でサーバー認証 (クライアント資格情報許可使用) を使用する Platform アプリケーション
-- \[構成] タブからアプリケーションのクライアントシークレットを表示およびコピーするために、Box アカウントで[2 要素認証][2fa]が有効になっていること
-- Box 管理コンソールでアプリケーションが[承認][auth]されていること
+* Box[開発者コンソール][devconsole]でサーバー認証 (クライアント資格情報許可使用) を使用するPlatformアプリケーション
+* \[構成] タブからアプリケーションのクライアントシークレットを表示およびコピーするために、Boxアカウントで[2要素認証][2fa]が有効になっていること
+* Box管理コンソールでアプリケーションが[承認][auth]されていること
 
 <Danger>
-
-クライアントシークレットは機密情報であり、保護する必要があります。アクセストークンの取得時に Box がアプリケーションの ID を安全に確認するために使用されるため、クライアントシークレットを自由に配布するべきではありません。配布方法には、メール、公開フォーラム、コードリポジトリ、分散されたネイティブアプリケーション、クライアント側のコードなどがあります。さらにセキュリティメカニズムを追加する場合は、Box の標準的な JWT アプリケーションを使用することをお勧めします。
-
+  クライアントシークレットは機密情報であり、保護する必要があります。アクセストークンの取得時にBoxがアプリケーションのIDを安全に確認するために使用されるため、クライアントシークレットを自由に配布するべきではありません。配布方法には、メール、公開フォーラム、コードリポジトリ、分散されたネイティブアプリケーション、クライアント側のコードなどがあります。さらにセキュリティメカニズムを追加する場合は、Boxの標準的なJWTアプリケーションを使用することをお勧めします。
 </Danger>
 
 ## 利用方法
 
-API コールを実行して[アクセストークン][accesstoken]を取得する際は、リクエスト本文にクライアント ID とクライアントシークレットを含める必要があります。`grant_type`を`client_credentials`に設定します。
+APIコールを実行して[アクセストークン][accesstoken]を取得する際は、リクエスト本文にクライアントIDとクライアントシークレットを含める必要があります。`grant_type`を`client_credentials`に設定します。
 
 アプリケーションの[サービスアカウント][sa]として認証する場合は、以下のようにします。
 
-- `box_subject_type`を`enterprise`に設定する
-- `box_subject_id`を Enterprise ID に設定する
+* `box_subject_type`を`enterprise`に設定する
+* `box_subject_id`をEnterprise IDに設定する
 
- {/* <Samples id="x_auth" variant="with_client_credentials">
-
-</Samples> */}
+{/* <Samples id='x_auth' variant='with_client_credentials' /> */}
 
 管理者または管理対象ユーザーとして認証する場合は、以下のようにします。
 
-- `box_subject_type`を`user`に設定する
-- `box_subject_id`をユーザー ID に設定する
-- Box[開発者コンソール][devconsole]で \[**アプリ + Enterprise アクセス**] および \[**ユーザーアクセストークンを生成する**] を有効にする
+* `box_subject_type`を`user`に設定する
+* `box_subject_id`をユーザーIDに設定する
+* Box[開発者コンソール][devconsole]で \[**アプリ + Enterpriseアクセス**] および \[**ユーザーアクセストークンを生成する**] を有効にする
 
-{/* <Samples id="x_auth" variant="with_ccg_admin_managed_user">
-
-</Samples> */}
+{/* <Samples id='x_auth' variant='with_ccg_admin_managed_user' /> */}
 
 任意のアプリケーションユーザーとして認証する場合は、以下のようにします。
 
-- `box_subject_type`を`user`に設定する
-- `box_subject_id`をユーザー ID に設定する
-- Box[開発者コンソール][devconsole]で \[**ユーザーアクセストークンを生成する**] を有効にする
+* `box_subject_type`を`user`に設定する
+* `box_subject_id`をユーザーIDに設定する
+* Box[開発者コンソール][devconsole]で \[**ユーザーアクセストークンを生成する**] を有効にする
 
-{/* <Samples id="x_auth" variant="with_ccg_app_user">
-
-</Samples> */}
+{/* <Samples id='x_auth' variant='with_ccg_app_user' /> */}
 
 ## 一般的なエラー
 
@@ -93,32 +75,29 @@ API コールを実行して[アクセストークン][accesstoken]を取得す�
 
 ```sh
 Grant credentials are invalid [400 Bad Request] invalid_grant - Grant credentials are invalid
-
 ```
 
 このエラーは次のいずれかを示します。
 
-- 渡されたクライアント ID とクライアントシークレットが正しくないか、同じアプリケーションのものではない。
+* 渡されたクライアントIDとクライアントシークレットが正しくないか、同じアプリケーションのものではない。
 
-- 選択した[アプリケーションアクセス][aa]に基づいて`box_subject_id`を使用できない。
-
-<Warning>
-
-\[アプリアクセスのみ] が指定されている CCG アプリは、そのサービスアカウントとして認証するために送信時に`box_subject_type`を`enterprise`に設定できますが、管理対象ユーザーまたは管理者として認証できません。
-
-</Warning>
-
-- `box_subject_type`を`user`に設定して使用するには、\[**構成**] タブの \[**高度な機能**] セクションでユーザーアクセストークンを生成するようアプリケーションを構成する必要があります。
-
-  <Frame>![アクセストークンの生成のチェックボックス](/images/guides/authentication/generate-access-tokens.png)</Frame>
+* 選択した[アプリケーションアクセス][aa]に基づいて`box_subject_id`を使用できない。
 
 <Warning>
-
-アプリの設定に変更を加えたら、忘れずに管理コンソールでアプリケーションを[再承認][reauth]してください。
-
+  \[アプリアクセスのみ] が指定されているCCGアプリは、そのサービスアカウントとして認証するために送信時に`box_subject_type`を`enterprise`に設定できますが、管理対象ユーザーまたは管理者として認証できません。
 </Warning>
 
-- アプリケーションが Box 管理コンソールで承認されていない
+* `box_subject_type`を`user`に設定して使用するには、\[**構成**] タブの \[**高度な機能**] セクションでユーザーアクセストークンを生成するようアプリケーションを構成する必要があります。
+
+  <Frame>
+    ![アクセストークンの生成のチェックボックス](/guides/authentication/client-credentials/image.png)
+  </Frame>
+
+<Warning>
+  アプリの設定に変更を加えたら、忘れずに管理コンソールでアプリケーションを[再承認][reauth]してください。
+</Warning>
+
+* アプリケーションがBox管理コンソールで承認されていない
 
 {/* i18n-enable localize-links */}
 
@@ -127,22 +106,28 @@ Grant credentials are invalid [400 Bad Request] invalid_grant - Grant credential
 {/* i18n-disable localize-links */}
 
 [devconsole]: https://app.box.com/developers/console
-[accesstoken]: /ja/reference/post-oauth2-token
-[sa]: /ja/platform/user-types/#service-account
-[auth]: /ja/guides/authorization
-[aa]: /ja/guides/authentication/client-credentials/client-credentials-setup/#application-access
-[reauth]: /ja/guides/authorization/platform-app-approval#re-authorization-on-changes
+
+[accesstoken]: /reference/post-oauth2-token
+
+[sa]: /platform/user-types/#service-account
+
+[auth]: /guides/authorization
+
+[aa]: /guides/authentication/client-credentials/client-credentials-setup/#application-access
+
+[reauth]: /guides/authorization/platform-app-approval#re-authorization-on-changes
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
-  ]}
+  { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "ガイド" },
-    { label: "ベストプラクティス", href: "/ja/guides/authentication/best-practices", badge: "ガイド" }
-  ]}
+  { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+  { label: "Best Practices", href: "/guides/authentication/best-practices", badge: "GUIDE" }
+]}
 />

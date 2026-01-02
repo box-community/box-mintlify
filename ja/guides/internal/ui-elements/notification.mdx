@@ -1,24 +1,11 @@
 ---
-title: "通知"
 hide: true
-category_id: internal
-subcategory_id: internal/ui-elements
-is_index: false
-id: internal/ui-elements/notification
-rank: 0
-type: guide
-total_steps: 0
-sibling_id: internal/ui-elements
-parent_id: ''
-next_page_id: ''
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/internal/ui-elements/notification.md
+title: 通知
+
 fullyTranslated: true
 ---
+
 {/* does not need translation */}
-
-
 
 通知要素は、閲覧者に重要なメッセージまたはアラートを表示するために使用される、サイト上部にあるオレンジ色のバーです。`box.com`のオレンジ色のバーに、いくつかの情報で構成できます。
 
@@ -29,8 +16,7 @@ fullyTranslated: true
 **例**:
 
 ```yaml
-display: "false"
-
+  display: "false"
 ```
 
 ## メッセージ
@@ -42,11 +28,10 @@ display: "false"
 **例**:
 
 ```yaml
-message: >
-    Join the first BoxWorks Hackathon for Good - customers,
-    partners, and the developer community are welcome to participate
-    in the 48 hour Hack to benefit The Nature Conservancy.
-
+  message: >
+      Join the first BoxWorks Hackathon for Good - customers,
+      partners, and the developer community are welcome to participate
+      in the 48 hour Hack to benefit The Nature Conservancy.
 ```
 
 ## HREF
@@ -57,8 +42,7 @@ com/guides`、`https://github.com/box/sdks`など) を指定できます。
 **例**:
 
 ```yaml
-href: "https://box.com/hack4good"
-
+  href: "https://box.com/hack4good"
 ```
 
 ## CTA
@@ -68,8 +52,7 @@ CTAは、上記のhrefにリンクする短いフレーズです。短く、ユ�
 **例**:
 
 ```yaml
-cta: Learn more and register!
-
+  cta: Learn more and register!
 ```
 
 ## TTL
@@ -79,8 +62,7 @@ cta: Learn more and register!
 **例**:
 
 ```yaml
-ttl: "0"
-
+  ttl: "0"
 ```
 
 ## 変更方法
@@ -88,30 +70,29 @@ ttl: "0"
 すべての設定は、`developer.box.com`リポジトリの`/content/microcopy/headers.yml`ファイルにあります。設定を更新し、ベストプラクティスに従って更新をプッシュします。
 
 ```yaml
-notifications:
-  // display: |-
-    A boolean that determines whether to show the orange notification bar
-    in the header. Must be "true" or "false"
-  display: "false"
+  notifications:
+    // display: |-
+      A boolean that determines whether to show the orange notification bar
+      in the header. Must be "true" or "false"
+    display: "false"
 
-  // message: |-
-    The content of the notification
-  message: >
-    Join the first BoxWorks Hackathon for Good - customers,
-    partners, and the developer community are welcome to participate
-    in the 48 hour Hack to benefit The Nature Conservancy.
+    // message: |-
+      The content of the notification
+    message: >
+      Join the first BoxWorks Hackathon for Good - customers,
+      partners, and the developer community are welcome to participate
+      in the 48 hour Hack to benefit The Nature Conservancy.
 
-  // href: |-
-    The link to navigate to when the CTA is clicked
-  href: "https://box.com/hack4good"
+    // href: |-
+      The link to navigate to when the CTA is clicked
+    href: "https://box.com/hack4good"
 
-  // cta: |-
-    The text of the CTA
-  cta: Learn more and register!
+    // cta: |-
+      The text of the CTA
+    cta: Learn more and register!
 
-  // ttl: |-
-    The number of seconds to display the message. Should always
-    be 0 unless you want to autohide.
-  ttl: "0"
-
+    // ttl: |-
+      The number of seconds to display the message. Should always
+      be 0 unless you want to autohide.
+    ttl: "0"
 ```

@@ -1,117 +1,105 @@
 ---
-title: "既存のタスクの変更"
 related_endpoints:
-  - put_tasks_id
+  0: put_tasks_id
 related_guides:
-  - tasks/create
-  - tasks/get
-  - tasks/delete
+  0: tasks/create
+  1: tasks/get
+  2: tasks/delete
 related_resources:
-  - file
-  - task
-category_id: tasks
-subcategory_id: null
-is_index: false
-id: tasks/update
-rank: 4
-type: guide
-total_steps: 5
-sibling_id: tasks
-parent_id: tasks
-next_page_id: tasks/delete
-previous_page_id: tasks/for-file
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/4-update.md
+  0: file
+  1: task
+title: 既存のタスクの変更
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-Boxでタスクを更新するには、タスクのIDを指定して[`PUT /tasks/:task_id`](/ja/reference/put-tasks-id) APIを呼び出す必要があります。このAPIを使用すると、タスクの`action`タイプの変更、`message`の追加、期日の変更を行うことができます。
+Boxでタスクを更新するには、タスクのIDを指定して[`PUT /tasks/:task_id`](/reference/put-tasks-id) APIを呼び出す必要があります。このAPIを使用すると、タスクの`action`タイプの変更、`message`の追加、期日の変更を行うことができます。
 
 <CodeGroup>
-```sh cURL
-curl -i -X PUT "https://api.box.com/2.0/tasks/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "action": "review"
-     }'
-```
+  ```sh cURL
+  curl -i -X PUT "https://api.box.com/2.0/tasks/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "action": "review"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.tasks.updateTaskById(task.id!, {
-  requestBody: {
-    message: 'updated message',
-  } satisfies UpdateTaskByIdRequestBody,
-} satisfies UpdateTaskByIdOptionalsInput);
-```
+  ```typescript Node/TypeScript v10
+  await client.tasks.updateTaskById(task.id!, {
+    requestBody: {
+      message: 'updated message',
+    } satisfies UpdateTaskByIdRequestBody,
+  } satisfies UpdateTaskByIdOptionalsInput);
+  ```
 
-```python Python v10
-client.tasks.update_task_by_id(task.id, message="updated message")
-```
+  ```python Python v10
+  client.tasks.update_task_by_id(task.id, message="updated message")
+  ```
 
-```csharp .NET v10
-await client.Tasks.UpdateTaskByIdAsync(taskId: NullableUtils.Unwrap(task.Id), requestBody: new UpdateTaskByIdRequestBody() { Message = "updated message" });
-```
+  ```csharp .NET v10
+  await client.Tasks.UpdateTaskByIdAsync(taskId: NullableUtils.Unwrap(task.Id), requestBody: new UpdateTaskByIdRequestBody() { Message = "updated message" });
+  ```
 
-```swift Swift v10
-try await client.tasks.updateTaskById(taskId: task.id!, requestBody: UpdateTaskByIdRequestBody(message: "updated message"))
-```
+  ```swift Swift v10
+  try await client.tasks.updateTaskById(taskId: task.id!, requestBody: UpdateTaskByIdRequestBody(message: "updated message"))
+  ```
 
-```java Java v10
-client.getTasks().updateTaskById(task.getId(), new UpdateTaskByIdRequestBody.Builder().message("updated message").build())
-```
+  ```java Java v10
+  client.getTasks().updateTaskById(task.getId(), new UpdateTaskByIdRequestBody.Builder().message("updated message").build())
+  ```
 
-```java Java v5
-BoxTask task = new BoxTask(api, "id");
-BoxTask.Info info = task.new Info();
-info.setMessage("An edited message.");
-task.updateInfo(info);
-```
+  ```java Java v5
+  BoxTask task = new BoxTask(api, "id");
+  BoxTask.Info info = task.new Info();
+  info.setMessage("An edited message.");
+  task.updateInfo(info);
+  ```
 
-```py Python v4
-task_update = {'message': 'New Message', 'due_at': '2014-04-03T11:09:43-10:00'}
-updated_task = client.task(task_id='12345').update_info(data=task_update)
-print(f'New task message is {updated_task.message} and the new due time is {updated_task.due_at}')
-```
+  ```py Python v4
+  task_update = {'message': 'New Message', 'due_at': '2014-04-03T11:09:43-10:00'}
+  updated_task = client.task(task_id='12345').update_info(data=task_update)
+  print(f'New task message is {updated_task.message} and the new due time is {updated_task.due_at}')
+  ```
 
-```csharp .NET v6
-var updates = new BoxTaskUpdateRequest()
-{
-    Id = "22222",
-    Message = "Could you please review this?"
-};
-BoxTask updatedTask = await client.TasksManager.UpdateTaskAsync(updates);
-```
+  ```csharp .NET v6
+  var updates = new BoxTaskUpdateRequest()
+  {
+      Id = "22222",
+      Message = "Could you please review this?"
+  };
+  BoxTask updatedTask = await client.TasksManager.UpdateTaskAsync(updates);
+  ```
 
-```js Node v4
-client.tasks.update('11111', { message: 'Could you please review?' })
- .then(task => {
-  /* task -> {
-   type: 'task',
-   id: '11111',
-   item: 
-   { type: 'file',
-    id: '22222',
-    sequence_id: '0',
-    etag: '0',
-    sha1: '0bbd79a105c504f99573e3799756debba4c760cd',
-    name: 'box-logo.png' },
-   due_at: '2014-04-03T11:09:43-07:00',
-   action: 'review',
-   message: 'Could you please review?',
-   task_assignment_collection: { total_count: 0, entries: [] },
-   is_completed: false,
-   created_by: 
-   { type: 'user',
-    id: '33333',
-    name: 'Example User',
-    login: 'user@example.com' },
-   created_at: '2013-04-03T11:12:54-07:00' }
-  */
- });
-```
+  ```js Node v4
+  client.tasks.update('11111', { message: 'Could you please review?' })
+   .then(task => {
+    /* task -> {
+     type: 'task',
+     id: '11111',
+     item: 
+     { type: 'file',
+      id: '22222',
+      sequence_id: '0',
+      etag: '0',
+      sha1: '0bbd79a105c504f99573e3799756debba4c760cd',
+      name: 'box-logo.png' },
+     due_at: '2014-04-03T11:09:43-07:00',
+     action: 'review',
+     message: 'Could you please review?',
+     task_assignment_collection: { total_count: 0, entries: [] },
+     is_completed: false,
+     created_by: 
+     { type: 'user',
+      id: '33333',
+      name: 'Example User',
+      login: 'user@example.com' },
+     created_at: '2013-04-03T11:12:54-07:00' }
+    */
+   });
+  ```
 </CodeGroup>
 
 ## タスクのアクション
@@ -136,14 +124,15 @@ Boxは現在、`action`値によって定義される、`review`と`complete`と
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update task", href: "/reference/put-tasks-id", badge: "PUT" }
-  ]}
+  { label: "Update task", href: "/reference/put-tasks-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "タスクの作成", href: "/ja/guides/tasks/create", badge: "ガイド" },
-    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "ガイド" },
-    { label: "タスクの削除", href: "/ja/guides/tasks/delete", badge: "ガイド" }
-  ]}
+  { label: "Create a task", href: "/guides/tasks/create", badge: "GUIDE" },
+  { label: "Get information about a task", href: "/guides/tasks/get", badge: "GUIDE" },
+  { label: "Delete a task", href: "/guides/tasks/delete", badge: "GUIDE" }
+]}
 />

@@ -1,27 +1,16 @@
 ---
-title: "共有リンクの項目の検索"
+alias_paths: {}
 rank: 3
 related_endpoints:
-  - get_shared_items
+  0: get_shared_items
 related_guides:
-  - shared-links/remove
-  - shared-links/create-or-update
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: shared-links
-subcategory_id: null
-is_index: false
-id: shared-links/find-for-item
-type: guide
-total_steps: 4
-sibling_id: shared-links
-parent_id: shared-links
-next_page_id: shared-links/remove
-previous_page_id: shared-links/create-or-update
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/shared-links/find-for-item.md
+  0: shared-links/remove
+  1: shared-links/create-or-update
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 共有リンクの項目の検索
+
 fullyTranslated: true
 ---
 
@@ -32,89 +21,86 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 共有リンクに関連付けられているファイルオブジェクトまたはフォルダオブジェクトを取得するには、リクエストの際に共有リンクの完全なURLを指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/shared_items" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "boxapi: shared_link=https://app.box.com/s/gjasdasjhasd&shared_link_password=letmein"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/shared_items" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "boxapi: shared_link=https://app.box.com/s/gjasdasjhasd&shared_link_password=letmein"
-```
+  ```typescript Node/TypeScript v10
+  await userClient.sharedLinksFiles.findFileForSharedLink(
+    {} satisfies FindFileForSharedLinkQueryParams,
+    {
+      boxapi: ''.concat(
+        'shared_link=',
+        fileFromApi.sharedLink!.url,
+        '&shared_link_password=Secret123@',
+      ) as string,
+    } satisfies FindFileForSharedLinkHeadersInput,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await userClient.sharedLinksFiles.findFileForSharedLink(
-  {} satisfies FindFileForSharedLinkQueryParams,
-  {
-    boxapi: ''.concat(
-      'shared_link=',
-      fileFromApi.sharedLink!.url,
-      '&shared_link_password=Secret123@',
-    ) as string,
-  } satisfies FindFileForSharedLinkHeadersInput,
-);
-```
+  ```python Python v10
+  user_client.shared_links_files.find_file_for_shared_link(
+      "".join(
+          [
+              "shared_link=",
+              file_from_api.shared_link.url,
+              "&shared_link_password=Secret123@",
+          ]
+      )
+  )
+  ```
 
-```python Python v10
-user_client.shared_links_files.find_file_for_shared_link(
-    "".join(
-        [
-            "shared_link=",
-            file_from_api.shared_link.url,
-            "&shared_link_password=Secret123@",
-        ]
-    )
-)
-```
+  ```cs .NET v10
+  await userClient.SharedLinksFiles.FindFileForSharedLinkAsync(queryParams: new FindFileForSharedLinkQueryParams(), headers: new FindFileForSharedLinkHeaders(boxapi: string.Concat("shared_link=", NullableUtils.Unwrap(fileFromApi.SharedLink).Url, "&shared_link_password=Secret123@")));
+  ```
 
-```cs .NET v10
-await userClient.SharedLinksFiles.FindFileForSharedLinkAsync(queryParams: new FindFileForSharedLinkQueryParams(), headers: new FindFileForSharedLinkHeaders(boxapi: string.Concat("shared_link=", NullableUtils.Unwrap(fileFromApi.SharedLink).Url, "&shared_link_password=Secret123@")));
-```
+  ```swift Swift v10
+  try await userClient.sharedLinksFiles.findFileForSharedLink(queryParams: FindFileForSharedLinkQueryParams(), headers: FindFileForSharedLinkHeaders(boxapi: "\("shared_link=")\(fileFromApi.sharedLink!.url)\("&shared_link_password=Secret123@")"))
+  ```
 
-```swift Swift v10
-try await userClient.sharedLinksFiles.findFileForSharedLink(queryParams: FindFileForSharedLinkQueryParams(), headers: FindFileForSharedLinkHeaders(boxapi: "\("shared_link=")\(fileFromApi.sharedLink!.url)\("&shared_link_password=Secret123@")"))
-```
+  ```java Java v10
+  userClient.getSharedLinksFiles().findFileForSharedLink(new FindFileForSharedLinkQueryParams(), new FindFileForSharedLinkHeaders(String.join("", "shared_link=", fileFromApi.getSharedLink().getUrl(), "&shared_link_password=Secret123@")))
+  ```
 
-```java Java v10
-userClient.getSharedLinksFiles().findFileForSharedLink(new FindFileForSharedLinkQueryParams(), new FindFileForSharedLinkHeaders(String.join("", "shared_link=", fileFromApi.getSharedLink().getUrl(), "&shared_link_password=Secret123@")))
-```
+  ```java Java v5
+  String sharedLink = "https://app.box.com/s/abcdefghijklmnopqrstuvwxyz123456";
+  String password = "foo";
+  BoxItem.Info itemInfo = BoxItem.getSharedItem(api, sharedLink, password);
+  ```
 
-```java Java v5
-String sharedLink = "https://app.box.com/s/abcdefghijklmnopqrstuvwxyz123456";
-String password = "foo";
-BoxItem.Info itemInfo = BoxItem.getSharedItem(api, sharedLink, password);
-```
+  ```python Python v4
+  file = client.get_shared_item('https://app.box.com/s/gjasdasjhasd', password='letmein')
+  ```
 
-```python Python v4
-file = client.get_shared_item('https://app.box.com/s/gjasdasjhasd', password='letmein')
-```
-
-```javascript Node v4
-client.sharedItems.get(
-    'https://app.box.com/s/1a2b3c4d5e',
-    null,
-    {fields: 'type,id,parent,extension,shared_link'},
-    callback
-);
-```
-
+  ```javascript Node v4
+  client.sharedItems.get(
+      'https://app.box.com/s/1a2b3c4d5e',
+      null,
+      {fields: 'type,id,parent,extension,shared_link'},
+      callback
+  );
+  ```
 </CodeGroup>
 
 <Info>
+  共有リンクがフォルダに対するものである場合、このAPIのレスポンスには、そのフォルダ内のネストされた項目のリストが含まれないことに注意してください。
 
-共有リンクがフォルダに対するものである場合、このAPIのレスポンスには、そのフォルダ内のネストされた項目のリストが含まれないことに注意してください。
-
-フォルダ内の項目をさらにトラバースするには、同じ`BoxApi`ヘッダーを使用して、[ネストされたフォルダ情報を取得する](/ja/reference/get-folders-id)、[これらのフォルダ内の項目をリストする](/ja/reference/get-folders-id-items)、[ネストされたファイル情報を取得する](/ja/reference/get-files-id)、または[ファイルをダウンロード](/ja/reference/get-files-id-content)してください。
-
+  フォルダ内の項目をさらにトラバースするには、同じ`BoxApi`ヘッダーを使用して、[ネストされたフォルダ情報を取得する](/reference/get-folders-id)、[これらのフォルダ内の項目をリストする](/reference/get-folders-id-items)、[ネストされたファイル情報を取得する](/reference/get-files-id)、または[ファイルをダウンロード](/reference/get-files-id-content)してください。
 </Info>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Find file for shared link", href: "/reference/get-shared-items", badge: "GET" }
-  ]}
+  { label: "Find file for shared link", href: "/reference/get-shared-items", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "共有リンクの削除", href: "/ja/guides/shared-links/remove", badge: "ガイド" },
-    { label: "共有リンクの作成または更新", href: "/ja/guides/shared-links/create-or-update", badge: "ガイド" }
-  ]}
+  { label: "Remove Shared Link", href: "/guides/shared-links/remove", badge: "GUIDE" },
+  { label: "Create or Update Shared Link", href: "/guides/shared-links/create-or-update", badge: "GUIDE" }
+]}
 />

@@ -1,20 +1,9 @@
 ---
 centered: true
 rank: 2
-category_id: sign
-subcategory_id: sign/10-quick-start
-is_index: false
-id: sign/quick-start/your-first-request
-type: page
-total_steps: 2
-sibling_id: sign/quick-start
-parent_id: sign/quick-start
-next_page_id: sign/quick-start
-previous_page_id: sign/quick-start/api-basics
-source_url: >-
-https: //github.com/box/developer.box.com/blob/main/content/pages/sign/10-quick-start/20-your-first-request.md
-fullyTranslated: true
 title: 最初のリクエスト
+
+fullyTranslated: true
 ---
 
 Boxに保存されているドキュメントがあり、署名をもらうために顧客に送信することを想像してみてください。少なくとも、アプリでは、署名対象のドキュメント、署名済みドキュメントの保存先、署名者のメールアドレスを認識する必要があります。
@@ -24,131 +13,119 @@ Boxに保存されているドキュメントがあり、署名をもらうた�
 署名リクエストの作成には、Box Sign APIまたは使用可能ないずれかのSDKを使用できます。次の例を参照してください。
 
 <CodeGroup>
+  ```sh cURL
+  curl --location 'https://api.box.com/2.0/sign_requests' \
+      --header 'Content-Type: application/json' \
+      --header 'Authorization: Bearer <access token>' \
+      --data-raw '{
+        "is_document_preparation_needed": true,
+        "parent_folder": {
+          "id": "234102987614",
+          "type": "folder"
+        },
+        "source_files": [
+          {
+            "id": "1355143830404",
+            "type": "file"
+          }
+        ],
+        "signers": [
+          {
+            "email": "signer@example.com",
+            "role": "signer"
+          }
+        ]
+      }'
+  ```
 
-```sh cURL
-curl --location 'https://api.box.com/2.0/sign_requests' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer <access token>' \
-    --data-raw '{
-      "is_document_preparation_needed": true,
-      "parent_folder": {
-        "id": "234102987614",
-        "type": "folder"
-      },
-      "source_files": [
-        {
-          "id": "1355143830404",
-          "type": "file"
-        }
-      ],
-      "signers": [
-        {
-          "email": "signer@example.com",
-          "role": "signer"
-        }
-      ]
-    }'
+  ```python Python Gen SDK
+  def sign_doc_single(
+      client: Client,
+      document_id: str,
+      destination_folder_id: str,
+      signer_email: str,
+      prep_needed: bool = False,
+  ) -> SignRequest:
+      # Sign request params
+      source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
+      destination_folder = FolderMini(
+          id=destination_folder_id, type=FolderBaseTypeField.FOLDER
+      )
+      signer = SignRequestCreateSigner(signer_email)
+      # sign document
+      sign_request = client.sign_requests.create_sign_request(
+          signers=[signer],
+          parent_folder=destination_folder,
+          source_files=[source_file],
+          is_document_preparation_needed=prep_needed,
+      )
 
-```
+      return sign_request
 
+  def main():
+      conf = ConfigOAuth()
+      client = get_client_oauth(conf)
 
+      # Simple sign a pdf request with preparation
+      sign_pdf_prep = sign_doc_single(
+          client, SIMPLE_PDF, SIGN_DOCS_FOLDER, SIGNER_A, True
+      )
 
-```python Pythonの次世代SDK
-def sign_doc_single(
-    client: Client,
-    document_id: str,
-    destination_folder_id: str,
-    signer_email: str,
-    prep_needed: bool = False,
-) -> SignRequest:
-    # Sign request params
-    source_file = FileBase(id=document_id, type=FileBaseTypeField.FILE)
-    destination_folder = FolderMini(
-        id=destination_folder_id, type=FolderBaseTypeField.FOLDER
-    )
-    signer = SignRequestCreateSigner(signer_email)
-    # sign document
-    sign_request = client.sign_requests.create_sign_request(
-        signers=[signer],
-        parent_folder=destination_folder,
-        source_files=[source_file],
-        is_document_preparation_needed=prep_needed,
-    )
-
-    return sign_request
-
-def main():
-    conf = ConfigOAuth()
-    client = get_client_oauth(conf)
-
-    # Simple sign a pdf request with preparation
-    sign_pdf_prep = sign_doc_single(
-        client, SIMPLE_PDF, SIGN_DOCS_FOLDER, SIGNER_A, True
-    )
-
-    if sign_pdf_prep.prepare_url is not None:
-        open_browser(sign_pdf_prep.prepare_url)
-
-```
-
+      if sign_pdf_prep.prepare_url is not None:
+          open_browser(sign_pdf_prep.prepare_url)
+  ```
 </CodeGroup>
 
 この結果、ドキュメント準備のURL (簡略化されています) を含む署名リクエストが作成されます。
 
 <CodeGroup>
-
-```json cURL
-{
-  "is_document_preparation_needed": true,
-  "signers": [
-    {
-      "email": "requester@example.com",
-      "role": "final_copy_reader",
-    },
-    {
-      "email": "signer@example.com",
-      "role": "signer",
-    }
-  ],
-  "id": "348decab-48a8-4f2c-9436-8967afebf7bb",
-  "prepare_url": "https://app.box.com/sign/document/xyz-abc-123/.../prepare_doc/",
-  "source_files": [
-    {
-      "id": "1355143830404",
-      "type": "file",
-    }
-  ],
-  "parent_folder": {
-    "id": "234102987614",
-    "type": "folder",
-  },
-  "name": "Simple-PDF.pdf",
-  "type": "sign-request",
-  "status": "converting",
-  "sign_files": {
-    "files": [
+  ```json cURL
+  {
+    "is_document_preparation_needed": true,
+    "signers": [
       {
-        "id": "1381301154812",
+        "email": "requester@example.com",
+        "role": "final_copy_reader",
+      },
+      {
+        "email": "signer@example.com",
+        "role": "signer",
+      }
+    ],
+    "id": "348decab-48a8-4f2c-9436-8967afebf7bb",
+    "prepare_url": "https://app.box.com/sign/document/xyz-abc-123/.../prepare_doc/",
+    "source_files": [
+      {
+        "id": "1355143830404",
         "type": "file",
       }
     ],
-    "is_ready_for_download": true
-  },
-  "template_id": null
-}
+    "parent_folder": {
+      "id": "234102987614",
+      "type": "folder",
+    },
+    "name": "Simple-PDF.pdf",
+    "type": "sign-request",
+    "status": "converting",
+    "sign_files": {
+      "files": [
+        {
+          "id": "1381301154812",
+          "type": "file",
+        }
+      ],
+      "is_ready_for_download": true
+    },
+    "template_id": null
+  }
+  ```
 
-```
-
-
-
-```YAML Pythonの次世代SDK
-Simple sign request with prep: xyz-abc-123
-  Status: converting
-  Signers: signer@example.com
-Prepare url: https://app.box.com/sign/document/xyz-abc-123/.../prepare_doc/
-
-```
-
+  ```YAML Python Gen SDK
+  Simple sign request with prep: xyz-abc-123
+    Status: converting
+    Signers: signer@example.com
+  Prepare url: https://app.box.com/sign/document/xyz-abc-123/.../prepare_doc/
+  ```
 </CodeGroup>
 
 ## 署名リクエストのステータスの確認
@@ -158,7 +135,7 @@ Prepare url: https://app.box.com/sign/document/xyz-abc-123/.../prepare_doc/
 署名リクエストのステータスを以下に示します。
 
 <Frame>
-![署名のフロー](./images/basic-sign-flow.png)
+  ![署名のフロー](./images/basic-sign-flow.png)
 </Frame>
 
 * `converting`: 署名リクエストが送信された後、ファイルが署名プロセスのために`.pdf`に変換されている。
@@ -195,13 +172,11 @@ Prepare url: https://app.box.com/sign/document/xyz-abc-123/.../prepare_doc/
 これで、最初の署名リクエストを正常に作成できました。
 
 <Note>
+  これは、Box Signの基本的なユースケースを示しています。`create`メソッドには、署名リクエストのカスタマイズに使用できる多くのオプションがあります。
 
-これは、Box Signの基本的なユースケースを示しています。`create`メソッドには、署名リクエストのカスタマイズに使用できる多くのオプションがあります。
-
-詳細については、[リクエストのオプション][request-options]と[技術的なユースケース][technical-use-cases]のセクションを確認してください。
-
+  詳細については、[リクエストのオプション][request-options]と[技術的なユースケース][technical-use-cases]のセクションを確認してください。
 </Note>
 
-[request-options]: /ja/sign/request-options
+[request-options]: /sign/request-options
 
-[technical-use-cases]: /ja/sign/technical-use-cases
+[technical-use-cases]: /sign/technical-use-cases

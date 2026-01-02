@@ -1,76 +1,45 @@
 ---
-title: "Slack統合マッピングのリスト取得"
+alias_paths: {}
 rank: 3
-related_endpoints:
-  - get_integration_mappings_slack
-related_guides: []
-required_guides:
-  - integration-mappings/slack-mappings/setup
-related_resources: []
-alias_paths: []
-category_id: integration-mappings
-subcategory_id: integration-mappings/slack-mappings
-is_index: false
-id: integration-mappings/slack-mappings/list-mappings
-type: guide
-total_steps: 6
-sibling_id: integration-mappings/slack-mappings
-parent_id: integration-mappings/slack-mappings
-next_page_id: integration-mappings/slack-mappings/create-mapping
-previous_page_id: integration-mappings/slack-mappings/setup
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/integration-mappings/slack-mappings/list-mappings.md
+related_endpoints: ""
+related_guides: {}
+related_resources: {}
+required_guides: ""
+title: Slack統合マッピングのリスト取得
+
 fullyTranslated: true
 ---
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Slack統合マッピングの設定", href: "/ja/guides/integration-mappings/slack-mappings/setup", badge: "ガイド" }
-  ]}
-/>
 `GET /integration_mappings/slack`呼び出しを使用すると、マッピングを取得してフィルタをかけることができます。管理者が手動で作成したマッピングも、統合によって自動的に作成されたマッピングも対象になります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -X -L GET "https://api.box.com/2.0/integration_mappings/slack?partner_item_id=C987654321&box_item_id=123456789" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+  ```
 
-```sh cURL
-curl -X -L GET "https://api.box.com/2.0/integration_mappings/slack?partner_item_id=C987654321&box_item_id=123456789" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-```
+  ```typescript Node/TypeScript v10
+  await userClient.integrationMappings.getSlackIntegrationMapping();
+  ```
 
-```typescript Node/TypeScript v10
-await userClient.integrationMappings.getSlackIntegrationMapping();
-```
+  ```python Python v10
+  user_client.integration_mappings.get_slack_integration_mapping()
+  ```
 
-```python Python v10
-user_client.integration_mappings.get_slack_integration_mapping()
-```
+  ```cs .NET v10
+  await userClient.IntegrationMappings.GetSlackIntegrationMappingAsync();
+  ```
 
-```cs .NET v10
-await userClient.IntegrationMappings.GetSlackIntegrationMappingAsync();
-```
+  ```swift Swift v10
+  try await userClient.integrationMappings.getSlackIntegrationMapping()
+  ```
 
-```swift Swift v10
-try await userClient.integrationMappings.getSlackIntegrationMapping()
-```
+  ```java Java v10
+  userClient.getIntegrationMappings().getSlackIntegrationMapping()
+  ```
 
-```java Java v10
-userClient.getIntegrationMappings().getSlackIntegrationMapping()
-```
-
-```javascript Node v4
-const integrationMappings = await client.integrationMappings.getSlackIntegrationMappings();
-console.log(`There are ${integrationMappings.entries.length} Slack integration mappings`);
-```
-
+  ```javascript Node v4
+  const integrationMappings = await client.integrationMappings.getSlackIntegrationMappings();
+  console.log(`There are ${integrationMappings.entries.length} Slack integration mappings`);
+  ```
 </CodeGroup>
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "List Slack integration mappings", href: "/reference/get-integration-mappings-slack", badge: "GET" }
-  ]}
-/>

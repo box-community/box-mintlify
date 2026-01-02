@@ -1,35 +1,23 @@
 ---
-title: "リモートBox MCPサーバー"
 rank: 0
-related_endpoints: []
-related_guides: []
-required_guides: []
-category_id: box-mcp
-subcategory_id: box-mcp/remote
-is_index: true
-id: box-mcp/remote
-type: guide
-total_steps: 0
-sibling_id: box-mcp
-parent_id: box-mcp
-next_page_id: ''
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-mcp/remote/index.md
+related_endpoints: {}
+related_guides: {}
+required_guides: {}
+title: リモートBox MCPサーバー
+
 fullyTranslated: true
 ---
+
 [リモートBox MCPサーバー](https://modelcontextprotocol.io/introduction)は、AIエージェントがBoxなどのサードパーティ製アプリケーションに接続して操作するための標準的な方法で、プラットフォーム間でのコンテンツやAI機能へのシームレスなアクセスを可能にします。Box MCPサーバーは、主要なAIエージェントプラットフォーム (Copilot Studio、Claude Enterprise、Mistral Le Chatなど) が未加工のファイルコンテンツを公開することなく、BoxのデータやAIを活用したツールを安全に照会および利用できるようにする橋渡しの役割を果たします。OAuth承認により、ユーザーは、自身のBoxアカウントへの制限付きアクセスをAIエージェントに許可することができるため、このような外部のAI環境内で直接、インテリジェントなドキュメント処理、高度な検索、複数ファイルのAIクエリが可能になります。
 
 ## あらかじめ定義されたBox MCPサーバーにアクセスして管理する
 
-1. Box管理コンソールのサイドバーにある \[**統合**] をクリックします。 
-2. \[_カテゴリ_] フィルタを使用して \[MCP] を選択するか、ウィンドウ上部にある検索フィールドであらかじめ定義されたBox MCPサーバーを検索します。
+1. Box管理コンソールのサイドバーにある \[**統合**] をクリックします。
+2. \[*カテゴリ*] フィルタを使用して \[MCP] を選択するか、ウィンドウ上部にある検索フィールドであらかじめ定義されたBox MCPサーバーを検索します。
 3. 選択したMCPサーバーの横にある状態をクリックし、有効にする状態を選択します。
 
 <Frame noborder center>
-
-![MCP](./img/integrations-mcp.png)
-
+  ![MCP](./img/integrations-mcp.png)
 </Frame>
 
 ## リストに記載されていないBox MCPサーバーを作成する
@@ -40,8 +28,8 @@ fullyTranslated: true
 4. \[**追加の構成**] セクションで \[**+ 統合資格情報を追加**] をクリックします。
 5. 統合名を入力し、\[**保存**] をクリックします。
 6. 新しく作成したエントリの詳細を展開します。
-7. 生成された**クライアントID**と**クライアントシークレット**をコピーします。 
-8. 外部MCPクライアントから提供された**リダイレクトURI**を入力します。 
+7. 生成された**クライアントID**と**クライアントシークレット**をコピーします。
+8. 外部MCPクライアントから提供された**リダイレクトURI**を入力します。
 9. \[**アクセススコープ**] で \[**コンテンツ操作**] を有効にします。
 
 ## クライアント側でBox MCPサーバーを追加する
@@ -56,32 +44,65 @@ AIエージェントプラットフォームからBoxに接続するには、以
 * `authorization_token`を指定する
 
 ```python
-response = await client.beta.messages.create(
-    model="claude-3-opus-20240229",  # Or your preferred model
-    max_tokens=4096,
-    messages=conversation_history,
-    mcp_servers=[
-        {
-            "type": "url",
-            "url": "https://mcp.box.com",
-            "name": "box-remote-mcp",
-            "authorization_token": BEARER_TOKEN,
-        }
-    ],
-    betas=["mcp-client-2025-04-04"]
-)
-
+  response = await client.beta.messages.create(
+      model="claude-3-opus-20240229",  # Or your preferred model
+      max_tokens=4096,
+      messages=conversation_history,
+      mcp_servers=[
+          {
+              "type": "url",
+              "url": "https://mcp.box.com",
+              "name": "box-remote-mcp",
+              "authorization_token": BEARER_TOKEN,
+          }
+      ],
+      betas=["mcp-client-2025-04-04"]
+  )
 ```
+
+### ChatGPT
+
+To add the remote Box MCP server in ChatGPT, follow these steps:
+
+1. Go to **Box** > **Admin Console** > **Integrations** and find **Box MCP Server** - either by using the MCP Category filter, or by using the search bar at the top of the page.
+2. Go to **Configuration**.
+3. Click the **Add Integration Credentials** button to generate new credentials.
+4. In **Redirect URIs**, change the Box redirect URIs to: [https://chatgpt.com/connector\_platform\_oauth\_redirect](https://chatgpt.com/connector_platform_oauth_redirect)
+
+The **Client ID** and **Client Secret** are displayed. These will be required later for ChatGPT to make the authorization connection.
+
+5. Check the **Access** scopes:
+   * Read all files and folders stored in Box.
+   * Read and write all files and folders stored in Box.
+   * Manage AI Requests.
+6. Click **Save**.
+7. On the ChatGPT side, as a ChatGPT Workspace admin, click the profile in the bottom-left corner.
+8. Click **Settings** > **Apps & Connectors** > **Advanced Settings**.
+9. Toggle the **Developer mode** on. This enables you to add custom connectors.
+10. Go back to **Apps & Connectors**.
+11. Click **Create** at the top-right corner of the modal.
+12. Fill in the data:
+    * **Name**: For example, `Box MCP Server Connector`.
+    * **MCP Server URL**: [https://mcp.box.com](https://mcp.box.com)
+    * **OAuth Client ID**: Found in Box **Admin Console** > **Integrations** > **Box MCP Server** > **Configuration**.
+    * **OAuth Client Secret**: Found in Box **Admin Console** > **Integrations** > **Box MCP Server** > **Configuration**.
+13. Select the `I understand and want to continue` checkbox and click **Create**.
+14. Authorize the Box user.
+
+<Note>
+  If an error displays, such as `Something went wrong with setting up the connection`, you can continue to click through. The setup should work even if this displays.
+</Note>
+
+15. Test the setup by going to the chat, clicking the **+** icon, then hovering over **More** and selecting the newly added connector. Make sure that the other, built by OpenAI Box connector, is turned off or disconnected, so the answer is provided by the custom connector.
+16. If you want to add this connector for the whole workspace, you can publish it within [ChatGPT Workspace](https://help.openai.com/en/articles/12584461-developer-mode-and-full-mcp-connectors-in-chatgpt-beta#:~:text=Publish%20connector,settings%20in%20ChatGPT).
 
 ### Claude
 
-[Claude](https://claude.ai/directory)でリモートBox MCPサーバーの使用を開始するには、Claudeアプリの設定に移動し、\[_Connectors (コネクタ)_] をクリックします。このビューで \[_Browse connectors (コネクタを参照)_] をクリックして \[Box] を選択し、ClaudeにBoxへのアクセスを許可します。
+[Claude](https://claude.ai/directory)でリモートBox MCPサーバーの使用を開始するには、Claudeアプリの設定に移動し、\[*Connectors (コネクタ)*] をクリックします。このビューで \[*Browse connectors (コネクタを参照)*] をクリックして \[Box] を選択し、ClaudeにBoxへのアクセスを許可します。
 
 Box MCPをClaudeデスクトップアプリと関連付ける方法を紹介するデモ動画をご確認ください。
 
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/OJVjXZkPd54?si=PSiV6aKkUnL7CXoG" title="YouTube動画プレイヤー" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-</iframe>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/OJVjXZkPd54?si=PSiV6aKkUnL7CXoG" title="YouTube動画プレイヤー" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
 
 ### Copilot Studio
 
@@ -111,8 +132,7 @@ Amazon Quick SuiteでリモートBox MCPサーバーを追加するには、以�
 
 詳細については、Amazon Quick Suiteドキュメントの[Model Context Protocol (MCP) integration](https://docs.aws.amazon.com/quicksuite/latest/userguide/mcp-integration.html) (英語) を参照してください。
 
-
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/S2kns2tYJjA?si=AWuXpvrjJY0J0qBb" title="BoxのリモートMCPとAmazon Quick Suite" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen/>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/S2kns2tYJjA?si=AWuXpvrjJY0J0qBb" title="BoxのリモートMCPとAmazon Quick Suite" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
 
 ### AnthropicのMessages API
 
@@ -120,35 +140,28 @@ Amazon Quick SuiteでリモートBox MCPサーバーを追加するには、以�
 
 リモートBox MCPを利用しているReactベースのチャットボットのデモプロジェクトを紹介する動画をご覧ください。
 
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/Rcn8p-nLJtI?si=dWsMnE6reTE-aKQw" title="BoxのリモートMCP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-</iframe>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/Rcn8p-nLJtI?si=dWsMnE6reTE-aKQw" title="BoxのリモートMCP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
 
 ### Mistral AIのLe Chat
 
-[Mistral AIのLe Chat](https://chat.mistral.ai/chat)に対してBox MCPを有効にするには、[コネクタのページ](https://chat.mistral.ai/connections)にアクセスし、\[_Connect (接続)_] をクリックして、Boxへのアクセスを許可します。または、チャットビューから直接、\[_Tools (ツール)_] をクリックして \[Box] を選択します。
+[Mistral AIのLe Chat](https://chat.mistral.ai/chat)に対してBox MCPを有効にするには、[コネクタのページ](https://chat.mistral.ai/connections)にアクセスし、\[*Connect (接続)*] をクリックして、Boxへのアクセスを許可します。または、チャットビューから直接、\[*Tools (ツール)*] をクリックして \[Box] を選択します。
 
 <Frame noborder center>
-
-![MCP](./img/mistral.gif)
-
+  ![MCP](./img/mistral.gif)
 </Frame>
 
 ### GitHub Copilot
 
-GitHub Copilotを使用してBox MCPサーバーを設定するには、[概要ページ](https://github.com/mcp/box/mcp-server-box-remote)に移動して、\[_Install MCP server (MCPサーバーをインストール)_] をクリックします。VS Codeエディタにリダイレクトされたら、\[_Install (インストール)_] をクリックし、OAuthを完了してBoxへのアクセスを許可します。
+GitHub Copilotを使用してBox MCPサーバーを設定するには、[概要ページ](https://github.com/mcp/box/mcp-server-box-remote)に移動して、\[*Install MCP server (MCPサーバーをインストール)*] をクリックします。VS Codeエディタにリダイレクトされたら、\[*Install (インストール)*] をクリックし、OAuthを完了してBoxへのアクセスを許可します。
 
 手動でクライアントIDとクライアントシークレットを入力することが必要になる場合があります。OAuthアプリケーションの登録時に、次のリダイレクトURIを含めるようにしてください。
 
 ```sh
 http://127.0.0.1:33418
 https://vscode.dev/redirect
-
 ```
 
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/Y1a16jhCVPc?si=MOutZC3_tGtpcJ7c" title="BoxのリモートMCPとGithub Copilot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-</iframe>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/Y1a16jhCVPc?si=MOutZC3_tGtpcJ7c" title="BoxのリモートMCPとGithub Copilot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
 
 ### MCPサーバーでのBox AIの機能の使用
 

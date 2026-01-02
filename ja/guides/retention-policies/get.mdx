@@ -1,26 +1,15 @@
 ---
-title: "リテンションポリシーの取得"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_retention_policies_id
+  0: get_retention_policies_id
 related_guides:
-  - retention-policies/list
+  0: retention-policies/list
 related_resources:
-  - retention_policy
-required_guides: []
-alias_paths: []
-category_id: retention-policies
-subcategory_id: null
-is_index: false
-id: retention-policies/get
-type: guide
-total_steps: 2
-sibling_id: retention-policies
-parent_id: retention-policies
-next_page_id: retention-policies
-previous_page_id: retention-policies/list
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/retention-policies/get.md
+  0: retention_policy
+required_guides: {}
+title: リテンションポリシーの取得
+
 fullyTranslated: true
 ---
 
@@ -29,93 +18,92 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 会社内に作成された特定のリテンションポリシーの情報を取得するには、ポリシーの`id`を指定して[`GET /retention_policies/:id`][retention] APIエンドポイントを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/retention_policies/982312" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/retention_policies/982312" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.retentionPolicies.getRetentionPolicyById(retentionPolicy.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.retentionPolicies.getRetentionPolicyById(retentionPolicy.id);
-```
+  ```python Python v10
+  client.retention_policies.get_retention_policy_by_id(retention_policy.id)
+  ```
 
-```python Python v10
-client.retention_policies.get_retention_policy_by_id(retention_policy.id)
-```
+  ```cs .NET v10
+  await client.RetentionPolicies.GetRetentionPolicyByIdAsync(retentionPolicyId: retentionPolicy.Id);
+  ```
 
-```cs .NET v10
-await client.RetentionPolicies.GetRetentionPolicyByIdAsync(retentionPolicyId: retentionPolicy.Id);
-```
+  ```swift Swift v10
+  try await client.retentionPolicies.getRetentionPolicyById(retentionPolicyId: retentionPolicy.id)
+  ```
 
-```swift Swift v10
-try await client.retentionPolicies.getRetentionPolicyById(retentionPolicyId: retentionPolicy.id)
-```
+  ```java Java v10
+  client.getRetentionPolicies().getRetentionPolicyById(retentionPolicy.getId())
+  ```
 
-```java Java v10
-client.getRetentionPolicies().getRetentionPolicyById(retentionPolicy.getId())
-```
+  ```java Java v5
+  // Get the policy name and status for a given retention policy
+  BoxRetentionPolicy policy = new BoxRetentionPolicy(api, id);
+  policy.getInfo("policy_name", "status");
+  ```
 
-```java Java v5
-// Get the policy name and status for a given retention policy
-BoxRetentionPolicy policy = new BoxRetentionPolicy(api, id);
-policy.getInfo("policy_name", "status");
-```
+  ```python Python v4
+  retention_policy = client.retention_policy(retention_id='12345').get()
+  print(f'Retention Policy ID is {retention_policy.id} and the name is {retention_policy.policy_name}')
+  ```
 
-```python Python v4
-retention_policy = client.retention_policy(retention_id='12345').get()
-print(f'Retention Policy ID is {retention_policy.id} and the name is {retention_policy.policy_name}')
-```
+  ```cs .NET v6
+  BoxRetentionPolicy policy = await client.RetentionPoliciesManager.GetRetentionPolicyAsync("11111");
+  ```
 
-```cs .NET v6
-BoxRetentionPolicy policy = await client.RetentionPoliciesManager.GetRetentionPolicyAsync("11111");
-```
-
-```javascript Node v4
-client.retentionPolicies.get('123456789').then((policy) => {
-	/* policy -> {
-			type: 'retention_policy',
-			id: '123456789',
-			policy_name: 'Tax Documents',
-			policy_type: 'indefinite',
-			retention_length: 'indefinite',
-			retention_type: 'modifiable',
-			description: 'Policy to retain all reports',
-			disposition_action: 'remove_retention',
-			can_owner_extend_retention: false,
-			status: 'active',
-			are_owners_notified: true,
-			custom_notification_recipients: []
-			assignment_counts: { enterprise: 0, folder: 1, metadata_template: 0 },
-			created_by:
-			{ type: 'user',
-				id: '11111',
-				name: 'Example User',
-				login: 'user@example.com' },
-			created_at: '2015-05-01T11:12:54-07:00',
-			modified_at: '2015-06-08T11:11:50-07:00' }
-		*/
-});
-```
-
+  ```javascript Node v4
+  client.retentionPolicies.get('123456789').then((policy) => {
+  	/* policy -> {
+  			type: 'retention_policy',
+  			id: '123456789',
+  			policy_name: 'Tax Documents',
+  			policy_type: 'indefinite',
+  			retention_length: 'indefinite',
+  			retention_type: 'modifiable',
+  			description: 'Policy to retain all reports',
+  			disposition_action: 'remove_retention',
+  			can_owner_extend_retention: false,
+  			status: 'active',
+  			are_owners_notified: true,
+  			custom_notification_recipients: []
+  			assignment_counts: { enterprise: 0, folder: 1, metadata_template: 0 },
+  			created_by:
+  			{ type: 'user',
+  				id: '11111',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			created_at: '2015-05-01T11:12:54-07:00',
+  			modified_at: '2015-06-08T11:11:50-07:00' }
+  		*/
+  });
+  ```
 </CodeGroup>
 
 ## 必須のスコープ
 
 リテンションポリシーAPIのいずれかを使用する前に、アプリケーションでは適切なスコープを有効にしておく必要があります。詳細については、[必須のスコープ][scopes]を参照してください。
 
-[retention]: /ja/reference/get_retention_policies_id
+[retention]: /reference/get_retention_policies_id
 
-[scopes]: /ja/guides/retention-policies#required-scopes
+[scopes]: /guides/retention-policies#required-scopes
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get retention policy", href: "/reference/get-retention-policies-id", badge: "GET" }
-  ]}
+  { label: "Get retention policy", href: "/reference/get-retention-policies-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "すべてのリテンションポリシーのリストの取得", href: "/ja/guides/retention-policies/list", badge: "ガイド" }
-  ]}
+  { label: "List All Retention Policies", href: "/guides/retention-policies/list", badge: "GUIDE" }
+]}
 />

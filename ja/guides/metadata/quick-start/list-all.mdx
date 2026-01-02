@@ -1,219 +1,211 @@
 ---
-title: "すべてのメタデータテンプレートのリストの取得"
-sidebarTitle: 1. すべてのメタデータテンプレートのリストの取得
-type: quick-start
 hide_in_page_nav: true
-related_guides:
-  - metadata/scopes
 related_endpoints:
-  - get_metadata_templates_global
-  - get_metadata_templates_enterprise
-category_id: metadata
-subcategory_id: metadata/1-quick-start
-is_index: false
-id: metadata/quick-start/list-all
-rank: 1
-total_steps: 7
-sibling_id: metadata/quick-start
-parent_id: metadata/quick-start
-next_page_id: metadata/quick-start/create-template
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/1-quick-start/1-list-all.md
+  0: get_metadata_templates_global
+  1: get_metadata_templates_enterprise
+related_guides:
+  0: metadata/scopes
+sidebarTitle: 1. List all metadata templates
+title: すべてのメタデータテンプレートのリストの取得
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-<ProgressBar pages={[
-                          "ja/guides/metadata/quick-start/list-all",
-                          "ja/guides/metadata/quick-start/create-template",
-                          "ja/guides/metadata/quick-start/create-instance",
-                          "ja/guides/metadata/quick-start/update-instance",
-                          "ja/guides/metadata/quick-start/update-template",
-                          "ja/guides/metadata/quick-start/create-query",
-                          "ja/guides/metadata/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/metadata/quick-start/list-all",
+                        "guides/metadata/quick-start/create-template",
+                        "guides/metadata/quick-start/create-instance",
+                        "guides/metadata/quick-start/update-instance",
+                        "guides/metadata/quick-start/update-template",
+                        "guides/metadata/quick-start/create-query",
+                        "guides/metadata/quick-start/next-steps"
+                      ]}
+/>
 
 会社には、ユーザーが独自に作成しなくてもすぐに使用できるメタデータテンプレートのリストがすでに存在することがよくあります。
 
 一般に、メタデータテンプレートには、自社のみで使用できるものと、Boxを使用するすべての企業が使用できるものがあります。テンプレートの`scope`により、テンプレートはすべての人が利用可能か (`global`)、自社のみで利用可能か (`enterprise`) が定義されます。
 
-<Card href="/ja/guides/metadata/scopes" title="メタデータのスコープの詳細を確認する"/>
+<Card href="/guides/metadata/scopes" arrow title="メタデータのスコープの詳細を確認する" />
 
 ## テンプレートのリストの取得
 
-すべてのユーザーが使用できる[グローバルテンプレート](/ja/reference/get-metadata-templates-global)はいくつかあります。
+すべてのユーザーが使用できる[グローバルテンプレート](/reference/get-metadata-templates-global)はいくつかあります。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/metadata_templates/global" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/metadata_templates/global" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataTemplates.getGlobalMetadataTemplates();
-```
+  ```typescript Node/TypeScript v10
+  await client.metadataTemplates.getGlobalMetadataTemplates();
+  ```
 
-```python Python v10
-client.metadata_templates.get_global_metadata_templates()
-```
+  ```python Python v10
+  client.metadata_templates.get_global_metadata_templates()
+  ```
 
-```csharp .NET v10
-await client.MetadataTemplates.GetGlobalMetadataTemplatesAsync();
-```
+  ```csharp .NET v10
+  await client.MetadataTemplates.GetGlobalMetadataTemplatesAsync();
+  ```
 
-```swift Swift v10
-try await client.metadataTemplates.getGlobalMetadataTemplates()
-```
+  ```swift Swift v10
+  try await client.metadataTemplates.getGlobalMetadataTemplates()
+  ```
 
-```java Java v10
-client.getMetadataTemplates().getGlobalMetadataTemplates()
-```
+  ```java Java v10
+  client.getMetadataTemplates().getGlobalMetadataTemplates()
+  ```
 
-```java Java v5
-Iterable<MetadataTemplate> templates = MetadataTemplate.getEnterpriseMetadataTemplates('global', api);
-for (MetadataTemplate templateInfo : templates) {
-    // Do something with the metadata template.
-}
-```
+  ```java Java v5
+  Iterable<MetadataTemplate> templates = MetadataTemplate.getEnterpriseMetadataTemplates('global', api);
+  for (MetadataTemplate templateInfo : templates) {
+      // Do something with the metadata template.
+  }
+  ```
 
-```py Python v4
-templates = client.get_metadata_templates(scope='global)
-for template in templates:
-    print(f'Metadata template {template.templateKey} is in global scope')
-```
+  ```py Python v4
+  templates = client.get_metadata_templates(scope='global)
+  for template in templates:
+      print(f'Metadata template {template.templateKey} is in global scope')
+  ```
 
-```csharp .NET v6
-BoxEnterpriseMetadataTemplateCollection<BoxMetadataTemplate> templates = await client.MetadataManager
-    .GetEnterpriseMetadataAsync("global");
-```
+  ```csharp .NET v6
+  BoxEnterpriseMetadataTemplateCollection<BoxMetadataTemplate> templates = await client.MetadataManager
+      .GetEnterpriseMetadataAsync("global");
+  ```
 
-```js Node v4
-client.metadata.getTemplates('global')
- .then(templates => {
-  // ...
- });
-```
+  ```js Node v4
+  client.metadata.getTemplates('global')
+   .then(templates => {
+    // ...
+   });
+  ```
 </CodeGroup>
 
-これらのテンプレートの多くはBoxの内部使用を目的としたものですが、アプリケーションでこれらを使用したり適用したりすることもできます。会社のニーズに固有のデータを保持するには、[社内のアプリケーションや管理者が作成した](/ja/reference/get-metadata-templates-enterprise)テンプレートがより便利です。
+これらのテンプレートの多くはBoxの内部使用を目的としたものですが、アプリケーションでこれらを使用したり適用したりすることもできます。会社のニーズに固有のデータを保持するには、[社内のアプリケーションや管理者が作成した](/reference/get-metadata-templates-enterprise)テンプレートがより便利です。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/metadata_templates/enterprise" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/metadata_templates/enterprise" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataTemplates.getEnterpriseMetadataTemplates();
-```
+  ```typescript Node/TypeScript v10
+  await client.metadataTemplates.getEnterpriseMetadataTemplates();
+  ```
 
-```python Python v10
-client.metadata_templates.get_enterprise_metadata_templates()
-```
+  ```python Python v10
+  client.metadata_templates.get_enterprise_metadata_templates()
+  ```
 
-```csharp .NET v10
-await client.MetadataTemplates.GetEnterpriseMetadataTemplatesAsync();
-```
+  ```csharp .NET v10
+  await client.MetadataTemplates.GetEnterpriseMetadataTemplatesAsync();
+  ```
 
-```swift Swift v10
-try await client.metadataTemplates.getEnterpriseMetadataTemplates()
-```
+  ```swift Swift v10
+  try await client.metadataTemplates.getEnterpriseMetadataTemplates()
+  ```
 
-```java Java v10
-client.getMetadataTemplates().getEnterpriseMetadataTemplates()
-```
+  ```java Java v10
+  client.getMetadataTemplates().getEnterpriseMetadataTemplates()
+  ```
 
-```java Java v5
-Iterable<MetadataTemplate> templates = MetadataTemplate.getEnterpriseMetadataTemplates(api);
-for (MetadataTemplate templateInfo : templates) {
-    // Do something with the metadata template.
-}
-```
+  ```java Java v5
+  Iterable<MetadataTemplate> templates = MetadataTemplate.getEnterpriseMetadataTemplates(api);
+  for (MetadataTemplate templateInfo : templates) {
+      // Do something with the metadata template.
+  }
+  ```
 
-```py Python v4
-templates = client.get_metadata_templates()
-for template in templates:
-    print(f'Metadata template {template.templateKey} is in enterprise scope')
-```
+  ```py Python v4
+  templates = client.get_metadata_templates()
+  for template in templates:
+      print(f'Metadata template {template.templateKey} is in enterprise scope')
+  ```
 
-```csharp .NET v6
-BoxEnterpriseMetadataTemplateCollection<BoxMetadataTemplate> templates = await client.MetadataManager
-    .GetEnterpriseMetadataAsync();
-```
+  ```csharp .NET v6
+  BoxEnterpriseMetadataTemplateCollection<BoxMetadataTemplate> templates = await client.MetadataManager
+      .GetEnterpriseMetadataAsync();
+  ```
 
-```js Node v4
-client.metadata.getTemplates('enterprise')
- .then(templates => {
-  /* templates -> {
-   limit: 100,
-   entries: 
-   [ { templateKey: 'documentFlow',
-    scope: 'enterprise_12345',
-    displayName: 'Document Flow',
-    hidden: false,
-    fields: 
-     [ { type: 'string',
-      key: 'currentDocumentStage',
-      displayName: 'Current Document Stage',
-      hidden: false }
-     { type: 'string',
-      key: 'needsApprovalFrom',
-      displayName: 'Needs Approval From',
-      hidden: false },
-     { type: 'string',
-      key: 'nextDocumentStage',
-      displayName: 'Next Document Stage',
-      hidden: false }
-     { type: 'float',
-      key: 'maximumDaysAllowedInCurrentStage',
-      displayName: 'Maximum Days Allowed In Current Stage',
-      hidden: false }
-    { templateKey: 'marketingCollateral',
-    scope: 'enterprise_12345',
-    displayName: 'Marketing Collateral',
-    hidden: false,
-    fields: 
-     [ { type: 'string',
-      key: 'audience1',
-      displayName: 'Audience',
-      hidden: false },
-     { type: 'string',
-      key: 'previousState',
-      displayName: 'Previous State',
-      hidden: false } ] },
-    { templateKey: 'productInfo',
-    scope: 'enterprise_12345',
-    displayName: 'Product Info',
-    hidden: false,
-    fields: 
-     [ { type: 'float',
-      key: 'skuNumber',
-      displayName: 'SKU Number',
-      hidden: false },
-     { type: 'enum',
-      key: 'department',
-      displayName: 'Department',
+  ```js Node v4
+  client.metadata.getTemplates('enterprise')
+   .then(templates => {
+    /* templates -> {
+     limit: 100,
+     entries: 
+     [ { templateKey: 'documentFlow',
+      scope: 'enterprise_12345',
+      displayName: 'Document Flow',
       hidden: false,
-      options: 
-      [ { key: 'Beauty' },
-      { key: 'Shoes' },
-      { key: 'Accessories' },
-      { key: 'Clothing' },
-      { key: 'Handbags' },
-      { key: 'Bedding' },
-      { key: 'Watches' } ] },
-     { type: 'date',
-      key: 'displayDate',
-      displayName: 'Display Date',
-      hidden: false } ] } ],
-   next_marker: null,
-   prev_marker: null }
-  */
- });
-```
+      fields: 
+       [ { type: 'string',
+        key: 'currentDocumentStage',
+        displayName: 'Current Document Stage',
+        hidden: false }
+       { type: 'string',
+        key: 'needsApprovalFrom',
+        displayName: 'Needs Approval From',
+        hidden: false },
+       { type: 'string',
+        key: 'nextDocumentStage',
+        displayName: 'Next Document Stage',
+        hidden: false }
+       { type: 'float',
+        key: 'maximumDaysAllowedInCurrentStage',
+        displayName: 'Maximum Days Allowed In Current Stage',
+        hidden: false }
+      { templateKey: 'marketingCollateral',
+      scope: 'enterprise_12345',
+      displayName: 'Marketing Collateral',
+      hidden: false,
+      fields: 
+       [ { type: 'string',
+        key: 'audience1',
+        displayName: 'Audience',
+        hidden: false },
+       { type: 'string',
+        key: 'previousState',
+        displayName: 'Previous State',
+        hidden: false } ] },
+      { templateKey: 'productInfo',
+      scope: 'enterprise_12345',
+      displayName: 'Product Info',
+      hidden: false,
+      fields: 
+       [ { type: 'float',
+        key: 'skuNumber',
+        displayName: 'SKU Number',
+        hidden: false },
+       { type: 'enum',
+        key: 'department',
+        displayName: 'Department',
+        hidden: false,
+        options: 
+        [ { key: 'Beauty' },
+        { key: 'Shoes' },
+        { key: 'Accessories' },
+        { key: 'Clothing' },
+        { key: 'Handbags' },
+        { key: 'Bedding' },
+        { key: 'Watches' } ] },
+       { type: 'date',
+        key: 'displayDate',
+        displayName: 'Display Date',
+        hidden: false } ] } ],
+     next_marker: null,
+     prev_marker: null }
+    */
+   });
+  ```
 </CodeGroup>
 
 ## メタデータテンプレート
@@ -253,27 +245,23 @@ client.metadata.getTemplates('enterprise')
     }
   ]
 }
-
 ```
 
-<Next>
+<Next>使用できるテンプレートのリストを取得しました</Next>
 
-使用できるテンプレートのリストを取得しました
-
-</Next>
-
-[template]: /ja/guides/metadata/templates
+[template]: /guides/metadata/templates
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List all global metadata templates", href: "/reference/get-metadata-templates-global", badge: "GET" },
-    { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" }
-  ]}
+  { label: "List all global metadata templates", href: "/reference/get-metadata-templates-global", badge: "GET" },
+  { label: "List all metadata templates for enterprise", href: "/reference/get-metadata-templates-enterprise", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレートのスコープ", href: "/ja/guides/metadata/scopes", badge: "ガイド" }
-  ]}
+  { label: "Metadata template scopes", href: "/guides/metadata/scopes", badge: "GUIDE" }
+]}
 />

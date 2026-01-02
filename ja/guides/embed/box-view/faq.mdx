@@ -1,82 +1,62 @@
 ---
-title: "よくある質問"
+alias_paths:
+  0: /docs/box-view-faqs
+  1: /docs/box-view-faq
 rank: 5
 related_endpoints:
-  - get_files_id
+  0: get_files_id
 related_guides:
-  - embed/box-view/setup
-  - embed/box-view/upload-file
-  - embed/box-view/create-preview
-required_guides: []
-related_resources: []
-alias_paths:
-  - /docs/box-view-faqs
-  - /docs/box-view-faq
-category_id: embed
-subcategory_id: embed/box-view
-is_index: false
-id: embed/box-view/faq
-type: guide
-total_steps: 5
-sibling_id: embed/box-view
-parent_id: embed/box-view
-next_page_id: ''
-previous_page_id: embed/box-view/best-practices
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/box-view/faq.md
+  0: embed/box-view/setup
+  1: embed/box-view/upload-file
+  2: embed/box-view/create-preview
+related_resources: {}
+required_guides: {}
+title: FAQ
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 <AccordionGroup>
-<Accordion title="Box Viewのしくみを教えてください。**">
+  <Accordion title="Box Viewのしくみを教えてください。">
+    新しいBox Viewを使用するには、[こちら](/guides/embed/box-view/setup)のガイドに従ってください。
+  </Accordion>
 
-新しいBox Viewを使用するには、[こちら](/ja/guides/embed/box-view/setup)のガイドに従ってください。
-</Accordion>
+  <Accordion title="埋め込みリンクとUI Elementのうち、どちらのプレビュー方法が用途に適していますか?">
+    [こちら](/guides/embed/box-view/create-preview)のガイドに従い、自分のユースケースに最適な方法を選択してください。
+  </Accordion>
 
-<Accordion title="埋め込みリンクとUI Elementのうち、どちらのプレビュー方法が用途に適していますか?">
+  <Accordion title="Box Viewでサポートされているファイルタイプを教えてください。">
+    サポートされているファイルタイプについては、[サポート記事][file_types]を参照してください。
+  </Accordion>
 
-[こちら](/ja/guides/embed/box-view/create-preview)のガイドに従い、自分のユースケースに最適な方法を選択してください。
-</Accordion>
+  <Accordion title="Box Viewを使用するモバイルでサポートされていないファイルタイプを教えてください。">
+    * ウェブプレビューでサポートされているドキュメントはすべて、モバイルブラウザ (iOSのSafariとChrome) でサポートされます。
+    * モバイル向けの注釈の全面的なサポートは、Boxの注釈を活用する[コンテンツプレビューUI Element](/guides/embed/ui-elements/preview)を介して利用できます。
+    * モバイルSDK (iOSおよびAndroid用) では、360度動画/画像、および3Dがサポートされていません。
+    * モバイルSDK (iOSおよびAndroid用) では、注釈 (読み取りと書き込み両方) がサポートされていません。
+  </Accordion>
 
-<Accordion title="Box Viewでサポートされているファイルタイプを教えてください。">
+  <Accordion title="注釈とは何ですか?">
+    [注釈][annotations]とは、ファイルにレンダリングされるマークアップメモです。開発者は、これを使用して、アプリケーションに埋め込まれたBoxプレビュー内から直接コラボレーション機能を提供できます。
+  </Accordion>
 
-サポートされているファイルタイプについては、[サポート記事][file_types]を参照してください。
-</Accordion>
+  <Accordion title="ファイルのアップロード後にアプリケーションでファイルレプリゼンテーションを取得するにはどうすればよいですか?">
+    [Boxのレプリゼンテーション](/guides/representations)を使用すると、Boxに保存されているファイル用に作成されたデジタルアセットを取得できます。これらのエンドポイントを使用することで、ファイルのPDF、テキスト、画像、およびサムネイルという種類のレプリゼンテーションを取得できます。
+  </Accordion>
 
-<Accordion title="Box Viewを使用するモバイルでサポートされていないファイルタイプを教えてください。">
+  <Accordion title="Box ViewをBox以外のストレージプロバイダとともに使用できますか?">
+    現在、Box Viewと互換性があるのは、Boxに保存されているファイルだけです。表示する必要がなくなったファイルは、Boxから削除できます。ただし、プレビューを生成するには再度ファイルをアップロードする必要があります。そのため、少なくともファイルを表示できるようにしたい間は、Boxにファイルを保存しておくことをお勧めします。
+  </Accordion>
 
-* ウェブプレビューでサポートされているドキュメントはすべて、モバイルブラウザ (iOSのSafariとChrome) でサポートされます。
-* モバイル向けの注釈の全面的なサポートは、Boxの注釈を活用する[コンテンツプレビューUI Element](/ja/guides/embed/ui-elements/preview)を介して利用できます。
-* モバイルSDK (iOSおよびAndroid用) では、360度動画/画像、および3Dがサポートされていません。
-* モバイルSDK (iOSおよびAndroid用) では、注釈 (読み取りと書き込み両方) がサポートされていません。
-</Accordion>
+  <Accordion title="Box UI Elementを埋め込むときに発生するCORSエラーを修正する方法を教えてください。">
+    [CORS][cors]エラーを修正するには、アプリケーションの構成ページで、CORSリクエストの作成を許可する各ドメインを追加します。サブドメインを表すためにワイルドカードがサポートされています (`https://*.domain.com`)。詳細については、[CORSガイド](/guides/security/cors)を参照してください。
+  </Accordion>
 
-<Accordion title="注釈とは何ですか?">
-
-[注釈][annotations]とは、ファイルにレンダリングされるマークアップメモです。開発者は、これを使用して、アプリケーションに埋め込まれたBoxプレビュー内から直接コラボレーション機能を提供できます。
-</Accordion>
-
-<Accordion title="ファイルのアップロード後にアプリケーションでファイルレプリゼンテーションを取得するにはどうすればよいですか?">
-
-[Boxのレプリゼンテーション](/ja/guides/representations)を使用すると、Boxに保存されているファイル用に作成されたデジタルアセットを取得できます。これらのエンドポイントを使用することで、ファイルのPDF、テキスト、画像、およびサムネイルという種類のレプリゼンテーションを取得できます。
-</Accordion>
-
-<Accordion title="Box ViewをBox以外のストレージプロバイダとともに使用できますか?">
-
-現在、Box Viewと互換性があるのは、Boxに保存されているファイルだけです。表示する必要がなくなったファイルは、Boxから削除できます。ただし、プレビューを生成するには再度ファイルをアップロードする必要があります。そのため、少なくともファイルを表示できるようにしたい間は、Boxにファイルを保存しておくことをお勧めします。
-</Accordion>
-
-<Accordion title="Box UI Elementを埋め込むときに発生するCORSエラーを修正する方法を教えてください。">
-
-[CORS][cors]エラーを修正するには、アプリケーションの構成ページで、CORSリクエストの作成を許可する各ドメインを追加します。サブドメインを表すためにワイルドカードがサポートされています (`https://*.domain.com`)。詳細については、[CORSガイド](/ja/guides/security/cors)を参照してください。
-</Accordion>
-
-<Accordion title="プレビューに表示されるBoxのロゴを置き換えるにはどうすればよいですか?">
-
-[プレビューUI Element](/ja/guides/embed/ui-elements/logo)内でのロゴのカスタマイズについては、このガイドを参照してください。
-</Accordion>
+  <Accordion title="プレビューに表示されるBoxのロゴを置き換えるにはどうすればよいですか?">
+    [プレビューUI Element](/guides/embed/ui-elements/logo)内でのロゴのカスタマイズについては、このガイドを参照してください。
+  </Accordion>
 </AccordionGroup>
 
 {/* i18n-enable localize-links */}
@@ -92,14 +72,15 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "設定", href: "/ja/guides/embed/box-view/setup", badge: "ガイド" },
-    { label: "ファイルのアップロード", href: "/ja/guides/embed/box-view/upload-file", badge: "ガイド" },
-    { label: "ファイルのプレビューの作成", href: "/ja/guides/embed/box-view/create-preview", badge: "ガイド" }
-  ]}
+  { label: "Setup", href: "/guides/embed/box-view/setup", badge: "GUIDE" },
+  { label: "Upload Files", href: "/guides/embed/box-view/upload-file", badge: "GUIDE" },
+  { label: "Create File Preview", href: "/guides/embed/box-view/create-preview", badge: "GUIDE" }
+]}
 />

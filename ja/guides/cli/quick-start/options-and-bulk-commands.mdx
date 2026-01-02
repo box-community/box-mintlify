@@ -1,20 +1,9 @@
 ---
-title: "オプションや一括コマンドの使用"
-sidebarTitle: 4. オプションや一括コマンドの使用
-type: quick-start
 hide_in_page_nav: true
-category_id: cli
-subcategory_id: cli/quick-start
-is_index: false
-id: cli/quick-start/options-and-bulk-commands
-rank: 4
-total_steps: 6
-sibling_id: cli/quick-start
-parent_id: cli/quick-start
-next_page_id: cli/quick-start/powershell-script-templates
-previous_page_id: cli/quick-start/build-commands-help
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/cli/quick-start/4-options-and-bulk-commands.md
+sidebarTitle: 4. Using Options and Bulk Commands
+title: オプションや一括コマンドの使用
+type: quick-start
+
 fullyTranslated: true
 ---
 
@@ -22,16 +11,18 @@ import {YouTube} from "/snippets/youtube.jsx";
 
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/cli/quick-start/create-oauth-app",
-                          "ja/guides/cli/quick-start/install-and-configure",
-                          "ja/guides/cli/quick-start/build-commands-help",
-                          "ja/guides/cli/quick-start/options-and-bulk-commands",
-                          "ja/guides/cli/quick-start/powershell-script-templates",
-                          "ja/guides/cli/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/cli/quick-start/create-oauth-app",
+                        "guides/cli/quick-start/install-and-configure",
+                        "guides/cli/quick-start/build-commands-help",
+                        "guides/cli/quick-start/options-and-bulk-commands",
+                        "guides/cli/quick-start/powershell-script-templates",
+                        "guides/cli/quick-start/next-steps"
+                      ]}
+/>
 
-<YouTube id="WXkBctPosLE"/>
+<YouTube id="WXkBctPosLE" />
 
 ## オプション
 
@@ -49,13 +40,10 @@ import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 ```bash
 box folders:create 0 Example_Folder --as-user=123456
-
 ```
 
 <Warning>
-
-as-userヘッダーを使用できるのは、サービスアカウントと管理者のみです。必要なスコープでアプリケーションが承認されていない場合、または別のユーザーのデフォルトのトークンを取得するようCLIを構成した場合は、この呼び出しが失敗する可能性があります。詳細なエラーログを確認するには、コマンドに`-v`または`--verbose`を追加してください。
-
+  as-userヘッダーを使用できるのは、サービスアカウントと管理者のみです。必要なスコープでアプリケーションが承認されていない場合、または別のユーザーのデフォルトのトークンを取得するようCLIを構成した場合は、この呼び出しが失敗する可能性があります。詳細なエラーログを確認するには、コマンドに`-v`または`--verbose`を追加してください。
 </Warning>
 
 ## 一括コマンド
@@ -71,9 +59,7 @@ CSVファイルを使用すると、コマンドを一括して実行できま�
 たとえば、コマンド`box folders:create --bulk-file-path=pathtoacsv`を使用して、フォルダを作成してみましょう。
 
 <Tip>
-
-Finderウィンドウ/エクスプローラからターミナル/コマンドラインウィンドウにCSVファイルをドラッグすると、パスが自動で入力されます。
-
+  Finderウィンドウ/エクスプローラからターミナル/コマンドラインウィンドウにCSVファイルをドラッグすると、パスが自動で入力されます。
 </Tip>
 
 CSVファイルの列名を指定する際は、[GitHubリポジトリ][github]のドキュメントを参照し、引数名を確認するか`--help`オプションを使用します。この場合、列名は`PARENTID`と`NAME`となり、大文字と小文字は区別されません。このフォルダの一括作成コマンドの例では、こちらのCSV[テンプレート][csv]を使用することもできます。
@@ -84,7 +70,6 @@ CSVファイルの列名を指定する際は、[GitHubリポジトリ][github]�
 
 ```bash
 box folders:create --bulk-file-path=/Users/ExampleUser/Desktop/bulkcreatefolders.csv
-
 ```
 
 ## オプションを使用した一括コマンド
@@ -99,18 +84,14 @@ CSVファイルでオプションを使用することもできます。前の�
 
 * コマンドや一括コマンドとともにオプションを使用しました。
 
-<Next>
-
-オプションや一括コマンドの使い方を理解しました
-
-</Next>
+<Next>オプションや一括コマンドの使い方を理解しました</Next>
 
 [github]: https://github.com/box/boxcli#command-topics
 
 [df]: https://github.com/box/boxcli/blob/master/docs/folders.md#box-foldersdelete-id
 
-[asuser]: /ja/guides/authentication/jwt/as-user
+[asuser]: /guides/authentication/jwt/as-user
 
 [csv]: https://github.com/box/boxcli/blob/main/docs/Bulk%20actions/folders/folders-create.csv
 
-[bulk]: /ja/guides/cli/cli-docs/bulk-commands
+[bulk]: /guides/cli/cli-docs/bulk-commands

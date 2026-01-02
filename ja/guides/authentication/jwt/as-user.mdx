@@ -1,51 +1,37 @@
 ---
-title: "as-userヘッダー"
+alias_paths: {}
 rank: 3
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - authentication/jwt
-  - authentication/select
+  0: authentication/jwt
+  1: authentication/select
+related_resources: {}
 required_guides:
-  - authentication/oauth2/with-sdk
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: authentication/jwt
-is_index: false
-id: authentication/jwt/as-user
-type: guide
-total_steps: 5
-sibling_id: authentication/jwt
-parent_id: authentication/jwt
-next_page_id: authentication/jwt/user-access-tokens
-previous_page_id: authentication/jwt/without-sdk
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/jwt/as-user.md
+  0: authentication/oauth2/with-sdk
+title: as-userヘッダー
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "SDKを使用したOAuth 2.0", href: "/ja/guides/authentication/oauth2/with-sdk", badge: "ガイド" }
-  ]}
+  { label: "OAuth 2.0 with SDKs", href: "/guides/authentication/oauth2/with-sdk", badge: "GUIDE" }
+]}
 />
+
 `as-user`ヘッダーを利用すると、JWTアプリケーションは別のユーザーの代理になることができます。
 
 ```sh
 curl https://api.box.com/2.0/folders/0 \
     -H "as-user: [USER_ID]"
     -H "authorization: Bearer [ACCESS_TOKEN]"
-
 ```
 
 <Info>
-
-この場合、ユーザーIDはユーザーのBox識別子です。どのユーザーでも、ユーザーIDは、管理者だけが利用可能な`GET /users`エンドポイントを介して確認できます。また、認証済みのユーザーセッションで`GET /users/me`エンドポイントを呼び出して確認することもできます。
-
+  この場合、ユーザーIDはユーザーのBox識別子です。どのユーザーでも、ユーザーIDは、管理者だけが利用可能な`GET /users`エンドポイントを介して確認できます。また、認証済みのユーザーセッションで`GET /users/me`エンドポイントを呼び出して確認することもできます。
 </Info>
 
 ## 前提条件
@@ -53,17 +39,13 @@ curl https://api.box.com/2.0/folders/0 \
 アプリケーションは、[開発者コンソール][devconsole]で、ユーザーとして操作を実行するように構成する必要があります。
 
 <Frame border center>
-
-![高度な機能](./enable-perform-actions-as-users.png)
-
+  ![高度な機能](./enable-perform-actions-as-users.png)
 </Frame>
 
-さらに、認証済みユーザーは、管理者権限を持つユーザー、つまり、管理者または共同管理者である必要があります。詳細については、[ユーザータイプ](https://developer.box.com/platform/user-types)のガイドを参照してください。
+さらに、認証済みユーザーは、管理者権限を持つユーザー、つまり、管理者または共同管理者である必要があります。詳細については、[ユーザータイプ](/platform/user-types)のガイドを参照してください。
 
 <Info>
-
-as-userヘッダーでは[サービスアカウント](https://developer.box.com/platform/user-types/#service-account)の`user_id`を使用できません。
-
+  as-userヘッダーでは[サービスアカウント](/platform/user-types/#service-account)の`user_id`を使用できません。
 </Info>
 
 ## as-userを使用できるSDK
@@ -71,47 +53,38 @@ as-userヘッダーでは[サービスアカウント](https://developer.box.com
 すべての[Box公式SDK][sdk]では、`as-user`ヘッダーを使用してユーザーの代わりに処理を実行することがサポートされています。
 
 <CodeGroup>
+  ```csharp .NET
+  var user_client = new BoxClient(config, session, asUser: '[USER_ID]');
+  ```
 
-```csharp .NET
-var user_client = new BoxClient(config, session, asUser: '[USER_ID]');
+  ```java Java
+  client.asUser([USER_ID]");
+  // client.asSelf();
+  ```
 
-```
+  ```python Python
+  user_to_impersonate = client.user(user_id='[USER_ID]')
+  user_client = client.as_user(user_to_impersonate)
+  ```
 
-```java Java
-client.asUser([USER_ID]");
-// client.asSelf();
-
-```
-
-
-```python Python
-user_to_impersonate = client.user(user_id='[USER_ID]')
-user_client = client.as_user(user_to_impersonate)
-
-```
-
-
-```js Node
-client.asUser('[USER_ID]');
-// client.asSelf();
-
-```
+  ```js Node
+  client.asUser('[USER_ID]');
+  // client.asSelf();
+  ```
 </CodeGroup>
 
 <Warning>
-
-SDKには、他のユーザーに対して新しいクライアントを作成するものもあれば、既存のクライアントを変更して、そのクライアントが元のユーザーに対して認証される状態に戻せるようにするものもあることに注意してください。
-
+  SDKには、他のユーザーに対して新しいクライアントを作成するものもあれば、既存のクライアントを変更して、そのクライアントが元のユーザーに対して認証される状態に戻せるようにするものもあることに注意してください。
 </Warning>
 
 [devconsole]: https://app.box.com/developers/console
 
-[sdk]: /ja/guides/tooling/sdks
+[sdk]: /guides/tooling/sdks
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" }
-  ]}
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+]}
 />

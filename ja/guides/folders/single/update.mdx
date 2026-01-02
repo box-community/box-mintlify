@@ -1,162 +1,149 @@
 ---
-title: "フォルダの更新"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - put_folders_id
+  0: put_folders_id
 related_guides:
-  - folders/single/update
-required_guides:
-  - folders/single/create
+  0: folders/single/update
 related_resources:
-  - folder
-alias_paths: []
-category_id: folders
-subcategory_id: folders/single
-is_index: false
-id: folders/single/update
-type: guide
-total_steps: 10
-sibling_id: folders/single
-parent_id: folders/single
-next_page_id: folders/single/rename
-previous_page_id: folders/single/create
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/update.md
+  0: folder
+required_guides:
+  0: folders/single/create
+title: フォルダの更新
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "ガイド" }
-  ]}
+  { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" }
+]}
 />
+
 Box上でフォルダを更新するには、次のAPIを呼び出す必要があります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X PUT "https://api.box.com/2.0/folders/4353455" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "name": "New folder name"
+       }'
+  ```
 
-```sh cURL
-curl -i -X PUT "https://api.box.com/2.0/folders/4353455" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "name": "New folder name"
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.folders.updateFolderById(folderToUpdate.id, {
+    requestBody: {
+      name: updatedName,
+      description: 'Updated description',
+    } satisfies UpdateFolderByIdRequestBody,
+  } satisfies UpdateFolderByIdOptionalsInput);
+  ```
 
-```typescript Node/TypeScript v10
-await client.folders.updateFolderById(folderToUpdate.id, {
-  requestBody: {
-    name: updatedName,
-    description: 'Updated description',
-  } satisfies UpdateFolderByIdRequestBody,
-} satisfies UpdateFolderByIdOptionalsInput);
-```
+  ```python Python v10
+  client.folders.update_folder_by_id(
+      folder_to_update.id, name=updated_name, description="Updated description"
+  )
+  ```
 
-```python Python v10
-client.folders.update_folder_by_id(
-    folder_to_update.id, name=updated_name, description="Updated description"
-)
-```
+  ```cs .NET v10
+  await client.Folders.UpdateFolderByIdAsync(folderId: folderToUpdate.Id, requestBody: new UpdateFolderByIdRequestBody() { Name = updatedName, Description = "Updated description" });
+  ```
 
-```cs .NET v10
-await client.Folders.UpdateFolderByIdAsync(folderId: folderToUpdate.Id, requestBody: new UpdateFolderByIdRequestBody() { Name = updatedName, Description = "Updated description" });
-```
+  ```swift Swift v10
+  try await client.folders.updateFolderById(folderId: folderToUpdate.id, requestBody: UpdateFolderByIdRequestBody(name: updatedName, description: "Updated description"))
+  ```
 
-```swift Swift v10
-try await client.folders.updateFolderById(folderId: folderToUpdate.id, requestBody: UpdateFolderByIdRequestBody(name: updatedName, description: "Updated description"))
-```
+  ```java Java v10
+  client.getFolders().updateFolderById(folderToUpdate.getId(), new UpdateFolderByIdRequestBody.Builder().name(updatedName).description("Updated description").build())
+  ```
 
-```java Java v10
-client.getFolders().updateFolderById(folderToUpdate.getId(), new UpdateFolderByIdRequestBody.Builder().name(updatedName).description("Updated description").build())
-```
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, "id");
+  BoxFolder.Info info = folder.new Info();
+  info.setName("New Name");
+  folder.updateInfo(info);
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, "id");
-BoxFolder.Info info = folder.new Info();
-info.setName("New Name");
-folder.updateInfo(info);
-```
+  ```python Python v4
+  updated_folder = client.folder(folder_id='22222').update_info(data={
+      'name': '[ARCHIVED] Planning documents',
+      'description': 'Old planning documents',
+  })
+  print('Folder updated!')
+  ```
 
-```python Python v4
-updated_folder = client.folder(folder_id='22222').update_info(data={
-    'name': '[ARCHIVED] Planning documents',
-    'description': 'Old planning documents',
-})
-print('Folder updated!')
-```
+  ```cs .NET v6
+  var requestParams = new BoxFolderRequest()
+  {
+      Id = "11111",
+      Name = "My Documents (2017)"
+  };
+  BoxFolder updatedFolder = await client.FoldersManager.UpdateInformationAsync(requestParams);
+  ```
 
-```cs .NET v6
-var requestParams = new BoxFolderRequest()
-{
-    Id = "11111",
-    Name = "My Documents (2017)"
-};
-BoxFolder updatedFolder = await client.FoldersManager.UpdateInformationAsync(requestParams);
-```
-
-```javascript Node v4
-client.folders.update('11111', {name: 'Pictures from 2017'})
-    .then(updatedFolder => {
-        /* updatedFolder -> {
-            type: 'folder',
-            id: '11111',
-            sequence_id: '1',
-            etag: '1',
-            name: 'Pictures from 2017',
-            created_at: '2012-12-12T10:53:43-08:00',
-            modified_at: '2012-12-12T11:15:04-08:00',
-            description: 'Some pictures I took',
-            size: 629644,
-            path_collection: 
-            { total_count: 1,
-                entries: 
-                [ { type: 'folder',
-                    id: '0',
-                    sequence_id: null,
-                    etag: null,
-                    name: 'All Files' } ] },
-            created_by: 
-            { type: 'user',
-                id: '22222',
-                name: 'Example User'
-                login: 'user@example.com' },
-            modified_by: 
-            { type: 'user',
-                id: '22222',
-                name: 'Example User',
-                login: 'user@example.com' },
-            owned_by: 
-            { type: 'user',
-                id: '22222',
-                name: 'Example User',
-                login: 'user@example.com' },
-            shared_link: null,
-            parent: 
-            { type: 'folder',
-                id: '0',
-                sequence_id: null,
-                etag: null,
-                name: 'All Files' },
-            item_status: 'active',
-            item_collection: 
-            { total_count: 1,
-                entries: 
-                [ { type: 'file',
-                    id: '33333',
-                    sequence_id: '3',
-                    etag: '3',
-                    sha1: '134b65991ed521fcfe4724b7d814ab8ded5185dc',
-                    name: 'tigers.jpeg' } ],
-                offset: 0,
-                limit: 100 } }
-        */
-    });
-```
-
+  ```javascript Node v4
+  client.folders.update('11111', {name: 'Pictures from 2017'})
+      .then(updatedFolder => {
+          /* updatedFolder -> {
+              type: 'folder',
+              id: '11111',
+              sequence_id: '1',
+              etag: '1',
+              name: 'Pictures from 2017',
+              created_at: '2012-12-12T10:53:43-08:00',
+              modified_at: '2012-12-12T11:15:04-08:00',
+              description: 'Some pictures I took',
+              size: 629644,
+              path_collection: 
+              { total_count: 1,
+                  entries: 
+                  [ { type: 'folder',
+                      id: '0',
+                      sequence_id: null,
+                      etag: null,
+                      name: 'All Files' } ] },
+              created_by: 
+              { type: 'user',
+                  id: '22222',
+                  name: 'Example User'
+                  login: 'user@example.com' },
+              modified_by: 
+              { type: 'user',
+                  id: '22222',
+                  name: 'Example User',
+                  login: 'user@example.com' },
+              owned_by: 
+              { type: 'user',
+                  id: '22222',
+                  name: 'Example User',
+                  login: 'user@example.com' },
+              shared_link: null,
+              parent: 
+              { type: 'folder',
+                  id: '0',
+                  sequence_id: null,
+                  etag: null,
+                  name: 'All Files' },
+              item_status: 'active',
+              item_collection: 
+              { total_count: 1,
+                  entries: 
+                  [ { type: 'file',
+                      id: '33333',
+                      sequence_id: '3',
+                      etag: '3',
+                      sha1: '134b65991ed521fcfe4724b7d814ab8ded5185dc',
+                      name: 'tigers.jpeg' } ],
+                  offset: 0,
+                  limit: 100 } }
+          */
+      });
+  ```
 </CodeGroup>
 
 ## 名前に関する制約事項
@@ -172,12 +159,13 @@ client.folders.update('11111', {name: 'Pictures from 2017'})
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
-  ]}
+  { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "フォルダの更新", href: "/ja/guides/folders/single/update", badge: "ガイド" }
-  ]}
+  { label: "Update Folder", href: "/guides/folders/single/update", badge: "GUIDE" }
+]}
 />

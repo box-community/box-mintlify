@@ -1,28 +1,17 @@
 ---
-title: "管理対象ユーザーの作成"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - post_users
+  0: post_users
 related_guides:
-  - users/create-app-user
-  - users/deprovision
-  - users/deprovision/transfer-folders
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: users
-subcategory_id: null
-is_index: false
-id: users/create-managed-user
-type: guide
-total_steps: 4
-sibling_id: users
-parent_id: users
-next_page_id: users/create-app-user
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/users/create-managed-user.md
+  0: users/create-app-user
+  1: users/deprovision
+  2: users/deprovision/transfer-folders
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 管理対象ユーザーの作成
+
 fullyTranslated: true
 ---
 
@@ -31,104 +20,98 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 新しい管理対象ユーザーを生成するには、最低でも管理対象ユーザーの名前とメールアドレスが必要になります。
 
 <Note>
-
-管理対象ユーザーの作成時に指定するメールアドレスは一意である必要があります。既存のBoxユーザーにすでに関連付けられているメールアドレスは使用できません。
-
+  管理対象ユーザーの作成時に指定するメールアドレスは一意である必要があります。既存のBoxユーザーにすでに関連付けられているメールアドレスは使用できません。
 </Note>
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/users" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "login": "ceo@example.com",
+         "name": "Aaron Levie"
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/users" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "login": "ceo@example.com",
-       "name": "Aaron Levie"
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.users.createUser({
+    name: userName,
+    login: userLogin,
+    isPlatformAccessOnly: true,
+  } satisfies CreateUserRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.users.createUser({
-  name: userName,
-  login: userLogin,
-  isPlatformAccessOnly: true,
-} satisfies CreateUserRequestBody);
-```
+  ```python Python v10
+  client.users.create_user(user_name, login=user_login, is_platform_access_only=True)
+  ```
 
-```python Python v10
-client.users.create_user(user_name, login=user_login, is_platform_access_only=True)
-```
+  ```cs .NET v10
+  await client.Users.CreateUserAsync(requestBody: new CreateUserRequestBody(name: userName) { Login = userLogin, IsPlatformAccessOnly = true });
+  ```
 
-```cs .NET v10
-await client.Users.CreateUserAsync(requestBody: new CreateUserRequestBody(name: userName) { Login = userLogin, IsPlatformAccessOnly = true });
-```
+  ```swift Swift v10
+  try await client.users.createUser(requestBody: CreateUserRequestBody(name: userName, login: userLogin, isPlatformAccessOnly: true))
+  ```
 
-```swift Swift v10
-try await client.users.createUser(requestBody: CreateUserRequestBody(name: userName, login: userLogin, isPlatformAccessOnly: true))
-```
+  ```java Java v10
+  client.getUsers().createUser(new CreateUserRequestBody.Builder(userName).login(userLogin).isPlatformAccessOnly(true).build())
+  ```
 
-```java Java v10
-client.getUsers().createUser(new CreateUserRequestBody.Builder(userName).login(userLogin).isPlatformAccessOnly(true).build())
-```
+  ```java Java v5
+  BoxUser.Info createdUserInfo = BoxUser.createEnterpriseUser(api, "user@example.com", "A User");
+  ```
 
-```java Java v5
-BoxUser.Info createdUserInfo = BoxUser.createEnterpriseUser(api, "user@example.com", "A User");
-```
+  ```python Python v4
+  new_user = client.create_user('Temp User', 'user@example.com')
+  ```
 
-```python Python v4
-new_user = client.create_user('Temp User', 'user@example.com')
-```
+  ```cs .NET v6
+  var userParams = new BoxUserRequest()
+  {
+      Name = "Example User",
+      Login = "user@example.com"
+  };
+  BoxUser newUser = await client.UsersManager.CreateEnterpriseUserAsync(userParams);
+  ```
 
-```cs .NET v6
-var userParams = new BoxUserRequest()
-{
-    Name = "Example User",
-    Login = "user@example.com"
-};
-BoxUser newUser = await client.UsersManager.CreateEnterpriseUserAsync(userParams);
-```
-
-```javascript Node v4
-client.enterprise.addUser(
-	'eddard@winterfell.example.com',
-	'Ned Stark',
-	{
-		role: client.enterprise.userRoles.COADMIN,
-		address: '555 Box Lane',
-		status: client.enterprise.userStatuses.CANNOT_DELETE_OR_EDIT
-	})
-	.then(user => {
-		/* user -> {
-			type: 'user',
-			id: '44444',
-			name: 'Ned Stark',
-			login: 'eddard@winterfell.example.com',
-			created_at: '2012-11-15T16:34:28-08:00',
-			modified_at: '2012-11-15T16:34:29-08:00',
-			role: 'coadmin',
-			language: 'en',
-			timezone: 'America/Los_Angeles',
-			space_amount: 5368709120,
-			space_used: 0,
-			max_upload_size: 2147483648,
-			status: 'active',
-			job_title: '',
-			phone: '',
-			address: '555 Box Lane',
-			avatar_url: 'https://www.box.com/api/avatar/large/deprecated' }
-        */
-	});
-```
-
+  ```javascript Node v4
+  client.enterprise.addUser(
+  	'eddard@winterfell.example.com',
+  	'Ned Stark',
+  	{
+  		role: client.enterprise.userRoles.COADMIN,
+  		address: '555 Box Lane',
+  		status: client.enterprise.userStatuses.CANNOT_DELETE_OR_EDIT
+  	})
+  	.then(user => {
+  		/* user -> {
+  			type: 'user',
+  			id: '44444',
+  			name: 'Ned Stark',
+  			login: 'eddard@winterfell.example.com',
+  			created_at: '2012-11-15T16:34:28-08:00',
+  			modified_at: '2012-11-15T16:34:29-08:00',
+  			role: 'coadmin',
+  			language: 'en',
+  			timezone: 'America/Los_Angeles',
+  			space_amount: 5368709120,
+  			space_used: 0,
+  			max_upload_size: 2147483648,
+  			status: 'active',
+  			job_title: '',
+  			phone: '',
+  			address: '555 Box Lane',
+  			avatar_url: 'https://www.box.com/api/avatar/large/deprecated' }
+          */
+  	});
+  ```
 </CodeGroup>
 
 App Userの作成時に設定できるすべての使用可能なオプションパラメータを確認するには、[ユーザーを作成](endpoint://post-users)エンドポイントを参照してください。
 
 <Note>
-
-新しく作成したアカウントを変更できるようにするには、受信した確認メールにあるリンクをクリックする必要があります。
-
+  新しく作成したアカウントを変更できるようにするには、受信した確認メールにあるリンクをクリックする必要があります。
 </Note>
 
 ユーザー作成リクエストから、ユーザーオブジェクトが返されます。このユーザーオブジェクトには管理対象ユーザーのIDが含まれています。これは、今後ユーザーを変更するAPIリクエストを実行するために使用できます。
@@ -136,22 +119,21 @@ App Userの作成時に設定できるすべての使用可能なオプション
 新しい管理対象ユーザーが作成されると、使用されているメールアドレス宛てに、アカウントのパスワードの作成を求めるメールがBoxから届きます。このアクションが実行されるまで、アカウントは`pending`状態になります。
 
 <Note>
-
-セキュリティ上の理由から、新しい管理対象ユーザーの作成時にパスワードを指定することはできません。
-
+  セキュリティ上の理由から、新しい管理対象ユーザーの作成時にパスワードを指定することはできません。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create user", href: "/reference/post-users", badge: "POST" }
-  ]}
+  { label: "Create user", href: "/reference/post-users", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "App Userの作成", href: "/ja/guides/users/create-app-user", badge: "ガイド" },
-    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "ガイド" },
-    { label: "ファイルとフォルダの転送", href: "/ja/guides/users/deprovision/transfer-folders", badge: "ガイド" }
-  ]}
+  { label: "Create App User", href: "/guides/users/create-app-user", badge: "GUIDE" },
+  { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" },
+  { label: "Transfer Files & Folders", href: "/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+]}
 />

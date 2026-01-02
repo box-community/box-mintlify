@@ -1,26 +1,15 @@
 ---
-title: "フォルダのロックの削除"
+alias_paths: {}
 rank: 10
 related_endpoints:
-  - delete_folder_locks_id
+  0: delete_folder_locks_id
 related_guides:
-  - folders/single/create-lock
-  - folders/single/get-locks
-alias_paths: []
+  0: folders/single/create-lock
+  1: folders/single/get-locks
 related_resources:
-  - folder_locks
-category_id: folders
-subcategory_id: folders/single
-is_index: false
-id: folders/single/delete-lock
-type: guide
-total_steps: 10
-sibling_id: folders/single
-parent_id: folders/single
-next_page_id: ''
-previous_page_id: folders/single/get-locks
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/delete-lock.md
+  0: folder_locks
+title: フォルダのロックの削除
+
 fullyTranslated: true
 ---
 
@@ -29,58 +18,55 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box内のフォルダに適用されたロックを削除するには、フォルダのロックIDを指定して`DELETE /folder_locks/:id` APIを呼び出します。
 
 <Note>
-**フォルダロック**
+  **フォルダロック**
 
-フォルダロックAPIエンドポイントを使用する際は、アクセスしようとしているフォルダの所有者/共同所有者として認証されている必要があります。
-
+  フォルダロックAPIエンドポイントを使用する際は、アクセスしようとしているフォルダの所有者/共同所有者として認証されている必要があります。
 </Note>
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/folder_locks/93134" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/folder_locks/93134" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.folderLocks.deleteFolderLockById(folderLock.id!);
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderLocks.deleteFolderLockById(folderLock.id!);
-```
+  ```python Python v10
+  client.folder_locks.delete_folder_lock_by_id(folder_lock.id)
+  ```
 
-```python Python v10
-client.folder_locks.delete_folder_lock_by_id(folder_lock.id)
-```
+  ```cs .NET v10
+  await client.FolderLocks.DeleteFolderLockByIdAsync(folderLockId: NullableUtils.Unwrap(folderLock.Id));
+  ```
 
-```cs .NET v10
-await client.FolderLocks.DeleteFolderLockByIdAsync(folderLockId: NullableUtils.Unwrap(folderLock.Id));
-```
+  ```swift Swift v10
+  try await client.folderLocks.deleteFolderLockById(folderLockId: folderLock.id!)
+  ```
 
-```swift Swift v10
-try await client.folderLocks.deleteFolderLockById(folderLockId: folderLock.id!)
-```
-
-```java Java v10
-client.getFolderLocks().deleteFolderLockById(folderLock.getId())
-```
-
+  ```java Java v10
+  client.getFolderLocks().deleteFolderLockById(folderLock.getId())
+  ```
 </CodeGroup>
 
 <Note>
-**フォルダのロックIDを見つける方法**
+  **フォルダのロックIDを見つける方法**
 
-フォルダのロックを削除するには、フォルダのロックIDをAPIに指定する必要があります。フォルダのロックIDは、[フォルダのロックを作成](/ja/guides/folders/single/create-lock)したとき、または特定のフォルダに対する[ロックのリストを取得](/ja/guides/folders/single/get-locks)したときに、レスポンスに示されます。
-
+  フォルダのロックを削除するには、フォルダのロックIDをAPIに指定する必要があります。フォルダのロックIDは、[フォルダのロックを作成](/guides/folders/single/create-lock)したとき、または特定のフォルダに対する[ロックのリストを取得](/guides/folders/single/get-locks)したときに、レスポンスに示されます。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Delete folder lock", href: "/reference/delete-folder-locks-id", badge: "DELETE" }
-  ]}
+  { label: "Delete folder lock", href: "/reference/delete-folder-locks-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "フォルダのロックの作成", href: "/ja/guides/folders/single/create-lock", badge: "ガイド" },
-    { label: "フォルダのロックの取得", href: "/ja/guides/folders/single/get-locks", badge: "ガイド" }
-  ]}
+  { label: "Create Folder Lock", href: "/guides/folders/single/create-lock", badge: "GUIDE" },
+  { label: "Get Folder Lock", href: "/guides/folders/single/get-locks", badge: "GUIDE" }
+]}
 />

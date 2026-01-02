@@ -1,26 +1,14 @@
 ---
-title: "ファイルリクエストの更新"
 related_endpoints:
-  - put_file_requests_id
+  0: put_file_requests_id
 related_guides:
-  - file-requests/copy
-  - file-requests/get
-required_guides: []
+  0: file-requests/copy
+  1: file-requests/get
 related_resources:
-  - file_request
-category_id: file-requests
-subcategory_id: null
-is_index: false
-id: file-requests/update
-rank: 4
-type: guide
-total_steps: 5
-sibling_id: file-requests
-parent_id: file-requests
-next_page_id: file-requests/delete
-previous_page_id: file-requests/get
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/4-update.md
+  0: file_request
+required_guides: {}
+title: ファイルリクエストの更新
+
 fullyTranslated: true
 ---
 
@@ -29,100 +17,99 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 既存のファイルリクエストの基本的な詳細の一部を更新するのに必要なのは、その一意のIDだけです。
 
 <CodeGroup>
-```sh cURL
-curl -i -X PUT "https://api.box.com/2.0/file_requests/42037322" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -d '{
-       "title": "Please upload required documents",
-       "description": "Please upload required documents",
-       "status": "active",
-       "is_email_required": true,
-       "is_description_required": false
-     }'
-```
+  ```sh cURL
+  curl -i -X PUT "https://api.box.com/2.0/file_requests/42037322" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -d '{
+         "title": "Please upload required documents",
+         "description": "Please upload required documents",
+         "status": "active",
+         "is_email_required": true,
+         "is_description_required": false
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.fileRequests.updateFileRequestById(copiedFileRequest.id, {
-  title: 'updated title',
-  description: 'updated description',
-} satisfies FileRequestUpdateRequest);
-```
+  ```typescript Node/TypeScript v10
+  await client.fileRequests.updateFileRequestById(copiedFileRequest.id, {
+    title: 'updated title',
+    description: 'updated description',
+  } satisfies FileRequestUpdateRequest);
+  ```
 
-```python Python v10
-client.file_requests.update_file_request_by_id(
-    copied_file_request.id, title="updated title", description="updated description"
-)
-```
+  ```python Python v10
+  client.file_requests.update_file_request_by_id(
+      copied_file_request.id, title="updated title", description="updated description"
+  )
+  ```
 
-```csharp .NET v10
-await client.FileRequests.UpdateFileRequestByIdAsync(fileRequestId: copiedFileRequest.Id, requestBody: new FileRequestUpdateRequest() { Title = "updated title", Description = "updated description" });
-```
+  ```csharp .NET v10
+  await client.FileRequests.UpdateFileRequestByIdAsync(fileRequestId: copiedFileRequest.Id, requestBody: new FileRequestUpdateRequest() { Title = "updated title", Description = "updated description" });
+  ```
 
-```swift Swift v10
-try await client.fileRequests.updateFileRequestById(fileRequestId: copiedFileRequest.id, requestBody: FileRequestUpdateRequest(title: "updated title", description: "updated description"))
-```
+  ```swift Swift v10
+  try await client.fileRequests.updateFileRequestById(fileRequestId: copiedFileRequest.id, requestBody: FileRequestUpdateRequest(title: "updated title", description: "updated description"))
+  ```
 
-```java Java v10
-client.getFileRequests().updateFileRequestById(copiedFileRequest.getId(), new FileRequestUpdateRequest.Builder().title("updated title").description("updated description").build())
-```
+  ```java Java v10
+  client.getFileRequests().updateFileRequestById(copiedFileRequest.getId(), new FileRequestUpdateRequest.Builder().title("updated title").description("updated description").build())
+  ```
 
-```java Java v5
-BoxFileRequest fileRequest = new BoxFileRequest(api, "id");
-BoxFileRequest.Info fileRequestInfo = fileRequest.new Info();
-fileRequestInfo.setDescription("Following documents are requested for your process");
-fileRequestInfo.setIsDescriptionRequired(true);
-fileRequestInfo.setStatus(BoxFileRequest.Status.ACTIVE);
-fileRequestInfo = fileRequest.updateInfo(fileRequestInfo);
-```
+  ```java Java v5
+  BoxFileRequest fileRequest = new BoxFileRequest(api, "id");
+  BoxFileRequest.Info fileRequestInfo = fileRequest.new Info();
+  fileRequestInfo.setDescription("Following documents are requested for your process");
+  fileRequestInfo.setIsDescriptionRequired(true);
+  fileRequestInfo.setStatus(BoxFileRequest.Status.ACTIVE);
+  fileRequestInfo = fileRequest.updateInfo(fileRequestInfo);
+  ```
 
-```py Python v4
-from boxsdk.object.file_request import StatusState
-update_data = {
-    "description": 'Updated description', 
-    "is_email_required": True,
-    "status": StatusState.ACTIVE
-}
-file_request.update_info(data=update_data)
-```
+  ```py Python v4
+  from boxsdk.object.file_request import StatusState
+  update_data = {
+      "description": 'Updated description', 
+      "is_email_required": True,
+      "status": StatusState.ACTIVE
+  }
+  file_request.update_info(data=update_data)
+  ```
 
-```csharp .NET v6
-var updateRequest = new BoxFileRequestUpdateRequest
-{
-    Description = "New file request description",
-    Status = BoxFileRequestStatus.inactive
-};
+  ```csharp .NET v6
+  var updateRequest = new BoxFileRequestUpdateRequest
+  {
+      Description = "New file request description",
+      Status = BoxFileRequestStatus.inactive
+  };
 
-BoxFileRequestObject fileRequest = await client.FileRequestsManager.UpdateFileRequestAsync("12345", updateRequest);
-```
+  BoxFileRequestObject fileRequest = await client.FileRequestsManager.UpdateFileRequestAsync("12345", updateRequest);
+  ```
 
-```js Node v4
-client.fileRequests.update(fileRequestId, {
-  title: 'Updated title'
-}).then((r: FileRequest) => {
-  // do something with the updated file request 
-  console.log(r)
-});
-```
+  ```js Node v4
+  client.fileRequests.update(fileRequestId, {
+    title: 'Updated title'
+  }).then((r: FileRequest) => {
+    // do something with the updated file request 
+    console.log(r)
+  });
+  ```
 </CodeGroup>
 
-テンプレート作成時に更新できるさまざまなフィールドの詳細については、[`POST /file-requests/:id/update`](/ja/reference/put-file-requests-id) APIのリファレンスドキュメントを参照してください。
+テンプレート作成時に更新できるさまざまなフィールドの詳細については、[`POST /file-requests/:id/update`](/reference/put-file-requests-id) APIのリファレンスドキュメントを参照してください。
 
 <Note>
-
-ファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。ファイルリクエストテンプレートの設定に関する[ガイド](/ja/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
-
+  ファイルリクエストのIDを確認するには、BoxウェブアプリにアクセスしてそのURLを調べます。ファイルリクエストテンプレートの設定に関する[ガイド](/guides/file-requests/template)で、ファイルリクエストIDの確認方法を確認してください。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update file request", href: "/reference/put-file-requests-id", badge: "PUT" }
-  ]}
+  { label: "Update file request", href: "/reference/put-file-requests-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "ガイド" },
-    { label: "ファイルリクエストに関する情報の取得", href: "/ja/guides/file-requests/get", badge: "ガイド" }
-  ]}
+  { label: "Copy a File Request", href: "/guides/file-requests/copy", badge: "GUIDE" },
+  { label: "Get information for a File Request", href: "/guides/file-requests/get", badge: "GUIDE" }
+]}
 />

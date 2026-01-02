@@ -1,27 +1,16 @@
 ---
-title: "フォルダのコピー"
+alias_paths: {}
 rank: 5
 related_endpoints:
-  - post_folders_id_copy
+  0: post_folders_id_copy
 related_guides:
-  - folders/single/create
-  - folders/single/delete
-required_guides: []
+  0: folders/single/create
+  1: folders/single/delete
 related_resources:
-  - folder
-alias_paths: []
-category_id: folders
-subcategory_id: folders/single
-is_index: false
-id: folders/single/copy
-type: guide
-total_steps: 10
-sibling_id: folders/single
-parent_id: folders/single
-next_page_id: folders/single/delete
-previous_page_id: folders/single/move
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/copy.md
+  0: folder
+required_guides: {}
+title: フォルダのコピー
+
 fullyTranslated: true
 ---
 
@@ -34,148 +23,147 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box上でフォルダをコピーするには、コピー先となる`parent`フォルダの`id`をAPIに渡す必要があります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/folders/4353455/copy" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "parent": {
+           "id": "345345"
+         }
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/folders/4353455/copy" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "parent": {
-         "id": "345345"
-       }
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.folders.copyFolder(folderOrigin.id, {
+    parent: { id: '0' } satisfies CopyFolderRequestBodyParentField,
+    name: copiedFolderName,
+  } satisfies CopyFolderRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.folders.copyFolder(folderOrigin.id, {
-  parent: { id: '0' } satisfies CopyFolderRequestBodyParentField,
-  name: copiedFolderName,
-} satisfies CopyFolderRequestBody);
-```
+  ```python Python v10
+  client.folders.copy_folder(
+      folder_origin.id, CopyFolderParent(id="0"), name=copied_folder_name
+  )
+  ```
 
-```python Python v10
-client.folders.copy_folder(
-    folder_origin.id, CopyFolderParent(id="0"), name=copied_folder_name
-)
-```
+  ```cs .NET v10
+  await client.Folders.CopyFolderAsync(folderId: folderOrigin.Id, requestBody: new CopyFolderRequestBody(parent: new CopyFolderRequestBodyParentField(id: "0")) { Name = copiedFolderName });
+  ```
 
-```cs .NET v10
-await client.Folders.CopyFolderAsync(folderId: folderOrigin.Id, requestBody: new CopyFolderRequestBody(parent: new CopyFolderRequestBodyParentField(id: "0")) { Name = copiedFolderName });
-```
+  ```swift Swift v10
+  try await client.folders.copyFolder(folderId: folderOrigin.id, requestBody: CopyFolderRequestBody(parent: CopyFolderRequestBodyParentField(id: "0"), name: copiedFolderName))
+  ```
 
-```swift Swift v10
-try await client.folders.copyFolder(folderId: folderOrigin.id, requestBody: CopyFolderRequestBody(parent: CopyFolderRequestBodyParentField(id: "0"), name: copiedFolderName))
-```
+  ```java Java v10
+  client.getFolders().copyFolder(folderOrigin.getId(), new CopyFolderRequestBody.Builder(new CopyFolderRequestBodyParentField("0")).name(copiedFolderName).build())
+  ```
 
-```java Java v10
-client.getFolders().copyFolder(folderOrigin.getId(), new CopyFolderRequestBody.Builder(new CopyFolderRequestBodyParentField("0")).name(copiedFolderName).build())
-```
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, "id1");
+  BoxFolder destination = new BoxFolder(api, "id2");
+  folder.copy(destination);
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, "id1");
-BoxFolder destination = new BoxFolder(api, "id2");
-folder.copy(destination);
-```
+  ```python Python v4
+  folder_id = '22222'
+  destination_folder_id = '44444'
 
-```python Python v4
-folder_id = '22222'
-destination_folder_id = '44444'
+  folder_to_copy = client.folder(folder_id)
+  destination_folder = client.folder(destination_folder_id)
 
-folder_to_copy = client.folder(folder_id)
-destination_folder = client.folder(destination_folder_id)
+  folder_copy = folder_to_copy.copy(parent_folder=destination_folder)
+  print(f'Folder "{folder_copy.name}" has been copied into folder "{folder_copy.parent.name}"')
+  ```
 
-folder_copy = folder_to_copy.copy(parent_folder=destination_folder)
-print(f'Folder "{folder_copy.name}" has been copied into folder "{folder_copy.parent.name}"')
-```
+  ```cs .NET v6
+  // Copy folder 11111 into folder 22222
+  var requestParams = new BoxFolderRequest()
+  {
+      Id = "11111",
+      Parent = new BoxRequestEntity()
+      {
+          Id = "22222"
+      }
+  };
+  BoxFolder folderCopy = await client.FoldersManager.CopyAsync(requestParams);
+  ```
 
-```cs .NET v6
-// Copy folder 11111 into folder 22222
-var requestParams = new BoxFolderRequest()
-{
-    Id = "11111",
-    Parent = new BoxRequestEntity()
-    {
-        Id = "22222"
-    }
-};
-BoxFolder folderCopy = await client.FoldersManager.CopyAsync(requestParams);
-```
-
-```javascript Node v4
-client.folders.copy('11111', '22222')
-    .then(folderCopy => {
-       /* folderCopy -> {
-            type: 'folder',
-            id: '1234567',
-            sequence_id: '0',
-            etag: '0',
-            name: 'Pictures from 2017',
-            created_at: '2012-12-12T10:53:43-08:00',
-            modified_at: '2012-12-12T11:15:04-08:00',
-            description: 'Some pictures I took',
-            size: 629644,
-            path_collection: 
-            { total_count: 1,
-                entries: 
-                [ { type: 'folder',
-                    id: '0',
-                    sequence_id: null,
-                    etag: null,
-                    name: 'All Files' },
-                  { type: 'folder',
-                    id: '22222',
-                    sequence_id: '3',
-                    etag: '3',
-                    name: 'Archives' } ] },
-            created_by: 
-            { type: 'user',
-                id: '22222',
-                name: 'Example User'
-                login: 'user@example.com' },
-            modified_by: 
-            { type: 'user',
-                id: '22222',
-                name: 'Example User',
-                login: 'user@example.com' },
-            owned_by: 
-            { type: 'user',
-                id: '22222',
-                name: 'Example User',
-                login: 'user@example.com' },
-            shared_link: null,
-            parent: 
-            { type: 'folder',
-                id: '22222',
-                sequence_id: '3',
-                etag: '3',
-                name: 'Archives' },
-            item_status: 'active',
-            item_collection: 
-            { total_count: 1,
-                entries: 
-                [ { type: 'file',
-                    id: '44444',
-                    sequence_id: '0',
-                    etag: '0',
-                    sha1: '134b65991ed521fcfe4724b7d814ab8ded5185dc',
-                    name: 'tigers.jpeg' } ],
-                offset: 0,
-                limit: 100 } }
-        */
-    });
-```
-
+  ```javascript Node v4
+  client.folders.copy('11111', '22222')
+      .then(folderCopy => {
+         /* folderCopy -> {
+              type: 'folder',
+              id: '1234567',
+              sequence_id: '0',
+              etag: '0',
+              name: 'Pictures from 2017',
+              created_at: '2012-12-12T10:53:43-08:00',
+              modified_at: '2012-12-12T11:15:04-08:00',
+              description: 'Some pictures I took',
+              size: 629644,
+              path_collection: 
+              { total_count: 1,
+                  entries: 
+                  [ { type: 'folder',
+                      id: '0',
+                      sequence_id: null,
+                      etag: null,
+                      name: 'All Files' },
+                    { type: 'folder',
+                      id: '22222',
+                      sequence_id: '3',
+                      etag: '3',
+                      name: 'Archives' } ] },
+              created_by: 
+              { type: 'user',
+                  id: '22222',
+                  name: 'Example User'
+                  login: 'user@example.com' },
+              modified_by: 
+              { type: 'user',
+                  id: '22222',
+                  name: 'Example User',
+                  login: 'user@example.com' },
+              owned_by: 
+              { type: 'user',
+                  id: '22222',
+                  name: 'Example User',
+                  login: 'user@example.com' },
+              shared_link: null,
+              parent: 
+              { type: 'folder',
+                  id: '22222',
+                  sequence_id: '3',
+                  etag: '3',
+                  name: 'Archives' },
+              item_status: 'active',
+              item_collection: 
+              { total_count: 1,
+                  entries: 
+                  [ { type: 'file',
+                      id: '44444',
+                      sequence_id: '0',
+                      etag: '0',
+                      sha1: '134b65991ed521fcfe4724b7d814ab8ded5185dc',
+                      name: 'tigers.jpeg' } ],
+                  offset: 0,
+                  limit: 100 } }
+          */
+      });
+  ```
 </CodeGroup>
 
 オプションで、新しいフォルダに別の名前を付けることもできます。
 
+{/* <Samples id='post_folders_id_copy' variant='with_name' /> */}
+
 <Note>
-**名前に関する制約事項**
+  **名前に関する制約事項**
 
-フォルダ名にはいくつかの制限があります。印字不可能なASCII文字、スラッシュ、バックスラッシュ (`/`、`\`) を含む名前のほか、末尾にスペースを含む名前は禁止されています。
+  フォルダ名にはいくつかの制限があります。印字不可能なASCII文字、スラッシュ、バックスラッシュ (`/`、`\`) を含む名前のほか、末尾にスペースを含む名前は禁止されています。
 
-また、`.`および`..`は予約済みの名前であるため、使用できません。
-
+  また、`.`および`..`は予約済みの名前であるため、使用できません。
 </Note>
 
 ## 非同期コピー
@@ -199,13 +187,14 @@ client.folders.copy('11111', '22222')
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Copy folder", href: "/reference/post-folders-id-copy", badge: "POST" }
-  ]}
+  { label: "Copy folder", href: "/reference/post-folders-id-copy", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "ガイド" },
-    { label: "フォルダの削除", href: "/ja/guides/folders/single/delete", badge: "ガイド" }
-  ]}
+  { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" },
+  { label: "Delete Folder", href: "/guides/folders/single/delete", badge: "GUIDE" }
+]}
 />

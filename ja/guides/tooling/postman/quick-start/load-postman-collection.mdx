@@ -1,38 +1,29 @@
 ---
-title: "コレクションのフォーク"
-sidebarTitle: 4. コレクションのフォーク
-type: quick-start
 hide_in_page_nav: true
-category_id: tooling
-subcategory_id: tooling/postman
-is_index: false
-id: tooling/postman/quick-start/load-postman-collection
-rank: 4
-total_steps: 6
-sibling_id: tooling/postman/quick-start
-parent_id: tooling/postman/quick-start
-next_page_id: tooling/postman/quick-start/make-api-call
-previous_page_id: tooling/postman/quick-start/log-in-to-box
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tooling/postman/quick-start/4-load-postman-collection.md
+sidebarTitle: 4. Fork a collection
+title: コレクションのフォーク
+type: quick-start
+
 fullyTranslated: true
 ---
 
-import {Postman} from "/snippets/postman.jsx";
 import { Choose, Choice, Grid, Trigger, Observe, ChoiceDebug } from '/snippets/choose-choice-components.jsx';
+import {Postman} from "/snippets/postman.jsx";
 
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/tooling/postman/quick-start/install-postman",
-                          "ja/guides/tooling/postman/quick-start/configure-box-app",
-                          "ja/guides/tooling/postman/quick-start/log-in-to-box",
-                          "ja/guides/tooling/postman/quick-start/load-postman-collection",
-                          "ja/guides/tooling/postman/quick-start/make-api-call",
-                          "ja/guides/tooling/postman/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/tooling/postman/quick-start/install-postman",
+                        "guides/tooling/postman/quick-start/configure-box-app",
+                        "guides/tooling/postman/quick-start/log-in-to-box",
+                        "guides/tooling/postman/quick-start/load-postman-collection",
+                        "guides/tooling/postman/quick-start/make-api-call",
+                        "guides/tooling/postman/quick-start/next-steps"
+                      ]}
+/>
 
-{/* <LoggedIn id="postman_credentials"> */}
+{/* <LoggedIn id='postman_credentials'> */}
 
 ログインしたら、前の手順でインストールした**Postmanアプリ**に**Box Postmanコレクション**をフォークできます。Postmanコレクションをフォークすると、Postman環境としてAPI資格情報も自動的に読み込まれます。
 
@@ -40,73 +31,51 @@ import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 下のボタンをクリックすると、**Box Postmanコレクション**がPostmanアプリケーションにフォークされます。同時に、**アクセストークン**、**更新トークン**、**クライアントID**、および**クライアントシークレット**もPostman環境に読み込まれます。
 
-<Trigger option="postman_collection_downloaded" value>
-
-<Postman env="postman_credentials"/>
-
+<Trigger option="postman_collection_downloaded" value="true">
+  <Postman env="postman_credentials" />
 </Trigger>
 
 Boxでは、Box Postmanコレクションをフォークすることをお勧めします。これにより、BoxがBox Postmanコレクションに変更を加えるたびに、そのコレクションを更新するかどうかが確認されます。このコレクションをコピーすることもできますが、重要な更新を見逃す可能性があります。
 
 {/* </LoggedIn> */}
 
-<Choice option="postman_collection_downloaded" value color="none">
+<Choice option="postman_collection_downloaded" value="true" color="none">
+  ## コレクションの探索
 
-## コレクションの探索
+  上のボタンをクリックすると、Postmanアプリケーションにコレクションをフォークするよう求められます。インポートが完了すると、このコレクションはアプリ内で左側のサイドバーに表示されます。
 
-上のボタンをクリックすると、Postmanアプリケーションにコレクションをフォークするよう求められます。インポートが完了すると、このコレクションはアプリ内で左側のサイドバーに表示されます。
+  <Frame border center shadow width="600">
+    ![PostmanでのBoxコレクション](./collection-in-postman.png)
+  </Frame>
 
-<Frame border center shadow width="600">
+  コレクションをクリックして開くと、170を超えるAPIエンドポイントを探索できます。
 
-![PostmanでのBoxコレクション](./collection-in-postman.png)
+  ## まとめ
 
-</Frame>
-
-コレクションをクリックして開くと、170を超えるAPIエンドポイントを探索できます。
-
-## まとめ
-
-* PostmanコレクションをPostmanにフォークしました
-* さらにBox Postman環境をPostmanに読み込みました
-
+  * PostmanコレクションをPostmanにフォークしました
+  * さらにBox Postman環境をPostmanに読み込みました
 </Choice>
 
 <Choice option="postman.app_type" unset color="none">
+  {/* <LoggedIn reverse> */}
 
-{/* <LoggedIn reverse> */}
+  <Danger>
+    **前の手順が完了していません**
 
-<Danger>
-**前の手順が完了していません**
+    前の手順を完了し、**Boxアプリ**を選択してログインしてください。
+  </Danger>
 
-前の手順を完了し、**Boxアプリ**を選択してログインしてください。
-
-</Danger>
-
-{/* </LoggedIn> */}
-
+  {/* </LoggedIn> */}
 </Choice>
 
 <Choice option="postman.app_type" value="create_new,use_existing" color="none">
+  {/* <LoggedIn id='postman_credentials' reverse> */}
 
-{/* <LoggedIn id="postman_credentials" reverse> */}
+  <Danger>
+    **前の手順が完了していません**
 
-<Danger>
-**前の手順が完了していません**
+    前の手順を完了し、**Boxアプリ**を選択してログインしてください。
+  </Danger>
 
-前の手順を完了し、**Boxアプリ**を選択してログインしてください。
-
-</Danger>
-
-{/* </LoggedIn> */}
-
+  {/* </LoggedIn> */}
 </Choice>
-
-<Observe option="postman_collection_downloaded" value>
-
-<Next>
-
-コレクションのフォークが完了しました
-
-</Next>
-
-</Observe>

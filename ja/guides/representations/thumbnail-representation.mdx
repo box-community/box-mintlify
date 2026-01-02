@@ -1,50 +1,37 @@
 ---
-title: "サムネイルレプリゼンテーションの取得"
+alias_paths: {}
 rank: 4
 related_endpoints:
-  - get_files_id
+  0: get_files_id
 related_guides:
-  - representations/pdf
-  - representations/supported-file-types
+  0: representations/pdf
+  1: representations/supported-file-types
 required_guides:
-  - representations/list-all-representations
-  - representations/request-a-representation
-  - representations/download-a-representation
-alias_paths: []
-category_id: representations
-subcategory_id: null
-is_index: false
-id: representations/thumbnail-representation
-type: guide
-total_steps: 8
-sibling_id: representations
-parent_id: representations
-next_page_id: representations/thumbnail
-previous_page_id: representations/download-a-representation
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/representations/thumbnail-representation.md
+  0: representations/list-all-representations
+  1: representations/request-a-representation
+  2: representations/download-a-representation
+title: サムネイルレプリゼンテーションの取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "ファイルのすべてのレプリゼンテーションのリストの取得", href: "/ja/guides/representations/list-all-representations", badge: "ガイド" },
-    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "ガイド" },
-    { label: "ファイルレプリゼンテーションのダウンロード", href: "/ja/guides/representations/download-a-representation", badge: "ガイド" }
-  ]}
+  { label: "List All Representations for File", href: "/guides/representations/list-all-representations", badge: "GUIDE" },
+  { label: "Request Desired Representation", href: "/guides/representations/request-a-representation", badge: "GUIDE" },
+  { label: "Download File Representation", href: "/guides/representations/download-a-representation", badge: "GUIDE" }
+]}
 />
+
 サムネイルとは小さい画像のことで、アプリケーション内でファイルのレプリゼンテーションとして使用できる`.png`または`.jpg`で表されます。たとえば、ファイルをダウンロードまたはプレビューするリンクのプレースホルダとして使用されます。
 
 `1024x1024`および`2048x2048`のPNGを除くすべてのサムネイルレプリゼンテーションは、元のファイルをBoxにアップロードしたときに生成されます。
 
 <Warning>
-
-ファイルのサムネイルを取得する方法として、[サムネイルAPI][thumbnail_api]の使用は非推奨になりました。
-
+  ファイルのサムネイルを取得する方法として、[サムネイルAPI][thumbnail_api]の使用は非推奨になりました。
 </Warning>
 
 ## 手順
@@ -56,9 +43,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 * `url_template`を呼び出して[サムネイルをダウンロード][download-a-representation]する。その際、`{+asset_path}`を空の文字列に置き換えます。
 
 <Warning>
-
-場合によっては、サムネイルを直接作成できないこともあります。代わりに、APIから`location`レスポンスヘッダーで`HTTP 202`が返されます。この場所は、サムネイルの生成中に使用できる一時的な画像のためのものです。
-
+  場合によっては、サムネイルを直接作成できないこともあります。代わりに、APIから`location`レスポンスヘッダーで`HTTP 202`が返されます。この場所は、サムネイルの生成中に使用できる一時的な画像のためのものです。
 </Warning>
 
 このエンドポイントを再試行するまでの推定秒数を示すretry-afterレスポンスヘッダーも返されます。
@@ -120,29 +105,28 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 | 動画      | `3g2`, `3gp`, `avi`, `m2v`, `m2ts`, `m4v`, `mkv`, `mov`, `mp4`, `mpeg`, `mpg`, `ogg`, `mts`, `qt`, `wmv`                                                        |
 
 <Warning>
-
-ファイルの種類が**ドキュメント**の場合、返されるレプリゼンテーションはプレースホルダアイコンとなり、実際のサムネイルではありません。
-
+  ファイルの種類が**ドキュメント**の場合、返されるレプリゼンテーションはプレースホルダアイコンとなり、実際のサムネイルではありません。
 </Warning>
 
-[list-all-representations]: /ja/guides/representations/list-all-representations
+[list-all-representations]: /guides/representations/list-all-representations
 
-[request-a-representation]: /ja/guides/representations/request-a-representation
+[request-a-representation]: /guides/representations/request-a-representation
 
-[download-a-representation]: /ja/guides/representations/download-a-representation
+[download-a-representation]: /guides/representations/download-a-representation
 
-[thumbnail_api]: /ja/guides/representations/thumbnail
+[thumbnail_api]: /guides/representations/thumbnail
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "PDFレプリゼンテーションの取得", href: "/ja/guides/representations/pdf", badge: "ガイド" },
-    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "ガイド" }
-  ]}
+  { label: "Get PDF Representation", href: "/guides/representations/pdf", badge: "GUIDE" },
+  { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+]}
 />

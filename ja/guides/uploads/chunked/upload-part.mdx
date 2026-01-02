@@ -1,40 +1,29 @@
 ---
-title: "パーツのアップロード"
+alias_paths: {}
 rank: 4
 related_endpoints:
-  - put_files_upload_sessions_id
+  0: put_files_upload_sessions_id
 related_guides:
-  - uploads/chunked/commit-session
-related_pages: []
-required_guides:
-  - uploads/chunked/create-session
+  0: uploads/chunked/commit-session
+related_pages: {}
 related_resources:
-  - upload_part
-alias_paths: []
-category_id: uploads
-subcategory_id: uploads/chunked
-is_index: false
-id: uploads/chunked/upload-part
-type: guide
-total_steps: 5
-sibling_id: uploads/chunked
-parent_id: uploads/chunked
-next_page_id: uploads/chunked/commit-session
-previous_page_id: uploads/chunked/with-sdks
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/upload-part.md
+  0: upload_part
+required_guides:
+  0: uploads/chunked/create-session
+title: パーツのアップロード
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "アップロードセッションの作成", href: "/ja/guides/uploads/chunked/create-session", badge: "ガイド" }
-  ]}
+  { label: "Create Upload Session", href: "/guides/uploads/chunked/create-session", badge: "GUIDE" }
+]}
 />
+
 大きいファイルをアップロードする際は、そのファイルを小さいパーツに分割し、パーツのアップロードAPIを使用してそれらのパーツをアップロードできます。
 
 ## アップロードセッションの作成
@@ -58,7 +47,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
     "log_event": "https://upload.box.com/api/2.0/files/upload_sessions/F971964745A5CD0C001BBE4E58196BFD/log"
   }
 }
-
 ```
 
 ## ファイルの分割
@@ -67,14 +55,12 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ```bash
 split -b <PART_SIZE> <FILE_NAME> <YOUR_PART_NAME>
-
 ```
 
 例:
 
 ```bash
 split -b 8388608 video.mp3 videopart
-
 ```
 
 これにより、ファイルが複数のファイルに分割されます。
@@ -85,14 +71,12 @@ split -b 8388608 video.mp3 videopart
 
 ```bash
 openssl sha1 -binary <FILE_PART_NAME> | base64
-
 ```
 
 例:
 
 ```bash
 openssl sha1 -binary videoparta | base64
-
 ```
 
 その結果、Base64でエンコードされたメッセージがアップロードの検証に使用されます。
@@ -102,95 +86,93 @@ openssl sha1 -binary videoparta | base64
 アップロードするパーツのデータをアップロードします。その際、パーツのバイト範囲と、コンテンツを適切にアップロードするための`SHA`ダイジェストを指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X PUT "https://upload.box.com/2.0/files/upload_sessions/F971964745A5CD0C001BBE4E58196BFD" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "digest: sha=fpRyg5eVQletdZqEKaFlqwBXJzM=" \
+       -H "content-range: bytes 8388608-16777215/445856194" \
+       -H "content-type: application/octet-stream" \
+       --data-binary @<FILE_NAME>
+  ```
 
-```sh cURL
-curl -i -X PUT "https://upload.box.com/2.0/files/upload_sessions/F971964745A5CD0C001BBE4E58196BFD" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "digest: sha=fpRyg5eVQletdZqEKaFlqwBXJzM=" \
-     -H "content-range: bytes 8388608-16777215/445856194" \
-     -H "content-type: application/octet-stream" \
-     --data-binary @<FILE_NAME>
-```
+  ```typescript Node/TypeScript v10
+  await client.chunkedUploads.uploadFilePart(
+    acc.uploadSessionId,
+    generateByteStreamFromBuffer(chunkBuffer),
+    {
+      digest: digest,
+      contentRange: contentRange,
+    } satisfies UploadFilePartHeadersInput,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await client.chunkedUploads.uploadFilePart(
-  acc.uploadSessionId,
-  generateByteStreamFromBuffer(chunkBuffer),
-  {
-    digest: digest,
-    contentRange: contentRange,
-  } satisfies UploadFilePartHeadersInput,
-);
-```
+  ```python Python v10
+  client.chunked_uploads.upload_file_part(
+      acc.upload_session_id,
+      generate_byte_stream_from_buffer(chunk_buffer),
+      digest,
+      content_range,
+  )
+  ```
 
-```python Python v10
-client.chunked_uploads.upload_file_part(
-    acc.upload_session_id,
-    generate_byte_stream_from_buffer(chunk_buffer),
-    digest,
-    content_range,
-)
-```
+  ```cs .NET v10
+  await client.ChunkedUploads.UploadFilePartAsync(uploadSessionId: acc.UploadSessionId, requestBody: Utils.GenerateByteStreamFromBuffer(buffer: chunkBuffer), headers: new UploadFilePartHeaders(digest: digest, contentRange: contentRange));
+  ```
 
-```cs .NET v10
-await client.ChunkedUploads.UploadFilePartAsync(uploadSessionId: acc.UploadSessionId, requestBody: Utils.GenerateByteStreamFromBuffer(buffer: chunkBuffer), headers: new UploadFilePartHeaders(digest: digest, contentRange: contentRange));
-```
+  ```swift Swift v10
+  try await client.chunkedUploads.uploadFilePart(uploadSessionId: acc.uploadSessionId, requestBody: Utils.generateByteStreamFromBuffer(buffer: chunkBuffer), headers: UploadFilePartHeaders(digest: digest, contentRange: contentRange))
+  ```
 
-```swift Swift v10
-try await client.chunkedUploads.uploadFilePart(uploadSessionId: acc.uploadSessionId, requestBody: Utils.generateByteStreamFromBuffer(buffer: chunkBuffer), headers: UploadFilePartHeaders(digest: digest, contentRange: contentRange))
-```
+  ```java Java v10
+  client.getChunkedUploads().uploadFilePart(acc.getUploadSessionId(), generateByteStreamFromBuffer(chunkBuffer), new UploadFilePartHeaders(digest, contentRange))
+  ```
 
-```java Java v10
-client.getChunkedUploads().uploadFilePart(acc.getUploadSessionId(), generateByteStreamFromBuffer(chunkBuffer), new UploadFilePartHeaders(digest, contentRange))
-```
+  ```java Java v5
+  //Reading a large file
+  FileInputStream fis = new FileInputStream("My_Large_File.txt");
+  //Create the digest input stream to calculate the digest for the whole file.
+  DigestInputStream dis = new DigestInputStream(fis, digest);
 
-```java Java v5
-//Reading a large file
-FileInputStream fis = new FileInputStream("My_Large_File.txt");
-//Create the digest input stream to calculate the digest for the whole file.
-DigestInputStream dis = new DigestInputStream(fis, digest);
+  List<BoxFileUploadSessionPart> parts = new ArrayList<BoxFileUploadSessionPart>();
 
-List<BoxFileUploadSessionPart> parts = new ArrayList<BoxFileUploadSessionPart>();
+  //Get the part size. Each uploaded part should match the part size returned as part of the upload session.
+  //The last part of the file can be less than part size if the remaining bytes of the last part is less than
+  //the given part size
+  long partSize = sessionInfo.getPartSize();
+  //Start byte of the part
+  long offset = 0;
+  //Overall of bytes processed so far
+  long processed = 0;
+  while (processed < fileSize) {
+      long diff = fileSize - processed;
+      //The size last part of the file can be less than the part size.
+      if (diff < partSize) {
+          partSize = diff;
+      }
 
-//Get the part size. Each uploaded part should match the part size returned as part of the upload session.
-//The last part of the file can be less than part size if the remaining bytes of the last part is less than
-//the given part size
-long partSize = sessionInfo.getPartSize();
-//Start byte of the part
-long offset = 0;
-//Overall of bytes processed so far
-long processed = 0;
-while (processed < fileSize) {
-    long diff = fileSize - processed;
-    //The size last part of the file can be less than the part size.
-    if (diff < partSize) {
-        partSize = diff;
-    }
+      //Upload a part. It can be uploaded asynchorously
+      BoxFileUploadSessionPart part = session.uploadPart(dis, offset, (int)partSize, fileSize);
+      parts.add(part);
 
-    //Upload a part. It can be uploaded asynchorously
-    BoxFileUploadSessionPart part = session.uploadPart(dis, offset, (int)partSize, fileSize);
-    parts.add(part);
+      //Increase the offset and proceesed bytes to calculate the Content-Range header.
+      processed += partSize;
+      offset += partSize;
+  }
+  ```
 
-    //Increase the offset and proceesed bytes to calculate the Content-Range header.
-    processed += partSize;
-    offset += partSize;
-}
-```
+  ```python Python v4
+  upload_session = client.upload_session('11493C07ED3EABB6E59874D3A1EF3581')
+  offset = upload_session.part_size * 3
+  total_size = 26000000
+  part_bytes = b'abcdefgh'
+  part = upload_session.upload_part_bytes(part_bytes, offset, total_size)
+  print(f'Successfully uploaded part ID {part["part_id"]}')
+  ```
 
-```python Python v4
-upload_session = client.upload_session('11493C07ED3EABB6E59874D3A1EF3581')
-offset = upload_session.part_size * 3
-total_size = 26000000
-part_bytes = b'abcdefgh'
-part = upload_session.upload_part_bytes(part_bytes, offset, total_size)
-print(f'Successfully uploaded part ID {part["part_id"]}')
-```
-
-```javascript Node v4
-// Upload the part starting at byte offset 8388608 to upload session '93D9A837B45F' with part ID 'feedbeef'
-client.files.uploadPart('93D9A837B45F', part, 8388608, 2147483648, {part_id: 'feedbeef'}, callback);
-```
-
+  ```javascript Node v4
+  // Upload the part starting at byte offset 8388608 to upload session '93D9A837B45F' with part ID 'feedbeef'
+  client.files.uploadPart('93D9A837B45F', part, 8388608, 2147483648, {part_id: 'feedbeef'}, callback);
+  ```
 </CodeGroup>
 
 ### コンテンツの範囲
@@ -199,7 +181,6 @@ client.files.uploadPart('93D9A837B45F', part, 8388608, 2147483648, {part_id: 'fe
 
 ```yaml
 -H "Content-Range: bytes <LOWER_BOUND>-<HIGHER_BOUND>/<TOTAL_SIZE>"
-
 ```
 
 `Content-Range`の値を指定する際は、以下の点に注意してください。
@@ -212,7 +193,6 @@ client.files.uploadPart('93D9A837B45F', part, 8388608, 2147483648, {part_id: 'fe
 ```yaml
 -H "Content-Range: bytes 0-8388607/32127641" \ ## first part
 -H "Content-Range: bytes 8388608-16777215/32127641" \ ## second part
-
 ```
 
 ## レスポンス
@@ -226,13 +206,10 @@ client.files.uploadPart('93D9A837B45F', part, 8388608, 2147483648, {part_id: 'fe
   "size": 3222784,
   "sha1": "134b65991ed521fcfe4724b7d814ab8ded5185dc"
 }
-
 ```
 
 <Warning>
-
-すべてのパーツアップロードのすべてのJSONレスポンスは、[セッションのコミット][commit]に必要なため、保持してください。
-
+  すべてのパーツアップロードのすべてのJSONレスポンスは、[セッションのコミット][commit]に必要なため、保持してください。
 </Warning>
 
 ## 範囲の重複
@@ -245,19 +222,20 @@ client.files.uploadPart('93D9A837B45F', part, 8388608, 2147483648, {part_id: 'fe
 
 推奨されるのは、バイトオフセット順に並べたパーツのキューから、3～5個のパーツを並行してアップロードする方法です。パーツのアップロードが失敗した場合は、さらにパーツをアップロードする前に、失敗したアップロードを再試行してください。
 
-[commit]: /ja/guides/uploads/chunked/commit-session
+[commit]: /guides/uploads/chunked/commit-session
 
-[createsession]: /ja/guides/uploads/chunked/create-session
+[createsession]: /guides/uploads/chunked/create-session
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Upload part of file", href: "/reference/put-files-upload-sessions-id", badge: "PUT" }
-  ]}
+  { label: "Upload part of file", href: "/reference/put-files-upload-sessions-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "アップロードセッションのコミット", href: "/ja/guides/uploads/chunked/commit-session", badge: "ガイド" }
-  ]}
+  { label: "Commit Upload Session", href: "/guides/uploads/chunked/commit-session", badge: "GUIDE" }
+]}
 />

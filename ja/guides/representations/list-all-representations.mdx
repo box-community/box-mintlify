@@ -1,25 +1,14 @@
 ---
-title: "ファイルのすべてのレプリゼンテーションのリストの取得"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - get_files_id
+  0: get_files_id
 related_guides:
-  - representations/request-a-representation
-  - representations/supported-file-types
-required_guides: []
-alias_paths: []
-category_id: representations
-subcategory_id: null
-is_index: false
-id: representations/list-all-representations
-type: guide
-total_steps: 8
-sibling_id: representations
-parent_id: representations
-next_page_id: representations/request-a-representation
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/representations/list-all-representations.md
+  0: representations/request-a-representation
+  1: representations/supported-file-types
+required_guides: {}
+title: ファイルのすべてのレプリゼンテーションのリストの取得
+
 fullyTranslated: true
 ---
 
@@ -30,7 +19,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ```sh
 curl https://api.box.com/2.0/files/123?fields=representations \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 このレスポンスには、次の形式でレプリゼンテーションのリストが含まれます。
@@ -49,7 +37,6 @@ curl https://api.box.com/2.0/files/123?fields=representations \
   "representation": "jpg"
 }
 ...
-
 ```
 
 ## レスポンスのフィールド
@@ -64,18 +51,19 @@ curl https://api.box.com/2.0/files/123?fields=representations \
 
 [get_files_id]: endpoint://get-files-id
 
-[file_representations]: /ja/reference/resources/file#param-representations
+[file_representations]: /reference/resources/file#param-representations
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "ガイド" },
-    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "ガイド" }
-  ]}
+  { label: "Request Desired Representation", href: "/guides/representations/request-a-representation", badge: "GUIDE" },
+  { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+]}
 />

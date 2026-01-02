@@ -1,30 +1,19 @@
 ---
-title: "コレクションからの項目の削除"
+alias_paths: {}
 rank: 4
 related_endpoints:
-  - put_files_id
-  - put_folders_id
-  - put_web_links_id
-  - get_collections
-related_guides: []
-required_guides: []
+  0: put_files_id
+  1: put_folders_id
+  2: put_web_links_id
+  3: get_collections
+related_guides: {}
 related_resources:
-  - file
-  - folder
-  - web_link
-alias_paths: []
-category_id: collections
-subcategory_id: null
-is_index: false
-id: collections/remove
-type: guide
-total_steps: 4
-sibling_id: collections
-parent_id: collections
-next_page_id: collections
-previous_page_id: collections/add
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collections/remove.md
+  0: file
+  1: folder
+  2: web_link
+required_guides: {}
+title: コレクションからの項目の削除
+
 fullyTranslated: true
 ---
 
@@ -33,41 +22,33 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 コレクションから項目を削除するには、その特定のタイプの項目に対して`PUT`エンドポイントを呼び出し、削除するコレクションのIDが含まれていない、コレクションIDのリストを渡します。
 
 <Warning>
-
-APIを介して使用できるコレクションは「お気に入り」コレクションのみであるため、このコレクションから項目を削除するには、APIにコレクションの空の配列を渡してください。
-
+  APIを介して使用できるコレクションは「お気に入り」コレクションのみであるため、このコレクションから項目を削除するには、APIにコレクションの空の配列を渡してください。
 </Warning>
 
 ## コレクションからのファイルの削除
 
 コレクションからファイルを削除するには、`PUT /files/:id` APIを呼び出し、コレクションIDの空の配列を渡します。
 
-{/* <Samples id="put_files_id" variant="remove_from_collection">
-
-</Samples> */}
+{/* <Samples id='put_files_id' variant='remove_from_collection' /> */}
 
 ## コレクションからのフォルダの削除
 
 コレクションからフォルダを削除するには、`PUT /folders/:id` APIを呼び出し、コレクションIDの空の配列を渡します。
 
-{/* <Samples id="put_folders_id" variant="remove_from_collection">
-
-</Samples> */}
+{/* <Samples id='put_folders_id' variant='remove_from_collection' /> */}
 
 ## コレクションからのウェブリンクの削除
 
 コレクションからウェブリンクを削除するには、`PUT /web_links/:id` APIを呼び出し、コレクションIDの空の配列を渡します。
 
-{/* <Samples id="put_web_links_id" variant="remove_from_collection">
-
-</Samples> */}
+{/* <Samples id='put_web_links_id' variant='remove_from_collection' /> */}
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
-    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
-    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" },
-    { label: "List all collections", href: "/reference/get-collections", badge: "GET" }
-  ]}
+  { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+  { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+  { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" },
+  { label: "List all collections", href: "/reference/get-collections", badge: "GET" }
+]}
 />

@@ -1,25 +1,14 @@
 ---
-title: "サポートされているエンドポイント"
+alias_paths: {}
 rank: 4
 related_endpoints:
-  - get_authorize
+  0: get_authorize
 related_guides:
-  - authentication/app-token/app-token-setup
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: authentication/app-token
-is_index: false
-id: authentication/app-token/endpoints
-type: guide
-total_steps: 5
-sibling_id: authentication/app-token
-parent_id: authentication/app-token
-next_page_id: authentication/app-token
-previous_page_id: authentication/app-token/app-token-setup
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/app-token/endpoints.md
+  0: authentication/app-token/app-token-setup
+related_resources: {}
+required_guides: {}
+title: サポートされているエンドポイント
+
 fullyTranslated: true
 ---
 
@@ -27,23 +16,24 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 アプリトークン認証で現在サポートされているBox APIは少数です。
 
-| エンドポイント                                 | パス                       |
-| --------------------------------------- | ------------------------ |
-| [フォルダを作成](/ja/reference/post-folders)             | `POST /folders`          |
-| [ファイルをアップロード](/ja/reference/post-files-content)   | `POST /files/content`    |
-| [ファイルをダウンロード](/ja/reference/get-files-id-content) | `GET /files/:id/content` |
-| [ファイルを削除](/ja/reference/delete-files-id)          | `DELETE /files/:id`      |
-| [埋め込みリンクを取得](/ja/reference/get-files-id)          | `GET /files/:id`         |
+| エンドポイント                                        | パス                       |
+| ---------------------------------------------- | ------------------------ |
+| [フォルダを作成](/reference/post-folders)             | `POST /folders`          |
+| [ファイルをアップロード](/reference/post-files-content)   | `POST /files/content`    |
+| [ファイルをダウンロード](/reference/get-files-id-content) | `GET /files/:id/content` |
+| [ファイルを削除](/reference/delete-files-id)          | `DELETE /files/:id`      |
+| [埋め込みリンクを取得](/reference/get-files-id)          | `GET /files/:id`         |
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
-  ]}
+  { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "アプリトークン認証を使用した設定", href: "/ja/guides/authentication/app-token/app-token-setup", badge: "ガイド" }
-  ]}
+  { label: "Setup with App Token Auth", href: "/guides/authentication/app-token/app-token-setup", badge: "GUIDE" }
+]}
 />

@@ -1,32 +1,20 @@
 ---
-title: "トークン"
+alias_paths: None
 rank: 0
-related_endpoints: []
-related_guides: []
-required_guides: []
-related_resources: []
-alias_paths:
-  - /guides/authentication/access-tokens
-category_id: authentication
-subcategory_id: authentication/tokens
-is_index: true
-id: authentication/tokens
-type: guide
-total_steps: 8
-sibling_id: authentication
-parent_id: authentication
-next_page_id: authentication/tokens/api-calls
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/index.md
+related_endpoints: ""
+related_guides: ""
+related_resources: ""
+required_guides: ""
+sidebarTitle: Overview
+title: トークン
+
 fullyTranslated: true
 ---
+
 さまざまなBox APIコールの中核となるのはアクセストークンです。Boxウェブアプリを使用する場合と同様に、問題なく操作できるのは、アクセストークンに関連付けられたユーザーが所有するコンテンツまたはコラボレータとなっているコンテンツのみです。これは、トークンの[ダウンスコープ][ds]によってさらに制限できます。
 
 <Warning>
-
-必須のアクセススコープ、アプリケーションアクセス、有効化された詳細設定、ユーザー権限、およびエンドポイント固有の制限は、すべてが合わさることで、どのAPIコールが成功するかが決まります。たとえば、フォルダに対するコラボレータアクセス権限がユーザーにある場合でも、読み取りスコープがアプリケーションに許可されていなければ、そのフォルダに関する情報を取得するコールは失敗します。
-
+  必須のアクセススコープ、アプリケーションアクセス、有効化された詳細設定、ユーザー権限、およびエンドポイント固有の制限は、すべてが合わさることで、どのAPIコールが成功するかが決まります。たとえば、フォルダに対するコラボレータアクセス権限がユーザーにある場合でも、読み取りスコープがアプリケーションに許可されていなければ、そのフォルダに関する情報を取得するコールは失敗します。
 </Warning>
 
 ## トークンの種類
@@ -49,18 +37,18 @@ fullyTranslated: true
 | アクセス制限付きアプリとアプリトークン      | [開発者コンソール][devcon]でのトークンの構成            |
 | カスタムスキル                  | イベントペイロードのアクセストークン                     |
 
-[jwt-with-sdk]: /ja/guides/authentication/oauth2/without-sdk
+[jwt-with-sdk]: /guides/authentication/oauth2/without-sdk
 
-[oauth2-with-sdk]: /ja/guides/authentication/oauth2/without-sdk
+[oauth2-with-sdk]: /guides/authentication/oauth2/without-sdk
 
 [devcon]: https://app.box.com/developers/console
 
-[clientcred]: /ja/guides/authentication/client-credentials
+[clientcred]: /guides/authentication/client-credentials
 
-[ds]: /ja/guides/authentication/tokens/downscope
+[ds]: /guides/authentication/tokens/downscope
 
-[at]: /ja/guides/authentication/tokens/access-tokens
+[at]: /guides/authentication/tokens/access-tokens
 
-[rt]: /ja/guides/authentication/tokens/refresh
+[rt]: /guides/authentication/tokens/refresh
 
-[dt]: /ja/guides/authentication/tokens/developer-tokens
+[dt]: /guides/authentication/tokens/developer-tokens

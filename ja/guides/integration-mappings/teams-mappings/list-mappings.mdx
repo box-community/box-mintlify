@@ -1,71 +1,40 @@
 ---
-title: "Teams統合マッピングのリスト取得"
+alias_paths: {}
 rank: 2
-related_endpoints:
-  - get_integration_mappings_teams
-related_guides: []
-required_guides:
-  - integration-mappings/teams-mappings/index
-related_resources: []
-alias_paths: []
-category_id: integration-mappings
-subcategory_id: integration-mappings/teams-mappings
-is_index: false
-id: integration-mappings/teams-mappings/list-mappings
-type: guide
-total_steps: 4
-sibling_id: integration-mappings/teams-mappings
-parent_id: integration-mappings/teams-mappings
-next_page_id: integration-mappings/teams-mappings/create-mappings
-previous_page_id: integration-mappings/teams-mappings
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/integration-mappings/teams-mappings/list-mappings.md
+related_endpoints: ""
+related_guides: {}
+related_resources: {}
+required_guides: ""
+title: Teams統合マッピングのリスト取得
+
 fullyTranslated: true
 ---
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Teams統合マッピング", href: "/ja/guides/integration-mappings/teams-mappings/index", badge: "ガイド" }
-  ]}
-/>
 `GET /integration_mappings/teams`呼び出しを使用すると、マッピングを取得してフィルタをかけることができます。管理者が手動で作成したマッピングも、統合によって自動的に作成されたマッピングも対象になります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -X -L GET "https://api.box.com/2.0/integration_mappings/teams" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+  ```
 
-```sh cURL
-curl -X -L GET "https://api.box.com/2.0/integration_mappings/teams" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-```
+  ```typescript Node/TypeScript v10
+  await userClient.integrationMappings.getTeamsIntegrationMapping();
+  ```
 
-```typescript Node/TypeScript v10
-await userClient.integrationMappings.getTeamsIntegrationMapping();
-```
+  ```python Python v10
+  user_client.integration_mappings.get_teams_integration_mapping()
+  ```
 
-```python Python v10
-user_client.integration_mappings.get_teams_integration_mapping()
-```
+  ```cs .NET v10
+  await userClient.IntegrationMappings.GetTeamsIntegrationMappingAsync();
+  ```
 
-```cs .NET v10
-await userClient.IntegrationMappings.GetTeamsIntegrationMappingAsync();
-```
+  ```swift Swift v10
+  try await userClient.integrationMappings.getTeamsIntegrationMapping()
+  ```
 
-```swift Swift v10
-try await userClient.integrationMappings.getTeamsIntegrationMapping()
-```
-
-```java Java v10
-userClient.getIntegrationMappings().getTeamsIntegrationMapping()
-```
-
+  ```java Java v10
+  userClient.getIntegrationMappings().getTeamsIntegrationMapping()
+  ```
 </CodeGroup>
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "List Teams integration mappings", href: "/reference/get-integration-mappings-teams", badge: "GET" }
-  ]}
-/>

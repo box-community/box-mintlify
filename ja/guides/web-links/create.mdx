@@ -1,26 +1,15 @@
 ---
-title: "ウェブリンクの作成"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - post_web_links
+  0: post_web_links
 related_guides:
-  - web-links/delete
-required_guides: []
+  0: web-links/delete
 related_resources:
-  - web_link
-alias_paths: []
-category_id: web-links
-subcategory_id: null
-is_index: false
-id: web-links/create
-type: guide
-total_steps: 2
-sibling_id: web-links
-parent_id: web-links
-next_page_id: web-links/delete
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/web-links/create.md
+  0: web_link
+required_guides: {}
+title: ウェブリンクの作成
+
 fullyTranslated: true
 ---
 
@@ -29,145 +18,144 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Boxでウェブリンクを作成するには、APIにフォルダ`id`と、ウェブリンクのリンク先である`url`を渡す必要があります。`url`は`http://`または`https://`で始まる必要があります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/web_links" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "name": "Cloud Content Management",
+         "url": "https://box.com",
+         "parent": {
+           "id": "0"
+         }
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/web_links" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "name": "Cloud Content Management",
-       "url": "https://box.com",
-       "parent": {
-         "id": "0"
-       }
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.webLinks.createWebLink({
+    url: 'https://www.box.com',
+    parent: { id: parent.id } satisfies CreateWebLinkRequestBodyParentField,
+    name: getUuid(),
+    description: 'Weblink description',
+  } satisfies CreateWebLinkRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.webLinks.createWebLink({
-  url: 'https://www.box.com',
-  parent: { id: parent.id } satisfies CreateWebLinkRequestBodyParentField,
-  name: getUuid(),
-  description: 'Weblink description',
-} satisfies CreateWebLinkRequestBody);
-```
+  ```python Python v10
+  client.web_links.create_web_link(
+      "https://www.box.com",
+      CreateWebLinkParent(id=parent.id),
+      name=get_uuid(),
+      description="Weblink description",
+  )
+  ```
 
-```python Python v10
-client.web_links.create_web_link(
-    "https://www.box.com",
-    CreateWebLinkParent(id=parent.id),
-    name=get_uuid(),
-    description="Weblink description",
-)
-```
+  ```cs .NET v10
+  await client.WebLinks.CreateWebLinkAsync(requestBody: new CreateWebLinkRequestBody(url: "https://www.box.com", parent: new CreateWebLinkRequestBodyParentField(id: parent.Id)) { Name = Utils.GetUUID(), Description = "Weblink description" });
+  ```
 
-```cs .NET v10
-await client.WebLinks.CreateWebLinkAsync(requestBody: new CreateWebLinkRequestBody(url: "https://www.box.com", parent: new CreateWebLinkRequestBodyParentField(id: parent.Id)) { Name = Utils.GetUUID(), Description = "Weblink description" });
-```
+  ```swift Swift v10
+  try await client.webLinks.createWebLink(requestBody: CreateWebLinkRequestBody(url: "https://www.box.com", parent: CreateWebLinkRequestBodyParentField(id: parent.id), name: Utils.getUUID(), description: "Weblink description"))
+  ```
 
-```swift Swift v10
-try await client.webLinks.createWebLink(requestBody: CreateWebLinkRequestBody(url: "https://www.box.com", parent: CreateWebLinkRequestBodyParentField(id: parent.id), name: Utils.getUUID(), description: "Weblink description"))
-```
+  ```java Java v10
+  client.getWebLinks().createWebLink(new CreateWebLinkRequestBody.Builder(url, new CreateWebLinkRequestBodyParentField(parent.getId())).name(name).description(description).build())
+  ```
 
-```java Java v10
-client.getWebLinks().createWebLink(new CreateWebLinkRequestBody.Builder(url, new CreateWebLinkRequestBodyParentField(parent.getId())).name(name).description(description).build())
-```
+  ```java Java v5
+  BoxFolder folder = new BoxFolder(api, id);
+  URL url = new URL("https://www.example.com");
+  folder.createWebLink("Link to Example", url, "This goes to an example page");
+  ```
 
-```java Java v5
-BoxFolder folder = new BoxFolder(api, id);
-URL url = new URL("https://www.example.com");
-folder.createWebLink("Link to Example", url, "This goes to an example page");
-```
+  ```python Python v4
+  web_link = client.folder(folder_id='12345').create_web_link('https://example.com', 'Example Link', 'This is the description')
+  print(f'Web Link url is {web_link.url} and its description is {web_link.description}')
+  ```
 
-```python Python v4
-web_link = client.folder(folder_id='12345').create_web_link('https://example.com', 'Example Link', 'This is the description')
-print(f'Web Link url is {web_link.url} and its description is {web_link.description}')
-```
+  ```cs .NET v6
+  var weblinkParams = new BoxWebLinkRequest()
+  {
+      Url = new Uri("http://www.example.com"),
+      Parent = new BoxRequestEntity()
+      {
+          Id = "22222"
+      }
+  };
+  BoxWebLink link = await client.WebLinksManager.CreateWebLinkAsync(weblinkParams);
+  ```
 
-```cs .NET v6
-var weblinkParams = new BoxWebLinkRequest()
-{
-    Url = new Uri("http://www.example.com"),
-    Parent = new BoxRequestEntity()
-    {
-        Id = "22222"
-    }
-};
-BoxWebLink link = await client.WebLinksManager.CreateWebLinkAsync(weblinkParams);
-```
-
-```javascript Node v4
-client.weblinks.create(
-	'https://www.box.com',
-	'22222',
-	{
-		name: 'Box Website!',
-		description: 'Cloud Content Management'
-	})
-	.then(weblink => {
-		/* weblink -> {
-			type: 'web_link',
-			id: '11111',
-			sequence_id: '0',
-			etag: '0',
-			name: 'Box Website!',
-			url: 'https://www.box.com',
-			created_by: 
-			{ type: 'user',
-				id: '33333',
-				name: 'Example User',
-				login: 'user@example.com' },
-			created_at: '2015-05-07T15:00:01-07:00',
-			modified_at: '2015-05-07T15:00:01-07:00',
-			parent: 
-			{ type: 'folder',
-				id: '22222',
-				sequence_id: '1',
-				etag: '1',
-				name: 'Bookmarks' },
-			description: 'Enterprise Cloud Content Management',
-			item_status: 'active',
-			trashed_at: null,
-			purged_at: null,
-			shared_link: null,
-			path_collection: 
-			{ total_count: 2,
-				entries: 
-				[ { type: 'folder',
-					id: '0',
-					sequence_id: null,
-					etag: null,
-					name: 'All Files' },
-					{ type: 'folder',
-					id: '22222',
-					sequence_id: '1',
-					etag: '1',
-					name: 'Bookmarks' } ] },
-			modified_by: 
-			{ type: 'user',
-				id: '33333',
-				name: 'Example User',
-				login: 'user@example.com' },
-			owned_by: 
-			{ type: 'user',
-				id: '33333',
-				name: 'Example User',
-				login: 'user@example.com' } }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  client.weblinks.create(
+  	'https://www.box.com',
+  	'22222',
+  	{
+  		name: 'Box Website!',
+  		description: 'Cloud Content Management'
+  	})
+  	.then(weblink => {
+  		/* weblink -> {
+  			type: 'web_link',
+  			id: '11111',
+  			sequence_id: '0',
+  			etag: '0',
+  			name: 'Box Website!',
+  			url: 'https://www.box.com',
+  			created_by: 
+  			{ type: 'user',
+  				id: '33333',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			created_at: '2015-05-07T15:00:01-07:00',
+  			modified_at: '2015-05-07T15:00:01-07:00',
+  			parent: 
+  			{ type: 'folder',
+  				id: '22222',
+  				sequence_id: '1',
+  				etag: '1',
+  				name: 'Bookmarks' },
+  			description: 'Enterprise Cloud Content Management',
+  			item_status: 'active',
+  			trashed_at: null,
+  			purged_at: null,
+  			shared_link: null,
+  			path_collection: 
+  			{ total_count: 2,
+  				entries: 
+  				[ { type: 'folder',
+  					id: '0',
+  					sequence_id: null,
+  					etag: null,
+  					name: 'All Files' },
+  					{ type: 'folder',
+  					id: '22222',
+  					sequence_id: '1',
+  					etag: '1',
+  					name: 'Bookmarks' } ] },
+  			modified_by: 
+  			{ type: 'user',
+  				id: '33333',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			owned_by: 
+  			{ type: 'user',
+  				id: '33333',
+  				name: 'Example User',
+  				login: 'user@example.com' } }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create web link", href: "/reference/post-web-links", badge: "POST" }
-  ]}
+  { label: "Create web link", href: "/reference/post-web-links", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ウェブリンクの削除", href: "/ja/guides/web-links/delete", badge: "ガイド" }
-  ]}
+  { label: "Delete Web Link", href: "/guides/web-links/delete", badge: "GUIDE" }
+]}
 />

@@ -1,20 +1,9 @@
 ---
-title: "Boxの構成"
-sidebarTitle: 2. Boxの構成
-type: quick-start
 hide_in_page_nav: true
-category_id: collaborations
-subcategory_id: collaborations/connect-slack-to-group-collabs
-is_index: false
-id: collaborations/connect-slack-to-group-collabs/configure-box
-rank: 2
-total_steps: 6
-sibling_id: collaborations/connect-slack-to-group-collabs
-parent_id: collaborations/connect-slack-to-group-collabs
-next_page_id: collaborations/connect-slack-to-group-collabs/scaffold-application-code
-previous_page_id: collaborations/connect-slack-to-group-collabs/configure-slack
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/connect-slack-to-group-collabs/2-configure-box.md
+sidebarTitle: 2. Configure Box
+title: Boxの構成
+type: quick-start
+
 fullyTranslated: true
 ---
 
@@ -22,90 +11,79 @@ import { Choose, Choice, Grid, Trigger, Observe, ChoiceDebug } from '/snippets/c
 
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/configure-slack",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/configure-box",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/scaffold-application-code",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/handle-slack-events",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/connect-box-functions",
-                          "ja/guides/collaborations/connect-slack-to-group-collabs/test-bot"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/collaborations/connect-slack-to-group-collabs/configure-slack",
+                        "guides/collaborations/connect-slack-to-group-collabs/configure-box",
+                        "guides/collaborations/connect-slack-to-group-collabs/scaffold-application-code",
+                        "guides/collaborations/connect-slack-to-group-collabs/handle-slack-events",
+                        "guides/collaborations/connect-slack-to-group-collabs/connect-box-functions",
+                        "guides/collaborations/connect-slack-to-group-collabs/test-bot"
+                      ]}
+/>
 
 Boxグループの管理とBox内のファイルやフォルダへのコラボレータの追加を行うためにBoxアプリケーションを設定する必要があります。
 
 ## Boxアプリのセットアップ
 
 <Grid columns="2">
+  <Choose option="box.app_type" value="create_new" color="blue">
+    # 新しいBoxアプリを作成する
 
-<Choose option="box.app_type" value="create_new" color="blue">
+    この統合に使用する新しいBox JWTアプリケーションを作成して構成します。
+  </Choose>
 
-# 新しいBoxアプリを作成する
+  <Choose option="box.app_type" value="use_own" color="blue">
+    # 承認済みの既存のアプリを使用する
 
-この統合に使用する新しいBox JWTアプリケーションを作成して構成します。
-
-</Choose>
-
-<Choose option="box.app_type" value="use_own" color="blue">
-
-# 承認済みの既存のアプリを使用する
-
-Box開発者コンソールから、管理者が承認した既存のBox JWTアプリケーションのいずれかを使用します。
-
-</Choose>
-
+    Box開発者コンソールから、管理者が承認した既存のBox JWTアプリケーションのいずれかを使用します。
+  </Choose>
 </Grid>
 
 <Choice option="box.app_type" value="create_new" color="none">
+  # 新しいBoxアプリを作成する
 
-# 新しいBoxアプリを作成する
+  Box APIの呼び出しに使用できる新しいBoxアプリケーションを作成するには、以下の手順に従います。
 
-Box APIの呼び出しに使用できる新しいBoxアプリケーションを作成するには、以下の手順に従います。
+  1. [開発者コンソール][devconsole]に移動します。
+  2. \[**アプリの新規作成**] を選択します。
+  3. 作成するアプリケーションの種類として \[**Platformアプリ**] を選択し、\[**次へ**] をクリックします。
+  4. 認証方法として \[**JWTを使用したOAuth 2.0**] を選択し、\[**次へ**] をクリックします。
+  5. Boxアプリに一意の名前を付け、\[**アプリの作成**] をクリックします。
+  6. \[**アプリの表示**] をクリックしてアプリの設定に移動します。
+  7. \[**アプリケーションアクセス**] まで下にスクロールし、\[**Enterprise**] が選択されていることを確認します。
+  8. 同じ画面の \[**アプリケーションスコープ**] セクションまでスクロールし、少なくとも \[**Boxに格納されているすべてのファイルとフォルダの読み取りと書き込み**]、\[**ユーザーを管理する**]、\[**グループを管理する**] スコープが有効になっていることを確認します。
+  9. \[**高度な機能**] で、Boxユーザーの代わりに操作を行うために \[**ユーザーとして操作を実行**] が有効になっていることを確認します。
+  10. ページ上部にある \[**変更を保存**] ボタンをクリックします。
 
-1. [開発者コンソール][devconsole]に移動します。
-2. \[**アプリの新規作成**] を選択します。
-3. 作成するアプリケーションの種類として \[**Platformアプリ**] を選択し、\[**次へ**] をクリックします。
-4. 認証方法として \[**JWTを使用したOAuth 2.0**] を選択し、\[**次へ**] をクリックします。
-5. Boxアプリに一意の名前を付け、\[**アプリの作成**] をクリックします。
-6. \[**アプリの表示**] をクリックしてアプリの設定に移動します。
-7. \[**アプリケーションアクセス**] まで下にスクロールし、\[**Enterprise**] が選択されていることを確認します。
-8. 同じ画面の \[**アプリケーションスコープ**] セクションまでスクロールし、少なくとも \[**Boxに格納されているすべてのファイルとフォルダの読み取りと書き込み**]、\[**ユーザーを管理する**]、\[**グループを管理する**] スコープが有効になっていることを確認します。
-9. \[**高度な機能**] で、Boxユーザーの代わりに操作を行うために \[**ユーザーとして操作を実行**] が有効になっていることを確認します。
-10. ページ上部にある \[**変更を保存**] ボタンをクリックします。
+  <Warning>
+    **アプリの承認**
 
-<Warning>
-**アプリの承認**
+    アプリケーションの作成後も、Box APIの呼び出しを行うには会社の管理者による承認が必要です。
 
-アプリケーションの作成後も、Box APIの呼び出しを行うには会社の管理者による承認が必要です。
-
-アプリケーションを社内で承認してもらうには、[このガイド](/ja/guides/authorization/platform-app-approval)に従ってください。
-
-</Warning>
-
+    アプリケーションを社内で承認してもらうには、[このガイド](/guides/authorization/platform-app-approval)に従ってください。
+  </Warning>
 </Choice>
 
 <Choice option="box.app_type" value="use_own" color="none">
+  # 既存のJWT Boxアプリケーションを使用する
 
-# 既存のJWT Boxアプリケーションを使用する
+  [開発者コンソール][devconsole]に、使用したい既存のJWTベースのBoxアプリケーションがある場合は、アプリケーションの \[**構成**] セクションで以下のオプションが設定されていることを確認してください。
 
-[開発者コンソール][devconsole]に、使用したい既存のJWTベースのBoxアプリケーションがある場合は、アプリケーションの \[**構成**] セクションで以下のオプションが設定されていることを確認してください。
+  * \[認証方法]: \[JWTを使用したOAuth 2.0 (サーバー認証)] に設定します。
+  * \[アプリケーションスコープ]: 少なくとも以下のスコープを設定します。
+    * Boxに格納されているすべてのファイルとフォルダの読み取りと書き込み
+    * ユーザーを管理する
+    * グループを管理する
+  * \[高度な機能]: ユーザーとして操作を実行するオプションとユーザーアクセストークンを生成するオプションの両方を有効にします。
 
-* \[認証方法]: \[JWTを使用したOAuth 2.0 (サーバー認証)] に設定します。
-* \[アプリケーションスコープ]: 少なくとも以下のスコープを設定します。
-  * Boxに格納されているすべてのファイルとフォルダの読み取りと書き込み
-  * ユーザーを管理する
-  * グループを管理する
-* \[高度な機能]: ユーザーとして操作を実行するオプションとユーザーアクセストークンを生成するオプションの両方を有効にします。
+    <Warning>
+      **アプリの承認**
 
-  <Warning>
+      アプリケーションは更新後、会社の管理者による再承認が必要になります。再承認後、新しい権限のいずれかを必要とする任意のBox APIを呼び出すことができます。
 
-  #### アプリの承認
-
-  アプリケーションは更新後、会社の管理者による再承認が必要になります。再承認後、新しい権限のいずれかを必要とする任意のBox APIを呼び出すことができます。
-
-  アプリケーションを社内で承認してもらうには、[このガイド](/ja/guides/authorization/platform-app-approval)に従ってください。
-
-  </Warning>
-
+      アプリケーションを社内で承認してもらうには、[このガイド](/guides/authorization/platform-app-approval)に従ってください。
+    </Warning>
 </Choice>
 
 ## アプリの構成のダウンロード
@@ -122,13 +100,7 @@ Box APIの呼び出しに使用できる新しいBoxアプリケーションを�
 * アプリケーション構成ファイルをダウンロードして、アプリケーションがアクセス可能な場所に保存しました。
 
 <Observe option="box.app_type" value="use_own,create_new">
-
-<Next>
-
-アプリケーション構成ファイルをダウンロードしました
-
-</Next>
-
+  <Next>アプリケーション構成ファイルをダウンロードしました</Next>
 </Observe>
 
 [devconsole]: https://cloud.app.box.com/developers/console

@@ -1,29 +1,18 @@
 ---
-title: "アップロードセッションの作成"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - post_files_upload_sessions
-  - post_files_id_upload_sessions
+  0: post_files_upload_sessions
+  1: post_files_id_upload_sessions
 related_guides:
-  - uploads/chunked/upload-part
-  - uploads/chunked/commit-session
-related_pages: []
-required_guides: []
+  0: uploads/chunked/upload-part
+  1: uploads/chunked/commit-session
+related_pages: {}
 related_resources:
-  - upload_session
-alias_paths: []
-category_id: uploads
-subcategory_id: uploads/chunked
-is_index: false
-id: uploads/chunked/create-session
-type: guide
-total_steps: 5
-sibling_id: uploads/chunked
-parent_id: uploads/chunked
-next_page_id: uploads/chunked/with-sdks
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/create-session.md
+  0: upload_session
+required_guides: {}
+title: アップロードセッションの作成
+
 fullyTranslated: true
 ---
 
@@ -31,15 +20,11 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 アップロードセッションを作成するには、目的の`file_name`とそのファイルを配置する`folder_id`、およびアップロードするファイルの`file_size`を指定して[`POST /files/upload_sessions`][createsession] APIを呼び出します。
 
-{/* <Samples sample="post_files_upload_sessions">
-
-</Samples> */}
+{/* <Samples sample='post_files_upload_sessions' /> */}
 
 既存ファイルの新しいバージョン用のセッションを作成するには、代わりに[`POST /files/:id/upload_sessions`][createsessionversion] APIを呼び出します。この場合、`file_name`と`folder_id`は、プロセスでファイルの名前変更または移動を行う場合にのみ必要となります。
 
-{/* <Samples sample="post_files_id_upload_sessions">
-
-</Samples> */}
+{/* <Samples sample='post_files_id_upload_sessions' /> */}
 
 ## 事前チェック
 
@@ -66,30 +51,30 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
     "log_event": "https://upload.box.com/api/2.0/files/upload_sessions/F971964745A5CD0C001BBE4E58196BFD/log"
   }
 }
-
 ```
 
 アップロードセッションは、個々のパーツをアップロードするときに使用するパーツのサイズを定義します。
 
-[createsession]: /ja/reference/post_files_upload_sessions
+[createsession]: /reference/post_files_upload_sessions
 
-[createsessionversion]: /ja/reference/post_files_id_upload_sessions
+[createsessionversion]: /reference/post_files_id_upload_sessions
 
-[check]: /ja/guides/uploads/check
+[check]: /guides/uploads/check
 
-[uploadsession]: /ja/reference/resources/upload_session
+[uploadsession]: /reference/resources/upload_session
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create upload session", href: "/reference/post-files-upload-sessions", badge: "POST" },
-    { label: "Create upload session for existing file", href: "/reference/post-files-id-upload-sessions", badge: "POST" }
-  ]}
+  { label: "Create upload session", href: "/reference/post-files-upload-sessions", badge: "POST" },
+  { label: "Create upload session for existing file", href: "/reference/post-files-id-upload-sessions", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "パーツのアップロード", href: "/ja/guides/uploads/chunked/upload-part", badge: "ガイド" },
-    { label: "アップロードセッションのコミット", href: "/ja/guides/uploads/chunked/commit-session", badge: "ガイド" }
-  ]}
+  { label: "Upload Part", href: "/guides/uploads/chunked/upload-part", badge: "GUIDE" },
+  { label: "Commit Upload Session", href: "/guides/uploads/chunked/commit-session", badge: "GUIDE" }
+]}
 />

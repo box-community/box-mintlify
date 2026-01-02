@@ -1,39 +1,28 @@
 ---
-title: "開発者トークン"
-rank: 4
-related_endpoints: []
-related_resources: []
-related_guides:
-  - authentication/select
-required_guides:
-  - applications/app-types/select
 alias_paths:
-  - /docs/authenticate-with-developer-token
-  - /authentication/access-tokens/developer-tokens
-category_id: authentication
-subcategory_id: authentication/tokens
-is_index: false
-id: authentication/tokens/developer-tokens
-type: guide
-total_steps: 8
-sibling_id: authentication/tokens
-parent_id: authentication/tokens
-next_page_id: authentication/tokens/refresh
-previous_page_id: authentication/tokens/sdks
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/tokens/developer-tokens.md
+  0: /docs/authenticate-with-developer-token
+  1: /authentication/access-tokens/developer-tokens
+rank: 4
+related_endpoints: {}
+related_guides:
+  0: authentication/select
+related_resources: {}
+required_guides:
+  0: applications/app-types/select
+title: 開発者トークン
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "ガイド" }
-  ]}
+  { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" }
+]}
 />
+
 開発者トークンは、開発およびテスト中に開発者が利用できるアクセストークンです。これらのトークンは60分後に期限切れになる有効期間の短いトークンであり、プログラムによって更新することはできません。
 
 ## 開発者トークンの作成
@@ -45,15 +34,11 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 * \[開発者トークン] で、\[**開発者トークンを生成**] を選択します。
 
 <Info>
-
-\[[Platformアプリ][apps]] ビューから直接、各アプリに用意されているメニューを使用して、開発者トークンを生成することもできます。
-
+  \[[Platformアプリ][apps]] ビューから直接、各アプリに用意されているメニューを使用して、開発者トークンを生成することもできます。
 </Info>
 
 <Frame border center shadow>
-
-![開発者トークンの生成](/images/guides/authentication/developer-token.png)
-
+  ![開発者トークンの生成](/images/guides/authentication/developer-token.png)
 </Frame>
 
 ## 開発者トークンの使用
@@ -63,32 +48,27 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ```sh
 curl https://api.box.com/2.0/users/me \
     -H "authorization: Bearer [DEVELOPER_TOKEN]"
-
 ```
 
 <Warning>
-
-開発者トークンは、トークンの生成時に開発者コンソールにログインしているユーザーに関連付けられます。
-
+  開発者トークンは、トークンの生成時に開発者コンソールにログインしているユーザーに関連付けられます。
 </Warning>
 
 Box SDKは、基本のAPIクライアントを作成する際に、開発者トークンを使用して初期化することができます。
 
-{/* <Samples id="x_auth" variant="init_with_dev_token">
-
-</Samples> */}
+```sh
+curl https://api.box.com/2.0/users/me \
+    -H "authorization: Bearer [DEVELOPER_TOKEN]"
+```
 
 <Danger>
-**開発者トークンは実稼働環境で使用しないでください**
+  **開発者トークンは実稼働環境で使用しないでください**
 
-開発者トークンは、開発またはテストのためだけに使用してください。
-
+  開発者トークンは、開発またはテストのためだけに使用してください。
 </Danger>
 
 <Warning>
-
-開発者コンソールで特定のアプリの開発者トークンを明示的に取り消すと、そのアプリケーションによって作成されたすべてのWebhookが削除されます。
-
+  開発者コンソールで特定のアプリの開発者トークンを明示的に取り消すと、そのアプリケーションによって作成されたすべてのWebhookが削除されます。
 </Warning>
 
 [devconsole]: https://app.box.com/developers/console
@@ -117,11 +97,11 @@ Box SDKは、基本のAPIクライアントを作成する際に、開発者ト�
 
 [IOS]: https://github.com/box/box-ios-sdk/blob/legacy/BoxSDK/docs/usage/authentication.md#developer-token
 
-[apps]: /ja/guides/applications
+[apps]: /guides/applications
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" }
+]}
 />

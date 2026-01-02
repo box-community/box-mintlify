@@ -1,30 +1,19 @@
 ---
-title: "事前チェック"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - options_files_content
-  - options_files_id_content
-  - post_files_content
-  - post_files_id_content
+  0: options_files_content
+  1: options_files_id_content
+  2: post_files_content
+  3: post_files_id_content
 related_guides:
-  - uploads/direct/file
-  - uploads/direct/file-version
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: uploads
-subcategory_id: null
-is_index: false
-id: uploads/check
-type: guide
-total_steps: 1
-sibling_id: uploads
-parent_id: uploads
-next_page_id: uploads
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/check.md
+  0: uploads/direct/file
+  1: uploads/direct/file-version
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 事前チェック
+
 fullyTranslated: true
 ---
 
@@ -44,85 +33,81 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ## 新しいファイルのチェック
 
-新しいファイルのチェックを実行するには、実際のファイルをアップロードする場合と同じパラメータ (バイナリコンテンツを除く) を使用して[`OPTIONS /files/content`](/ja/reference/options-files-content) APIを呼び出してください。
+新しいファイルのチェックを実行するには、実際のファイルをアップロードする場合と同じパラメータ (バイナリコンテンツを除く) を使用して[`OPTIONS /files/content`](/reference/options-files-content) APIを呼び出してください。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X OPTIONS "https://api.box.com/2.0/files/content" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{"name":"Contract.pdf", "parent":{"id":"11446498"}}'
+  ```
 
-```sh cURL
-curl -i -X OPTIONS "https://api.box.com/2.0/files/content" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{"name":"Contract.pdf", "parent":{"id":"11446498"}}'
-```
+  ```typescript Node/TypeScript v10
+  await client.uploads.preflightFileUploadCheck({
+    name: newFileName,
+    size: 1024 * 1024,
+    parent: { id: '0' } satisfies PreflightFileUploadCheckRequestBodyParentField,
+  } satisfies PreflightFileUploadCheckRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.uploads.preflightFileUploadCheck({
-  name: newFileName,
-  size: 1024 * 1024,
-  parent: { id: '0' } satisfies PreflightFileUploadCheckRequestBodyParentField,
-} satisfies PreflightFileUploadCheckRequestBody);
-```
+  ```python Python v10
+  client.uploads.preflight_file_upload_check(
+      name=new_file_name, size=1024 * 1024, parent=PreflightFileUploadCheckParent(id="0")
+  )
+  ```
 
-```python Python v10
-client.uploads.preflight_file_upload_check(
-    name=new_file_name, size=1024 * 1024, parent=PreflightFileUploadCheckParent(id="0")
-)
-```
+  ```cs .NET v10
+  await client.Uploads.PreflightFileUploadCheckAsync(requestBody: new PreflightFileUploadCheckRequestBody() { Name = newFileName, Size = 1024 * 1024, Parent = new PreflightFileUploadCheckRequestBodyParentField() { Id = "0" } });
+  ```
 
-```cs .NET v10
-await client.Uploads.PreflightFileUploadCheckAsync(requestBody: new PreflightFileUploadCheckRequestBody() { Name = newFileName, Size = 1024 * 1024, Parent = new PreflightFileUploadCheckRequestBodyParentField() { Id = "0" } });
-```
+  ```java Java v10
+  client.getUploads().preflightFileUploadCheck(new PreflightFileUploadCheckRequestBody.Builder().name(newFileName).size(1024 * 1024).parent(new PreflightFileUploadCheckRequestBodyParentField.Builder().id("0").build()).build())
+  ```
 
-```java Java v10
-client.getUploads().preflightFileUploadCheck(new PreflightFileUploadCheckRequestBody.Builder().name(newFileName).size(1024 * 1024).parent(new PreflightFileUploadCheckRequestBodyParentField.Builder().id("0").build()).build())
-```
+  ```java Java v5
+  String fileName = "My Doc.pdf";
+  BoxFolder rootFolder = BoxFolder.getRootFolder(api);
+  try {
+      folder.canUpload(fileName, 98734576);
 
-```java Java v5
-String fileName = "My Doc.pdf";
-BoxFolder rootFolder = BoxFolder.getRootFolder(api);
-try {
-    folder.canUpload(fileName, 98734576);
+      // If the file upload would not have succeeded, it will not be attempted
+      folder.uploadFile(fileContents, fileName);
+  } catch (BoxAPIException ex) (
 
-    // If the file upload would not have succeeded, it will not be attempted
-    folder.uploadFile(fileContents, fileName);
-} catch (BoxAPIException ex) (
+  )
+  ```
 
-)
-```
-
-```javascript Node v4
-// Verify that uploading a 200MB file named "Preso.ppt" to folder 12345 would succeed
-client.files.preflightUploadFile(
-		'12345',
-		{
-			name: 'Preso.ppt',
-			size: 200000000
-		},
-		null,
-		callback
-	);
-```
-
+  ```javascript Node v4
+  // Verify that uploading a 200MB file named "Preso.ppt" to folder 12345 would succeed
+  client.files.preflightUploadFile(
+  		'12345',
+  		{
+  			name: 'Preso.ppt',
+  			size: 200000000
+  		},
+  		null,
+  		callback
+  	);
+  ```
 </CodeGroup>
 
 ## 新しいファイルバージョンのチェック
 
-新しいファイルバージョンのチェックを実行するには、実際のファイルをアップロードする場合と同じパラメータ (バイナリコンテンツを除く) を使用して[`OPTIONS /files/:id/content`](/ja/reference/options-files-content) APIを呼び出してください。
+新しいファイルバージョンのチェックを実行するには、実際のファイルをアップロードする場合と同じパラメータ (バイナリコンテンツを除く) を使用して[`OPTIONS /files/:id/content`](/reference/options-files-content) APIを呼び出してください。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X OPTIONS "https://api.box.com/2.0/files/12345/content" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{"name":"Contract.pdf", "parent":{"id":"11446498"}}'
+  ```
 
-```sh cURL
-curl -i -X OPTIONS "https://api.box.com/2.0/files/12345/content" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{"name":"Contract.pdf", "parent":{"id":"11446498"}}'
-```
-
-```javascript Node v4
-// Check if uploading a larger version of this file will succeed
-client.files.preflightUploadNewFileVersion('87646', {size: 300000000}, null, callback);
-```
-
+  ```javascript Node v4
+  // Check if uploading a larger version of this file will succeed
+  client.files.preflightUploadNewFileVersion('87646', {size: 300000000}, null, callback);
+  ```
 </CodeGroup>
 
 ## チェックと分割アップロード
@@ -137,28 +122,29 @@ APIコールで問題が検出されると、HTTP `409 Conflict`ステータス�
 
 `200 OK`レスポンスは、アップロード呼び出しが実際に成功することを保証するものではありません。事前チェックによりアップロードの失敗が99%以上削減されることが実証されていますが、ファイルのアップロード時に同時実行の問題が発生する可能性は残っています。
 
-非常にアクティブで、クォータ制限に近づいているフォルダ、一般的なファイル名、およびアカウントの場合、事前チェックで`200 OK`が返されたとしても、実際のアップロード中に競合が発生する可能性があります。
+非常にアクティブで、容量制限に近づいているフォルダ、一般的なファイル名、およびアカウントの場合、事前チェックで`200 OK`が返されたとしても、実際のアップロード中に競合が発生する可能性があります。
 
 ## レスポンスの本文
 
 事前チェックでは多くの場合、競合が検出されるとAPIレスポンスで有益なデータが返されます。たとえば名前の競合が検出された場合、アプリケーションではエラーレスポンスで返される`SHA-1`を使用して、アップロードしようとしているファイルと既存ファイルが同一であるかどうかを確認できます。
 
-[chunked]: /ja/guides/uploads/chunked
+[chunked]: /guides/uploads/chunked
 
-[chunkedsession]: /ja/guides/uploads/chunked/create-session
+[chunkedsession]: /guides/uploads/chunked/create-session
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
-    { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
-    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
-  ]}
+  { label: "Preflight check before upload", href: "/reference/options-files-content", badge: "OPTIONS" },
+  { label: "Upload file", href: "/reference/post-files-content", badge: "POST" },
+  { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "新しいファイルのアップロード", href: "/ja/guides/uploads/direct/file", badge: "ガイド" },
-    { label: "ファイルバージョンのアップロード", href: "/ja/guides/uploads/direct/file-version", badge: "ガイド" }
-  ]}
+  { label: "Upload New File", href: "/guides/uploads/direct/file", badge: "GUIDE" },
+  { label: "Upload File Version", href: "/guides/uploads/direct/file-version", badge: "GUIDE" }
+]}
 />

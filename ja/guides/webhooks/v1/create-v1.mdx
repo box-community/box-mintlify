@@ -1,39 +1,28 @@
 ---
-title: "Webhookの作成"
-rank: 2
-related_endpoints: []
-related_guides:
-  - webhooks/triggers
-related_resources:
-  - webhook
-required_guides:
-  - webhooks/triggers
 alias_paths:
-  - /webhooks/manage/manually
-category_id: webhooks
-subcategory_id: webhooks/v1
-is_index: false
-id: webhooks/v1/create-v1
-type: guide
-total_steps: 2
-sibling_id: webhooks/v1
-parent_id: webhooks/v1
-next_page_id: webhooks/v1/delete-v1
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v1/create-v1.md
+  0: /webhooks/manage/manually
+rank: 2
+related_endpoints: {}
+related_guides:
+  0: webhooks/triggers
+related_resources:
+  0: webhook
+required_guides:
+  0: webhooks/triggers
+title: Webhookの作成
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "Webhookイベントトリガー", href: "/ja/guides/webhooks/triggers", badge: "ガイド" }
-  ]}
+  { label: "Webhook Event Triggers", href: "/guides/webhooks/triggers", badge: "GUIDE" }
+]}
 />
+
 V1 Webhookを作成するには、[開発者コンソール][devconsole]で以下の手順に従います。
 
 1. [開発者コンソール][devconsole]で、目的のアプリケーションに移動します。
@@ -43,10 +32,9 @@ V1 Webhookを作成するには、[開発者コンソール][devconsole]で以�
 5. \[**Webhookの保存**] をクリックします。
 
 <Warning>
-**コールバックパラメータ**
+  **コールバックパラメータ**
 
-V2 Webhookとは異なり、これらの手動によるWebhookにはデータを構成する必要があります。このデータは、本文のクエリ文字列として、または`name=Contract.pdf&type=file`のようなクエリパラメータとして送信されます。
-
+  V2 Webhookとは異なり、これらの手動によるWebhookにはデータを構成する必要があります。このデータは、本文のクエリ文字列として、または`name=Contract.pdf&type=file`のようなクエリパラメータとして送信されます。
 </Warning>
 
 ## 開発者モード
@@ -65,9 +53,7 @@ Webhookを作成した後、使用を開始するには、アプリケーショ�
 4. \[**追加**] をクリックします。
 
 <Warning>
-
-その他すべての認証タイプの場合、このURLを取得するには、サポートに問い合わせる必要があります。
-
+  その他すべての認証タイプの場合、このURLを取得するには、サポートに問い合わせる必要があります。
 </Warning>
 
 これでWebhookは、ユーザーのアカウントで発生する構成済みのイベントに対してトリガーされるようになりました。
@@ -83,6 +69,6 @@ Webhookを作成した後、使用を開始するには、アプリケーショ�
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Webhookイベントトリガー", href: "/ja/guides/webhooks/triggers", badge: "ガイド" }
-  ]}
+  { label: "Webhook Event Triggers", href: "/guides/webhooks/triggers", badge: "GUIDE" }
+]}
 />

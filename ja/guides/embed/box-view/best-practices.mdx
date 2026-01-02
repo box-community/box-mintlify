@@ -1,24 +1,13 @@
 ---
-title: "ベストプラクティス"
+alias_paths: {}
 rank: 4
 related_guides:
-  - embed/box-view/setup
-  - embed/box-view/upload-file
-  - embed/box-view/create-preview
-required_guides: []
-alias_paths: []
-category_id: embed
-subcategory_id: embed/box-view
-is_index: false
-id: embed/box-view/best-practices
-type: guide
-total_steps: 5
-sibling_id: embed/box-view
-parent_id: embed/box-view
-next_page_id: embed/box-view/faq
-previous_page_id: embed/box-view/upload-file
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/box-view/best-practices.md
+  0: embed/box-view/setup
+  1: embed/box-view/upload-file
+  2: embed/box-view/create-preview
+required_guides: {}
+title: ベストプラクティス
+
 fullyTranslated: true
 ---
 
@@ -34,15 +23,15 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 何らかの理由でトークンをクライアント側で利用できるようにする必要がある場合は、元のアプリトークンの[ダウンスコープ][downscoped]したバージョンを使用することを強くお勧めします。これは、必要に応じて、これらのトークンに高度な権限が付与されるためです。これが必要になる例として、Box Preview UI Elementを使用している場合が挙げられます。
 
-[rotate]: /ja/guides/authentication/app-token/rollover
+[rotate]: /guides/authentication/app-token/rollover
 
-[downscoped]: /ja/guides/authentication/tokens/downscope
+[downscoped]: /guides/authentication/tokens/downscope
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "設定", href: "/ja/guides/embed/box-view/setup", badge: "ガイド" },
-    { label: "ファイルのアップロード", href: "/ja/guides/embed/box-view/upload-file", badge: "ガイド" },
-    { label: "ファイルのプレビューの作成", href: "/ja/guides/embed/box-view/create-preview", badge: "ガイド" }
-  ]}
+  { label: "Setup", href: "/guides/embed/box-view/setup", badge: "GUIDE" },
+  { label: "Upload Files", href: "/guides/embed/box-view/upload-file", badge: "GUIDE" },
+  { label: "Create File Preview", href: "/guides/embed/box-view/create-preview", badge: "GUIDE" }
+]}
 />

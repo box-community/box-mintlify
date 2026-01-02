@@ -1,24 +1,13 @@
 ---
-title: "Box ArchiveでサポートされているAPI"
+alias_paths: {}
 rank: 3
-related_endpoints: []
+related_endpoints: {}
+related_guides: {}
 related_resources:
-  - archive
-related_guides: []
-required_guides: []
-alias_paths: []
-category_id: archives
-subcategory_id: null
-is_index: false
-id: archives/supported-apis
-type: guide
-total_steps: 3
-sibling_id: archives
-parent_id: archives
-next_page_id: ''
-previous_page_id: archives/restore-content
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/archives/supported-apis.md
+  0: archive
+required_guides: {}
+title: Box ArchiveでサポートされているAPI
+
 fullyTranslated: true
 ---
 
@@ -27,11 +16,9 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 基本的なBox Archive APIを使用すると、アーカイブの作成、リスト取得、更新、削除を実行できますが、他のAPIを使用してアーカイブやそのコンテンツを操作することもできます。このようなAPIの詳細なリストについては、以下の表を参照してください。
 
 <Note>
+  これらのAPIを使用するには、アプリケーションで[`GCM`スコープ][GCM scope]を有効にする必要があります。このスコープは、開発者コンソールでは使用できないため、カスタマーサポートに連絡して有効にする必要があります。
 
-これらのAPIを使用するには、アプリケーションで[`GCM`スコープ][GCM scope]を有効にする必要があります。このスコープは、開発者コンソールでは使用できないため、カスタマーサポートに連絡して有効にする必要があります。
-
-さらに、以下のAPIの中には、Box Archiveを適切に使用するために、カスタマーサポートに連絡して有効にする必要があるものもあります。カスタマーサポートに連絡する際は、これらのAPIを使用する予定のユーザーIDを明記してください。
-
+  さらに、以下のAPIの中には、Box Archiveを適切に使用するために、カスタマーサポートに連絡して有効にする必要があるものもあります。カスタマーサポートに連絡する際は、これらのAPIを使用する予定のユーザーIDを明記してください。
 </Note>
 
 | APIエンドポイント                                                                   | 説明                                                                                                                                      |
@@ -61,60 +48,59 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 | [`PUT securityClassification`][Update classification label on file]          | アーカイブ内のファイルの分類ラベルを更新します。                                                                                                                |
 | [`DELETE securityClassification`][Delete classification label on file]       | アーカイブ内のファイルから分類ラベルを削除します。                                                                                                               |
 
+[Create archive]: /reference/v2025.0/post-archives/
 
-[Create archive]: /ja/reference/v2025.0/post-archives/
+[List archives]: /reference/v2025.0/get-archives/
 
-[Update archive]: /ja/reference/v2025.0/put-archives-id/
+[Update archive]: /reference/v2025.0/put-archives-id/
 
-[List archives]: /ja/reference/v2025.0/get-archives/
+[Delete archive]: /reference/v2025.0/delete-archives-id/
 
-[Delete archive]: /ja/reference/v2025.0/delete-archives-id/
+[Update file]: /reference/put-files-id
 
-[Update file]: /ja/reference/put-files-id
+[Update folder]: /reference/put-folders-id
 
-[Update folder]: /ja/reference/put-folders-id
+[Upload file]: /reference/post-files-content
 
-[Upload file]: /ja/reference/post-files-content
+[Download file]: /reference/get-files-id-content
 
-[Download file]: /ja/reference/get-files-id-content
+[Download zip]: /reference/post-zip-downloads
 
-[Download zip]: /ja/reference/post-zip-downloads
+[Create folder within archive]: /reference/post-folders
 
-[Create folder within archive]: /ja/reference/post-folders
+[Get file details]: /reference/get-files-id
 
-[Get file details]: /ja/reference/get-files-id
+[Get folder details]: /reference/get-folders-id
 
-[Get folder details]: /ja/reference/get-folders-id
+[List folder items]: /reference/get-folders-id-items
 
-[List folder items]: /ja/reference/get-folders-id-items
+[Copy file]: /reference/post-files-id-copy
 
-[Copy file]: /ja/reference/post-files-id-copy
+[Copy folder]: /reference/post-folders-id-copy
 
-[Copy folder]: /ja/reference/post-folders-id-copy
+[Create metadata on file]: /reference/post-files-id-metadata-id-id
 
-[Create metadata on file]: /ja/reference/post-files-id-metadata-id-id
+[View metadata on file]: /reference/get-files-id-metadata-id-id
 
-[View metadata on file]: /ja/reference/get-files-id-metadata-id-id
+[List metadata on file]: /reference/get-files-id-metadata
 
-[List metadata on file]: /ja/reference/get-files-id-metadata
+[Update metadata on file]: /reference/put-files-id-metadata-id-id
 
-[Update metadata on file]: /ja/reference/put-files-id-metadata-id-id
+[Delete metadata on file]: /reference/delete-files-id-metadata-id-id
 
-[Delete metadata on file]: /ja/reference/delete-files-id-metadata-id-id
+[Create classification label on file]: /reference/post-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
 
-[Create classification label on file]: /ja/reference/post-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
+[View classification label on file]: /reference/get-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
 
-[View classification label on file]: /ja/reference/get-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
+[Update classification label on file]: /reference/put-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
 
-[Update classification label on file]: /ja/reference/put-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
+[Delete classification label on file]: /reference/delete-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
 
-[Delete classification label on file]: /ja/reference/delete-files-id-metadata-enterprise-securityClassification-6VMVochwUWo
-
-[GCM scope]: /ja/guides/api-calls/permissions-and-errors/scopes/#global-content-manager-gcm
+[GCM scope]: /guides/api-calls/permissions-and-errors/scopes/#global-content-manager-gcm
 
 <RelatedLinks
-  title="RELATED RESOURCES"
+  title="関連するリソース"
   items={[
-    { label: "Archive", href: "/ja/reference/v2025.0/resources/archive", badge: "REFERENCE" }
-  ]}
+  { label: "Archive", href: "/reference/v2025.0/resources/archive", badge: "REFERENCE" }
+]}
 />

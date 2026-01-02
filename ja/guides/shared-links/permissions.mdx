@@ -1,28 +1,17 @@
 ---
-title: "共有リンクの権限"
+alias_paths: {}
 rank: 5
 related_endpoints:
-  - put_files_id
+  0: put_files_id
 related_guides:
-  - shared-links/create-or-update
-  - shared-links/remove
-  - shared-links/find-for-item
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: shared-links
-subcategory_id: null
-is_index: false
-id: shared-links/permissions
-type: guide
-total_steps: 4
-sibling_id: shared-links
-parent_id: shared-links
-next_page_id: shared-links
-previous_page_id: shared-links/remove
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/shared-links/permissions.md
+  0: shared-links/create-or-update
+  1: shared-links/remove
+  2: shared-links/find-for-item
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 共有リンクの権限
+
 fullyTranslated: true
 ---
 
@@ -31,9 +20,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 共有リンクリソースには、`permissions`フィールドを使用して更新できる3つの権限`can_preview`、`can_download`、`can_edit`があります。
 
 <Warning>
-
-ファイルの場合、`can_edit`オプションには`true`しか指定できません。また、管理者が管理コンソールで共有リンクの編集権限を制限している場合は、`can_edit`を`true`に設定することはできません。
-
+  ファイルの場合、`can_edit`オプションには`true`しか指定できません。また、管理者が管理コンソールで共有リンクの編集権限を制限している場合は、`can_edit`を`true`に設定することはできません。
 </Warning>
 
 ```sh
@@ -49,20 +36,20 @@ curl -i -X PUT 'https://api.box.com/2.0/files/123456789?fields=shared_link' \
         }
       }
     }'
-
 ```
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" }
-  ]}
+  { label: "Update file", href: "/reference/put-files-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "共有リンクの作成または更新", href: "/ja/guides/shared-links/create-or-update", badge: "ガイド" },
-    { label: "共有リンクの削除", href: "/ja/guides/shared-links/remove", badge: "ガイド" },
-    { label: "共有リンクの項目の検索", href: "/ja/guides/shared-links/find-for-item", badge: "ガイド" }
-  ]}
+  { label: "Create or Update Shared Link", href: "/guides/shared-links/create-or-update", badge: "GUIDE" },
+  { label: "Remove Shared Link", href: "/guides/shared-links/remove", badge: "GUIDE" },
+  { label: "Find Item from Shared Link", href: "/guides/shared-links/find-for-item", badge: "GUIDE" }
+]}
 />

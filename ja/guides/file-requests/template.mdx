@@ -1,25 +1,13 @@
 ---
-title: "テンプレートのファイルリクエストの作成"
 related_endpoints:
-  - post_file_requests_id_copy
+  0: post_file_requests_id_copy
 related_guides:
-  - file-requests/copy
-required_guides: []
+  0: file-requests/copy
 related_resources:
-  - file_request
-category_id: file-requests
-subcategory_id: null
-is_index: false
-id: file-requests/template
-rank: 1
-type: guide
-total_steps: 5
-sibling_id: file-requests
-parent_id: file-requests
-next_page_id: file-requests/copy
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/1-template.md
+  0: file_request
+required_guides: {}
+title: テンプレートのファイルリクエストの作成
+
 fullyTranslated: true
 ---
 
@@ -31,12 +19,10 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 最初に、テンプレートのファイルリクエストを関連付けることができるテンプレートフォルダを作成します。これは実際にはどのフォルダでもかまいませんが、この目的でのみ使用されるフォルダを使用することをお勧めします。
 
-フォルダはBoxウェブインターフェースまたはモバイルインターフェース、あるいは[`POST /folders`](/ja/reference/post-folders) APIを使用して作成できます。
+フォルダはBoxウェブインターフェースまたはモバイルインターフェース、あるいは[`POST /folders`](/reference/post-folders) APIを使用して作成できます。
 
 <Note>
-
-サーバー側JWT認証を使用する場合は、アプリケーションの[サービスアカウント](https://developer.box.com/platform/user-types/#service-account)が所有するフォルダを作成することをお勧めします。こうすることで、通常のBoxユーザーが誤ってこのフォルダを削除することはなくなります。
-
+  サーバー側JWT認証を使用する場合は、アプリケーションの[サービスアカウント](/platform/user-types/#service-account)が所有するフォルダを作成することをお勧めします。こうすることで、通常のBoxユーザーが誤ってこのフォルダを削除することはなくなります。
 </Note>
 
 ## 2. テンプレートのファイルリクエスト
@@ -44,17 +30,13 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルリクエストを作成するには、ウェブアプリのテンプレートフォルダに移動し、ページの上部にある3つの点をクリックします。その後、メニューから \[**ファイルリクエスト**] を選択します。
 
 <Frame center shadow>
-
-![ファイルリクエストの作成](/images/guides/file-requests/create.png)
-
+  ![ファイルリクエストの作成](/images/guides/file-requests/create.png)
 </Frame>
 
 次の設定パネルで、\[**編集**] ボタンをクリックして、ファイルリクエストの設定ページにアクセスします。
 
 <Frame center shadow>
-
-![ファイルリクエストの編集](/images/guides/file-requests/edit.png)
-
+  ![ファイルリクエストの編集](/images/guides/file-requests/edit.png)
 </Frame>
 
 設定ページで、ページを保存する前に、タイトルと説明を設定できます。
@@ -63,28 +45,26 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ```sh
 https://*.app.box.com/filerequest/2338423584
-
 ```
 
 <Warning>
-
-テンプレートフォルダがJWTユーザーに属している場合は、管理対象Boxユーザーをフォルダに[招待](/ja/reference/post-collaborations)し、そのフォルダがウェブアプリに表示されるようにする必要があります。自分自身をフォルダに招待すると、自分でこのアプリを使用してファイルリクエストをフォルダに追加できます。
-
+  テンプレートフォルダがJWTユーザーに属している場合は、管理対象Boxユーザーをフォルダに[招待](/reference/post-collaborations)し、そのフォルダがウェブアプリに表示されるようにする必要があります。自分自身をフォルダに招待すると、自分でこのアプリを使用してファイルリクエストをフォルダに追加できます。
 </Warning>
 
 ## 3. テンプレートの使用
 
-テンプレートのファイルリクエストを使用すると、[`POST /file-requests/:id/copy`](/ja/reference/post-file-requests-id-copy) APIによって新しいコピーを作成できます。新しいフォルダのIDを取得したら、[1回のAPIコール](/ja/guides/file-requests/copy)で既存のリクエスト (タイトル、説明、フォームの設定を含む) を新しいフォルダにコピーできます。
+テンプレートのファイルリクエストを使用すると、[`POST /file-requests/:id/copy`](/reference/post-file-requests-id-copy) APIによって新しいコピーを作成できます。新しいフォルダのIDを取得したら、[1回のAPIコール](/guides/file-requests/copy)で既存のリクエスト (タイトル、説明、フォームの設定を含む) を新しいフォルダにコピーできます。
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
-  ]}
+  { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルリクエストのコピー", href: "/ja/guides/file-requests/copy", badge: "ガイド" }
-  ]}
+  { label: "Copy a File Request", href: "/guides/file-requests/copy", badge: "GUIDE" }
+]}
 />

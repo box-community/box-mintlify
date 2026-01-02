@@ -1,25 +1,15 @@
 ---
-title: "ベストプラクティス"
+alias_paths: {}
 rank: 7
-related_endpoints: []
-related_guides: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: null
-is_index: false
-id: authentication/best-practices
-type: guide
-total_steps: 3
-sibling_id: authentication
-parent_id: authentication
-next_page_id: authentication/sso
-previous_page_id: authentication/select
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/best-practices.md
+related_endpoints: {}
+related_guides: {}
+related_resources: {}
+required_guides: {}
+title: ベストプラクティス
+
 fullyTranslated: true
 ---
+
 ## クライアントシークレットのセキュリティ
 
 クライアントシークレットは機密情報であり、保護する必要があります。アクセストークンの取得時にBoxがアプリケーションのIDを安全に確認するために使用されるため、クライアントシークレットを自由に配布するべきではありません。配布方法には、メール、公開フォーラム、コードリポジトリ、分散されたネイティブアプリケーション、クライアント側のコードなどがあります。
@@ -42,13 +32,10 @@ def self.user_client(user_id)
 
     Boxr::Client.new(access_token)
 end
-
 ```
 
 <Tip>
-
-Box公式SDKでは、トークンのキャッシュが使用されています。
-
+  Box公式SDKでは、トークンのキャッシュが使用されています。
 </Tip>
 
 ## 有効期限が切れたトークン
@@ -71,7 +58,6 @@ ScopedToken downscopedToken =
     client.getLowerScopedToken(scopes,resource);
 
 //Downscoped token available in downscopedToken.getAccessToken()
-
 ```
 
 ## トークンの取り消し
@@ -82,6 +68,6 @@ ScopedToken downscopedToken =
 
 開発者トークンは、開発またはテストのためだけに使用し、実稼働環境では使用しないでください。
 
-[downscope]: /ja/guides/authentication/tokens/downscope
+[downscope]: /guides/authentication/tokens/downscope
 
-[revoke]: /ja/guides/authentication/tokens/revoke
+[revoke]: /guides/authentication/tokens/revoke

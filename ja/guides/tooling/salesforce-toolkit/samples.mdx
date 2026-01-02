@@ -1,24 +1,13 @@
 ---
-title: "コードサンプル"
+alias_paths: {}
 rank: 2
-related_endpoints: []
+related_endpoints: {}
 related_guides:
-  - tooling/sdks/salesforce
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: tooling
-subcategory_id: tooling/salesforce-toolkit
-is_index: false
-id: tooling/salesforce-toolkit/samples
-type: guide
-total_steps: 5
-sibling_id: tooling/salesforce-toolkit
-parent_id: tooling/salesforce-toolkit
-next_page_id: tooling/salesforce-toolkit/flow-actions
-previous_page_id: tooling/salesforce-toolkit/methods
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tooling/salesforce-toolkit/samples.md
+  0: tooling/sdks/salesforce
+related_resources: {}
+required_guides: {}
+title: コードサンプル
+
 fullyTranslated: true
 ---
 
@@ -27,9 +16,6 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ## 汎用メソッド
 
 以下のコードは、汎用Toolkitメソッドを使用してSalesforceのBoxフォルダにメタデータを作成します。
-
-<CodeGroup>
-
 
 ```java Apex
 // Instantiate the Toolkit object
@@ -58,17 +44,11 @@ request.setHeader('content-type', 'application/json');
 
 // Send the HttpRequest through the generic Toolkit method, which will handle the authentication details
 HttpResponse response = toolkit.sendRequest(request);
-
 ```
-
-
-</CodeGroup>
 
 ## 新しいフォルダの関連付け
 
 以下のコードは、特定のSalesforceレコードID用のフォルダを作成します。
-
-<CodeGroup>
 
 ```java Apex
 // Instantiate the Toolkit object
@@ -85,16 +65,11 @@ system.debug('most recent error: ' + boxToolkit.mostRecentError);
 
 // ALWAYS call this method when finished.Since salesforce doesn't allow http callouts after dml operations, we need to commit the pending database inserts/updates or we will lose the associations created
 boxToolkit.commitChanges();
-
 ```
-</CodeGroup>
 
 ## フォルダテンプレート
 
 以下のコードは、レコード用のフォルダを作成し、サブフォルダ (フォルダテンプレート) を作成して現在のユーザーとコラボレーションします。
-
-<CodeGroup>
-
 
 ```java Apex
 // Instantiate the Toolkit object
@@ -119,18 +94,11 @@ system.debug('new collaboration id: ' + collabId);
 
 // ALWAYS call this method when finished. Since salesforce doesn't allow http callouts after dml operations, we need to commit the pending database inserts/updates or we will lose the associations created
 boxToolkit.commitChanges();
-
 ```
-
-
-</CodeGroup>
 
 ## メタデータ
 
 以下のコードでは、Boxフォルダのメタデータとカスケードポリシーを取得、追加、削除、更新します。
-
-<CodeGroup>
-
 
 ```java Apex
 // Get metadata & attributes types
@@ -216,15 +184,9 @@ Boolean mcp =
 tk.deleteMetadataCascadePolicyById('MTkzNDg4NzM3MTg5I2cjbG9iU2FsZXNmb3JjZVJlY29yZC0wMTIwMTI0ZC03YWUxLTQzNjItYjdlMC05Y2RiYzhkMzIzZjM');
 System.debug(mcp);
 System.debug(tk.mostRecentError);
-
 ```
 
-</CodeGroup>
-
 その他の例:
-
-<CodeGroup>
-
 
 ```java Apex
 // Get metadata example 1
@@ -238,12 +200,7 @@ System.debug(kvp);
 Box.toolkit tk = new Box.Toolkit();
 System.debug(tk.getBoxMetadataByFolderId('205776356105', 'global',
 'lobSalesforceRecord'));
-
 ```
-</CodeGroup>
-
-<CodeGroup>
-
 
 ```java Apex
 // Create metadata
@@ -264,12 +221,7 @@ kvps.add(kvp3);
 System.debug(tk.createBoxMetadataByFolderId('205776356105', 'enterprise',
 'testtemplate', kvps));
 System.debug(tk.mostRecentError);
-
 ```
-</CodeGroup>
-
-<CodeGroup>
-
 
 ```java Apex
 // Update Metadata
@@ -295,19 +247,11 @@ fmus.add(fmu3);
 System.debug(tk.updateBoxMetadataByFolderId('205776356105', 'enterprise',
 'testTemplate', fmus));
 System.debug(tk.mostRecentError);
-
 ```
-
-
-
-</CodeGroup>
 
 ## 署名リクエストの作成
 
 次のコードでは、SalesforceにBox Signリクエストを作成します。
-
-<CodeGroup>
-
 
 ```java Apex
 //Send Sign Request
@@ -325,17 +269,11 @@ request.message = 'Test Message';
 request.send_reminders = false;
 List<Box.BoxSignResponse> responses = Box.BoxSignService.sendSignRequests(new List<Box.BoxSignRequest>{ request });
 System.debug(responses[0]);
-
 ```
-
-</CodeGroup>
 
 ## Box Hubの取得
 
 次のコードでは、Box Hubを取得します。
-
-<CodeGroup>
-
 
 ```java Apex
 //Get All Hubs
@@ -347,15 +285,11 @@ for(Box.Hub hub : hubsList.entries){
 //Get Hub by Id
 Box.Hub hub = tk.getHubById('106600628');
 //processing single Hub by using hub.title, hub.id, etc.
-
 ```
-
-
-</CodeGroup>
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Salesforce SDKのインストール", href: "/ja/guides/tooling/sdks/salesforce", badge: "ガイド" }
-  ]}
+  { label: "Install Salesforce SDK", href: "/guides/tooling/sdks/salesforce", badge: "GUIDE" }
+]}
 />

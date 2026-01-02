@@ -1,30 +1,20 @@
 ---
-title: "イベントトリガー"
+alias_paths: ""
 rank: 4
-related_endpoints: []
-related_guides: []
-required_guides: []
-alias_paths: []
-category_id: events
-subcategory_id: events/event-triggers
-is_index: true
-id: events/event-triggers
-type: guide
-total_steps: 5
-sibling_id: events
-parent_id: events
-next_page_id: events/event-triggers/shield-alert-events
-previous_page_id: events/event-triggers/event-source
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/events/event-triggers/index.md
+related_endpoints: ""
+related_guides: ""
+required_guides: ""
+sidebarTitle: Overview
+title: イベントトリガー
+
 fullyTranslated: true
 ---
 
-ユーザーまたは項目によってイベントがトリガーされると、[`GET /events`](/ja/reference/get-events)エンドポイントのレスポンスにはイベントソースオブジェクトが含まれます。
+イベントは、ユーザー、項目、またはその他のリソースによってコミットされたアクションに基づいてイベントストリームに表示されます。[`GET /events`](/reference/get-events)エンドポイントのレスポンスは、イベントをトリガーしたイベントによって変わります。
 
 ## ユーザーソースオブジェクト
 
-ユーザーがイベントをトリガーした場合、ソースオブジェクトは[ユーザーリソース](/ja/reference/resources/user)の標準レプリゼンテーションになります。
+ユーザーがイベントをトリガーした場合、ソースオブジェクトは[ユーザーリソース](/reference/resources/user)の標準レプリゼンテーションになります。
 
 ```json
 {
@@ -51,17 +41,14 @@ fullyTranslated: true
     "timezone": "Africa/Bujumbura"
   }
 }
-
 ```
 
 ## 項目ソースオブジェクト
 
-項目がイベントをトリガーした場合、ソースオブジェクトは[イベントソースリソース](/ja/reference/resources/event-source)になります。
+項目がイベントをトリガーした場合、ソースオブジェクトは[イベントソースリソース](/reference/resources/event-source)になります。
 
 <Note>
-
-以下の例には`classification`オブジェクトが含まれています。これは、項目に分類が設定されていない場合は表示されません。また、一部のイベントタイプでは表示されません。
-
+  以下の例には`classification`オブジェクトが含まれています。これは、項目に分類が設定されていない場合は表示されません。また、一部のイベントタイプでは表示されません。
 </Note>
 
 ```json
@@ -86,5 +73,4 @@ fullyTranslated: true
     }
   }
 }
-
 ```

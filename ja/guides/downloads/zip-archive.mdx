@@ -1,25 +1,14 @@
 ---
-title: "ZIPアーカイブのダウンロード"
+alias_paths: {}
 rank: 11
 related_endpoints:
-  - get_zip_downloads_id_content
-  - get_zip_downloads_id_status
-  - post_zip_downloads
-related_guides: []
-required_guides: []
-alias_paths: []
-category_id: downloads
-subcategory_id: null
-is_index: false
-id: downloads/zip-archive
-type: guide
-total_steps: 7
-sibling_id: downloads
-parent_id: downloads
-next_page_id: downloads
-previous_page_id: downloads/in-browser
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/downloads/zip-archive.md
+  0: get_zip_downloads_id_content
+  1: get_zip_downloads_id_status
+  2: post_zip_downloads
+related_guides: {}
+required_guides: {}
+title: ZIPアーカイブのダウンロード
+
 fullyTranslated: true
 ---
 
@@ -32,135 +21,133 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 最初に、ファイルまたはフォルダ構造を含むZIPアーカイブを作成する必要があります。アカウントのアップロード上限に達しない限り、最大10,000のファイルまたはフォルダIDを含めることができます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/zip_downloads" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -d '{
+         "download_file_name": "January Financials",
+         "items": [
+           {
+             "type": "file",
+             "id": "12345"
+           },
+           {
+             "type": "file",
+             "id": "34325"
+           },
+           {
+             "type": "folder",
+             "id": "45678"
+           }
+         ]
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/zip_downloads" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -d '{
-       "download_file_name": "January Financials",
-       "items": [
-         {
-           "type": "file",
-           "id": "12345"
-         },
-         {
-           "type": "file",
-           "id": "34325"
-         },
-         {
-           "type": "folder",
-           "id": "45678"
-         }
-       ]
-     }'
-```
-
-```typescript Node/TypeScript v10
-await client.zipDownloads.createZipDownload({
-  items: [
-    {
-      id: file1.id,
-      type: 'file' as ZipDownloadRequestItemsTypeField,
-    } satisfies ZipDownloadRequestItemsField,
-    {
-      id: file2.id,
-      type: 'file' as ZipDownloadRequestItemsTypeField,
-    } satisfies ZipDownloadRequestItemsField,
-    {
-      id: folder1.id,
-      type: 'folder' as ZipDownloadRequestItemsTypeField,
-    } satisfies ZipDownloadRequestItemsField,
-  ],
-  downloadFileName: 'zip',
-} satisfies ZipDownloadRequest);
-```
-
-```python Python v10
-client.zip_downloads.create_zip_download(
-    [
-        CreateZipDownloadItems(id=file_1.id, type=DownloadZipItemsTypeField.FILE),
-        CreateZipDownloadItems(id=file_2.id, type=DownloadZipItemsTypeField.FILE),
-        CreateZipDownloadItems(id=folder_1.id, type=DownloadZipItemsTypeField.FOLDER),
+  ```typescript Node/TypeScript v10
+  await client.zipDownloads.createZipDownload({
+    items: [
+      {
+        id: file1.id,
+        type: 'file' as ZipDownloadRequestItemsTypeField,
+      } satisfies ZipDownloadRequestItemsField,
+      {
+        id: file2.id,
+        type: 'file' as ZipDownloadRequestItemsTypeField,
+      } satisfies ZipDownloadRequestItemsField,
+      {
+        id: folder1.id,
+        type: 'folder' as ZipDownloadRequestItemsTypeField,
+      } satisfies ZipDownloadRequestItemsField,
     ],
-    download_file_name="zip",
-)
-```
+    downloadFileName: 'zip',
+  } satisfies ZipDownloadRequest);
+  ```
 
-```cs .NET v10
-await client.ZipDownloads.CreateZipDownloadAsync(requestBody: new ZipDownloadRequest(items: Array.AsReadOnly(new [] {new ZipDownloadRequestItemsField(id: file1.Id, type: ZipDownloadRequestItemsTypeField.File),new ZipDownloadRequestItemsField(id: file2.Id, type: ZipDownloadRequestItemsTypeField.File),new ZipDownloadRequestItemsField(id: folder1.Id, type: ZipDownloadRequestItemsTypeField.Folder)})) { DownloadFileName = "zip" });
-```
+  ```python Python v10
+  client.zip_downloads.create_zip_download(
+      [
+          CreateZipDownloadItems(id=file_1.id, type=DownloadZipItemsTypeField.FILE),
+          CreateZipDownloadItems(id=file_2.id, type=DownloadZipItemsTypeField.FILE),
+          CreateZipDownloadItems(id=folder_1.id, type=DownloadZipItemsTypeField.FOLDER),
+      ],
+      download_file_name="zip",
+  )
+  ```
 
-```swift Swift v10
-try await client.zipDownloads.createZipDownload(requestBody: ZipDownloadRequest(items: [ZipDownloadRequestItemsField(id: file1.id, type: ZipDownloadRequestItemsTypeField.file), ZipDownloadRequestItemsField(id: file2.id, type: ZipDownloadRequestItemsTypeField.file), ZipDownloadRequestItemsField(id: folder1.id, type: ZipDownloadRequestItemsTypeField.folder)], downloadFileName: "zip"))
-```
+  ```csharp .NET v10
+  await client.ZipDownloads.CreateZipDownloadAsync(requestBody: new ZipDownloadRequest(items: Array.AsReadOnly(new [] {new ZipDownloadRequestItemsField(id: file1.Id, type: ZipDownloadRequestItemsTypeField.File),new ZipDownloadRequestItemsField(id: file2.Id, type: ZipDownloadRequestItemsTypeField.File),new ZipDownloadRequestItemsField(id: folder1.Id, type: ZipDownloadRequestItemsTypeField.Folder)})) { DownloadFileName = "zip" });
+  ```
 
-```java Java v10
-client.getZipDownloads().createZipDownload(new ZipDownloadRequest.Builder(Arrays.asList(new ZipDownloadRequestItemsField(ZipDownloadRequestItemsTypeField.FILE, file1.getId()), new ZipDownloadRequestItemsField(ZipDownloadRequestItemsTypeField.FILE, file2.getId()), new ZipDownloadRequestItemsField(ZipDownloadRequestItemsTypeField.FOLDER, folder1.getId()))).downloadFileName("zip").build())
-```
+  ```swift Swift v10
+  try await client.zipDownloads.createZipDownload(requestBody: ZipDownloadRequest(items: [ZipDownloadRequestItemsField(id: file1.id, type: ZipDownloadRequestItemsTypeField.file), ZipDownloadRequestItemsField(id: file2.id, type: ZipDownloadRequestItemsTypeField.file), ZipDownloadRequestItemsField(id: folder1.id, type: ZipDownloadRequestItemsTypeField.folder)], downloadFileName: "zip"))
+  ```
 
-```java Java v5
-ArrayList<BoxZipItem> items = new ArrayList<BoxZipItem>();
-BoxZipItem file = new BoxZipItem("file", "12345");
-BoxZipItem folder = new BoxZipItem("folder", "156472");
-items.add(file);
-items.add(folder);
-BoxZip zip = new BoxZip(api);
-BoxZipInfo zipInfo = zip.create("Awesome Zip File", items);
-```
+  ```java Java v10
+  client.getZipDownloads().createZipDownload(new ZipDownloadRequest.Builder(Arrays.asList(new ZipDownloadRequestItemsField(ZipDownloadRequestItemsTypeField.FILE, file1.getId()), new ZipDownloadRequestItemsField(ZipDownloadRequestItemsTypeField.FILE, file2.getId()), new ZipDownloadRequestItemsField(ZipDownloadRequestItemsTypeField.FOLDER, folder1.getId()))).downloadFileName("zip").build())
+  ```
 
-```javascript Node v4
-var name = 'test',
-items = [
-	{
-		type: 'file',
-		id: '466239504569'
-	},
-	{
-		type: 'folder',
-		id: '466239504580'
-	}
-];
-client.files.createZip(name, items)
-	.then(zip => {
-		/* zip -> {
-				"download_url": "https://api.box.com/2.0/zip_downloads/124hfiowk3fa8kmrwh/content",
-				"status_url": "https://api.box.com/2.0/zip_downloads/124hfiowk3fa8kmrwh/status",
-				"expires_at": "2018-04-25T11:00:18-07:00",
-				"name_conflicts": [
-					[
-						{
-							"id": "100",
-							"type": "file",
-							"original_name": "salary.pdf",
-							"download_name": "aqc823.pdf"
-						},
-						{
-							"id": "200",
-							"type": "file",
-							"original_name": "salary.pdf",
-							"download_name": "aci23s.pdf"
-						}
-					],
-					[
-						{
-							"id": "1000",
-							"type": "folder",
-							"original_name": "employees",
-							"download_name": "3d366a_employees"
-						},
-						{
-							"id": "2000",
-							"type": "folder",
-							"original_name": "employees",
-							"download_name": "3aa6a7_employees"
-						}
-					]
-				]
-			}
-		*/
-	});
-```
+  ```java Java v5
+  ArrayList<BoxZipItem> items = new ArrayList<BoxZipItem>();
+  BoxZipItem file = new BoxZipItem("file", "12345");
+  BoxZipItem folder = new BoxZipItem("folder", "156472");
+  items.add(file);
+  items.add(folder);
+  BoxZip zip = new BoxZip(api);
+  BoxZipInfo zipInfo = zip.create("Awesome Zip File", items);
+  ```
 
+  ```js Node v4
+  var name = 'test',
+  items = [
+   {
+    type: 'file',
+    id: '466239504569'
+   },
+   {
+    type: 'folder',
+    id: '466239504580'
+   }
+  ];
+  client.files.createZip(name, items)
+   .then(zip => {
+    /* zip -> {
+      "download_url": "https://api.box.com/2.0/zip_downloads/124hfiowk3fa8kmrwh/content",
+      "status_url": "https://api.box.com/2.0/zip_downloads/124hfiowk3fa8kmrwh/status",
+      "expires_at": "2018-04-25T11:00:18-07:00",
+      "name_conflicts": [
+       [
+        {
+         "id": "100",
+         "type": "file",
+         "original_name": "salary.pdf",
+         "download_name": "aqc823.pdf"
+        },
+        {
+         "id": "200",
+         "type": "file",
+         "original_name": "salary.pdf",
+         "download_name": "aci23s.pdf"
+        }
+       ],
+       [
+        {
+         "id": "1000",
+         "type": "folder",
+         "original_name": "employees",
+         "download_name": "3d366a_employees"
+        },
+        {
+         "id": "2000",
+         "type": "folder",
+         "original_name": "employees",
+         "download_name": "3aa6a7_employees"
+        }
+       ]
+      ]
+     }
+    */
+   });
+  ```
 </CodeGroup>
 
 レスポンスは以下のようになります。
@@ -172,7 +159,6 @@ client.files.createZip(name, items)
   "expires_at": "2023-02-28T10:23:54Z",
   "name_conflicts": []
 }
-
 ```
 
 ## ZIPダウンロードIDの抽出
@@ -183,13 +169,10 @@ ZIPアーカイブをダウンロードするには、ZIPダウンロードIDが
 
 ```json
 25gvaXcIE4QJlinNiw2oHAQ==ZFs3Q2Xpd7pKBz7OyzXNrUaoW3aJxQRN5znAvyM-KpdEEPdWcQDKU-Dl85Ew
-
 ```
 
 <Note>
-
-ダウンロードURLは、`expires_at`パラメータで指定された日時まで有効です。
-
+  ダウンロードURLは、`expires_at`パラメータで指定された日時まで有効です。
 </Note>
 
 ## ファイルのダウンロード
@@ -197,150 +180,144 @@ ZIPアーカイブをダウンロードするには、ZIPダウンロードIDが
 以下のサンプルのように、ファイルの場所のURLにダウンロードIDを配置して、適切なファイルを指します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L GET "https://dl.boxcloud.com/2.0/zip_downloads/29l00nfxDyHOt7RphI9zT_w==nDnZEDjY2S8iEWWCHEEiptFxwoWojjlibZjJ6geuE5xnXENDTPxzgbks_yY=/content" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -o sample_curl.zip
+  ```
 
-```sh cURL
-curl -L GET "https://dl.boxcloud.com/2.0/zip_downloads/29l00nfxDyHOt7RphI9zT_w==nDnZEDjY2S8iEWWCHEEiptFxwoWojjlibZjJ6geuE5xnXENDTPxzgbks_yY=/content" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -o sample_curl.zip
-```
+  ```typescript Node/TypeScript v10
+  await client.zipDownloads.getZipDownloadContent(zipDownload.downloadUrl!);
+  ```
 
-```typescript Node/TypeScript v10
-await client.zipDownloads.getZipDownloadContent(zipDownload.downloadUrl!);
-```
+  ```python Python v10
+  client.zip_downloads.get_zip_download_content(zip_download.download_url)
+  ```
 
-```python Python v10
-client.zip_downloads.get_zip_download_content(zip_download.download_url)
-```
+  ```csharp .NET v10
+  await client.ZipDownloads.GetZipDownloadContentAsync(downloadUrl: NullableUtils.Unwrap(zipDownload.DownloadUrl));
+  ```
 
-```cs .NET v10
-await client.ZipDownloads.GetZipDownloadContentAsync(downloadUrl: NullableUtils.Unwrap(zipDownload.DownloadUrl));
-```
+  ```swift Swift v10
+  try await client.zipDownloads.getZipDownloadContent(downloadUrl: zipDownload.downloadUrl!, downloadDestinationUrl: URL(path: destinationPathString))
+  ```
 
-```swift Swift v10
-try await client.zipDownloads.getZipDownloadContent(downloadUrl: zipDownload.downloadUrl!, downloadDestinationUrl: URL(path: destinationPathString))
-```
+  ```java Java v10
+  client.getZipDownloads().getZipDownloadContent(zipDownload.getDownloadUrl())
+  ```
 
-```java Java v10
-client.getZipDownloads().getZipDownloadContent(zipDownload.getDownloadUrl())
-```
+  ```java Java v5
+  ArrayList<BoxZipItem> items = new ArrayList<BoxZipItem>();
+  BoxZipItem file = new BoxZipItem("file", "12345");
+  BoxZipItem folder = new BoxZipItem("folder", "156472");
+  items.add(file);
+  items.add(folder);
+  BoxZip zip = new BoxZip(api);
+  FileOutputStream stream = new FileOutputStream();
+  BoxZipDownloadStatus zipDownloadStatus = zip.download("Another Awesome Zip File", items, stream);
+  stream.close();
+  if (zipDownloadStatus.getState() == BoxZipDownloadStatus.State.SUCCEEDED) {
+      System.out.println("Zip downloaded successfully");
+  }
+  ```
 
-```java Java v5
-ArrayList<BoxZipItem> items = new ArrayList<BoxZipItem>();
-BoxZipItem file = new BoxZipItem("file", "12345");
-BoxZipItem folder = new BoxZipItem("folder", "156472");
-items.add(file);
-items.add(folder);
-BoxZip zip = new BoxZip(api);
-FileOutputStream stream = new FileOutputStream();
-BoxZipDownloadStatus zipDownloadStatus = zip.download("Another Awesome Zip File", items, stream);
-stream.close();
-if (zipDownloadStatus.getState() == BoxZipDownloadStatus.State.SUCCEEDED) {
-    System.out.println("Zip downloaded successfully");
-}
-```
+  ```py Python v4
+  name = 'test'
+  file = mock_client.file('466239504569')
+  folder = mock_client.folder('466239504580')
+  items = [file, folder]
+  output_file = open('test.zip', 'wb')
+  status = client.download_zip(name, items, output_file)
+  print(f'The status of the zip download is {status["state"]}')
+  ```
 
-```python Python v4
-name = 'test'
-file = mock_client.file('466239504569')
-folder = mock_client.folder('466239504580')
-items = [file, folder]
-output_file = open('test.zip', 'wb')
-status = client.download_zip(name, items, output_file)
-print(f'The status of the zip download is {status["state"]}')
-```
+  ```csharp .NET v6
+  BoxZipRequest request = new BoxZipRequest();
+  request.Name = "test";
+  request.Items = new List<BoxZipItemRequest>();
 
-```cs .NET v6
-BoxZipRequest request = new BoxZipRequest();
-request.Name = "test";
-request.Items = new List<BoxZipItemRequest>();
+  var file = new BoxZipRequestItem()
+  {
+      Id = "466239504569",
+      Type = BoxZipItemType.file
+  };
+  var folder = new BoxZipRequestItem()
+  {
+      Id = "466239504580",
+      Type = BoxZipItemType.folder
+  };
+  request.Items.Add(file);
+  request.Items.Add(folder);
+  Stream fs = new FileStream(@"c:\temp\MyTest.zip");
 
-var file = new BoxZipRequestItem()
-{
-    Id = "466239504569",
-    Type = BoxZipItemType.file
-};
-var folder = new BoxZipRequestItem()
-{
-    Id = "466239504580",
-    Type = BoxZipItemType.folder
-};
-request.Items.Add(file);
-request.Items.Add(folder);
-Stream fs = new FileStream(@"c:\temp\MyTest.zip");
+  BoxZipDownloadStatus status = await _filesManager.DownloadZip(request, fs);
+  ```
 
-BoxZipDownloadStatus status = await _filesManager.DownloadZip(request, fs);
-```
-
-```javascript Node v4
-var name = 'test',
-items = [
-	{
-		type: 'file',
-		id: '466239504569'
-	},
-	{
-		type: 'folder',
-		id: '466239504580'
-	}
-],
-stream = new Readable();
-client.files.downloadZip(name, items, stream)
-	.then(status => {
-		/* status -> {
-				"total_file_count": 20,
-				"downloaded_file_count": 10,
-				"skipped_file_count": 10,
-				"skipped_folder_count": 10,
-				"state": "succeeded"
-			}
-		*/
-	});
-```
-
+  ```js Node v4
+  var name = 'test',
+  items = [
+   {
+    type: 'file',
+    id: '466239504569'
+   },
+   {
+    type: 'folder',
+    id: '466239504580'
+   }
+  ],
+  stream = new Readable();
+  client.files.downloadZip(name, items, stream)
+   .then(status => {
+    /* status -> {
+      "total_file_count": 20,
+      "downloaded_file_count": 10,
+      "skipped_file_count": 10,
+      "skipped_folder_count": 10,
+      "state": "succeeded"
+     }
+    */
+   });
+  ```
 </CodeGroup>
 
-ダウンロードに時間がかかる場合は、[ステータスのエンドポイント](/ja/reference/get-zip-downloads-id-status)を使用してダウンロードのステータスを監視できます。これにより、ダウンロードの進行状況のほか、スキップされた可能性のある項目の数を確認できます。
+ダウンロードに時間がかかる場合は、[ステータスのエンドポイント](/reference/get-zip-downloads-id-status)を使用してダウンロードのステータスを監視できます。これにより、ダウンロードの進行状況のほか、スキップされた可能性のある項目の数を確認できます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/zip_downloads/29l00nfxDyHOt7RphI9zT_w==nDnZEDjY2S8iEWWCHEEiptFxwoWojjlibZjJ6geuE5xnXENDTPxzgbks_yY=/status" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/zip_downloads/29l00nfxDyHOt7RphI9zT_w==nDnZEDjY2S8iEWWCHEEiptFxwoWojjlibZjJ6geuE5xnXENDTPxzgbks_yY=/status" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.zipDownloads.getZipDownloadStatus(zipDownload.statusUrl!);
+  ```
 
-```typescript Node/TypeScript v10
-await client.zipDownloads.getZipDownloadStatus(zipDownload.statusUrl!);
-```
+  ```python Python v10
+  client.zip_downloads.get_zip_download_status(zip_download.status_url)
+  ```
 
-```python Python v10
-client.zip_downloads.get_zip_download_status(zip_download.status_url)
-```
+  ```csharp .NET v10
+  await client.ZipDownloads.GetZipDownloadStatusAsync(statusUrl: NullableUtils.Unwrap(zipDownload.StatusUrl));
+  ```
 
-```cs .NET v10
-await client.ZipDownloads.GetZipDownloadStatusAsync(statusUrl: NullableUtils.Unwrap(zipDownload.StatusUrl));
-```
+  ```swift Swift v10
+  try await client.zipDownloads.getZipDownloadStatus(statusUrl: zipDownload.statusUrl!)
+  ```
 
-```swift Swift v10
-try await client.zipDownloads.getZipDownloadStatus(statusUrl: zipDownload.statusUrl!)
-```
-
-```java Java v10
-client.getZipDownloads().getZipDownloadStatus(zipDownload.getStatusUrl())
-```
-
+  ```java Java v10
+  client.getZipDownloads().getZipDownloadStatus(zipDownload.getStatusUrl())
+  ```
 </CodeGroup>
 
 <Note>
-
-SDKを使用してフォルダのコンテンツをダウンロードする場合は、[こちら](/ja/guides/downloads/folder)のガイドに従ってください。
-
+  SDKを使用してフォルダのコンテンツをダウンロードする場合は、[こちら](/guides/downloads/folder)のガイドに従ってください。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Download zip archive", href: "/reference/get-zip-downloads-id-content", badge: "GET" },
-    { label: "Get zip download status", href: "/reference/get-zip-downloads-id-status", badge: "GET" },
-    { label: "Create zip download", href: "/reference/post-zip-downloads", badge: "POST" }
-  ]}
+  { label: "Download zip archive", href: "/reference/get-zip-downloads-id-content", badge: "GET" },
+  { label: "Get zip download status", href: "/reference/get-zip-downloads-id-status", badge: "GET" },
+  { label: "Create zip download", href: "/reference/post-zip-downloads", badge: "POST" }
+]}
 />

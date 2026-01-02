@@ -1,26 +1,14 @@
 ---
-title: "日付メタデータフィールド"
 related_endpoints:
-  - post_metadata_templates
-  - put_metadata_templates_id_id_schema
+  0: post_metadata_templates
+  1: put_metadata_templates_id_id_schema
 related_guides:
-  - metadata/templates/create
-  - metadata/templates/update
+  0: metadata/templates/create
+  1: metadata/templates/update
 related_resources:
-  - metadata_template
-category_id: metadata
-subcategory_id: metadata/3-fields
-is_index: false
-id: metadata/fields/date
-rank: 3
-type: guide
-total_steps: 5
-sibling_id: metadata/fields
-parent_id: metadata/fields
-next_page_id: metadata/fields/enum
-previous_page_id: metadata/fields/float
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/3-fields/3-date.md
+  0: metadata_template
+title: 日付メタデータフィールド
+
 fullyTranslated: true
 ---
 
@@ -29,15 +17,11 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 `date`タイプのメタデータフィールドは、日付選択機能としてユーザーに表示されます。
 
 <Frame border center shadow width="400">
-
-![文字列フィールド](./metadata-field-date.png)
-
+  ![文字列フィールド](./metadata-field-date.png)
 </Frame>
 
 <Note>
-
-Boxウェブアプリでは日付が日付選択機能として表示されますが、実際の日付は、ミリ秒の形式で保存されています。日付の時間部分は、常に`T00:00:00.000Z`に設定されています。
-
+  Boxウェブアプリでは日付が日付選択機能として表示されますが、実際の日付は、ミリ秒の形式で保存されています。日付の時間部分は、常に`T00:00:00.000Z`に設定されています。
 </Note>
 
 ## 日付フィールドの作成
@@ -60,7 +44,6 @@ Boxウェブアプリでは日付が日付選択機能として表示されま�
     }
   ]
 }
-
 ```
 
 必要に応じて、UIでユーザーに表示される`description`を指定できます。また、このフィールドを`hidden`に設定して、ウェブアプリとモバイルアプリでユーザーに表示されないようにすることもできます。
@@ -84,29 +67,27 @@ Boxウェブアプリでは日付が日付選択機能として表示されま�
     }
   }
 ]
-
 ```
 
 <Warning>
-
-これは、このテンプレートの既存のインスタンスに影響します。
-
+  これは、このテンプレートの既存のインスタンスに影響します。
 </Warning>
 
-[g_create_template]: /ja/guides/metadata/templates/create
+[g_create_template]: /guides/metadata/templates/create
 
-[g_update_template]: /ja/guides/metadata/templates/update
+[g_update_template]: /guides/metadata/templates/update
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
-  ]}
+  { label: "Update metadata template", href: "/reference/put-metadata-templates-id-id-schema", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータテンプレートの作成", href: "/ja/guides/metadata/templates/create", badge: "ガイド" },
-    { label: "メタデータテンプレートの更新", href: "/ja/guides/metadata/templates/update", badge: "ガイド" }
-  ]}
+  { label: "Create a metadata template", href: "/guides/metadata/templates/create", badge: "GUIDE" },
+  { label: "Update a metadata template", href: "/guides/metadata/templates/update", badge: "GUIDE" }
+]}
 />

@@ -1,435 +1,370 @@
 ---
-title: "Boxへのボットの接続"
-sidebarTitle: 5. Boxへのボットの接続
-type: quick-start
 hide_in_page_nav: true
-category_id: collaborations
-subcategory_id: collaborations/connect-slack-to-group-collabs
-is_index: false
-id: collaborations/connect-slack-to-group-collabs/connect-box-functions
-rank: 5
-total_steps: 6
-sibling_id: collaborations/connect-slack-to-group-collabs
-parent_id: collaborations/connect-slack-to-group-collabs
-next_page_id: collaborations/connect-slack-to-group-collabs/test-bot
-previous_page_id: collaborations/connect-slack-to-group-collabs/handle-slack-events
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/connect-slack-to-group-collabs/5-connect-box-functions.md
+sidebarTitle: 5. Connect Bot to Box
+title: Boxへのボットの接続
+type: quick-start
+
 fullyTranslated: true
 ---
 
-import { Choose, Choice, Grid, Trigger, Observe, ChoiceDebug } from "/snippets/choose-choice-components.jsx";
+import { Choose, Choice, Grid, Trigger, Observe, ChoiceDebug } from '/snippets/choose-choice-components.jsx';
 
-import { ProgressBar } from "/snippets/progress-bar.jsx";
+import { ProgressBar } from '/snippets/progress-bar.jsx';
 
 <ProgressBar
   pages={[
-    "ja/guides/collaborations/connect-slack-to-group-collabs/configure-slack",
-    "ja/guides/collaborations/connect-slack-to-group-collabs/configure-box",
-    "ja/guides/collaborations/connect-slack-to-group-collabs/scaffold-application-code",
-    "ja/guides/collaborations/connect-slack-to-group-collabs/handle-slack-events",
-    "ja/guides/collaborations/connect-slack-to-group-collabs/connect-box-functions",
-    "ja/guides/collaborations/connect-slack-to-group-collabs/test-bot",
-  ]}
+                        "guides/collaborations/connect-slack-to-group-collabs/configure-slack",
+                        "guides/collaborations/connect-slack-to-group-collabs/configure-box",
+                        "guides/collaborations/connect-slack-to-group-collabs/scaffold-application-code",
+                        "guides/collaborations/connect-slack-to-group-collabs/handle-slack-events",
+                        "guides/collaborations/connect-slack-to-group-collabs/connect-box-functions",
+                        "guides/collaborations/connect-slack-to-group-collabs/test-bot"
+                      ]}
 />
 
-ここでは、Slack から送信されるイベントを処理し、Box のユーザーやグループとの接続に必要なすべての情報を取得します。その機能を Box の関数に関連付ける必要があります。
+ここでは、Slackから送信されるイベントを処理し、Boxのユーザーやグループとの接続に必要なすべての情報を取得します。その機能をBoxの関数に関連付ける必要があります。
 
-この手順では、直前の手順で説明した関数をいくつか拡張し、新しい Box 機能を組み込みます。
+この手順では、直前の手順で説明した関数をいくつか拡張し、新しいBox機能を組み込みます。
 
-- Box クライアントをインスタンス化する
-- Box グループに Box ユーザーを追加する
-- Box グループから Box ユーザーを削除する
-- グループ名から Box グループ ID を取得する
-- グループと共有するコンテンツを追加する
+* Boxクライアントをインスタンス化する
+* BoxグループにBoxユーザーを追加する
+* BoxグループからBoxユーザーを削除する
+* グループ名からBoxグループIDを取得する
+* グループと共有するコンテンツを追加する
 
-## Box クライアントのインスタンス化
+## Boxクライアントのインスタンス化
 
-Box API を呼び出すには、最初に Box クライアントを設定する必要があります。
+Box APIを呼び出すには、最初にBoxクライアントを設定する必要があります。
 
 <Choice option="programming.platform" value="node" color="none">
+  `process.js`で、先頭にある`// INSTANTIATE BOX CLIENT`コメントを次の内容に置き換えます。
 
-`process.js`で、先頭にある`// INSTANTIATE BOX CLIENT`コメントを次の内容に置き換えます。
+  ```js
+  const boxConfig = require("./boxConfig.json");
+  const sdk = box.getPreconfiguredInstance(boxConfig);
+  const client = sdk.getAppAuthClient("enterprise");
+  ```
 
-```js
-const boxConfig = require("./boxConfig.json");
-const sdk = box.getPreconfiguredInstance(boxConfig);
-const client = sdk.getAppAuthClient("enterprise");
-```
+  `boxConfig`の代入行では、[手順2][step2]の最後でBoxアプリからダウンロードした`boxConfig.json`ファイルを使用します。上記のサンプルでは、ファイルを`process.js`と同じフォルダに保存していることを前提としています。そうではない場合は、`boxConfig.json`ファイルの場所を指すパスとファイル名に変更してください。
 
-`boxConfig`の代入行では、[手順 2][step2]の最後で Box アプリからダウンロードした`boxConfig.json`ファイルを使用します。上記のサンプルでは、ファイルを`process.js`と同じフォルダに保存していることを前提としています。そうではない場合は、`boxConfig.json`ファイルの場所を指すパスとファイル名に変更してください。
-
-最後の`client`の代入行では、API コールに使用できる Box クライアントオブジェクトを作成します。この時点では、その対象範囲は特定のユーザーではなく、アプリケーションの[サービスアカウント][service-account]に設定されています。
-
+  最後の`client`の代入行では、APIコールに使用できるBoxクライアントオブジェクトを作成します。この時点では、その対象範囲は特定のユーザーではなく、アプリケーションの[サービスアカウント][service-account]に設定されています。
 </Choice>
 
 <Choice option="programming.platform" value="java" color="none">
+  `Application.java`で、`processEvent`メソッド内の`// INSTANTIATE BOX CLIENT`コメントを次の内容に置き換えます。
 
-`Application.java`で、`processEvent`メソッド内の`// INSTANTIATE BOX CLIENT`コメントを次の内容に置き換えます。
+  ```java
+  this.fileReader = new FileReader("boxConfig.json");
+  this.boxConfig = BoxConfig.readFrom(fileReader);
+  this.boxAPI = BoxDeveloperEditionAPIConnection.getAppEnterpriseConnection(boxConfig);
+  ```
 
-```java
-this.fileReader = new FileReader("boxConfig.json");
-this.boxConfig = BoxConfig.readFrom(fileReader);
-this.boxAPI = BoxDeveloperEditionAPIConnection.getAppEnterpriseConnection(boxConfig);
+  `boxConfig`の代入行では、[手順2][step2]の最後でBoxアプリからダウンロードした`boxConfig.json`ファイルを使用します。上記のサンプルでは、ファイルをJavaプロジェクトのルートに保存していることを前提としています。そうではない場合は、`fileReader`の代入行のパスを、`boxConfig.json`ファイルの場所を指すパスとファイル名に変更してください。
 
-```
-
-`boxConfig`の代入行では、[手順 2][step2]の最後で Box アプリからダウンロードした`boxConfig.json`ファイルを使用します。上記のサンプルでは、ファイルを Java プロジェクトのルートに保存していることを前提としています。そうではない場合は、`fileReader`の代入行のパスを、`boxConfig.json`ファイルの場所を指すパスとファイル名に変更してください。
-
-最後の`boxAPI`の代入行では、API コールに使用できる Box クライアントオブジェクトを作成します。この時点では、その対象範囲は特定のユーザーではなく、アプリケーションの[サービスアカウント][service-account]に設定されています。
-
+  最後の`boxAPI`の代入行では、APIコールに使用できるBoxクライアントオブジェクトを作成します。この時点では、その対象範囲は特定のユーザーではなく、アプリケーションの[サービスアカウント][service-account]に設定されています。
 </Choice>
 
 <Choice option="programming.platform" unset color="none">
-
-<Danger>
-**前の手順が完了していません**
-
-最初に、手順 1 でお好みの言語/フレームワークを選択してください。
-
-</Danger>
-
+  <Danger>
+    **前の手順が完了していません**最初に、手順1でお好みの言語/フレームワークを選択してください。
+  </Danger>
 </Choice>
 
-## グループへの Box ユーザーの追加
+## グループへのBoxユーザーの追加
 
-グループに Box ユーザーを追加する関数を追加します。ボットがチャンネルに追加され、チャンネルのすべてのユーザーを含む Box グループの作成が必要になった場合、またはその操作の後に 1 人のユーザーがチャンネルに参加した場合に、この関数によってそのタスクが実行されます。
+グループにBoxユーザーを追加する関数を追加します。ボットがチャンネルに追加され、チャンネルのすべてのユーザーを含むBoxグループの作成が必要になった場合、またはその操作の後に1人のユーザーがチャンネルに参加した場合に、この関数によってそのタスクが実行されます。
 
 <Choice option="programming.platform" value="node" color="none">
+  `addGroupUser`関数を次の内容に置き換えます。
 
-`addGroupUser`関数を次の内容に置き換えます。
+  ```js
+  function addGroupUser(groupId, email) {
+      client.enterprise.getUsers({ filter_term: email }).then((users) => {
+          if (users.entries.length > 0) {
+              const userId = users.entries[0].id;
+              const groupRole = client.groups.userRoles.MEMBER;
 
-```js
-function addGroupUser(groupId, email) {
-  client.enterprise.getUsers({ filter_term: email }).then((users) => {
-    if (users.entries.length > 0) {
-      const userId = users.entries[0].id;
-      const groupRole = client.groups.userRoles.MEMBER;
-
-      client.groups
-        .addUser(groupId, userId, { role: groupRole })
-        .then((membership) => {
-          if (membership.id) {
-            console.log(`Member added with membership ID: ${membership.id}`);
+              client.groups
+                  .addUser(groupId, userId, { role: groupRole })
+                  .then((membership) => {
+                      if (membership.id) {
+                          console.log(`Member added with membership ID: ${membership.id}`);
+                      } else {
+                          console.log(`Member not added`);
+                      }
+                  })
+                  .catch(function (err) {
+                      console.log(err.response.body);
+                  });
           } else {
-            console.log(`Member not added`);
+              console.log("No Box user found to add to group");
           }
-        })
-        .catch(function (err) {
-          console.log(err.response.body);
-        });
-    } else {
-      console.log("No Box user found to add to group");
-    }
-  });
-}
-```
-
+      });
+  }
+  ```
 </Choice>
 
 <Choice option="programming.platform" value="java" color="none">
+  `addGroupUser`メソッドを次の内容に置き換えます。
 
-`addGroupUser`メソッドを次の内容に置き換えます。
+  ```java
+  public void addGroupUser(String groupId, String userEmail) {
+      Iterable<BoxUser.Info> users = BoxUser.getAllEnterpriseUsers(this.boxAPI, userEmail);
 
-```java
-public void addGroupUser(String groupId, String userEmail) {
-    Iterable<BoxUser.Info> users = BoxUser.getAllEnterpriseUsers(this.boxAPI, userEmail);
-
-    for (BoxUser.Info user : users) {
-        if (user.getLogin().toUpperCase().equals(userEmail.toUpperCase())) {
-            try {
-                BoxGroup group = new BoxGroup(boxAPI, groupId);
-                BoxUser boxUser = new BoxUser(this.boxAPI, user.getID());
-                BoxGroupMembership.Info groupMembershipInfo = group.addMembership(boxUser);
-            } catch (Exception ex) {
-                System.err.println("User already present");
-            }
-        }
-    }
-}
-
-```
-
+      for (BoxUser.Info user : users) {
+          if (user.getLogin().toUpperCase().equals(userEmail.toUpperCase())) {
+              try {
+                  BoxGroup group = new BoxGroup(boxAPI, groupId);
+                  BoxUser boxUser = new BoxUser(this.boxAPI, user.getID());
+                  BoxGroupMembership.Info groupMembershipInfo = group.addMembership(boxUser);
+              } catch (Exception ex) {
+                  System.err.println("User already present");
+              }
+          }
+      }
+  }
+  ```
 </Choice>
 
 <Choice option="programming.platform" unset color="none">
-
-<Danger>
-**前の手順が完了していません**
-
-最初に、手順 1 でお好みの言語/フレームワークを選択してください。
-
-</Danger>
-
+  <Danger>
+    **前の手順が完了していません**最初に、手順1でお好みの言語/フレームワークを選択してください。
+  </Danger>
 </Choice>
 
-メールアドレスを使用して Slack ユーザーを Box ユーザーと照合しているため、最初に、Slack のプロフィールのメールアドレスを使用して一致する Box ユーザーを検索します。見つかると、そのユーザーをチャンネルのグループに追加するための呼び出しが行われます。このグループは、ボットが最初に追加されたときに作成されています。
+メールアドレスを使用してSlackユーザーをBoxユーザーと照合しているため、最初に、Slackのプロフィールのメールアドレスを使用して一致するBoxユーザーを検索します。見つかると、そのユーザーをチャンネルのグループに追加するための呼び出しが行われます。このグループは、ボットが最初に追加されたときに作成されています。
 
 <Tip>
-
-Box の[ユーザーを取得](endpoint://get-users-id)エンドポイントでは、ユーザー ID によるユーザー検索のみ許可されています。メールアドレスでユーザーを検索するには、[会社ユーザーのリストを取得](endpoint://get-users)エンドポイントを使用し、`filter_term`オプションを検索対象のメールアドレスに設定します。
-
+  Boxの[ユーザーを取得](endpoint://get-users-id)エンドポイントでは、ユーザーIDによるユーザー検索のみ許可されています。メールアドレスでユーザーを検索するには、[会社ユーザーのリストを取得](endpoint://get-users)エンドポイントを使用し、`filter_term`オプションを検索対象のメールアドレスに設定します。
 </Tip>
 
-## グループからの Box ユーザーの削除
+## グループからのBoxユーザーの削除
 
-Slack チャンネルから退出したユーザーや削除されたユーザーは、共有グループコンテンツにアクセスできなくなるように Box グループから削除することもできます。
+Slackチャンネルから退出したユーザーや削除されたユーザーは、共有グループコンテンツにアクセスできなくなるようにBoxグループから削除することもできます。
 
 <Choice option="programming.platform" value="node" color="none">
+  `removeGroupUser`関数を次の内容に置き換えます。
 
-`removeGroupUser`関数を次の内容に置き換えます。
+  ```js
+  function removeGroupUser(groupId, email) {
+      client.groups.getMemberships(groupId).then(memberships => {
+          for (let i = 0; i < memberships.entries.length; i++) {
+              if (memberships.entries[i].user.login === email) {
+                  client.groups
+                  .removeMembership(memberships.entries[i].id)
+                  .then(() => {
+                      console.log('Group user removed')
+                  });
+                  break;
+              }
+          }
+      });
+  }
+  ```
+</Choice>
 
-```js
-function removeGroupUser(groupId, email) {
-  client.groups.getMemberships(groupId).then((memberships) => {
-    for (let i = 0; i < memberships.entries.length; i++) {
-      if (memberships.entries[i].user.login === email) {
-        client.groups.removeMembership(memberships.entries[i].id).then(() => {
-          console.log("Group user removed");
-        });
-        break;
+<Choice option="programming.platform" value="java" color="none">
+  `removeGroupUser`メソッドを次の内容に置き換えます。
+
+  ```java
+  public void removeGroupUser(String groupId, String userEmail) {
+    BoxGroup boxGroup = new BoxGroup(this.boxAPI, groupId);
+    Iterable<BoxGroupMembership.Info> memberships = boxGroup.getAllMemberships();
+    for (BoxGroupMembership.Info membershipInfo : memberships) {
+      if (membershipInfo.getUser().getLogin().toUpperCase().equals(userEmail.toUpperCase())) {
+        BoxGroupMembership membership = new BoxGroupMembership(this.boxAPI, membershipInfo.getID());
+        membership.delete();
       }
     }
-  });
-}
-```
-
-</Choice>
-
-<Choice option="programming.platform" value="java" color="none">
-
-`removeGroupUser`メソッドを次の内容に置き換えます。
-
-```java
-public void removeGroupUser(String groupId, String userEmail) {
-  BoxGroup boxGroup = new BoxGroup(this.boxAPI, groupId);
-  Iterable<BoxGroupMembership.Info> memberships = boxGroup.getAllMemberships();
-  for (BoxGroupMembership.Info membershipInfo : memberships) {
-    if (membershipInfo.getUser().getLogin().toUpperCase().equals(userEmail.toUpperCase())) {
-      BoxGroupMembership membership = new BoxGroupMembership(this.boxAPI, membershipInfo.getID());
-      membership.delete();
-    }
   }
-}
-
-```
-
+  ```
 </Choice>
 
 <Choice option="programming.platform" unset color="none">
-
-<Danger>
-**前の手順が完了していません**
-
-最初に、手順 1 でお好みの言語/フレームワークを選択してください。
-
-</Danger>
-
+  <Danger>
+    **前の手順が完了していません**最初に、手順1でお好みの言語/フレームワークを選択してください。
+  </Danger>
 </Choice>
 
-このコードでは、Slack のチャンネル ID となるグループ ID を取得し、グループの全メンバーを取得します。メールアドレスに基づいて、Slack チャンネルを退出したユーザーに一致するメンバーが見つかると、そのユーザーはそのメンバーシップ ID を使用してグループから削除されます。
+このコードでは、SlackのチャンネルIDとなるグループIDを取得し、グループの全メンバーを取得します。メールアドレスに基づいて、Slackチャンネルを退出したユーザーに一致するメンバーが見つかると、そのユーザーはそのメンバーシップIDを使用してグループから削除されます。
 
 <Tip>
-**データストアによるパフォーマンスの向上**
+  **データストアによるパフォーマンスの向上**
 
-グループメンバーシップを検索してメンバーシップ ID を取得すると、ローカルのデータストア (データベースなど) にメンバーシップ ID を保存する必要はなくなりますが、ユーザーレコードとともに Box メンバーシップ ID を保存するデータストアがあれば、このコードがより効率的なものになります。
+  グループメンバーシップを検索してメンバーシップIDを取得すると、ローカルのデータストア (データベースなど) にメンバーシップIDを保存する必要はなくなりますが、ユーザーレコードとともにBoxメンバーシップIDを保存するデータストアがあれば、このコードがより効率的なものになります。
 
-ローカルのデータストアを使用すると、メンバーシップ ID は、そのデータストアから取得できます。Box API を繰り返し呼び出してメンバーシップ ID を検索する必要はありません。
-
+  ローカルのデータストアを使用すると、メンバーシップIDは、そのデータストアから取得できます。Box APIを繰り返し呼び出してメンバーシップIDを検索する必要はありません。
 </Tip>
 
-## グループ名に対応した Box グループ ID の取得
+## グループ名に対応したBoxグループIDの取得
 
-次に必要な Box 関数には、主に 2 つの目的があります。
+次に必要なBox関数には、主に2つの目的があります。
 
-- 既存グループの Box グループ ID を返します。
-- グループが存在しない場合、Box グループを作成してその ID を返します。
+* 既存グループのBoxグループIDを返します。
+* グループが存在しない場合、Boxグループを作成してそのIDを返します。
 
 <Choice option="programming.platform" value="node" color="none">
+  `getGroupId`関数を次の内容に置き換えます。
 
-`getGroupId`関数を次の内容に置き換えます。
+  ```js
+  function getGroupId(groupName, callback) {
+      client.groups.getAll().then((groups) => {
+          const group = groups.entries.filter((g) => g.name === groupName)[0];
 
-```js
-function getGroupId(groupName, callback) {
-  client.groups.getAll().then((groups) => {
-    const group = groups.entries.filter((g) => g.name === groupName)[0];
-
-    if (!group) {
-      client.groups
-        .create(groupName, {
-          description: "Slack channel collaboration group",
-          invitability_level: "all_managed_users",
-        })
-        .then((group) => {
-          callback(group.id);
-        });
-    } else {
-      callback(group.id);
-    }
-  });
-}
-```
-
+          if (!group) {
+              client.groups
+                .create(groupName, {
+                    description: "Slack channel collaboration group",
+                    invitability_level: "all_managed_users",
+                })
+                .then((group) => {
+                    callback(group.id);
+                });
+          } else {
+              callback(group.id);
+          }
+      });
+  }
+  ```
 </Choice>
 
 <Choice option="programming.platform" value="java" color="none">
+  `getGroupId`メソッドを次の内容に置き換えます。
 
-`getGroupId`メソッドを次の内容に置き換えます。
+  ```java
+  public String getGroupId(String groupName) {
+      String groupId = new String();
 
-```java
-public String getGroupId(String groupName) {
-    String groupId = new String();
+      Iterable<BoxGroup.Info> groups = BoxGroup.getAllGroups(this.boxAPI);
+      for (BoxGroup.Info groupInfo : groups) {
+          if (groupInfo.getName().toUpperCase().equals(groupName)) {
+              groupId = groupInfo.getID();
+          }
+      }
 
-    Iterable<BoxGroup.Info> groups = BoxGroup.getAllGroups(this.boxAPI);
-    for (BoxGroup.Info groupInfo : groups) {
-        if (groupInfo.getName().toUpperCase().equals(groupName)) {
-            groupId = groupInfo.getID();
-        }
-    }
+      if (groupId.isEmpty()) {
+          BoxGroup.Info groupInfo = BoxGroup.createGroup(boxAPI, groupName);
+          groupId = groupInfo.getID();
+      }
 
-    if (groupId.isEmpty()) {
-        BoxGroup.Info groupInfo = BoxGroup.createGroup(boxAPI, groupName);
-        groupId = groupInfo.getID();
-    }
-
-    return groupId;
-}
-
-```
-
+      return groupId;
+  }
+  ```
 </Choice>
 
 <Choice option="programming.platform" unset color="none">
-
-<Danger>
-**前の手順が完了していません**
-
-最初に、手順 1 でお好みの言語/フレームワークを選択してください。
-
-</Danger>
-
+  <Danger>
+    **前の手順が完了していません**最初に、手順1でお好みの言語/フレームワークを選択してください。
+  </Danger>
 </Choice>
 
-このコードでは、社内のすべてのグループを取得し、Slack チャンネル ID とグループ名の照合を試みます。いずれかのグループが一致すると、そのグループ ID が返されます。
+このコードでは、社内のすべてのグループを取得し、SlackチャンネルIDとグループ名の照合を試みます。いずれかのグループが一致すると、そのグループIDが返されます。
 
-一致するものがない場合は、新しい Box グループが作成され、そのグループの ID が返されます。グループの名前は Slack チャンネル ID に基づいて付けられます。これはスラッシュコマンドと User Event の両方で返される定数であり、追加の関数がなくても簡単に検索できるようにするためです。
+一致するものがない場合は、新しいBoxグループが作成され、そのグループのIDが返されます。グループの名前はSlackチャンネルIDに基づいて付けられます。これはスラッシュコマンドとUser Eventの両方で返される定数であり、追加の関数がなくても簡単に検索できるようにするためです。
 
 ## グループへの共有コンテンツの追加
 
-最終的に、このアプリケーション全体の主な目的は、ユーザーが自分の Box アカウントにあるファイルやフォルダをグループ内の他のユーザー全員と共有できるようにすることです。
+最終的に、このアプリケーション全体の主な目的は、ユーザーが自分のBoxアカウントにあるファイルやフォルダをグループ内の他のユーザー全員と共有できるようにすることです。
 
 ここまでのすべての機能を基に、次の関数でそのタスクを実行します。
 
 <Choice option="programming.platform" value="node" color="none">
+  `processContent`関数を次の内容に置き換えます。
 
-`processContent`関数を次の内容に置き換えます。
+  ```js
+  function processContent(user, channel, itemType, itemId) {
+      getGroupId(channel, function (groupId) {
+          const email = user.profile.email;
 
-```js
-function processContent(user, channel, itemType, itemId) {
-  getGroupId(channel, function (groupId) {
-    const email = user.profile.email;
+          client.enterprise.getUsers({ filter_term: email }).then((users) => {
+              if (users.entries.length > 0) {
+                  client.asUser(users.entries[0].id);
+                  const collabRole = client.collaborationRoles.VIEWER;
+                  const collabOptions = { type: itemType };
 
-    client.enterprise.getUsers({ filter_term: email }).then((users) => {
-      if (users.entries.length > 0) {
-        client.asUser(users.entries[0].id);
-        const collabRole = client.collaborationRoles.VIEWER;
-        const collabOptions = { type: itemType };
-
-        client.collaborations
-          .createWithGroupID(groupId, itemId, collabRole, collabOptions)
-          .then((collaboration) => {
-            console.log(`Content added with collaboration ID ${collaboration.id}`);
-          })
-          .catch(function (err) {
-            console.log(
-              util.inspect(err.response.body, {
-                showHidden: false,
-                depth: null,
-              })
-            );
+                  client.collaborations
+                      .createWithGroupID(groupId, itemId, collabRole, collabOptions)
+                      .then((collaboration) => {
+                          console.log(
+                              `Content added with collaboration ID ${collaboration.id}`
+                          );
+                      })
+                      .catch(function (err) {
+                          console.log(
+                            util.inspect(err.response.body, {
+                                showHidden: false,
+                                depth: null,
+                            })
+                          );
+                      });
+              }
           });
-      }
-    });
-  });
-}
-```
-
+      });
+  }
+  ```
 </Choice>
 
 <Choice option="programming.platform" value="java" color="none">
+  `processContent`メソッドを次の内容に置き換えます。
 
-`processContent`メソッドを次の内容に置き換えます。
+  ```java
+  public void processContent(JSONObject userResponse, String channel, String fType, String fId) {
+      String groupId = getGroupId(channel);
 
-```java
-public void processContent(JSONObject userResponse, String channel, String fType, String fId) {
-    String groupId = getGroupId(channel);
+      JSONObject userObj = (JSONObject) userResponse.get("user");
+      JSONObject userProfile = (JSONObject) userObj.get("profile");
+      String userEmail = (String) userProfile.get("email");
 
-    JSONObject userObj = (JSONObject) userResponse.get("user");
-    JSONObject userProfile = (JSONObject) userObj.get("profile");
-    String userEmail = (String) userProfile.get("email");
+      Iterable<BoxUser.Info> users = BoxUser.getAllEnterpriseUsers(this.boxAPI, userEmail);
 
-    Iterable<BoxUser.Info> users = BoxUser.getAllEnterpriseUsers(this.boxAPI, userEmail);
+      for (BoxUser.Info user : users) {
+          if (user.getLogin().toUpperCase().equals(userEmail.toUpperCase())) {
+              String uid = user.getID();
+              boxAPI.asUser(uid);
 
-    for (BoxUser.Info user : users) {
-        if (user.getLogin().toUpperCase().equals(userEmail.toUpperCase())) {
-            String uid = user.getID();
-            boxAPI.asUser(uid);
+              BoxCollaborator collabGroup = new BoxGroup(boxAPI, groupId);
 
-            BoxCollaborator collabGroup = new BoxGroup(boxAPI, groupId);
+              try {
+                  if (fType.equals("file")) {
+                      BoxFile file = new BoxFile(boxAPI, fId);
+                      file.collaborate(collabGroup, BoxCollaboration.Role.VIEWER, false, false);
+                  } else if (fType.equals("folder")) {
+                      BoxFolder folder = new BoxFolder(boxAPI, fId);
+                      folder.collaborate(collabGroup, BoxCollaboration.Role.VIEWER);
+                  }
+              } catch (Exception ex) {
+                  System.err.println("Collaboration failed");
+              }
 
-            try {
-                if (fType.equals("file")) {
-                    BoxFile file = new BoxFile(boxAPI, fId);
-                    file.collaborate(collabGroup, BoxCollaboration.Role.VIEWER, false, false);
-                } else if (fType.equals("folder")) {
-                    BoxFolder folder = new BoxFolder(boxAPI, fId);
-                    folder.collaborate(collabGroup, BoxCollaboration.Role.VIEWER);
-                }
-            } catch (Exception ex) {
-                System.err.println("Collaboration failed");
-            }
-
-            boxAPI.asSelf();
-        }
-    }
-}
-
-```
-
+              boxAPI.asSelf();
+          }
+      }
+  }
+  ```
 </Choice>
 
 <Choice option="programming.platform" unset color="none">
-
-<Danger>
-**前の手順が完了していません**
-
-最初に、手順 1 でお好みの言語/フレームワークを選択してください。
-
-</Danger>
-
+  <Danger>
+    **前の手順が完了していません**最初に、手順1でお好みの言語/フレームワークを選択してください。
+  </Danger>
 </Choice>
 
-このコードでは、最初に、コンテンツの共有先となる Slack チャンネル用に Box グループ ID を取得します。
+このコードでは、最初に、コンテンツの共有先となるSlackチャンネル用にBoxグループIDを取得します。
 
-スラッシュコマンドを送信したユーザーの Box アカウントからファイルやフォルダを共有するため、次に、そのユーザーの Box ユーザープロフィールをメールアドレスに基づいて取得します。
+スラッシュコマンドを送信したユーザーのBoxアカウントからファイルやフォルダを共有するため、次に、そのユーザーのBoxユーザープロフィールをメールアドレスに基づいて取得します。
 
-最後に、グループ ID を使用して、コンテンツでグループとコラボレーションするための呼び出しを行います。
+最後に、グループIDを使用して、コンテンツでグループとコラボレーションするための呼び出しを行います。
 
 ## まとめ
 
-- Box クライアントをインスタンス化しました。
-- Box グループユーザーを追加および削除するための関数を作成しました。
-- コンテンツをグループと共有するための関数を作成しました。
+* Boxクライアントをインスタンス化しました。
+* Boxグループユーザーを追加および削除するための関数を作成しました。
+* コンテンツをグループと共有するための関数を作成しました。
 
 <Observe option="programming.platform" value="node,java">
-
-<Next>
-
-Box の関数を設定しました
-
-</Next>
-
+  <Next>Boxの関数を設定しました</Next>
 </Observe>
 
-[step2]: /ja/guides/collaborations/connect-slack-to-group-collabs/configure-box
-[service-account]: /ja/platform/user-types/#service-account/
+[step2]: /guides/collaborations/connect-slack-to-group-collabs/configure-box
+
+[service-account]: /platform/user-types/#service-account/

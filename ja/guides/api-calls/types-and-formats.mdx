@@ -1,25 +1,15 @@
 ---
-title: "タイプと形式"
-rank: 1
-related_endpoints: []
-related_guides: []
-required_guides: []
 alias_paths:
-  - /docs/object-model
-category_id: api-calls
-subcategory_id: null
-is_index: false
-id: api-calls/types-and-formats
-type: guide
-total_steps: 9
-sibling_id: api-calls
-parent_id: api-calls
-next_page_id: api-calls/status-codes
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/types-and-formats.md
+  0: /docs/object-model
+rank: 1
+related_endpoints: {}
+related_guides: {}
+required_guides: {}
+title: タイプと形式
+
 fullyTranslated: true
 ---
+
 以下のセクションでは、Box API内で使用される可能性があるタイプと形式に関する基本的なコンセプトについて説明します。
 
 ## リクエスト
@@ -30,9 +20,7 @@ Box APIは、リクエスト本文でJSONを使用します。このルールに
 * [`POST /files/content`][post-files-content]エンドポイントなど、バイナリデータをアップロードするのに使用されるほとんどのAPIでは、コンテンツタイプが`multipart/form-data`のフォームデータとしてデータが送信されることを予期します。
 
 <Note>
-
-必須ではありませんが、`content-type: application/json`のように、送信されるデータのコンテンツタイプを定義するヘッダーを各APIリクエストで渡すことを強くお勧めします。
-
+  必須ではありませんが、`content-type: application/json`のように、送信されるデータのコンテンツタイプを定義するヘッダーを各APIリクエストで渡すことを強くお勧めします。
 </Note>
 
 ### ヘッダー
@@ -53,7 +41,12 @@ Box APIは[RFC 3339][rfc3339]タイムスタンプをサポートします。リ
 
 {/* Commenting this for now due to issues */}
 
-{/* When making requests, when a timezone is omitted and a time has been provided the Pacific timezone is assumed. In responses, the timezone is based on your enterprise settings. It will be the default user settings set by your admin. Please note that even if a managed user changes their timezone in their account settings, this this will have no affect on the timezone returned by the API. */}
+{/* When making requests, when a timezone is omitted and a time has been
+  provided
+  the Pacific timezone is assumed. In responses, the timezone is based on your
+  enterprise settings. It will be the default user settings set by your admin.
+  Please note that even if a managed user changes their timezone in their account
+  settings, this this will have no affect on the timezone returned by the API. */}
 
 企業のタイムゾーンは経時的に変化するため、タイムゾーンはファイルやフォルダによって異なる場合があります。一般的な例は、夏時間です。標準時に作成された項目のタイムゾーンは、夏時間中に作成された項目とは異なります。このため、APIから返された日付を処理するには、`RFC3339`準拠の日時パーサーを使用することが重要です。
 
@@ -68,9 +61,7 @@ UTC`の開始後の日付に制限されます。
 * バイナリデータのリクエストに使用されるAPIでは、バイナリデータが添付されたステータスコード`200 OK`が返されるか、`202 Accepted`が返されるか、またはステータスコード`302 Found`とともに実際のバイナリファイルを指す`location`ヘッダーのみ (本文なし) が返されます。
 
 <Note>
-
-`content-type`レスポンスヘッダーを使用すると、APIで返されるコンテンツのタイプがわかります。さらに、各APIエンドポイントのレスポンスタイプについては、APIリファレンスドキュメントで説明されています。
-
+  `content-type`レスポンスヘッダーを使用すると、APIで返されるコンテンツのタイプがわかります。さらに、各APIエンドポイントのレスポンスタイプについては、APIリファレンスドキュメントで説明されています。
 </Note>
 
 ### ヘッダー
@@ -91,7 +82,6 @@ HTTP仕様に従い、Box APIのすべてのレスポンスヘッダー名では
   "type": "folder",
   ...
 }
-
 ```
 
 これらのリソースはすべて、常に1つのIDとリソースのタイプを返します。
@@ -121,7 +111,6 @@ APIレスポンスで複数の項目が返される場合は、コレクショ�
     }
   ]
 }
-
 ```
 
 | フィールド         | 必須かどうか? |                                                              |
@@ -133,7 +122,6 @@ APIレスポンスで複数の項目が返される場合は、コレクショ�
 | `order`       | いいえ     | 並べ替えをサポートするエンドポイントに対して、結果が返される順番を指定します。                      |
 | `next_marker` | いいえ     | マーカーベースのページネーションをサポートするエンドポイントに対して、返すことができる次のページのマーカーを指定します。 |
 | `prev_marker` | いいえ     | マーカーベースのページネーションをサポートするエンドポイントに対して、返すことができる前のページのマーカーを指定します。 |
-
 
 ### リクエストID
 
@@ -148,15 +136,12 @@ APIコールがエラーで返されると、BoxのAPIから`request_id`フィ�
   "message": "Method Not Allowed",
   "request_id": "abcdef123456"
 }
-
 ```
 
 特定のエラーについてサポートに連絡する場合は、サポートチームがリクエストをすぐに見つけられるよう、`request_id`を含むAPIレスポンス全体を提供してください。
 
 <Note>
-
-ほとんどのAPIコールでは、`box-request-id`レスポンスヘッダーも返されます。このヘッダーの値を、エラーレスポンスの本文に含まれる`request_id`値と混同しないでください。
-
+  ほとんどのAPIコールでは、`box-request-id`レスポンスヘッダーも返されます。このヘッダーの値を、エラーレスポンスの本文に含まれる`request_id`値と混同しないでください。
 </Note>
 
 ### 大きな数値

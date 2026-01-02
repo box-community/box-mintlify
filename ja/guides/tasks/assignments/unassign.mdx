@@ -1,95 +1,83 @@
 ---
-title: "タスク割り当ての解除"
 related_endpoints:
-  - delete_task_assignments_id
+  0: delete_task_assignments_id
 related_guides:
-  - tasks/assignments/assign
-  - tasks/assignments/change-state
-category_id: tasks
-subcategory_id: tasks/assignments
-is_index: false
-id: tasks/assignments/unassign
-rank: 2
-type: guide
-total_steps: 6
-sibling_id: tasks/assignments
-parent_id: tasks/assignments
-next_page_id: tasks/assignments/update-message
-previous_page_id: tasks/assignments/assign
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/2-unassign.md
+  0: tasks/assignments/assign
+  1: tasks/assignments/change-state
+title: タスク割り当ての解除
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-タスクの割り当てを解除するには、タスク割り当ての`id`を指定して[`DELETE /task_assignments`](/ja/reference/delete-task-assignments-id) APIを呼び出します。
+タスクの割り当てを解除するには、タスク割り当ての`id`を指定して[`DELETE /task_assignments`](/reference/delete-task-assignments-id) APIを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/task_assignments/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/task_assignments/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.taskAssignments.deleteTaskAssignmentById(taskAssignment.id!);
-```
+  ```typescript Node/TypeScript v10
+  await client.taskAssignments.deleteTaskAssignmentById(taskAssignment.id!);
+  ```
 
-```python Python v10
-client.task_assignments.delete_task_assignment_by_id(task_assignment.id)
-```
+  ```python Python v10
+  client.task_assignments.delete_task_assignment_by_id(task_assignment.id)
+  ```
 
-```csharp .NET v10
-await client.TaskAssignments.DeleteTaskAssignmentByIdAsync(taskAssignmentId: NullableUtils.Unwrap(taskAssignment.Id));
-```
+  ```csharp .NET v10
+  await client.TaskAssignments.DeleteTaskAssignmentByIdAsync(taskAssignmentId: NullableUtils.Unwrap(taskAssignment.Id));
+  ```
 
-```swift Swift v10
-try await client.taskAssignments.deleteTaskAssignmentById(taskAssignmentId: taskAssignment.id!)
-```
+  ```swift Swift v10
+  try await client.taskAssignments.deleteTaskAssignmentById(taskAssignmentId: taskAssignment.id!)
+  ```
 
-```java Java v10
-client.getTaskAssignments().deleteTaskAssignmentById(taskAssignment.getId())
-```
+  ```java Java v10
+  client.getTaskAssignments().deleteTaskAssignmentById(taskAssignment.getId())
+  ```
 
-```java Java v5
-BoxTaskAssignment taskAssignment = new BoxTaskAssignment(api, "id");
-taskAssignment.delete();
-```
+  ```java Java v5
+  BoxTaskAssignment taskAssignment = new BoxTaskAssignment(api, "id");
+  taskAssignment.delete();
+  ```
 
-```py Python v4
-client.task_assignment(assignment_id='12345').delete()
-print('The task assignment was successfully delete!')
-```
+  ```py Python v4
+  client.task_assignment(assignment_id='12345').delete()
+  print('The task assignment was successfully delete!')
+  ```
 
-```csharp .NET v6
-await client.TasksManager.DeleteTaskAssignmentAsync("12345");
-```
+  ```csharp .NET v6
+  await client.TasksManager.DeleteTaskAssignmentAsync("12345");
+  ```
 
-```js Node v4
-client.tasks.deleteAssignment('12345')
- .then(() => {
-  // deletion succeeded — no value returned
- });
-```
+  ```js Node v4
+  client.tasks.deleteAssignment('12345')
+   .then(() => {
+    // deletion succeeded — no value returned
+   });
+  ```
 </CodeGroup>
 
 <Warning>
-**権限**
+  # 権限
 
-割り当てを削除するユーザーは、ファイルのコラボレータである必要があります。
-
+  割り当てを削除するユーザーは、ファイルのコラボレータである必要があります。
 </Warning>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Unassign task", href: "/reference/delete-task-assignments-id", badge: "DELETE" }
-  ]}
+  { label: "Unassign task", href: "/reference/delete-task-assignments-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "ガイド" },
-    { label: "タスク割り当て状態の変更", href: "/ja/guides/tasks/assignments/change-state", badge: "ガイド" }
-  ]}
+  { label: "Assign a task to a user", href: "/guides/tasks/assignments/assign", badge: "GUIDE" },
+  { label: "Change task assignment state", href: "/guides/tasks/assignments/change-state", badge: "GUIDE" }
+]}
 />

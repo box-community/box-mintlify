@@ -1,232 +1,201 @@
 ---
-title: "検索"
-rank: 210
-related_endpoints:
-  - get_search
-related_guides:
-  - metadata/queries
-required_guides: []
 alias_paths:
-  - /docs/search-for-content
-  - /search/full-text-search
-category_id: search
-subcategory_id: null
-is_index: true
-id: search
-type: guide
-total_steps: 9
-sibling_id: guides
-parent_id: guides
-next_page_id: ""
-previous_page_id: search/fields
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/search/index.md
+  0: /docs/search-for-content
+  1: /search/full-text-search
+rank: 210
+related_endpoints: None
+related_guides: None
+required_guides: ""
+sidebarTitle: Overview
+title: 検索
+
 fullyTranslated: true
 ---
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-Box API を使用すると、ファイルコンテンツ検索クエリを使用して Box 内のコンテンツを見つけることができます。Box 検索 API は、サポート対象のすべての SDK と CLI で使用できます。
+Box APIを使用すると、ファイルコンテンツ検索クエリを使用してBox内のコンテンツを見つけることができます。Box検索APIは、サポート対象のすべてのSDKとCLIで使用できます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/search?query=sales" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/search?query=sales" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
-
-```typescript Node/TypeScript v10
-await client.search.searchForContent({
-  ancestorFolderIds: ["0"],
-  mdfilters: [
-    {
-      filters: searchFilters,
-      scope: "enterprise" as MetadataFilterScopeField,
-      templateKey: templateKey,
-    } satisfies MetadataFilter,
-  ],
-} satisfies SearchForContentQueryParams);
-```
-
-```python Python v10
-client.search.search_for_content(
-    ancestor_folder_ids=["0"],
-    mdfilters=[
-        MetadataFilter(
-            filters=search_filters,
-            scope=MetadataFilterScopeField.ENTERPRISE,
-            template_key=template_key,
-        )
+  ```typescript Node/TypeScript v10
+  await client.search.searchForContent({
+    ancestorFolderIds: ['0'],
+    mdfilters: [
+      {
+        filters: searchFilters,
+        scope: 'enterprise' as MetadataFilterScopeField,
+        templateKey: templateKey,
+      } satisfies MetadataFilter,
     ],
-)
-```
+  } satisfies SearchForContentQueryParams);
+  ```
 
-```java Java v10
-client.getSearch().searchForContent(new SearchForContentQueryParams.Builder().ancestorFolderIds(Arrays.asList("0")).mdfilters(Arrays.asList(new MetadataFilter.Builder().scope(MetadataFilterScopeField.ENTERPRISE).templateKey(templateKey).filters(searchFilters).build())).build())
-```
+  ```python Python v10
+  client.search.search_for_content(
+      ancestor_folder_ids=["0"],
+      mdfilters=[
+          MetadataFilter(
+              filters=search_filters,
+              scope=MetadataFilterScopeField.ENTERPRISE,
+              template_key=template_key,
+          )
+      ],
+  )
+  ```
 
-```java Java v5
-// Find the first 10 files matching "taxes"
-long offsetValue = 0;
-long limitValue = 10;
-BoxSearch boxSearch = new BoxSearch(api);
-BoxSearchParameters searchParams = new BoxSearchParameters();
-searchParams.setQuery("taxes");
-searchParams.setType("file");
-PartialCollection<BoxItem.Info> searchResults = boxSearch.searchRange(offsetValue, limitValue, searchParams);
-```
+  ```java Java v10
+  client.getSearch().searchForContent(new SearchForContentQueryParams.Builder().ancestorFolderIds(Arrays.asList("0")).mdfilters(Arrays.asList(new MetadataFilter.Builder().scope(MetadataFilterScopeField.ENTERPRISE).templateKey(templateKey).filters(searchFilters).build())).build())
+  ```
 
-```python Python v4
-items = client.search().query(query='TEST QUERY', limit=100, file_extensions=['pdf', 'doc'])
-for item in items:
-    print(f'The item ID is {item.id} and the item name is {item.name}')
-```
+  ```java Java v5
+  // Find the first 10 files matching "taxes"
+  long offsetValue = 0;
+  long limitValue = 10;
+  BoxSearch boxSearch = new BoxSearch(api);
+  BoxSearchParameters searchParams = new BoxSearchParameters();
+  searchParams.setQuery("taxes");
+  searchParams.setType("file");
+  PartialCollection<BoxItem.Info> searchResults = boxSearch.searchRange(offsetValue, limitValue, searchParams);
+  ```
 
-```cs .NET v6
-// Search for PDF or Word documents matching "Meeting Notes"
-BoxCollection<BoxItem> results = await client.SearchManager
-    .QueryAsync("Meeting Notes", fileExtensions: new { "pdf", "docx" });
-```
+  ```python Python v4
+  items = client.search().query(query='TEST QUERY', limit=100, file_extensions=['pdf', 'doc'])
+  for item in items:
+      print(f'The item ID is {item.id} and the item name is {item.name}')
+  ```
 
-```javascript Node v4
-// Search for PDF or Word documents matching "Mobile"
-client.search
-  .query("Mobile", {
-    fields: "name,modified_at,size,extension,permissions,sync_state",
-    file_extensions: "pdf,doc",
-    limit: 200,
-    offset: 0,
-  })
-  .then((results) => {
-    /* results -> {
-			total_count: 1,
-			entries: 
-			[ { type: 'file',
-				id: '11111',
-				sequence_id: '1',
-				etag: '1',
-				sha1: 'f89d97c5eea0a68e2cec911s932eca34a52355d2',
-				name: 'Box for Sales - Empowering Your Mobile Worker White paper 2pg (External).pdf',
-				description: '',
-				size: 408979,
-				path_collection: 
-					{ total_count: 2,
-					entries: 
-					[ { type: 'folder',
-						id: '0',
-						sequence_id: null,
-						etag: null,
-						name: 'All Files' },
-						{ type: 'folder',
-						id: '22222',
-						sequence_id: '1',
-						etag: '1',
-						name: 'Marketing Active Work' } ] },
-				created_at: '2014-05-17T12:59:45-07:00',
-				modified_at: '2014-05-17T13:00:20-07:00',
-				trashed_at: null,
-				purged_at: null,
-				content_created_at: '2014-05-17T12:58:58-07:00',
-				content_modified_at: '2014-05-17T12:58:58-07:00',
-				created_by: 
-					{ type: 'user',
-					id: '33333',
-					name: 'Example User',
-					login: 'user@example.com' },
-				modified_by: 
-					{ type: 'user',
-					id: '33333',
-					name: 'Example User',
-					login: 'user@example.com' },
-				owned_by: 
-					{ type: 'user',
-					id: '33333',
-					name: 'Example User',
-					login: 'user@example.com' },
-				shared_link: null,
-				parent: 
-					{ type: 'folder',
-					id: '22222',
-					sequence_id: '1',
-					etag: '1',
-					name: 'Marketing Active Work' },
-				item_status: 'active' } ],
-			limit: 200,
-			offset: 0 }
-		*/
-  });
-```
+  ```cs .NET v6
+  // Search for PDF or Word documents matching "Meeting Notes"
+  BoxCollection<BoxItem> results = await client.SearchManager
+      .QueryAsync("Meeting Notes", fileExtensions: new { "pdf", "docx" });
+  ```
 
+  ```javascript Node v4
+  // Search for PDF or Word documents matching "Mobile"
+  client.search.query(
+  	'Mobile',
+  	{
+  		fields: 'name,modified_at,size,extension,permissions,sync_state',
+  		file_extensions: 'pdf,doc',
+  		limit: 200,
+  		offset: 0
+  	})
+  	.then(results => {
+  		/* results -> {
+  			total_count: 1,
+  			entries: 
+  			[ { type: 'file',
+  				id: '11111',
+  				sequence_id: '1',
+  				etag: '1',
+  				sha1: 'f89d97c5eea0a68e2cec911s932eca34a52355d2',
+  				name: 'Box for Sales - Empowering Your Mobile Worker White paper 2pg (External).pdf',
+  				description: '',
+  				size: 408979,
+  				path_collection: 
+  					{ total_count: 2,
+  					entries: 
+  					[ { type: 'folder',
+  						id: '0',
+  						sequence_id: null,
+  						etag: null,
+  						name: 'All Files' },
+  						{ type: 'folder',
+  						id: '22222',
+  						sequence_id: '1',
+  						etag: '1',
+  						name: 'Marketing Active Work' } ] },
+  				created_at: '2014-05-17T12:59:45-07:00',
+  				modified_at: '2014-05-17T13:00:20-07:00',
+  				trashed_at: null,
+  				purged_at: null,
+  				content_created_at: '2014-05-17T12:58:58-07:00',
+  				content_modified_at: '2014-05-17T12:58:58-07:00',
+  				created_by: 
+  					{ type: 'user',
+  					id: '33333',
+  					name: 'Example User',
+  					login: 'user@example.com' },
+  				modified_by: 
+  					{ type: 'user',
+  					id: '33333',
+  					name: 'Example User',
+  					login: 'user@example.com' },
+  				owned_by: 
+  					{ type: 'user',
+  					id: '33333',
+  					name: 'Example User',
+  					login: 'user@example.com' },
+  				shared_link: null,
+  				parent: 
+  					{ type: 'folder',
+  					id: '22222',
+  					sequence_id: '1',
+  					etag: '1',
+  					name: 'Marketing Active Work' },
+  				item_status: 'active' } ],
+  			limit: 200,
+  			offset: 0 }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 <Note>
-
-検索 API で使用できる各種機能の詳細については、[リファレンスドキュメント](/ja/reference/get-search)を参照してください。
-
+  検索APIで使用できる各種機能の詳細については、[リファレンスドキュメント](/reference/get-search)を参照してください。
 </Note>
 
 ## クエリ演算子
 
-検索 API は、`AND`、`OR`、`NOT`、`""`など、いくつかの[検索演算子](/ja/guides/search/query-operators)をサポートします。これらの演算子を使用すると、より複雑な組み合わせの検索語句に一致する項目のみが返されるように検索結果を絞り込むことができます。
+検索APIは、`AND`、`OR`、`NOT`、`""`など、いくつかの[検索演算子](/guides/search/query-operators)をサポートします。これらの演算子を使用すると、より複雑な組み合わせの検索語句に一致する項目のみが返されるように検索結果を絞り込むことができます。
 
 ```sh
 curl -i -X GET "https://api.box.com/2.0/search?query=box%20AND%20sales" \
     -H "Authorization: Bearer <ACCESS_TOKEN>"
-
 ```
 
-<Card href="/ja/guides/search/query-operators" title="論理演算子の使用の詳細を確認する" />
+<Card href="/guides/search/query-operators" arrow title="論理演算子の使用の詳細を確認する" />
 
 ## 検索インデックス作成
 
-Box は、Box に格納されているファイルまたはフォルダの検索インデックスを保持します。ファイルまたはフォルダが変更されるたびに、これらの単語がインデックスに追加されます。検索が実行されると、API は、検索インデックスで、クエリに一致するファイルやフォルダを探します。Box 内でコンテンツが追加、更新、または削除されると、それに応じて検索インデックスが更新されます。
+Boxは、Boxに格納されているファイルまたはフォルダの検索インデックスを保持します。ファイルまたはフォルダが変更されるたびに、これらの単語がインデックスに追加されます。検索が実行されると、APIは、検索インデックスで、クエリに一致するファイルやフォルダを探します。Box内でコンテンツが追加、更新、または削除されると、それに応じて検索インデックスが更新されます。
 
-<Card href="/ja/guides/search/indexing" title="Boxの検索インデックスの詳細を確認する" />
+<Card href="/guides/search/indexing" arrow title="Boxの検索インデックスの詳細を確認する" />
 
 <Info>
-
-10 分経過してもインデックスが更新されない場合もあります。このような場合は、[Box サポート][support]に問い合わせて問題を解決することをお勧めします。
-
+  10分経過してもインデックスが更新されない場合もあります。このような場合は、[Boxサポート][support]に問い合わせて問題を解決することをお勧めします。
 </Info>
 
 <Warning>
-
-ファイルコンテンツ検索が無効になっている企業 (たとえば、[KeySafe][keysafe]をご利用のお客様) の場合、ドキュメント内の文字を検索できません。ファイルコンテンツ検索が無効の状態でドキュメントを調べる必要がある場合は、アカウントチームまでお問い合わせください。
-
+  ファイルコンテンツ検索が無効になっている企業 (たとえば、[KeySafe][keysafe]をご利用のお客様) の場合、ドキュメント内の文字を検索できません。ファイルコンテンツ検索が無効の状態でドキュメントを調べる必要がある場合は、アカウントチームまでお問い合わせください。
 </Warning>
 
 ## メタデータクエリとの比較
 
-一見、検索クエリ API は[メタデータクエリ API][mdq]とよく似ていますが、動作には重要な違いがいくつかあります。大まかに言うと、メタデータクエリは正確さとスループットの向上のために最適化されているのに対し、通常の検索は、人間のユーザーとの関連度のために最適化されています。
+一見、検索クエリAPIは[メタデータクエリAPI][mdq]とよく似ていますが、動作には重要な違いがいくつかあります。大まかに言うと、メタデータクエリは正確さとスループットの向上のために最適化されているのに対し、通常の検索は、人間のユーザーとの関連度のために最適化されています。
 
-|                           | [メタデータクエリ API][mdq_api]                                                                                                                                    | [検索 API][search]                                                                                                                                                                                                                                                                                                              |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| インデックスの作成対象    | この API では、検索対象のメタデータテンプレートの値に基づいてファイル/フォルダのみが返されます。                                                                   | この API では、項目名、説明、コンテンツ (最初の 10,000 バイトまで) の値のほか、関連付けられたメタデータテンプレートインスタンスに基づいてファイル、フォルダ、ウェブリンクが返されます。                                                                                                                                         |
-| インデックス作成時間      | この API では、ファイルまたはフォルダのメタデータが追加、削除、更新されるとすぐに正確な結果が返されます。                                                          | この API は、検索インデックスの作成が遅延すると、その影響を受けます。この遅延は通常 10 分ですが、場合によっては長くなることがあります。つまり、メタデータが更新されてから 10 分を経過しても項目が返されない場合があります。                                                                                                     |
-| 一致                      | この API では、SQL の規則に基づいて完全一致が使用されます。結果は、指定した並べ替え順を基に返されます。                                                            | この API では、あいまい一致が使用されるため、文字列のトークン化、特殊文字の削除、およびその他の検索コンセプトに基づいて異なる結果が返される場合があります。結果の順序は、項目の関連度または更新日に基づいています。                                                                                                             |
-| 条件付きロジック          | この API は、比較演算子を使用するマルチパートブール式をサポートします。                                                                                            | この API では、メタデータによるクエリのサポートが限定的です。サポートされるのは、一度に 1 つのメタデータテンプレートに対するクエリのみで、単純なクエリ操作のみが可能です。                                                                                                                                                      |
-| レスポンスタイプ          | この API では、一致したファイル/フォルダと、クエリによって一致した関連するメタデータの両方が返されます。                                                           | この API で返されるのは、一致した項目のみです。各項目のメタデータを返すには、後続の API コールが必要です。                                                                                                                                                                                                                      |
-| スループット (Throughput) | この API には現在、ユーザーごとのレート制限のほか、企業あたりのリクエスト数が 10 件/秒という制限があります。                                                       | この API では、1 ユーザーあたりの検索数は 6 件/秒、企業あたりの検索数は最大 60 件/分および 12 件/秒がサポートされています。                                                                                                                                                                                                     |
-| 規模                      | この API では、指定したメタデータテンプレートを使用して返される項目数に制限はありません。一致する結果が 2,000 件以下になるクエリのみを送信することをお勧めします。 | この API には、指定したメタデータテンプレートを使用して返される項目数に制限はありません。ただし、検索に一致する項目数が増えるにつれ、レスポンス時間が大幅に増大します。この API では、1 つのクエリに対する結果は 1,000 万件までという制限があります。一致する結果が 50,000 件以下になるクエリのみを送信することをお勧めします。 |
-| スコープ                  | この API は常に、ユーザーがアクセスできるコンテンツに制限されています。                                                                                            | この API は、ユーザーがアクセスできるコンテンツ (`​user_content​`) または社内のすべてのコンテンツ (`​enterprise_content​`) のいずれかに制限される場合があります。                                                                                                                                                               |
+|                     | [メタデータクエリAPI][mdq_api]                                                              | [検索API][search]                                                                                                                                                      |
+| ------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  インデックスの作成対象        | このAPIでは、検索対象のメタデータテンプレートの値に基づいてファイル/フォルダのみが返されます。                                   | このAPIでは、項目名、説明、コンテンツ (最初の10,000バイトまで) の値のほか、関連付けられたメタデータテンプレートインスタンスに基づいてファイル、フォルダ、ウェブリンクが返されます。                                                                     |
+|  インデックス作成時間         | このAPIでは、ファイルまたはフォルダのメタデータが追加、削除、更新されるとすぐに正確な結果が返されます。                               | このAPIは、検索インデックスの作成が遅延すると、その影響を受けます。この遅延は通常10分ですが、場合によっては長くなることがあります。つまり、メタデータが更新されてから10分を経過しても項目が返されない場合があります。                                                       |
+|  一致                 | このAPIでは、SQLの規則に基づいて完全一致が使用されます。結果は、指定した並べ替え順を基に返されます。                               | このAPIでは、あいまい一致が使用されるため、文字列のトークン化、特殊文字の削除、およびその他の検索コンセプトに基づいて異なる結果が返される場合があります。結果の順序は、項目の関連度または更新日に基づいています。                                                           |
+|  条件付きロジック           | このAPIは、比較演算子を使用するマルチパートブール式をサポートします。                                                | このAPIでは、メタデータによるクエリのサポートが限定的です。サポートされるのは、一度に1つのメタデータテンプレートに対するクエリのみで、単純なクエリ操作のみが可能です。                                                                                |
+|  レスポンスタイプ           | このAPIでは、一致したファイル/フォルダと、クエリによって一致した関連するメタデータの両方が返されます。                               | このAPIで返されるのは、一致した項目のみです。各項目のメタデータを返すには、後続のAPIコールが必要です。                                                                                                               |
+| スループット (Throughput) | このAPIには現在、ユーザーごとのレート制限のほか、企業あたりのリクエスト数が10件/秒という制限があります。                             | このAPIでは、1ユーザーあたりの検索数は6件/秒、企業あたりの検索数は最大60件/分および12件/秒がサポートされています。                                                                                                      |
+|  規模                 | このAPIでは、指定したメタデータテンプレートを使用して返される項目数に制限はありません。一致する結果が2,000件以下になるクエリのみを送信することをお勧めします。 | このAPIには、指定したメタデータテンプレートを使用して返される項目数に制限はありません。ただし、検索に一致する項目数が増えるにつれ、レスポンス時間が大幅に増大します。このAPIでは、1つのクエリに対する結果は1,000万件までという制限があります。一致する結果が50,000件以下になるクエリのみを送信することをお勧めします。 |
+|  スコープ               | このAPIは常に、ユーザーがアクセスできるコンテンツに制限されています。                                                | このAPIは、ユーザーがアクセスできるコンテンツ (`​user_content​`) または社内のすべてのコンテンツ (`​enterprise_content​`) のいずれかに制限される場合があります。                                                             |
 
-<Card href="/ja/guides/metadata/queries/comparison" title="メタデータクエリAPIの詳細を確認する" />
+<Card href="/guides/metadata/queries/comparison" arrow title="メタデータクエリAPIの詳細を確認する" />
 
-[mdq]: /ja/guides/metadata/queries
-[mdq_api]: /ja/reference/post_metadata_queries_execute_read
-[search]: /ja/reference/get-search
-[support]: https://ja.developer.box.com/support
+[mdq]: /guides/metadata/queries
+
+[mdq_api]: /reference/post_metadata_queries_execute_read
+
+[search]: /reference/get-search
+
+[support]: https://developer.box.com/support
+
 [keysafe]: https://www.box.com/security/keysafe
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Search for content", href: "/reference/get-search", badge: "GET" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "メタデータクエリ", href: "/ja/guides/metadata/queries/index", badge: "ガイド" }
-  ]}
-/>

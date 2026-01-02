@@ -1,26 +1,15 @@
 ---
-title: "コメントの作成"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - post_comments
+  0: post_comments
 related_guides:
-  - comments/create-reply
-required_guides: []
+  0: comments/create-reply
 related_resources:
-  - comment
-alias_paths: []
-category_id: comments
-subcategory_id: null
-is_index: false
-id: comments/create-comment
-type: guide
-total_steps: 2
-sibling_id: comments
-parent_id: comments
-next_page_id: comments/create-reply
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/comments/create-comment.md
+  0: comment
+required_guides: {}
+title: コメントの作成
+
 fullyTranslated: true
 ---
 
@@ -29,107 +18,106 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 コメントを作成するには、コメントのメッセージと、コメントを残すファイルのIDを指定して[`POST /comments`][post_comments] APIを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/comments" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "message": "Review completed!",
+         "item": {
+           "type": "file",
+           "id": 426436
+         }
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/comments" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "message": "Review completed!",
-       "item": {
-         "type": "file",
-         "id": 426436
-       }
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.comments.createComment({
+    message: message,
+    item: {
+      id: fileId,
+      type: 'file' as CreateCommentRequestBodyItemTypeField,
+    } satisfies CreateCommentRequestBodyItemField,
+  } satisfies CreateCommentRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.comments.createComment({
-  message: message,
-  item: {
-    id: fileId,
-    type: 'file' as CreateCommentRequestBodyItemTypeField,
-  } satisfies CreateCommentRequestBodyItemField,
-} satisfies CreateCommentRequestBody);
-```
+  ```python Python v10
+  client.comments.create_comment(
+      message, CreateCommentItem(id=file_id, type=CreateCommentItemTypeField.FILE)
+  )
+  ```
 
-```python Python v10
-client.comments.create_comment(
-    message, CreateCommentItem(id=file_id, type=CreateCommentItemTypeField.FILE)
-)
-```
+  ```cs .NET v10
+  await client.Comments.CreateCommentAsync(requestBody: new CreateCommentRequestBody(message: message, item: new CreateCommentRequestBodyItemField(id: fileId, type: CreateCommentRequestBodyItemTypeField.File)));
+  ```
 
-```cs .NET v10
-await client.Comments.CreateCommentAsync(requestBody: new CreateCommentRequestBody(message: message, item: new CreateCommentRequestBodyItemField(id: fileId, type: CreateCommentRequestBodyItemTypeField.File)));
-```
+  ```swift Swift v10
+  try await client.comments.createComment(requestBody: CreateCommentRequestBody(message: message, item: CreateCommentRequestBodyItemField(id: fileId, type: CreateCommentRequestBodyItemTypeField.file)))
+  ```
 
-```swift Swift v10
-try await client.comments.createComment(requestBody: CreateCommentRequestBody(message: message, item: CreateCommentRequestBodyItemField(id: fileId, type: CreateCommentRequestBodyItemTypeField.file)))
-```
+  ```java Java v10
+  client.getComments().createComment(new CreateCommentRequestBody(message, new CreateCommentRequestBodyItemField(fileId, CreateCommentRequestBodyItemTypeField.FILE)))
+  ```
 
-```java Java v10
-client.getComments().createComment(new CreateCommentRequestBody(message, new CreateCommentRequestBodyItemField(fileId, CreateCommentRequestBodyItemTypeField.FILE)))
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  file.addComment("This file is pretty cool.");
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-file.addComment("This file is pretty cool.");
-```
+  ```python Python v4
+  comment = client.file(file_id='11111').add_comment('When should I have this done by?')
+  ```
 
-```python Python v4
-comment = client.file(file_id='11111').add_comment('When should I have this done by?')
-```
+  ```cs .NET v6
+  var requestParams = new BoxCommentRequest()
+  {
+      Item = new BoxRequestEntity()
+      {
+          Type = BoxType.File,
+          Id = "12345"
+      },
+      Message = "Great work!"
+  };
+  BoxComment comment = await client.CommentsManager.AddCommentAsync(requestParams);
+  ```
 
-```cs .NET v6
-var requestParams = new BoxCommentRequest()
-{
-    Item = new BoxRequestEntity()
-    {
-        Type = BoxType.File,
-        Id = "12345"
-    },
-    Message = "Great work!"
-};
-BoxComment comment = await client.CommentsManager.AddCommentAsync(requestParams);
-```
-
-```javascript Node v4
-client.comments.create('33333', 'Is this the latest version?')
-    .then(comment => {
-        /* comment -> {
-            type: 'comment',
-            id: '11111',
-            is_reply_comment: false,
-            message: 'Is this the latest version?',
-            created_by: 
-            { type: 'user',
-                id: '22222',
-                name: 'Example User',
-                login: 'user@example.com' },
-            created_at: '2012-12-12T11:25:01-08:00',
-            item: { id: '33333', type: 'file' },
-            modified_at: '2012-12-12T11:25:01-08:00' }
-        */
-    });
-```
-
+  ```javascript Node v4
+  client.comments.create('33333', 'Is this the latest version?')
+      .then(comment => {
+          /* comment -> {
+              type: 'comment',
+              id: '11111',
+              is_reply_comment: false,
+              message: 'Is this the latest version?',
+              created_by: 
+              { type: 'user',
+                  id: '22222',
+                  name: 'Example User',
+                  login: 'user@example.com' },
+              created_at: '2012-12-12T11:25:01-08:00',
+              item: { id: '33333', type: 'file' },
+              modified_at: '2012-12-12T11:25:01-08:00' }
+          */
+      });
+  ```
 </CodeGroup>
 
 コメントのメッセージでは、`@`記号を使用してユーザーをメンションすることもできます。そのためには、メッセージ内の任意の場所に`@[userid:name]`という文字列を追加します。`user_id`はターゲットユーザーのIDで、`name`には任意のカスタムフレーズを使用できます。Box UIでは、この名前がユーザーのプロフィールにリンクされます。
 
 次に、この文字列を`message`ではなく`tagged_message`として渡します。
 
-[post_comments]: /ja/reference/post-comments
+[post_comments]: /reference/post-comments
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create comment", href: "/reference/post-comments", badge: "POST" }
-  ]}
+  { label: "Create comment", href: "/reference/post-comments", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "返信の作成", href: "/ja/guides/comments/create-reply", badge: "ガイド" }
-  ]}
+  { label: "Create Reply", href: "/guides/comments/create-reply", badge: "GUIDE" }
+]}
 />

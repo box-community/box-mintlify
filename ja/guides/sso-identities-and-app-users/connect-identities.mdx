@@ -1,20 +1,8 @@
 ---
-title: "App UserへのSSO IDの関連付け"
 related_endpoints:
-  - post_users
-category_id: sso-identities-and-app-users
-subcategory_id: null
-is_index: false
-id: sso-identities-and-app-users/connect-identities
-rank: 1
-type: guide
-total_steps: 3
-sibling_id: sso-identities-and-app-users
-parent_id: sso-identities-and-app-users
-next_page_id: sso-identities-and-app-users/create-app-user
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/sso-identities-and-app-users/1-connect-identities.md
+  0: post_users
+title: App UserへのSSO IDの関連付け
+
 fullyTranslated: true
 ---
 
@@ -24,7 +12,7 @@ SSOサービスでは、社内でこのサービスを利用する各ユーザ�
 
 ユーザーがSSOサービスを介してBoxにログインすると、Boxはまず関連付けを使用してユーザーを検索します。Boxユーザーレコードが見つかれば、そのユーザーとしてBox APIに対する呼び出しを開始することができます。Boxユーザーが見つからない場合は、一意のSSOユーザーアカウントに関連付けられた新しいBoxユーザーが作成されます。
 
-Boxユーザーオブジェクトの最上位を探索すると、SSOサービスのユーザーオブジェクトからBox[ユーザーオブジェクト](/ja/reference/resources/user)に一意の識別子を追加して双方を関連付けるために使用できるオプションがわかります。
+Boxユーザーオブジェクトの最上位を探索すると、SSOサービスのユーザーオブジェクトからBox[ユーザーオブジェクト](/reference/resources/user)に一意の識別子を追加して双方を関連付けるために使用できるオプションがわかります。
 
 ```json
 {
@@ -58,7 +46,6 @@ Boxユーザーオブジェクトの最上位を探索すると、SSOサービ�
   "tracking_codes": [{ .. }],
   "type": "user"
 }
-
 ```
 
 SSOサービス内の一意のユーザーとBoxユーザーの関連付けを作成するには、2つの方法が推奨されています。Boxユーザーの`external_app_user_id`フィールド内に一意のSSOユーザーIDを設定するか、一意のSSOメールアドレスを新しいユーザーのログインメールとして使用してください。
@@ -68,14 +55,12 @@ SSOサービス内の一意のユーザーとBoxユーザーの関連付けを�
 `external_app_user_id`フィールドは、SSOプロバイダのユーザーレコードなどの外部サービスとBoxユーザーレコードを関連付ける、文字列識別子を保持するよう設計されています。
 
 <Warning>
-
-特定のアプリケーションのApp Userを取得できるのは、そのApp Userを作成したのがこのアプリケーションである場合のみです。あるアプリケーションを使用して、別のアプリケーションで作成されたユーザーを検索した場合、データは返されません。
-
+  特定のアプリケーションのApp Userを取得できるのは、そのApp Userを作成したのがこのアプリケーションである場合のみです。あるアプリケーションを使用して、別のアプリケーションで作成されたユーザーを検索した場合、データは返されません。
 </Warning>
 
 一意のSSOユーザーアカウントとBoxユーザーアカウントの関連付けに`external_app_user_id`フィールドを使用することは、この2つのアカウントを関連付ける方法としてメールよりも推奨されています。これには、以下のように複数の理由があります。
 
-* メールアドレスによる関連付けを実行できるのは[管理対象ユーザー](https://developer.box.com/platform/user-types/#managed-users)のみです。[App User](https://developer.box.com/platform/user-types/#app-user)にはBoxによって自動的にメールアドレスが割り当てられるため、`login`をSSOサービスのメールアドレスになるよう割り当てることはできません。
+* メールアドレスによる関連付けを実行できるのは[管理対象ユーザー](/platform/user-types/#managed-users)のみです。[App User](/platform/user-types/#app-user)にはBoxによって自動的にメールアドレスが割り当てられるため、`login`をSSOサービスのメールアドレスになるよう割り当てることはできません。
 * メールアドレスはBoxにおいて一意でなければなりません。つまり、SSOサービスユーザーが (Boxを使用する社内に存在しない) 同じメールアドレスを使用してBoxにサインアップした場合は、そのアドレスでユーザーを作成することも、既存のSSOサービスユーザーに接続することもできなくなります。
 * `external_app_user_id`フィールドはこのために設計されています。
 
@@ -83,18 +68,16 @@ SSOサービス内の一意のユーザーとBoxユーザーの関連付けを�
 
 ユーザーオブジェクトの`login`フィールドを使用してアカウントの関連付けを作成する方法は、以下の限られた状況において使用可能です。
 
-* [App User](https://developer.box.com/platform/user-types/#app-user)ではなく[管理対象ユーザー](https://developer.box.com/platform/user-types/#managed-users)タイプのみが使用されている。
+* [App User](/platform/user-types/#app-user)ではなく[管理対象ユーザー](/platform/user-types/#managed-users)タイプのみが使用されている。
 * メールアドレスとBoxアカウントの作成リクエストがすべて会社によって管理されている。つまり、ユーザーは自身のメールアドレスで独自にBoxアカウントを作成することができません。
 
 <Warning>
-
-`login`フィールドで、Boxのユーザーに使用されるメールアドレスは一意である必要があります。すでに別のアカウント用に存在するメールアドレスを使用してユーザーを作成するようリクエストすると、`user_login_already_used`という`409 Conflict`エラーが発生します。
-
+  `login`フィールドで、Boxのユーザーに使用されるメールアドレスは一意である必要があります。すでに別のアカウント用に存在するメールアドレスを使用してユーザーを作成するようリクエストすると、`user_login_already_used`という`409 Conflict`エラーが発生します。
 </Warning>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create user", href: "/reference/post-users", badge: "POST" }
-  ]}
+  { label: "Create user", href: "/reference/post-users", badge: "POST" }
+]}
 />

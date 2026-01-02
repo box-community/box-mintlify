@@ -1,31 +1,14 @@
 ---
-title: "サポートされているAIモデル"
+alias_paths: None
 rank: 1
-related_guides:
-  - box-ai/ai-tutorials/ask-questions
-  - box-ai/ai-tutorials/generate-text
-  - box-ai/ai-agents/get-agent-default-config
-  - box-ai/ai-tutorials/default-agent-overrides
-alias_paths:
-  - guides/box-ai/supported-models
-category_id: box-ai
-subcategory_id: box-ai/ai-models
-is_index: true
-id: box-ai/ai-models
-type: guide
-total_steps: 27
-sibling_id: box-ai
-parent_id: box-ai
-next_page_id: box-ai/ai-models/openai-gpt-5-model-card
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/ja/guides/box-ai/ai-models/index.md
+related_guides: None
+sidebarTitle: Overview
+title: サポートされているAIモデル
+
 fullyTranslated: true
 ---
 
 import { CustomCard } from "/snippets/custom-card.jsx";
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 Boxでは、さまざまなAIモデルがサポートされており、アクセスレベルと機能レベルという2つの側面で分類されます。
 
@@ -43,16 +26,14 @@ Boxでは、さまざまなAIモデルがサポートされており、アクセ
 
 ### 標準モデル
 
-基本的な要約、Q&A、短いまたはシンプルなドキュメントからの構造化データの抽出など、高速でコスト効率のよいタスク向けに設計されており、大量のあまり複雑でないユースケースに最適です。
+基本的な要約、Q\&A、短いまたはシンプルなドキュメントからの構造化データの抽出など、高速でコスト効率のよいタスク向けに設計されており、大量のあまり複雑でないユースケースに最適です。
 
 ### プレミアムモデル
 
 より高度な推論、大きなコンテキストウィンドウ、長いコンテンツ、複雑なコンテンツ、またはドメイン固有のコンテンツに対する優れたパフォーマンスを提供します。マルチステップ推論、大規模なメタデータ階層の理解、長いドキュメントや非構造化ドキュメントの分析などの高度なタスクに適しています。
 
 <Note>
-
-モデルは、顧客希望で有効化できるモデルかつプレミアムモデルにすることも、コアモデルかつ標準モデルにすることもできます。つまり、アクセルレベルと機能レベルは、それぞれ独立した分類です (たとえば、モデルは、アクセスレベルに関係なくどちらの機能レベルにもなる可能性があります)。この2つの分類は相互に補完します。
-
+  モデルは、顧客希望で有効化できるモデルかつプレミアムモデルにすることも、コアモデルかつ標準モデルにすることもできます。つまり、アクセルレベルと機能レベルは、それぞれ独立した分類です (たとえば、モデルは、アクセスレベルに関係なくどちらの機能レベルにもなる可能性があります)。この2つの分類は相互に補完します。
 </Note>
 
 ## モデルの使用
@@ -62,16 +43,14 @@ Boxでは、さまざまなAIモデルがサポートされており、アクセ
 * [AIエージェントのデフォルト構成][agent]を取得する
 * [`POST 2.0/ai/ask`][ask]、[`POST 2.0/ai/text_gen`][text-gen]、[`POST 2.0/ai/extract`][extract]、[`POST 2.0/ai/extract_structured`][extract-structured]の各エンドポイントで使用されるAIエージェントの構成を上書きする
 
-APIコールで`model`パラメータを使用する際は、各タイルおよびモデルカードに表示されている**API名**を使用します。
+APIコールで`model`パラメータを使用する際は、各カスタムカードおよびモデルカードに表示されている**API名**を使用します。
 
 たとえば、特定のモデルのAIエージェントの構成を取得するには、[model][ai-model]パラメータを使用して、API名`azure__openai__gpt_4o_mini`を指定します。プロバイダ名の後に**2つのアンダースコア**を使用していることを確認してください。
 
 <Note>
+  このリストはモデルの提供状況により変更される可能性があります。
 
-このリストはモデルの提供状況により変更される可能性があります。
-
-**ベータ**モードで提供されているモデルはパフォーマンスが大規模にテストされておらず、現状のままでの利用となるため、モデル/出力の品質、可用性、精度にはばらつきがある可能性があります。
-
+  **ベータ**モードで提供されているモデルはパフォーマンスが大規模にテストされておらず、現状のままでの利用となるため、モデル/出力の品質、可用性、精度にはばらつきがある可能性があります。
 </Note>
 
 ## Box AIのコアモデル
@@ -79,475 +58,419 @@ APIコールで`model`パラメータを使用する際は、各タイルおよ�
 Box AIには以下のモデルが搭載されています。Box AIと統合されているこれらのモデルは、エンタープライズグレードの標準に準拠しながら、さまざまなユースケースを支援します。各モデルの機能、対象のアプリケーション、利用に関して該当するガイドラインなどの情報については、以下をご確認ください。
 
 <Columns cols={2}>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="openai__gpt_5_1"
-  href="/ja/guides/box-ai/ai-models/openai-gpt-5-1-model-card"
-  tags={[
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "プレミアム", bgColor: "#f8d59b" }
-  ]}
->
-
-エンタープライズグレードのパフォーマンスと適応的推論を備えたマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="openai__gpt_5_1"
-  href="/ja/guides/box-ai/ai-models/openai-gpt-5-1-model-card"
-  tags={[
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "プレミアム", bgColor: "#f8d59b" }
-  ]}
->
-
-エンタープライズグレードのパフォーマンスと適応的推論を備えたマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="openai__gpt_5"
-  href="/ja/guides/box-ai/ai-models/openai-gpt-5-model-card"
-  tags={[
-    { text: "Box AI for HubsのBox AI Advancedのデフォルト", bgColor: "#e8e8e8" },
-    { text: "Box AI for DocumentsのBox AI Advancedのデフォルト", bgColor: "#e8e8e8" },
-    { text: "Box AI for Notes Q&AのBox AI Advancedのデフォルト", bgColor: "#e8e8e8" },
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "プレミアム", bgColor: "#f8d59b" }
-  ]}
->
-
-高度な推論機能と長いコンテキストの理解を備えたマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="openai__gpt_5_mini"
-  href="/ja/guides/box-ai/ai-models/openai-gpt-5-mini-model-card"
-  tags={[
-    { text: "Box AI for Hubsのデフォルト", bgColor: "#e8e8e8" },
-    { text: "Box AI for Documentsのデフォルト", bgColor: "#e8e8e8" },
-    { text: "Box AI for Notes Q&Aのデフォルト", bgColor: "#e8e8e8" },
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "標準", bgColor: "#fdfad8" }
-  ]}
->
-
-明確に定義されたタスクや正確なプロンプト向けに設計されたモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="azure__openai__gpt_4_1"
-  href="/ja/guides/box-ai/ai-models/azure-openai-gpt-4-1-model-card"
-  tags={[
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "プレミアム", bgColor: "#f8d59b" },
-    { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-    { text: "FedRAMP High", bgColor: "#e1f8ff" },
-    { text: "DOD IL2", bgColor: "#e1f8ff" },
-    { text: "ISMAP", bgColor: "#e1f8ff" }
-  ]}
->
-
-複雑なマルチステップタスクの処理で非常に効率的なマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="azure__openai__gpt_4_1_mini"
-  href="/ja/guides/box-ai/ai-models/azure-openai-gpt-4-1-mini-model-card"
-  tags={[
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "標準", bgColor: "#fdfad8" },
-    { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-    { text: "FedRAMP High", bgColor: "#e1f8ff" },
-    { text: "DOD IL2", bgColor: "#e1f8ff" },
-    { text: "ISMAP", bgColor: "#e1f8ff" }
-  ]}
->
-
-軽量のタスクを処理するように設計されたマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="azure__openai__gpt_4o"
-  href="/ja/guides/box-ai/ai-models/azure-openai-gpt-4o-model-card"
-  tags={[
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "プレビュー", bgColor: "#fffbf3" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "プレミアム", bgColor: "#f8d59b" },
-    { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-    { text: "FedRAMP High", bgColor: "#e1f8ff" },
-    { text: "DOD IL2", bgColor: "#e1f8ff" },
-    { text: "ISMAP", bgColor: "#e1f8ff" }
-  ]}
->
-
-複雑なマルチステップタスクの処理で非常に効率的なマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="azure__openai__gpt_4o_mini"
-  href="/ja/guides/box-ai/ai-models/azure-openai-gpt-4o-mini-model-card"
-  tags={[
-    { text: "チャット", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "標準", bgColor: "#fdfad8" },
-    { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-    { text: "FedRAMP High", bgColor: "#e1f8ff" },
-    { text: "DOD IL2", bgColor: "#e1f8ff" },
-    { text: "ISMAP", bgColor: "#e1f8ff" }
-  ]}
->
-
-軽量のタスクを処理するように設計されたマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="azure__openai__text_embedding_ada_002"
-  href="/ja/guides/box-ai/ai-models/azure-text-embedding-ada-002-model-card"
-  tags={[
-    { text: "埋め込み", bgColor: "#e8e8e8" },
-    { text: "利用可能", bgColor: "#e1ffe7" },
-    { text: "標準", bgColor: "#fdfad8" },
-    { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-    { text: "FedRAMP High", bgColor: "#e1f8ff" },
-    { text: "DOD IL2", bgColor: "#e1f8ff" },
-    { text: "ISMAP", bgColor: "#e1f8ff" }
-  ]}
->
-
-最も優れた第2世代のテキスト埋め込みモデル。テキスト検索、コード検索、文の類似性判定に優れています。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/gemini.svg"
-title="google__gemini_2_5_pro"
-href="/ja/guides/box-ai/ai-models/google-gemini-2-5-pro-model-card"
-tags={[
-  { text: "Box AI抽出エージェント (強化) のデフォルト", bgColor: "#e8e8e8" },
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "プレミアム", bgColor: "#f8d59b" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "FedRAMP High", bgColor: "#e1f8ff" },
-  { text: "DOD IL5", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-100万トークンのコンテキストウィンドウと高度な推論機能が備わっている、Geminiマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/gemini.svg"
-title="google__gemini_2_5_flash"
-href="/ja/guides/box-ai/ai-models/google-gemini-2-5-flash-model-card"
-tags={[
-  { text: "Box AI抽出エージェント (標準) のデフォルト", bgColor: "#e8e8e8" },
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "FedRAMP High", bgColor: "#e1f8ff" },
-  { text: "DOD IL5", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-思考機能などの豊富な機能が備わっている、Geminiマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/gemini.svg"
-title="google__gemini_2_0_flash_001"
-href="/ja/guides/box-ai/ai-models/google-gemini-2-0-flash-001-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "FedRAMP High", bgColor: "#e1f8ff" },
-  { text: "DOD IL5", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-大規模で大量かつ高頻度のタスクに最適になるよう設計されたGeminiマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/gemini.svg"
-title="google__gemini_2_0_flash_lite_preview"
-href="/ja/guides/box-ai/ai-models/google-gemini-2-0-flash-lite-preview-02-05"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "FedRAMP High", bgColor: "#e1f8ff" },
-  { text: "DOD IL5", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-軽量のタスクを処理するように設計されたGeminiマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_4_5_sonnet"
-href="/ja/guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "プレミアム", bgColor: "#f8d59b" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-複雑なエージェント、コーディング、自律的なマルチステップワークフローに優れているモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_4_5_haiku"
-href="/ja/guides/box-ai/ai-models/aws-claude-4-5-haiku-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-ほぼ最先端のインテリジェンスを備えた高速モデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_4_sonnet"
-href="/ja/guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "プレミアム", bgColor: "#f8d59b" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-日常的なユースケースに最先端のパフォーマンスをもたらすモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_4_opus"
-href="/ja/guides/box-ai/ai-models/aws-claude-4-opus-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "プレミアム", bgColor: "#f8d59b" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-コーディングや複雑な問題解決に優れており、最先端のエージェント製品を支えるモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_3_7_sonnet"
-href="/ja/guides/box-ai/ai-models/aws-claude-3-7-sonnet-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "プレミアム", bgColor: "#f8d59b" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-言語の理解と生成のタスクを強化するよう設計されたモデル
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_3_5_sonnet"
-href="/ja/guides/box-ai/ai-models/aws-claude-3-5-sonnet-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "プレミアム", bgColor: "#f8d59b" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-言語の理解と生成のタスクを強化するよう設計されたモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_3_sonnet"
-href="/ja/guides/box-ai/ai-models/aws-claude-3-sonnet-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "プレミアム", bgColor: "#f8d59b" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-高度な言語タスク向けに設計されており、理解とコンテキスト処理に重点が置かれているモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__claude_3_haiku"
-href="/ja/guides/box-ai/ai-models/aws-claude-3-haiku-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-創造性豊かな文章作成AIや会話AIなど、さまざまな言語タスク向けにカスタマイズされたモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="aws__titan_text_lite"
-href="/ja/guides/box-ai/ai-models/aws-titan-text-lite-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" },
-  { text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
-  { text: "ISMAP", bgColor: "#e1f8ff" }
-]}
->
-
-高度な言語処理が可能なモデル。幅広いコンテキストを処理できるため、複雑なタスクに適しています。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="ibm__llama_4_maverick"
-href="/ja/guides/box-ai/ai-models/ibm-llama-4-maverick-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" }
-]}
->
-
-リソース使用の最適化のために混合専門家アーキテクチャを使用する、ネイティブのマルチモーダルモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="ibm__llama_4_scout"
-href="/ja/guides/box-ai/ai-models/ibm-llama-4-scout-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" }
-]}
->
-
-テキストとマルチモーダルのエクスペリエンスを可能にする、ネイティブのマルチモーダルAIモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="ibm__llama_3_2_90b_vision_instruct"
-href="/ja/guides/box-ai/ai-models/ibm-llama-3-2-90b-vision-instruct-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "利用可能", bgColor: "#e1ffe7" },
-  { text: "標準", bgColor: "#fdfad8" }
-]}
->
-
-ドキュメントレベルの理解、図表やグラフの解釈、画像の見出し作成向けに構築されたモデルです。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="ibm__mistral_medium_2505"
-href="/ja/guides/box-ai/ai-models/ibm-mistral-medium-3-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "プレビュー", bgColor: "#fffbf3" },
-  { text: "標準", bgColor: "#fdfad8" }
-]}
->
-
-コーディングや高度な推論に対応した、高性能のエンタープライズモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="ibm__mistral_small_3_1_24b_instruct_2503"
-href="/ja/guides/box-ai/ai-models/ibm-mistral-small-3-1-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "プレビュー", bgColor: "#fffbf3" },
-  { text: "標準", bgColor: "#fdfad8" }
-]}
->
-
-低レイテンシで処理の速いオープンソースのマルチモーダルモデル。
-
-</CustomCard>
-
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="openai__gpt_5_2"
+    href="/guides/box-ai/ai-models/openai-gpt-5-2-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    業界を越えたコーディングやエージェント型タスク向けのマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="openai__gpt_5_1"
+    href="/guides/box-ai/ai-models/openai-gpt-5-1-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    エンタープライズグレードのパフォーマンスと適応的推論を備えたマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="openai__gpt_5"
+    href="/guides/box-ai/ai-models/openai-gpt-5-model-card"
+    tags={[
+  		{ text: "Default for Box AI Advanced Agent for Hubs", bgColor: "#e8e8e8" },
+  		{ text: "Default for Box AI Advanced Agent for Documents", bgColor: "#e8e8e8" },
+  		{ text: "Default for Box AI Advanced Agent for Notes Q&A", bgColor: "#e8e8e8" },
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    高度な推論機能と長いコンテキストの理解を備えたマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="openai__gpt_5_mini"
+    href="/guides/box-ai/ai-models/openai-gpt-5-mini-model-card"
+    tags={[
+  		{ text: "Default for Box AI for Hubs", bgColor: "#e8e8e8" },
+  		{ text: "Default for Box AI for Documents", bgColor: "#e8e8e8" },
+  		{ text: "Default for Box AI for Notes Q&A", bgColor: "#e8e8e8" },
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" }
+  	]}
+  >
+    明確に定義されたタスクや正確なプロンプト向けに設計されたモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="azure__openai__gpt_4_1"
+    href="/guides/box-ai/ai-models/azure-openai-gpt-4-1-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL2", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    複雑なマルチステップタスクの処理で非常に効率的なマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="azure__openai__gpt_4_1_mini"
+    href="/guides/box-ai/ai-models/azure-openai-gpt-4-1-mini-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL2", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    軽量のタスクを処理するように設計されたマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="azure__openai__gpt_4o"
+    href="/guides/box-ai/ai-models/azure-openai-gpt-4o-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Preview", bgColor: "#fffbf3" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL2", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    複雑なマルチステップタスクの処理で非常に効率的なマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="azure__openai__gpt_4o_mini"
+    href="/guides/box-ai/ai-models/azure-openai-gpt-4o-mini-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL2", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    軽量のタスクを処理するように設計されたマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="azure__openai__text_embedding_ada_002"
+    href="/guides/box-ai/ai-models/azure-text-embedding-ada-002-model-card"
+    tags={[
+  		{ text: "Embeddings", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL2", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    最も優れた第2世代のテキスト埋め込みモデル。テキスト検索、コード検索、文の類似性判定に優れています。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gemini.svg"
+    title="google__gemini_2_5_pro"
+    href="/guides/box-ai/ai-models/google-gemini-2-5-pro-model-card"
+    tags={[
+  		{ text: "Default for Box AI Enhanced Extract", bgColor: "#e8e8e8" },
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL5", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    100万トークンのコンテキストウィンドウと高度な推論機能が備わっている、Geminiマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gemini.svg"
+    title="google__gemini_2_5_flash"
+    href="/guides/box-ai/ai-models/google-gemini-2-5-flash-model-card"
+    tags={[
+  		{ text: "Default for Box AI Standard Extract", bgColor: "#e8e8e8" },
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL5", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    思考機能などの豊富な機能が備わっている、Geminiマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gemini.svg"
+    title="google__gemini_2_0_flash_001"
+    href="/guides/box-ai/ai-models/google-gemini-2-0-flash-001-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL5", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    大規模で大量かつ高頻度のタスクに最適になるよう設計されたGeminiマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gemini.svg"
+    title="google__gemini_2_0_flash_lite_preview"
+    href="/guides/box-ai/ai-models/google-gemini-2-0-flash-lite-preview-02-05"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "FedRAMP High", bgColor: "#e1f8ff" },
+  		{ text: "DOD IL5", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    軽量のタスクを処理するように設計されたGeminiマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_4_5_sonnet"
+    href="/guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    複雑なエージェント、コーディング、自律的なマルチステップワークフローに優れているモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_4_5_haiku"
+    href="/guides/box-ai/ai-models/aws-claude-4-5-haiku-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    ほぼ最先端のインテリジェンスを備えた高速モデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_4_sonnet"
+    href="/guides/box-ai/ai-models/aws-claude-4-5-sonnet-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    日常的なユースケースに最先端のパフォーマンスをもたらすモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_4_opus"
+    href="/guides/box-ai/ai-models/aws-claude-4-opus-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    コーディングや複雑な問題解決に優れており、最先端のエージェント製品を支えるモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_3_7_sonnet"
+    href="/guides/box-ai/ai-models/aws-claude-3-7-sonnet-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    言語の理解と生成のタスクを強化するよう設計されたモデル
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_3_5_sonnet"
+    href="/guides/box-ai/ai-models/aws-claude-3-5-sonnet-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    言語の理解と生成のタスクを強化するよう設計されたモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_3_sonnet"
+    href="/guides/box-ai/ai-models/aws-claude-3-sonnet-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    高度な言語タスク向けに設計されており、理解とコンテキスト処理に重点が置かれているモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_3_haiku"
+    href="/guides/box-ai/ai-models/aws-claude-3-haiku-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    創造性豊かな文章作成AIや会話AIなど、さまざまな言語タスク向けにカスタマイズされたモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__titan_text_lite"
+    href="/guides/box-ai/ai-models/aws-titan-text-lite-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" },
+  		{ text: "FedRAMP Moderate", bgColor: "#e1f8ff" },
+  		{ text: "ISMAP", bgColor: "#e1f8ff" }
+  	]}
+  >
+    高度な言語処理が可能なモデル。幅広いコンテキストを処理できるため、複雑なタスクに適しています。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="ibm__llama_4_maverick"
+    href="/guides/box-ai/ai-models/ibm-llama-4-maverick-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" }
+  	]}
+  >
+    リソース使用の最適化のために混合専門家アーキテクチャを使用する、ネイティブのマルチモーダルモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="ibm__llama_4_scout"
+    href="/guides/box-ai/ai-models/ibm-llama-4-scout-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" }
+  	]}
+  >
+    テキストとマルチモーダルのエクスペリエンスを可能にする、ネイティブのマルチモーダルAIモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="ibm__llama_3_2_90b_vision_instruct"
+    href="/guides/box-ai/ai-models/ibm-llama-3-2-90b-vision-instruct-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Available", bgColor: "#e1ffe7" },
+  		{ text: "Standard", bgColor: "#fdfad8" }
+  	]}
+  >
+    ドキュメントレベルの理解、図表やグラフの解釈、画像の見出し作成向けに構築されたモデルです。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="ibm__mistral_medium_2505"
+    href="/guides/box-ai/ai-models/ibm-mistral-medium-3-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Preview", bgColor: "#fffbf3" },
+  		{ text: "Standard", bgColor: "#fdfad8" }
+  	]}
+  >
+    コーディングや高度な推論に対応した、高性能のエンタープライズモデル。
+  </CustomCard>
+
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="ibm__mistral_small_3_1_24b_instruct_2503"
+    href="/guides/box-ai/ai-models/ibm-mistral-small-3-1-model-card"
+    tags={[
+  			{ text: "Chat", bgColor: "#e8e8e8" },
+  			{ text: "Preview", bgColor: "#fffbf3" },
+  			{ text: "Standard", bgColor: "#fdfad8" }
+  		]}
+  >
+    低レイテンシで処理の速いオープンソースのマルチモーダルモデル。
+  </CustomCard>
 </Columns>
 
 ## 顧客希望で有効化できるモデル
@@ -555,77 +478,93 @@ tags={[
 Box AIの一部の顧客は、リクエストに応じて追加のAIモデルを有効にしたり、管理コンソールから利用できる追加のAIモデルを有効にしたりすることができます。これらのモデルの使用は、追加の条件の対象になる場合があります。顧客希望で有効化できるモデルを選択すると、顧客は、選択した追加の[サブプロセッサ][subprocessors]によって自身のデータが処理される可能性があることに同意したことになります。
 
 <Columns cols={2}>
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gemini.svg"
+    title="google__gemini_3_pro"
+    href="/guides/box-ai/ai-models/google-gemini-3-pro-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Beta", bgColor: "#f0e2ff" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    100万トークンのコンテキストウィンドウが備わっている、複雑なタスク向けのネイティブのマルチモーダルモデル。
+  </CustomCard>
 
-<CustomCard
-icon="/static/guides-box-ai-ai-models/gemini.svg"
-title="google__gemini_3_pro"
-href="/ja/guides/box-ai/ai-models/google-gemini-3-pro-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "ベータ", bgColor: "#f0e2ff" },
-  { text: "プレミアム", bgColor: "#f8d59b" }
-]}
->
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gemini.svg"
+    title="google__gemini_3_flash"
+    href="/guides/box-ai/ai-models/google-gemini-3-flash-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Beta", bgColor: "#f0e2ff" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    さまざまなタスクを高速かつ効率的に処理できるよう設計されたネイティブのマルチモーダルモデル。
+  </CustomCard>
 
-100万トークンのコンテキストウィンドウが備わっている、複雑なタスク向けのネイティブのマルチモーダルモデル。
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="xai__grok_3_beta"
+    href="/guides/box-ai/ai-models/xai-grok-3-beta-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Beta", bgColor: "#f0e2ff" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    データの抽出、コーディング、テキストの要約など、企業のユースケースに優れているモデル。
+  </CustomCard>
 
-</CustomCard>
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="xai__grok_3_mini_reasoning_beta"
+    href="/guides/box-ai/ai-models/xai-grok-3-mini-beta-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Beta", bgColor: "#f0e2ff" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    深い専門知識を必要としない、論理ベースのタスクに適している軽量のモデル。
+  </CustomCard>
 
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="xai__grok_3_beta"
-href="/ja/guides/box-ai/ai-models/xai-grok-3-beta-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "ベータ", bgColor: "#f0e2ff" },
-  { text: "プレミアム", bgColor: "#f8d59b" }
-]}
->
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/aws.svg"
+    title="aws__claude_4_5_opus"
+    href="/guides/box-ai/ai-models/aws-claude-4-5-opus-model-card"
+    tags={[
+  		{ text: "Chat", bgColor: "#e8e8e8" },
+  		{ text: "Beta", bgColor: "#f0e2ff" },
+  		{ text: "Premium", bgColor: "#f8d59b" },
+  	]}
+  >
+    最大限のインテリジェンスと実用的なパフォーマンスを兼ね備えたプレミアムモデル。
+  </CustomCard>
 
-データの抽出、コーディング、テキストの要約など、企業のユースケースに優れているモデル。
-
-</CustomCard>
-
-<CustomCard
-icon="/static/guides-box-ai-ai-models/aws.svg"
-title="xai__grok_3_mini_reasoning_beta"
-href="/ja/guides/box-ai/ai-models/xai-grok-3-mini-beta-model-card"
-tags={[
-  { text: "チャット", bgColor: "#e8e8e8" },
-  { text: "ベータ", bgColor: "#f0e2ff" },
-  { text: "プレミアム", bgColor: "#f8d59b" }
-]}
->
-
-深い専門知識を必要としない、論理ベースのタスクに適している軽量のモデル。
-
-</CustomCard>
-
-<CustomCard
-  icon="/static/guides-box-ai-ai-models/gpt.svg"
-  title="openai__gpt_o3"
-  href="/ja/guides/box-ai/ai-models/openai-gpt-o3-model-card"
-  tags={[
-    { text: "ベータ", bgColor: "#f0e2ff" },
-    { text: "プレミアム", bgColor: "#f8d59b" }
-  ]}
->
-
-複雑なマルチステップタスクの処理で非常に効率的なマルチモーダルモデル。
-
-</CustomCard>
-
+  <CustomCard
+    icon="/static/guides-box-ai-ai-models/gpt.svg"
+    title="openai__gpt_o3"
+    href="/guides/box-ai/ai-models/openai-gpt-o3-model-card"
+    tags={[
+  		{ text: "Beta", bgColor: "#f0e2ff" },
+  		{ text: "Premium", bgColor: "#f8d59b" }
+  	]}
+  >
+    複雑なマルチステップタスクの処理で非常に効率的なマルチモーダルモデル。
+  </CustomCard>
 </Columns>
 
-[ask]: /ja/reference/post_ai_ask
+[ask]: /reference/post_ai_ask
 
-[text-gen]: /ja/reference/post_ai_text_gen
+[text-gen]: /reference/post_ai_text_gen
 
-[extract]: /ja/reference/post_ai_extract
+[extract]: /reference/post_ai_extract
 
-[extract-structured]: /ja/reference/post_ai_extract_structured
+[extract-structured]: /reference/post_ai_extract_structured
 
-[agent]: /ja/reference/get_ai_agent_default
+[agent]: /reference/get_ai_agent_default
 
 [azure-ai-mini-4o-model]: https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo
 
@@ -637,21 +576,10 @@ tags={[
 
 [azure-ai-embeddings]: https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#embeddings
 
-[ai-model]: /ja/reference/get-ai-agent-default#param-model
+[ai-model]: /reference/get-ai-agent-default#param-model
 
 [aws-claude]: https://aws.amazon.com/bedrock/claude/
 
 [aws-titan]: https://aws.amazon.com/bedrock/titan/
 
 [subprocessors]: https://www.box.com/legal/subprocessors
-
-<RelatedLinks
-  
-  title="関連するガイド"
-  items={[
-    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "ガイド" },
-    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "ガイド" },
-    { label: "AIエージェントのデフォルト構成を取得する", href: "/ja/guides/box-ai/ai-agents/get-agent-default-config", badge: "ガイド" },
-    { label: "AIモデルの構成の上書き", href: "/ja/guides/box-ai/ai-tutorials/default-agent-overrides", badge: "ガイド" }
-  ]}
-/>

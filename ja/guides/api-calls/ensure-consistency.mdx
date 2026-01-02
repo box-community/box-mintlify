@@ -1,33 +1,22 @@
 ---
-title: "ヘッダーによる一貫性の確保"
+alias_paths: {}
 rank: 5
 related_endpoints:
-  - post_files_id_content
-  - put_files_id
-  - delete_files_id
-  - put_folders_id
-  - delete_folders_id
-  - put_web_links_id
-  - delete_web_links_id
-  - get_files_id
-  - get_folders_id
-  - get_web_links_id
-  - get_shared_items
-related_guides: []
-required_guides: []
-alias_paths: []
-category_id: api-calls
-subcategory_id: null
-is_index: false
-id: api-calls/ensure-consistency
-type: guide
-total_steps: 9
-sibling_id: api-calls
-parent_id: api-calls
-next_page_id: api-calls/allowing-domain-access
-previous_page_id: api-calls/request-extra-fields
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/api-calls/ensure-consistency.md
+  0: post_files_id_content
+  1: put_files_id
+  10: get_shared_items
+  2: delete_files_id
+  3: put_folders_id
+  4: delete_folders_id
+  5: put_web_links_id
+  6: delete_web_links_id
+  7: get_files_id
+  8: get_folders_id
+  9: get_web_links_id
+related_guides: {}
+required_guides: {}
+title: ヘッダーによる一貫性の確保
+
 fullyTranslated: true
 ---
 
@@ -44,7 +33,6 @@ APIを介してリクエスト可能なファイルシステムの項目 (ファ
 ```sh
 curl https://api.box.com/2.0/files/12345 \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ```json
@@ -56,7 +44,6 @@ curl https://api.box.com/2.0/files/12345 \
   "name": "Contract.pdf",
   ...
 }
-
 ```
 
 この`etag`を`if-match`または`if-none-match`ヘッダーの値として使用できるのは、`etag`値が受信されてからリソースが変更されていないことを確認するためか、または変更されていない項目を不必要にダウンロードしないようにするためです。
@@ -67,7 +54,6 @@ curl https://api.box.com/2.0/files/12345 \
 curl https://api.box.com/2.0/files/12345 \
     -H "authorization: Bearer ACCESS_TOKEN" \
     -H "if-none-match: 1"
-
 ```
 
 ファイルが変更されていない場合、このAPIコールでは空のレスポンスが返されます。
@@ -98,10 +84,9 @@ curl https://api.box.com/2.0/files/12345 \
 | いいえ     | いいえ         | 404       |
 
 <Warning>
-**項目の移動**
+  **項目の移動**
 
-`if-match`ヘッダーを使用してファイル、フォルダ、またはウェブリンクの移動を防ぐことはできません。Boxでは、必ず最新の項目が新しい場所に移動されます。
-
+  `if-match`ヘッダーを使用してファイル、フォルダ、またはウェブリンクの移動を防ぐことはできません。Boxでは、必ず最新の項目が新しい場所に移動されます。
 </Warning>
 
 ## リクエストによる不要なダウンロードの防止
@@ -127,16 +112,16 @@ curl https://api.box.com/2.0/files/12345 \
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" },
-    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
-    { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" },
-    { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
-    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" },
-    { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" },
-    { label: "Remove web link", href: "/reference/delete-web-links-id", badge: "DELETE" },
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" },
-    { label: "Get folder information", href: "/reference/get-folders-id", badge: "GET" },
-    { label: "Get web link", href: "/reference/get-web-links-id", badge: "GET" },
-    { label: "Find file for shared link", href: "/reference/get-shared-items", badge: "GET" }
-  ]}
+  { label: "Upload file version", href: "/reference/post-files-id-content", badge: "POST" },
+  { label: "Update file", href: "/reference/put-files-id", badge: "PUT" },
+  { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" },
+  { label: "Update folder", href: "/reference/put-folders-id", badge: "PUT" },
+  { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" },
+  { label: "Update web link", href: "/reference/put-web-links-id", badge: "PUT" },
+  { label: "Remove web link", href: "/reference/delete-web-links-id", badge: "DELETE" },
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" },
+  { label: "Get folder information", href: "/reference/get-folders-id", badge: "GET" },
+  { label: "Get web link", href: "/reference/get-web-links-id", badge: "GET" },
+  { label: "Find file for shared link", href: "/reference/get-shared-items", badge: "GET" }
+]}
 />

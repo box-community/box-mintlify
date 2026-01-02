@@ -1,38 +1,27 @@
 ---
-title: "ファイルレプリゼンテーションのダウンロード"
+alias_paths: {}
 rank: 3
 related_endpoints:
-  - get_files_id
+  0: get_files_id
 related_guides:
-  - representations/thumbnail-representation
-  - representations/supported-file-types
+  0: representations/thumbnail-representation
+  1: representations/supported-file-types
 required_guides:
-  - representations/request-a-representation
-alias_paths: []
-category_id: representations
-subcategory_id: null
-is_index: false
-id: representations/download-a-representation
-type: guide
-total_steps: 8
-sibling_id: representations
-parent_id: representations
-next_page_id: representations/thumbnail-representation
-previous_page_id: representations/request-a-representation
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/representations/download-a-representation.md
+  0: representations/request-a-representation
+title: ファイルレプリゼンテーションのダウンロード
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "ガイド" }
-  ]}
+  { label: "Request Desired Representation", href: "/guides/representations/request-a-representation", badge: "GUIDE" }
+]}
 />
+
 レプリゼンテーションをダウンロードするには、[レプリゼンテーションを選択][select_representation]した際に受け取った`url_template`を使用します。`{+asset_path}`は、レプリゼンテーションの種類に応じて置き換えます。
 
 ## ページ割りされたレプリゼンテーション
@@ -42,7 +31,6 @@ PDFのようにページ割りされたレプリゼンテーションでは、`{
 ```sh
 curl https://dl.boxcloud.com/api/2.0/internal_files/123/versions/345/representations/pdf/content/3.pdf \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ## ページ割りされていないレプリゼンテーション
@@ -52,7 +40,6 @@ curl https://dl.boxcloud.com/api/2.0/internal_files/123/versions/345/representat
 ```sh
 curl https://dl.boxcloud.com/api/2.0/internal_files/123/versions/345/representations/jpg_32x32/content/ \
     -H "authorization: Bearer ACCESS_TOKEN"
-
 ```
 
 ## 省略可能なクエリパラメータ
@@ -75,18 +62,19 @@ curl https://dl.boxcloud.com/api/2.0/internal_files/123/versions/345/representat
 
 定義しなかった場合、ファイル名は、Box内の元のファイル名から派生し、拡張子はレプリゼンテーションのファイルタイプに置き換えられます。
 
-[select_representation]: /ja/guides/representations/request-a-representation
+[select_representation]: /guides/representations/request-a-representation
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "サムネイルレプリゼンテーションの取得", href: "/ja/guides/representations/thumbnail-representation", badge: "ガイド" },
-    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "ガイド" }
-  ]}
+  { label: "Get Thumbnail Representation", href: "/guides/representations/thumbnail-representation", badge: "GUIDE" },
+  { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+]}
 />

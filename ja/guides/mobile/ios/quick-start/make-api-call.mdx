@@ -1,40 +1,30 @@
 ---
-title: "APIコールの実行"
-sidebarTitle: 4. APIコールの実行
-type: quick-start
 hide_in_page_nav: true
-category_id: mobile
-subcategory_id: mobile/ios
-is_index: false
-id: mobile/ios/quick-start/make-api-call
-rank: 4
-total_steps: 5
-sibling_id: mobile/ios/quick-start
-parent_id: mobile/ios/quick-start
-next_page_id: mobile/ios/quick-start/next-steps
-previous_page_id: mobile/ios/quick-start/configure-box-app
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/mobile/ios/quick-start/4-make-api-call.md
+sidebarTitle: 4. Make an API call
+title: APIコールの実行
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/mobile/ios/quick-start/create-ios-app",
-                          "ja/guides/mobile/ios/quick-start/install-ios-sdk",
-                          "ja/guides/mobile/ios/quick-start/configure-box-app",
-                          "ja/guides/mobile/ios/quick-start/make-api-call",
-                          "ja/guides/mobile/ios/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/mobile/ios/quick-start/create-ios-app",
+                        "guides/mobile/ios/quick-start/install-ios-sdk",
+                        "guides/mobile/ios/quick-start/configure-box-app",
+                        "guides/mobile/ios/quick-start/make-api-call",
+                        "guides/mobile/ios/quick-start/next-steps"
+                      ]}
+/>
 
 BoxアプリケーションとiOSアプリケーションが**Box iOS SDK**を使用して作成、設定されたら、初めてのBox APIコールを実行できるようになります。
 
 空のiOSアプリケーションを使用して、現在認証されているユーザーの名前を取得するためのリクエストをBoxに対してトリガーするボタンを作成します。
 
 <Warning>
-
-これらの例で使用されているブロックアクションを使用した場合、処理は遅くなります。本番アプリでは、これらのブロックアクションを適切なタスク委任アクションやブロック以外のアクションに置き換える必要があります。
-
+  これらの例で使用されているブロックアクションを使用した場合、処理は遅くなります。本番アプリでは、これらのブロックアクションを適切なタスク委任アクションやブロック以外のアクションに置き換える必要があります。
 </Warning>
 
 ## ボタンの作成
@@ -49,7 +39,6 @@ struct ContentView: View {
     Text("Hello, World!")
   }
 }
-
 ```
 
 最初に、現在のユーザーを取得するための呼び出しをトリガーできるように、`Text`の出力行をボタンに置き換えます。その行を以下のボタンに置き換えます。
@@ -64,7 +53,6 @@ Button(action: {
 .cornerRadius(20)
 .foregroundColor(.white)
 .background(Color.blue)
-
 ```
 
 次の手順では、Boxからユーザーの詳細を取得するアクションをボタンに追加します。
@@ -92,15 +80,12 @@ client.users.getCurrent(fields:["name", "login"]) { (result: Result<User,
 }
 
 sleep(5)
-
 ```
 
 iOSエミュレータでサンプルアプリケーションをビルドして実行します。
 
 <Warning>
-
-最後の手順で開発者トークンを作成してから1時間以上後にこのコードを実行する場合、開発者トークンは60分間しか保持されないため、[前の手順](/ja/guides/mobile/ios/quick-start/configure-box-app)と同じ方法を使用して、開発者トークンを取り消して新たに生成する必要があります。
-
+  最後の手順で開発者トークンを作成してから1時間以上後にこのコードを実行する場合、開発者トークンは60分間しか保持されないため、[前の手順](/guides/mobile/ios/quick-start/configure-box-app)と同じ方法を使用して、開発者トークンを取り消して新たに生成する必要があります。
 </Warning>
 
 アプリケーションがエミュレータに読み込まれると、作成したボタンが表示されます。そのボタンをクリックしてAPIリクエストを開始します。
@@ -120,13 +105,10 @@ Xcodeの開発者コンソール内にAPIリクエストとレスポンスが表
           User","login":"testuser@test.com"}
 
 Authenticated as Optional("Test User")
-
 ```
 
 <Note>
-
-Xcodeの開発者コンソールが表示されない場合は、メニューから \[**View (表示)**] -> \[**Debug Area (デバッグ領域)**] -> \[**Activate Console (コンソールをアクティブ化)**] をクリックします。
-
+  Xcodeの開発者コンソールが表示されない場合は、メニューから \[**View (表示)**] -> \[**Debug Area (デバッグ領域)**] -> \[**Activate Console (コンソールをアクティブ化)**] をクリックします。
 </Note>
 
 これで、**Box iOS SDK**の設定が完了し、Box APIへの最初の呼び出しを実行できました。
@@ -136,8 +118,4 @@ Xcodeの開発者コンソールが表示されない場合は、メニューか
 * 空のiOSアプリケーションにボタンを追加しました。
 * iOS SDKを使用して現在のユーザーを取得するリクエストを追加しました。
 
-<Next>
-
-APIコールが完了しました
-
-</Next>
+<Next>APIコールが完了しました</Next>

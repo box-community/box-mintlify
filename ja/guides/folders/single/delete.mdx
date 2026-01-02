@@ -1,89 +1,76 @@
 ---
-title: "フォルダの削除"
+alias_paths: {}
 rank: 6
 related_endpoints:
-  - delete_folders_id
+  0: delete_folders_id
 related_guides:
-  - folders/single/create
-required_guides:
-  - folders/single/create
-alias_paths: []
+  0: folders/single/create
 related_resources:
-  - folder
-category_id: folders
-subcategory_id: folders/single
-is_index: false
-id: folders/single/delete
-type: guide
-total_steps: 10
-sibling_id: folders/single
-parent_id: folders/single
-next_page_id: folders/single/change-owner
-previous_page_id: folders/single/copy
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/delete.md
+  0: folder
+required_guides:
+  0: folders/single/create
+title: フォルダの削除
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "ガイド" }
-  ]}
+  { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" }
+]}
 />
+
 Box上でフォルダを削除するには、削除するフォルダのIDをAPIに渡す必要があります。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/folders/4353455" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/folders/4353455" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.folders.deleteFolderById(newFolder.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.folders.deleteFolderById(newFolder.id);
-```
+  ```python Python v10
+  client.folders.delete_folder_by_id(new_folder.id)
+  ```
 
-```python Python v10
-client.folders.delete_folder_by_id(new_folder.id)
-```
+  ```cs .NET v10
+  await client.Folders.DeleteFolderByIdAsync(folderId: newFolder.Id);
+  ```
 
-```cs .NET v10
-await client.Folders.DeleteFolderByIdAsync(folderId: newFolder.Id);
-```
+  ```swift Swift v10
+  try await client.folders.deleteFolderById(folderId: newFolder.id)
+  ```
 
-```swift Swift v10
-try await client.folders.deleteFolderById(folderId: newFolder.id)
-```
+  ```java Java v10
+  client.getFolders().deleteFolderById(newFolder.getId())
+  ```
 
-```java Java v10
-client.getFolders().deleteFolderById(newFolder.getId())
-```
+  ```java Java v5
+  // Delete the folder and all its contents
+  BoxFolder folder = new BoxFolder(api, "id");
+  folder.delete(true);
+  ```
 
-```java Java v5
-// Delete the folder and all its contents
-BoxFolder folder = new BoxFolder(api, "id");
-folder.delete(true);
-```
+  ```python Python v4
+  client.folder(folder_id='22222').delete()
+  ```
 
-```python Python v4
-client.folder(folder_id='22222').delete()
-```
+  ```cs .NET v6
+  await client.FoldersManager.DeleteAsync("11111", recursive: true);
+  ```
 
-```cs .NET v6
-await client.FoldersManager.DeleteAsync("11111", recursive: true);
-```
-
-```javascript Node v4
-client.folders.delete('12345', {recursive: true})
-    .then(() => {
-        // deletion succeeded — no value returned
-    });
-```
-
+  ```javascript Node v4
+  client.folders.delete('12345', {recursive: true})
+      .then(() => {
+          // deletion succeeded — no value returned
+      });
+  ```
 </CodeGroup>
 
 ## 空でないフォルダの削除
@@ -105,12 +92,13 @@ client.folders.delete('12345', {recursive: true})
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" }
-  ]}
+  { label: "Delete folder", href: "/reference/delete-folders-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "フォルダの作成", href: "/ja/guides/folders/single/create", badge: "ガイド" }
-  ]}
+  { label: "Create Folder", href: "/guides/folders/single/create", badge: "GUIDE" }
+]}
 />

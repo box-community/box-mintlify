@@ -1,27 +1,17 @@
 ---
-title: "Box AI"
 rank: 1
 related_endpoints:
-  - post_ai_text_gen
-  - post_ai_ask
+  0: post_ai_text_gen
+  1: post_ai_ask
 related_guides:
-  - box-ai/ai-tutorials/prerequisites
-  - box-ai/ai-tutorials/ask-questions
-  - box-ai/ai-tutorials/generate-text
-  - box-ai/ai-tutorials/extract-metadata-structured
-  - box-ai/ai-tutorials/extract-metadata
-category_id: box-ai
-subcategory_id: null
-is_index: true
-id: box-ai
-type: guide
-total_steps: 0
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-ai/index.md
+  0: box-ai/ai-tutorials/prerequisites
+  1: box-ai/ai-tutorials/ask-questions
+  2: box-ai/ai-tutorials/generate-text
+  3: box-ai/ai-tutorials/extract-metadata-structured
+  4: box-ai/ai-tutorials/extract-metadata
+sidebarTitle: Overview
+title: Box AI
+
 fullyTranslated: true
 ---
 
@@ -43,7 +33,9 @@ Boxに保存しているドキュメントで作業している間など、Box A
 
 Box AIは、指定されたファイルに基づいて、コンテンツに関する質問に回答したり、要約を生成したりできます。
 
-![ドキュメント内の \[Box AI\]](/images/guides/box-ai/box-ai-in-doc.png)
+<Frame>
+  ![ドキュメント内の \[Box AI\]](/images/guides/box-ai/box-ai-in-doc.png)
+</Frame>
 
 ユーザーがドキュメントでの作業中にBox AIを操作する方法の例については、[Box AI for Documents][boxaidocs]を参照してください。
 
@@ -53,7 +45,9 @@ Box AI APIを使用すると、テキストをゼロから生成したり、Box 
 
 また、もう1つの例として、Box Notesでは、テキストの生成や既存メモのコンテンツのリファインにBox AIを使用します。詳細については、[Box AI for Notes][boxainotes]を参照してください。
 
-![Notes内の \[Box AI\]](/images/guides/box-ai/box-ai-in-notes.png)
+<Frame>
+  ![Notes内の \[Box AI\]](/images/guides/box-ai/box-ai-in-notes.png)
+</Frame>
 
 ### メタデータの抽出
 
@@ -88,9 +82,7 @@ Box AI for UI Elementsはコンテンツプレビューで利用可能で、こ�
 Box AIは、英語、日本語、フランス語、スペイン語など、多くの言語で使用できます。ただし、基になるモデルは、主に英語のドキュメントでトレーニングされています。つまり、他の言語のプロンプトで返される回答は、英語の場合よりも低品質になる可能性があります。テストでは、要約、文法やつづりの確認、質問への回答について満足のいく結果が示されていますが、結果は英語の場合と異なる可能性があることに留意してください。
 
 <Tip>
-
-言語を日本語に切り替えると、より適切な結果が得られます。
-
+  言語を日本語に切り替えると、より適切な結果が得られます。
 </Tip>
 
 ## \[ユーザーアクティビティ] レポート (UAR) でのBox AI API
@@ -104,32 +96,33 @@ Box AIは、英語、日本語、フランス語、スペイン語など、多�
 
 [boxaidocs]: https://support.box.com/hc/en-us/articles/22158484213267-Box-AI-for-Documents
 
-[boxaielement]: /ja/guides/embed/ui-elements/preview#box-ai-ui-element
+[boxaielement]: /guides/embed/ui-elements/preview#box-ai-ui-element
 
 [uar]: https://support.box.com/hc/en-us/articles/4415012490387-User-Activity-Report
 
-[agent-default]: /ja/guides/box-ai/ai-agents/get-agent-default-config
+[agent-default]: /guides/box-ai/ai-agents/get-agent-default-config
 
-[extract]: /ja/reference/post_ai_extract
+[extract]: /reference/post_ai_extract
 
-[extract-structured]: /ja/reference/post_ai_extract_structured
+[extract-structured]: /reference/post_ai_extract_structured
 
-[eea-tutorial]: /ja/guides/box-ai/ai-tutorials/extract-metadata-structured#
+[eea-tutorial]: /guides/box-ai/ai-tutorials/extract-metadata-structured#
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
-    { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
-  ]}
+  { label: "Generate text", href: "/reference/post-ai-text-gen", badge: "POST" },
+  { label: "Ask question", href: "/reference/post-ai-ask", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box AIの使い方", href: "/ja/guides/box-ai/ai-tutorials/prerequisites", badge: "ガイド" },
-    { label: "Box AIに質問する", href: "/ja/guides/box-ai/ai-tutorials/ask-questions", badge: "ガイド" },
-    { label: "Box AIを使用してテキストを生成する", href: "/ja/guides/box-ai/ai-tutorials/generate-text", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (構造化)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "ガイド" },
-    { label: "ファイルからメタデータを抽出する (自由形式)", href: "/ja/guides/box-ai/ai-tutorials/extract-metadata", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box AI", href: "/guides/box-ai/ai-tutorials/prerequisites", badge: "GUIDE" },
+  { label: "Ask questions to Box AI", href: "/guides/box-ai/ai-tutorials/ask-questions", badge: "GUIDE" },
+  { label: "Generate text with Box AI", href: "/guides/box-ai/ai-tutorials/generate-text", badge: "GUIDE" },
+  { label: "Extract metadata from file (structured)", href: "/guides/box-ai/ai-tutorials/extract-metadata-structured", badge: "GUIDE" },
+  { label: "Extract metadata from file (freeform)", href: "/guides/box-ai/ai-tutorials/extract-metadata", badge: "GUIDE" }
+]}
 />

@@ -1,27 +1,17 @@
 ---
-title: "ファイルリクエスト"
 rank: 140
 related_endpoints:
-  - post_file_requests_id_copy
-  - get_file_requests_id
-  - put_file_requests_id
-  - delete_file_requests_id
-related_guides: []
-required_guides: []
+  0: post_file_requests_id_copy
+  1: get_file_requests_id
+  2: put_file_requests_id
+  3: delete_file_requests_id
+related_guides: ""
 related_resources:
-  - file_request
-category_id: file-requests
-subcategory_id: null
-is_index: true
-id: file-requests
-type: guide
-total_steps: 5
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: file-requests/delete
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/file-requests/index.md
+  0: file_request
+required_guides: ""
+sidebarTitle: Overview
+title: ファイルリクエスト
+
 fullyTranslated: true
 ---
 
@@ -43,7 +33,7 @@ Boxファイルリクエストを使用すると、どのユーザーに対し�
 例
 
 * **ケース管理** - この例では、各顧客のサポートケースには、関連付けられた独自のフォルダがあるため、新しいファイルリクエストを顧客に送信し、顧客に対してケースに関連したドキュメントをそのフォルダに送信するようリクエストできます。
-* **プロジェクト管理** - この例では、各プロジェクトには、外部システムで定義されたプロジェクトごとに関連付けられた独自のフォルダがあります。このAPIを使用すると、このフォルダ内に自動的に**「クライアントドキュメント」**フォルダを作成することができます。また、必要に応じてドキュメントをアップロードできるようにリンクをクライアントに送信できます。
+* **プロジェクト管理** - この例では、各プロジェクトには、外部システムで定義されたプロジェクトごとに関連付けられた独自のフォルダがあります。このAPIを使用すると、このフォルダ内に自動的&#x306B;**「クライアントドキュメント」**&#x30D5;ォルダを作成することができます。また、必要に応じてドキュメントをアップロードできるようにリンクをクライアントに送信できます。
 * **従業員の「受け渡し用」フォルダ** - この例では、銀行の新しいローンアドバイザは各自Boxに個人用フォルダを持っています。クライアントとの作業を支援するために、「受け渡し用」サブフォルダが関連付けられたファイルリクエストとともに自動的に生成されると、クライアントは担当ローンアドバイザの個人用フォルダにドキュメントを自動的にアップロードできるようになります。
 
 ## 制限
@@ -53,9 +43,9 @@ Boxファイルリクエストを使用すると、どのユーザーに対し�
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" },
-    { label: "Get file request", href: "/reference/get-file-requests-id", badge: "GET" },
-    { label: "Update file request", href: "/reference/put-file-requests-id", badge: "PUT" },
-    { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
-  ]}
+  { label: "Copy file request", href: "/reference/post-file-requests-id-copy", badge: "POST" },
+  { label: "Get file request", href: "/reference/get-file-requests-id", badge: "GET" },
+  { label: "Update file request", href: "/reference/put-file-requests-id", badge: "PUT" },
+  { label: "Delete file request", href: "/reference/delete-file-requests-id", badge: "DELETE" }
+]}
 />

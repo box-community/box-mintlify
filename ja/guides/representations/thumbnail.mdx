@@ -1,48 +1,35 @@
 ---
-title: "基本的なサムネイルの取得"
+alias_paths: {}
 rank: 5
 related_endpoints:
-  - get_files_id_thumbnail_id
+  0: get_files_id_thumbnail_id
 related_guides:
-  - representations/thumbnail-representation
-  - representations/supported-file-types
+  0: representations/thumbnail-representation
+  1: representations/supported-file-types
 required_guides:
-  - representations/list-all-representations
-  - representations/request-a-representation
-  - representations/download-a-representation
-alias_paths: []
-category_id: representations
-subcategory_id: null
-is_index: false
-id: representations/thumbnail
-type: guide
-total_steps: 8
-sibling_id: representations
-parent_id: representations
-next_page_id: representations/pdf
-previous_page_id: representations/thumbnail-representation
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/representations/thumbnail.md
+  0: representations/list-all-representations
+  1: representations/request-a-representation
+  2: representations/download-a-representation
+title: 基本的なサムネイルの取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "ファイルのすべてのレプリゼンテーションのリストの取得", href: "/ja/guides/representations/list-all-representations", badge: "ガイド" },
-    { label: "目的のレプリゼンテーションのリクエスト", href: "/ja/guides/representations/request-a-representation", badge: "ガイド" },
-    { label: "ファイルレプリゼンテーションのダウンロード", href: "/ja/guides/representations/download-a-representation", badge: "ガイド" }
-  ]}
+  { label: "List All Representations for File", href: "/guides/representations/list-all-representations", badge: "GUIDE" },
+  { label: "Request Desired Representation", href: "/guides/representations/request-a-representation", badge: "GUIDE" },
+  { label: "Download File Representation", href: "/guides/representations/download-a-representation", badge: "GUIDE" }
+]}
 />
+
 サムネイルとは小さい画像のことで、アプリケーション内でファイルのレプリゼンテーションとして使用できる`.png`または`.jpg`で表されます。たとえば、ファイルをダウンロードまたはプレビューするリンクのプレースホルダとして使用されます。
 
 <Info>
-
-ファイルのサムネイルを取得するには、[レプリゼンテーションAPI][thumb_representations]を使用する方法をお勧めします。
-
+  ファイルのサムネイルを取得するには、[レプリゼンテーションAPI][thumb_representations]を使用する方法をお勧めします。
 </Info>
 
 ## リクエスト
@@ -51,47 +38,45 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 /files/:id/thumbnail.:extension`][get_files_id_thumbnail_id]エンドポイントを使用します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/files/12345/thumbnail.png" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/files/12345/thumbnail.png" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.files.getFileThumbnailById(
+    thumbnailFile.id,
+    'png' as GetFileThumbnailByIdExtension,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await client.files.getFileThumbnailById(
-  thumbnailFile.id,
-  'png' as GetFileThumbnailByIdExtension,
-);
-```
+  ```python Python v10
+  client.files.get_file_thumbnail_by_id(
+      thumbnail_file.id, GetFileThumbnailByIdExtension.PNG
+  )
+  ```
 
-```python Python v10
-client.files.get_file_thumbnail_by_id(
-    thumbnail_file.id, GetFileThumbnailByIdExtension.PNG
-)
-```
+  ```cs .NET v10
+  await client.Files.GetFileThumbnailByIdAsync(fileId: thumbnailFile.Id, extension: GetFileThumbnailByIdExtension.Png);
+  ```
 
-```cs .NET v10
-await client.Files.GetFileThumbnailByIdAsync(fileId: thumbnailFile.Id, extension: GetFileThumbnailByIdExtension.Png);
-```
+  ```swift Swift v10
+  try await client.files.getFileThumbnailById(fileId: thumbnailFile.id, extension_: GetFileThumbnailByIdExtension.png, downloadDestinationUrl: destinationPath)
+  ```
 
-```swift Swift v10
-try await client.files.getFileThumbnailById(fileId: thumbnailFile.id, extension_: GetFileThumbnailByIdExtension.png, downloadDestinationUrl: destinationPath)
-```
+  ```java Java v10
+  client.getFiles().getFileThumbnailById(thumbnailFile.getId(), GetFileThumbnailByIdExtension.PNG)
+  ```
 
-```java Java v10
-client.getFiles().getFileThumbnailById(thumbnailFile.getId(), GetFileThumbnailByIdExtension.PNG)
-```
+  ```python Python v4
+  file_id = '11111'
 
-```python Python v4
-file_id = '11111'
+  thumbnail = client.file(file_id).get_thumbnail_representation('92x92', extension='jpg')
+  ```
 
-thumbnail = client.file(file_id).get_thumbnail_representation('92x92', extension='jpg')
-```
-
-```cs .NET v6
-Stream thumbnailContents = await client.FilesManager.GetThumbnailAsync("11111", maxWidth: 160, maxHeight: 160);
-```
-
+  ```cs .NET v6
+  Stream thumbnailContents = await client.FilesManager.GetThumbnailAsync("11111", maxWidth: 160, maxHeight: 160);
+  ```
 </CodeGroup>
 
 サムネイルの作成に成功すると、そのサムネイルがレスポンスの本文内でバイナリデータとして返されます。
@@ -132,18 +117,19 @@ Stream thumbnailContents = await client.FilesManager.GetThumbnailAsync("11111", 
 
 [get_files_id_thumbnail_id]: endpoint://get_files_id_thumbnail_id
 
-[thumb_representations]: /ja/guides/representations/thumbnail-representation
+[thumb_representations]: /guides/representations/thumbnail-representation
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file thumbnail", href: "/reference/get-files-id-thumbnail-id", badge: "GET" }
-  ]}
+  { label: "Get file thumbnail", href: "/reference/get-files-id-thumbnail-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "サムネイルレプリゼンテーションの取得", href: "/ja/guides/representations/thumbnail-representation", badge: "ガイド" },
-    { label: "サポートされているファイルの種類", href: "/ja/guides/representations/supported-file-types", badge: "ガイド" }
-  ]}
+  { label: "Get Thumbnail Representation", href: "/guides/representations/thumbnail-representation", badge: "GUIDE" },
+  { label: "Supported File Types", href: "/guides/representations/supported-file-types", badge: "GUIDE" }
+]}
 />

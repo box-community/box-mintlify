@@ -1,209 +1,185 @@
 ---
-title: "JWTを使用した設定"
-rank: 0
-related_endpoints: []
-related_guides:
-  - authentication/jwt
-required_guides:
-  - authentication/select
-  - applications/app-types/platform-apps
-  - authorization/platform-app-approval
-related_resources: []
 alias_paths:
-  - /docs/setting-up-a-jwt-app
-  - /docs/authentication-with-jwt
-  - /docs/app-auth
-  - /guides/applications/app-types/custom-apps/jwt-setup/
-  - >-
-    /guides/applications/app-types/custom-apps/jwt-setup/#generate-a-keypair-recommended
-category_id: authentication
-subcategory_id: authentication/jwt
-is_index: false
-id: authentication/jwt/jwt-setup
-type: guide
-total_steps: 5
-sibling_id: authentication/jwt
-parent_id: authentication/jwt
-next_page_id: authentication/jwt/with-sdk
-previous_page_id: ""
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/jwt/jwt-setup.md
+  0: /docs/setting-up-a-jwt-app
+  1: /docs/authentication-with-jwt
+  2: /docs/app-auth
+  3: /guides/applications/app-types/custom-apps/jwt-setup/
+  4: /guides/applications/app-types/custom-apps/jwt-setup/#generate-a-keypair-recommended
+rank: 0
+related_endpoints: {}
+related_guides:
+  0: authentication/jwt
+related_resources: {}
+required_guides:
+  0: authentication/select
+  1: applications/app-types/platform-apps
+  2: authorization/platform-app-approval
+title: JWTを使用した設定
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "Platformアプリ", href: "/ja/guides/applications/app-types/platform-apps", badge: "ガイド" },
-    { label: "Platformアプリの承認", href: "/ja/guides/authorization/platform-app-approval", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "Platform App", href: "/guides/applications/app-types/platform-apps", badge: "GUIDE" },
+  { label: "Platform App Approval", href: "/guides/authorization/platform-app-approval", badge: "GUIDE" }
+]}
 />
-Platform アプリは、[JWT][jwt]によるサーバー側認証を使用するよう設定できます。
 
-<Card href="/ja/guides/authentication/jwt" title="JWT認証のしくみを確認する" />
+Platformアプリは、[JWT][jwt]によるサーバー側認証を使用するよう設定できます。
+
+<Card href="/guides/authentication/jwt" arrow title="JWT認証のしくみを確認する" />
 
 ## 前提条件
 
-サーバー側認証を使用して Platform アプリを設定するには、Box Enterprise アカウントから[開発者コンソール][devconsole]にアクセスできることを確認する必要があります。または、[Developer アカウント][devaccount]にサインアップすることもできます。
+サーバー側認証を使用してPlatformアプリを設定するには、Box Enterpriseアカウントから[開発者コンソール][devconsole]にアクセスできることを確認する必要があります。または、[Developerアカウント][devaccount]にサインアップすることもできます。
 
 ## アプリの作成手順
 
 ### 開発者コンソールへの移動
 
-Box にログインし、[開発者コンソール][devconsole]に移動して、\[**Platform アプリの作成**] を選択します。
+Boxにログインし、[開発者コンソール][devconsole]に移動して、\[**Platformアプリの作成**] を選択します。
 
 ### アプリケーションの種類の選択
 
-アプリケーションの種類のリストから \[**Platform アプリ**] を選択します。次の手順を促すウィンドウが表示されます。
+アプリケーションの種類のリストから \[**Platformアプリ**] を選択します。次の手順を促すウィンドウが表示されます。
 
 <Frame border>
-
-![アプリケーションの選択画面](/images/guides/authentication/select-app-type.png)
-
+  ![アプリケーションの選択画面](/images/guides/authentication/select-app-type.png)
 </Frame>
 
 ### アプリケーションの基本情報の指定
 
 アプリを説明するために、アプリの名前と説明を指定します。アプリの目的を選択するには、ドロップダウンリストを使用します。選択したオプションに応じて、さらに詳細を指定することが必要になる場合があります。
 
-| 目的                           | 詳細                                                                                         |
-| ------------------------------ | -------------------------------------------------------------------------------------------- |
-| \[自動化]、\[カスタムポータル] | アプリの作成者 (お客様またはパートナー) を指定します。                                       |
-| 統合                           | 統合のカテゴリ、外部システム名のほか、アプリの作成者 (お客様またはパートナー) を指定します。 |
-| \[その他]                      | アプリの目的と、アプリの作成者 (お客様またはパートナー) を指定します。                       |
+| 目的                 | 詳細                                               |
+| ------------------ | ------------------------------------------------ |
+| \[自動化]、\[カスタムポータル] | アプリの作成者 (お客様またはパートナー) を指定します。                    |
+| 統合                 | 統合のカテゴリ、外部システム名のほか、アプリの作成者 (お客様またはパートナー) を指定します。 |
+| \[その他]             | アプリの目的と、アプリの作成者 (お客様またはパートナー) を指定します。            |
 
 <Frame border center width="300">
-
-> ![認証の選択画面](/images/guides/authentication/custom-app-selection.png)
-
+  ![認証の選択画面](/images/guides/authentication/custom-app-selection.png)
 </Frame>
 
 ### アプリケーションの認証の選択
 
-[キーペアを使用して][kp]アプリケーション ID を確認する場合は \[**サーバー認証 (JWT 使用)**] を選択し、\[**Platform アプリの作成**] で確定します。
+[キーペアを使用して][kp]アプリケーションIDを確認する場合は \[**サーバー認証 (JWT使用)**] を選択し、\[**Platformアプリの作成**] で確定します。
 
 <Warning>
-
-選択すると、新しいアプリケーションを作成しない限り、別の認証方法に変更できません。
-
+  選択すると、新しいアプリケーションを作成しない限り、別の認証方法に変更できません。
 </Warning>
 
 <Frame border width="300" center>
-
-![アプリ名のフォーム](/images/guides/authentication/custom-app-authentication-jwt.png)
-
+  ![アプリ名のフォーム](/images/guides/authentication/custom-app-authentication-jwt.png)
 </Frame>
 
 ## 公開キーと秘密キーのペア
 
 <Info>
-
-このセクションは、認証方法として \[サーバー認証 (クライアント資格情報許可)] を選択した場合はスキップできます。
-
+  このセクションは、認証方法として \[サーバー認証 (クライアント資格情報許可)] を選択した場合はスキップできます。
 </Info>
 
-\[サーバー認証 (JWT 使用)] を利用して Platform アプリを作成すると、[開発者コンソール][devconsole]の \[構成] タブでキーペアを生成できます。また、独自のキーペアを生成して、その公開キーを Box に提供することもできます。選択する方法に関係なく、セキュリティの目的で、Box アカウントでは[2 要素認証][2fa]を有効にしておく必要があります。
+\[サーバー認証 (JWT使用)] を利用してPlatformアプリを作成すると、[開発者コンソール][devconsole]の \[構成] タブでキーペアを生成できます。また、独自のキーペアを生成して、その公開キーをBoxに提供することもできます。選択する方法に関係なく、セキュリティの目的で、Boxアカウントでは[2要素認証][2fa]を有効にしておく必要があります。
 
 ### キーペアの生成 (推奨)
 
-Box で生成されたキーペアを使用する場合は、[開発者コンソール][devconsole]に移動し、そこで構成ファイルを生成できます。このファイルには、公開/秘密キーペアのほか、認証に必要なその他さまざまなアプリケーションの詳細が含まれています。
+Boxで生成されたキーペアを使用する場合は、[開発者コンソール][devconsole]に移動し、そこで構成ファイルを生成できます。このファイルには、公開/秘密キーペアのほか、認証に必要なその他さまざまなアプリケーションの詳細が含まれています。
 
 このファイルを生成するには、[開発者コンソール][devconsole]の \[**構成**] タブに移動し、\[**公開キーの追加と管理**] セクションまで下にスクロールします。
 
 <Frame border width="600" center>
-
-![キーの追加と管理](/images/guides/authentication/app-add-keys.png)
-
+  ![キーの追加と管理](/images/guides/authentication/app-add-keys.png)
 </Frame>
 
-\[ **公開/秘密キーペアを生成**] ボタンをクリックすると、Box によってキーペアが生成されます。これにより、アプリケーションコードに移すことができる JSON 構成ファイルのダウンロードが開始されます。
+\[ **公開/秘密キーペアを生成**] ボタンをクリックすると、Boxによってキーペアが生成されます。これにより、アプリケーションコードに移すことができるJSON構成ファイルのダウンロードが開始されます。
 
 <Danger>
-
-セキュリティ上の理由により、Box には秘密キーが保存されません。秘密キーを紛失した場合は、キーペア全体のリセットが必要になります。
-
+  セキュリティ上の理由により、Boxには秘密キーが保存されません。秘密キーを紛失した場合は、キーペア全体のリセットが必要になります。
 </Danger>
 
 ### 手動によるキーペアの追加
 
 代わりに、独自のキーペアを生成し、その公開キーを[開発者コンソール][devconsole]にアップロードすることもできます。
 
-OpenSSL を使用してキーペアを作成するには、ターミナルウィンドウを開き、以下のコマンドを実行します。
+OpenSSLを使用してキーペアを作成するには、ターミナルウィンドウを開き、以下のコマンドを実行します。
 
 ```shell
 openssl genrsa -des3 -out private.pem 2048
 openssl rsa -in private.pem -outform PEM -pubout -out public.pem
-
 ```
 
 <Info>
-**Windowsシステムの場合**
+  **Windowsシステムの場合**
 
-Windows ユーザーは、[Cygwin][cygwin]パッケージをインストールして使用することで、OpenSSL を実行できます。
-
+  Windowsユーザーは、[Cygwin][cygwin]パッケージをインストールして使用することで、OpenSSLを実行できます。
 </Info>
 
 その後、[開発者コンソール][devconsole]でアプリケーションの \[構成] タブに移動し、\[**公開キーの追加と管理**] セクションまで下にスクロールします。
 
 <Frame border width="600" center>
-
-![キーの追加と管理](/images/guides/authentication/app-add-keys.png)
-
+  ![キーの追加と管理](/images/guides/authentication/app-add-keys.png)
 </Frame>
 
 \[**公開キーを追加**] ボタンをクリックし、上記の手順で生成された公開キーを入力して、\[**確認して保存**] をクリックします。
 
 ## アプリ承認
 
-アプリケーションを使用するには、Box 管理者が Box 管理コンソールでそのアプリケーションを承認しておく必要があります。
+アプリケーションを使用するには、Box管理者がBox管理コンソールでそのアプリケーションを承認しておく必要があります。
 
 [開発者コンソール][devconsole]で、目的のアプリケーションの \[**承認**] タブに移動します。
 
 <Frame border center>
-
-![アプリ承認](/images/guides/authentication/app-authorization.png)
-
+  ![アプリ承認](/images/guides/authentication/app-authorization.png)
 </Frame>
 
-\[**確認して送信**] をクリックして、承認を得るために Box Enterprise 管理者にメールを送信します。このプロセスの詳細については、[アプリの承認に関するサポート記事][app-auth]を参照してください。
+\[**確認して送信**] をクリックして、承認を得るためにBox Enterprise管理者にメールを送信します。このプロセスの詳細については、[アプリの承認に関するサポート記事][app-auth]を参照してください。
 
-<Card href="/ja/guides/authorization/platform-app-approval" title="Platformアプリケーションの承認方法を確認する" />
+<Card href="/guides/authorization/platform-app-approval" arrow title="Platformアプリケーションの承認方法を確認する" />
 
 ## 基本的な構成
 
 ### アプリケーションアクセス
 
-アプリケーションのアクセスレベルにより、アプリからアクセスできるユーザーおよびコンテンツが決まります。デフォルトでは、アプリケーションで問題なく操作できるのは、その[サービスアカウント][sa]とすべての[App User][user-types]のコンテンツのみです。企業の既存の管理対象ユーザーや、アプリ自体が作成していないグループにアクセスするには、[開発者コンソール][devconsole]の \[**構成**] タブにある \[**アプリアクセスレベル**] に移動し、\[**アプリ + Enterprise アクセス**] に設定します。そうしないと、このような管理対象ユーザーとグループへのアクセスはブロックされます。
+アプリケーションのアクセスレベルにより、アプリからアクセスできるユーザーおよびコンテンツが決まります。デフォルトでは、アプリケーションで問題なく操作できるのは、その[サービスアカウント][sa]とすべての[App User][user-types]のコンテンツのみです。企業の既存の管理対象ユーザーや、アプリ自体が作成していないグループにアクセスするには、[開発者コンソール][devconsole]の \[**構成**] タブにある \[**アプリアクセスレベル**] に移動し、\[**アプリ + Enterpriseアクセス**] に設定します。そうしないと、このような管理対象ユーザーとグループへのアクセスはブロックされます。
 
-<Frame>![アプリのアクセスレベル](/images/guides/authentication/app-access-level.png)</Frame>
+<Frame>
+  ![アプリのアクセスレベル](/images/guides/authentication/app-access-level.png)
+</Frame>
 
 ### アプリケーションスコープ
 
 アプリケーションのスコープにより、アプリケーションが呼び出すことができるエンドポイントとリソースが決まります。各オプションの詳細については、[スコープのガイド][scopes]を参照してください。
 
-<Frame>![アプリスコープ](/images/guides/authentication/app-scopes.png)</Frame>
+<Frame>
+  ![アプリスコープ](/images/guides/authentication/app-scopes.png)
+</Frame>
 
-### CORS ドメイン
+### CORSドメイン
 
-アプリケーションが JavaScript でフロントエンドのブラウザコードから API コールを実行する場合は、[クロスオリジンリソース共有][cors] (CORS) のために、これらの呼び出しの実行元となるドメインを許可リストに追加する必要があります。すべてのリクエストがサーバー側のコードから発行される場合は、このセクションをスキップできます。
+アプリケーションがJavaScriptでフロントエンドのブラウザコードからAPIコールを実行する場合は、[クロスオリジンリソース共有][cors] (CORS) のために、これらの呼び出しの実行元となるドメインを許可リストに追加する必要があります。すべてのリクエストがサーバー側のコードから発行される場合は、このセクションをスキップできます。
 
-許可リストに完全な URI を追加するには、[開発者コンソール][devconsole]の \[**構成**] タブの下部にある \[**CORS ドメイン**] セクションに移動します。
+許可リストに完全なURIを追加するには、[開発者コンソール][devconsole]の \[**構成**] タブの下部にある \[**CORSドメイン**] セクションに移動します。
 
-<Frame>![アプリのCORS設定](/images/guides/authentication/app-cors.png)</Frame>
+<Frame>
+  ![アプリのCORS設定](/images/guides/authentication/app-cors.png)
+</Frame>
 
 {/* i18n-enable localize-links */}
 
 [devconsole]: https://app.box.com/developers/console
+
 [devaccount]: https://account.box.com/signup/n/developer
 
 {/* i18n-disable localize-links */}
 
-[devtoken]: /ja/guides/authentication/tokens/developer-tokens
-[scopes]: /ja/guides/api-calls/permissions-and-errors/scopes
+[devtoken]: /guides/authentication/tokens/developer-tokens
+
+[scopes]: /guides/api-calls/permissions-and-errors/scopes
 
 {/* i18n-enable localize-links */}
 
@@ -211,17 +187,19 @@ Windows ユーザーは、[Cygwin][cygwin]パッケージをインストール�
 
 {/* i18n-disable localize-links */}
 
-[user-types]: /ja/platform/user-types
-[sa]: /ja/platform/user-types/#service-account
+[user-types]: /platform/user-types
+
+[sa]: /platform/user-types/#service-account
 
 {/* i18n-enable localize-links */}
 
 [cygwin]: http://www.cygwin.com/
+
 [app-auth]: https://support.box.com/hc/ja/articles/360043697014-Boxのアプリ承認プロセスでのアプリの承認
 
 {/* i18n-disable localize-links */}
 
-[jwt]: /ja/guides/authentication/jwt
+[jwt]: /guides/authentication/jwt
 
 {/* i18n-enable localize-links */}
 
@@ -229,12 +207,13 @@ Windows ユーザーは、[Cygwin][cygwin]パッケージをインストール�
 
 {/* i18n-disable localize-links */}
 
-[kp]: /ja/guides/authentication/jwt/without-sdk/#public-and-private-key-pair
-[ccg]: /ja/guides/authentication/jwt/without-sdk/#client-credentials-grant
+[kp]: /guides/authentication/jwt/without-sdk/#public-and-private-key-pair
+
+[ccg]: /guides/authentication/jwt/without-sdk/#client-credentials-grant
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" }
-  ]}
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" }
+]}
 />

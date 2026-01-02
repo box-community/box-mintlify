@@ -1,26 +1,14 @@
 ---
-title: "メタデータカスケードポリシーの作成"
 related_endpoints:
-  - post_metadata_cascade_policies
+  0: post_metadata_cascade_policies
 related_guides:
-  - metadata/cascades/list
-  - metadata/cascades/force-apply
-  - metadata/cascades/delete
+  0: metadata/cascades/list
+  1: metadata/cascades/force-apply
+  2: metadata/cascades/delete
 related_resources:
-  - metadata_cascade_policy
-category_id: metadata
-subcategory_id: metadata/6-cascades
-is_index: false
-id: metadata/cascades/create
-rank: 3
-type: guide
-total_steps: 5
-sibling_id: metadata/cascades
-parent_id: metadata/cascades
-next_page_id: metadata/cascades/force-apply
-previous_page_id: metadata/cascades/get
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/3-create.md
+  0: metadata_cascade_policy
+title: メタデータカスケードポリシーの作成
+
 fullyTranslated: true
 ---
 
@@ -29,108 +17,105 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 メタデータテンプレートがフォルダに適用されたら、メタデータカスケードポリシーを作成できます。それには、ポリシーの適用先となるフォルダの`folder_id`と、メタデータテンプレートの`scope`および`templateKey`を指定して、[`POST /metadata_cascade_policies`][e_post] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/metadata_cascade_policies" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "folder_id": "12321",
-       "scope": "enterprise_27335",
-       "templateKey": "productInfo"
-     }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/metadata_cascade_policies" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "folder_id": "12321",
+         "scope": "enterprise_27335",
+         "templateKey": "productInfo"
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataCascadePolicies.createMetadataCascadePolicy({
-  folderId: folder.id,
-  scope: 'enterprise' as CreateMetadataCascadePolicyRequestBodyScopeField,
-  templateKey: templateKey,
-} satisfies CreateMetadataCascadePolicyRequestBody);
-```
+  ```typescript Node/TypeScript v10
+  await client.metadataCascadePolicies.createMetadataCascadePolicy({
+    folderId: folder.id,
+    scope: 'enterprise' as CreateMetadataCascadePolicyRequestBodyScopeField,
+    templateKey: templateKey,
+  } satisfies CreateMetadataCascadePolicyRequestBody);
+  ```
 
-```python Python v10
-client.metadata_cascade_policies.create_metadata_cascade_policy(
-    folder.id, CreateMetadataCascadePolicyScope.ENTERPRISE, template_key
-)
-```
+  ```python Python v10
+  client.metadata_cascade_policies.create_metadata_cascade_policy(
+      folder.id, CreateMetadataCascadePolicyScope.ENTERPRISE, template_key
+  )
+  ```
 
-```csharp .NET v10
-await client.MetadataCascadePolicies.CreateMetadataCascadePolicyAsync(requestBody: new CreateMetadataCascadePolicyRequestBody(folderId: folder.Id, scope: CreateMetadataCascadePolicyRequestBodyScopeField.Enterprise, templateKey: templateKey));
-```
+  ```csharp .NET v10
+  await client.MetadataCascadePolicies.CreateMetadataCascadePolicyAsync(requestBody: new CreateMetadataCascadePolicyRequestBody(folderId: folder.Id, scope: CreateMetadataCascadePolicyRequestBodyScopeField.Enterprise, templateKey: templateKey));
+  ```
 
-```swift Swift v10
-try await client.metadataCascadePolicies.createMetadataCascadePolicy(requestBody: CreateMetadataCascadePolicyRequestBody(folderId: folder.id, scope: CreateMetadataCascadePolicyRequestBodyScopeField.enterprise, templateKey: templateKey))
-```
+  ```swift Swift v10
+  try await client.metadataCascadePolicies.createMetadataCascadePolicy(requestBody: CreateMetadataCascadePolicyRequestBody(folderId: folder.id, scope: CreateMetadataCascadePolicyRequestBodyScopeField.enterprise, templateKey: templateKey))
+  ```
 
-```java Java v10
-client.getMetadataCascadePolicies().createMetadataCascadePolicy(new CreateMetadataCascadePolicyRequestBody(folder.getId(), CreateMetadataCascadePolicyRequestBodyScopeField.ENTERPRISE, templateKey))
-```
+  ```java Java v10
+  client.getMetadataCascadePolicies().createMetadataCascadePolicy(new CreateMetadataCascadePolicyRequestBody(folder.getId(), CreateMetadataCascadePolicyRequestBodyScopeField.ENTERPRISE, templateKey))
+  ```
 
-```py Python v4
-folder = client.folder(folder_id='22222')
-metadata_template = client.metadata_template('enterprise', 'securityClassiciation')
+  ```py Python v4
+  folder = client.folder(folder_id='22222')
+  metadata_template = client.metadata_template('enterprise', 'securityClassiciation')
 
-cascade_policy = folder.cascade_metadata(metadata_template)
-print(f'Folder {cascade_policy.parent.id} has a metadata cascade policy for {cascade_policy.scope} template "{cascade_policy.templateKey}"')
-```
+  cascade_policy = folder.cascade_metadata(metadata_template)
+  print(f'Folder {cascade_policy.parent.id} has a metadata cascade policy for {cascade_policy.scope} template "{cascade_policy.templateKey}"')
+  ```
 
-```csharp .NET v6
-BoxMetadataCascadePolicy metadataCascadePolicy = await client.MetadataCascadePolicyManager
-    .CreateCascadePolicyAsync("22222", "enterprise_11111", "templateKey");
-```
+  ```csharp .NET v6
+  BoxMetadataCascadePolicy metadataCascadePolicy = await client.MetadataCascadePolicyManager
+      .CreateCascadePolicyAsync("22222", "enterprise_11111", "templateKey");
+  ```
 
-```js Node v4
-var folderID = '22222';
-client.metadata.createCascadePolicy('enterprise', 'testTemplate', folderID)
- .then(cascadePolicy => {
-  /* cascadePolicy -> {
-   id: '84113349-794d-445c-b93c-d8481b223434',
-   type: 'metadata_cascade_policy',
-   owner_enterprise: {
-    type: 'enterprise',
-    id: '11111'
-   },
-   parent: {
-    type: 'folder',
-    id: '22222'
-   },
-   scope: 'enterprise_11111',
-   templateKey: 'testTemplate'
-  }
-  */
- });
-```
+  ```js Node v4
+  var folderID = '22222';
+  client.metadata.createCascadePolicy('enterprise', 'testTemplate', folderID)
+   .then(cascadePolicy => {
+    /* cascadePolicy -> {
+     id: '84113349-794d-445c-b93c-d8481b223434',
+     type: 'metadata_cascade_policy',
+     owner_enterprise: {
+      type: 'enterprise',
+      id: '11111'
+     },
+     parent: {
+      type: 'folder',
+      id: '22222'
+     },
+     scope: 'enterprise_11111',
+     templateKey: 'testTemplate'
+    }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Info>
-
-テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[ファイルのすべてのインスタンスのリストを取得][g_list_instances_item]します。
-
+  テンプレートの`scope`と`templateKey`を取得するには、[すべてのメタデータテンプレートのリストを取得][g_list_templates]するか、[ファイルのすべてのインスタンスのリストを取得][g_list_instances_item]します。
 </Info>
 
 <Warning>
-
-カスケードポリシーを作成できるのは、指定した`scope`と`templateKey`のフォルダにメタデータインスタンスがすでに適用されている場合のみです。
-
+  カスケードポリシーを作成できるのは、指定した`scope`と`templateKey`のフォルダにメタデータインスタンスがすでに適用されている場合のみです。
 </Warning>
 
-[e_post]: /ja/reference/post_metadata_cascade_policies
+[e_post]: /reference/post_metadata_cascade_policies
 
-[g_list_templates]: /ja/guides/metadata/templates/list
+[g_list_templates]: /guides/metadata/templates/list
 
-[g_list_instances_item]: /ja/guides/metadata/instances/list
+[g_list_instances_item]: /guides/metadata/instances/list
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create metadata cascade policy", href: "/reference/post-metadata-cascade-policies", badge: "POST" }
-  ]}
+  { label: "Create metadata cascade policy", href: "/reference/post-metadata-cascade-policies", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータカスケードポリシーのリストの取得", href: "/ja/guides/metadata/cascades/list", badge: "ガイド" },
-    { label: "フォルダ内のすべての項目に対するメタデータの強制適用", href: "/ja/guides/metadata/cascades/force-apply", badge: "ガイド" },
-    { label: "メタデータカスケードポリシーの削除", href: "/ja/guides/metadata/cascades/delete", badge: "ガイド" }
-  ]}
+  { label: "List metadata cascade policies", href: "/guides/metadata/cascades/list", badge: "GUIDE" },
+  { label: "Force-apply metadata to all items in a folder", href: "/guides/metadata/cascades/force-apply", badge: "GUIDE" },
+  { label: "Delete a metadata cascade policy", href: "/guides/metadata/cascades/delete", badge: "GUIDE" }
+]}
 />

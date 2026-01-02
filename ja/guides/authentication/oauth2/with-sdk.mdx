@@ -1,44 +1,33 @@
 ---
-title: "SDKを使用したOAuth 2.0"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - get_authorize
+  0: get_authorize
 related_guides:
-  - applications/app-types/select
-  - authentication/select
-  - authentication/oauth2/oauth2-setup
+  0: applications/app-types/select
+  1: authentication/select
+  2: authentication/oauth2/oauth2-setup
+related_resources: {}
 required_guides:
-  - tooling/sdks
-  - authentication/select
-  - authentication/oauth2/oauth2-setup
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: authentication/oauth2
-is_index: false
-id: authentication/oauth2/with-sdk
-type: guide
-total_steps: 4
-sibling_id: authentication/oauth2
-parent_id: authentication/oauth2
-next_page_id: authentication/oauth2
-previous_page_id: authentication/oauth2/oauth2-setup
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/oauth2/with-sdk.md
+  0: tooling/sdks
+  1: authentication/select
+  2: authentication/oauth2/oauth2-setup
+title: SDKを使用したOAuth 2.0
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "Box SDK", href: "/ja/guides/tooling/sdks/index", badge: "ガイド" },
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
+  { label: "Box SDKs", href: "/guides/tooling/sdks/index", badge: "GUIDE" },
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+]}
 />
+
 Box SDKには、クライアント側OAuth 2.0のサポートが組み込まれています。
 
 このプロセスでは、ユーザーはブラウザでBoxウェブアプリにリダイレクトされます。そこで、ユーザーはログインし、アプリケーションによる自分のデータへのアクセスを承認すると、アプリケーションの`redirect_url`に再度リダイレクトされます。この最後の手順では、ユーザーがアクセス可能な場所にあるウェブサーバー上でアプリケーションが実行されている必要があります。
@@ -55,9 +44,7 @@ OAuth 2.0フローを完了するには、以下の手順を完了する必要�
 このフローが終了すると、アプリケーションには、このユーザーの代わりにAPIコールを実行するために使用できるアクセストークンが用意されます。
 
 <Note>
-
-OAuth 2.0を介して取得したアクセストークンは、もともとアプリケーションを承認したユーザーに関連付けられています。このトークンを使用して実行されるAPIコールはどれも、このアプリケーションから実行されているように見えるため、ユーザーには、アプリケーションがこのトークンを使用してアクセスしようとするファイルやフォルダへのアクセス権限が必要です。
-
+  OAuth 2.0を介して取得したアクセストークンは、もともとアプリケーションを承認したユーザーに関連付けられています。このトークンを使用して実行されるAPIコールはどれも、このアプリケーションから実行されているように見えるため、ユーザーには、アプリケーションがこのトークンを使用してアクセスしようとするファイルやフォルダへのアクセス権限が必要です。
 </Note>
 
 ## パラメータ
@@ -73,124 +60,90 @@ OAuth 2.0を介して取得したアクセストークンは、もともとア�
 最初の手順として、選択したSDKを使用して環境が準備されていることを確認します。
 
 <CodeGroup>
+  ```csharp .NET
+  var redirectUrl = "[REDIRECT_URI]";
+  var config = new BoxConfig("[CLIENT_ID]", "[CLIENT_SECRET]", new Uri(redirectUrl));
+  var sdk = new BoxClient(config);
+  ```
 
+  ```java Java
+  import com.box.sdk.BoxAPIConnection;
 
+  String authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
+  ```
 
-```csharp .NET
-var redirectUrl = "[REDIRECT_URI]";
-var config = new BoxConfig("[CLIENT_ID]", "[CLIENT_SECRET]", new Uri(redirectUrl));
-var sdk = new BoxClient(config);
+  ```python Python
+  from boxsdk import OAuth2, Client
 
-```
+  auth = OAuth2(
+      client_id='[CLIENT_ID]',
+      client_secret='[CLIENT_SECRET]'
+  )
+  ```
 
+  ```js Node
+  var BoxSDK = require("box-node-sdk");
 
-```java Java
-import com.box.sdk.BoxAPIConnection;
-
-String authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
-
-```
-
-
-```python Python
-from boxsdk import OAuth2, Client
-
-auth = OAuth2(
-    client_id='[CLIENT_ID]',
-    client_secret='[CLIENT_SECRET]'
-)
-
-```
-
-
-```js Node
-var BoxSDK = require("box-node-sdk");
-
-var sdk = new BoxSDK({
-    clientID: "[CLIENT_ID]",
-    clientSecret: "[CLIENT_SECRET]",
-});
-
-```
-
-
-
+  var sdk = new BoxSDK({
+      clientID: "[CLIENT_ID]",
+      clientSecret: "[CLIENT_SECRET]",
+  });
+  ```
 </CodeGroup>
 
-<Card href="/ja/guides/tooling/sdks" title="ご利用の環境に合わせたSDKのインストールの詳細を確認する"/>
+<Card href="/guides/tooling/sdks" arrow title="ご利用の環境に合わせたSDKのインストールの詳細を確認する" />
 
 ## 2. ユーザーをリダイレクトする
 
 次に、承認URLにユーザーをリダイレクトします。ほとんどのSDKでは、SDKクライアントの承認URLを取得する方法をサポートしています。
 
 <Warning>
-
-アプリケーション用にリダイレクトURIを複数設定した場合、承認URLには、開発者コンソールで設定したURIのいずれかと一致する`redirect_uri`パラメータを含める必要があります。このパラメータが指定されていない場合、ユーザーがアプリケーションにアクセス権限を付与すると、`redirect_uri_missing`エラーが表示され、アプリにリダイレクトされません。
-
+  アプリケーション用にリダイレクトURIを複数設定した場合、承認URLには、開発者コンソールで設定したURIのいずれかと一致する`redirect_uri`パラメータを含める必要があります。このパラメータが指定されていない場合、ユーザーがアプリケーションにアクセス権限を付与すると、`redirect_uri_missing`エラーが表示され、アプリにリダイレクトされません。
 </Warning>
 
 <CodeGroup>
+  ```csharp .NET
+  var authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
+  // redirectTo(authorizationUrl);
+  ```
 
+  ```java Java
+  String authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
 
-```csharp .NET
-var authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
-// redirectTo(authorizationUrl);
+  // response.redirect(authorizationUrl);
+  ```
 
-```
+  ```python Python
+  auth_url, csrf_token = auth.get_authorization_url('[REDIRECT_URL]')
 
-```java Java
-String authorizationUrl = "https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&response_type=code";
+  // redirect(auth_url, code=302)
+  ```
 
-// response.redirect(authorizationUrl);
+  ```js Node
+  var authorize_url = sdk.getAuthorizeURL({
+      response_type: "code",
+  });
 
-```
-
-
-
-```python Python
-auth_url, csrf_token = auth.get_authorization_url('[REDIRECT_URL]')
-
-// redirect(auth_url, code=302)
-
-```
-
-
-```js Node
-var authorize_url = sdk.getAuthorizeURL({
-    response_type: "code",
-});
-
-// res.redirect(authorize_url)
-
-```
-
-
-
+  // res.redirect(authorize_url)
+  ```
 </CodeGroup>
 
 <Info>
-
-ユーザーがURLにリダイレクトされる方法は、使用されるアプリケーションフレームワークによって異なります。このトピックの詳細については、ほとんどのフレームワークのドキュメントで説明されています。
-
+  ユーザーがURLにリダイレクトされる方法は、使用されるアプリケーションフレームワークによって異なります。このトピックの詳細については、ほとんどのフレームワークのドキュメントで説明されています。
 </Info>
 
 [承認URL](endpoint://get-authorize)は、以下のように手動でも作成できます。
 
 ```sh
 https://account.box.com/api/oauth2/authorize?client_id=[CLIENT_ID]&redirect_uri=[REDIRECT_URI]&response_type=code
-
 ```
 
 <Info>
-
-スコープを制限したり追加の状態を渡したりするためにユーザーをリダイレクトするときに、追加のクエリパラメータを渡すことができます。詳細については、[リファレンスドキュメント](endpoint://get-authorize)を参照してください。
-
+  スコープを制限したり追加の状態を渡したりするためにユーザーをリダイレクトするときに、追加のクエリパラメータを渡すことができます。詳細については、[リファレンスドキュメント](endpoint://get-authorize)を参照してください。
 </Info>
 
 <Tip>
-
-Boxインスタンスの[Box Verified Enterprise][1]が有効になっている場合、標準的な`account.box.com`というベースURLを使用する際に問題が発生することがあります。`account.box.com`の代わりに`ent.box.com`を使用してください。
-
+  Boxインスタンスの[Box Verified Enterprise][1]が有効になっている場合、標準的な`account.box.com`というベースURLを使用する際に問題が発生することがあります。`account.box.com`の代わりに`ent.box.com`を使用してください。
 </Tip>
 
 ## 3. ユーザーがアプリケーションにアクセス権限を付与する
@@ -198,9 +151,7 @@ Boxインスタンスの[Box Verified Enterprise][1]が有効になっている�
 ユーザーはBoxウェブアプリにリダイレクトされると、ログインする必要があります。ログイン後、ユーザーにはアプリケーションを承認するための画面が表示されます。
 
 <Frame border center shadow width="400">
-
-![OAuth 2.0承認画面の例](./oauth2-grant.png)
-
+  ![OAuth 2.0承認画面の例](./oauth2-grant.png)
 </Frame>
 
 ユーザーがこのリクエストを承認し、ボタンをクリックすると、ブラウザは、開発者コンソールで構成されたとおりにアプリケーションのリダイレクトURLにリダイレクトされます。
@@ -211,52 +162,36 @@ Boxインスタンスの[Box Verified Enterprise][1]が有効になっている�
 
 ```sh
 https://your.domain.com/path?code=1234567
-
 ```
 
 このコードは[アクセストークン][tokens]ではなく、有効期間はほんの数秒です。SDKを使用すると、このコードを実際のアクセストークンと交換できます。
 
 <CodeGroup>
+  ```csharp .NET
+  var session = await sdk.Auth.AuthenticateAsync("[CODE]");
+  var client = new BoxClient(config, session);
+  ```
 
+  ```java Java
+  BoxAPIConnection client = new BoxAPIConnection(
+      "[CLIENT_ID]",
+      "[CLIENT_SECRET]",
+      "[CODE]"
+  );
+  ```
 
-```csharp .NET
-var session = await sdk.Auth.AuthenticateAsync("[CODE]");
-var client = new BoxClient(config, session);
+  ```python Python
+  auth.authenticate('[CODE]')
+  client = Client(auth)
+  ```
 
-```
+  ```js Node
+  var code = "...";
 
-
-
-
-```java Java
-BoxAPIConnection client = new BoxAPIConnection(
-    "[CLIENT_ID]",
-    "[CLIENT_SECRET]",
-    "[CODE]"
-);
-
-```
-
-
-```python Python
-auth.authenticate('[CODE]')
-client = Client(auth)
-
-```
-
-
-
-```js Node
-var code = "...";
-
-sdk.getTokensAuthorizationCodeGrant("[CODE]", null, function (err, tokenInfo) {
-    var client = sdk.getPersistentClient(tokenInfo);
-});
-
-```
-
-
-
+  sdk.getTokensAuthorizationCodeGrant("[CODE]", null, function (err, tokenInfo) {
+      var client = sdk.getPersistentClient(tokenInfo);
+  });
+  ```
 </CodeGroup>
 
 このフローが終了すると、アプリケーションには、このユーザーの代わりにAPIコールを実行するために使用できるアクセストークンが用意されます。
@@ -266,13 +201,9 @@ sdk.getTokensAuthorizationCodeGrant("[CODE]", null, function (err, tokenInfo) {
 各SDKのOAuth 2.0認証の詳細については、以下を参照してください。
 
 * [.Net][.Net]
-
 * [Java][Java]
-
 * [Python][Python]
-
 * [Node][Node]
-
 * [IOS][IOS]
 
 [.Net]: https://github.com/box/box-windows-sdk-v2/blob/legacy/docs/authentication.md#traditional-3-legged-oauth2
@@ -285,7 +216,7 @@ sdk.getTokensAuthorizationCodeGrant("[CODE]", null, function (err, tokenInfo) {
 
 [IOS]: https://github.com/box/box-ios-sdk/blob/legacy/BoxSDK/docs/usage/authentication.md#traditional-3-legged-oauth2
 
-[tokens]: /ja/guides/authentication/tokens/access-tokens
+[tokens]: /guides/authentication/tokens/access-tokens
 
 {/* i18n-enable localize-links */}
 
@@ -296,14 +227,15 @@ sdk.getTokensAuthorizationCodeGrant("[CODE]", null, function (err, tokenInfo) {
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
-  ]}
+  { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "ガイド" },
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
+  { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+]}
 />

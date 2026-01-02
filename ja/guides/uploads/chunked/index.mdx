@@ -1,21 +1,12 @@
 ---
-title: "分割アップロード"
+alias_paths: ""
 rank: 2
-alias_paths: []
-category_id: uploads
-subcategory_id: uploads/chunked
-is_index: true
-id: uploads/chunked
-type: guide
-total_steps: 5
-sibling_id: uploads
-parent_id: uploads
-next_page_id: uploads/chunked/with-sdks
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/uploads/chunked/index.md
+sidebarTitle: Overview
+title: 分割アップロード
+
 fullyTranslated: true
 ---
+
 大きなファイルでも、分割アップロードAPIを使用して一連のパーツに分割して個別にアップロードすることで、Boxに確実にアップロードできます。
 
 {/* alex ignore failed */}
@@ -33,9 +24,7 @@ fullyTranslated: true
 3. **[セッションをコミットする][commit]**: アプリケーションがセッションをコミットします。このときにファイルの整合性がチェックされた後、セッションが作成されたときに指定された場所にファイルが配置されます。
 
 <Info>
-
-ほとんどの[Box SDKではBoxからの分割アップロードがサポートされている][sdks]ため、アプリケーションコードの複雑さが解消されます。
-
+  ほとんどの[Box SDKではBoxからの分割アップロードがサポートされている][sdks]ため、アプリケーションコードの複雑さが解消されます。
 </Info>
 
 ## 制約事項
@@ -50,10 +39,10 @@ fullyTranslated: true
 
 リソースの浪費やデータ破損を避けるために、クライアントは、アップロードの開始以降、ディスク上の基になるファイルが変更されていないことを確認する必要があります。
 
-[newsession]: /ja/guides/uploads/chunked/create-session
+[newsession]: /guides/uploads/chunked/create-session
 
-[uploadparts]: /ja/guides/uploads/chunked/upload-part
+[uploadparts]: /guides/uploads/chunked/upload-part
 
-[commit]: /ja/guides/uploads/chunked/commit-session
+[commit]: /guides/uploads/chunked/commit-session
 
-[sdks]: /ja/guides/uploads/chunked/with-sdks
+[sdks]: /guides/uploads/chunked/with-sdks

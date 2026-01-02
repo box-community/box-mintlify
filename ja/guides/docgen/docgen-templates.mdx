@@ -1,26 +1,15 @@
 ---
-title: "Box Doc Genテンプレート"
 rank: 4
 related_endpoints:
-  - get_docgen_templates_v2025.0
-  - get_docgen_templates_id_v2025.0
-  - get_docgen_templates_id_tags_v2025.0
-  - post_docgen_templates_v2025.0
+  0: get_docgen_templates_v2025.0
+  1: get_docgen_templates_id_v2025.0
+  2: get_docgen_templates_id_tags_v2025.0
+  3: post_docgen_templates_v2025.0
 related_guides:
-  - docgen/docgen-getting-started
-  - docgen/generate-document
-category_id: docgen
-subcategory_id: null
-is_index: false
-id: docgen/docgen-templates
-type: guide
-total_steps: 5
-sibling_id: docgen
-parent_id: docgen
-next_page_id: docgen/docgen-jobs
-previous_page_id: docgen/generate-document
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/docgen/docgen-templates.md
+  0: docgen/docgen-getting-started
+  1: docgen/generate-document
+title: Box Doc Genテンプレート
+
 fullyTranslated: true
 ---
 
@@ -37,33 +26,31 @@ Box Doc Gen APIの使用を開始する前に、[Box Doc Genの使い方][docgen
 作成されたすべてのBox Doc Genテンプレートのリストを取得するには、`GET /2.0/docgen_templates`エンドポイントを使用します。追加のパラメータを指定する必要はありません。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L 'https://api.box.com/2.0/docgen_templates' \
+       -H 'box-version: 2025.0' \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>'
+  ```
 
-```sh cURL
-curl -L 'https://api.box.com/2.0/docgen_templates' \
-     -H 'box-version: 2025.0' \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>'
-```
+  ```typescript Node/TypeScript v10
+  await client.docgenTemplate.getDocgenTemplatesV2025R0();
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgenTemplate.getDocgenTemplatesV2025R0();
-```
+  ```python Python v10
+  client.docgen_template.get_docgen_templates_v2025_r0()
+  ```
 
-```python Python v10
-client.docgen_template.get_docgen_templates_v2025_r0()
-```
+  ```cs .NET v10
+  await client.DocgenTemplate.GetDocgenTemplatesV2025R0Async();
+  ```
 
-```cs .NET v10
-await client.DocgenTemplate.GetDocgenTemplatesV2025R0Async();
-```
+  ```swift Swift v10
+  try await client.docgenTemplate.getDocgenTemplatesV2025R0()
+  ```
 
-```swift Swift v10
-try await client.docgenTemplate.getDocgenTemplatesV2025R0()
-```
-
-```java Java v10
-client.getDocgenTemplate().getDocgenTemplatesV2025R0()
-```
-
+  ```java Java v10
+  client.getDocgenTemplate().getDocgenTemplatesV2025R0()
+  ```
 </CodeGroup>
 
 レスポンスには、すでに作成済みのBox Doc Genテンプレートを列挙する`entries`配列が含まれます。
@@ -73,37 +60,35 @@ client.getDocgenTemplate().getDocgenTemplatesV2025R0()
 特定のBox Doc Genテンプレートを取得するには、`GET /2.0/docgen_templates_id`エンドポイントを使用し、`template_id`を指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L 'https://api.box.com/2.0/docgen_templates/12345678' \
+       -H 'box-version: 2025.0' \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>'
+  ```
 
-```sh cURL
-curl -L 'https://api.box.com/2.0/docgen_templates/12345678' \
-     -H 'box-version: 2025.0' \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>'
-```
+  ```typescript Node/TypeScript v10
+  await client.docgenTemplate.getDocgenTemplateByIdV2025R0(
+    createdDocgenTemplate.file!.id,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgenTemplate.getDocgenTemplateByIdV2025R0(
-  createdDocgenTemplate.file!.id,
-);
-```
+  ```python Python v10
+  client.docgen_template.get_docgen_template_by_id_v2025_r0(
+      created_docgen_template.file.id
+  )
+  ```
 
-```python Python v10
-client.docgen_template.get_docgen_template_by_id_v2025_r0(
-    created_docgen_template.file.id
-)
-```
+  ```cs .NET v10
+  await client.DocgenTemplate.GetDocgenTemplateByIdV2025R0Async(templateId: NullableUtils.Unwrap(createdDocgenTemplate.File).Id);
+  ```
 
-```cs .NET v10
-await client.DocgenTemplate.GetDocgenTemplateByIdV2025R0Async(templateId: NullableUtils.Unwrap(createdDocgenTemplate.File).Id);
-```
+  ```swift Swift v10
+  try await client.docgenTemplate.getDocgenTemplateByIdV2025R0(templateId: createdDocgenTemplate.file!.id)
+  ```
 
-```swift Swift v10
-try await client.docgenTemplate.getDocgenTemplateByIdV2025R0(templateId: createdDocgenTemplate.file!.id)
-```
-
-```java Java v10
-client.getDocgenTemplate().getDocgenTemplateByIdV2025R0(createdDocgenTemplate.getFile().getId())
-```
-
+  ```java Java v10
+  client.getDocgenTemplate().getDocgenTemplateByIdV2025R0(createdDocgenTemplate.getFile().getId())
+  ```
 </CodeGroup>
 
 レスポンスには、Box Doc Genテンプレートとして使用されたファイルの詳細が含まれます。
@@ -113,47 +98,45 @@ client.getDocgenTemplate().getDocgenTemplateByIdV2025R0(createdDocgenTemplate.ge
 作成済みのすべてのBox Doc Genテンプレートのリストを取得するには、`GET /2.0/docgen_template_jobs_id`エンドポイントを使用し、`template_id`を指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -L 'https://api.box.com/2.0/docgen_template_jobs/12345678' \
+       -H 'box-version: 2025.0' \
+       -H 'Authorization: Bearer <ACCESS_TOKEN>'
+  ```
 
-```sh cURL
-curl -L 'https://api.box.com/2.0/docgen_template_jobs/12345678' \
-     -H 'box-version: 2025.0' \
-     -H 'Authorization: Bearer <ACCESS_TOKEN>'
-```
+  ```typescript Node/TypeScript v10
+  await client.docgenTemplate.getDocgenTemplateJobByIdV2025R0(
+    fetchedDocgenTemplate.file!.id,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await client.docgenTemplate.getDocgenTemplateJobByIdV2025R0(
-  fetchedDocgenTemplate.file!.id,
-);
-```
+  ```python Python v10
+  client.docgen_template.get_docgen_template_job_by_id_v2025_r0(
+      fetched_docgen_template.file.id
+  )
+  ```
 
-```python Python v10
-client.docgen_template.get_docgen_template_job_by_id_v2025_r0(
-    fetched_docgen_template.file.id
-)
-```
+  ```cs .NET v10
+  await client.DocgenTemplate.GetDocgenTemplateJobByIdV2025R0Async(templateId: NullableUtils.Unwrap(fetchedDocgenTemplate.File).Id);
+  ```
 
-```cs .NET v10
-await client.DocgenTemplate.GetDocgenTemplateJobByIdV2025R0Async(templateId: NullableUtils.Unwrap(fetchedDocgenTemplate.File).Id);
-```
+  ```swift Swift v10
+  try await client.docgenTemplate.getDocgenTemplateJobByIdV2025R0(templateId: fetchedDocgenTemplate.file!.id)
+  ```
 
-```swift Swift v10
-try await client.docgenTemplate.getDocgenTemplateJobByIdV2025R0(templateId: fetchedDocgenTemplate.file!.id)
-```
-
-```java Java v10
-client.getDocgenTemplate().getDocgenTemplateJobByIdV2025R0(fetchedDocgenTemplate.getFile().getId())
-```
-
+  ```java Java v10
+  client.getDocgenTemplate().getDocgenTemplateJobByIdV2025R0(fetchedDocgenTemplate.getFile().getId())
+  ```
 </CodeGroup>
 
 レスポンスには、ドキュメントを生成するために実行されたBox Doc Genジョブのリストが含まれます。
 
-[docgen-prerequisites]: /ja/guides/docgen/docgen-getting-started
+[docgen-prerequisites]: /guides/docgen/docgen-getting-started
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "Box Doc Genの使い方", href: "/ja/guides/docgen/docgen-getting-started", badge: "ガイド" },
-    { label: "ドキュメントの生成", href: "/ja/guides/docgen/generate-document", badge: "ガイド" }
-  ]}
+  { label: "Get started with Box Doc Gen", href: "/guides/docgen/docgen-getting-started", badge: "GUIDE" },
+  { label: "Generate documents", href: "/guides/docgen/generate-document", badge: "GUIDE" }
+]}
 />

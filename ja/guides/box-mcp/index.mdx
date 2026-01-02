@@ -1,21 +1,11 @@
 ---
-title: "Box MCPサーバー"
 rank: 2
-related_endpoints: []
-related_guides: []
-required_guides: []
-category_id: box-mcp
-subcategory_id: null
-is_index: true
-id: box-mcp
-type: guide
-total_steps: 0
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/box-mcp/index.md
+related_endpoints: {}
+related_guides: {}
+required_guides: {}
+sidebarTitle: Overview
+title: Box MCPサーバー
+
 fullyTranslated: true
 ---
 
@@ -26,51 +16,45 @@ Model Context Protocol ([MCP](https://modelcontextprotocol.io/introduction)) は
 Box MCPサーバーを使用すると、AnthropicのClaude、Microsoft Copilot Studio、Mistral Le Chatなどのプラットフォームが提供するサードパーティ製AIエージェントがBoxのコンテンツにシームレスにアクセスできるようになります。Boxに保存されているコンテンツに関連した操作を実行できるようになるため、エージェントの機能が拡張されます。
 
 <Frame noborder center>
-
-![MCP](./img/mcp.png)
-
+  ![MCP](./img/mcp.png)
 </Frame>
 
 Box MCPサーバーには2種類あります。
 
 * リモートBox MCPサーバー: Box管理コンソールで作成または有効化でき、Boxで直接ホストされています。
-  {/* alex ignore */}
+
+{/* alex ignore */}
 
 * セルフホストBox MCPサーバー: このバージョンはオープンソースのBox Developer Communityプロジェクトであるため、ローカルマシンで複製してホストできます。
-  {/* alex enable */}
+
+{/* alex enable */}
 
 実装されるツールのレベルが異なるため、2種類のBox MCPサーバーに関する詳細なガイドを参照し、Box MCPサーバーを有効化する方法を確認してください。
 
 <Columns cols={2}>
+  <CustomCard
+    icon="/static/ai-dev-zone/mcp.svg"
+    title="リモートBox MCPサーバー"
+    href="/guides/box-mcp/remote"
+    tags={[
+    { text: "New", bgColor: "#e1ffe7" },
+  ]}
+  >
+    管理コンソールでリモートBox MCPサーバーを有効にします。これはBoxで直接ホストされています。
+  </CustomCard>
 
-<CustomCard icon="/static/ai-dev-zone/mcp.svg" title="リモートBox MCPサーバー" href="/ja/guides/box-mcp/remote"
-
-tags={[
-    { text: "新着", bgColor: "#e1ffe7" },
-  ]} >
-
-管理コンソールでリモートBox MCPサーバーを有効にします。これはBoxで直接ホストされています。
-
-
-</CustomCard>
-
-<CustomCard icon="/static/ai-dev-zone/mcp.svg" title="セルフホストBox MCPサーバー" href="/ja/guides/box-mcp/self-hosted"
-
-
-tags={[
-    { text: "オープンソース", bgColor: "#e8e8e8" },
-  ]} >
-
-オープンソースのBox Developer Communityプロジェクト。このBox MCPサーバーを複製し、ローカルマシンでホストすることができます。
-
-
-
-</CustomCard>
-
+  <CustomCard
+    icon="/static/ai-dev-zone/mcp.svg"
+    title="セルフホストBox MCPサーバー"
+    href="/guides/box-mcp/self-hosted"
+    tags={[
+    { text: "Open source", bgColor: "#e8e8e8" },
+  ]}
+  >
+    オープンソースのBox Developer Communityプロジェクト。このBox MCPサーバーを複製し、ローカルマシンでホストすることができます。
+  </CustomCard>
 </Columns>
 
 Box CTOのBen Kusとのインタビューを視聴し、MCPによってAIエージェントがどのようにプラットフォーム間で動的に動作し、開発の手間を軽減しているかをご覧ください。
 
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/u_y5_y9JGg4?si=PY2__LklwsGWwiAD" title="MCP: 企業のためにAIを実用化するためのAPI標準 | Box CTOのBen KusによるBox AI Explainer Series EP4" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-</iframe>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/u_y5_y9JGg4?si=PY2__LklwsGWwiAD" title="MCP: 企業のためにAIを実用化するためのAPI標準 | Box CTOのBen KusによるBox AI Explainer Series EP4" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />

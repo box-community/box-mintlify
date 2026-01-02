@@ -1,26 +1,15 @@
 ---
-title: "ファイルとフォルダの転送"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - put_users_id_folders_0
+  0: put_users_id_folders_0
 related_guides:
-  - users/deprovision
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: users
-subcategory_id: users/deprovision
-is_index: false
-id: users/deprovision/transfer-folders
-type: guide
-total_steps: 1
-sibling_id: users/deprovision
-parent_id: users/deprovision
-next_page_id: ''
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/users/deprovision/transfer-folders.md
+  0: users/deprovision
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: ファイルとフォルダの転送
+
 fullyTranslated: true
 ---
 
@@ -30,152 +19,144 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 Box内でこれを実行するのに使用される一般的な方法は以下の2つです。
 
-* すべてのコンテンツをあるユーザーから別のユーザーに直接移動する、[所有フォルダの移動](/ja/reference/put-users-id-folders-0)APIを使用する。
+* すべてのコンテンツをあるユーザーから別のユーザーに直接移動する、[所有フォルダの移動](/reference/put-users-id-folders-0)APIを使用する。
 * コラボレーション転送の方法を使用して、一度に1つのファイルまたはフォルダの所有権を、あるユーザーから別のユーザーに変更する。
 
 <Note>
+  転送中は、ユーザーが所有するファイルにアクセスできなくなります。また、移動中もユーザーが所有する共有コンテンツにアクセスできない可能性があります。
 
-転送中は、ユーザーが所有するファイルにアクセスできなくなります。また、移動中もユーザーが所有する共有コンテンツにアクセスできない可能性があります。
-
-コンテンツの量によっては、この操作にかなりの時間がかかる場合があります。
-
+  コンテンツの量によっては、この操作にかなりの時間がかかる場合があります。
 </Note>
 
 ## 所有フォルダの移動APIの使用
 
-[所有フォルダの移動エンドポイント](/ja/reference/put-users-id-folders-0)は、あるユーザーが所有するコンテンツ全体を別のユーザーに移動することを目的に設計されています。
+[所有フォルダの移動エンドポイント](/reference/put-users-id-folders-0)は、あるユーザーが所有するコンテンツ全体を別のユーザーに移動することを目的に設計されています。
 
 <Note>
-
-所有フォルダの移動APIは、同期プロセスとして実行されるため、ソースユーザーのフォルダ全体に多数の項目がある場合、レスポンスが遅くなる可能性があります。
-
+  所有フォルダの移動APIは、同期プロセスとして実行されるため、ソースユーザーのフォルダ全体に多数の項目がある場合、レスポンスが遅くなる可能性があります。
 </Note>
 
 転送エンドポイントを呼び出すには、転送元のユーザーIDと転送先のユーザーIDを指定します。
 
 <CodeGroup>
+  ```typescript Node/TypeScript v10
+  await client.transfer.transferOwnedFolder(
+    sourceUser.id,
+    {
+      ownedBy: {
+        id: targetUser.id,
+      } satisfies TransferOwnedFolderRequestBodyOwnedByField,
+    } satisfies TransferOwnedFolderRequestBody,
+    {
+      queryParams: { notify: false } satisfies TransferOwnedFolderQueryParams,
+    } satisfies TransferOwnedFolderOptionalsInput,
+  );
+  ```
 
-```typescript Node/TypeScript v10
-await client.transfer.transferOwnedFolder(
-  sourceUser.id,
-  {
-    ownedBy: {
-      id: targetUser.id,
-    } satisfies TransferOwnedFolderRequestBodyOwnedByField,
-  } satisfies TransferOwnedFolderRequestBody,
-  {
-    queryParams: { notify: false } satisfies TransferOwnedFolderQueryParams,
-  } satisfies TransferOwnedFolderOptionalsInput,
-);
-```
+  ```python Python v10
+  client.transfer.transfer_owned_folder(
+      source_user.id, TransferOwnedFolderOwnedBy(id=target_user.id), notify=False
+  )
+  ```
 
-```python Python v10
-client.transfer.transfer_owned_folder(
-    source_user.id, TransferOwnedFolderOwnedBy(id=target_user.id), notify=False
-)
-```
+  ```cs .NET v10
+  await client.Transfer.TransferOwnedFolderAsync(userId: sourceUser.Id, requestBody: new TransferOwnedFolderRequestBody(ownedBy: new TransferOwnedFolderRequestBodyOwnedByField(id: targetUser.Id)), queryParams: new TransferOwnedFolderQueryParams() { Notify = false });
+  ```
 
-```cs .NET v10
-await client.Transfer.TransferOwnedFolderAsync(userId: sourceUser.Id, requestBody: new TransferOwnedFolderRequestBody(ownedBy: new TransferOwnedFolderRequestBodyOwnedByField(id: targetUser.Id)), queryParams: new TransferOwnedFolderQueryParams() { Notify = false });
-```
+  ```swift Swift v10
+  try await client.transfer.transferOwnedFolder(userId: sourceUser.id, requestBody: TransferOwnedFolderRequestBody(ownedBy: TransferOwnedFolderRequestBodyOwnedByField(id: targetUser.id)), queryParams: TransferOwnedFolderQueryParams(notify: false))
+  ```
 
-```swift Swift v10
-try await client.transfer.transferOwnedFolder(userId: sourceUser.id, requestBody: TransferOwnedFolderRequestBody(ownedBy: TransferOwnedFolderRequestBodyOwnedByField(id: targetUser.id)), queryParams: TransferOwnedFolderQueryParams(notify: false))
-```
+  ```java Java v10
+  client.getTransfer().transferOwnedFolder(sourceUser.getId(), new TransferOwnedFolderRequestBody(new TransferOwnedFolderRequestBodyOwnedByField(targetUser.getId())), new TransferOwnedFolderQueryParams.Builder().notify(false).build())
+  ```
 
-```java Java v10
-client.getTransfer().transferOwnedFolder(sourceUser.getId(), new TransferOwnedFolderRequestBody(new TransferOwnedFolderRequestBodyOwnedByField(targetUser.getId())), new TransferOwnedFolderQueryParams.Builder().notify(false).build())
-```
+  ```java Java v5
+  String sourceUserID = "11111";
+  String destinationUserID = "22222";
+  BoxUser sourceUser = new BoxUser(api, sourceUserID);
+  BoxFolder.Info transferredFolderInfo = sourceUser.transferContent(destinationUserID);
+  ```
 
-```java Java v5
-String sourceUserID = "11111";
-String destinationUserID = "22222";
-BoxUser sourceUser = new BoxUser(api, sourceUserID);
-BoxFolder.Info transferredFolderInfo = sourceUser.transferContent(destinationUserID);
-```
+  ```python Python v4
+  source_user_id = '33333'
+  destination_user_id = '44444'
 
-```python Python v4
-source_user_id = '33333'
-destination_user_id = '44444'
+  user = client.user(source_user_id)
+  destination_user = client.user(destination_user_id)
 
-user = client.user(source_user_id)
-destination_user = client.user(destination_user_id)
+  folder = user.transfer_content(destination_user)
+  print(f'Created new folder "{folder.name}" in the account of user {destination_user.id}')
+  ```
 
-folder = user.transfer_content(destination_user)
-print(f'Created new folder "{folder.name}" in the account of user {destination_user.id}')
-```
+  ```cs .NET v6
+  var sourceUserId = "33333";
+  var destinationUserId = "44444";
+  BoxFolder movedFolder = await client.MoveUserFolderAsync(sourceUserId, destinationUserId);
+  ```
 
-```cs .NET v6
-var sourceUserId = "33333";
-var destinationUserId = "44444";
-BoxFolder movedFolder = await client.MoveUserFolderAsync(sourceUserId, destinationUserId);
-```
-
-```javascript Node v4
-var sourceUserID = '33333';
-var destinationUserID = '44444';
-client.enterprise.transferUserContent(sourceUserID, destinationUserID)
-	.then(movedFolder => {
-		/* movedFolder -> {
-			type: 'folder',
-			id: '123456789',
-			sequence_id: '1',
-			etag: '1',
-			name: 'Other User's Files and Folders',
-			created_at: '2018-04-23T11:00:07-07:00',
-			modified_at: '2018-04-23T11:00:07-07:00',
-			description: 'This folder contains files previously owned by Other User, and were transferred to you by your enterprise administrator. If you have any questions, please contact Enterprise Admin (admin@example.com).',
-			size: 0,
-			path_collection: 
-			{ total_count: 1,
-				entries: 
-				[ { type: 'folder',
-					id: '0',
-					sequence_id: null,
-					etag: null,
-					name: 'All Files' } ] },
-			created_by: 
-			{ type: 'user',
-				id: '99999',
-				name: 'Enterprise Admin',
-				login: 'admin@example.com' },
-			modified_by: 
-			{ type: 'user',
-				id: '99999',
-				name: 'Enterprise Admin',
-				login: 'admin@example.com' },
-			trashed_at: null,
-			purged_at: null,
-			content_created_at: '2018-04-23T11:00:07-07:00',
-			content_modified_at: '2018-04-23T11:00:07-07:00',
-			owned_by: 
-			{ type: 'user',
-				id: '33333',
-				name: 'Example User',
-				login: 'user@example.com' },
-			shared_link: null,
-			folder_upload_email: null,
-			parent: 
-			{ type: 'folder',
-				id: '0',
-				sequence_id: null,
-				etag: null,
-				name: 'All Files' },
-			item_status: 'active' }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  var sourceUserID = '33333';
+  var destinationUserID = '44444';
+  client.enterprise.transferUserContent(sourceUserID, destinationUserID)
+  	.then(movedFolder => {
+  		/* movedFolder -> {
+  			type: 'folder',
+  			id: '123456789',
+  			sequence_id: '1',
+  			etag: '1',
+  			name: 'Other User's Files and Folders',
+  			created_at: '2018-04-23T11:00:07-07:00',
+  			modified_at: '2018-04-23T11:00:07-07:00',
+  			description: 'This folder contains files previously owned by Other User, and were transferred to you by your enterprise administrator. If you have any questions, please contact Enterprise Admin (admin@example.com).',
+  			size: 0,
+  			path_collection: 
+  			{ total_count: 1,
+  				entries: 
+  				[ { type: 'folder',
+  					id: '0',
+  					sequence_id: null,
+  					etag: null,
+  					name: 'All Files' } ] },
+  			created_by: 
+  			{ type: 'user',
+  				id: '99999',
+  				name: 'Enterprise Admin',
+  				login: 'admin@example.com' },
+  			modified_by: 
+  			{ type: 'user',
+  				id: '99999',
+  				name: 'Enterprise Admin',
+  				login: 'admin@example.com' },
+  			trashed_at: null,
+  			purged_at: null,
+  			content_created_at: '2018-04-23T11:00:07-07:00',
+  			content_modified_at: '2018-04-23T11:00:07-07:00',
+  			owned_by: 
+  			{ type: 'user',
+  				id: '33333',
+  				name: 'Example User',
+  				login: 'user@example.com' },
+  			shared_link: null,
+  			folder_upload_email: null,
+  			parent: 
+  			{ type: 'folder',
+  				id: '0',
+  				sequence_id: null,
+  				etag: null,
+  				name: 'All Files' },
+  			item_status: 'active' }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 ## コラボレーション転送の使用
 
-コラボレーション転送は、[コラボレーションエンドポイント](/ja/reference/post-collaborations)を使用して、単一のファイルまたはフォルダの所有権をあるユーザーから別のユーザーに即座に変更するプロセスです。
+コラボレーション転送は、[コラボレーションエンドポイント](/reference/post-collaborations)を使用して、単一のファイルまたはフォルダの所有権をあるユーザーから別のユーザーに即座に変更するプロセスです。
 
 <Note>
-
-この方法では、単一のファイルまたはフォルダの所有権を即時に転送します。ただし、この方法でルート (すべてのファイルおよびフォルダ) を別のユーザーに転送することは**できません**。
-
+  この方法では、単一のファイルまたはフォルダの所有権を即時に転送します。ただし、この方法でルート (すべてのファイルおよびフォルダ) を別のユーザーに転送することは**できません**。
 </Note>
 
 `transfer_from_user`から`transfer_to_user`への転送の一般的なプロセスは以下の手順に従います。
@@ -184,229 +165,227 @@ client.enterprise.transferUserContent(sourceUserID, destinationUserID)
 
 最初の手順は、転送するファイルまたはフォルダへの`co-owner`アクセス権限を持つコラボレータとして、`transfer_to_user`アカウントを追加することです。
 
-`transfer_from_user`アカウントとして呼び出しを行い、[コラボレーションを追加](/ja/reference/post-collaborations)エンドポイントを使用して`transfer_to_user`を共同所有者として追加します。
+`transfer_from_user`アカウントとして呼び出しを行い、[コラボレーションを追加](/reference/post-collaborations)エンドポイントを使用して`transfer_to_user`を共同所有者として追加します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/collaborations" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "item": {
+           "type": "file",
+           "id": "11446498"
+         },
+         "accessible_by": {
+           "type": "user",
+           "login": "user@example.com"
+         },
+         "role": "editor"
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/collaborations" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "item": {
-         "type": "file",
-         "id": "11446498"
-       },
-       "accessible_by": {
-         "type": "user",
-         "login": "user@example.com"
-       },
-       "role": "editor"
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.userCollaborations.createCollaboration({
+    item: {
+      type: 'folder' as CreateCollaborationRequestBodyItemTypeField,
+      id: folder.id,
+    } satisfies CreateCollaborationRequestBodyItemField,
+    accessibleBy: {
+      type: 'user' as CreateCollaborationRequestBodyAccessibleByTypeField,
+      id: user.id,
+    } satisfies CreateCollaborationRequestBodyAccessibleByField,
+    role: 'editor' as CreateCollaborationRequestBodyRoleField,
+  } satisfies CreateCollaborationRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.userCollaborations.createCollaboration({
-  item: {
-    type: 'folder' as CreateCollaborationRequestBodyItemTypeField,
-    id: folder.id,
-  } satisfies CreateCollaborationRequestBodyItemField,
-  accessibleBy: {
-    type: 'user' as CreateCollaborationRequestBodyAccessibleByTypeField,
-    id: user.id,
-  } satisfies CreateCollaborationRequestBodyAccessibleByField,
-  role: 'editor' as CreateCollaborationRequestBodyRoleField,
-} satisfies CreateCollaborationRequestBody);
-```
+  ```python Python v10
+  client.user_collaborations.create_collaboration(
+      CreateCollaborationItem(type=CreateCollaborationItemTypeField.FOLDER, id=folder.id),
+      CreateCollaborationAccessibleBy(
+          type=CreateCollaborationAccessibleByTypeField.USER, id=user.id
+      ),
+      CreateCollaborationRole.EDITOR,
+  )
+  ```
 
-```python Python v10
-client.user_collaborations.create_collaboration(
-    CreateCollaborationItem(type=CreateCollaborationItemTypeField.FOLDER, id=folder.id),
-    CreateCollaborationAccessibleBy(
-        type=CreateCollaborationAccessibleByTypeField.USER, id=user.id
-    ),
-    CreateCollaborationRole.EDITOR,
-)
-```
+  ```cs .NET v10
+  await client.UserCollaborations.CreateCollaborationAsync(requestBody: new CreateCollaborationRequestBody(item: new CreateCollaborationRequestBodyItemField() { Type = CreateCollaborationRequestBodyItemTypeField.Folder, Id = folder.Id }, accessibleBy: new CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.User) { Id = user.Id }, role: CreateCollaborationRequestBodyRoleField.Editor));
+  ```
 
-```cs .NET v10
-await client.UserCollaborations.CreateCollaborationAsync(requestBody: new CreateCollaborationRequestBody(item: new CreateCollaborationRequestBodyItemField() { Type = CreateCollaborationRequestBodyItemTypeField.Folder, Id = folder.Id }, accessibleBy: new CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.User) { Id = user.Id }, role: CreateCollaborationRequestBodyRoleField.Editor));
-```
+  ```swift Swift v10
+  try await client.userCollaborations.createCollaboration(requestBody: CreateCollaborationRequestBody(item: CreateCollaborationRequestBodyItemField(type: CreateCollaborationRequestBodyItemTypeField.folder, id: folder.id), accessibleBy: CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.user, id: user.id), role: CreateCollaborationRequestBodyRoleField.editor))
+  ```
 
-```swift Swift v10
-try await client.userCollaborations.createCollaboration(requestBody: CreateCollaborationRequestBody(item: CreateCollaborationRequestBodyItemField(type: CreateCollaborationRequestBodyItemTypeField.folder, id: folder.id), accessibleBy: CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.user, id: user.id), role: CreateCollaborationRequestBodyRoleField.editor))
-```
+  ```java Java v10
+  client.getUserCollaborations().createCollaboration(new CreateCollaborationRequestBody(new CreateCollaborationRequestBodyItemField.Builder().type(CreateCollaborationRequestBodyItemTypeField.FOLDER).id(folder.getId()).build(), new CreateCollaborationRequestBodyAccessibleByField.Builder(CreateCollaborationRequestBodyAccessibleByTypeField.USER).id(user.getId()).build(), CreateCollaborationRequestBodyRoleField.EDITOR))
+  ```
 
-```java Java v10
-client.getUserCollaborations().createCollaboration(new CreateCollaborationRequestBody(new CreateCollaborationRequestBodyItemField.Builder().type(CreateCollaborationRequestBodyItemTypeField.FOLDER).id(folder.getId()).build(), new CreateCollaborationRequestBodyAccessibleByField.Builder(CreateCollaborationRequestBodyAccessibleByTypeField.USER).id(user.getId()).build(), CreateCollaborationRequestBodyRoleField.EDITOR))
-```
+  ```java Java v5
+  BoxCollaborator user = new BoxUser(api, "user-id")
+  BoxFolder folder = new BoxFolder(api, "folder-id");
+  folder.collaborate(user, BoxCollaboration.Role.EDITOR);
+  ```
 
-```java Java v5
-BoxCollaborator user = new BoxUser(api, "user-id")
-BoxFolder folder = new BoxFolder(api, "folder-id");
-folder.collaborate(user, BoxCollaboration.Role.EDITOR);
-```
+  ```python Python v4
+  from boxsdk.object.collaboration import CollaborationRole
 
-```python Python v4
-from boxsdk.object.collaboration import CollaborationRole
+  user = client.user(user_id='11111')
+  collaboration = client.folder(folder_id='22222').collaborate(user, CollaborationRole.VIEWER)
 
-user = client.user(user_id='11111')
-collaboration = client.folder(folder_id='22222').collaborate(user, CollaborationRole.VIEWER)
+  collaborator = collaboration.accessible_by
+  item = collaboration.item
+  has_accepted = 'has' if collaboration.status == 'accepted' else 'has not'
+  print(f'{collaborator.name} {has_accepted} accepted the collaboration to folder "{item.name}"')
+  ```
 
-collaborator = collaboration.accessible_by
-item = collaboration.item
-has_accepted = 'has' if collaboration.status == 'accepted' else 'has not'
-print(f'{collaborator.name} {has_accepted} accepted the collaboration to folder "{item.name}"')
-```
+  ```cs .NET v6
+  // collaborate folder 11111 with user 22222
+  BoxCollaborationRequest requestParams = new BoxCollaborationRequest()
+  {
+      Item = new BoxRequestEntity()
+      {
+          Type = BoxType.folder,
+          Id = "11111"
+      },
+      Role = "editor",
+      AccessibleBy = new BoxCollaborationUserRequest()
+      {
+          Type = BoxType.user,
+          Id = "22222"
+      }
+  };
+  BoxCollaboration collab = await client.CollaborationsManager.AddCollaborationAsync(requestParams);
+  ```
 
-```cs .NET v6
-// collaborate folder 11111 with user 22222
-BoxCollaborationRequest requestParams = new BoxCollaborationRequest()
-{
-    Item = new BoxRequestEntity()
-    {
-        Type = BoxType.folder,
-        Id = "11111"
-    },
-    Role = "editor",
-    AccessibleBy = new BoxCollaborationUserRequest()
-    {
-        Type = BoxType.user,
-        Id = "22222"
-    }
-};
-BoxCollaboration collab = await client.CollaborationsManager.AddCollaborationAsync(requestParams);
-```
-
-```javascript Node v4
-// Invite user 123456 to collaborate on folder 987654
-client.collaborations.createWithUserID('123456', '987654', client.collaborationRoles.EDITOR)
-	.then(collaboration => {
-		/* collaboration -> {
-			type: 'collaboration',
-			id: '11111',
-			created_by: 
-			{ type: 'user',
-				id: '22222',
-				name: 'Inviting User',
-				login: 'inviter@example.com' },
-			created_at: '2016-11-16T21:33:31-08:00',
-			modified_at: '2016-11-16T21:33:31-08:00',
-			expires_at: null,
-			status: 'accepted',
-			accessible_by: 
-			{ type: 'user',
-				id: '123456',
-				name: 'Collaborator User',
-				login: 'collaborator@example.com' },
-			role: 'editor',
-			acknowledged_at: '2016-11-16T21:33:31-08:00',
-			item: 
-			{ type: 'folder',
-				id: '987654',
-				sequence_id: '0',
-				etag: '0',
-				name: 'Collaborated Folder' } }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  // Invite user 123456 to collaborate on folder 987654
+  client.collaborations.createWithUserID('123456', '987654', client.collaborationRoles.EDITOR)
+  	.then(collaboration => {
+  		/* collaboration -> {
+  			type: 'collaboration',
+  			id: '11111',
+  			created_by: 
+  			{ type: 'user',
+  				id: '22222',
+  				name: 'Inviting User',
+  				login: 'inviter@example.com' },
+  			created_at: '2016-11-16T21:33:31-08:00',
+  			modified_at: '2016-11-16T21:33:31-08:00',
+  			expires_at: null,
+  			status: 'accepted',
+  			accessible_by: 
+  			{ type: 'user',
+  				id: '123456',
+  				name: 'Collaborator User',
+  				login: 'collaborator@example.com' },
+  			role: 'editor',
+  			acknowledged_at: '2016-11-16T21:33:31-08:00',
+  			item: 
+  			{ type: 'folder',
+  				id: '987654',
+  				sequence_id: '0',
+  				etag: '0',
+  				name: 'Collaborated Folder' } }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 ### 転送先ユーザーとしてコラボレーションIDを取得
 
 次の手順では、コラボレーション情報を取得するリクエストを`transfer_to_user`アカウントとして実行します。返されるコラボレーションオブジェクトには、最後の手順で使用するコラボレーションIDが含まれます。
 
-`transfer_to_user`アカウントとして呼び出しを実行し、[コラボレーションを取得エンドポイント](/ja/reference/get-collaborations-id)を使用して、転送するファイルまたはフォルダのIDのコラボレーションを取得します。コラボレーションIDをキャプチャします。
+`transfer_to_user`アカウントとして呼び出しを実行し、[コラボレーションを取得エンドポイント](/reference/get-collaborations-id)を使用して、転送するファイルまたはフォルダのIDのコラボレーションを取得します。コラボレーションIDをキャプチャします。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/collaborations/1234" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/collaborations/1234" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.userCollaborations.getCollaborationById(collaborationId);
-```
+  ```typescript Node/TypeScript v10
+  await client.userCollaborations.getCollaborationById(collaborationId);
+  ```
 
-```python Python v10
-client.user_collaborations.get_collaboration_by_id(collaboration_id)
-```
+  ```python Python v10
+  client.user_collaborations.get_collaboration_by_id(collaboration_id)
+  ```
 
-```cs .NET v10
-await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
-```
+  ```cs .NET v10
+  await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
+  ```
 
-```swift Swift v10
-try await client.userCollaborations.getCollaborationById(collaborationId: collaborationId)
-```
+  ```swift Swift v10
+  try await client.userCollaborations.getCollaborationById(collaborationId: collaborationId)
+  ```
 
-```java Java v10
-client.getUserCollaborations().getCollaborationById(collaborationId)
-```
+  ```java Java v10
+  client.getUserCollaborations().getCollaborationById(collaborationId)
+  ```
 
-```cs .NET v6
-await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
-```
+  ```cs .NET v6
+  await client.UserCollaborations.GetCollaborationByIdAsync(collaborationId: collaborationId);
+  ```
 
-```javascript Node v4
-await client.userCollaborations.getCollaborationById(collaborationId);
-```
+  ```javascript Node v4
+  await client.userCollaborations.getCollaborationById(collaborationId);
+  ```
 </CodeGroup>
 
 ### 転送元ユーザーを所有者として削除
 
-最後の手順は、ファイルまたはフォルダの所有者として`transfer_from_user`アカウントを削除することです。これは、[コラボレーションを削除エンドポイント](/ja/reference/delete-collaborations-id)を使用して行います。
+最後の手順は、ファイルまたはフォルダの所有者として`transfer_from_user`アカウントを削除することです。これは、[コラボレーションを削除エンドポイント](/reference/delete-collaborations-id)を使用して行います。
 
 `transfer_to_user`アカウントとして呼び出しを実行し、ファイルまたはフォルダのコラボレータとして`transfer_from_user`を削除します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/collaborations/1234" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/collaborations/1234" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.userCollaborations.deleteCollaborationById(collaborationId);
-```
+  ```typescript Node/TypeScript v10
+  await client.userCollaborations.deleteCollaborationById(collaborationId);
+  ```
 
-```python Python v10
-client.user_collaborations.delete_collaboration_by_id(collaboration_id)
-```
+  ```python Python v10
+  client.user_collaborations.delete_collaboration_by_id(collaboration_id)
+  ```
 
-```cs .NET v10
-await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
-```
+  ```cs .NET v10
+  await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
+  ```
 
-```swift Swift v10
-try await client.userCollaborations.deleteCollaborationById(collaborationId: collaborationId)
-```
+  ```swift Swift v10
+  try await client.userCollaborations.deleteCollaborationById(collaborationId: collaborationId)
+  ```
 
-```java Java v10
-client.getUserCollaborations().deleteCollaborationById(collaborationId)
-```
+  ```java Java v10
+  client.getUserCollaborations().deleteCollaborationById(collaborationId)
+  ```
 
-```cs .NET v6
-await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
-```
+  ```cs .NET v6
+  await client.UserCollaborations.DeleteCollaborationByIdAsync(collaborationId: collaborationId);
+  ```
 
-```javascript Node v4
-await client.userCollaborations.getCollaborationById(collaborationId);
-```
+  ```javascript Node v4
+  await client.userCollaborations.getCollaborationById(collaborationId);
+  ```
 </CodeGroup>
-
 
 これにより、ファイルまたはフォルダの所有者は`transfer_to_user`アカウントになり、`transfer_from_user`アカウントはアクセスできなくなります。
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Transfer owned folders", href: "/reference/put-users-id-folders-0", badge: "PUT" }
-  ]}
+  { label: "Transfer owned folders", href: "/reference/put-users-id-folders-0", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "ガイド" }
-  ]}
+  { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" }
+]}
 />

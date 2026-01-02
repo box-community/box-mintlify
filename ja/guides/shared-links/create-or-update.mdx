@@ -1,30 +1,19 @@
 ---
-title: "共有リンクの作成または更新"
+alias_paths:
+  0: /shared-links/create
+  1: /shared-links/update
 rank: 1
 related_endpoints:
-  - put_files_id
+  0: put_files_id
 related_guides:
-  - shared-links/permissions
-  - shared-links/remove
-  - shared-links/find-for-item
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths:
-  - /shared-links/create
-  - /shared-links/update
-category_id: shared-links
-subcategory_id: null
-is_index: false
-id: shared-links/create-or-update
-type: guide
-total_steps: 4
-sibling_id: shared-links
-parent_id: shared-links
-next_page_id: shared-links/find-for-item
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/shared-links/create-or-update.md
+  0: shared-links/permissions
+  1: shared-links/remove
+  2: shared-links/find-for-item
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: 共有リンクの作成または更新
+
 fullyTranslated: true
 ---
 
@@ -33,9 +22,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ファイルリソース、フォルダリソース、またはウェブリンクリソースの共有リンクを直接作成して、適切なアクセスレベルを持つユーザーにコンテンツの表示を許可するための読み取り専用URLを生成できます。
 
 <Note>
-
-ファイル、フォルダ、またはウェブリンクのアクティブな共有リンクは、常に1つのみ保持できます。
-
+  ファイル、フォルダ、またはウェブリンクのアクティブな共有リンクは、常に1つのみ保持できます。
 </Note>
 
 共有リンクの作成には少なくとも以下の情報が必要です。
@@ -53,46 +40,39 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 * リソースへのアクセスに必要なパスワード。
 
 <Note>
-
-共有リンクの作成時にアクセスレベルを指定しなかった場合、会社の管理者が指定したデフォルトのアクセスレベルが使用されます。
-
+  共有リンクの作成時にアクセスレベルを指定しなかった場合、会社の管理者が指定したデフォルトのアクセスレベルが使用されます。
 </Note>
 
 ## ファイルの共有リンクの作成または更新
 
 ファイルの共有リンクを作成するには、ファイルのIDとオプションの共有リンクパラメータを指定します。
 
-{/* <Samples id="put_files_id" variant="add_shared_link">
-
-</Samples> */}
+{/* <Samples id='put_files_id' variant='add_shared_link' /> */}
 
 ## フォルダの共有リンクの作成または更新
 
 フォルダの共有リンクを作成するには、フォルダのIDとオプションの共有リンクパラメータを指定します。
 
-{/* <Samples id="put_folders_id" variant="add_shared_link">
-
-</Samples> */}
+{/* <Samples id='put_folders_id' variant='add_shared_link' /> */}
 
 ## ウェブリンクの共有リンクの作成または更新
 
 ウェブリンクの共有リンクを作成するには、ウェブリンクのIDとオプションの共有リンクパラメータを指定します。
 
-{/* <Samples id="put_web_links_id" variant="add_shared_link">
-
-</Samples> */}
+{/* <Samples id='put_web_links_id' variant='add_shared_link' /> */}
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Update file", href: "/reference/put-files-id", badge: "PUT" }
-  ]}
+  { label: "Update file", href: "/reference/put-files-id", badge: "PUT" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "共有リンクの権限", href: "/ja/guides/shared-links/permissions", badge: "ガイド" },
-    { label: "共有リンクの削除", href: "/ja/guides/shared-links/remove", badge: "ガイド" },
-    { label: "共有リンクの項目の検索", href: "/ja/guides/shared-links/find-for-item", badge: "ガイド" }
-  ]}
+  { label: "Shared Link Permissions", href: "/guides/shared-links/permissions", badge: "GUIDE" },
+  { label: "Remove Shared Link", href: "/guides/shared-links/remove", badge: "GUIDE" },
+  { label: "Find Item from Shared Link", href: "/guides/shared-links/find-for-item", badge: "GUIDE" }
+]}
 />

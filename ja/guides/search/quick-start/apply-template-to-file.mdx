@@ -1,31 +1,23 @@
 ---
-title: "ファイルへのメタデータテンプレートの追加"
-sidebarTitle: 3. ファイルへのメタデータテンプレートの追加
-type: quick-start
 hide_in_page_nav: true
-category_id: search
-subcategory_id: search/quick-start
-is_index: false
-id: search/quick-start/apply-template-to-file
-rank: 3
-total_steps: 5
-sibling_id: search/quick-start
-parent_id: search/quick-start
-next_page_id: search/quick-start/metadata-query-api
-previous_page_id: search/quick-start/locate-template-info
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/search/quick-start/3-apply-template-to-file.md
+sidebarTitle: 3. Add Metadata Template to a File
+title: ファイルへのメタデータテンプレートの追加
+type: quick-start
+
 fullyTranslated: true
 ---
+
 import { ProgressBar } from '/snippets/progress-bar.jsx';
 
-<ProgressBar pages={[
-                          "ja/guides/search/quick-start/create-metadata-template",
-                          "ja/guides/search/quick-start/locate-template-info",
-                          "ja/guides/search/quick-start/apply-template-to-file",
-                          "ja/guides/search/quick-start/metadata-query-api",
-                          "ja/guides/search/quick-start/next-steps"
-                        ]} />
+<ProgressBar
+  pages={[
+                        "guides/search/quick-start/create-metadata-template",
+                        "guides/search/quick-start/locate-template-info",
+                        "guides/search/quick-start/apply-template-to-file",
+                        "guides/search/quick-start/metadata-query-api",
+                        "guides/search/quick-start/next-steps"
+                      ]}
+/>
 
 メタデータテンプレートは、手順4で結果が得られるように1つ以上のファイルに適用する必要があります。ファイルにメタデータを追加するには、UIを使用する方法とAPIを使用する方法の2とおりあります。
 
@@ -34,10 +26,8 @@ import { ProgressBar } from '/snippets/progress-bar.jsx';
 UIを使用してファイルにメタデータを適用するには、ファイルに移動し、プレビューを開きます。\[**メタデータ**] タブを使用して、\[**追加**] をクリックします。手順1で作成したメタデータテンプレートを見つけて、値を選択し、必ず \[**保存**] をクリックします。
 
 <Frame center>
-
-![メタデータテンプレートの選択](/images/guides/search/quick-start/metadata-template-select.png)
-![値の選択](/images/guides/search/quick-start/select-template-value.png)
-
+  ![メタデータテンプレートの選択](/images/guides/search/quick-start/metadata-template-select.png)
+  ![値の選択](/images/guides/search/quick-start/select-template-value.png)
 </Frame>
 
 ## API
@@ -45,21 +35,13 @@ UIを使用してファイルにメタデータを適用するには、ファイ
 ファイルにメタデータテンプレートを追加するには、[ファイルにメタデータインスタンスを作成エンドポイント][add-metadata]を使用する必要があります。また、前の手順で確認した`scope`および`templateKey`テンプレート値も必要になります。上記のUIを使用した方法で示したのと同じメタデータを適用するAPIコールの例を以下に示します。
 
 <Frame center>
-
-![メタデータテンプレートの選択](/images/guides/search/quick-start/add-metadata-api.png)
-
+  ![メタデータテンプレートの選択](/images/guides/search/quick-start/add-metadata-api.png)
 </Frame>
 
 <Warning>
-
-規模を考慮したことにより、メタデータテンプレートが10,000を超えるファイルまたはフォルダに適用されると、403エラーが返されます。
-
+  規模を考慮したことにより、メタデータテンプレートが10,000を超えるファイルまたはフォルダに適用されると、403エラーが返されます。
 </Warning>
 
-<Next>
+<Next>1つ以上のファイルにテンプレートを適用しました</Next>
 
-1つ以上のファイルにテンプレートを適用しました
-
-</Next>
-
-[add-metadata]: /ja/reference/post-files-id-metadata-id-id/
+[add-metadata]: /reference/post-files-id-metadata-id-id/

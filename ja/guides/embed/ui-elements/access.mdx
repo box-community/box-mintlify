@@ -1,52 +1,39 @@
 ---
-title: "アクセスのカスタマイズ"
-rank: 14
-related_endpoints: []
-related_guides:
-  - embed/ui-elements
-required_guides:
-  - embed/ui-elements/installation
-related_resources: []
 alias_paths:
-  - /docs/customizing-access-for-box-ui-elements
-category_id: embed
-subcategory_id: embed/ui-elements
-is_index: false
-id: embed/ui-elements/access
-type: guide
-total_steps: 18
-sibling_id: embed/ui-elements
-parent_id: embed/ui-elements
-next_page_id: embed/ui-elements/scopes
-previous_page_id: embed/ui-elements/ui-elements-design-tokens
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/embed/ui-elements/access.md
+  0: /docs/customizing-access-for-box-ui-elements
+rank: 14
+related_endpoints: {}
+related_guides:
+  0: embed/ui-elements
+related_resources: {}
+required_guides:
+  0: embed/ui-elements/installation
+title: アクセスのカスタマイズ
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "インストール", href: "/ja/guides/embed/ui-elements/installation", badge: "ガイド" }
-  ]}
+  { label: "Installation", href: "/guides/embed/ui-elements/installation", badge: "GUIDE" }
+]}
 />
+
 ## 動機
 
 Box UI Elementsは、クライアントで初期化され、Boxに対して直接APIコールを実行します。したがって、すべてのBox APIリクエストが認証されなければならないため、有効なアクセストークンがクライアントにある必要があります。
 
-[トークン交換](/ja/guides/authentication/tokens/downscope)とは、「親トークン」(管理対象ユーザー、App User、サービスアカウント、またはアプリケーションのトークン) を「子トークン」に交換するためのメカニズムです。「子トークン」は、クライアントの権限を引き上げることなく安全にクライアントに送信できるように、必要最小限の権限のセットにダウンスコープしたものです。
+[トークン交換](/guides/authentication/tokens/downscope)とは、「親トークン」(管理対象ユーザー、App User、サービスアカウント、またはアプリケーションのトークン) を「子トークン」に交換するためのメカニズムです。「子トークン」は、クライアントの権限を引き上げることなく安全にクライアントに送信できるように、必要最小限の権限のセットにダウンスコープしたものです。
 
 Box UI Elementsは、トークンの権限に対応するよう設計されています。そのため、Box UI Elementsとともにトークン交換を使用すると、クライアントトークンに対する適切な権限セットがあれば、フロントエンドの開発者が手動でUIコントロールのオン/オフを切り替える必要はないという別のメリットがもたらされます。この動作は、Boxアプリケーションでの動作にも似ています。たとえば、フォルダに対して「プレビューのみ」の権限を持つユーザーの場合、UIに \[ダウンロード] ボタンは表示されません。
 
 次の設計図では、アプリケーションでUI Elementとともにトークン交換を使用する方法と、ユースケースの例を示しています。
 
 <Frame border>
-
-![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-1.png)
-
+  ![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-1.png)
 </Frame>
 
 * **クライアントからのAPIコールのセキュリティ強化:** 一般的なセキュリティ対策として、ユーザーによってアクションが実行されるたびにダウンスコープされたトークンを生成して送信し、クライアントができるだけ危険にさらされないようにすることをお勧めします。たとえば、ユーザーがファイルに対するプレビューおよび共有権限を必要とする場合でも、クライアントにユーザートークンを送信してユーザーに完全なユーザーレベルのアクセス権限を付与するのではなく、トークン交換を使用してトークンをダウンスコープし、ユーザーがファイルをプレビューしたい場合は「プレビューのみ」のトークンを、ファイルを共有したい場合は「共有」トークンを送信することをお勧めします。
@@ -61,16 +48,13 @@ Box UI Elementsは、トークンの権限に対応するよう設計されて�
 トークン交換では、「親トークン」、「スコープのリスト」、およびファイル/フォルダID (省略可) を入力引数として受け取り、これらの厳密なスコープのセットとそれぞれのファイル/フォルダID (入力引数に指定されている場合) にダウンスコープされたトークンが返されます。
 
 <Info>
-**UI Element向けに設計された専用スコープ**
+  **UI Element向けに設計された専用スコープ**
 
-Boxでは、UI Elementとシームレスに連動する一連のスコープを設計しました。トークン交換はすべてのBoxスコープで動作しますが、設計したスコープには、基本機能に必要な権限セットに加えて、追加機能のための増分の権限も含まれているため、UI Elementと一緒にこれらのスコープを使用することをお勧めします。
-
+  Boxでは、UI Elementとシームレスに連動する一連のスコープを設計しました。トークン交換はすべてのBoxスコープで動作しますが、設計したスコープには、基本機能に必要な権限セットに加えて、追加機能のための増分の権限も含まれているため、UI Elementと一緒にこれらのスコープを使用することをお勧めします。
 </Info>
 
 <Frame border>
-
-![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-2.png)
-
+  ![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-2.png)
 </Frame>
 
 ## 開発者のフロー
@@ -91,14 +75,12 @@ curl https://api.box.com/2.0/collaborations \
     -H "authorization: Bearer [ACCESS_TOKEN]" \
     -d '{"item": { "id": "123456", "type": "folder"}, "accessible_by": { "id": "USER_ID", "type": "user" }, "role": "editor"}' \
     -X POST
-
 ```
 
 <Info>
-**Boxでのアクセスレベル**
+  **Boxでのアクセスレベル**
 
-BoxユーザーがBox内のファイル/フォルダでコラボレーションする場合に[7種類のアクセスレベル][accesslevels]を使用できます。このユーザーのアカウントでファイル/フォルダが作成されている場合は、ユーザーはデフォルトでフォルダに対する「所有者」アクセス権限を持っているため、このコラボレーションの手順をスキップしてかまいません。
-
+  BoxユーザーがBox内のファイル/フォルダでコラボレーションする場合に[7種類のアクセスレベル][accesslevels]を使用できます。このユーザーのアカウントでファイル/フォルダが作成されている場合は、ユーザーはデフォルトでフォルダに対する「所有者」アクセス権限を持っているため、このコラボレーションの手順をスキップしてかまいません。
 </Info>
 
 * トークン交換APIを使用して親トークンを、コンテンツエクスプローラの基本スコープ (`base_explorer`) と特定の`folder_id` `123456`に有効な`item_download`および`item_preview`スコープを含む子トークンに交換します。この手順はアプリケーションサーバー上で実行することを強くお勧めします。
@@ -113,7 +95,6 @@ curl https://api.box.com/oauth2/token \
   -d 'resource=https://api.box.com/2.0/folders/123456' \
   -d 'grant_type=urn:ietf:params:oauth:grant-type:token-exchange' \
   -X POST
-
 ```
 
 ### レスポンス
@@ -157,7 +138,6 @@ curl https://api.box.com/oauth2/token \
   ],
   "issued_token_type": "urn:ietf:params:oauth:token-type:access_token"
 }
-
 ```
 
 上で取得した`CHILD_TOKEN`はダウンスコープされ、フォルダID`123456`とその子に対するダウンロードおよびプレビューの権限のみが含まれています。
@@ -165,23 +145,17 @@ curl https://api.box.com/oauth2/token \
 この`CHILD_TOKEN`をコンテンツエクスプローラUI Elementで使用します。簡単なデモを確認するには、[コンテンツエクスプローラUI Element CodePenのサンプル](https://codepen.io/box-platform/pen/wdWWdN)を使用して、\[JS] タブでアクセストークンの値とフォルダIDの値を置き換えてください。
 
 <Frame border>
-
-![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-3.png)
-
+  ![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-3.png)
 </Frame>
 
 \[実行] をクリックします。指定したフォルダでコンテンツエクスプローラが初期化されることがわかります。また、コンテンツエクスプローラには、親 (ユーザー) トークンの使用時に表示される \[共有] ボタンが表示されなくなることに注意してください。
 
 <Frame border>
-
-![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-4.png)
-
+  ![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-4.png)
 </Frame>
 
 <Frame border>
-
-![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-5.png)
-
+  ![ダウンスコープの概要](/images/guides/embed/ui-elements/downscope-5.png)
 </Frame>
 
 ## トークン交換を使用すべきでない場合
@@ -194,10 +168,9 @@ curl https://api.box.com/oauth2/token \
 * **ダウンスコープされたトークンのキャッシュ:** アプリケーションにとってパフォーマンスが重要な場合は、ダウンスコープされたトークンをサーバー側で事前にキャッシュする必要があります。トークンを事前にキャッシュする場合は、トークンが1時間以内に期限切れになるため、再試行を実装することをお勧めします。
 
 <Info>
-**トークンの寿命**
+  **トークンの寿命**
 
-親トークンおよび子トークンの寿命は互いに依存していません。たとえば、子トークンを生成しても親トークンが非アクティブになることはありません。同様に、子トークンをさらに生成しても、以前の子トークンにはまったく影響しません。
-
+  親トークンおよび子トークンの寿命は互いに依存していません。たとえば、子トークンを生成しても親トークンが非アクティブになることはありません。同様に、子トークンをさらに生成しても、以前の子トークンにはまったく影響しません。
 </Info>
 
 ## シナリオの例
@@ -255,6 +228,6 @@ BoxからのAPIレスポンスをプロキシ/フィルタリングして、ク�
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "UI Element", href: "/ja/guides/embed/ui-elements/index", badge: "ガイド" }
-  ]}
+  { label: "UI Elements", href: "/guides/embed/ui-elements/index", badge: "GUIDE" }
+]}
 />

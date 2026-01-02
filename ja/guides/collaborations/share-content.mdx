@@ -1,158 +1,141 @@
 ---
-title: "ユーザーとのコンテンツの共有"
 rank: 1
-related_endpoints:
-  - post_collaborations
-related_guides:
-  - collaborations/groups
-required_guides: []
+related_endpoints: ""
+related_guides: ""
 related_resources:
-  - collaboration
-  - file
-category_id: collaborations
-subcategory_id: null
-is_index: false
-id: collaborations/share-content
-type: guide
-total_steps: 3
-sibling_id: collaborations
-parent_id: collaborations
-next_page_id: collaborations/groups
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/collaborations/share-content.md
+  0: collaboration
+  1: file
+required_guides: {}
+title: ユーザーとのコンテンツの共有
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 コンテンツをユーザーと共有するには、ユーザーIDまたはメールアドレス、コンテンツのIDのほか、ユーザーがコンテンツにアクセスする際に必要なロールまたは権限を使用してコラボレーションを作成します。コラボレーションロールは`editor`、`viewer`、`previewer`、`uploader`、`previewer uploader`、`viewer uploader`、`co-owner`、または`owner`です。各ロールについての詳しい説明は、Boxの[サポートドキュメント][support documentation]を参照してください。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/collaborations" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "item": {
+           "type": "file",
+           "id": "11446498"
+         },
+         "accessible_by": {
+           "type": "user",
+           "login": "user@example.com"
+         },
+         "role": "editor"
+       }'
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/collaborations" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "item": {
-         "type": "file",
-         "id": "11446498"
-       },
-       "accessible_by": {
-         "type": "user",
-         "login": "user@example.com"
-       },
-       "role": "editor"
-     }'
-```
+  ```typescript Node/TypeScript v10
+  await client.userCollaborations.createCollaboration({
+    item: {
+      type: 'folder' as CreateCollaborationRequestBodyItemTypeField,
+      id: folder.id,
+    } satisfies CreateCollaborationRequestBodyItemField,
+    accessibleBy: {
+      type: 'user' as CreateCollaborationRequestBodyAccessibleByTypeField,
+      id: user.id,
+    } satisfies CreateCollaborationRequestBodyAccessibleByField,
+    role: 'editor' as CreateCollaborationRequestBodyRoleField,
+  } satisfies CreateCollaborationRequestBody);
+  ```
 
-```typescript Node/TypeScript v10
-await client.userCollaborations.createCollaboration({
-  item: {
-    type: 'folder' as CreateCollaborationRequestBodyItemTypeField,
-    id: folder.id,
-  } satisfies CreateCollaborationRequestBodyItemField,
-  accessibleBy: {
-    type: 'user' as CreateCollaborationRequestBodyAccessibleByTypeField,
-    id: user.id,
-  } satisfies CreateCollaborationRequestBodyAccessibleByField,
-  role: 'editor' as CreateCollaborationRequestBodyRoleField,
-} satisfies CreateCollaborationRequestBody);
-```
+  ```python Python v10
+  client.user_collaborations.create_collaboration(
+      CreateCollaborationItem(type=CreateCollaborationItemTypeField.FOLDER, id=folder.id),
+      CreateCollaborationAccessibleBy(
+          type=CreateCollaborationAccessibleByTypeField.USER, id=user.id
+      ),
+      CreateCollaborationRole.EDITOR,
+  )
+  ```
 
-```python Python v10
-client.user_collaborations.create_collaboration(
-    CreateCollaborationItem(type=CreateCollaborationItemTypeField.FOLDER, id=folder.id),
-    CreateCollaborationAccessibleBy(
-        type=CreateCollaborationAccessibleByTypeField.USER, id=user.id
-    ),
-    CreateCollaborationRole.EDITOR,
-)
-```
+  ```cs .NET v10
+  await client.UserCollaborations.CreateCollaborationAsync(requestBody: new CreateCollaborationRequestBody(item: new CreateCollaborationRequestBodyItemField() { Type = CreateCollaborationRequestBodyItemTypeField.Folder, Id = folder.Id }, accessibleBy: new CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.User) { Id = user.Id }, role: CreateCollaborationRequestBodyRoleField.Editor));
+  ```
 
-```cs .NET v10
-await client.UserCollaborations.CreateCollaborationAsync(requestBody: new CreateCollaborationRequestBody(item: new CreateCollaborationRequestBodyItemField() { Type = CreateCollaborationRequestBodyItemTypeField.Folder, Id = folder.Id }, accessibleBy: new CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.User) { Id = user.Id }, role: CreateCollaborationRequestBodyRoleField.Editor));
-```
+  ```swift Swift v10
+  try await client.userCollaborations.createCollaboration(requestBody: CreateCollaborationRequestBody(item: CreateCollaborationRequestBodyItemField(type: CreateCollaborationRequestBodyItemTypeField.folder, id: folder.id), accessibleBy: CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.user, id: user.id), role: CreateCollaborationRequestBodyRoleField.editor))
+  ```
 
-```swift Swift v10
-try await client.userCollaborations.createCollaboration(requestBody: CreateCollaborationRequestBody(item: CreateCollaborationRequestBodyItemField(type: CreateCollaborationRequestBodyItemTypeField.folder, id: folder.id), accessibleBy: CreateCollaborationRequestBodyAccessibleByField(type: CreateCollaborationRequestBodyAccessibleByTypeField.user, id: user.id), role: CreateCollaborationRequestBodyRoleField.editor))
-```
+  ```java Java v10
+  client.getUserCollaborations().createCollaboration(new CreateCollaborationRequestBody(new CreateCollaborationRequestBodyItemField.Builder().type(CreateCollaborationRequestBodyItemTypeField.FOLDER).id(folder.getId()).build(), new CreateCollaborationRequestBodyAccessibleByField.Builder(CreateCollaborationRequestBodyAccessibleByTypeField.USER).id(user.getId()).build(), CreateCollaborationRequestBodyRoleField.EDITOR))
+  ```
 
-```java Java v10
-client.getUserCollaborations().createCollaboration(new CreateCollaborationRequestBody(new CreateCollaborationRequestBodyItemField.Builder().type(CreateCollaborationRequestBodyItemTypeField.FOLDER).id(folder.getId()).build(), new CreateCollaborationRequestBodyAccessibleByField.Builder(CreateCollaborationRequestBodyAccessibleByTypeField.USER).id(user.getId()).build(), CreateCollaborationRequestBodyRoleField.EDITOR))
-```
+  ```java Java v5
+  BoxCollaborator user = new BoxUser(api, "user-id")
+  BoxFolder folder = new BoxFolder(api, "folder-id");
+  folder.collaborate(user, BoxCollaboration.Role.EDITOR);
+  ```
 
-```java Java v5
-BoxCollaborator user = new BoxUser(api, "user-id")
-BoxFolder folder = new BoxFolder(api, "folder-id");
-folder.collaborate(user, BoxCollaboration.Role.EDITOR);
-```
+  ```python Python v4
+  from boxsdk.object.collaboration import CollaborationRole
 
-```python Python v4
-from boxsdk.object.collaboration import CollaborationRole
+  user = client.user(user_id='11111')
+  collaboration = client.folder(folder_id='22222').collaborate(user, CollaborationRole.VIEWER)
 
-user = client.user(user_id='11111')
-collaboration = client.folder(folder_id='22222').collaborate(user, CollaborationRole.VIEWER)
+  collaborator = collaboration.accessible_by
+  item = collaboration.item
+  has_accepted = 'has' if collaboration.status == 'accepted' else 'has not'
+  print(f'{collaborator.name} {has_accepted} accepted the collaboration to folder "{item.name}"')
+  ```
 
-collaborator = collaboration.accessible_by
-item = collaboration.item
-has_accepted = 'has' if collaboration.status == 'accepted' else 'has not'
-print(f'{collaborator.name} {has_accepted} accepted the collaboration to folder "{item.name}"')
-```
+  ```cs .NET v6
+  // collaborate folder 11111 with user 22222
+  BoxCollaborationRequest requestParams = new BoxCollaborationRequest()
+  {
+      Item = new BoxRequestEntity()
+      {
+          Type = BoxType.folder,
+          Id = "11111"
+      },
+      Role = "editor",
+      AccessibleBy = new BoxCollaborationUserRequest()
+      {
+          Type = BoxType.user,
+          Id = "22222"
+      }
+  };
+  BoxCollaboration collab = await client.CollaborationsManager.AddCollaborationAsync(requestParams);
+  ```
 
-```cs .NET v6
-// collaborate folder 11111 with user 22222
-BoxCollaborationRequest requestParams = new BoxCollaborationRequest()
-{
-    Item = new BoxRequestEntity()
-    {
-        Type = BoxType.folder,
-        Id = "11111"
-    },
-    Role = "editor",
-    AccessibleBy = new BoxCollaborationUserRequest()
-    {
-        Type = BoxType.user,
-        Id = "22222"
-    }
-};
-BoxCollaboration collab = await client.CollaborationsManager.AddCollaborationAsync(requestParams);
-```
-
-```javascript Node v4
-// Invite user 123456 to collaborate on folder 987654
-client.collaborations.createWithUserID('123456', '987654', client.collaborationRoles.EDITOR)
-	.then(collaboration => {
-		/* collaboration -> {
-			type: 'collaboration',
-			id: '11111',
-			created_by: 
-			{ type: 'user',
-				id: '22222',
-				name: 'Inviting User',
-				login: 'inviter@example.com' },
-			created_at: '2016-11-16T21:33:31-08:00',
-			modified_at: '2016-11-16T21:33:31-08:00',
-			expires_at: null,
-			status: 'accepted',
-			accessible_by: 
-			{ type: 'user',
-				id: '123456',
-				name: 'Collaborator User',
-				login: 'collaborator@example.com' },
-			role: 'editor',
-			acknowledged_at: '2016-11-16T21:33:31-08:00',
-			item: 
-			{ type: 'folder',
-				id: '987654',
-				sequence_id: '0',
-				etag: '0',
-				name: 'Collaborated Folder' } }
-		*/
-	});
-```
-
+  ```javascript Node v4
+  // Invite user 123456 to collaborate on folder 987654
+  client.collaborations.createWithUserID('123456', '987654', client.collaborationRoles.EDITOR)
+  	.then(collaboration => {
+  		/* collaboration -> {
+  			type: 'collaboration',
+  			id: '11111',
+  			created_by: 
+  			{ type: 'user',
+  				id: '22222',
+  				name: 'Inviting User',
+  				login: 'inviter@example.com' },
+  			created_at: '2016-11-16T21:33:31-08:00',
+  			modified_at: '2016-11-16T21:33:31-08:00',
+  			expires_at: null,
+  			status: 'accepted',
+  			accessible_by: 
+  			{ type: 'user',
+  				id: '123456',
+  				name: 'Collaborator User',
+  				login: 'collaborator@example.com' },
+  			role: 'editor',
+  			acknowledged_at: '2016-11-16T21:33:31-08:00',
+  			item: 
+  			{ type: 'folder',
+  				id: '987654',
+  				sequence_id: '0',
+  				etag: '0',
+  				name: 'Collaborated Folder' } }
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 ## ネストされたオブジェクト
@@ -168,16 +151,3 @@ client.collaborations.createWithUserID('123456', '987654', client.collaborationR
 [support documentation]: https://support.box.com/hc/ja/articles/360044196413-コラボレータの権限レベルについて
 
 {/* i18n-disable localize-links */}
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Create collaboration", href: "/reference/post-collaborations", badge: "POST" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "グループとの共有", href: "/ja/guides/collaborations/groups", badge: "ガイド" }
-  ]}
-/>

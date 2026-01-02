@@ -1,24 +1,13 @@
 ---
-title: "署名の検証"
+alias_paths:
+  0: /guides/webhooks/handle/setup-signatures
+  1: /guides/webhooks/handle/verify-signatures
+  2: /guides/webhooks/handle/rotate-signatures
 rank: 5
 related_endpoints:
-  - post_webhooks
-alias_paths:
-  - /guides/webhooks/handle/setup-signatures
-  - /guides/webhooks/handle/verify-signatures
-  - /guides/webhooks/handle/rotate-signatures
-category_id: webhooks
-subcategory_id: webhooks/v2
-is_index: false
-id: webhooks/v2/signatures-v2
-type: guide
-total_steps: 6
-sibling_id: webhooks/v2
-parent_id: webhooks/v2
-next_page_id: webhooks/v2/limitations-v2
-previous_page_id: webhooks/v2/delete-v2
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/v2/signatures-v2.md
+  0: post_webhooks
+title: 署名の検証
+
 fullyTranslated: true
 ---
 
@@ -47,9 +36,7 @@ Webhook署名は、Boxから送信されたWebhookペイロードが改ざんさ
 
 手動で署名を検証することもできますが、[Box公式SDK][sdks]には便利なメソッドが用意されています。
 
-{/* <Samples id="x_webhooks" variant="validate_signatures">
-
-</Samples> */}
+{/* <Samples id='x_webhooks' variant='validate_signatures' /> */}
 
 ## 手動による署名の検証
 
@@ -59,32 +46,32 @@ Webhook署名は、Boxから送信されたWebhookペイロードが改ざんさ
 
 ペイロードの`BOX-DELIVERY-TIMESTAMP`ヘッダーのタイムスタンプが10分以内のものであることを確認します。
 
-<CodeGroup>
+<Tabs>
+  <Tab title="Node">
+    ```js
+    var timestamp = headers['BOX-DELIVERY-TIMESTAMP'];
+    var date = Date.parse(timestamp);
+    var expired = Date.now() - date > 10*60*1000;
+    ```
+  </Tab>
 
-```js Node
-var timestamp = headers['BOX-DELIVERY-TIMESTAMP'];
-var date = Date.parse(timestamp);
-var expired = Date.now() - date > 10*60*1000;
+  <Tab title="Python">
+    ```python
+    import dateutil.parser
+    import pytz
+    import datetime
 
-```
+    timestamp = headers["BOX-DELIVERY-TIMESTAMP"]
+    date = dateutil.parser.parse(timestamp).astimezone(pytz.utc)
 
-```python Python
-import dateutil.parser
-import pytz
-import datetime
+    now = datetime.datetime.now(pytz.utc)
+    delta = datetime.timedelta(minutes=10)
+    expiry_date = now - deltaMinutes
 
-timestamp = headers["BOX-DELIVERY-TIMESTAMP"]
-date = dateutil.parser.parse(timestamp).astimezone(pytz.utc)
-
-now = datetime.datetime.now(pytz.utc)
-delta = datetime.timedelta(minutes=10)
-expiry_date = now - deltaMinutes
-
-expired = date >= expiry_date
-
-```
-
-</CodeGroup>
+    expired = date >= expiry_date
+    ```
+  </Tab>
+</Tabs>
 
 ### HMAC署名の計算
 
@@ -92,67 +79,65 @@ expired = date >= expiry_date
 
 最初にペイロード本文のバイトを追加してから、`BOX-DELIVERY-TIMESTAMP`ヘッダーにあるタイムスタンプのバイトを追加してください。
 
-<CodeGroup>
+<Tabs>
+  <Tab title="Node">
+    ```js
+    var crypto = require('crypto');
 
+    var primaryKey = '...';
+    var secondaryKey = '...';
 
-```js Node
-var crypto = require('crypto');
+    var payload = '{"type":"webhook_event"...}';
 
-var primaryKey = '...';
-var secondaryKey = '...';
+    var hmac1 = crypto.createHmac('sha256', primaryKey);
+    hmac1.update(payload);
+    hmac1.update(timestamp);
 
-var payload = '{"type":"webhook_event"...}';
+    var hmac2 = crypto.createHmac('sha256', secondaryKey);
+    hmac2.update(payload);
+    hmac2.update(timestamp);
+    ```
+  </Tab>
 
-var hmac1 = crypto.createHmac('sha256', primaryKey);
-hmac1.update(payload);
-hmac1.update(timestamp);
+  <Tab title="Python">
+    ```python
+    import hmac
+    import hashlib
 
-var hmac2 = crypto.createHmac('sha256', secondaryKey);
-hmac2.update(payload);
-hmac2.update(timestamp);
+    primary_key = '...'
+    secondary_key = '...'
 
-```
+    payload = "{\"type\":\"webhook_event\"...}"
 
-```python Python
-import hmac
-import hashlib
+    bytes = bytes(payload, 'utf-8') + bytes(timestamp, 'utf-8')
 
-primary_key = '...'
-secondary_key = '...'
-
-payload = "{\"type\":\"webhook_event\"...}"
-
-bytes = bytes(payload, 'utf-8') + bytes(timestamp, 'utf-8')
-
-hmac1 = hmac.new(primary_key, bytes, hashlib.sha256).digest()
-hmac2 = hmac.new(secondary_key, bytes, hashlib.sha256).digest()
-
-```
-
-</CodeGroup>
+    hmac1 = hmac.new(primary_key, bytes, hashlib.sha256).digest()
+    hmac2 = hmac.new(secondary_key, bytes, hashlib.sha256).digest()
+    ```
+  </Tab>
+</Tabs>
 
 ### Base64変換
 
 HMACを`Base64`でエンコードされたダイジェストに変換します。
 
-<CodeGroup>
+<Tabs>
+  <Tab title="Node">
+    ```js
+    var digest1 = hmac1.digest('base64');
+    var digest2 = hmac2.digest('base64');
+    ```
+  </Tab>
 
-```js Node
-var digest1 = hmac1.digest('base64');
-var digest2 = hmac2.digest('base64');
+  <Tab title="Python">
+    ```python
+    import base64
 
-```
-
-
-```python Python
-import base64
-
-digest1 = base64.b64encode(hmac1)
-digest2 = base64.b64encode(hmac2)
-
-```
-
-</CodeGroup>
+    digest1 = base64.b64encode(hmac1)
+    digest2 = base64.b64encode(hmac2)
+    ```
+  </Tab>
+</Tabs>
 
 ### 署名の比較
 
@@ -160,60 +145,56 @@ digest2 = base64.b64encode(hmac2)
 
 `BOX-SIGNATURE-PRIMARY`ヘッダーの値をプライマリキーで作成されたダイジェストと比較し、`BOX-SIGNATURE-SECONDARY`ヘッダーの値をセカンダリキーで作成されたダイジェストと比較します。タイミング攻撃を防ぐため、署名間でタイミングの影響がない比較方法を使用してください。
 
-<CodeGroup>
+<Tabs>
+  <Tab title="Node">
+    ```js
+    const crypto = require('crypto');
 
+    function compareSignatures(expectedSignature, receivedSignature) {
+        const expectedBuffer = Buffer.from(expectedSignature, 'base64');
+        const receivedBuffer = Buffer.from(receivedSignature, 'base64');
 
-```js Node
-const crypto = require('crypto');
+        if (expectedBuffer.length !== receivedBuffer.length) {
+            return false;
+        }
 
-function compareSignatures(expectedSignature, receivedSignature) {
-    const expectedBuffer = Buffer.from(expectedSignature, 'base64');
-    const receivedBuffer = Buffer.from(receivedSignature, 'base64');
-
-    if (expectedBuffer.length !== receivedBuffer.length) {
-        return false;
+        return crypto.timingSafeEqual(expectedBuffer, receivedBuffer);
     }
 
-    return crypto.timingSafeEqual(expectedBuffer, receivedBuffer);
-}
+    const signature1 = headers['BOX-SIGNATURE-SECONDARY'];
+    const signature2 = headers['BOX-SIGNATURE-PRIMARY'];
 
-const signature1 = headers['BOX-SIGNATURE-SECONDARY'];
-const signature2 = headers['BOX-SIGNATURE-PRIMARY'];
+    const primarySignatureValid = compareSignatures(digest1, signature1)
+    const secondarySignatureValid = compareSignatures(digest2, signature2)
 
-const primarySignatureValid = compareSignatures(digest1, signature1)
-const secondarySignatureValid = compareSignatures(digest2, signature2)
+    const valid = !expired && (primarySignatureValid || secondarySignatureValid)
+    ```
+  </Tab>
 
-const valid = !expired && (primarySignatureValid || secondarySignatureValid)
+  <Tab title="Python">
+    ```python
+    import hmac
 
-```
+    def compare_signatures(expected_signature: Optional[str], received_signature: Optional[str]) -> bool:
+        if not expected_signature or not received_signature:
+            return False
+        if len(expected_signature) != len(received_signature):
+            return False
+        return hmac.compare_digest(expected_signature, received_signature)
 
+    signature1 = headers["BOX-SIGNATURE-SECONDARY"]
+    signature2 = headers["BOX-SIGNATURE-PRIMARY"]
 
-```python Python
-import hmac
+    primary_sig_valid = compare_signatures(digest1, signature1)
+    secondary_sig_valid = compare_signatures(digest2, signature2)
 
-def compare_signatures(expected_signature: Optional[str], received_signature: Optional[str]) -> bool:
-    if not expected_signature or not received_signature:
-        return False
-    if len(expected_signature) != len(received_signature):
-        return False
-    return hmac.compare_digest(expected_signature, received_signature)
-
-signature1 = headers["BOX-SIGNATURE-SECONDARY"]
-signature2 = headers["BOX-SIGNATURE-PRIMARY"]
-
-primary_sig_valid = compare_signatures(digest1, signature1)
-secondary_sig_valid = compare_signatures(digest2, signature2)
-
-valid = not expired and (primary_sig_valid or secondary_sig_valid)
-
-```
-
-</CodeGroup>
+    valid = not expired and (primary_sig_valid or secondary_sig_valid)
+    ```
+  </Tab>
+</Tabs>
 
 <Warning>
-
-HTTPヘッダー名では大文字と小文字が区別されません。クライアントでは、すべてのヘッダーの名前を標準化された小文字または大文字の形式に変換してから、ヘッダーの値を確認する必要があります。
-
+  HTTPヘッダー名では大文字と小文字が区別されません。クライアントでは、すべてのヘッダーの名前を標準化された小文字または大文字の形式に変換してから、ヘッダーの値を確認する必要があります。
 </Warning>
 
 ## 署名のローテーション
@@ -232,13 +213,13 @@ HTTPヘッダー名では大文字と小文字が区別されません。クラ�
 4. 新しいプライマリキーでアプリケーションを更新します。アプリケーションは、引き続き古いプライマリキーを含む通知を受信する可能性がありますが、セカンダリキーがまだ有効であるため、Webhookは正しく処理されます。
 5. 古いプライマリキーを持つWebhookが動作していないことを確認できたら、同じプロセスを使用してセカンダリキーを更新できます。
 
-[sdks]: /ja/guides/tooling/sdks
+[sdks]: /guides/tooling/sdks
 
 [console]: https://app.box.com/developers/console
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
-  ]}
+  { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
+]}
 />

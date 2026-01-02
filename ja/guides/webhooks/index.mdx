@@ -1,43 +1,31 @@
 ---
-title: "Webhook"
+alias_paths:
+  0: /docs/work-with-webhooks
+  1: /docs/file-workflow-with-webhooks
+  2: /docs/webhooks
+  3: /docs/getting-started-with-webhooks-v2
 rank: 280
 related_endpoints:
-  - get_webhooks
-  - get_webhooks_id
-  - post_webhooks
-  - put_webhooks_id
-  - delete_webhooks_id
+  0: get_webhooks
+  1: get_webhooks_id
+  2: post_webhooks
+  3: put_webhooks_id
+  4: delete_webhooks_id
 related_resources:
-  - webhook
-required_guides: []
-alias_paths:
-  - /docs/work-with-webhooks
-  - /docs/file-workflow-with-webhooks
-  - /docs/webhooks
-  - /docs/getting-started-with-webhooks-v2
-category_id: webhooks
-subcategory_id: null
-is_index: true
-id: webhooks
-type: guide
-total_steps: 1
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: webhooks/triggers
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/index.md
+  0: webhook
+required_guides: ""
+sidebarTitle: Overview
+title: Webhook
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-Webhookを使用すると、Boxコンテンツのイベントを監視し、イベントの発生時に任意のURLへの通知を受け取ることができます。たとえば、ワークフローには、共有リンクを削除するためのファイルダウンロードの待機が含まれる場合があります。このファイルにWebhookを設定すれば、ダウンロードイベントが通知されたときに、スクリプトが起動し、共有リンクを削除するためのAPIコールを実行できます。
+Webhookを使用すると、Boxコンテンツのイベントを監視し、イベントの発生時に任意のURLへの通知を受け取ることができます。たとえば、ワークフローには、共有リンクを削除するためのファイルダウンロードの待機が含まれる場合があります。このファイルにWebhookを設定すれば、ダウンロードイベントが通知されたときに、スクリプトが起動し、共有リンクを削除するためのAPIコールを実行できます。 
 
 <Frame center shadow border>
-
-![開発者コンソールのWebhook](/images/guides/webhooks/webhooksV2preview.png)
-
+  ![開発者コンソールのWebhook](/images/guides/webhooks/webhooksV2preview.png)
 </Frame>
 
 ## バージョン
@@ -45,9 +33,7 @@ Webhookを使用すると、Boxコンテンツのイベントを監視し、イ�
 WebhookにはV1とV2の2種類があります。この2つの比較を以下に示します。
 
 <Note>
-
-使いやすさ、セキュリティの強さ、選択できるイベントトリガーの多さ、自動的に再試行されるという観点から、V2 Webhookを使用することをお勧めします。
-
+  使いやすさ、セキュリティの強さ、選択できるイベントトリガーの多さ、自動的に再試行されるという観点から、V2 Webhookを使用することをお勧めします。
 </Note>
 
 | V1                      | V2                                      |
@@ -66,10 +52,10 @@ WebhookにはV1とV2の2種類があります。この2つの比較を以下に�
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" },
-    { label: "Get webhook", href: "/reference/get-webhooks-id", badge: "GET" },
-    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" },
-    { label: "Update webhook", href: "/reference/put-webhooks-id", badge: "PUT" },
-    { label: "Remove webhook", href: "/reference/delete-webhooks-id", badge: "DELETE" }
-  ]}
+  { label: "List all webhooks", href: "/reference/get-webhooks", badge: "GET" },
+  { label: "Get webhook", href: "/reference/get-webhooks-id", badge: "GET" },
+  { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" },
+  { label: "Update webhook", href: "/reference/put-webhooks-id", badge: "PUT" },
+  { label: "Remove webhook", href: "/reference/delete-webhooks-id", badge: "DELETE" }
+]}
 />

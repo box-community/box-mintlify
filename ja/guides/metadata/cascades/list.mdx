@@ -1,25 +1,13 @@
 ---
-title: "メタデータカスケードポリシーのリストの取得"
 related_endpoints:
-  - get_metadata_cascade_policies
+  0: get_metadata_cascade_policies
 related_guides:
-  - metadata/cascades/get
-  - metadata/cascades/create
+  0: metadata/cascades/get
+  1: metadata/cascades/create
 related_resources:
-  - metadata_cascade_policy
-category_id: metadata
-subcategory_id: metadata/6-cascades
-is_index: false
-id: metadata/cascades/list
-rank: 1
-type: guide
-total_steps: 5
-sibling_id: metadata/cascades
-parent_id: metadata/cascades
-next_page_id: metadata/cascades/get
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/metadata/6-cascades/1-list.md
+  0: metadata_cascade_policy
+title: メタデータカスケードポリシーのリストの取得
+
 fullyTranslated: true
 ---
 
@@ -28,101 +16,101 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 フォルダのメタデータカスケードポリシーのリストを取得するには、`folder_id`を指定して[`GET /metadata_cascade_policies`][get_policies] APIエンドポイントを呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/metadata_cascade_policies?folder_id=31232" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/metadata_cascade_policies?folder_id=31232" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.metadataCascadePolicies.getMetadataCascadePolicies({
-  folderId: folder.id,
-} satisfies GetMetadataCascadePoliciesQueryParams);
-```
+  ```typescript Node/TypeScript v10
+  await client.metadataCascadePolicies.getMetadataCascadePolicies({
+    folderId: folder.id,
+  } satisfies GetMetadataCascadePoliciesQueryParams);
+  ```
 
-```python Python v10
-client.metadata_cascade_policies.get_metadata_cascade_policies(folder.id)
-```
+  ```python Python v10
+  client.metadata_cascade_policies.get_metadata_cascade_policies(folder.id)
+  ```
 
-```csharp .NET v10
-await client.MetadataCascadePolicies.GetMetadataCascadePoliciesAsync(queryParams: new GetMetadataCascadePoliciesQueryParams(folderId: folder.Id));
-```
+  ```csharp .NET v10
+  await client.MetadataCascadePolicies.GetMetadataCascadePoliciesAsync(queryParams: new GetMetadataCascadePoliciesQueryParams(folderId: folder.Id));
+  ```
 
-```swift Swift v10
-try await client.metadataCascadePolicies.getMetadataCascadePolicies(queryParams: GetMetadataCascadePoliciesQueryParams(folderId: folder.id))
-```
+  ```swift Swift v10
+  try await client.metadataCascadePolicies.getMetadataCascadePolicies(queryParams: GetMetadataCascadePoliciesQueryParams(folderId: folder.id))
+  ```
 
-```java Java v10
-client.getMetadataCascadePolicies().getMetadataCascadePolicies(new GetMetadataCascadePoliciesQueryParams(folder.getId()))
-```
+  ```java Java v10
+  client.getMetadataCascadePolicies().getMetadataCascadePolicies(new GetMetadataCascadePoliciesQueryParams(folder.getId()))
+  ```
 
-```java Java v5
-String folderID = "2222";
-BoxFolder folder = new BoxFolder(api, folderID);
-Iterable<BoxMetadataCascadePolicy.Info> metadataCascadePolicies = folder.getMetadataCascadePolicies();
-for (BoxMetadataCascadePolicy.Info policyInfo : metadataCascadePolicies) {
-    // take action on policy here
-}
-```
-
-```py Python v4
-cascade_policies = client.folder(folder_id='22222').get_metadata_cascade_policies()
-for policy in cascade_policies:
-    print(f'Metadata template {policy.templateKey} is cascaded')
-```
-
-```csharp .NET v6
-BoxCollectionMarkerBased<BoxMetadataCascadePolicy> metadataCascadePolicies = await client.MetadataCascadePolicyManager.GetAllMetadataCascadePoliciesAsync("12345");
-```
-
-```js Node v4
-var folderID = '22222';
-client.metadata.getCascadePolicies(folderID)
- .then(cascadePolicies => {
-  /* cascadePolicies -> {
-   limit: 100,
-   entries: [
-    {
-     id: '84113349-794d-445c-b93c-d8481b223434',
-     type: 'metadata_cascade_policy',
-     owner_enterprise: {
-      type: 'enterprise',
-      id: '11111'
-     },
-     parent: {
-      type: 'folder',
-      id: '22222'
-     },
-     scope: 'enterprise_11111',
-     templateKey: 'testTemplate'
-    }
-   ],
-   next_marker: null,
-   prev_marker: null
+  ```java Java v5
+  String folderID = "2222";
+  BoxFolder folder = new BoxFolder(api, folderID);
+  Iterable<BoxMetadataCascadePolicy.Info> metadataCascadePolicies = folder.getMetadataCascadePolicies();
+  for (BoxMetadataCascadePolicy.Info policyInfo : metadataCascadePolicies) {
+      // take action on policy here
   }
-  */
- });
-```
-</CodeGroup>
+  ```
 
+  ```py Python v4
+  cascade_policies = client.folder(folder_id='22222').get_metadata_cascade_policies()
+  for policy in cascade_policies:
+      print(f'Metadata template {policy.templateKey} is cascaded')
+  ```
+
+  ```csharp .NET v6
+  BoxCollectionMarkerBased<BoxMetadataCascadePolicy> metadataCascadePolicies = await client.MetadataCascadePolicyManager.GetAllMetadataCascadePoliciesAsync("12345");
+  ```
+
+  ```js Node v4
+  var folderID = '22222';
+  client.metadata.getCascadePolicies(folderID)
+   .then(cascadePolicies => {
+    /* cascadePolicies -> {
+     limit: 100,
+     entries: [
+      {
+       id: '84113349-794d-445c-b93c-d8481b223434',
+       type: 'metadata_cascade_policy',
+       owner_enterprise: {
+        type: 'enterprise',
+        id: '11111'
+       },
+       parent: {
+        type: 'folder',
+        id: '22222'
+       },
+       scope: 'enterprise_11111',
+       templateKey: 'testTemplate'
+      }
+     ],
+     next_marker: null,
+     prev_marker: null
+    }
+    */
+   });
+  ```
+</CodeGroup>
 
 ## ページネーション
 
 このAPIでは、[マーカーベースのページネーション][pagination]が使用されており、レスポンスの本文で、より多くのテンプレートを使用できることを示す`next_marker`値を返すことができます。
 
-[get_policies]: /ja/reference/get_metadata_cascade_policies
+[get_policies]: /reference/get_metadata_cascade_policies
 
-[pagination]: /ja/guides/api-calls/pagination/marker-based
+[pagination]: /guides/api-calls/pagination/marker-based
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List metadata cascade policies", href: "/reference/get-metadata-cascade-policies", badge: "GET" }
-  ]}
+  { label: "List metadata cascade policies", href: "/reference/get-metadata-cascade-policies", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "メタデータカスケードポリシーの取得", href: "/ja/guides/metadata/cascades/get", badge: "ガイド" },
-    { label: "メタデータカスケードポリシーの作成", href: "/ja/guides/metadata/cascades/create", badge: "ガイド" }
-  ]}
+  { label: "Get a metadata cascade policy", href: "/guides/metadata/cascades/get", badge: "GUIDE" },
+  { label: "Create a metadata cascade policy", href: "/guides/metadata/cascades/create", badge: "GUIDE" }
+]}
 />

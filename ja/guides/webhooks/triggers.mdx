@@ -1,38 +1,14 @@
 ---
-title: "Webhookイベントトリガー"
+alias_paths: ""
 rank: 1
-related_endpoints:
-  - post_webhooks
-related_guides:
-  - webhooks/v2/create-v2
-required_guides:
-  - webhooks/v2/create-v2
-alias_paths:
-  - /webhooks/creation/triggers
-category_id: webhooks
-subcategory_id: null
-is_index: false
-id: webhooks/triggers
-type: guide
-total_steps: 1
-sibling_id: webhooks
-parent_id: webhooks
-next_page_id: webhooks
-previous_page_id: ''
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/webhooks/triggers.md
+related_endpoints: ""
+related_guides: ""
+required_guides: ""
+title: Webhookイベントトリガー
+
 fullyTranslated: true
 ---
 
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
-
-
-<RelatedLinks
-  title="REQUIRED GUIDES"
-  items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" }
-  ]}
-/>
 ## V2
 
 ### ファイルとフォルダ
@@ -63,7 +39,7 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 | `FILE.LOCKED`                          | ファイルがロックされる。                                                | はい         | はい         |
 | `FILE.UNLOCKED`                        | ファイルのロックが解除される。                                             | はい         | はい         |
 | `FILE.RENAMED`                         | ファイル名が変更される。                                                | はい         | はい         |
-| `FOLDER.CREATED`                       | フォルダが作成される。                                                   | いいえ        | はい         |
+| `FOLDER.CREATED`                       | フォルダが作成される。                                                 | いいえ        | はい         |
 | `FOLDER.RENAMED`                       | フォルダ名が変更される。                                                | いいえ        | はい         |
 | `FOLDER.DOWNLOADED`                    | フォルダがダウンロードされる。                                             | いいえ        | はい         |
 | `FOLDER.RESTORED`                      | フォルダがごみ箱から復元される。                                            | いいえ        | はい         |
@@ -108,16 +84,3 @@ V1 Webhookをトリガーするよう構成できるイベントを以下に示�
 * Unlocked
 * Deleted
 * Collaborator added
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Create webhook", href: "/reference/post-webhooks", badge: "POST" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "Webhookの作成", href: "/ja/guides/webhooks/v2/create-v2", badge: "ガイド" }
-  ]}
-/>

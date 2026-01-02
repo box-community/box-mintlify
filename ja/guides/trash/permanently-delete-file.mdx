@@ -1,26 +1,12 @@
 ---
-title: "ファイルを完全に削除"
 rank: 2
-related_endpoints:
-  - delete_files_id
-  - delete_files_id_trash
-related_guides:
-  - trash/restore-file
-required_guides: []
+related_endpoints: ""
+related_guides: ""
 related_resources:
-  - files
-category_id: trash
-subcategory_id: null
-is_index: false
-id: trash/permanently-delete-file
-type: guide
-total_steps: 6
-sibling_id: trash
-parent_id: trash
-next_page_id: trash/restore-folder
-previous_page_id: trash/restore-file
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/trash/permanently-delete-file.md
+  0: files
+required_guides: {}
+title: ファイルを完全に削除
+
 fullyTranslated: true
 ---
 
@@ -29,73 +15,58 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 ごみ箱に移動されたファイルは、デフォルトで30日間ごみ箱に保持された後で削除されます。BusinessアカウントまたはEnterpriseアカウントの管理者は、削除までの期間を変更できます。削除までの期間が経過する前にごみ箱からファイルを完全に削除する場合は、ごみ箱に移動されたファイルの`ID`を使用して`DELETE`リクエストを`/files/:file_id/trash`に送信します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/files/12345/trash" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/files/12345/trash" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.trashedFiles.deleteTrashedFileById(file.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.trashedFiles.deleteTrashedFileById(file.id);
-```
+  ```python Python v10
+  client.trashed_files.delete_trashed_file_by_id(file.id)
+  ```
 
-```python Python v10
-client.trashed_files.delete_trashed_file_by_id(file.id)
-```
+  ```cs .NET v10
+  await client.TrashedFiles.DeleteTrashedFileByIdAsync(fileId: file.Id);
+  ```
 
-```cs .NET v10
-await client.TrashedFiles.DeleteTrashedFileByIdAsync(fileId: file.Id);
-```
+  ```swift Swift v10
+  try await client.trashedFiles.deleteTrashedFileById(fileId: file.id)
+  ```
 
-```swift Swift v10
-try await client.trashedFiles.deleteTrashedFileById(fileId: file.id)
-```
+  ```java Java v10
+  client.getTrashedFiles().deleteTrashedFileById(file.getId())
+  ```
 
-```java Java v10
-client.getTrashedFiles().deleteTrashedFileById(file.getId())
-```
+  ```java Java v5
+  String fileID = "87398";
+  BoxTrash trash = new BoxTrash(api);
+  trash.deleteFile(fileID);
+  ```
 
-```java Java v5
-String fileID = "87398";
-BoxTrash trash = new BoxTrash(api);
-trash.deleteFile(fileID);
-```
+  ```python Python v4
+  file_to_delete = client.file(file_id='11111')
+  client.trash().permanently_delete_item(file_to_delete)
+  print('The file was deleted from trash!')
+  ```
 
-```python Python v4
-file_to_delete = client.file(file_id='11111')
-client.trash().permanently_delete_item(file_to_delete)
-print('The file was deleted from trash!')
-```
+  ```cs .NET v6
+  await client.FilesManager.PurgeTrashedAsync("11111");
+  ```
 
-```cs .NET v6
-await client.FilesManager.PurgeTrashedAsync("11111");
-```
-
-```javascript Node v4
-client.files.deletePermanently('11111')
-	.then(() => {
-		// deletion succeeded — no value returned
-	});
-```
-
+  ```javascript Node v4
+  client.files.deletePermanently('11111')
+  	.then(() => {
+  		// deletion succeeded — no value returned
+  	});
+  ```
 </CodeGroup>
 
 <RelatedLinks
-  title="関連するAPI"
+  title="関連するリソース"
   items={[
-    { label: "Delete file", href: "/reference/delete-files-id", badge: "DELETE" },
-    { label: "Permanently remove file", href: "/reference/delete-files-id-trash", badge: "DELETE" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "ファイルの復元", href: "/ja/guides/trash/restore-file", badge: "ガイド" }
-  ]}
-/>
-<RelatedLinks
-  title="RELATED RESOURCES"
-  items={[
-    { label: "ファイル", href: "/ja/guides/files/index", badge: "ガイド" }
-  ]}
+  { label: "Files", href: "/guides/files/index", badge: "GUIDE" }
+]}
 />

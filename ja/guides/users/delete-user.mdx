@@ -1,27 +1,16 @@
 ---
-title: "ユーザーの削除"
+alias_paths: {}
 rank: 6
 related_endpoints:
-  - delete_users_id
+  0: delete_users_id
 related_guides:
-  - users/deprovision
-  - users/deprovision/transfer-folders
-related_pages: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: users
-subcategory_id: null
-is_index: false
-id: users/delete-user
-type: guide
-total_steps: 4
-sibling_id: users
-parent_id: users
-next_page_id: users/bulk-delete-external-users
-previous_page_id: users/create-app-user
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/users/delete-user.md
+  0: users/deprovision
+  1: users/deprovision/transfer-folders
+related_pages: {}
+related_resources: {}
+required_guides: {}
+title: ユーザーの削除
+
 fullyTranslated: true
 ---
 
@@ -30,54 +19,52 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 App Userと管理対象ユーザーの削除プロセスは同じです。ユーザーアカウントを削除するには、削除するアカウントのユーザーIDを指定します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/users/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/users/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.users.deleteUserById(user.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.users.deleteUserById(user.id);
-```
+  ```python Python v10
+  client.users.delete_user_by_id(user.id)
+  ```
 
-```python Python v10
-client.users.delete_user_by_id(user.id)
-```
+  ```cs .NET v10
+  await client.Users.DeleteUserByIdAsync(userId: user.Id);
+  ```
 
-```cs .NET v10
-await client.Users.DeleteUserByIdAsync(userId: user.Id);
-```
+  ```swift Swift v10
+  try await client.users.deleteUserById(userId: user.id)
+  ```
 
-```swift Swift v10
-try await client.users.deleteUserById(userId: user.id)
-```
+  ```java Java v10
+  client.getUsers().deleteUserById(user.getId())
+  ```
 
-```java Java v10
-client.getUsers().deleteUserById(user.getId())
-```
+  ```java Java v5
+  BoxUser user = new BoxUser(api, "0");
+  user.delete(false, false);
+  ```
 
-```java Java v5
-BoxUser user = new BoxUser(api, "0");
-user.delete(false, false);
-```
+  ```python Python v4
+  user_id = '33333'
+  client.user(user_id).delete(force=True)
+  ```
 
-```python Python v4
-user_id = '33333'
-client.user(user_id).delete(force=True)
-```
+  ```cs .NET v6
+  await client.UsersManager.DeleteEnterpriseUserAsync("44444", notify: false, force: true);
+  ```
 
-```cs .NET v6
-await client.UsersManager.DeleteEnterpriseUserAsync("44444", notify: false, force: true);
-```
-
-```javascript Node v4
-// Delete the user even if they still have files in their account
-client.users.delete('123', {force: true})
-    .then(() => {
-        // deletion succeeded — no value returned
-    });
-```
-
+  ```javascript Node v4
+  // Delete the user even if they still have files in their account
+  client.users.delete('123', {force: true})
+      .then(() => {
+          // deletion succeeded — no value returned
+      });
+  ```
 </CodeGroup>
 
 ユーザーアカウントを削除するときに設定できるオプションパラメータも2つあります。
@@ -86,21 +73,20 @@ client.users.delete('123', {force: true})
 * notify: アカウントが削除されたという通知をユーザーに送信するかどうか。
 
 <Note>
-
-ユーザーアカウントにまだコンテンツがある場合、ユーザー削除リクエストは失敗します。これを解決するには、別のアカウントに[すべてのファイルまたはフォルダを転送する](/ja/guides/users/deprovision/transfer-folders)か、オプションの`force`パラメータを使用します。
-
+  ユーザーアカウントにまだコンテンツがある場合、ユーザー削除リクエストは失敗します。これを解決するには、別のアカウントに[すべてのファイルまたはフォルダを転送する](/guides/users/deprovision/transfer-folders)か、オプションの`force`パラメータを使用します。
 </Note>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Delete user", href: "/reference/delete-users-id", badge: "DELETE" }
-  ]}
+  { label: "Delete user", href: "/reference/delete-users-id", badge: "DELETE" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ユーザーのプロビジョニング解除", href: "/ja/guides/users/deprovision/index", badge: "ガイド" },
-    { label: "ファイルとフォルダの転送", href: "/ja/guides/users/deprovision/transfer-folders", badge: "ガイド" }
-  ]}
+  { label: "Deprovision Users", href: "/guides/users/deprovision/index", badge: "GUIDE" },
+  { label: "Transfer Files & Folders", href: "/guides/users/deprovision/transfer-folders", badge: "GUIDE" }
+]}
 />

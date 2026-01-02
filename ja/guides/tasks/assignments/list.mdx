@@ -1,109 +1,97 @@
 ---
-title: "タスクの割り当てのリストの取得"
 related_endpoints:
-  - get_task_assignments
+  0: get_task_assignments
 related_guides:
-  - tasks/assignments/assign
-  - tasks/assignments/unassign
-  - tasks/assignments/get
-category_id: tasks
-subcategory_id: tasks/assignments
-is_index: false
-id: tasks/assignments/list
-rank: 5
-type: guide
-total_steps: 6
-sibling_id: tasks/assignments
-parent_id: tasks/assignments
-next_page_id: tasks/assignments/change-state
-previous_page_id: tasks/assignments/get
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/5-list.md
+  0: tasks/assignments/assign
+  1: tasks/assignments/unassign
+  2: tasks/assignments/get
+title: タスクの割り当てのリストの取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-特定のタスクのすべての割り当てのリストを取得するには、タスク`id`を指定して[`GET /tasks/:task_id/assignments`](/ja/reference/get-task-assignments-id)を呼び出します。
+特定のタスクのすべての割り当てのリストを取得するには、タスク`id`を指定して[`GET /tasks/:task_id/assignments`](/reference/get-task-assignments-id)を呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/task_assignments/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/task_assignments/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.taskAssignments.getTaskAssignmentById(taskAssignment.id!);
-```
+  ```typescript Node/TypeScript v10
+  await client.taskAssignments.getTaskAssignmentById(taskAssignment.id!);
+  ```
 
-```python Python v10
-client.task_assignments.get_task_assignment_by_id(task_assignment.id)
-```
+  ```python Python v10
+  client.task_assignments.get_task_assignment_by_id(task_assignment.id)
+  ```
 
-```csharp .NET v10
-await client.TaskAssignments.GetTaskAssignmentByIdAsync(taskAssignmentId: NullableUtils.Unwrap(taskAssignment.Id));
-```
+  ```csharp .NET v10
+  await client.TaskAssignments.GetTaskAssignmentByIdAsync(taskAssignmentId: NullableUtils.Unwrap(taskAssignment.Id));
+  ```
 
-```swift Swift v10
-try await client.taskAssignments.getTaskAssignmentById(taskAssignmentId: taskAssignment.id!)
-```
+  ```swift Swift v10
+  try await client.taskAssignments.getTaskAssignmentById(taskAssignmentId: taskAssignment.id!)
+  ```
 
-```java Java v10
-client.getTaskAssignments().getTaskAssignmentById(taskAssignment.getId())
-```
+  ```java Java v10
+  client.getTaskAssignments().getTaskAssignmentById(taskAssignment.getId())
+  ```
 
-```java Java v5
-String assignmentID = "4256974";
-BoxTaskAssignment.Info assignmentInfo = new BoxTaskAssignment(api, assignmentID).getInfo();
-```
+  ```java Java v5
+  String assignmentID = "4256974";
+  BoxTaskAssignment.Info assignmentInfo = new BoxTaskAssignment(api, assignmentID).getInfo();
+  ```
 
-```py Python v4
-assignment= client.task_assignment('12345').get()
-print(f'Assignment ID is {assignment.id} and assignment type is {assignment.type}')
-```
+  ```py Python v4
+  assignment= client.task_assignment('12345').get()
+  print(f'Assignment ID is {assignment.id} and assignment type is {assignment.type}')
+  ```
 
-```csharp .NET v6
-BoxTaskAssignment assignment = await client.TasksManager.GetTaskAssignmentAsync("12345");
-```
+  ```csharp .NET v6
+  BoxTaskAssignment assignment = await client.TasksManager.GetTaskAssignmentAsync("12345");
+  ```
 
-```js Node v4
-client.tasks.getAssignment('12345')
- .then(assignment => {
-  /* assignment -> {
-   type: 'task_assignment',
-   id: '12345',
-   item: 
-   { type: 'file',
-    id: '33333',
-    sequence_id: '0',
-    etag: '0',
-    sha1: '7840095ee096ee8297676a138d4e316eabb3ec96',
-    name: 'script.js' },
-   assigned_to: 
-   { type: 'user',
-    id: '22222',
-    name: 'Sample Assignee',
-    login: 'assignee@exmaple.com' },
-   message: null,
-   completed_at: null,
-   assigned_at: '2013-05-10T11:43:41-07:00',
-   reminded_at: null,
-   resolution_state: 'incomplete',
-   assigned_by: 
-   { type: 'user',
-    id: '33333',
-    name: 'Example User',
-    login: 'user@example.com' } }
-  */
- });
-```
+  ```js Node v4
+  client.tasks.getAssignment('12345')
+   .then(assignment => {
+    /* assignment -> {
+     type: 'task_assignment',
+     id: '12345',
+     item: 
+     { type: 'file',
+      id: '33333',
+      sequence_id: '0',
+      etag: '0',
+      sha1: '7840095ee096ee8297676a138d4e316eabb3ec96',
+      name: 'script.js' },
+     assigned_to: 
+     { type: 'user',
+      id: '22222',
+      name: 'Sample Assignee',
+      login: 'assignee@exmaple.com' },
+     message: null,
+     completed_at: null,
+     assigned_at: '2013-05-10T11:43:41-07:00',
+     reminded_at: null,
+     resolution_state: 'incomplete',
+     assigned_by: 
+     { type: 'user',
+      id: '33333',
+      name: 'Example User',
+      login: 'user@example.com' } }
+    */
+   });
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ユーザーへのタスクの割り当て", href: "/ja/guides/tasks/assignments/assign", badge: "ガイド" },
-    { label: "タスク割り当ての解除", href: "/ja/guides/tasks/assignments/unassign", badge: "ガイド" },
-    { label: "タスク割り当てに関する情報の取得", href: "/ja/guides/tasks/assignments/get", badge: "ガイド" }
-  ]}
+  { label: "Assign a task to a user", href: "/guides/tasks/assignments/assign", badge: "GUIDE" },
+  { label: "Unassign a task", href: "/guides/tasks/assignments/unassign", badge: "GUIDE" },
+  { label: "Get task assignment information", href: "/guides/tasks/assignments/get", badge: "GUIDE" }
+]}
 />

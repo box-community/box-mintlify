@@ -1,165 +1,152 @@
 ---
-title: "ユーザーへのタスクの割り当て"
 related_endpoints:
-  - post_task_assignments
+  0: post_task_assignments
 related_guides:
-  - tasks/assignments/unassign
-  - tasks/assignments/change-state
-category_id: tasks
-subcategory_id: tasks/assignments
-is_index: false
-id: tasks/assignments/assign
-rank: 1
-type: guide
-total_steps: 6
-sibling_id: tasks/assignments
-parent_id: tasks/assignments
-next_page_id: tasks/assignments/unassign
-previous_page_id: tasks/assignments
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/assignments/1-assign.md
+  0: tasks/assignments/unassign
+  1: tasks/assignments/change-state
+title: ユーザーへのタスクの割り当て
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-ユーザーにタスクを割り当てるには、[`POST /task_assignments`](/ja/reference/post-task-assignments) APIにタスクの`id`とユーザーの詳細を指定する必要があります。ユーザーについては、アプリケーションはユーザー`id`またはユーザーのログインメールを使用できます。これはBoxではユーザーの`login`と呼ばれます。
+ユーザーにタスクを割り当てるには、[`POST /task_assignments`](/reference/post-task-assignments) APIにタスクの`id`とユーザーの詳細を指定する必要があります。ユーザーについては、アプリケーションはユーザー`id`またはユーザーのログインメールを使用できます。これはBoxではユーザーの`login`と呼ばれます。
 
 <CodeGroup>
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/task_assignments" \
-     -H "authorization: Bearer <ACCESS_TOKEN>" \
-     -H "content-type: application/json" \
-     -d '{
-       "task": {
-         "id": "11446498",
-         "type": "task"
-       },
-       "assign_to": {
-         "id": "4823213"
-       }
-     }'
-```
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/task_assignments" \
+       -H "authorization: Bearer <ACCESS_TOKEN>" \
+       -H "content-type: application/json" \
+       -d '{
+         "task": {
+           "id": "11446498",
+           "type": "task"
+         },
+         "assign_to": {
+           "id": "4823213"
+         }
+       }'
+  ```
 
-```typescript Node/TypeScript v10
-await client.taskAssignments.createTaskAssignment({
-  task: new CreateTaskAssignmentRequestBodyTaskField({
-    type: 'task' as CreateTaskAssignmentRequestBodyTaskTypeField,
-    id: task.id!,
-  }),
-  assignTo: {
-    id: currentUser.id,
-  } satisfies CreateTaskAssignmentRequestBodyAssignToField,
-} satisfies CreateTaskAssignmentRequestBody);
-```
+  ```typescript Node/TypeScript v10
+  await client.taskAssignments.createTaskAssignment({
+    task: new CreateTaskAssignmentRequestBodyTaskField({
+      type: 'task' as CreateTaskAssignmentRequestBodyTaskTypeField,
+      id: task.id!,
+    }),
+    assignTo: {
+      id: currentUser.id,
+    } satisfies CreateTaskAssignmentRequestBodyAssignToField,
+  } satisfies CreateTaskAssignmentRequestBody);
+  ```
 
-```python Python v10
-client.task_assignments.create_task_assignment(
-    CreateTaskAssignmentTask(type=CreateTaskAssignmentTaskTypeField.TASK, id=task.id),
-    CreateTaskAssignmentAssignTo(id=current_user.id),
-)
-```
+  ```python Python v10
+  client.task_assignments.create_task_assignment(
+      CreateTaskAssignmentTask(type=CreateTaskAssignmentTaskTypeField.TASK, id=task.id),
+      CreateTaskAssignmentAssignTo(id=current_user.id),
+  )
+  ```
 
-```csharp .NET v10
-await client.TaskAssignments.CreateTaskAssignmentAsync(requestBody: new CreateTaskAssignmentRequestBody(task: new CreateTaskAssignmentRequestBodyTaskField(type: CreateTaskAssignmentRequestBodyTaskTypeField.Task, id: NullableUtils.Unwrap(task.Id)), assignTo: new CreateTaskAssignmentRequestBodyAssignToField() { Id = currentUser.Id }));
-```
+  ```csharp .NET v10
+  await client.TaskAssignments.CreateTaskAssignmentAsync(requestBody: new CreateTaskAssignmentRequestBody(task: new CreateTaskAssignmentRequestBodyTaskField(type: CreateTaskAssignmentRequestBodyTaskTypeField.Task, id: NullableUtils.Unwrap(task.Id)), assignTo: new CreateTaskAssignmentRequestBodyAssignToField() { Id = currentUser.Id }));
+  ```
 
-```swift Swift v10
-try await client.taskAssignments.createTaskAssignment(requestBody: CreateTaskAssignmentRequestBody(task: CreateTaskAssignmentRequestBodyTaskField(type: CreateTaskAssignmentRequestBodyTaskTypeField.task, id: task.id!), assignTo: CreateTaskAssignmentRequestBodyAssignToField(id: currentUser.id)))
-```
+  ```swift Swift v10
+  try await client.taskAssignments.createTaskAssignment(requestBody: CreateTaskAssignmentRequestBody(task: CreateTaskAssignmentRequestBodyTaskField(type: CreateTaskAssignmentRequestBodyTaskTypeField.task, id: task.id!), assignTo: CreateTaskAssignmentRequestBodyAssignToField(id: currentUser.id)))
+  ```
 
-```java Java v10
-client.getTaskAssignments().createTaskAssignment(new CreateTaskAssignmentRequestBody(new CreateTaskAssignmentRequestBodyTaskField.Builder(task.getId()).type(CreateTaskAssignmentRequestBodyTaskTypeField.TASK).build(), new CreateTaskAssignmentRequestBodyAssignToField.Builder().id(currentUser.getId()).build()))
-```
+  ```java Java v10
+  client.getTaskAssignments().createTaskAssignment(new CreateTaskAssignmentRequestBody(new CreateTaskAssignmentRequestBodyTaskField.Builder(task.getId()).type(CreateTaskAssignmentRequestBodyTaskTypeField.TASK).build(), new CreateTaskAssignmentRequestBodyAssignToField.Builder().id(currentUser.getId()).build()))
+  ```
 
-```java Java v5
-BoxUser user = new BoxUser(api, "user-id")
-BoxTask task = new BoxTask(api, "id");
-task.addAssignment(user);
-```
+  ```java Java v5
+  BoxUser user = new BoxUser(api, "user-id")
+  BoxTask task = new BoxTask(api, "id");
+  task.addAssignment(user);
+  ```
 
-```py Python v4
-user = client.user(user_id='11111')
-assignment = client.task(task_id='12345').assign(user)
-print(f'Assignment ID is {assignment.id} and is assigned to user {assignment.assigned_to.name}')
-```
+  ```py Python v4
+  user = client.user(user_id='11111')
+  assignment = client.task(task_id='12345').assign(user)
+  print(f'Assignment ID is {assignment.id} and is assigned to user {assignment.assigned_to.name}')
+  ```
 
-```csharp .NET v6
-// Assign task 11111 to user 22222
-var assignmentParams = new BoxTaskAssignmentRequest()
-{
-    Task = new BoxTaskRequest()
-    {
-        Id = "11111"
-    },
-    AssignTo = new BoxAssignmentRequest()
-    {
-        Id = "22222"
-    }
-};
-BoxTaskAssignment assignment = await client.TasksManager.CreateTaskAssignmentAsync(assignmentParams);
-```
+  ```csharp .NET v6
+  // Assign task 11111 to user 22222
+  var assignmentParams = new BoxTaskAssignmentRequest()
+  {
+      Task = new BoxTaskRequest()
+      {
+          Id = "11111"
+      },
+      AssignTo = new BoxAssignmentRequest()
+      {
+          Id = "22222"
+      }
+  };
+  BoxTaskAssignment assignment = await client.TasksManager.CreateTaskAssignmentAsync(assignmentParams);
+  ```
 
-```js Node v4
-// Assign task 11111 to user 22222
-var taskID = '11111';
-var userID = '22222';
-client.tasks.assignByUserID(taskID, userID)
- .then(assignment => {
-  /* assignment -> {
-   type: 'task_assignment',
-   id: '12345',
-   item: 
-   { type: 'file',
-    id: '33333',
-    sequence_id: '0',
-    etag: '0',
-    sha1: '7840095ee096ee8297676a138d4e316eabb3ec96',
-    name: 'script.js' },
-   assigned_to: 
-   { type: 'user',
-    id: '22222',
-    name: 'Sample Assignee',
-    login: 'assignee@exmaple.com' },
-   message: null,
-   completed_at: null,
-   assigned_at: '2013-05-10T11:43:41-07:00',
-   reminded_at: null,
-   resolution_state: 'incomplete',
-   assigned_by: 
-   { type: 'user',
-    id: '33333',
-    name: 'Example User',
-    login: 'user@example.com' } }
-  */
- });
-```
+  ```js Node v4
+  // Assign task 11111 to user 22222
+  var taskID = '11111';
+  var userID = '22222';
+  client.tasks.assignByUserID(taskID, userID)
+   .then(assignment => {
+    /* assignment -> {
+     type: 'task_assignment',
+     id: '12345',
+     item: 
+     { type: 'file',
+      id: '33333',
+      sequence_id: '0',
+      etag: '0',
+      sha1: '7840095ee096ee8297676a138d4e316eabb3ec96',
+      name: 'script.js' },
+     assigned_to: 
+     { type: 'user',
+      id: '22222',
+      name: 'Sample Assignee',
+      login: 'assignee@exmaple.com' },
+     message: null,
+     completed_at: null,
+     assigned_at: '2013-05-10T11:43:41-07:00',
+     reminded_at: null,
+     resolution_state: 'incomplete',
+     assigned_by: 
+     { type: 'user',
+      id: '33333',
+      name: 'Example User',
+      login: 'user@example.com' } }
+    */
+   });
+  ```
 </CodeGroup>
 
 <Note>
-**通知**
+  # 通知
 
-タスクを作成すると、そのタスクが割り当てられるユーザーにメール通知が送信されます。
-
+  タスクを作成すると、そのタスクが割り当てられるユーザーにメール通知が送信されます。
 </Note>
 
 <Warning>
-**権限**
+  # 権限
 
-タスクを割り当てるユーザーとタスクが割り当てられるユーザーの両方が、ファイルのコラボレータである必要があります。
-
+  タスクを割り当てるユーザーとタスクが割り当てられるユーザーの両方が、ファイルのコラボレータである必要があります。
 </Warning>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Assign task", href: "/reference/post-task-assignments", badge: "POST" }
-  ]}
+  { label: "Assign task", href: "/reference/post-task-assignments", badge: "POST" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "タスク割り当ての解除", href: "/ja/guides/tasks/assignments/unassign", badge: "ガイド" },
-    { label: "タスク割り当て状態の変更", href: "/ja/guides/tasks/assignments/change-state", badge: "ガイド" }
-  ]}
+  { label: "Unassign a task", href: "/guides/tasks/assignments/unassign", badge: "GUIDE" },
+  { label: "Change task assignment state", href: "/guides/tasks/assignments/change-state", badge: "GUIDE" }
+]}
 />

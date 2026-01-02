@@ -1,0 +1,74 @@
+---
+alias_paths:
+  0: /docs/custom-applications
+  1: /docs/custom-integrations
+  2: /docs/partner-integrations
+  3: /docs/getting-started-box-platform
+  4: /docs/box-platform
+  5: /guides/applications/custom-apps
+rank: 20
+related_guides:
+  0: authentication/oauth2
+  1: authentication/jwt
+  2: authentication/client-credentials
+title: Platformアプリ
+
+fullyTranslated: true
+---
+
+import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
+
+Platform App typically presents Box functionality to a user through a custom interface. Box offers pre-built, customizable user interface components, known as [UI Elements][uie], for functionalities like browsing, searching, and previewing content.
+
+## 認証方法
+
+Platform Apps support [OAuth 2.0][oauth2], [JWT][jwt], and [Client Credentials Grant][cc] authentication methods.
+
+<Card href="/guides/authentication/select" arrow title="認証方法の詳細を確認する" />
+
+## 使用するタイミング
+
+Use a Platform App when you want to:
+
+* Use [OAuth 2.0][oauth2], [JWT][jwt] or [Client Credentials Grant][cc] for authentication.
+* Upload and download files
+* Access both your own files and files owned by [managed or external users][users].
+* List the application in the Box Integrations
+* Provide integration into the Box Web App
+
+## ユースケース
+
+Example use cases include:
+
+* アプリケーション内のファイル保存場所。これにより、エンドユーザーが自分と共有されているファイルにアクセスできると同時に、従業員にもBoxウェブアプリを介して同じファイルへのアクセス権限が提供されます。
+
+  この一例として、ファイナンシャルアドバイザは、Platformアプリケーション内で閲覧またはコメントが可能な取引明細書や投資目論見書を投資家と共有します。
+
+* アプリケーションのファイルアップロード機能。これにより、エンドユーザーは、独自に構築したアプリケーション内からBoxにファイルを送信したりアップロードしたりできます。その後、これらのアップロードにより、Boxウェブアプリを使用したビジネスプロセスが開始されます。
+
+  この一例として、志願者が採用ポータルに送信した経歴書のPDFは、審査のため適切な従業員に転送されます。
+
+## 承認
+
+Platformアプリは、使用前に承認が必要になる場合があります。
+
+<Card href="/guides/authorization/platform-app-approval" arrow title="Platformアプリの承認方法を確認する" />
+
+[oauth2]: /guides/authentication/oauth2
+
+[jwt]: /guides/authentication/jwt
+
+[cc]: /guides/authentication/client-credentials
+
+[uie]: /guides/embed/ui-elements
+
+[users]: /platform/user-types/#managed-users/
+
+<RelatedLinks
+  title="関連するガイド"
+  items={[
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "Client Credentials Grant", href: "/guides/authentication/client-credentials/index", badge: "GUIDE" }
+]}
+/>

@@ -1,141 +1,129 @@
 ---
-title: "ファイル情報の取得"
+alias_paths: {}
 rank: 1
 related_endpoints:
-  - get_files_id
+  0: get_files_id
 related_guides:
-  - downloads/file
-required_guides: []
-alias_paths: []
-category_id: files
-subcategory_id: null
-is_index: false
-id: files/get
-type: guide
-total_steps: 2
-sibling_id: files
-parent_id: files
-next_page_id: files/limitations
-previous_page_id: ''
-source_url: https://github.com/box/developer.box.com/blob/main/content/guides/files/get.md
+  0: downloads/file
+required_guides: {}
+title: ファイル情報の取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-ファイルのコンテンツではなく、ファイル自体の情報を取得するには、ファイルの`id`を指定して[`GET /files/:id`](/ja/reference/get-files-id) APIを呼び出します。
+ファイルのコンテンツではなく、ファイル自体の情報を取得するには、ファイルの`id`を指定して[`GET /files/:id`](/reference/get-files-id) APIを呼び出します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/files/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/files/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.files.getFileById(uploadedFile.id, {
+    queryParams: {
+      fields: ['is_externally_owned', 'has_collaborations'],
+    } satisfies GetFileByIdQueryParams,
+  } satisfies GetFileByIdOptionalsInput);
+  ```
 
-```typescript Node/TypeScript v10
-await client.files.getFileById(uploadedFile.id, {
-  queryParams: {
-    fields: ['is_externally_owned', 'has_collaborations'],
-  } satisfies GetFileByIdQueryParams,
-} satisfies GetFileByIdOptionalsInput);
-```
+  ```python Python v10
+  client.files.get_file_by_id(
+      uploaded_file.id, fields=["is_externally_owned", "has_collaborations"]
+  )
+  ```
 
-```python Python v10
-client.files.get_file_by_id(
-    uploaded_file.id, fields=["is_externally_owned", "has_collaborations"]
-)
-```
+  ```cs .NET v10
+  await client.Files.GetFileByIdAsync(fileId: uploadedFile.Id, queryParams: new GetFileByIdQueryParams() { Fields = Array.AsReadOnly(new [] {"is_externally_owned","has_collaborations"}) });
+  ```
 
-```cs .NET v10
-await client.Files.GetFileByIdAsync(fileId: uploadedFile.Id, queryParams: new GetFileByIdQueryParams() { Fields = Array.AsReadOnly(new [] {"is_externally_owned","has_collaborations"}) });
-```
+  ```swift Swift v10
+  try await client.files.getFileById(fileId: uploadedFile.id, queryParams: GetFileByIdQueryParams(fields: ["is_externally_owned", "has_collaborations"]))
+  ```
 
-```swift Swift v10
-try await client.files.getFileById(fileId: uploadedFile.id, queryParams: GetFileByIdQueryParams(fields: ["is_externally_owned", "has_collaborations"]))
-```
+  ```java Java v10
+  client.getFiles().getFileById(uploadedFile.getId(), new GetFileByIdQueryParams.Builder().fields(Arrays.asList("is_externally_owned", "has_collaborations")).build())
+  ```
 
-```java Java v10
-client.getFiles().getFileById(uploadedFile.getId(), new GetFileByIdQueryParams.Builder().fields(Arrays.asList("is_externally_owned", "has_collaborations")).build())
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  BoxFile.Info info = file.getInfo();
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-BoxFile.Info info = file.getInfo();
-```
+  ```python Python v4
+  file_id = '11111'
+  file_info = client.file(file_id).get()
+  print(f'File "{file_info.name}" has a size of {file_info.size} bytes')
+  ```
 
-```python Python v4
-file_id = '11111'
-file_info = client.file(file_id).get()
-print(f'File "{file_info.name}" has a size of {file_info.size} bytes')
-```
+  ```cs .NET v6
+  BoxFile file = await client.FilesManager.GetInformationAsync(id: "11111");
+  ```
 
-```cs .NET v6
-BoxFile file = await client.FilesManager.GetInformationAsync(id: "11111");
-```
+  ```javascript Node v4
+  client.files.get('11111')
+  	.then(file => {
+  		/* file -> {
+  			type: 'file',
+  			id: '11111',
+  			file_version: 
+  			{ type: 'file_version',
+  				id: '22222',
+  				sha1: '97b3dbba6eab7ad0f058240744c8636b7c7bea93' },
+  			sequence_id: '1',
+  			etag: '1',
+  			sha1: '97b3dbba6eab7ad0f058240744c8636b7c7bea93',
+  			name: 'Puppy.png',
+  			description: '',
+  			size: 106833,
+  			path_collection: 
+  			{ total_count: 2,
+  				entries: 
+  				[ { type: 'folder',
+  					id: '0',
+  					sequence_id: null,
+  					etag: null,
+  					name: 'All Files' },
+  					{ type: 'folder',
+  					id: '33333',
+  					sequence_id: '0',
+  					etag: '0',
+  					name: 'Collaborated Folder' } ] },
+  			created_at: '2016-11-16T22:01:44-08:00',
+  			modified_at: '2016-11-16T22:01:51-08:00',
+  			trashed_at: null,
+  			purged_at: null,
+  			content_created_at: '2016-10-29T18:33:50-07:00',
+  			content_modified_at: '2016-10-29T18:33:50-07:00',
+  			created_by: 
+  			{ type: 'user',
+  				id: '44444',
+  				name: 'Owner',
+  				login: 'owner@example.com' },
+  			modified_by: 
+  			{ type: 'user',
+  				id: '44444',
+  				name: 'Owner',
+  				login: 'owner@example.com' },
+  			owned_by: 
+  			{ type: 'user',
+  				id: '44444',
+  				name: 'Owner',
+  				login: 'owner@example.com' },
+  			shared_link: null,
+  			parent: 
+  			{ type: 'folder',
+  				id: '33333',
+  				sequence_id: '0',
+  				etag: '0',
+  				name: 'Collaborated Folder' },
+  			item_status: 'active' }
 
-```javascript Node v4
-client.files.get('11111')
-	.then(file => {
-		/* file -> {
-			type: 'file',
-			id: '11111',
-			file_version: 
-			{ type: 'file_version',
-				id: '22222',
-				sha1: '97b3dbba6eab7ad0f058240744c8636b7c7bea93' },
-			sequence_id: '1',
-			etag: '1',
-			sha1: '97b3dbba6eab7ad0f058240744c8636b7c7bea93',
-			name: 'Puppy.png',
-			description: '',
-			size: 106833,
-			path_collection: 
-			{ total_count: 2,
-				entries: 
-				[ { type: 'folder',
-					id: '0',
-					sequence_id: null,
-					etag: null,
-					name: 'All Files' },
-					{ type: 'folder',
-					id: '33333',
-					sequence_id: '0',
-					etag: '0',
-					name: 'Collaborated Folder' } ] },
-			created_at: '2016-11-16T22:01:44-08:00',
-			modified_at: '2016-11-16T22:01:51-08:00',
-			trashed_at: null,
-			purged_at: null,
-			content_created_at: '2016-10-29T18:33:50-07:00',
-			content_modified_at: '2016-10-29T18:33:50-07:00',
-			created_by: 
-			{ type: 'user',
-				id: '44444',
-				name: 'Owner',
-				login: 'owner@example.com' },
-			modified_by: 
-			{ type: 'user',
-				id: '44444',
-				name: 'Owner',
-				login: 'owner@example.com' },
-			owned_by: 
-			{ type: 'user',
-				id: '44444',
-				name: 'Owner',
-				login: 'owner@example.com' },
-			shared_link: null,
-			parent: 
-			{ type: 'folder',
-				id: '33333',
-				sequence_id: '0',
-				etag: '0',
-				name: 'Collaborated Folder' },
-			item_status: 'active' }
-
-		*/
-	});
-```
-
+  		*/
+  	});
+  ```
 </CodeGroup>
 
 ## ファイルID
@@ -146,17 +134,18 @@ client.files.get('11111')
 
 ファイルのフィールドをさらに取得するには、必ず`fields`クエリパラメータを渡してください。
 
-<Card href="/ja/guides/api-calls/request-extra-fields" title="追加フィールドのリクエストについて確認する"/>
+<Card href="/guides/api-calls/request-extra-fields" arrow title="追加フィールドのリクエストについて確認する" />
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
-  ]}
+  { label: "Get file information", href: "/reference/get-files-id", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "ファイルのダウンロード", href: "/ja/guides/downloads/file", badge: "ガイド" }
-  ]}
+  { label: "Download File", href: "/guides/downloads/file", badge: "GUIDE" }
+]}
 />

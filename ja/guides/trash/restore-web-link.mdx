@@ -1,76 +1,46 @@
 ---
-title: "ウェブリンクの復元"
 rank: 10
-related_endpoints:
-  - post_web_links_id
-related_guides:
-  - trash/permanently-delete-web-link
-required_guides: []
+related_endpoints: ""
+related_guides: ""
 related_resources:
-  - web-link
-category_id: trash
-subcategory_id: null
-is_index: false
-id: trash/restore-web-link
-type: guide
-total_steps: 6
-sibling_id: trash
-parent_id: trash
-next_page_id: trash/permanently-delete-web-link
-previous_page_id: trash/permanently-delete-folder
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/trash/restore-web-link.md
+  0: web-link
+required_guides: {}
+title: ウェブリンクの復元
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ごみ箱に移動されたが削除されていないウェブリンクを復元するには、`/web_links/:web_link_id`エンドポイントに`POST`リクエストを送信します。これにより、ウェブリンクがまだ使用可能であれば元の親フォルダに戻されます。オプションとして`parent`フォルダを指定することもできます。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X POST "https://api.box.com/2.0/web_links/12345" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X POST "https://api.box.com/2.0/web_links/12345" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.trashedWebLinks.restoreWeblinkFromTrash(weblink.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.trashedWebLinks.restoreWeblinkFromTrash(weblink.id);
-```
+  ```python Python v10
+  client.trashed_web_links.restore_weblink_from_trash(weblink.id)
+  ```
 
-```python Python v10
-client.trashed_web_links.restore_weblink_from_trash(weblink.id)
-```
+  ```cs .NET v10
+  await client.TrashedWebLinks.RestoreWeblinkFromTrashAsync(webLinkId: weblink.Id);
+  ```
 
-```cs .NET v10
-await client.TrashedWebLinks.RestoreWeblinkFromTrashAsync(webLinkId: weblink.Id);
-```
+  ```swift Swift v10
+  try await client.trashedWebLinks.restoreWeblinkFromTrash(webLinkId: weblink.id)
+  ```
 
-```swift Swift v10
-try await client.trashedWebLinks.restoreWeblinkFromTrash(webLinkId: weblink.id)
-```
+  ```java Java v10
+  client.getTrashedWebLinks().restoreWeblinkFromTrash(weblink.getId())
+  ```
 
-```java Java v10
-client.getTrashedWebLinks().restoreWeblinkFromTrash(weblink.getId())
-```
-
-```python Python v4
-web_link_to_restore = client.web_link(web_link_id='33333')
-restored_web_link = client.trash().restore_item(web_link_to_restore)
-print(f'Web link ID is {restored_web_link.id} and name is {restored_web_link.name}')
-```
-
+  ```python Python v4
+  web_link_to_restore = client.web_link(web_link_id='33333')
+  restored_web_link = client.trash().restore_item(web_link_to_restore)
+  print(f'Web link ID is {restored_web_link.id} and name is {restored_web_link.name}')
+  ```
 </CodeGroup>
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Restore web link", href: "/reference/post-web-links-id", badge: "POST" }
-  ]}
-/>
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "ウェブリンクを完全に削除", href: "/ja/guides/trash/permanently-delete-web-link", badge: "ガイド" }
-  ]}
-/>

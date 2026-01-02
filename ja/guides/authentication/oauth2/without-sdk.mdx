@@ -1,42 +1,31 @@
 ---
-title: "SDKを使用しないOAuth 2.0"
+alias_paths: {}
 rank: 2
 related_endpoints:
-  - get_authorize
+  0: get_authorize
 related_guides:
-  - applications/app-types/select
-  - authentication/select
-  - authentication/oauth2/oauth2-setup
+  0: applications/app-types/select
+  1: authentication/select
+  2: authentication/oauth2/oauth2-setup
+related_resources: {}
 required_guides:
-  - authentication/select
-  - authentication/oauth2/oauth2-setup
-related_resources: []
-alias_paths: []
-category_id: authentication
-subcategory_id: authentication/oauth2
-is_index: false
-id: authentication/oauth2/without-sdk
-type: guide
-total_steps: 4
-sibling_id: authentication/oauth2
-parent_id: authentication/oauth2
-next_page_id: authentication/oauth2/as-user
-previous_page_id: authentication/oauth2/with-sdk
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/authentication/oauth2/without-sdk.md
+  0: authentication/select
+  1: authentication/oauth2/oauth2-setup
+title: SDKを使用しないOAuth 2.0
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+]}
 />
+
 ## 概要
 
 Box公式SDKを利用すると、一般的な認証のハードルはなくなりますが、Box APIは、Box公式SDKがなくても使用できます。このガイドでは、OAuth 2.0のフローを手動で完成させるための手順を説明します。
@@ -50,11 +39,9 @@ Box公式SDKを利用すると、一般的な認証のハードルはなくな�
 このフローが終了すると、アプリケーションには[アクセストークン][tokens]が付与されます。これを使用すると、ユーザーの代わりにAPIコールを実行できます。
 
 <Note>
+  OAuth 2.0フローを介して取得したアクセストークンは、もともとアプリケーションを承認したユーザーに関連付けられています。
 
-OAuth 2.0フローを介して取得したアクセストークンは、もともとアプリケーションを承認したユーザーに関連付けられています。
-
-`as-user`ヘッダーを使用して、[別のユーザーとして処理を実行](/ja/guides/authentication/oauth2/as-user)できます。
-
+  `as-user`ヘッダーを使用して、[別のユーザーとして処理を実行](/guides/authentication/oauth2/as-user)できます。
 </Note>
 
 ## 前提条件
@@ -77,9 +64,7 @@ OAuth 2.0フローを介して取得したアクセストークンは、もと�
 | [`STATE`][st]         | 推奨    | クロスサイトリクエスト偽造から保護します。                               |
 
 <Warning>
-
-アプリケーション用にリダイレクトURIを複数設定した場合、承認URLには、開発者コンソールで設定したURIのいずれかと一致する`redirect_uri`パラメータを含める必要があります。このパラメータが指定されていない場合、ユーザーには`redirect_uri_missing`エラーが表示され、アプリにリダイレクトされません。
-
+  アプリケーション用にリダイレクトURIを複数設定した場合、承認URLには、開発者コンソールで設定したURIのいずれかと一致する`redirect_uri`パラメータを含める必要があります。このパラメータが指定されていない場合、ユーザーには`redirect_uri_missing`エラーが表示され、アプリにリダイレクトされません。
 </Warning>
 
 少なくとも、このURLは常に次の形式を使用します。
@@ -87,47 +72,35 @@ OAuth 2.0フローを介して取得したアクセストークンは、もと�
 `https://account.box.com/api/oauth2/authorize`?`client_id=CLIENTIDHERE`&`response_type=code`
 
 <CodeGroup>
+  ```csharp .Net
+  var baseUrl = "https://account.box.com/api/oauth2/authorize";
+  var clientId = "[CLIENT_ID]";
+  var authorizationUrl = $"{baseUrl}?client_id={clientId}&response_type=code";
+  ```
 
-```csharp .Net
-var baseUrl = "https://account.box.com/api/oauth2/authorize";
-var clientId = "[CLIENT_ID]";
-var authorizationUrl = $"{baseUrl}?client_id={clientId}&response_type=code";
+  ```java Java
+  String baseUrl = "https://account.box.com/api/oauth2/authorize";
+  String clientId = "[CLIENT_ID]";
+  String authorizationUrl = String.format("%s?client_id=%s&response_type=code", baseUrl, clientId);
+  ```
 
-```
+  ```python Python
+  base_url = 'https://account.box.com/api/oauth2/authorize'
+  client_id = '[CLIENT_ID]'
+  authorizationUrl = f'{base_url}?client_id=${client_id}&response_type=code'
+  ```
 
-
-```java Java
-String baseUrl = "https://account.box.com/api/oauth2/authorize";
-String clientId = "[CLIENT_ID]";
-String authorizationUrl = String.format("%s?client_id=%s&response_type=code", baseUrl, clientId);
-
-```
-
-
-```python Python
-base_url = 'https://account.box.com/api/oauth2/authorize'
-client_id = '[CLIENT_ID]'
-authorizationUrl = f'{base_url}?client_id=${client_id}&response_type=code'
-
-```
-
-
-```js Node
-var baseUrl = "https://account.box.com/api/oauth2/authorize";
-var clientId = "[CLIENT_ID]";
-var authorizationUrl = `${baseUrl}?client_id=${clientId}&response_type=code`;
-
-```
-
-
+  ```js Node
+  var baseUrl = "https://account.box.com/api/oauth2/authorize";
+  var clientId = "[CLIENT_ID]";
+  var authorizationUrl = `${baseUrl}?client_id=${clientId}&response_type=code`;
+  ```
 </CodeGroup>
 
-<Card href="/ja/reference/get-authorize" title="承認URLの詳細を確認する"/>
+<Card href="/reference/get-authorize" arrow title="承認URLの詳細を確認する" />
 
 <Tip>
-
-Boxインスタンスの[Box Verified Enterprise][1]が有効になっている場合、標準的な`account.box.com`というベースURLを使用する際に問題が発生することがあります。`account.box.com`の代わりに`ent.box.com`を使用してください。
-
+  Boxインスタンスの[Box Verified Enterprise][1]が有効になっている場合、標準的な`account.box.com`というベースURLを使用する際に問題が発生することがあります。`account.box.com`の代わりに`ent.box.com`を使用してください。
 </Tip>
 
 ## 2. ユーザーをリダイレクトする
@@ -137,46 +110,30 @@ Boxインスタンスの[Box Verified Enterprise][1]が有効になっている�
 指定されたアプリに対して承認URLが無効な場合、ユーザーには、アクセスの許可画面ではなくエラーページが表示されます。たとえば、承認URLに含まれる`redirect_uri`パラメータが、アプリ用に構成されたURIのいずれとも一致しない場合、ユーザーには`redirect_uri_mismatch`エラーが表示されます。
 
 <CodeGroup>
+  ```csharp .Net
+  var authorizationUrl = $"{baseUrl}?client_id={clientId}&response_type=code";
+  // redirectTo(authorizationUrl);
+  ```
 
+  ```java Java
+  String authorizationUrl = String.format("%s?client_id=%s&response_type=code", baseUrl, clientId);
 
+  // response.redirect(authorizationUrl);
+  ```
 
-```csharp .NET
-var authorizationUrl = $"{baseUrl}?client_id={clientId}&response_type=code";
-// redirectTo(authorizationUrl);
+  ```python Python
+  auth_url = f'{base_url}?client_id=${client_id}&response_type=code'
+  // redirect(auth_url, code=302)
+  ```
 
-```
-
-
-
-```java Java
-String authorizationUrl = String.format("%s?client_id=%s&response_type=code", baseUrl, clientId);
-
-// response.redirect(authorizationUrl);
-
-```
-
-
-
-```python Python
-auth_url = f'{base_url}?client_id=${client_id}&response_type=code'
-// redirect(auth_url, code=302)
-
-```
-
-
-```js Node
-var authorizationUrl = `${baseUrl}?client_id=${clientId}&response_type=code`;
-// res.redirect(authorize_url)
-
-```
-
-
+  ```js Node
+  var authorizationUrl = `${baseUrl}?client_id=${clientId}&response_type=code`;
+  // res.redirect(authorize_url)
+  ```
 </CodeGroup>
 
 <Info>
-
-スコープを制限したり追加の状態を渡したりするために、ユーザーをリダイレクトする際に追加のクエリパラメータを渡すことができます。詳細については、承認のリファレンスドキュメントを参照してください。
-
+  スコープを制限したり追加の状態を渡したりするために、ユーザーをリダイレクトする際に追加のクエリパラメータを渡すことができます。詳細については、承認のリファレンスドキュメントを参照してください。
 </Info>
 
 ## 3. ユーザーがアプリケーションにアクセス権限を付与する
@@ -184,22 +141,17 @@ var authorizationUrl = `${baseUrl}?client_id=${clientId}&response_type=code`;
 ユーザーは、Box UIを使用して自分のアカウントにログインするために、ブラウザにリダイレクトされます。その後、リクエストされているスコープのリストと、ユーザーに代わって処理を行うアプリケーションを承認するためのオプションが表示されます。
 
 <Frame border center shadow width="400">
-
-![OAuth 2.0承認画面の例](./oauth2-grant.png)
-
+  ![OAuth 2.0承認画面の例](./oauth2-grant.png)
 </Frame>
 
 ユーザーが \[**Boxへのアクセスを許可**] をクリックしてこのリクエストを承認すると、ブラウザは、クエリパラメータに有効期間の短い承認コードが指定されている構成済みのリダイレクトURLにリダイレクトされます。
 
 <Warning>
-
-アプリケーション用にリダイレクトURIを複数設定した場合、承認URLには、開発者コンソールで設定したURIのいずれかと一致する`redirect_uri`パラメータを含める必要があります。このパラメータが指定されていない場合、ユーザーには`redirect_uri_missing`エラーが表示され、アプリにリダイレクトされません。
-
+  アプリケーション用にリダイレクトURIを複数設定した場合、承認URLには、開発者コンソールで設定したURIのいずれかと一致する`redirect_uri`パラメータを含める必要があります。このパラメータが指定されていない場合、ユーザーには`redirect_uri_missing`エラーが表示され、アプリにリダイレクトされません。
 </Warning>
 
 ```sh
 https://your.domain.com/path?code=1234567
-
 ```
 
 ## 4. コードを交換する
@@ -207,109 +159,98 @@ https://your.domain.com/path?code=1234567
 提供される承認コードは、[有効期間が30秒][thirty]のため、有効期限が切れる前に[アクセストークン][at]に交換する必要があります。
 
 <CodeGroup>
+  ```csharp .Net
+  using System.Net;
+  using System.Net.Http;
+  using Newtonsoft.Json;
 
+  String authenticationUrl = "https://api.box.com/oauth2/token";
+  var client = new HttpClient();
 
+  var content = new FormUrlEncodedContent(new[]
+  {
+      new KeyValuePair<string, string>("grant_type", "authorization_code"),
+      new KeyValuePair<string, string>("code", "[CODE]"),
+      new KeyValuePair<string, string>("client_id", "[CLIENT_ID]"),
+      new KeyValuePair<string, string>("client_secret", "[CLIENT_SECRET]")
+  });
 
-```csharp .NET
-using System.Net;
-using System.Net.Http;
-using Newtonsoft.Json;
+  var response = client.PostAsync(authenticationUrl, content).Result;
 
-String authenticationUrl = "https://api.box.com/oauth2/token";
-var client = new HttpClient();
+  class Token
+  {
+      public string access_token { get; set; }
+  }
 
-var content = new FormUrlEncodedContent(new[]
-{
-    new KeyValuePair<string, string>("grant_type", "authorization_code"),
-    new KeyValuePair<string, string>("code", "[CODE]"),
-    new KeyValuePair<string, string>("client_id", "[CLIENT_ID]"),
-    new KeyValuePair<string, string>("client_secret", "[CLIENT_SECRET]")
-});
+  var data = response.Content.ReadAsStringAsync().Result;
+  var token = JsonConvert.DeserializeObject<Token>(data);
+  var accessToken = token.access_token;
+  ```
 
-var response = client.PostAsync(authenticationUrl, content).Result;
+  ```java Java
+  String authenticationUrl = "https://api.box.com/oauth2/token";
 
-class Token
-{
-    public string access_token { get; set; }
-}
+  List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-var data = response.Content.ReadAsStringAsync().Result;
-var token = JsonConvert.DeserializeObject<Token>(data);
-var accessToken = token.access_token;
+  params.add(new BasicNameValuePair("grant_type", "authorization_code"));
+  params.add(new BasicNameValuePair("code", "[CODE]"));
+  params.add(new BasicNameValuePair("client_id", "[CLIENT_ID]"));
+  params.add(new BasicNameValuePair("client_secret", "[CLIENT_SECRET]"));
 
-```
+  CloseableHttpClient httpClient = HttpClientBuilder.create().disableCookieManagement().build();
 
+  HttpPost request = new HttpPost(authenticationUrl);
+  request.setEntity(new UrlEncodedFormEntity(params));
 
-```java Java
-String authenticationUrl = "https://api.box.com/oauth2/token";
+  CloseableHttpResponse httpResponse = httpClient.execute(request);
+  HttpEntity entity = httpResponse.getEntity();
 
-List<NameValuePair> params = new ArrayList<NameValuePair>();
+  String response = EntityUtils.toString(entity);
+  httpClient.close();
 
-params.add(new BasicNameValuePair("grant_type", "authorization_code"));
-params.add(new BasicNameValuePair("code", "[CODE]"));
-params.add(new BasicNameValuePair("client_id", "[CLIENT_ID]"));
-params.add(new BasicNameValuePair("client_secret", "[CLIENT_SECRET]"));
+  class Token {
+      String access_token;
+  }
 
-CloseableHttpClient httpClient = HttpClientBuilder.create().disableCookieManagement().build();
+  Token token = (Token) gson.fromJson(response, Token.class);
+  String accessToken = token.access_token;
+  ```
 
-HttpPost request = new HttpPost(authenticationUrl);
-request.setEntity(new UrlEncodedFormEntity(params));
+  ```python Python
+  authentication_url = "https://api.box.com/oauth2/token";
 
-CloseableHttpResponse httpResponse = httpClient.execute(request);
-HttpEntity entity = httpResponse.getEntity();
+  params = urlencode({
+      'grant_type': 'authorization_code',
+      'code': '[CODE]',
+      'client_id': '[CLIENT_ID]',
+      'client_secret': '[CLIENT_SECRET]'
+  }).encode()
 
-String response = EntityUtils.toString(entity);
-httpClient.close();
+  request = Request(authentication_url, params)
+  response = urlopen(request).read()
+  access_token = json.loads(response)['access_token']
+  ```
 
-class Token {
-    String access_token;
-}
+  ```js Node
+  const authenticationUrl = "https://api.box.com/oauth2/token";
 
-Token token = (Token) gson.fromJson(response, Token.class);
-String accessToken = token.access_token;
-
-```
-
-
-```python Python
-authentication_url = "https://api.box.com/oauth2/token";
-
-params = urlencode({
-    'grant_type': 'authorization_code',
-    'code': '[CODE]',
-    'client_id': '[CLIENT_ID]',
-    'client_secret': '[CLIENT_SECRET]'
-}).encode()
-
-request = Request(authentication_url, params)
-response = urlopen(request).read()
-access_token = json.loads(response)['access_token']
-
-```
-
-
-```js Node
-const authenticationUrl = "https://api.box.com/oauth2/token";
-
-let accessToken = await axios
-    .post(
-        authenticationUrl,
-        querystring.stringify({
-            grant_type: "authorization_code",
-            code: "[CODE]",
-            client_id: "[CLIENT_ID]",
-            client_secret: "[CLIENT_SECRET]",
-        })
-    )
-    .then((response) => response.data.access_token);
-
-```
-
+  let accessToken = await axios
+      .post(
+          authenticationUrl,
+          querystring.stringify({
+              grant_type: "authorization_code",
+              code: "[CODE]",
+              client_id: "[CLIENT_ID]",
+              client_secret: "[CLIENT_SECRET]",
+          })
+      )
+      .then((response) => response.data.access_token);
+  ```
 </CodeGroup>
 
 アクセストークンの使用方法を確認するには、[APIコールの実行][apic]に関するガイドを参照してください。
 
-[tokens]: /ja/guides/authentication/tokens/access-tokens
+[tokens]: /guides/authentication/tokens/access-tokens
 
 {/* i18n-enable localize-links */}
 
@@ -317,33 +258,34 @@ let accessToken = await axios
 
 {/* i18n-disable localize-links */}
 
-[auth]: /ja/reference/get-authorize
+[auth]: /reference/get-authorize
 
-[ci]: /ja/reference/get-authorize/#param-client_id
+[ci]: /reference/get-authorize/#param-client_id
 
-[re]: /ja/reference/get-authorize/#param-redirect_uri
+[re]: /reference/get-authorize/#param-redirect_uri
 
-[co]: /ja/reference/get-authorize/#param-response_type
+[co]: /reference/get-authorize/#param-response_type
 
-[st]: /ja/reference/get-authorize/#param-state
+[st]: /reference/get-authorize/#param-state
 
-[thirty]: /ja/guides/api-calls/permissions-and-errors/expiration
+[thirty]: /guides/api-calls/permissions-and-errors/expiration
 
-[at]: /ja/reference/post-oauth2-token
+[at]: /reference/post-oauth2-token
 
-[apic]: /ja/guides/api-calls
+[apic]: /guides/api-calls
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
-  ]}
+  { label: "Authorize user", href: "/reference/get-authorize", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "アプリの種類の選択", href: "/ja/guides/applications/app-types/select", badge: "ガイド" },
-    { label: "認証方法の選択", href: "/ja/guides/authentication/select", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" }
-  ]}
+  { label: "Select App Type", href: "/guides/applications/app-types/select", badge: "GUIDE" },
+  { label: "Select Auth Method", href: "/guides/authentication/select", badge: "GUIDE" },
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" }
+]}
 />

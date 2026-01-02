@@ -1,105 +1,94 @@
 ---
-title: "ファイルのすべてのタスクのリストの取得"
 related_endpoints:
-  - get_files_id_tasks
+  0: get_files_id_tasks
 related_guides:
-  - tasks/create
-  - tasks/get
+  0: tasks/create
+  1: tasks/get
 related_resources:
-  - file
-  - task
-category_id: tasks
-subcategory_id: null
-is_index: false
-id: tasks/for-file
-rank: 3
-type: guide
-total_steps: 5
-sibling_id: tasks
-parent_id: tasks
-next_page_id: tasks/update
-previous_page_id: tasks/get
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/tasks/3-for-file.md
+  0: file
+  1: task
+title: ファイルのすべてのタスクのリストの取得
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-特定のファイルのすべてのタスクのリストを取得するには、ファイルの`id`を指定して[`GET /files/:id/tasks`](/ja/reference/get-files-id-tasks)を呼び出します。
+特定のファイルのすべてのタスクのリストを取得するには、ファイルの`id`を指定して[`GET /files/:id/tasks`](/reference/get-files-id-tasks)を呼び出します。
 
 <CodeGroup>
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/files/12345/tasks" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/files/12345/tasks" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```typescript Node/TypeScript v10
-await client.tasks.getFileTasks(file.id);
-```
+  ```typescript Node/TypeScript v10
+  await client.tasks.getFileTasks(file.id);
+  ```
 
-```python Python v10
-client.tasks.get_file_tasks(file.id)
-```
+  ```python Python v10
+  client.tasks.get_file_tasks(file.id)
+  ```
 
-```csharp .NET v10
-await client.Tasks.GetFileTasksAsync(fileId: file.Id);
-```
+  ```csharp .NET v10
+  await client.Tasks.GetFileTasksAsync(fileId: file.Id);
+  ```
 
-```swift Swift v10
-try await client.tasks.getFileTasks(fileId: file.id)
-```
+  ```swift Swift v10
+  try await client.tasks.getFileTasks(fileId: file.id)
+  ```
 
-```java Java v10
-client.getTasks().getFileTasks(file.getId())
-```
+  ```java Java v10
+  client.getTasks().getFileTasks(file.getId())
+  ```
 
-```java Java v5
-BoxFile file = new BoxFile(api, "id");
-List<BoxTask.Info> tasks = file.getTasks();
-```
+  ```java Java v5
+  BoxFile file = new BoxFile(api, "id");
+  List<BoxTask.Info> tasks = file.getTasks();
+  ```
 
-```py Python v4
-tasks = client.file(file_id='11111').get_tasks()
-for task in tasks:
-    print(f'Task ID is {task.id} and the type is {task.type}')
-```
+  ```py Python v4
+  tasks = client.file(file_id='11111').get_tasks()
+  for task in tasks:
+      print(f'Task ID is {task.id} and the type is {task.type}')
+  ```
 
-```csharp .NET v6
-BoxCollection<BoxTask> tasks = await client.FilesManager.FilesManager.GetFileTasks("11111");
-```
+  ```csharp .NET v6
+  BoxCollection<BoxTask> tasks = await client.FilesManager.FilesManager.GetFileTasks("11111");
+  ```
 
-```js Node v4
-client.files.getTasks('11111')
- .then(tasks => {
-  /* tasks -> {
-   total_count: 1,
-   entries: 
-   [ { type: 'task',
-    id: '22222',
-    item: 
-     { type: 'file',
-     id: '11111',
-     sequence_id: '6',
-     etag: '6',
-     sha1: '81cc829fb8366fcfc108aa6c5a9bde01a6a10c16',
-     name: 'box-logo.png' },
-    due_at: null } ] }
-  */
- });
-```
+  ```js Node v4
+  client.files.getTasks('11111')
+   .then(tasks => {
+    /* tasks -> {
+     total_count: 1,
+     entries: 
+     [ { type: 'task',
+      id: '22222',
+      item: 
+       { type: 'file',
+       id: '11111',
+       sequence_id: '6',
+       etag: '6',
+       sha1: '81cc829fb8366fcfc108aa6c5a9bde01a6a10c16',
+       name: 'box-logo.png' },
+      due_at: null } ] }
+    */
+   });
+  ```
 </CodeGroup>
 
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List tasks on file", href: "/reference/get-files-id-tasks", badge: "GET" }
-  ]}
+  { label: "List tasks on file", href: "/reference/get-files-id-tasks", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "タスクの作成", href: "/ja/guides/tasks/create", badge: "ガイド" },
-    { label: "タスクに関する情報の取得", href: "/ja/guides/tasks/get", badge: "ガイド" }
-  ]}
+  { label: "Create a task", href: "/guides/tasks/create", badge: "GUIDE" },
+  { label: "Get information about a task", href: "/guides/tasks/get", badge: "GUIDE" }
+]}
 />

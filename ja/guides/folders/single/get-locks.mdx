@@ -1,27 +1,16 @@
 ---
-title: "フォルダのロックの取得"
+alias_paths: {}
 rank: 9
 related_endpoints:
-  - get_folder_locks
+  0: get_folder_locks
 related_guides:
-  - folders/single/create-lock
-  - folders/single/delete-lock
-required_guides: []
+  0: folders/single/create-lock
+  1: folders/single/delete-lock
 related_resources:
-  - folder_locks
-alias_paths: []
-category_id: folders
-subcategory_id: folders/single
-is_index: false
-id: folders/single/get-locks
-type: guide
-total_steps: 10
-sibling_id: folders/single
-parent_id: folders/single
-next_page_id: folders/single/delete-lock
-previous_page_id: folders/single/create-lock
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/folders/single/get-locks.md
+  0: folder_locks
+required_guides: {}
+title: フォルダのロックの取得
+
 fullyTranslated: true
 ---
 
@@ -30,41 +19,38 @@ import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 Box内のフォルダに対する現在のロックのリストを取得するには、`folder_id`クエリ文字列パラメータとしてフォルダのIDを指定して`GET /folder_locks/` APIを呼び出します。
 
 <Note>
-**フォルダロック**
+  **フォルダロック**
 
-フォルダロックAPIエンドポイントを使用する際は、アクセスしようとしているフォルダの所有者/共同所有者として認証されている必要があります。
-
+  フォルダロックAPIエンドポイントを使用する際は、アクセスしようとしているフォルダの所有者/共同所有者として認証されている必要があります。
 </Note>
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X GET "https://api.box.com/2.0/folder_locks?folder_id=33552487093" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X GET "https://api.box.com/2.0/folder_locks?folder_id=33552487093" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.folderLocks.getFolderLocks({
+    folderId: folder.id,
+  } satisfies GetFolderLocksQueryParams);
+  ```
 
-```typescript Node/TypeScript v10
-await client.folderLocks.getFolderLocks({
-  folderId: folder.id,
-} satisfies GetFolderLocksQueryParams);
-```
+  ```python Python v10
+  client.folder_locks.get_folder_locks(folder.id)
+  ```
 
-```python Python v10
-client.folder_locks.get_folder_locks(folder.id)
-```
+  ```cs .NET v10
+  await client.FolderLocks.GetFolderLocksAsync(queryParams: new GetFolderLocksQueryParams(folderId: folder.Id));
+  ```
 
-```cs .NET v10
-await client.FolderLocks.GetFolderLocksAsync(queryParams: new GetFolderLocksQueryParams(folderId: folder.Id));
-```
+  ```swift Swift v10
+  try await client.folderLocks.getFolderLocks(queryParams: GetFolderLocksQueryParams(folderId: folder.id))
+  ```
 
-```swift Swift v10
-try await client.folderLocks.getFolderLocks(queryParams: GetFolderLocksQueryParams(folderId: folder.id))
-```
-
-```java Java v10
-client.getFolderLocks().getFolderLocks(new GetFolderLocksQueryParams(folder.getId()))
-```
-
+  ```java Java v10
+  client.getFolderLocks().getFolderLocks(new GetFolderLocksQueryParams(folder.getId()))
+  ```
 </CodeGroup>
 
 ## フォルダID
@@ -74,13 +60,14 @@ client.getFolderLocks().getFolderLocks(new GetFolderLocksQueryParams(folder.getI
 <RelatedLinks
   title="関連するAPI"
   items={[
-    { label: "List folder locks", href: "/reference/get-folder-locks", badge: "GET" }
-  ]}
+  { label: "List folder locks", href: "/reference/get-folder-locks", badge: "GET" }
+]}
 />
+
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "フォルダのロックの作成", href: "/ja/guides/folders/single/create-lock", badge: "ガイド" },
-    { label: "フォルダのロックの削除", href: "/ja/guides/folders/single/delete-lock", badge: "ガイド" }
-  ]}
+  { label: "Create Folder Lock", href: "/guides/folders/single/create-lock", badge: "GUIDE" },
+  { label: "Delete Folder Lock", href: "/guides/folders/single/delete-lock", badge: "GUIDE" }
+]}
 />

@@ -1,71 +1,45 @@
 ---
-title: "ウェブリンクを完全に削除"
 rank: 11
-related_endpoints:
-  - delete_web_links
-  - delete_web_links_trash
-related_guides:
-  - trash/restore-web-link
-required_guides: []
-related_resources:
-  - web-link
-category_id: trash
-subcategory_id: null
-is_index: false
-id: trash/permanently-delete-web-link
-type: guide
-total_steps: 6
-sibling_id: trash
-parent_id: trash
-next_page_id: trash
-previous_page_id: trash/restore-web-link
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/trash/permanently-delete-web-link.md
+related_endpoints: ""
+related_guides: ""
+related_resources: ""
+required_guides: {}
+title: ウェブリンクを完全に削除
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 ごみ箱に移動されたウェブリンクは、デフォルトで30日間ごみ箱に保持された後で削除されます。BusinessアカウントまたはEnterpriseアカウントの管理者は、削除までの期間を変更できます。削除までの期間が経過する前にごみ箱からウェブリンクを完全に削除する場合は、ごみ箱に移動されたウェブリンクの`ID`を使用して`DELETE`リクエストを`/web_links/:web_link_id/trash`に送信します。
 
 <CodeGroup>
+  ```sh cURL
+  curl -i -X DELETE "https://api.box.com/2.0/web_links/12345/trash" \
+       -H "authorization: Bearer <ACCESS_TOKEN>"
+  ```
 
-```sh cURL
-curl -i -X DELETE "https://api.box.com/2.0/web_links/12345/trash" \
-     -H "authorization: Bearer <ACCESS_TOKEN>"
-```
+  ```typescript Node/TypeScript v10
+  await client.trashedWebLinks.deleteTrashedWebLinkById(weblink.id);
+  ```
 
-```typescript Node/TypeScript v10
-await client.trashedWebLinks.deleteTrashedWebLinkById(weblink.id);
-```
+  ```python Python v10
+  client.trashed_web_links.delete_trashed_web_link_by_id(weblink.id)
+  ```
 
-```python Python v10
-client.trashed_web_links.delete_trashed_web_link_by_id(weblink.id)
-```
+  ```cs .NET v10
+  await client.TrashedWebLinks.DeleteTrashedWebLinkByIdAsync(webLinkId: weblink.Id);
+  ```
 
-```cs .NET v10
-await client.TrashedWebLinks.DeleteTrashedWebLinkByIdAsync(webLinkId: weblink.Id);
-```
+  ```swift Swift v10
+  try await client.trashedWebLinks.deleteTrashedWebLinkById(webLinkId: weblink.id)
+  ```
 
-```swift Swift v10
-try await client.trashedWebLinks.deleteTrashedWebLinkById(webLinkId: weblink.id)
-```
+  ```java Java v10
+  client.getTrashedWebLinks().deleteTrashedWebLinkById(weblink.getId())
+  ```
 
-```java Java v10
-client.getTrashedWebLinks().deleteTrashedWebLinkById(weblink.getId())
-```
-
-```python Python v4
-web_link = client.web_link(web_link_id='33333')
-client.trash().permanently_delete_item(web_link)
-print('The web link was deleted from trash!')
-```
-
+  ```python Python v4
+  web_link = client.web_link(web_link_id='33333')
+  client.trash().permanently_delete_item(web_link)
+  print('The web link was deleted from trash!')
+  ```
 </CodeGroup>
-
-<RelatedLinks
-  title="関連するガイド"
-  items={[
-    { label: "ウェブリンクの復元", href: "/ja/guides/trash/restore-web-link", badge: "ガイド" }
-  ]}
-/>

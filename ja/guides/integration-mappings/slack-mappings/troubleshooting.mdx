@@ -1,31 +1,14 @@
 ---
-title: "Slack統合マッピングのトラブルシューティング"
+alias_paths: {}
 rank: 7
-related_endpoints:
-  - delete_integration_mappings_slack_id
-  - get_integration_mappings_slack
-  - post_integration_mappings_slack
-  - put_integration_mappings_slack_id
-related_guides: []
-required_guides: []
-related_resources: []
-alias_paths: []
-category_id: integration-mappings
-subcategory_id: integration-mappings/slack-mappings
-is_index: false
-id: integration-mappings/slack-mappings/troubleshooting
-type: guide
-total_steps: 6
-sibling_id: integration-mappings/slack-mappings
-parent_id: integration-mappings/slack-mappings
-next_page_id: ''
-previous_page_id: integration-mappings/slack-mappings/delete-mapping
-source_url: >-
-  https://github.com/box/developer.box.com/blob/main/content/guides/integration-mappings/slack-mappings/troubleshooting.md
+related_endpoints: ""
+related_guides: {}
+related_resources: {}
+required_guides: {}
+title: Slack統合マッピングのトラブルシューティング
+
 fullyTranslated: true
 ---
-
-import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
 統合マッピングAPIはさまざまな種類の検証を実行するため、いくつかのエラーが発生する場合があります。このような一般的なエラーの説明と解決策については、以下を参照してください。
 
@@ -39,7 +22,6 @@ user@example.com) must be a collaborator in role co-owner or owner
 of the folder example123, before it can be mapped to the channel
 example123. Please create a collaboration or ensure the ownership for
 Box as File Storage for Slack and retry.`
-
 ```
 
 このエラーを解決するには、レスポンスのデータを使用して、マッピングを実行するための必要なロールがサービスアカウントにあることを確認してください。
@@ -49,7 +31,6 @@ Box as File Storage for Slack and retry.`
   "service_account_id": "12345678",
   "service_account_email": "AutomationUser_12345678_gdueygwe@boxdevedition.com",
 }
-
 ```
 
 以下の手順を実行します。
@@ -63,7 +44,6 @@ Boxフォルダがすでにマッピングされているチャンネルに対�
 
 ```sh
 Channel: example123 is already mapped to a folder in Box.
-
 ```
 
 新しいフォルダの使用を開始したい場合は、`GET`を使用してマッピングの`id`を取得した後、`UPDATE`メソッドを使用してターゲットのBoxフォルダを更新してください。
@@ -74,7 +54,6 @@ Channel: example123 is already mapped to a folder in Box.
 
 ```sh
 Channel: example123 was not found. If it is a private channel, ensure that Box has been added to the channel.
-
 ```
 
 `partner_item`が正しいことを確認します。オーガナイゼーションでのインストールの場合は`slack_org_id`、ワークスペースでのインストールの場合は`slack_workspace_id`を指定していることを確認してください。チャンネルがプライベートの場合は、Slackボットがそのチャンネルに追加されていることを確認します。
@@ -84,7 +63,6 @@ Channel: example123 was not found. If it is a private channel, ensure that Box h
 ```sh
 Channel: example123 is not suitable for CFS. Slack Connect channels with
 a pending Connect status can not be mapped to Box folders.
-
 ```
 
 Slackコネクトチャンネル (企業間チャンネル) は、現在、SlackのコンテンツレイヤーとしてBoxを使用する場合にサポートされていません。
@@ -95,7 +73,6 @@ Slackコネクトチャンネル (企業間チャンネル) は、現在、Slack
 
 ```sh
 Box folder: example123 cannot be mapped, because it is externally owned. Mapped folder must belong to the enterprise: example_enterprise.
-
 ```
 
 ## カスタムファイルストレージ (CFS) が無効になっている
@@ -109,13 +86,3 @@ Box for Slackがインストールされているものの、[Slackのコンテ�
 [1]: https://support.box.com/hc/en-us/articles/4415585987859-Box-as-the-Content-Layer-for-Slack
 
 [2]: https://support.box.com/hc/en-us/articles/360044195313-Installing-and-Using-the-Box-for-Slack-Integration
-
-<RelatedLinks
-  title="関連するAPI"
-  items={[
-    { label: "Delete Slack integration mapping", href: "/reference/delete-integration-mappings-slack-id", badge: "DELETE" },
-    { label: "List Slack integration mappings", href: "/reference/get-integration-mappings-slack", badge: "GET" },
-    { label: "Create Slack integration mapping", href: "/reference/post-integration-mappings-slack", badge: "POST" },
-    { label: "Update Slack integration mapping", href: "/reference/put-integration-mappings-slack-id", badge: "PUT" }
-  ]}
-/>

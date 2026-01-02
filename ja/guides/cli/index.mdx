@@ -1,48 +1,39 @@
 ---
-title: "CLI"
-rank: 35
-related_endpoints: []
-related_guides:
-  - authentication/oauth2
-  - authentication/oauth2/oauth2-setup
-  - authentication/jwt
-  - authentication/jwt/jwt-setup
-related_pages:
-  - sdks-and-tools
-required_guides:
-  - authentication/oauth2/oauth2-setup
-  - authentication/jwt/jwt-setup
-related_resources: []
 alias_paths:
-  - /docs/box-cli
-  - /docs/installation-and-setup
-  - /docs/commands-and-actions
-  - /docs/command-line-interface-cli
-  - /guides/tooling/cli
-category_id: cli
-subcategory_id: null
-is_index: true
-id: cli
-type: guide
-total_steps: 0
-sibling_id: guides
-parent_id: guides
-next_page_id: ''
-previous_page_id: ''
-source_url: https://github.com/box/developer.box.com/blob/main/content/guides/cli/index.md
+  0: /docs/box-cli
+  1: /docs/installation-and-setup
+  2: /docs/commands-and-actions
+  3: /docs/command-line-interface-cli
+  4: /guides/tooling/cli
+rank: 35
+related_endpoints: ""
+related_guides:
+  0: authentication/oauth2
+  1: authentication/oauth2/oauth2-setup
+  2: authentication/jwt
+  3: authentication/jwt/jwt-setup
+related_pages:
+  0: sdks-and-tools
+related_resources: ""
+required_guides:
+  0: authentication/oauth2/oauth2-setup
+  1: authentication/jwt/jwt-setup
+sidebarTitle: Overview
+title: CLI
+
 fullyTranslated: true
 ---
 
 import {RelatedLinks, MultiRelatedLinks} from "/snippets/related-links.jsx";
 
-
 <RelatedLinks
-  title="REQUIRED GUIDES"
+  title="必須のガイド"
   items={[
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" },
-    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "ガイド" }
-  ]}
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+  { label: "Setup with JWT", href: "/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+]}
 />
+
 Box Command Line Interface (CLI) は、ターミナルウィンドウまたはコマンドプロンプトからBox APIにリクエストを行うためのツールです。
 
 ## クイックスタート
@@ -78,19 +69,19 @@ Box CLIの使用自体が役に立ちますが、PowerShellスクリプトと組
 
 [cli-add-config]: https://github.com/box/boxcli/blob/main/docs/configure.md#box-configureenvironmentsadd-path
 
-[qs]: /ja/guides/cli/quick-start
+[qs]: /guides/cli/quick-start
 
 [cache]: https://github.com/box/boxcli/blob/main/docs/configure.md#box-configureenvironmentsupdate-name
 
-[jwt]: /ja/guides/authentication/jwt
+[jwt]: /guides/authentication/jwt
 
-[jwt-page]: /ja/guides/cli/cli-docs/jwt-cli
+[jwt-page]: /guides/cli/cli-docs/jwt-cli
 
 [scripts]: https://github.com/box/boxcli/tree/main/examples
 
-[scripts-docs]: /ja/guides/cli/scripts/index
+[scripts-docs]: /guides/cli/scripts/index
 
-[ccg]: /ja/guides/authentication/client-credentials
+[ccg]: /guides/authentication/client-credentials
 
 [ccg-page]: https://github.com/box/boxcli/tree/main/docs/configure.md#box-configureenvironmentsadd-path
 
@@ -99,9 +90,9 @@ Box CLIの使用自体が役に立ちますが、PowerShellスクリプトと組
 <RelatedLinks
   title="関連するガイド"
   items={[
-    { label: "OAuth 2.0認証", href: "/ja/guides/authentication/oauth2/index", badge: "ガイド" },
-    { label: "OAuth 2.0を使用した設定", href: "/ja/guides/authentication/oauth2/oauth2-setup", badge: "ガイド" },
-    { label: "JWT認証", href: "/ja/guides/authentication/jwt/index", badge: "ガイド" },
-    { label: "JWTを使用した設定", href: "/ja/guides/authentication/jwt/jwt-setup", badge: "ガイド" }
-  ]}
+  { label: "OAuth 2.0 Auth", href: "/guides/authentication/oauth2/index", badge: "GUIDE" },
+  { label: "Setup with OAuth 2.0", href: "/guides/authentication/oauth2/oauth2-setup", badge: "GUIDE" },
+  { label: "JWT Auth", href: "/guides/authentication/jwt/index", badge: "GUIDE" },
+  { label: "Setup with JWT", href: "/guides/authentication/jwt/jwt-setup", badge: "GUIDE" }
+]}
 />
